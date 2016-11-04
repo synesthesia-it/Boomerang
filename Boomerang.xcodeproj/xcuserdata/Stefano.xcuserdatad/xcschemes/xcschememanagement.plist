@@ -9,9 +9,24 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>BoomerangDemo.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>7B27E23C1DCB5352007C4C9C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7B27E24F1DCB5352007C4C9C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7B2CC8521DB016510005E500</key>
 		<dict>
 			<key>primary</key>
