@@ -66,6 +66,10 @@ public protocol ViewModelFactoryType {
     
 }
 
+public protocol SelectionType {
+    
+}
+
 
 public protocol ViewModelType : class {
    
@@ -79,6 +83,10 @@ public protocol ModelType {
     var title:String? {get}
 }
 
+extension IndexPath : SelectionType {
+    
+}
+
 public protocol ViewModelListType : ViewModelType {
     init()
     func identifierAtIndex(_ index:IndexPath) -> ListIdentifier?
@@ -90,6 +98,7 @@ public protocol ViewModelListType : ViewModelType {
     var newDataAvailable:MutableProperty<ResultRangeType?> {get set}
     func itemViewModel(_ model:ModelType) -> ViewModelItemType?
     func listIdentifiers() -> [ListIdentifier]
+    func select(selection:SelectionType) -> ViewModelType
 }
 
 public protocol ViewModelItemType : ViewModelType {
@@ -173,89 +182,13 @@ public extension ViewModelListType {
 
 public protocol ViewModelBindable {
     
-//    var disposable:CompositeDisposable? {get set}
+    var disposable:CompositeDisposable? {get set}
     func bindViewModel(_ viewModel: ViewModelType?)
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-//
-//public class ViewModel : ViewModelType {
-//    private lazy var sectionedDataSource:MutableProperty<[[ViewModel]]> = MutableProperty([])
-//    open lazy var hasResults:MutableProperty<Bool> = MutableProperty(false)
-//    open var model:Any?
-//    public lazy var results:MutableProperty<Int> = MutableProperty(0)
-//    public var reloadAction:ReactiveSwift.Action<Any?,[[ViewModel]],NSError>? {
-//        didSet {
-//            if (reloadAction != nil ) {
-//                sectionedDataSource <~ reloadAction!.values
-//                results <~ sectionedDataSource.producer.map { dataSource in
-//                    return dataSource.reduce(0, { (count, array) -> Int in
-//                        return count + array.count
-//                    })
-//                }
-//                hasResults <~ reloadAction!.values.map({ (sectionedDataSource) -> Bool in
-//                    return sectionedDataSource.reduce(0, { (count, array) -> Int in
-//                        return count + array.count
-//                    }) > 0
-//                })
-//            }
-//        }
-//    }
-//    
-//    open lazy var nextAction:ReactiveSwift.Action<Any?,RouterActionType,NSError>? = Action {[weak self] input in
-//        return SignalProducer(value:RouterAction.None)
-//    }
-//    
-//    open var dataSource:[ViewModel]{
-//        get {
-//            if (sectionedDataSource.value.first == nil) {
-//                sectionedDataSource.value = [[]]
-//            }
-//            return sectionedDataSource.value.first!
-//        }
-//        set {
-//            
-//            sectionedDataSource.value =  [newValue]
-//            
-//        }
-//    }
-//    open func listIdentifiers() -> [ListIdentifier] {
-//        return []
-//    }
-//    open func listIdentifier() -> ListIdentifier {
-//        return String(describing: self)
-//    }
-//    open func listIdentifierAtIndexPath(_ indexPath: IndexPath) -> ListIdentifier {
-//        return self.viewModelAtIndexPath(indexPath).listIdentifier()
-//    }
-//    
-//    open func viewModelAtIndexPath(_ indexPath:IndexPath) -> ViewModel! {
-//        return sectionedDataSource.value[indexPath.section][indexPath.row]
-//    }
-//    
-//    open func modelAtIndexPath(_ indexPath:IndexPath) -> Any? {
-//        return self.viewModelAtIndexPath(indexPath)?.model
-//    }
-//    open func numberOfSections() -> Int {
-//        return sectionedDataSource.value.count
-//    }
-//    open func numberOfItemsInSection(_ section:Int!) -> Int {
-//        return sectionedDataSource.value[section].count
-//    }
-//    
-//}
+extension ViewModelBindable {
+    public var disposable:CompositeDisposable? {
+        get {return nil}
+        set {}
+    }
+}

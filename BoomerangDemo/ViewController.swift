@@ -65,7 +65,9 @@ final class TestViewModel:ViewModelListTypeHeaderable {
     func headerIdentifiers() -> [ListIdentifier] {
         return [HeaderIdentifier(name:"TestCollectionViewCell", type:UICollectionElementKindSectionHeader)]
     }
-
+    func select(selection: SelectionType) -> ViewModelType {
+        return  ViewModelFactory.anotherTestViewModel()
+    }
 }
 
 
@@ -77,16 +79,18 @@ struct Item : ModelType {
 
 
 
-class ViewController: UIViewController, UICollectionViewDelegateFlowLayout  {
+class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, RouterSource  {
     @IBOutlet weak var collectionView:UICollectionView?
     @IBOutlet weak var tableView: UITableView!
-    var viewModel:TestViewModel!
+    var viewModel:TestViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
-        let viewModel = ViewModelFactory.anotherTestViewModel()
+        if (self.viewModel == nil) {
+            self.viewModel = ViewModelFactory.testViewModel()
+        }
         self.collectionView?.delegate = self
-        self.collectionView?.bindViewModel(viewModel)
-        self.viewModel = viewModel
+        self.collectionView?.bindViewModel(self.viewModel)
+        
         
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -98,14 +102,32 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout  {
         
         return CGSize(width: 100, height: 100)
     }
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        Router.from(self, viewModel: self.viewModel!.select(selection: indexPath))
+        
+    }
 }
 
 
+
+extension Router {
+    static func from<Source>(_ source:Source, viewModel:ViewModelType) where Source : ViewController  {
+        guard let vc = source.storyboard?.instantiateViewController(withIdentifier: "testViewController") as? ViewController else {return}
+        let vm = ViewModelFactory.anotherTestViewModel()
+        vc.viewModel = vm
+        source.navigationController?.pushViewController(vc, animated: true)
+    }
+    static func backTo<Source>(_ source:Source, destination:RouterDestination? = nil) where Source : ViewController  {
+        _ = source.navigationController?.popViewController(animated: true)
+    }
+}
+
 struct Router : RouterType {
-    func from(_ viewController:ViewController with item:Item) -> Route {
-        let viewModel = ViewModelFactory.anotherTestViewModel()
-        destinationViewController = viewController.stor
+    static func from<Source>(_ source:Source, viewModel:ViewModelType) {
+        
+    }
+    static func backTo<Source>(_ source:Source, destination:RouterDestination? = nil) {
+        
     }
 }
 

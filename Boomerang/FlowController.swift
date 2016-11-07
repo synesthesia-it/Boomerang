@@ -9,23 +9,16 @@
 import Foundation
 
 
-public protocol RouteData {
-    var viewModel:ViewModelType? {get set}
-    var route: Route? {get set}
-}
-public protocol Route {
+public protocol RouterSource {
     
 }
 
-//public enum RouterAction : RouterActionType {
-//    case Identifier
-//    case Segue
-//    case Action
-//    case Custom
-//    case None
-//}
-
-
-protocol RouterType {
+public protocol RouterDestination : ViewModelBindable {
     
+}
+
+public protocol RouterType   {
+    typealias Source = RouterSource
+    static func from<Source>(_ source:Source, viewModel:ViewModelType)
+    static func backTo<Source>(_ source:Source, destination:RouterDestination?)
 }
