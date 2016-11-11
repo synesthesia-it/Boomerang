@@ -15,6 +15,11 @@ import ReactiveCocoa
 
 import Result
 
+ extension UIViewController : RouterSource {
+    
+}
+
+
 public protocol LoaderReceiver {
     func showLoader()
     func hideLoader()
@@ -107,27 +112,37 @@ public extension ViewModelBindable where Self : UIViewController {
 //        return signalProducer
 //    }
     
-//    public func bindViewModel(_ viewModel:ViewModelType?) {
-//        self.viewModel = viewModel
-//        _ = viewModel?.reloadAction?.errors.observeResult({[weak self] (result) in
+    public mutating func bindViewModel(_ viewModel:ViewModel?) {
+        self.viewModel = viewModel
+        guard let vm = viewModel as? ListViewModelType else {
+            return
+        }
+        
+        
+//        _ = vm.reloadAction?.errors.observeResult({[weak self] (result) in
 //            self?.showError(result.value!)
 //            })
-//        viewModel?.reloadAction?.isExecuting.producer.startWithResult({[weak self] (result) in
+//        vm.reloadAction?.isExecuting.producer.startWithResult({[weak self] (result) in
 //            if (result.value == true)  {
 //                self?.showLoader()
 //            }
 //            else {
 //                self?.hideLoader()
 //            }        })
-//    }
+    }
+    public func bindViewModelAfterLoad(_ viewModel: ViewModelType?) {
+       _ = (self as UIViewController).reactive.trigger(for: #selector(viewDidLoad)).take(last: 1).observeCompleted {[weak self] in
+            self?.bindViewModel(viewModel)
+        }
+    }
     
-    open func showLoader() {
+    public func showLoader() {
         print ("Showing loader")
     }
-    open func hideLoader() {
+    public func hideLoader() {
         print ("Hiding loader")
     }
-    open func showError(_ error:NSError) {
+    public func showError(_ error:NSError) {
         print ("Showing error :\(error)")
     }
     

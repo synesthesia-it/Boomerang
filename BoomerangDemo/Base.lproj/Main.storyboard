@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OGH-db-iAz">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hLy-gU-isg">
                                     <size key="itemSize" width="300" height="50"/>
@@ -37,7 +37,7 @@
                         <constraints>
                             <constraint firstItem="OGH-db-iAz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3Bb-eY-jDb"/>
                             <constraint firstAttribute="trailing" secondItem="OGH-db-iAz" secondAttribute="trailing" id="C05-qS-koO"/>
-                            <constraint firstItem="OGH-db-iAz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="WOt-hE-NYU"/>
+                            <constraint firstItem="OGH-db-iAz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bss-iq-ZvT"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OGH-db-iAz" secondAttribute="bottom" id="oDj-oF-Pfb"/>
                         </constraints>
                     </view>

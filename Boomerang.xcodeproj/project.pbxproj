@@ -43,6 +43,7 @@
 		7B57E2541DD207060042C158 /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B2CC86F1DB019A80005E500 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7B57E2551DD207130042C158 /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B2CC86D1DB019A80005E500 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7B7508431DD5CC98006C82A0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC8751DB021310005E500 /* UIViewController.swift */; };
+		7B7508451DD5FD36006C82A0 /* UIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7508441DD5FD36006C82A0 /* UIRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		7B57E2481DD201FC0042C158 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		7B57E2491DD201FC0042C158 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		7B6BEE081DCCCD1000FF2F85 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		7B7508441DD5FD36006C82A0 /* UIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				7B2CC8751DB021310005E500 /* UIViewController.swift */,
 				7B6BEE081DCCCD1000FF2F85 /* UITableView.swift */,
 				7B27E2351DCA43BB007C4C9C /* UICollectionView.swift */,
+				7B7508441DD5FD36006C82A0 /* UIRouter.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B7508451DD5FD36006C82A0 /* UIRouter.swift in Sources */,
 				7B7508431DD5CC98006C82A0 /* UIViewController.swift in Sources */,
 				7B087DB91DD47F4300F9E39D /* ListViewModel.swift in Sources */,
 				7B087DB71DD47EE100F9E39D /* ModelStructure.swift in Sources */,

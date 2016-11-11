@@ -47,7 +47,7 @@ extension ViewModelFactory {
 
 
 final class TestViewModel:ListViewModelTypeHeaderable {
-
+    
     var reloadAction: Action<ResultRangeType?, ModelStructure, NSError> = Action {_ in return SignalProducer(value:ModelStructure.empty)}
     var models:MutableProperty<ModelStructure> = MutableProperty(ModelStructure.empty)
     var viewModels:MutableProperty = MutableProperty([IndexPath:ItemViewModelType]())
@@ -74,70 +74,75 @@ final class TestViewModel:ListViewModelTypeHeaderable {
 
 struct Item : ModelType {
     public var title: String? {get {return self.string}}
-
+    
     var string:String
 }
 
 
 
-class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, RouterSource  {
+class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, RouterDestination, ViewModelBindable  {
     @IBOutlet weak var collectionView:UICollectionView?
     @IBOutlet weak var tableView: UITableView!
     var viewModel:TestViewModel?
+    var disposable: CompositeDisposable?
     override func viewDidLoad() {
         super.viewDidLoad()
         if (self.viewModel == nil) {
-            self.viewModel = ViewModelFactory.testViewModel()
+            self.bindViewModel(ViewModelFactory.anotherTestViewModel())
         }
-        self.collectionView?.delegate = self
-        self.collectionView?.bindViewModel(self.viewModel)
         
-        self.viewModel?.reload()
         
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.viewModel?.reload()
     }
-   
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
         return CGSize(width: 100, height: 100)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        Router.from(self, viewModel: self.viewModel!.select(selection: indexPath))
+        Router.from(self, viewModel: self.viewModel!.select(selection: indexPath)).execute()
         
     }
-}
-
-
-
-extension Router {
-    static func from<Source>(_ source:Source, viewModel:ViewModelType) where Source : ViewController  {
-        guard let vc = source.storyboard?.instantiateViewController(withIdentifier: "testViewController") as? ViewController else {return}
-        let vm = ViewModelFactory.anotherTestViewModel()
-        vc.viewModel = vm as? TestViewModel
-        source.navigationController?.pushViewController(vc, animated: true)
-    }
-    static func from<Source>(_ source:Source, viewModel:ViewModelType) where Source : UINavigationController  {
-        guard let vc = source.storyboard?.instantiateViewController(withIdentifier: "testViewController") as? ViewController else {return}
-        let vm = ViewModelFactory.anotherTestViewModel()
-        vc.viewModel = vm as? TestViewModel
-        source.present(vc, animated: true, completion: nil)
-    }
-    static func backTo<Source>(_ source:Source, destination:RouterDestination? = nil) where Source : ViewController  {
-        _ = source.navigationController?.popViewController(animated: true)
+    
+    func bindViewModel(_ viewModel: ViewModelType?) {
+        
+        guard let vm = viewModel as? TestViewModel else {
+            return
+        }
+        self.viewModel = vm
+        self.collectionView?.delegate = self
+        self.collectionView?.bindViewModel(self.viewModel)
+        self.viewModel?.reload()
+        
     }
 }
 
 struct Router : RouterType {
-    static func from<Source>(_ source:Source, viewModel:ViewModelType) {
+
+}
+
+extension RouterType {
+    static func from<Source>(_ source:Source, viewModel:ViewModelType) -> RouterAction where Source : ViewController {
         
+        let vc = self.viewController(storyboardId: "Main", storyboardIdentifier: "testViewController") as! ViewController
+        vc.bindViewModelAfterLoad(viewModel)
+        return UIViewControllerRouterAction.push(source:source, destination:vc)    
     }
-    static func backTo<Source>(_ source:Source, destination:RouterDestination? = nil) {
-        
+
+    static func viewController(storyboardId:String, storyboardIdentifier:String) -> RouterSource {
+        return UIStoryboard(name: storyboardId, bundle: nil).instantiateViewController(withIdentifier: storyboardIdentifier)
+    }
+
+    
+    static func backTo<Source>(_ source:Source, destination:RouterDestination?) -> RouterAction where Source : ViewController  {
+        return UIViewControllerRouterAction.pop(source:source)
     }
 }
+
+
 
 
 

@@ -19,18 +19,21 @@ public protocol ViewModelType : class {
     init()
 }
 
-public protocol ViewModelBindable {
-    typealias ViewModel = ViewModelType
+public protocol ViewModelBindable : ViewModelBindableType{
+    associatedtype ViewModel = ViewModelType
     var viewModel:ViewModel? {get set}
-    var disposable:CompositeDisposable? {get set}
-    func bindViewModel(_ viewModel: ViewModel?)
+    
 }
-
-extension ViewModelBindable {
+public protocol ViewModelBindableType {
+    var disposable:CompositeDisposable? {get set}
+    func bindViewModel(_ viewModel: ViewModelType?)
+}
+extension ViewModelBindableType {
     public var disposable:CompositeDisposable? {
         get {return nil}
         set {}
     }
+
 }
 
 

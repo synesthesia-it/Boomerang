@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import ReactiveSwift
+import ReactiveCocoa
 
 //extension UICollectionReusableView : ViewModelBindable {
 //
@@ -24,7 +25,7 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
     @objc public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell  {
         let viewModel:ItemViewModelType? = self.viewModel?.viewModelAtIndex(indexPath)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewModel?.itemIdentifier.name ?? defaultListIdentifier, for: indexPath)
-        (cell as? ViewModelBindable)?.bindViewModel(viewModel)
+        (cell as? ViewModelBindableType)?.bindViewModel(viewModel)
         return cell
     }
     
@@ -46,7 +47,7 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
             let vm =  self.viewModel?.itemViewModel(model!)
             if (vm != nil) {
                 let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: vm!.itemIdentifier.name, for: indexPath)
-                (cell as? ViewModelBindable)?.bindViewModel(vm)
+                (cell as? ViewModelBindableType)?.bindViewModel(vm)
                 return cell
             }
         }
@@ -70,8 +71,12 @@ public extension ListViewModelType  {
 }
 
 
-
-extension  ViewModelBindable where Self : UICollectionView{
+extension UICollectionView : ViewModelBindable {
+    
+    public var viewModel: ViewModelType? {
+        get { return nil}
+        set {}
+    }
     public func bindViewModel(_ viewModel: ViewModelType?) {
         guard let vm = viewModel as? ListViewModelType else {
             return
@@ -89,18 +94,11 @@ extension  ViewModelBindable where Self : UICollectionView{
         })
         let dataSource = vm.collectionViewDataSource
         self.dataSource = dataSource
-      
-        vm.resultsCount.producer.startWithResult {[weak self] _ in
-            self?.reloadData()
-            dataSource
-        }
-    }
-}
-
-extension UICollectionView : ViewModelBindable {
-    
-    public var viewModel: ViewModelType? {
-        get { return nil}
-        set {}
+        
+        self.reactive.reloadData <~ vm.resultsCount.producer.map {_ in
+            _ = dataSource //retaining datasource
+            return ()}
+        
+        
     }
 }
