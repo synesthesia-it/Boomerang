@@ -8,22 +8,30 @@
 
 import UIKit
 import Boomerang
+import ReactiveSwift
+import ReactiveCocoa
 
-final class TestItemViewModel: ViewModelItemType {
+extension String : ModelType {
+    public var title: String? {return self}
+}
+
+final class TestItemViewModel: ItemViewModelType {
     
-
-    public var model: ViewModelItemType.T
+    
+    public var model: ItemViewModelType.Model = ""
     var title:String { return self.model.title ?? "" }
+    var customTitle:String?
     var itemIdentifier: ListIdentifier = "TestCollectionViewCell"
-//    var model:Item
     
-    public init(model: ViewModelItemType.T) {
-        self.model = model
+    convenience init(model: Item) {
+        self.init(model:model as ItemViewModelType.Model)
+        self.customTitle = model.string
     }
 }
 
 final class TestCollectionViewCell: UICollectionViewCell , ViewModelBindable {
-
+    
+    var viewModel: ViewModelType?
     @IBOutlet weak var lbl_title: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,6 +41,6 @@ final class TestCollectionViewCell: UICollectionViewCell , ViewModelBindable {
         guard let vm = viewModel as? TestItemViewModel else {
             return
         }
-        self.lbl_title.text = vm.title
+        self.lbl_title.text = vm.customTitle
     }
 }

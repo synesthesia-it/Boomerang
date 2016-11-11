@@ -10,15 +10,16 @@ import UIKit
 
 
 private class ViewModelTableViewDataSource : NSObject, UITableViewDataSource {
-    weak var viewModel: ViewModelListType?
-    init (viewModel: ViewModelListType) {
+    weak var viewModel: ListViewModel?
+    weak var modelStructure:ModelStructureType
+    init (viewModel:ListViewModel,  modelStructure: ModelStructureType) {
         super.init()
         self.viewModel = viewModel
-        
+        self.modelStructure = modelStructure
     }
     
     @objc public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let viewModel:ViewModelItemType? = self.viewModel?.viewModelAtIndex(indexPath)
+        let viewModel:ItemViewModelType? = self.viewModel?.viewModelAtIndex(indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: viewModel?.itemIdentifier.name ?? defaultListIdentifier, for: indexPath)
         (cell as? ViewModelBindable)?.bindViewModel(viewModel)
         return cell
@@ -56,9 +57,9 @@ private class ViewModelTableViewDataSource : NSObject, UITableViewDataSource {
 
 
 
-public extension ViewModelListType  {
+public extension ListViewModelType  {
     var tableViewDataSource:UITableViewDataSource {
-        return ViewModelTableViewDataSource(viewModel: self)
+        return ViewModelTableViewDataSource(viewModel: self, modelStructure:self.models)
     }
     
 
@@ -67,7 +68,7 @@ public extension ViewModelListType  {
 
 extension UITableView : ViewModelBindable {
     public func bindViewModel(_ viewModel: ViewModelType?) {
-        guard let vm = viewModel as? ViewModelListType else {
+        guard let vm = viewModel as? ListViewModelType else {
             return
         }
         let tableView = self
@@ -75,7 +76,7 @@ extension UITableView : ViewModelBindable {
             tableView.register(UINib(nibName: value.name, bundle: nil), forCellReuseIdentifier: value)
             return ""
         })
-        _ = (vm as? ViewModelListTypeHeaderable)?.headerIdentifiers().reduce("", { (_, value) in
+        _ = (vm as? ListViewModelTypeHeaderable)?.headerIdentifiers().reduce("", { (_, value) in
             tableView.register(UINib(nibName: value.name, bundle: nil), forHeaderFooterViewReuseIdentifier: value.name)
             return ""
         })

@@ -15,21 +15,21 @@ import UIKit
 
 
 private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewDataSource {
-    weak var viewModel: ViewModelListType?
-    init (viewModel: ViewModelListType) {
+    weak var viewModel: ListViewModelType?
+    init (viewModel: ListViewModelType) {
         super.init()
         self.viewModel = viewModel
         
     }
     @objc public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell  {
-        let viewModel:ViewModelItemType? = self.viewModel?.viewModelAtIndex(indexPath)
+        let viewModel:ItemViewModelType? = self.viewModel?.viewModelAtIndex(indexPath)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewModel?.itemIdentifier.name ?? defaultListIdentifier, for: indexPath)
         (cell as? ViewModelBindable)?.bindViewModel(viewModel)
         return cell
     }
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
-        let count =  self.viewModel?.models.value.children?.count ?? 1
+         let count =  self.viewModel?.models.value.children?.count ?? 1
         return count
     }
     
@@ -57,11 +57,7 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
     
 }
 
-public protocol ViewModelListTypeHeaderable : ViewModelListType {
-    func headerIdentifiers() -> [ListIdentifier]
-}
-
-public extension ViewModelListType  {
+public extension ListViewModelType  {
     var collectionViewDataSource:UICollectionViewDataSource {
         return ViewModelCollectionViewDataSource(viewModel: self)
     }
@@ -73,9 +69,11 @@ public extension ViewModelListType  {
 
 }
 
-extension UICollectionView : ViewModelBindable {
+
+
+extension  ViewModelBindable where Self : UICollectionView{
     public func bindViewModel(_ viewModel: ViewModelType?) {
-        guard let vm = viewModel as? ViewModelListType else {
+        guard let vm = viewModel as? ListViewModelType else {
             return
         }
         
@@ -84,7 +82,7 @@ extension UICollectionView : ViewModelBindable {
             collectionView.register(UINib(nibName: value, bundle: nil), forCellWithReuseIdentifier: value)
             return ""
         })
-        _ = (vm as? ViewModelListTypeHeaderable)?.headerIdentifiers().reduce("", { (_, value) in
+        _ = (vm as? ListViewModelTypeHeaderable)?.headerIdentifiers().reduce("", { (_, value) in
             
             collectionView.register(UINib(nibName: value.name, bundle: nil), forSupplementaryViewOfKind: value.type ?? UICollectionElementKindSectionHeader, withReuseIdentifier: value.name)
             return ""
@@ -96,5 +94,13 @@ extension UICollectionView : ViewModelBindable {
             self?.reloadData()
             dataSource
         }
+    }
+}
+
+extension UICollectionView : ViewModelBindable {
+    
+    public var viewModel: ViewModelType? {
+        get { return nil}
+        set {}
     }
 }
