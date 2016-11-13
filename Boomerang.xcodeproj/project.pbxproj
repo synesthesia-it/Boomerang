@@ -26,12 +26,27 @@
 		7B27E2661DCB86E0007C4C9C /* TestCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B27E2641DCB86E0007C4C9C /* TestCollectionViewCell.xib */; };
 		7B2CC85D1DB016510005E500 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2CC8531DB016510005E500 /* Boomerang.framework */; };
 		7B2CC8621DB016510005E500 /* ListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC8611DB016510005E500 /* ListViewModelTests.swift */; };
-		7B2CC8641DB016510005E500 /* Boomerang.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B2CC8561DB016510005E500 /* Boomerang.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7B2CC8701DB019A80005E500 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2CC86D1DB019A80005E500 /* ReactiveCocoa.framework */; };
 		7B2CC8711DB019A80005E500 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2CC86E1DB019A80005E500 /* ReactiveSwift.framework */; };
 		7B2CC8721DB019A80005E500 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2CC86F1DB019A80005E500 /* Result.framework */; };
 		7B2CC8741DB019BA0005E500 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC8731DB019BA0005E500 /* ViewModel.swift */; };
 		7B2CC87C1DB112FD0005E500 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC87B1DB112FD0005E500 /* Router.swift */; };
+		7B440F611DD8F28E005787EF /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B440F601DD8F28E005787EF /* ViewModelFactory.swift */; };
+		7B440F631DD8F2AA005787EF /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B440F621DD8F2AA005787EF /* Item.swift */; };
+		7B440F651DD8F2BF005787EF /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B440F641DD8F2BF005787EF /* TestViewModel.swift */; };
+		7B440F671DD8F2F9005787EF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B440F661DD8F2F9005787EF /* Router.swift */; };
+		7B440F691DD8F33F005787EF /* TestItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B440F681DD8F33F005787EF /* TestItemViewModel.swift */; };
+		7B440F8E1DD8F4F4005787EF /* Boomerang macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B440F8C1DD8F4F4005787EF /* Boomerang macOS.h */; };
+		7B440F921DD8F525005787EF /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC8731DB019BA0005E500 /* ViewModel.swift */; };
+		7B440F931DD8F525005787EF /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DB81DD47F4300F9E39D /* ListViewModel.swift */; };
+		7B440F941DD8F525005787EF /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DBA1DD47F5800F9E39D /* ItemViewModel.swift */; };
+		7B440F951DD8F525005787EF /* ModelStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DB61DD47EE100F9E39D /* ModelStructure.swift */; };
+		7B440F961DD8F525005787EF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC87B1DB112FD0005E500 /* Router.swift */; };
+		7B440FA61DD9043E005787EF /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B440F9C1DD90435005787EF /* ReactiveSwift.framework */; };
+		7B440FA71DD90442005787EF /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B440F9B1DD90435005787EF /* ReactiveCocoa.framework */; };
+		7B440FA91DD9044F005787EF /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B440F9D1DD90435005787EF /* Result.framework */; };
+		7B440FB91DD9163E005787EF /* Boomerang iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B440FB71DD9163E005787EF /* Boomerang iOS.h */; };
+		7B440FBA1DD9163E005787EF /* Info-iOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B440FB81DD9163E005787EF /* Info-iOS.plist */; };
 		7B57E24A1DD201FD0042C158 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B57E2481DD201FC0042C158 /* Nimble.framework */; };
 		7B57E24B1DD201FD0042C158 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B57E2481DD201FC0042C158 /* Nimble.framework */; };
 		7B57E24C1DD201FD0042C158 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B57E2491DD201FC0042C158 /* Quick.framework */; };
@@ -100,8 +115,6 @@
 		7B27E2631DCB86E0007C4C9C /* TestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCollectionViewCell.swift; sourceTree = "<group>"; };
 		7B27E2641DCB86E0007C4C9C /* TestCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestCollectionViewCell.xib; sourceTree = "<group>"; };
 		7B2CC8531DB016510005E500 /* Boomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B2CC8561DB016510005E500 /* Boomerang.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Boomerang.h; sourceTree = "<group>"; };
-		7B2CC8571DB016510005E500 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B2CC85C1DB016510005E500 /* BoomerangTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoomerangTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2CC8611DB016510005E500 /* ListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelTests.swift; sourceTree = "<group>"; };
 		7B2CC8631DB016510005E500 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,6 +124,24 @@
 		7B2CC8731DB019BA0005E500 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		7B2CC8751DB021310005E500 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		7B2CC87B1DB112FD0005E500 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		7B440F531DD8F1C6005787EF /* Boomerang.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Boomerang.podspec; sourceTree = "<group>"; };
+		7B440F601DD8F28E005787EF /* ViewModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
+		7B440F621DD8F2AA005787EF /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		7B440F641DD8F2BF005787EF /* TestViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
+		7B440F661DD8F2F9005787EF /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		7B440F681DD8F33F005787EF /* TestItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestItemViewModel.swift; sourceTree = "<group>"; };
+		7B440F8A1DD8F4F4005787EF /* Boomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B440F8C1DD8F4F4005787EF /* Boomerang macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Boomerang macOS.h"; sourceTree = "<group>"; };
+		7B440F8D1DD8F4F4005787EF /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
+		7B440F9B1DD90435005787EF /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		7B440F9C1DD90435005787EF /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/Mac/ReactiveSwift.framework; sourceTree = "<group>"; };
+		7B440F9D1DD90435005787EF /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
+		7B440F9E1DD90435005787EF /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/Mac/Quick.framework; sourceTree = "<group>"; };
+		7B440F9F1DD90435005787EF /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = "<group>"; };
+		7B440FB41DD9086B005787EF /* libswiftCore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCore.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/PrivateFrameworks/Swift/libswiftCore.tbd; sourceTree = DEVELOPER_DIR; };
+		7B440FB71DD9163E005787EF /* Boomerang iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Boomerang iOS.h"; sourceTree = "<group>"; };
+		7B440FB81DD9163E005787EF /* Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		7B440FC21DD917D9005787EF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		7B57E2481DD201FC0042C158 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		7B57E2491DD201FC0042C158 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		7B6BEE081DCCCD1000FF2F85 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
@@ -158,6 +189,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7B440F861DD8F4F4005787EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B440FA91DD9044F005787EF /* Result.framework in Frameworks */,
+				7B440FA61DD9043E005787EF /* ReactiveSwift.framework in Frameworks */,
+				7B440FA71DD90442005787EF /* ReactiveCocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -202,8 +243,9 @@
 			isa = PBXGroup;
 			children = (
 				7B27E23F1DCB5352007C4C9C /* AppDelegate.swift */,
-				7B27E2411DCB5352007C4C9C /* ViewController.swift */,
-				7B27E2631DCB86E0007C4C9C /* TestCollectionViewCell.swift */,
+				7B440F6C1DD8F3F4005787EF /* View */,
+				7B440F6B1DD8F3ED005787EF /* Router */,
+				7B440F6A1DD8F3E7005787EF /* Model */,
 				7B27E2641DCB86E0007C4C9C /* TestCollectionViewCell.xib */,
 				7B27E2431DCB5352007C4C9C /* Main.storyboard */,
 				7B27E2461DCB5352007C4C9C /* Assets.xcassets */,
@@ -225,15 +267,15 @@
 		7B2CC8491DB016510005E500 = {
 			isa = PBXGroup;
 			children = (
-				7B57E2481DD201FC0042C158 /* Nimble.framework */,
-				7B57E2491DD201FC0042C158 /* Quick.framework */,
-				7B2CC86D1DB019A80005E500 /* ReactiveCocoa.framework */,
-				7B2CC86E1DB019A80005E500 /* ReactiveSwift.framework */,
-				7B2CC86F1DB019A80005E500 /* Result.framework */,
-				7B2CC8551DB016510005E500 /* Boomerang */,
+				7B440F541DD8F1CA005787EF /* Metadata */,
+				7B440FC11DD917D9005787EF /* BoomerangCLIDemo */,
+				7B440F991DD8F6F9005787EF /* Frameworks */,
+				7B2CC8551DB016510005E500 /* Sources */,
 				7B2CC8601DB016510005E500 /* BoomerangTests */,
 				7B27E23E1DCB5352007C4C9C /* BoomerangDemo */,
+				7B440FB61DD9163E005787EF /* Boomerang iOS */,
 				7B27E2531DCB5352007C4C9C /* BoomerangDemoTests */,
+				7B440F8B1DD8F4F4005787EF /* Boomerang macOS */,
 				7B2CC8541DB016510005E500 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -245,21 +287,20 @@
 				7B2CC85C1DB016510005E500 /* BoomerangTests.xctest */,
 				7B27E23D1DCB5352007C4C9C /* BoomerangDemo.app */,
 				7B27E2501DCB5352007C4C9C /* BoomerangDemoTests.xctest */,
+				7B440F8A1DD8F4F4005787EF /* Boomerang.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7B2CC8551DB016510005E500 /* Boomerang */ = {
+		7B2CC8551DB016510005E500 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				7B2CC8561DB016510005E500 /* Boomerang.h */,
 				7B087DBC1DD47F5D00F9E39D /* ViewModel */,
 				7B087DBD1DD47F6500F9E39D /* Model */,
 				7B087DBE1DD47F6A00F9E39D /* Routing */,
 				7B27E2341DCA43A8007C4C9C /* UIKit */,
-				7B2CC8571DB016510005E500 /* Info.plist */,
 			);
-			path = Boomerang;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		7B2CC8601DB016510005E500 /* BoomerangTests */ = {
@@ -273,6 +314,102 @@
 			path = BoomerangTests;
 			sourceTree = "<group>";
 		};
+		7B440F541DD8F1CA005787EF /* Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				7B440F531DD8F1C6005787EF /* Boomerang.podspec */,
+			);
+			name = Metadata;
+			sourceTree = "<group>";
+		};
+		7B440F6A1DD8F3E7005787EF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B440F621DD8F2AA005787EF /* Item.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7B440F6B1DD8F3ED005787EF /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				7B440F601DD8F28E005787EF /* ViewModelFactory.swift */,
+				7B440F661DD8F2F9005787EF /* Router.swift */,
+			);
+			name = Router;
+			sourceTree = "<group>";
+		};
+		7B440F6C1DD8F3F4005787EF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7B27E2631DCB86E0007C4C9C /* TestCollectionViewCell.swift */,
+				7B440F681DD8F33F005787EF /* TestItemViewModel.swift */,
+				7B27E2411DCB5352007C4C9C /* ViewController.swift */,
+				7B440F641DD8F2BF005787EF /* TestViewModel.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		7B440F8B1DD8F4F4005787EF /* Boomerang macOS */ = {
+			isa = PBXGroup;
+			children = (
+				7B440F8C1DD8F4F4005787EF /* Boomerang macOS.h */,
+				7B440F8D1DD8F4F4005787EF /* Info-macOS.plist */,
+			);
+			path = "Boomerang macOS";
+			sourceTree = "<group>";
+		};
+		7B440F981DD8F6F0005787EF /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				7B57E2481DD201FC0042C158 /* Nimble.framework */,
+				7B57E2491DD201FC0042C158 /* Quick.framework */,
+				7B2CC86D1DB019A80005E500 /* ReactiveCocoa.framework */,
+				7B2CC86E1DB019A80005E500 /* ReactiveSwift.framework */,
+				7B2CC86F1DB019A80005E500 /* Result.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		7B440F991DD8F6F9005787EF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7B440FB41DD9086B005787EF /* libswiftCore.tbd */,
+				7B440F9A1DD8F705005787EF /* macOS */,
+				7B440F981DD8F6F0005787EF /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7B440F9A1DD8F705005787EF /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				7B440F9B1DD90435005787EF /* ReactiveCocoa.framework */,
+				7B440F9C1DD90435005787EF /* ReactiveSwift.framework */,
+				7B440F9D1DD90435005787EF /* Result.framework */,
+				7B440F9E1DD90435005787EF /* Quick.framework */,
+				7B440F9F1DD90435005787EF /* Nimble.framework */,
+			);
+			name = macOS;
+			sourceTree = "<group>";
+		};
+		7B440FB61DD9163E005787EF /* Boomerang iOS */ = {
+			isa = PBXGroup;
+			children = (
+				7B440FB71DD9163E005787EF /* Boomerang iOS.h */,
+				7B440FB81DD9163E005787EF /* Info-iOS.plist */,
+			);
+			path = "Boomerang iOS";
+			sourceTree = SOURCE_ROOT;
+		};
+		7B440FC11DD917D9005787EF /* BoomerangCLIDemo */ = {
+			isa = PBXGroup;
+			children = (
+				7B440FC21DD917D9005787EF /* main.swift */,
+			);
+			path = BoomerangCLIDemo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -280,7 +417,15 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B2CC8641DB016510005E500 /* Boomerang.h in Headers */,
+				7B440FB91DD9163E005787EF /* Boomerang iOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B440F871DD8F4F4005787EF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B440F8E1DD8F4F4005787EF /* Boomerang macOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,9 +468,9 @@
 			productReference = 7B27E2501DCB5352007C4C9C /* BoomerangDemoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7B2CC8521DB016510005E500 /* Boomerang */ = {
+		7B2CC8521DB016510005E500 /* Boomerang iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7B2CC8671DB016510005E500 /* Build configuration list for PBXNativeTarget "Boomerang" */;
+			buildConfigurationList = 7B2CC8671DB016510005E500 /* Build configuration list for PBXNativeTarget "Boomerang iOS" */;
 			buildPhases = (
 				7B2CC84E1DB016510005E500 /* Sources */,
 				7B2CC84F1DB016510005E500 /* Frameworks */,
@@ -336,7 +481,7 @@
 			);
 			dependencies = (
 			);
-			name = Boomerang;
+			name = "Boomerang iOS";
 			productName = Boomerang;
 			productReference = 7B2CC8531DB016510005E500 /* Boomerang.framework */;
 			productType = "com.apple.product-type.framework";
@@ -359,6 +504,24 @@
 			productName = BoomerangTests;
 			productReference = 7B2CC85C1DB016510005E500 /* BoomerangTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7B440F891DD8F4F4005787EF /* Boomerang macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B440F8F1DD8F4F4005787EF /* Build configuration list for PBXNativeTarget "Boomerang macOS" */;
+			buildPhases = (
+				7B440F851DD8F4F4005787EF /* Sources */,
+				7B440F861DD8F4F4005787EF /* Frameworks */,
+				7B440F871DD8F4F4005787EF /* Headers */,
+				7B440F881DD8F4F4005787EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Boomerang macOS";
+			productName = "Boomerang macOS";
+			productReference = 7B440F8A1DD8F4F4005787EF /* Boomerang.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -388,6 +551,10 @@
 						DevelopmentTeam = 6T384SC3AF;
 						ProvisioningStyle = Automatic;
 					};
+					7B440F891DD8F4F4005787EF = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 7B2CC84D1DB016510005E500 /* Build configuration list for PBXProject "Boomerang" */;
@@ -403,10 +570,11 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7B2CC8521DB016510005E500 /* Boomerang */,
+				7B2CC8521DB016510005E500 /* Boomerang iOS */,
 				7B2CC85B1DB016510005E500 /* BoomerangTests */,
 				7B27E23C1DCB5352007C4C9C /* BoomerangDemo */,
 				7B27E24F1DCB5352007C4C9C /* BoomerangDemoTests */,
+				7B440F891DD8F4F4005787EF /* Boomerang macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -434,10 +602,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B440FBA1DD9163E005787EF /* Info-iOS.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7B2CC85A1DB016510005E500 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B440F881DD8F4F4005787EF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -470,7 +646,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B440F651DD8F2BF005787EF /* TestViewModel.swift in Sources */,
+				7B440F631DD8F2AA005787EF /* Item.swift in Sources */,
 				7B27E2651DCB86E0007C4C9C /* TestCollectionViewCell.swift in Sources */,
+				7B440F671DD8F2F9005787EF /* Router.swift in Sources */,
+				7B440F611DD8F28E005787EF /* ViewModelFactory.swift in Sources */,
+				7B440F691DD8F33F005787EF /* TestItemViewModel.swift in Sources */,
 				7B27E2421DCB5352007C4C9C /* ViewController.swift in Sources */,
 				7B27E2401DCB5352007C4C9C /* AppDelegate.swift in Sources */,
 			);
@@ -509,6 +690,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7B440F851DD8F4F4005787EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B440F931DD8F525005787EF /* ListViewModel.swift in Sources */,
+				7B440F951DD8F525005787EF /* ModelStructure.swift in Sources */,
+				7B440F961DD8F525005787EF /* Router.swift in Sources */,
+				7B440F921DD8F525005787EF /* ViewModel.swift in Sources */,
+				7B440F941DD8F525005787EF /* ItemViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -519,7 +712,7 @@
 		};
 		7B2CC85F1DB016510005E500 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7B2CC8521DB016510005E500 /* Boomerang */;
+			target = 7B2CC8521DB016510005E500 /* Boomerang iOS */;
 			targetProxy = 7B2CC85E1DB016510005E500 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -551,6 +744,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = BoomerangDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
@@ -568,6 +762,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = BoomerangDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
@@ -727,12 +922,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = Boomerang/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Boomerang iOS/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefanomondino.Boomerang;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Boomerang;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -751,12 +947,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = Boomerang/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Boomerang iOS/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefanomondino.Boomerang;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Boomerang;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -796,6 +993,58 @@
 			};
 			name = Release;
 		};
+		7B440F901DD8F4F4005787EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "$(SRCROOT)/Boomerang macOS/Info-macOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.stefanomondino.Boomerang-macOS";
+				PRODUCT_NAME = Boomerang;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		7B440F911DD8F4F4005787EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "$(SRCROOT)/Boomerang macOS/Info-macOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.stefanomondino.Boomerang-macOS";
+				PRODUCT_NAME = Boomerang;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -826,7 +1075,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7B2CC8671DB016510005E500 /* Build configuration list for PBXNativeTarget "Boomerang" */ = {
+		7B2CC8671DB016510005E500 /* Build configuration list for PBXNativeTarget "Boomerang iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B2CC8681DB016510005E500 /* Debug */,
@@ -843,6 +1092,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		7B440F8F1DD8F4F4005787EF /* Build configuration list for PBXNativeTarget "Boomerang macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B440F901DD8F4F4005787EF /* Debug */,
+				7B440F911DD8F4F4005787EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

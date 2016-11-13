@@ -4,10 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Boomerang.xcscheme</key>
+		<key>Boomerang iOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>Boomerang macOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>BoomerangDemo.xcscheme</key>
 		<dict>
@@ -33,6 +38,26 @@
 			<true/>
 		</dict>
 		<key>7B2CC85B1DB016510005E500</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7B440F581DD8F25F005787EF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7B440F771DD8F465005787EF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7B440F891DD8F4F4005787EF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7B440FBF1DD917D9005787EF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

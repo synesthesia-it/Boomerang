@@ -11,65 +11,12 @@ import Boomerang
 import ReactiveSwift
 
 
-struct HeaderIdentifier : ListIdentifier {
-    var name: String
-    var type: String?
-}
-
-struct ViewModelFactory {
-    static func testViewModel() -> TestViewModel {
-        var a:[ModelStructure] = []
-        for i in 0...100 {
-            a = a + [ModelStructure([
-                Item(string:"TEST*10 \(i*10)"),
-                Item(string:"TEST+1 \(i+1)")
-                ],
-                                    sectionModel:Item(string:"Title \(i)"))]
-        }
-        let full = ModelStructure(children:a)
-        return TestViewModel(dataProducer: SignalProducer(value:full))
-    }
-}
-
-extension ViewModelFactory {
-    static func anotherTestViewModel() -> ViewModelType {
-        var a:[ModelStructure] = []
-        for i in 0...100 {
-            a = a + [ModelStructure([
-                Item(string:"TEST+1 \(i+1)")
-                ],
-                                    sectionModel:Item(string:"Title \(i)"))]
-        }
-        let full = ModelStructure(children:a)
-        return TestViewModel(dataProducer: SignalProducer(value:full))
-    }
-}
 
 
-final class TestViewModel:ListViewModelTypeHeaderable {
-    
-    var dataHolder: ListDataHolderType = ListDataHolder.empty
-    
-    func itemViewModel(_ model: ModelType) -> ItemViewModelType? {
-        return TestItemViewModel(model: model as! Item)
-    }
-    func listIdentifiers() -> [ListIdentifier] {
-        return ["TestCollectionViewCell"]
-    }
-    func headerIdentifiers() -> [ListIdentifier] {
-        return [HeaderIdentifier(name:"TestCollectionViewCell", type:UICollectionElementKindSectionHeader)]
-    }
-    func select(selection: SelectionType) -> ViewModelType {
-        return  ViewModelFactory.anotherTestViewModel()
-    }
-}
 
 
-struct Item : ModelType {
-    public var title: String? {get {return self.string}}
-    
-    var string:String
-}
+
+
 
 
 
@@ -113,27 +60,6 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, Rout
     }
 }
 
-struct Router : RouterType {
-
-}
-
-extension RouterType {
-    static func from<Source>(_ source:Source, viewModel:ViewModelType) -> RouterAction where Source : ViewController {
-        
-        let vc = self.viewController(storyboardId: "Main", storyboardIdentifier: "testViewController") as! ViewController
-        vc.bindViewModelAfterLoad(viewModel)
-        return UIViewControllerRouterAction.push(source:source, destination:vc)    
-    }
-
-    static func viewController(storyboardId:String, storyboardIdentifier:String) -> RouterSource {
-        return UIStoryboard(name: storyboardId, bundle: nil).instantiateViewController(withIdentifier: storyboardIdentifier)
-    }
-
-    
-    static func backTo<Source>(_ source:Source, destination:RouterDestination?) -> RouterAction where Source : ViewController  {
-        return UIViewControllerRouterAction.pop(source:source)
-    }
-}
 
 
 

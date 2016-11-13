@@ -15,9 +15,9 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = "2.0"
   
   s.source       = { :git => "https://github.com/stefanomondino/Boomerang.git", :tag => "#{s.version}" }
-  s.source_files = "Boomerang/*.{swift,h,m}"
-  s.ios.source_files = "Boomerang/UIKit/*.{swift}"
-  s.module_map = "Boomerang/module.modulemap"
+  s.source_files = "Sources/*.{swift,h,m}"
+  s.ios.source_files = "Sources/UIKit/*.{swift}"
+  s.module_map = "Sources/module.modulemap"
   
   s.dependency 'ReactiveCocoa', '~> 5.0.0-alpha.3'
 end
