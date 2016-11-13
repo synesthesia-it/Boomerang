@@ -48,13 +48,7 @@ extension ViewModelFactory {
 
 final class TestViewModel:ListViewModelTypeHeaderable {
     
-    var reloadAction: Action<ResultRangeType?, ModelStructure, NSError> = Action {_ in return SignalProducer(value:ModelStructure.empty)}
-    var models:MutableProperty<ModelStructure> = MutableProperty(ModelStructure.empty)
-    var viewModels:MutableProperty = MutableProperty([IndexPath:ItemViewModelType]())
-    var isLoading:MutableProperty<Bool> = MutableProperty(false)
-    var resultsCount:MutableProperty<Int> = MutableProperty(0)
-    var newDataAvailable:MutableProperty<ResultRangeType?> = MutableProperty(nil)
-    init() {}
+    var dataHolder: ListDataHolderType = ListDataHolder.empty
     
     func itemViewModel(_ model: ModelType) -> ItemViewModelType? {
         return TestItemViewModel(model: model as! Item)
@@ -66,7 +60,6 @@ final class TestViewModel:ListViewModelTypeHeaderable {
         return [HeaderIdentifier(name:"TestCollectionViewCell", type:UICollectionElementKindSectionHeader)]
     }
     func select(selection: SelectionType) -> ViewModelType {
-        
         return  ViewModelFactory.anotherTestViewModel()
     }
 }

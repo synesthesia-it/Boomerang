@@ -30,18 +30,18 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
     }
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
-         let count =  self.viewModel?.models.value.children?.count ?? 1
+         let count =  self.viewModel?.dataHolder.models.value.children?.count ?? 1
         return count
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        var count =  self.viewModel?.models.value.children?[section].models?.count
-        count =  count ?? self.viewModel?.models.value.models?.count
+        var count =  self.viewModel?.dataHolder.models.value.children?[section].models?.count
+        count =  count ?? self.viewModel?.dataHolder.models.value.models?.count
         return count ?? 0
     }
     
     @objc public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let model = self.viewModel?.models.value.children?[indexPath.section].sectionModel
+        let model = self.viewModel?.dataHolder.models.value.children?[indexPath.section].sectionModel
         if nil != model {
             
             let vm =  self.viewModel?.itemViewModel(model!)
@@ -62,12 +62,6 @@ public extension ListViewModelType  {
     var collectionViewDataSource:UICollectionViewDataSource {
         return ViewModelCollectionViewDataSource(viewModel: self)
     }
-    
-    public func listIdentifiers() -> [ListIdentifier] {
-        return []
-    }
-    
-
 }
 
 
@@ -95,7 +89,7 @@ extension UICollectionView : ViewModelBindable {
         let dataSource = vm.collectionViewDataSource
         self.dataSource = dataSource
         
-        self.reactive.reloadData <~ vm.resultsCount.producer.map {_ in
+        self.reactive.reloadData <~ vm.dataHolder.resultsCount.producer.map {_ in
             _ = dataSource //retaining datasource
             return ()}
         
