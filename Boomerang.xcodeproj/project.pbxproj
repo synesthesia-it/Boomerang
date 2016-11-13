@@ -141,7 +141,6 @@
 		7B440FB41DD9086B005787EF /* libswiftCore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCore.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/PrivateFrameworks/Swift/libswiftCore.tbd; sourceTree = DEVELOPER_DIR; };
 		7B440FB71DD9163E005787EF /* Boomerang iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Boomerang iOS.h"; sourceTree = "<group>"; };
 		7B440FB81DD9163E005787EF /* Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
-		7B440FC21DD917D9005787EF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		7B57E2481DD201FC0042C158 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		7B57E2491DD201FC0042C158 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		7B6BEE081DCCCD1000FF2F85 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
@@ -268,7 +267,6 @@
 			isa = PBXGroup;
 			children = (
 				7B440F541DD8F1CA005787EF /* Metadata */,
-				7B440FC11DD917D9005787EF /* BoomerangCLIDemo */,
 				7B440F991DD8F6F9005787EF /* Frameworks */,
 				7B2CC8551DB016510005E500 /* Sources */,
 				7B2CC8601DB016510005E500 /* BoomerangTests */,
@@ -401,14 +399,6 @@
 			);
 			path = "Boomerang iOS";
 			sourceTree = SOURCE_ROOT;
-		};
-		7B440FC11DD917D9005787EF /* BoomerangCLIDemo */ = {
-			isa = PBXGroup;
-			children = (
-				7B440FC21DD917D9005787EF /* main.swift */,
-			);
-			path = BoomerangCLIDemo;
-			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
