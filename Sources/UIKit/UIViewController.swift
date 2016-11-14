@@ -131,8 +131,8 @@ public extension ViewModelBindable where Self : UIViewController {
 //            }        })
     }
     public func bindViewModelAfterLoad(_ viewModel: ViewModelType?) {
-       _ = (self as UIViewController).reactive.trigger(for: #selector(viewDidLoad)).take(last: 1).observeCompleted {[weak self] in
-            self?.bindViewModel(viewModel)
+        _ = (self as UIViewController).reactive.trigger(for: #selector(viewDidLoad)).take(first:1).observeCompleted {
+            self.bindViewModel(viewModel)
         }
     }
     
