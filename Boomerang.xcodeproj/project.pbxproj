@@ -59,6 +59,21 @@
 		7B57E2551DD207130042C158 /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B2CC86D1DB019A80005E500 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7B7508431DD5CC98006C82A0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC8751DB021310005E500 /* UIViewController.swift */; };
 		7B7508451DD5FD36006C82A0 /* UIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7508441DD5FD36006C82A0 /* UIRouter.swift */; };
+		7B8A31BF1DDB4EFA00828075 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31B61DDB4EFA00828075 /* Boomerang.framework */; };
+		7B8A31C41DDB4EFA00828075 /* Boomerang_tvOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8A31C31DDB4EFA00828075 /* Boomerang_tvOSTests.swift */; };
+		7B8A31C61DDB4EFA00828075 /* Boomerang tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B8A31B81DDB4EFA00828075 /* Boomerang tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7B8A31CD1DDB4F3800828075 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC8731DB019BA0005E500 /* ViewModel.swift */; };
+		7B8A31CE1DDB4F3800828075 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DB81DD47F4300F9E39D /* ListViewModel.swift */; };
+		7B8A31CF1DDB4F3800828075 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DBA1DD47F5800F9E39D /* ItemViewModel.swift */; };
+		7B8A31D01DDB4F3800828075 /* ModelStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DB61DD47EE100F9E39D /* ModelStructure.swift */; };
+		7B8A31D11DDB4F3800828075 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC87B1DB112FD0005E500 /* Router.swift */; };
+		7B8A31D21DDB4F3800828075 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC8751DB021310005E500 /* UIViewController.swift */; };
+		7B8A31D31DDB4F3800828075 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BEE081DCCCD1000FF2F85 /* UITableView.swift */; };
+		7B8A31D41DDB4F3800828075 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B27E2351DCA43BB007C4C9C /* UICollectionView.swift */; };
+		7B8A31D51DDB4F3800828075 /* UIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7508441DD5FD36006C82A0 /* UIRouter.swift */; };
+		7B8A31DA1DDB4FA700828075 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D71DDB4FA700828075 /* ReactiveCocoa.framework */; };
+		7B8A31DB1DDB4FA700828075 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D81DDB4FA700828075 /* ReactiveSwift.framework */; };
+		7B8A31DC1DDB4FA700828075 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D91DDB4FA700828075 /* Result.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +90,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 7B2CC8521DB016510005E500;
 			remoteInfo = Boomerang;
+		};
+		7B8A31C01DDB4EFA00828075 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B2CC84A1DB016510005E500 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B8A31B51DDB4EFA00828075;
+			remoteInfo = "Boomerang tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -145,6 +167,15 @@
 		7B57E2491DD201FC0042C158 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		7B6BEE081DCCCD1000FF2F85 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		7B7508441DD5FD36006C82A0 /* UIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRouter.swift; sourceTree = "<group>"; };
+		7B8A31B61DDB4EFA00828075 /* Boomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B8A31B81DDB4EFA00828075 /* Boomerang tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Boomerang tvOS.h"; sourceTree = "<group>"; };
+		7B8A31B91DDB4EFA00828075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B8A31BE1DDB4EFA00828075 /* Boomerang tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Boomerang tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B8A31C31DDB4EFA00828075 /* Boomerang_tvOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boomerang_tvOSTests.swift; sourceTree = "<group>"; };
+		7B8A31C51DDB4EFA00828075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B8A31D71DDB4FA700828075 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/tvOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		7B8A31D81DDB4FA700828075 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/tvOS/ReactiveSwift.framework; sourceTree = "<group>"; };
+		7B8A31D91DDB4FA700828075 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/tvOS/Result.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +226,24 @@
 				7B440FA91DD9044F005787EF /* Result.framework in Frameworks */,
 				7B440FA61DD9043E005787EF /* ReactiveSwift.framework in Frameworks */,
 				7B440FA71DD90442005787EF /* ReactiveCocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B8A31B21DDB4EFA00828075 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B8A31DA1DDB4FA700828075 /* ReactiveCocoa.framework in Frameworks */,
+				7B8A31DB1DDB4FA700828075 /* ReactiveSwift.framework in Frameworks */,
+				7B8A31DC1DDB4FA700828075 /* Result.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B8A31BB1DDB4EFA00828075 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B8A31BF1DDB4EFA00828075 /* Boomerang.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +316,8 @@
 			isa = PBXGroup;
 			children = (
 				7B440F541DD8F1CA005787EF /* Metadata */,
+				7B8A31B71DDB4EFA00828075 /* Boomerang tvOS */,
+				7B8A31C21DDB4EFA00828075 /* Boomerang tvOSTests */,
 				7B440F991DD8F6F9005787EF /* Frameworks */,
 				7B2CC8551DB016510005E500 /* Sources */,
 				7B2CC8601DB016510005E500 /* BoomerangTests */,
@@ -286,6 +337,8 @@
 				7B27E23D1DCB5352007C4C9C /* BoomerangDemo.app */,
 				7B27E2501DCB5352007C4C9C /* BoomerangDemoTests.xctest */,
 				7B440F8A1DD8F4F4005787EF /* Boomerang.framework */,
+				7B8A31B61DDB4EFA00828075 /* Boomerang.framework */,
+				7B8A31BE1DDB4EFA00828075 /* Boomerang tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -372,8 +425,12 @@
 		7B440F991DD8F6F9005787EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7B8A31D71DDB4FA700828075 /* ReactiveCocoa.framework */,
+				7B8A31D81DDB4FA700828075 /* ReactiveSwift.framework */,
+				7B8A31D91DDB4FA700828075 /* Result.framework */,
 				7B440FB41DD9086B005787EF /* libswiftCore.tbd */,
 				7B440F9A1DD8F705005787EF /* macOS */,
+				7B8A31D61DDB4F8800828075 /* tvOS */,
 				7B440F981DD8F6F0005787EF /* iOS */,
 			);
 			name = Frameworks;
@@ -400,6 +457,31 @@
 			path = "Boomerang iOS";
 			sourceTree = SOURCE_ROOT;
 		};
+		7B8A31B71DDB4EFA00828075 /* Boomerang tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				7B8A31B81DDB4EFA00828075 /* Boomerang tvOS.h */,
+				7B8A31B91DDB4EFA00828075 /* Info.plist */,
+			);
+			path = "Boomerang tvOS";
+			sourceTree = "<group>";
+		};
+		7B8A31C21DDB4EFA00828075 /* Boomerang tvOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				7B8A31C31DDB4EFA00828075 /* Boomerang_tvOSTests.swift */,
+				7B8A31C51DDB4EFA00828075 /* Info.plist */,
+			);
+			path = "Boomerang tvOSTests";
+			sourceTree = "<group>";
+		};
+		7B8A31D61DDB4F8800828075 /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = tvOS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -416,6 +498,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B440F8E1DD8F4F4005787EF /* Boomerang macOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B8A31B31DDB4EFA00828075 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B8A31C61DDB4EFA00828075 /* Boomerang tvOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,6 +603,42 @@
 			productReference = 7B440F8A1DD8F4F4005787EF /* Boomerang.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		7B8A31B51DDB4EFA00828075 /* Boomerang tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B8A31CB1DDB4EFA00828075 /* Build configuration list for PBXNativeTarget "Boomerang tvOS" */;
+			buildPhases = (
+				7B8A31B11DDB4EFA00828075 /* Sources */,
+				7B8A31B21DDB4EFA00828075 /* Frameworks */,
+				7B8A31B31DDB4EFA00828075 /* Headers */,
+				7B8A31B41DDB4EFA00828075 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Boomerang tvOS";
+			productName = "Boomerang tvOS";
+			productReference = 7B8A31B61DDB4EFA00828075 /* Boomerang.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7B8A31BD1DDB4EFA00828075 /* Boomerang tvOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B8A31CC1DDB4EFA00828075 /* Build configuration list for PBXNativeTarget "Boomerang tvOSTests" */;
+			buildPhases = (
+				7B8A31BA1DDB4EFA00828075 /* Sources */,
+				7B8A31BB1DDB4EFA00828075 /* Frameworks */,
+				7B8A31BC1DDB4EFA00828075 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7B8A31C11DDB4EFA00828075 /* PBXTargetDependency */,
+			);
+			name = "Boomerang tvOSTests";
+			productName = "Boomerang tvOSTests";
+			productReference = 7B8A31BE1DDB4EFA00828075 /* Boomerang tvOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -545,6 +671,14 @@
 						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
 					};
+					7B8A31B51DDB4EFA00828075 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
+					7B8A31BD1DDB4EFA00828075 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 7B2CC84D1DB016510005E500 /* Build configuration list for PBXProject "Boomerang" */;
@@ -565,6 +699,8 @@
 				7B27E23C1DCB5352007C4C9C /* BoomerangDemo */,
 				7B27E24F1DCB5352007C4C9C /* BoomerangDemoTests */,
 				7B440F891DD8F4F4005787EF /* Boomerang macOS */,
+				7B8A31B51DDB4EFA00828075 /* Boomerang tvOS */,
+				7B8A31BD1DDB4EFA00828075 /* Boomerang tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -604,6 +740,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7B440F881DD8F4F4005787EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B8A31B41DDB4EFA00828075 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B8A31BC1DDB4EFA00828075 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -692,6 +842,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7B8A31B11DDB4EFA00828075 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B8A31CE1DDB4F3800828075 /* ListViewModel.swift in Sources */,
+				7B8A31D01DDB4F3800828075 /* ModelStructure.swift in Sources */,
+				7B8A31D21DDB4F3800828075 /* UIViewController.swift in Sources */,
+				7B8A31D11DDB4F3800828075 /* Router.swift in Sources */,
+				7B8A31D51DDB4F3800828075 /* UIRouter.swift in Sources */,
+				7B8A31CD1DDB4F3800828075 /* ViewModel.swift in Sources */,
+				7B8A31CF1DDB4F3800828075 /* ItemViewModel.swift in Sources */,
+				7B8A31D41DDB4F3800828075 /* UICollectionView.swift in Sources */,
+				7B8A31D31DDB4F3800828075 /* UITableView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B8A31BA1DDB4EFA00828075 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B8A31C41DDB4EFA00828075 /* Boomerang_tvOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -704,6 +878,11 @@
 			isa = PBXTargetDependency;
 			target = 7B2CC8521DB016510005E500 /* Boomerang iOS */;
 			targetProxy = 7B2CC85E1DB016510005E500 /* PBXContainerItemProxy */;
+		};
+		7B8A31C11DDB4EFA00828075 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7B8A31B51DDB4EFA00828075 /* Boomerang tvOS */;
+			targetProxy = 7B8A31C01DDB4EFA00828075 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1035,6 +1214,84 @@
 			};
 			name = Release;
 		};
+		7B8A31C71DDB4EFA00828075 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = "Boomerang tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.stefanomondino.Boomerang-tvOS";
+				PRODUCT_NAME = Boomerang;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		7B8A31C81DDB4EFA00828075 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = "Boomerang tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.stefanomondino.Boomerang-tvOS";
+				PRODUCT_NAME = Boomerang;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		7B8A31C91DDB4EFA00828075 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = "Boomerang tvOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.stefanomondino.Boomerang-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		7B8A31CA1DDB4EFA00828075 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = "Boomerang tvOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.stefanomondino.Boomerang-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1088,6 +1345,23 @@
 			buildConfigurations = (
 				7B440F901DD8F4F4005787EF /* Debug */,
 				7B440F911DD8F4F4005787EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7B8A31CB1DDB4EFA00828075 /* Build configuration list for PBXNativeTarget "Boomerang tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B8A31C71DDB4EFA00828075 /* Debug */,
+				7B8A31C81DDB4EFA00828075 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7B8A31CC1DDB4EFA00828075 /* Build configuration list for PBXNativeTarget "Boomerang tvOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B8A31C91DDB4EFA00828075 /* Debug */,
+				7B8A31CA1DDB4EFA00828075 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

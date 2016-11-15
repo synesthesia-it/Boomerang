@@ -12,7 +12,12 @@
 		<key>Boomerang macOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>2</integer>
+		</dict>
+		<key>Boomerang tvOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>BoomerangDemo.xcscheme_^#shared#^_</key>
 		<dict>
@@ -58,6 +63,16 @@
 			<true/>
 		</dict>
 		<key>7B440FBF1DD917D9005787EF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7B8A31B51DDB4EFA00828075</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7B8A31BD1DDB4EFA00828075</key>
 		<dict>
 			<key>primary</key>
 			<true/>
