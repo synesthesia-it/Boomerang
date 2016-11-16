@@ -11,15 +11,6 @@ import Boomerang
 import ReactiveSwift
 
 
-
-
-
-
-
-
-
-
-
 class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, RouterDestination, ViewModelBindable  {
     @IBOutlet weak var collectionView:UICollectionView?
     @IBOutlet weak var tableView: UITableView!
@@ -41,6 +32,10 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, Rout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
         return CGSize(width: 100, height: 100)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        //return collectionView.autosizeItemAt(indexPath: indexPath, constrainedToWidth: 140)
+        return collectionView.autosizeItemAt(indexPath: indexPath, itemsPerLine: 3)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         Router.from(self, viewModel: self.viewModel!.select(selection: indexPath)).execute()

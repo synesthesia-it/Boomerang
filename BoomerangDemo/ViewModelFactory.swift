@@ -20,8 +20,13 @@ struct ViewModelFactory {
         var a:[ModelStructure] = []
         for i in 0...100 {
             a = a + [ModelStructure([
-                Item(string:"TEST*10 \(i*10)"),
-                Item(string:"TEST+1 \(i+1)")
+                Item(string:"\(i*1000)"),
+                Item(string:"\(i*1000)"),
+                Item(string:"\(i*1000)"),
+                Item(string:"\(i*1000)"),
+                Item(string:"\(i*1000)"),
+                
+                Item(string:"(i+1)")
                 ],
                                     sectionModel:Item(string:"Title \(i)"))]
         }
@@ -35,7 +40,12 @@ extension ViewModelFactory {
         var a:[ModelStructure] = []
         for i in 0...100 {
             a = a + [ModelStructure([
-                Item(string:"TEST+1 \(i+1)")
+                Item(string:"2^\(i) = \(pow(2, i))"),
+                Item(string:"2^\(i) = \(pow(2, i))"),
+                Item(string:"2^\(i) = \(pow(2, i))"),
+                Item(string:"2^\(i) = \(pow(2, i))"),
+                Item(string:"2^\(i) = \(pow(2, i))"),
+                Item(string:"2^\(i) = \(pow(2, i))")
                 ],
                                     sectionModel:Item(string:"Title \(i)"))]
         }

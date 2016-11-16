@@ -54,13 +54,68 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
         
         return UICollectionViewCell()
     }
+    struct StaticCellParameters {
+        var constraint:NSLayoutConstraint!
+        var cell:UICollectionViewCell!
+    }
+
     
+    
+    var staticCells = [String:StaticCellParameters]()
+    
+    func staticCellForSizeAtIndexPath (_ indexPath:IndexPath ,width:Float) -> UICollectionViewCell?{
+        
+        guard let nib = self.viewModel?.identifierAtIndex(indexPath) else {
+            return nil
+        }
+
+        var parameters = self.staticCells[nib.name]
+        
+        if (parameters == nil) {
+            let cell = Bundle.main.loadNibNamed(nib.name, owner: self, options: [:])!.first as! UICollectionViewCell
+            cell.contentView.translatesAutoresizingMaskIntoConstraints = false
+            let constraint = NSLayoutConstraint(
+                item: cell.contentView,
+                attribute: .width,
+                relatedBy: .equal,
+                toItem: nil,
+                attribute: .notAnAttribute,
+                multiplier: 1.0,
+                constant: CGFloat(width))
+            cell.contentView.addConstraint(constraint)
+            parameters = StaticCellParameters(constraint: nil, cell:cell)
+            
+        }
+        
+        parameters!.constraint?.constant = CGFloat(width)
+        (parameters!.cell as? ViewModelBindableType)?.bindViewModel(self.viewModel?.viewModelAtIndex(indexPath))
+//        self.bindViewModelToCellAtIndexPath(parameters!.cell, indexPath: indexPath, forResize: true)
+        var newCells = staticCells
+        newCells[nib.name] = parameters
+        
+        self.staticCells = newCells
+        return parameters?.cell
+        
+    }
+    
+    func autoSizeForItemAtIndexPath(_ indexPath:IndexPath, width:Float) -> CGSize {
+        let cell = self.staticCellForSizeAtIndexPath(indexPath, width: width)
+        cell?.contentView.setNeedsLayout()
+        cell?.contentView.layoutIfNeeded()
+        let size = cell?.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize) ?? CGSize.zero
+        return size
+    }
     
 }
-
+private struct AssociatedKeys {
+    static var viewModel = "viewModel"
+    static var collectionViewDataSource = "collectionViewDataSource"
+}
 public extension ListViewModelType  {
-    var collectionViewDataSource:UICollectionViewDataSource {
-        return ViewModelCollectionViewDataSource(viewModel: self)
+    
+    var collectionViewDataSource:UICollectionViewDataSource? {
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.collectionViewDataSource) as? UICollectionViewDataSource}
+        set { objc_setAssociatedObject(self, &AssociatedKeys.collectionViewDataSource, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
 }
 
@@ -68,13 +123,18 @@ public extension ListViewModelType  {
 extension UICollectionView : ViewModelBindable {
     
     public var viewModel: ViewModelType? {
-        get { return nil}
-        set {}
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.viewModel) as? ViewModelType}
+        set { objc_setAssociatedObject(self, &AssociatedKeys.viewModel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
+    
+    
+    
     public func bindViewModel(_ viewModel: ViewModelType?) {
         guard let vm = viewModel as? ListViewModelType else {
+            self.viewModel = nil
             return
         }
+        self.viewModel = vm
         
         let collectionView = self
         _ = vm.listIdentifiers().map { $0.name}.reduce("", { (_, value) in
@@ -86,13 +146,36 @@ extension UICollectionView : ViewModelBindable {
             collectionView.register(UINib(nibName: value.name, bundle: nil), forSupplementaryViewOfKind: value.type ?? UICollectionElementKindSectionHeader, withReuseIdentifier: value.name)
             return ""
         })
-        let dataSource = vm.collectionViewDataSource
-        self.dataSource = dataSource
+        if (vm.collectionViewDataSource == nil) {
+            vm.collectionViewDataSource = ViewModelCollectionViewDataSource(viewModel: vm)
+        }
+        self.dataSource = vm.collectionViewDataSource
         
-        self.reactive.reloadData <~ vm.dataHolder.resultsCount.producer.map {_ in
-            _ = dataSource //retaining datasource
-            return ()}
+
+    }
+    public func autosizeItemAt(indexPath:IndexPath, constrainedToWidth width:Float) -> CGSize {
+        guard let vm = viewModel as? ListViewModelType else {
+            return .zero
+        }
+        guard let dataSource = vm.collectionViewDataSource as? ViewModelCollectionViewDataSource else {
+            return .zero
+        }
+        return dataSource.autoSizeForItemAtIndexPath(indexPath, width: width)
+    }
+    public func autosizeItemAt(indexPath:IndexPath, itemsPerLine:Int = 1) -> CGSize {
+        guard let flow = self.collectionViewLayout as? UICollectionViewFlowLayout else {
+            return self.autosizeItemAt(indexPath: indexPath, constrainedToWidth: Float(self.frame.size.width))
+        }
+        let flowDelegate = self.delegate as? UICollectionViewDelegateFlowLayout
+        let insets =  flowDelegate?.responds(to:#selector(UICollectionViewDelegateFlowLayout.collectionView(_:layout:insetForSectionAt:))) == true ? flowDelegate!.collectionView!(self, layout: flow, insetForSectionAt: indexPath.section) : flow.sectionInset
         
+        let spacing =  flowDelegate?.responds(to:#selector(UICollectionViewDelegateFlowLayout.collectionView(_:layout:minimumInteritemSpacingForSectionAt:))) == true ? flowDelegate!.collectionView!(self, layout: flow, minimumInteritemSpacingForSectionAt: indexPath.section) : flow.minimumInteritemSpacing
+
+        
+        let globalWidth = self.frame.size.width - insets.left - insets.right
+        
+        let singleWidth = (CGFloat(globalWidth) - (CGFloat(max(0,itemsPerLine - 1)) * spacing)) / CGFloat(max(itemsPerLine,1))
+        return self.autosizeItemAt(indexPath: indexPath, constrainedToWidth: Float(singleWidth))
         
     }
 }

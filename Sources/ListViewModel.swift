@@ -24,6 +24,7 @@ public protocol ListIdentifier {
     var type : String? {get }
 }
 
+
 public protocol ResultRangeType {
     var start:IndexPath {get set}
     var end:IndexPath {get set}

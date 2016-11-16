@@ -74,6 +74,7 @@
 		7B8A31DA1DDB4FA700828075 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D71DDB4FA700828075 /* ReactiveCocoa.framework */; };
 		7B8A31DB1DDB4FA700828075 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D81DDB4FA700828075 /* ReactiveSwift.framework */; };
 		7B8A31DC1DDB4FA700828075 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D91DDB4FA700828075 /* Result.framework */; };
+		7BF11CC11DDC5AD500518BC0 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2CC8531DB016510005E500 /* Boomerang.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BF11CC11DDC5AD500518BC0 /* Boomerang.framework in Frameworks */,
 				7B27E25F1DCB5958007C4C9C /* Result.framework in Frameworks */,
 				7B27E25D1DCB5958007C4C9C /* ReactiveCocoa.framework in Frameworks */,
 				7B27E25E1DCB5958007C4C9C /* ReactiveSwift.framework in Frameworks */,
@@ -696,11 +698,11 @@
 			targets = (
 				7B2CC8521DB016510005E500 /* Boomerang iOS */,
 				7B2CC85B1DB016510005E500 /* BoomerangTests */,
-				7B27E23C1DCB5352007C4C9C /* BoomerangDemo */,
 				7B27E24F1DCB5352007C4C9C /* BoomerangDemoTests */,
 				7B440F891DD8F4F4005787EF /* Boomerang macOS */,
 				7B8A31B51DDB4EFA00828075 /* Boomerang tvOS */,
 				7B8A31BD1DDB4EFA00828075 /* Boomerang tvOSTests */,
+				7B27E23C1DCB5352007C4C9C /* BoomerangDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -1356,6 +1358,7 @@
 				7B8A31C81DDB4EFA00828075 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7B8A31CC1DDB4EFA00828075 /* Build configuration list for PBXNativeTarget "Boomerang tvOSTests" */ = {
 			isa = XCConfigurationList;
@@ -1364,6 +1367,7 @@
 				7B8A31CA1DDB4EFA00828075 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
