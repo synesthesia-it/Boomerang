@@ -83,7 +83,7 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
                 multiplier: 1.0,
                 constant: CGFloat(width))
             cell.contentView.addConstraint(constraint)
-            parameters = StaticCellParameters(constraint: nil, cell:cell)
+            parameters = StaticCellParameters(constraint: constraint, cell:cell)
             
         }
         
@@ -150,7 +150,7 @@ extension UICollectionView : ViewModelBindable {
             vm.collectionViewDataSource = ViewModelCollectionViewDataSource(viewModel: vm)
         }
         self.dataSource = vm.collectionViewDataSource
-        
+        collectionView.reactive.reloadData <~ vm.dataHolder.resultsCount.producer.map {_ in return ()}
 
     }
     public func autosizeItemAt(indexPath:IndexPath, constrainedToWidth width:Float) -> CGSize {
