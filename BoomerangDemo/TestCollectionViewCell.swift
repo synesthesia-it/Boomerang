@@ -20,7 +20,7 @@ final class TestCollectionViewCell: UICollectionViewCell , ViewModelBindable {
         super.awakeFromNib()
         
     }
-    func bindViewModel(_ viewModel:ViewModelType?) {
+    func bind(_ viewModel:ViewModelType?) {
         guard let vm = viewModel as? TestItemViewModel else {
             return
         }

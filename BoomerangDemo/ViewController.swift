@@ -19,7 +19,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, Rout
     override func viewDidLoad() {
         super.viewDidLoad()
         if (self.viewModel == nil) {
-            self.bindViewModel(ViewModelFactory.anotherTestViewModel())
+            self.bind(ViewModelFactory.anotherTestViewModel())
         }
         
         
@@ -42,14 +42,14 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, Rout
         
     }
     
-    func bindViewModel(_ viewModel: ViewModelType?) {
+    func bind(_ viewModel: ViewModelType?) {
         
         guard let vm = viewModel as? TestViewModel else {
             return
         }
         self.viewModel = vm
         self.collectionView?.delegate = self
-        self.collectionView?.bindViewModel(self.viewModel)
+        self.collectionView?.bind(self.viewModel)
         self.viewModel?.reload()
         
     }

@@ -26,7 +26,7 @@ public protocol ViewModelBindable : ViewModelBindableType{
 }
 public protocol ViewModelBindableType {
     var disposable:CompositeDisposable? {get set}
-    func bindViewModel(_ viewModel: ViewModelType?)
+    func bind(_ viewModel: ViewModelType?)
 }
 extension ViewModelBindableType {
     public var disposable:CompositeDisposable? {

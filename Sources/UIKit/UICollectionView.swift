@@ -25,7 +25,7 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
     @objc public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell  {
         let viewModel:ItemViewModelType? = self.viewModel?.viewModelAtIndex(indexPath)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewModel?.itemIdentifier.name ?? defaultListIdentifier, for: indexPath)
-        (cell as? ViewModelBindableType)?.bindViewModel(viewModel)
+        (cell as? ViewModelBindableType)?.bind(viewModel)
         return cell
     }
     
@@ -47,7 +47,7 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
             let vm =  self.viewModel?.itemViewModel(model!)
             if (vm != nil) {
                 let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: vm!.itemIdentifier.name, for: indexPath)
-                (cell as? ViewModelBindableType)?.bindViewModel(vm)
+                (cell as? ViewModelBindableType)?.bind(vm)
                 return cell
             }
         }
@@ -88,7 +88,7 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
         }
         
         parameters!.constraint?.constant = CGFloat(width)
-        (parameters!.cell as? ViewModelBindableType)?.bindViewModel(self.viewModel?.viewModelAtIndex(indexPath))
+        (parameters!.cell as? ViewModelBindableType)?.bind(self.viewModel?.viewModelAtIndex(indexPath))
 //        self.bindViewModelToCellAtIndexPath(parameters!.cell, indexPath: indexPath, forResize: true)
         var newCells = staticCells
         newCells[nib.name] = parameters
@@ -129,7 +129,7 @@ extension UICollectionView : ViewModelBindable {
     
     
     
-    public func bindViewModel(_ viewModel: ViewModelType?) {
+    public func bind(_ viewModel: ViewModelType?) {
         guard let vm = viewModel as? ListViewModelType else {
             self.viewModel = nil
             return

@@ -112,7 +112,7 @@ public extension ViewModelBindable where Self : UIViewController {
 //        return signalProducer
 //    }
     
-    public mutating func bindViewModel(_ viewModel:ViewModel?) {
+    public mutating func bind(_ viewModel:ViewModel?) {
         self.viewModel = viewModel
         guard let vm = viewModel as? ListViewModelType else {
             return
@@ -130,9 +130,14 @@ public extension ViewModelBindable where Self : UIViewController {
 //                self?.hideLoader()
 //            }        })
     }
-    public func bindViewModelAfterLoad(_ viewModel: ViewModelType?) {
+    public func bind(_ viewModel: ViewModelType? , afterLoad:Bool) {
+        if (afterLoad) {
         _ = (self as UIViewController).reactive.trigger(for: #selector(viewDidLoad)).take(first:1).observeCompleted {
-            self.bindViewModel(viewModel)
+            self.bind(viewModel)
+        }
+        }
+        else {
+            self.bind(viewModel)
         }
     }
     
