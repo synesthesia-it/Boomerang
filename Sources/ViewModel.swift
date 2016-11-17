@@ -14,8 +14,14 @@ import Result
 
 
 
+public struct Error : Swift.Error {
+    public var error:Swift.Error
+    public init(error:Swift.Error) {
+        self.error = error
+    }
+}
 
-public protocol ViewModelType : class {
+public protocol ViewModelType : class, SelectionOutput {
     init()
 }
 
@@ -36,16 +42,28 @@ extension ViewModelBindableType {
 
 }
 
-
-
-
-
-
-
 extension ViewModelType {
     public init() {
         self.init()
     }
+}
+
+public protocol SelectionInput {}
+public protocol SelectionOutput {}
+
+public protocol ViewModelTypeSelectable : ViewModelType {
+    associatedtype Input = SelectionInput
+    associatedtype Output = SelectionOutput
+    var selection:Action<Input,Output, Error> {get set}
+    func select(selection:Input)
+    
+}
+
+public protocol ViewModelTypeLoadable : ViewModelType {
+    var loading: SignalProducer<Bool, NoError> {get set}
+}
+public protocol ViewModelTypeFailable : ViewModelType {
+    var fail : Signal<Error, NoError> {get set}
 }
 
 

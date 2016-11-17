@@ -17,6 +17,7 @@ public protocol RouterAction {
 }
 public struct EmptyRouterAction : RouterAction {
     public func execute() {}
+    public init(){}
 }
 
 public protocol RouterDestination : ViewModelBindableType {

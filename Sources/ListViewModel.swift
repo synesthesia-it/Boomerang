@@ -8,6 +8,7 @@
 
 import Foundation
 import ReactiveSwift
+import Result
 
 let defaultListIdentifier = "default_list_identifier"
 
@@ -31,17 +32,17 @@ public protocol ResultRangeType {
 }
 
 
-public protocol SelectionType {}
 
-extension IndexPath : SelectionType {}
+
+extension IndexPath : SelectionInput {}
 public protocol ListDataHolderType : class {
     var viewModels:MutableProperty<[IndexPath:ItemViewModelType]> {get set}
-    var isLoading:MutableProperty<Bool> {get set}
+
     var resultsCount:MutableProperty<Int> {get set}
     var newDataAvailable:MutableProperty<ResultRangeType?> {get set}
     var models:MutableProperty<ModelStructure> {get set}
-    var reloadAction:Action<ResultRangeType?,ModelStructure,NSError> {get set}
-    var dataProducer:SignalProducer<ModelStructure?,NSError> {get set}
+    var reloadAction:Action<ResultRangeType?,ModelStructure,Error> {get set}
+    var dataProducer:SignalProducer<ModelStructure,Error> {get set}
     func reload()
     init()
 }
@@ -50,32 +51,30 @@ extension ListDataHolderType {
     public func reload() {
         self.reloadAction.apply(nil).start()
     }
-    public init(dataProducer:SignalProducer<ModelStructure?,NSError>) {
+    public init(dataProducer:SignalProducer<ModelStructure,Error>) {
         self.init()
         self.dataProducer = dataProducer
         self.reloadAction = Action { range in
-            return dataProducer.flatMap(.latest) { (s:ModelStructure?) -> SignalProducer<ModelStructure,NSError> in
+            return dataProducer.flatMap(.latest) { (s:ModelStructure?) -> SignalProducer<ModelStructure,Error> in
                 let result = (s ?? ModelStructure.empty)
                 return SignalProducer(value:result)
             }
         }
         self.models <~ reloadAction.values
         self.viewModels <~ self.models.producer.map{_ in return [IndexPath:ItemViewModelType]()}
-        self.isLoading <~ reloadAction.isExecuting
         self.resultsCount <~ self.models.producer.map { return $0.count}
         
     }
 }
 public final class ListDataHolder : ListDataHolderType {
     
-
-    public var reloadAction: Action<ResultRangeType?, ModelStructure, NSError> = Action {_ in return SignalProducer(value:ModelStructure.empty)}
+    
+    public var reloadAction: Action<ResultRangeType?, ModelStructure, Error> = Action {_ in return SignalProducer(value:ModelStructure.empty)}
     public var models:MutableProperty<ModelStructure> = MutableProperty(ModelStructure.empty)
     public var viewModels:MutableProperty = MutableProperty([IndexPath:ItemViewModelType]())
-    public var isLoading:MutableProperty<Bool> = MutableProperty(false)
     public var resultsCount:MutableProperty<Int> = MutableProperty(0)
     public var newDataAvailable:MutableProperty<ResultRangeType?> = MutableProperty(nil)
-    public var dataProducer:SignalProducer<ModelStructure?,NSError>
+    public var dataProducer:SignalProducer<ModelStructure,Error>
     public init() {
         self.dataProducer = SignalProducer(value:ModelStructure.empty)
     }
@@ -87,7 +86,7 @@ public protocol ListViewModelType : ViewModelType {
     func modelAtIndex (_ index:IndexPath) -> ModelType?
     func itemViewModel(_ model:ModelType) -> ItemViewModelType?
     func listIdentifiers() -> [ListIdentifier]
-    func select(selection:SelectionType) -> ViewModelType
+    
     func reload()
     init()
 }
@@ -96,8 +95,8 @@ public protocol ListViewModelType : ViewModelType {
 public protocol ListViewModelTypeHeaderable : ListViewModelType {
     func headerIdentifiers() -> [ListIdentifier]
 }
-public extension ListViewModelType {
-
+public extension ListViewModelType  {
+    
     public func identifierAtIndex(_ index:IndexPath) -> ListIdentifier? {
         return self.viewModelAtIndex(index)?.itemIdentifier
     }
@@ -119,25 +118,38 @@ public extension ListViewModelType {
         }
         return nil
     }
-    init(dataProducer:SignalProducer<ModelStructure?,NSError>) {
+    init(dataProducer:SignalProducer<ModelStructure,Error>) {
         self.init()
         self.dataHolder = ListDataHolder(dataProducer: dataProducer)
     }
     
-//    init() {
-//        self.dataHolder = ListDataHolder(dataProducer:SignalProducer(value:ModelStructure.empty))
-//    }
+    //    init() {
+    //        self.dataHolder = ListDataHolder(dataProducer:SignalProducer(value:ModelStructure.empty))
+    //    }
 }
 
 public extension ListViewModelType {
-    
-  
     public func modelAtIndex (_ index:IndexPath) -> ModelType? {
         return self.dataHolder.models.value.modelAtIndex(index)
         
     }
-    
     public func reload() {
         self.dataHolder.reload()
     }
 }
+
+public extension ListViewModelType where Self :  ViewModelTypeFailable {
+    var fail:Signal<Error, NoError> { return self.dataHolder.reloadAction.errors }
+}
+public extension ListViewModelType where Self :  ViewModelTypeLoadable {
+    var loading:Signal<Bool, NoError> { return self.dataHolder.reloadAction.isExecuting.signal }
+}
+public extension ListViewModelType where Self :  ViewModelTypeLoadable , Self: ViewModelTypeSelectable {
+    var loading:Signal<Bool, NoError> { return self.dataHolder.reloadAction.isExecuting.signal.combineLatest(with: (self.selection.isExecuting.signal ?? Signal<Bool,NoError>.empty) ).map {return $0 || $1} }
+}
+public extension ListViewModelType where Self :  ViewModelTypeFailable , Self: ViewModelTypeSelectable {
+    var fail:Signal<Error, NoError> {
+        return Signal<Error,NoError>.merge([self.dataHolder.reloadAction.errors,(self.selection.errors ?? Signal<Error,NoError>.empty)])
+    }
+}
+

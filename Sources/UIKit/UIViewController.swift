@@ -30,7 +30,7 @@ public protocol ErrorReceiver {
 
 
 public extension ViewModelBindable where Self : UIViewController {
-    
+
 //    public func performSegueWithIdentifier(_ identifier:String!, viewModel:ViewModel?) {
 //        
 //        
@@ -140,14 +140,35 @@ public extension ViewModelBindable where Self : UIViewController {
             self.bind(viewModel)
         }
     }
+    public func bind(_ signal:Signal<Error,NoError>) -> Disposable? {
+        return signal.observeResult {[weak self] result in
+            if (result.value != nil) {
+                self?.showError(result.value!)
+            }
+        }
+    }
     
+    public func bind<Input,Output>(_ action:Action<Input,Output,Error>) -> Disposable? {
+        let disposable = CompositeDisposable()
+        disposable.add(self.bind(action.action.errors))
+        disposable.add(self.bind(action.isExecuting.signal))
+        return disposable
+    }
+    public func bind(_ signal:Signal<Bool,NoError>) -> Disposable? {
+        return signal.observeResult {[weak self] result in
+            guard let isLoading = result.value else {
+                return
+            }
+            isLoading ? self?.showLoader() : self?.hideLoader()
+        }
+    }
     public func showLoader() {
         print ("Showing loader")
     }
     public func hideLoader() {
         print ("Hiding loader")
     }
-    public func showError(_ error:NSError) {
+    public func showError(_ error:Error) {
         print ("Showing error :\(error)")
     }
     
