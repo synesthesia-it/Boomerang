@@ -151,7 +151,9 @@ extension UICollectionView : ViewModelBindable {
         }
         self.dataSource = vm.collectionViewDataSource
         collectionView.reactive.reloadData <~ vm.dataHolder.resultsCount.producer.map {_ in return ()}
-
+        if (collectionView.backgroundView != nil) {
+            collectionView.backgroundView!.reactive.isHidden <~ vm.isEmpty.producer.map {!$0}
+        }
     }
     public func autosizeItemAt(indexPath:IndexPath, constrainedToWidth width:Float) -> CGSize {
         guard let vm = viewModel as? ListViewModelType else {

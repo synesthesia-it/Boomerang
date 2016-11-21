@@ -57,6 +57,11 @@
 		7B57E2531DD206FA0042C158 /* ReactiveSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B2CC86E1DB019A80005E500 /* ReactiveSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7B57E2541DD207060042C158 /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B2CC86F1DB019A80005E500 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7B57E2551DD207130042C158 /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B2CC86D1DB019A80005E500 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7B65F4761DE300F2000684D0 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65F4751DE300F2000684D0 /* FormViewModel.swift */; };
+		7B65F4771DE300F2000684D0 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65F4751DE300F2000684D0 /* FormViewModel.swift */; };
+		7B65F4781DE300F2000684D0 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65F4751DE300F2000684D0 /* FormViewModel.swift */; };
+		7B65F47D1DE32BC2000684D0 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65F47C1DE32BC2000684D0 /* UITextField.swift */; };
+		7B65F47E1DE32BC2000684D0 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65F47C1DE32BC2000684D0 /* UITextField.swift */; };
 		7B7508431DD5CC98006C82A0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC8751DB021310005E500 /* UIViewController.swift */; };
 		7B7508451DD5FD36006C82A0 /* UIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7508441DD5FD36006C82A0 /* UIRouter.swift */; };
 		7B8A31BF1DDB4EFA00828075 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31B61DDB4EFA00828075 /* Boomerang.framework */; };
@@ -166,6 +171,8 @@
 		7B440FB81DD9163E005787EF /* Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
 		7B57E2481DD201FC0042C158 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		7B57E2491DD201FC0042C158 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		7B65F4751DE300F2000684D0 /* FormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
+		7B65F47C1DE32BC2000684D0 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		7B6BEE081DCCCD1000FF2F85 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		7B7508441DD5FD36006C82A0 /* UIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRouter.swift; sourceTree = "<group>"; };
 		7B8A31B61DDB4EFA00828075 /* Boomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -257,6 +264,7 @@
 			children = (
 				7B2CC8731DB019BA0005E500 /* ViewModel.swift */,
 				7B087DB81DD47F4300F9E39D /* ListViewModel.swift */,
+				7B65F4751DE300F2000684D0 /* FormViewModel.swift */,
 				7B087DBA1DD47F5800F9E39D /* ItemViewModel.swift */,
 			);
 			name = ViewModel;
@@ -285,6 +293,7 @@
 				7B6BEE081DCCCD1000FF2F85 /* UITableView.swift */,
 				7B27E2351DCA43BB007C4C9C /* UICollectionView.swift */,
 				7B7508441DD5FD36006C82A0 /* UIRouter.swift */,
+				7B65F47C1DE32BC2000684D0 /* UITextField.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -811,9 +820,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B65F47D1DE32BC2000684D0 /* UITextField.swift in Sources */,
 				7B7508451DD5FD36006C82A0 /* UIRouter.swift in Sources */,
 				7B7508431DD5CC98006C82A0 /* UIViewController.swift in Sources */,
 				7B087DB91DD47F4300F9E39D /* ListViewModel.swift in Sources */,
+				7B65F4761DE300F2000684D0 /* FormViewModel.swift in Sources */,
 				7B087DB71DD47EE100F9E39D /* ModelStructure.swift in Sources */,
 				7B27E2361DCA43BB007C4C9C /* UICollectionView.swift in Sources */,
 				7B087DBB1DD47F5800F9E39D /* ItemViewModel.swift in Sources */,
@@ -836,6 +847,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B65F4771DE300F2000684D0 /* FormViewModel.swift in Sources */,
 				7B440F931DD8F525005787EF /* ListViewModel.swift in Sources */,
 				7B440F951DD8F525005787EF /* ModelStructure.swift in Sources */,
 				7B440F961DD8F525005787EF /* Router.swift in Sources */,
@@ -848,8 +860,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B65F4781DE300F2000684D0 /* FormViewModel.swift in Sources */,
 				7B8A31CE1DDB4F3800828075 /* ListViewModel.swift in Sources */,
 				7B8A31D01DDB4F3800828075 /* ModelStructure.swift in Sources */,
+				7B65F47E1DE32BC2000684D0 /* UITextField.swift in Sources */,
 				7B8A31D21DDB4F3800828075 /* UIViewController.swift in Sources */,
 				7B8A31D11DDB4F3800828075 /* Router.swift in Sources */,
 				7B8A31D51DDB4F3800828075 /* UIRouter.swift in Sources */,

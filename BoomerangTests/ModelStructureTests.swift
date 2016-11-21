@@ -68,6 +68,19 @@ class ModelStructureSpec: QuickSpec {
                     expect(s2.indexPaths()).to(equal([IndexPath(indexes:[0,0,0]),IndexPath(indexes:[0,0,1]),IndexPath(indexes:[0,1,0]),IndexPath(indexes:[0,2,0]),
                                                       IndexPath(indexes:[1,0,0]), IndexPath(indexes:[1,0,1]),IndexPath(indexes:[1,1,0]),IndexPath(indexes:[1,2,0])]))
                 }
+                it ("should properly return all data as one-line array") {
+                    let s1 = ModelStructure(children: [
+                        ModelStructure(["A","D"]),
+                        ModelStructure(["B"]),
+                        ModelStructure(["C"])
+                        ])
+                    
+                    expect (s1.allData() as? [String]).to(equal(["A","D","B","C"]))
+                    
+                    
+                    let s2 = ModelStructure(children: [s1,s1])
+                    expect(s2.allData() as? [String]).to(equal(["A","D","B","C","A","D","B","C"]))
+                }
             }
             
 //            context("when a dataProducer is provided") {

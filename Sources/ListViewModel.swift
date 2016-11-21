@@ -97,6 +97,10 @@ public protocol ListViewModelTypeHeaderable : ListViewModelType {
 }
 public extension ListViewModelType  {
     
+    var isEmpty:SignalProducer<Bool,NoError> {
+        return self.dataHolder.resultsCount.producer.map {$0 == 0}
+    }
+    
     public func identifierAtIndex(_ index:IndexPath) -> ListIdentifier? {
         return self.viewModelAtIndex(index)?.itemIdentifier
     }

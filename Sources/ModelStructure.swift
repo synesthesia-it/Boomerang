@@ -75,4 +75,13 @@ public final class ModelStructure : ModelStructureType {
         return self.children?[(index.first ?? 0)].modelAtIndex(index.dropFirst())
     }
     
+    func allData() -> [ModelClass] {
+        if (self.models != nil) {
+            return self.models!
+        }
+        return self.children?.reduce([], { (accumulator, structure) -> [ModelClass] in
+            return accumulator + structure.allData()
+        }) ?? []
+    }
+    
 }
