@@ -50,6 +50,9 @@ extension ViewModelType {
 
 public protocol SelectionInput {}
 public protocol SelectionOutput {}
+public enum EmptySelection : SelectionOutput{
+    case empty
+}
 
 public protocol ViewModelTypeSelectable : ViewModelType {
     associatedtype Input = SelectionInput

@@ -79,6 +79,8 @@
 		7B8A31DA1DDB4FA700828075 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D71DDB4FA700828075 /* ReactiveCocoa.framework */; };
 		7B8A31DB1DDB4FA700828075 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D81DDB4FA700828075 /* ReactiveSwift.framework */; };
 		7B8A31DC1DDB4FA700828075 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D91DDB4FA700828075 /* Result.framework */; };
+		7BE2E8E21DE49AA000700548 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2E8E11DE49AA000700548 /* UIButton.swift */; };
+		7BE2E8E31DE49AA000700548 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2E8E11DE49AA000700548 /* UIButton.swift */; };
 		7BF11CC11DDC5AD500518BC0 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2CC8531DB016510005E500 /* Boomerang.framework */; };
 /* End PBXBuildFile section */
 
@@ -184,6 +186,7 @@
 		7B8A31D71DDB4FA700828075 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/tvOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		7B8A31D81DDB4FA700828075 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/tvOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		7B8A31D91DDB4FA700828075 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/tvOS/Result.framework; sourceTree = "<group>"; };
+		7BE2E8E11DE49AA000700548 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +295,7 @@
 				7B2CC8751DB021310005E500 /* UIViewController.swift */,
 				7B6BEE081DCCCD1000FF2F85 /* UITableView.swift */,
 				7B27E2351DCA43BB007C4C9C /* UICollectionView.swift */,
+				7BE2E8E11DE49AA000700548 /* UIButton.swift */,
 				7B7508441DD5FD36006C82A0 /* UIRouter.swift */,
 				7B65F47C1DE32BC2000684D0 /* UITextField.swift */,
 			);
@@ -828,6 +832,7 @@
 				7B087DB71DD47EE100F9E39D /* ModelStructure.swift in Sources */,
 				7B27E2361DCA43BB007C4C9C /* UICollectionView.swift in Sources */,
 				7B087DBB1DD47F5800F9E39D /* ItemViewModel.swift in Sources */,
+				7BE2E8E21DE49AA000700548 /* UIButton.swift in Sources */,
 				7B2CC8741DB019BA0005E500 /* ViewModel.swift in Sources */,
 				7B2CC87C1DB112FD0005E500 /* Router.swift in Sources */,
 			);
@@ -871,6 +876,7 @@
 				7B8A31CF1DDB4F3800828075 /* ItemViewModel.swift in Sources */,
 				7B8A31D41DDB4F3800828075 /* UICollectionView.swift in Sources */,
 				7B8A31D31DDB4F3800828075 /* UITableView.swift in Sources */,
+				7BE2E8E31DE49AA000700548 /* UIButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

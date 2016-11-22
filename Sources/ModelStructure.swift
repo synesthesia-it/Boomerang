@@ -19,9 +19,9 @@ public protocol ModelStructureType {
 
 public final class ModelStructure : ModelStructureType {
     public typealias ModelClass = ModelType
-    var models:[ModelClass]?
-    var children:[ModelStructure]?
-    var sectionModel:ModelClass?
+    public var models:[ModelClass]?
+    public var children:[ModelStructure]?
+    public var sectionModel:ModelClass?
     public var childrenCount: Int {return self.children?.count ?? 0}
     public var modelCount: Int {return self.models?.count ?? 0}
     class public var empty:ModelStructure {return ModelStructure([])}
