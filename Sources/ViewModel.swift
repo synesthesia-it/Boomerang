@@ -58,8 +58,12 @@ public protocol ViewModelTypeSelectable : ViewModelType {
     associatedtype Input = SelectionInput
     associatedtype Output = SelectionOutput
     var selection:Action<Input,Output, Error> {get set}
-    func select(selection:Input)
     
+}
+extension ViewModelTypeSelectable {
+    func select(_ selection:Input) {
+        self.selection.apply(selection).start()
+    }
 }
 
 public protocol ViewModelTypeLoadable : ViewModelType {
