@@ -111,16 +111,18 @@ extension FormViewModelType {
 extension String :FormValueEquatable {
     public static var empty: String = ""
 }
-public class StringFormItemViewModel : FormItemViewModel {
+open class StringFormItemViewModel : FormItemViewModel {
     public typealias DataValue = String
     public static var defaultItemIdentifier: ListIdentifier = defaultListIdentifier
     public var string:MutableProperty<String> = MutableProperty("")
     public var itemIdentifier: ListIdentifier = StringFormItemViewModel.defaultItemIdentifier
     public var model:ItemViewModelType.Model = FormData<DataValue>(reference: "")
     public var value:MutableProperty<DataValue> = MutableProperty(DataValue.empty)
+    public var title: String?
     public required init () {}
-    public required convenience init (data:FormData<DataValue>, itemIdentifier:ListIdentifier = StringFormItemViewModel.defaultItemIdentifier) {
+    public required convenience init (data:FormData<DataValue>, title:String? = nil, itemIdentifier:ListIdentifier = StringFormItemViewModel.defaultItemIdentifier) {
         self.init(model:data as ItemViewModelType.Model)
+        self.title = title
         self.setup(data: data)
         self.itemIdentifier = itemIdentifier
     }
@@ -135,16 +137,18 @@ public class StringFormItemViewModel : FormItemViewModel {
 extension Bool :FormValueEquatable {
     public static var empty: Bool = false
 }
-public class BoolFormItemViewModel : FormItemViewModel {
+open class BoolFormItemViewModel : FormItemViewModel {
     public typealias DataValue = Bool
     public static var defaultItemIdentifier: ListIdentifier = defaultListIdentifier
     public var string:MutableProperty<String> = MutableProperty("")
     public var itemIdentifier: ListIdentifier = BoolFormItemViewModel.defaultItemIdentifier
     public var model:ItemViewModelType.Model = FormData<DataValue>(reference: "")
     public var value:MutableProperty<DataValue> = MutableProperty(DataValue.empty)
+    public var title: String?
     public required init () {}
-    public required convenience init (data:FormData<DataValue>, itemIdentifier:ListIdentifier = BoolFormItemViewModel.defaultItemIdentifier) {
+    public required convenience init (data:FormData<DataValue>, title:String? = nil, itemIdentifier:ListIdentifier = BoolFormItemViewModel.defaultItemIdentifier) {
         self.init(model:data as ItemViewModelType.Model)
+        self.title = title
         self.setup(data: data)
         self.itemIdentifier = itemIdentifier
     }
@@ -160,16 +164,18 @@ public class BoolFormItemViewModel : FormItemViewModel {
 extension Int :FormValueEquatable {
     public static var empty: Int = 0
 }
-public class IntFormItemViewModel : FormItemViewModel {
+open class IntFormItemViewModel : FormItemViewModel {
     public typealias DataValue = Int
     public static var defaultItemIdentifier: ListIdentifier = defaultListIdentifier
     public var string:MutableProperty<String> = MutableProperty("")
     public var itemIdentifier: ListIdentifier = IntFormItemViewModel.defaultItemIdentifier
     public var model:ItemViewModelType.Model = FormData<DataValue>(reference: "")
     public var value:MutableProperty<DataValue> = MutableProperty(DataValue.empty)
+    public var title: String?
     public required init () {}
-    public required convenience init (data:FormData<DataValue>, itemIdentifier:ListIdentifier = IntFormItemViewModel.defaultItemIdentifier) {
+    public required convenience init (data:FormData<DataValue>, title:String? = nil , itemIdentifier:ListIdentifier = IntFormItemViewModel.defaultItemIdentifier) {
         self.init(model:data as ItemViewModelType.Model)
+        self.title = title
         self.setup(data: data)
         self.itemIdentifier = itemIdentifier
     }

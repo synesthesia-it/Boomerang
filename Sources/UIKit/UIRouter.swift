@@ -15,7 +15,7 @@ public enum UIViewControllerRouterAction : RouterAction {
     case pop (source:UIViewController)
     case dismiss (source:UIViewController, completion: (() -> Void)?)
     case modal(source:UIViewController, destination:UIViewController, completion: (() -> Void)?)
-    case custom(action:RouterAction)
+    case custom(action:(() -> Void))
     public func execute() {
         switch self {
         case .push (let source, let destination) :
@@ -33,7 +33,7 @@ public enum UIViewControllerRouterAction : RouterAction {
             break
         
         case .custom (let action) :
-            action.execute()
+            action()
             break
 
         }
