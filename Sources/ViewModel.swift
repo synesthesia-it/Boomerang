@@ -60,6 +60,9 @@ public protocol ViewModelTypeSelectable : ViewModelType {
     var selection:Action<Input,Output, Error> {get set}
     
 }
+public protocol ViewModelTypeActionSelectable : ViewModelType {
+    func select(_ input:SelectionInput)
+}
 extension ViewModelTypeSelectable {
     func select(_ selection:Input) {
         self.selection.apply(selection).start()

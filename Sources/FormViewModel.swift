@@ -55,12 +55,13 @@ public class FormData<Value : FormValueEquatable> : FormDataMutableType {
 }
 
 public protocol TextInput {
+    var title:String? {get}
    var string:MutableProperty<String> {get set}
 }
 
 public protocol FormItemViewModel : ItemViewModelType, ModelType , TextInput{
     associatedtype DataValue : FormValueEquatable
-
+    
     
     func toString(_ value:DataValue) -> String
     func toValue(_ value:String) -> DataValue
@@ -186,3 +187,62 @@ open class IntFormItemViewModel : FormItemViewModel {
         return Int(value) ?? DataValue.empty
     }
 }
+
+public protocol FormModel : FormValueEquatable, ModelType, SelectionInput, SelectionOutput {
+    
+}
+
+open class MultiselectionItemViewModel<DataValue:FormModel> : FormItemViewModel, ListViewModelType, ViewModelTypeSelectable, ViewModelTypeActionSelectable {
+    public var string: MutableProperty<String> = MutableProperty("")
+    public var title:String?
+//    public typealias DataValue = FormValue
+    public var itemIdentifier: ListIdentifier  = defaultListIdentifier
+    public var dataHolder: ListDataHolderType = ListDataHolder.empty
+    public var model:ItemViewModelType.Model = FormData<DataValue>(reference: "")
+    public var itemViewModelClosure: (ModelType) -> (ItemViewModelType?)  = {_ in return nil}
+    private var identifiers:[ListIdentifier] = []
+    public func listIdentifiers() -> [ListIdentifier] {
+        return identifiers
+    }
+    public lazy var selection: Action<IndexPath, DataValue, Error> = Action {[unowned self] input in
+        
+        let output = (self.modelAtIndex(input) as? DataValue)  ?? DataValue.empty
+        
+        
+        return SignalProducer(value:output)
+    }
+    public required init () {}
+    
+    public required convenience init (data:FormData<DataValue>, title:String? = nil , itemIdentifier:ListIdentifier , dataHolder:ListDataHolderType, innerIdentifier:ListIdentifier = defaultListIdentifier , converting itemViewModelClosure:@escaping (ModelType) -> (ItemViewModelType?)) {
+        self.init(model:data as ItemViewModelType.Model)
+        self.title = title
+        self.setup(data: data)
+        self.itemIdentifier = itemIdentifier
+        self.dataHolder = dataHolder
+        self.identifiers = [innerIdentifier]
+        self.itemViewModelClosure = itemViewModelClosure
+    }
+    public func itemViewModel(_ model: ModelType) -> ItemViewModelType? {
+        return self.itemViewModelClosure(model)
+    }
+    public func toString(_ v: DataValue) -> String {
+        return (v.title ?? "")
+    }
+    public func toValue(_ value: String) -> DataValue {
+        return DataValue.empty
+    }
+    func setup(data:FormData<DataValue>) {
+        self.string <~ data.value.map {[weak self] in self?.toString($0) ?? ""}.skipRepeats()
+        //data.value <~ self.string.map {[weak self] in return (self?.toValue($0) ?? DataValue.empty)}.skipRepeats().producer.delay(0.0, on: QueueScheduler.main)
+        data.value <~ self.selection.values.delay(0.0, on: QueueScheduler.main)
+    }
+    
+    public func select(_ selection: SelectionInput) {
+        guard let ip = selection as? IndexPath else {
+            return
+        }
+        self.selection.apply(ip).start()
+    }
+    
+}
+

@@ -79,6 +79,7 @@
 		7B8A31DA1DDB4FA700828075 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D71DDB4FA700828075 /* ReactiveCocoa.framework */; };
 		7B8A31DB1DDB4FA700828075 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D81DDB4FA700828075 /* ReactiveSwift.framework */; };
 		7B8A31DC1DDB4FA700828075 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D91DDB4FA700828075 /* Result.framework */; };
+		7BD1A5401DEC32E700ECB0F6 /* UIPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD1A53F1DEC32E700ECB0F6 /* UIPickerView.swift */; };
 		7BE2E8E21DE49AA000700548 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2E8E11DE49AA000700548 /* UIButton.swift */; };
 		7BE2E8E31DE49AA000700548 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2E8E11DE49AA000700548 /* UIButton.swift */; };
 		7BF11CC11DDC5AD500518BC0 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2CC8531DB016510005E500 /* Boomerang.framework */; };
@@ -186,6 +187,7 @@
 		7B8A31D71DDB4FA700828075 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/tvOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		7B8A31D81DDB4FA700828075 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/tvOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		7B8A31D91DDB4FA700828075 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/tvOS/Result.framework; sourceTree = "<group>"; };
+		7BD1A53F1DEC32E700ECB0F6 /* UIPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPickerView.swift; sourceTree = "<group>"; };
 		7BE2E8E11DE49AA000700548 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -298,6 +300,7 @@
 				7BE2E8E11DE49AA000700548 /* UIButton.swift */,
 				7B7508441DD5FD36006C82A0 /* UIRouter.swift */,
 				7B65F47C1DE32BC2000684D0 /* UITextField.swift */,
+				7BD1A53F1DEC32E700ECB0F6 /* UIPickerView.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -825,6 +828,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B65F47D1DE32BC2000684D0 /* UITextField.swift in Sources */,
+				7BD1A5401DEC32E700ECB0F6 /* UIPickerView.swift in Sources */,
 				7B7508451DD5FD36006C82A0 /* UIRouter.swift in Sources */,
 				7B7508431DD5CC98006C82A0 /* UIViewController.swift in Sources */,
 				7B087DB91DD47F4300F9E39D /* ListViewModel.swift in Sources */,
