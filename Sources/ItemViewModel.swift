@@ -23,11 +23,16 @@ public extension ItemViewModelType {
         self.model = model
     }
 }
-
+extension String : ModelType {
+    public var title:String? {
+    return self
+    }
+}
 public final class SimpleItemViewModel : ItemViewModelType {
     public var model:ModelType
     public var itemIdentifier: ListIdentifier = defaultListIdentifier
-    public  init(model:ItemViewModelType.Model) {
+    public  init(model:ItemViewModelType.Model, itemIdentifier:ListIdentifier = defaultListIdentifier) {
         self.model = model
+        self.itemIdentifier = itemIdentifier
     }
 }
