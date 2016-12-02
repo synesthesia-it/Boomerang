@@ -54,7 +54,7 @@ public final class ModelStructure : ModelStructureType {
             return accumulator + structure.indexPaths(current: IndexPath(indexes:(ip + [count])))
         }) ?? [IndexPath]()
     }
-    
+
     var count : Int {
         if (self.children != nil) {
             return self.children!.reduce(0, { (count, structure) -> Int in
@@ -74,7 +74,12 @@ public final class ModelStructure : ModelStructureType {
         }
         return self.children?[(index.first ?? 0)].modelAtIndex(index.dropFirst())
     }
-    
+    func sectionModelAtIndexPath(_ index:IndexPath) -> ModelClass? {
+        if (self.children == nil) {
+            return self.sectionModel
+        }
+        return self.children?[(index.first ?? 0)].sectionModel
+    }
     func allData() -> [ModelClass] {
         if (self.models != nil) {
             return self.models!

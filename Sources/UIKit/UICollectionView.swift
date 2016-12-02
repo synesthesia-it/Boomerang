@@ -41,7 +41,7 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
     }
     
     @objc public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let model = self.viewModel?.dataHolder.models.value.children?[indexPath.section].sectionModel
+        let model = self.viewModel?.dataHolder.models.value.sectionModelAtIndexPath(indexPath)//self.viewModel?.dataHolder.models.value.children?[indexPath.section].sectionModel
         if nil != model {
             
             let vm =  self.viewModel?.itemViewModel(model!)
@@ -150,7 +150,7 @@ extension UICollectionView : ViewModelBindable {
             vm.collectionViewDataSource = ViewModelCollectionViewDataSource(viewModel: vm)
         }
         self.dataSource = vm.collectionViewDataSource
-        collectionView.reactive.reloadData <~ vm.dataHolder.resultsCount.producer.map {_ in return ()}
+        collectionView.reactive.reloadData <~ vm.dataHolder.reloadAction.values.map {_ in return ()}
         if (collectionView.backgroundView != nil) {
             collectionView.backgroundView!.reactive.isHidden <~ vm.isEmpty.producer.map {!$0}
         }
