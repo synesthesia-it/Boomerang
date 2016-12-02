@@ -191,7 +191,6 @@ open class IntFormItemViewModel : FormItemViewModel {
 public protocol FormModel : FormValueEquatable, ModelType, SelectionInput, SelectionOutput {
     
 }
-
 open class MultiselectionItemViewModel<DataValue:FormModel> : FormItemViewModel, ListViewModelType, ViewModelTypeSelectable, ViewModelTypeActionSelectable {
     public var string: MutableProperty<String> = MutableProperty("")
     public var title:String?
