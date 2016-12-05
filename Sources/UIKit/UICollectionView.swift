@@ -52,7 +52,7 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
             }
         }
         
-        return UICollectionViewCell()
+        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier, for: indexPath)
     }
     struct StaticCellParameters {
         var constraint:NSLayoutConstraint!
@@ -119,7 +119,9 @@ public extension ListViewModelType  {
     }
 }
 
-
+fileprivate class EmptyReusableView : UICollectionViewCell {
+    fileprivate static let emptyReuseIdentifier = "_emptyReusableView"
+}
 extension UICollectionView : ViewModelBindable {
     
     public var viewModel: ViewModelType? {
@@ -146,6 +148,9 @@ extension UICollectionView : ViewModelBindable {
             collectionView.register(UINib(nibName: value.name, bundle: nil), forSupplementaryViewOfKind: value.type ?? UICollectionElementKindSectionHeader, withReuseIdentifier: value.name)
             return ""
         })
+        
+        collectionView.register(EmptyReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader , withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
+        collectionView.register(EmptyReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionFooter , withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
         if (vm.collectionViewDataSource == nil) {
             vm.collectionViewDataSource = ViewModelCollectionViewDataSource(viewModel: vm)
         }
