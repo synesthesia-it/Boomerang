@@ -61,7 +61,6 @@
 		7B65F4771DE300F2000684D0 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65F4751DE300F2000684D0 /* FormViewModel.swift */; };
 		7B65F4781DE300F2000684D0 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65F4751DE300F2000684D0 /* FormViewModel.swift */; };
 		7B65F47D1DE32BC2000684D0 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65F47C1DE32BC2000684D0 /* UITextField.swift */; };
-		7B65F47E1DE32BC2000684D0 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65F47C1DE32BC2000684D0 /* UITextField.swift */; };
 		7B7508431DD5CC98006C82A0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC8751DB021310005E500 /* UIViewController.swift */; };
 		7B7508451DD5FD36006C82A0 /* UIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7508441DD5FD36006C82A0 /* UIRouter.swift */; };
 		7B8A31BF1DDB4EFA00828075 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31B61DDB4EFA00828075 /* Boomerang.framework */; };
@@ -72,16 +71,12 @@
 		7B8A31CF1DDB4F3800828075 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DBA1DD47F5800F9E39D /* ItemViewModel.swift */; };
 		7B8A31D01DDB4F3800828075 /* ModelStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DB61DD47EE100F9E39D /* ModelStructure.swift */; };
 		7B8A31D11DDB4F3800828075 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC87B1DB112FD0005E500 /* Router.swift */; };
-		7B8A31D21DDB4F3800828075 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC8751DB021310005E500 /* UIViewController.swift */; };
-		7B8A31D31DDB4F3800828075 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BEE081DCCCD1000FF2F85 /* UITableView.swift */; };
-		7B8A31D41DDB4F3800828075 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B27E2351DCA43BB007C4C9C /* UICollectionView.swift */; };
-		7B8A31D51DDB4F3800828075 /* UIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7508441DD5FD36006C82A0 /* UIRouter.swift */; };
 		7B8A31DA1DDB4FA700828075 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D71DDB4FA700828075 /* ReactiveCocoa.framework */; };
 		7B8A31DB1DDB4FA700828075 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D81DDB4FA700828075 /* ReactiveSwift.framework */; };
 		7B8A31DC1DDB4FA700828075 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D91DDB4FA700828075 /* Result.framework */; };
+		7BAC0A2F1E015B2100BEA18E /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BEE081DCCCD1000FF2F85 /* UITableView.swift */; };
 		7BD1A5401DEC32E700ECB0F6 /* UIPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD1A53F1DEC32E700ECB0F6 /* UIPickerView.swift */; };
 		7BE2E8E21DE49AA000700548 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2E8E11DE49AA000700548 /* UIButton.swift */; };
-		7BE2E8E31DE49AA000700548 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2E8E11DE49AA000700548 /* UIButton.swift */; };
 		7BF11CC11DDC5AD500518BC0 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2CC8531DB016510005E500 /* Boomerang.framework */; };
 /* End PBXBuildFile section */
 
@@ -839,6 +834,7 @@
 				7B27E2361DCA43BB007C4C9C /* UICollectionView.swift in Sources */,
 				7B087DBB1DD47F5800F9E39D /* ItemViewModel.swift in Sources */,
 				7BE2E8E21DE49AA000700548 /* UIButton.swift in Sources */,
+				7BAC0A2F1E015B2100BEA18E /* UITableView.swift in Sources */,
 				7B2CC8741DB019BA0005E500 /* ViewModel.swift in Sources */,
 				7B2CC87C1DB112FD0005E500 /* Router.swift in Sources */,
 			);
@@ -874,15 +870,9 @@
 				7B65F4781DE300F2000684D0 /* FormViewModel.swift in Sources */,
 				7B8A31CE1DDB4F3800828075 /* ListViewModel.swift in Sources */,
 				7B8A31D01DDB4F3800828075 /* ModelStructure.swift in Sources */,
-				7B65F47E1DE32BC2000684D0 /* UITextField.swift in Sources */,
-				7B8A31D21DDB4F3800828075 /* UIViewController.swift in Sources */,
 				7B8A31D11DDB4F3800828075 /* Router.swift in Sources */,
-				7B8A31D51DDB4F3800828075 /* UIRouter.swift in Sources */,
 				7B8A31CD1DDB4F3800828075 /* ViewModel.swift in Sources */,
 				7B8A31CF1DDB4F3800828075 /* ItemViewModel.swift in Sources */,
-				7B8A31D41DDB4F3800828075 /* UICollectionView.swift in Sources */,
-				7B8A31D31DDB4F3800828075 /* UITableView.swift in Sources */,
-				7BE2E8E31DE49AA000700548 /* UIButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

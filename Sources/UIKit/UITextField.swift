@@ -66,7 +66,7 @@ extension UITextView : ViewModelBindable {
         self.disposable = CompositeDisposable()
         
         self.disposable?.add(self.reactive.text <~ vm.string.skipRepeats().producer.delay(0.0, on: QueueScheduler.main))
-        self.disposable?.add(vm.string <~ self.reactive.continuousTextValues.skipRepeats())
+        self.disposable?.add(vm.string <~ self.reactive.continuousTextValues.skipNil().skipRepeats())
     }
     
     
