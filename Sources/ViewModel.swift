@@ -7,8 +7,9 @@
 //
 
 import Foundation
-import ReactiveSwift
-import Result
+import RxSwift
+import Action
+
 
 //public typealias ListIdentifier = String
 
@@ -57,23 +58,26 @@ public enum EmptySelection : SelectionOutput{
 public protocol ViewModelTypeSelectable : ViewModelType {
     associatedtype Input = SelectionInput
     associatedtype Output = SelectionOutput
-    var selection:Action<Input,Output, Error> {get set}
+    
+    var selection:Action<Input,Output> {get set}
     
 }
 public protocol ViewModelTypeActionSelectable : ViewModelType {
     func select(_ input:SelectionInput)
 }
-extension ViewModelTypeSelectable {
-    func select(_ selection:Input) {
-        self.selection.apply(selection).start()
-    }
-}
+//extension ViewModelTypeSelectable {
+//    func select(_ selection:Input) {
+//        self.selection.apply(selection).start()
+//    }
+//}
 
 public protocol ViewModelTypeLoadable : ViewModelType {
-    var loading: SignalProducer<Bool, NoError> {get set}
+    var loading: Observable<Bool> {get set}
+//    var loading: SignalProducer<Bool, NoError> {get set}
 }
 public protocol ViewModelTypeFailable : ViewModelType {
-    var fail : Signal<Error, NoError> {get set}
+    var fail : Observable<Error> {get set}
+//    var fail : Signal<Error, NoError> {get set}
 }
 
 

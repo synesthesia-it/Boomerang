@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import ReactiveCocoa
-import ReactiveSwift
+import RxSwift
+import RxCocoa
+
 
 private struct AssociatedKeys {
     static var viewModel = "viewModel"
@@ -22,8 +23,8 @@ extension UITextField : ViewModelBindable {
         set { objc_setAssociatedObject(self, &AssociatedKeys.viewModel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
     
-    public var disposable: CompositeDisposable? {
-        get { return objc_getAssociatedObject(self, &AssociatedKeys.disposable) as? CompositeDisposable}
+    public var disposable: DisposeBag? {
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.disposable) as? DisposeBag}
         set { objc_setAssociatedObject(self, &AssociatedKeys.disposable, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
     
@@ -34,9 +35,10 @@ extension UITextField : ViewModelBindable {
         }
         self.placeholder = vm.title
         self.disposable?.dispose()
-        self.disposable = CompositeDisposable()
-        self.disposable?.add(self.reactive.text <~ vm.string.skipRepeats().producer.delay(0.0, on: QueueScheduler.main))
-        self.disposable?.add(vm.string <~ self.reactive.continuousTextValues.skipNil().skipRepeats())
+        self.disposable = DisposeBag()
+        vm.string.asObservable().distinctUntilChanged().delay(0.0, scheduler: MainScheduler.instance).bindTo(self.rx.text).addDisposableTo(self.disposable!)
+        self.rx.text.map { $0 ?? ""}.bindTo(vm.string).addDisposableTo(self.disposable!)
+        
     }
 
     
@@ -51,8 +53,8 @@ extension UITextView : ViewModelBindable {
         set { objc_setAssociatedObject(self, &AssociatedKeys.viewModel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
     
-    public var disposable: CompositeDisposable? {
-        get { return objc_getAssociatedObject(self, &AssociatedKeys.disposable) as? CompositeDisposable}
+    public var disposable: DisposeBag? {
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.disposable) as? DisposeBag}
         set { objc_setAssociatedObject(self, &AssociatedKeys.disposable, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
     
@@ -63,10 +65,10 @@ extension UITextView : ViewModelBindable {
         }
         
         self.disposable?.dispose()
-        self.disposable = CompositeDisposable()
+        self.disposable = DisposeBag()
         
-        self.disposable?.add(self.reactive.text <~ vm.string.skipRepeats().producer.delay(0.0, on: QueueScheduler.main))
-        self.disposable?.add(vm.string <~ self.reactive.continuousTextValues.skipNil().skipRepeats())
+        vm.string.asObservable().distinctUntilChanged().delay(0.0, scheduler: MainScheduler.instance).bindTo(self.rx.text).addDisposableTo(self.disposable!)
+        self.rx.text.map { $0 ?? ""}.bindTo(vm.string).addDisposableTo(self.disposable!)
     }
     
     

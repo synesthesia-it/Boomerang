@@ -7,8 +7,12 @@
 //
 
 import Foundation
-import ReactiveSwift
-import Result
+//import ReactiveSwift
+//import Result
+import RxSwift
+import Action
+import RxCocoa
+
 
 let defaultListIdentifier = "default_list_identifier"
 
@@ -36,47 +40,55 @@ public protocol ResultRangeType {
 
 extension IndexPath : SelectionInput {}
 public protocol ListDataHolderType : class {
-    var viewModels:MutableProperty<[IndexPath:ItemViewModelType]> {get set}
-
-    var resultsCount:MutableProperty<Int> {get set}
-    var newDataAvailable:MutableProperty<ResultRangeType?> {get set}
-    var models:MutableProperty<ModelStructure> {get set}
-    var reloadAction:Action<ResultRangeType?,ModelStructure,Error> {get set}
-    var dataProducer:SignalProducer<ModelStructure,Error> {get set}
+//    var viewModels:MutableProperty<[IndexPath:ItemViewModelType]> {get set}
+    var viewModels:Variable<[IndexPath:ItemViewModelType]> {get set}
+    //var resultsCount:MutableProperty<Int> {get set}
+    var resultsCount:Variable<Int> {get set}
+//    var newDataAvailable:MutableProperty<ResultRangeType?> {get set}
+    var newDataAvailable:Variable<ResultRangeType?> {get set}
+//    var models:MutableProperty<ModelStructure> {get set}
+    var models : Variable<ModelStructure> {get set}
+//    var reloadAction:Action<ResultRangeType?,ModelStructure,Error> {get set}
+    //var dataProducer:SignalProducer<ModelStructure,Error> {get set}
+    var reloadAction:Action<ResultRangeType?,ModelStructure> {get set}
+    var data:Observable<ModelStructure> {get set}
     func reload()
     init()
 }
 extension ListDataHolderType {
-    public static var empty:ListDataHolderType { return Self.init(dataProducer: SignalProducer(value:ModelStructure.empty)) }
+
+    public static var empty:ListDataHolderType { return Self.init(data: Observable.just(ModelStructure.empty)) }
     public func reload() {
-        self.reloadAction.apply(nil).start()
+        self.reloadAction.execute(nil)
+
     }
-    public init(dataProducer:SignalProducer<ModelStructure,Error>) {
+    public init(data:Observable<ModelStructure>) {
         self.init()
-        self.dataProducer = dataProducer
+        self.data = data
         self.reloadAction = Action { range in
-            return dataProducer.flatMap(.latest) { (s:ModelStructure?) -> SignalProducer<ModelStructure,Error> in
+            return data.flatMapLatest { (s:ModelStructure?) -> Observable<ModelStructure> in
                 let result = (s ?? ModelStructure.empty)
-                return SignalProducer(value:result)
+                return Observable.just(result)
             }
         }
-        self.models <~ reloadAction.values
-        self.viewModels <~ self.models.producer.map{_ in return [IndexPath:ItemViewModelType]()}
-        self.resultsCount <~ self.models.producer.map { return $0.count}
+        
+        _ = reloadAction.executionObservables.switchLatest().bindTo(self.models)//.addDisposableTo(bag)
+        _ = self.models.asObservable().map{_ in return [IndexPath:ItemViewModelType]()}.bindTo(viewModels)//.addDisposableTo(bag)
+         _ = self.models.asObservable().map { return $0.count}.bindTo(resultsCount)//.addDisposableTo(bag)
         
     }
 }
 public final class ListDataHolder : ListDataHolderType {
     
     
-    public var reloadAction: Action<ResultRangeType?, ModelStructure, Error> = Action {_ in return SignalProducer(value:ModelStructure.empty)}
-    public var models:MutableProperty<ModelStructure> = MutableProperty(ModelStructure.empty)
-    public var viewModels:MutableProperty = MutableProperty([IndexPath:ItemViewModelType]())
-    public var resultsCount:MutableProperty<Int> = MutableProperty(0)
-    public var newDataAvailable:MutableProperty<ResultRangeType?> = MutableProperty(nil)
-    public var dataProducer:SignalProducer<ModelStructure,Error>
+    public var reloadAction: Action<ResultRangeType?, ModelStructure> = Action {_ in return Observable.just(ModelStructure.empty)}
+    public var models:Variable<ModelStructure> = Variable(ModelStructure.empty)
+    public var viewModels:Variable = Variable([IndexPath:ItemViewModelType]())
+    public var resultsCount:Variable<Int> = Variable(0)
+    public var newDataAvailable:Variable<ResultRangeType?> = Variable(nil)
+    public var data:Observable<ModelStructure>
     public init() {
-        self.dataProducer = SignalProducer(value:ModelStructure.empty)
+        self.data = .just(ModelStructure.empty)
     }
     
 }
@@ -97,8 +109,8 @@ public protocol ListViewModelTypeHeaderable : ListViewModelType {
 }
 public extension ListViewModelType  {
     
-    var isEmpty:SignalProducer<Bool,NoError> {
-        return self.dataHolder.resultsCount.producer.map {$0 == 0}
+    var isEmpty:Observable<Bool> {
+        return self.dataHolder.resultsCount.asObservable().map {$0 == 0}
     }
     
     public func identifierAtIndex(_ index:IndexPath) -> ListIdentifier? {
@@ -122,9 +134,9 @@ public extension ListViewModelType  {
         }
         return nil
     }
-    init(dataProducer:SignalProducer<ModelStructure,Error>) {
+    init(data:Observable<ModelStructure>) {
         self.init()
-        self.dataHolder = ListDataHolder(dataProducer: dataProducer)
+        self.dataHolder = ListDataHolder(data:data)
     }
     
     //    init() {
@@ -143,17 +155,23 @@ public extension ListViewModelType {
 }
 
 public extension ListViewModelType where Self :  ViewModelTypeFailable {
-    var fail:Signal<Error, NoError> { return self.dataHolder.reloadAction.errors }
+    var fail:Observable<ActionError> { return self.dataHolder.reloadAction.errors }
 }
 public extension ListViewModelType where Self :  ViewModelTypeLoadable {
-    var loading:Signal<Bool, NoError> { return self.dataHolder.reloadAction.isExecuting.signal }
+    var loading:Observable<Bool> { return self.dataHolder.reloadAction.executing }
 }
 public extension ListViewModelType where Self :  ViewModelTypeLoadable , Self: ViewModelTypeSelectable {
-    var loading:Signal<Bool, NoError> { return self.dataHolder.reloadAction.isExecuting.signal.combineLatest(with: (self.selection.isExecuting.signal ?? Signal<Bool,NoError>.empty) ).map {return $0 || $1} }
+    var loading:Observable<Bool> {
+        return Observable.combineLatest(self.dataHolder.reloadAction.executing, self.selection.executing, resultSelector: { $0 || $1})
+        
+//        return self.dataHolder.reloadAction.isExecuting.signal.combineLatest(with: (self.selection.isExecuting.signal ?? Signal<Bool,NoError>.empty) ).map {return $0 || $1}
+    
+    
+    }
 }
 public extension ListViewModelType where Self :  ViewModelTypeFailable , Self: ViewModelTypeSelectable {
-    var fail:Signal<Error, NoError> {
-        return Signal<Error,NoError>.merge([self.dataHolder.reloadAction.errors,(self.selection.errors ?? Signal<Error,NoError>.empty)])
+    var fail:Observable<ActionError> {
+        return Observable.from([self.dataHolder.reloadAction.errors, self.selection.errors], scheduler: MainScheduler.instance).switchLatest()
     }
 }
 

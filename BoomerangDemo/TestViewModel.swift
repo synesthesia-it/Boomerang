@@ -7,24 +7,24 @@
 //
 
 import Foundation
-import ReactiveSwift
 import Boomerang
-
+import RxSwift
+import Action
 enum TestSelection : SelectionInput {
     case item(IndexPath)
 }
 
 final class TestViewModel:ListViewModelTypeHeaderable, ViewModelTypeSelectable {
     
-    lazy var selection:Action<TestSelection, SelectionOutput, Boomerang.Error> = Action  { choice in
+    lazy var selection:Action<TestSelection, SelectionOutput> = Action  { choice in
         switch choice {
         case .item (let indexPath) :
             let model = self.modelAtIndex(indexPath)
             if (model == nil) {
-                return .empty
+                return .just(ViewModelFactory.item(model:model!))
             }
             
-            return SignalProducer(value:ViewModelFactory.item(model:model!))
+            return .just(ViewModelFactory.item(model:model!))
         }
     }
     

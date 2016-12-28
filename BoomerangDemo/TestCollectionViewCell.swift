@@ -8,9 +8,6 @@
 
 import UIKit
 import Boomerang
-import ReactiveSwift
-import ReactiveCocoa
-
 
 final class TestCollectionViewCell: UICollectionViewCell , ViewModelBindable {
     

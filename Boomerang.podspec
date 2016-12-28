@@ -19,6 +19,6 @@ Pod::Spec.new do |s|
   s.ios.source_files = "Sources/UIKit/*.{swift}"
   s.tvos.source_files = "Sources/UIKit/*.{swift}"
   s.module_map = "Sources/module.modulemap"
-  s.dependency 'ReactiveSwift', '~> 1.0.0-alpha.4'
-  s.ios.dependency 'ReactiveCocoa', '~> 5.0.0-alpha.3'
+  s.dependency 'RxSwift', '~> 2.6'
+  s.dependency 'Action', '~> 2.1'
 end

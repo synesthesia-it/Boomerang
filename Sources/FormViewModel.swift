@@ -7,8 +7,10 @@
 //
 
 import Foundation
-import ReactiveSwift
-import Result
+//import ReactiveSwift
+import RxSwift
+import RxCocoa
+import Action
 
 public protocol FormValue   {
     static var empty: Self {get}
@@ -26,15 +28,15 @@ extension String : FormDataReference {
     }
 }
 public protocol FormDataType: ModelType {
-     var reference : FormDataReference {get set}
+    var reference : FormDataReference {get set}
     func getValue() -> Any
 }
 
 public protocol FormDataMutableType : FormDataType {
     
     associatedtype Value : FormValue
-   
-    var value:MutableProperty<Value> {get}
+    
+    var value:Variable<Value> {get}
 }
 
 
@@ -44,7 +46,7 @@ public class FormData<Value : FormValueEquatable> : FormDataMutableType {
     public var title: String? {
         return self.reference.key
     }
-    public var value:MutableProperty<Value> = MutableProperty<Value>(Value.empty)
+    public var value:Variable<Value> = Variable<Value>(Value.empty)
     public init(reference:FormDataReference, initialValue:Value = Value.empty) {
         self.reference = reference
         self.value.value = initialValue
@@ -56,7 +58,7 @@ public class FormData<Value : FormValueEquatable> : FormDataMutableType {
 
 public protocol TextInput {
     var title:String? {get}
-   var string:MutableProperty<String> {get set}
+    var string:Variable<String> {get set}
 }
 
 public protocol FormItemViewModel : ItemViewModelType, ModelType , TextInput{
@@ -72,8 +74,9 @@ extension FormItemViewModel {
         return nil
     }
     func setup(data:FormData<DataValue>) {
-        self.string <~ data.value.map {[weak self] in self?.toString($0) ?? ""}.skipRepeats()
-        data.value <~ self.string.map {[weak self] in return (self?.toValue($0) ?? DataValue.empty)}.skipRepeats().producer.delay(0.0, on: QueueScheduler.main)
+        let bag = DisposeBag()
+        data.value.asObservable().map {[weak self] in self?.toString($0) ?? ""}.distinctUntilChanged().bindTo(string).addDisposableTo(bag)
+        self.string.asObservable().delay(0.0, scheduler: MainScheduler.instance).map {[weak self] in self?.toValue($0) ?? DataValue.empty}.bindTo(data.value).addDisposableTo(bag)
         
     }
     public init(data:FormData<DataValue>) {
@@ -90,7 +93,7 @@ public protocol FormViewModelType : ListViewModelType {
 
 extension FormViewModelType {
     public func formData() -> [String : Any] {
-//        return self.dataHolder.models.value.
+        //        return self.dataHolder.models.value.
         return self.dataHolder.models.value.allData()
             .map { item -> FormDataType? in
                 guard let vm = item as? ItemViewModelType else {
@@ -104,7 +107,7 @@ extension FormViewModelType {
                 let key = data!.reference.key
                 a[key] = data!.getValue()
                 return a
-        })
+            })
     }
 }
 
@@ -115,10 +118,10 @@ extension String :FormValueEquatable {
 open class StringFormItemViewModel : FormItemViewModel {
     public typealias DataValue = String
     public static var defaultItemIdentifier: ListIdentifier = defaultListIdentifier
-    public var string:MutableProperty<String> = MutableProperty("")
+    public var string:Variable<String> = Variable("")
     public var itemIdentifier: ListIdentifier = StringFormItemViewModel.defaultItemIdentifier
     public var model:ItemViewModelType.Model = FormData<DataValue>(reference: "")
-    public var value:MutableProperty<DataValue> = MutableProperty(DataValue.empty)
+    public var value:Variable<DataValue> = Variable(DataValue.empty)
     public var title: String?
     public required init () {}
     public required convenience init (data:FormData<DataValue>, title:String? = nil, itemIdentifier:ListIdentifier = StringFormItemViewModel.defaultItemIdentifier) {
@@ -141,10 +144,10 @@ extension Bool :FormValueEquatable {
 open class BoolFormItemViewModel : FormItemViewModel {
     public typealias DataValue = Bool
     public static var defaultItemIdentifier: ListIdentifier = defaultListIdentifier
-    public var string:MutableProperty<String> = MutableProperty("")
+    public var string:Variable<String> = Variable("")
     public var itemIdentifier: ListIdentifier = BoolFormItemViewModel.defaultItemIdentifier
     public var model:ItemViewModelType.Model = FormData<DataValue>(reference: "")
-    public var value:MutableProperty<DataValue> = MutableProperty(DataValue.empty)
+    public var value:Variable<DataValue> = Variable(DataValue.empty)
     public var title: String?
     public required init () {}
     public required convenience init (data:FormData<DataValue>, title:String? = nil, itemIdentifier:ListIdentifier = BoolFormItemViewModel.defaultItemIdentifier) {
@@ -168,10 +171,10 @@ extension Int :FormValueEquatable {
 open class IntFormItemViewModel : FormItemViewModel {
     public typealias DataValue = Int
     public static var defaultItemIdentifier: ListIdentifier = defaultListIdentifier
-    public var string:MutableProperty<String> = MutableProperty("")
+    public var string:Variable<String> = Variable("")
     public var itemIdentifier: ListIdentifier = IntFormItemViewModel.defaultItemIdentifier
     public var model:ItemViewModelType.Model = FormData<DataValue>(reference: "")
-    public var value:MutableProperty<DataValue> = MutableProperty(DataValue.empty)
+    public var value:Variable<DataValue> = Variable(DataValue.empty)
     public var title: String?
     public required init () {}
     public required convenience init (data:FormData<DataValue>, title:String? = nil , itemIdentifier:ListIdentifier = IntFormItemViewModel.defaultItemIdentifier) {
@@ -192,9 +195,9 @@ public protocol FormModel : FormValueEquatable, ModelType, SelectionInput, Selec
     
 }
 open class MultiselectionItemViewModel<DataValue:FormModel> : FormItemViewModel, ListViewModelType, ViewModelTypeSelectable, ViewModelTypeActionSelectable {
-    public var string: MutableProperty<String> = MutableProperty("")
+    public var string: Variable<String> = Variable("")
     public var title:String?
-//    public typealias DataValue = FormValue
+    //    public typealias DataValue = FormValue
     public var itemIdentifier: ListIdentifier  = defaultListIdentifier
     public var dataHolder: ListDataHolderType = ListDataHolder.empty
     public var model:ItemViewModelType.Model = FormData<DataValue>(reference: "")
@@ -203,12 +206,12 @@ open class MultiselectionItemViewModel<DataValue:FormModel> : FormItemViewModel,
     public func listIdentifiers() -> [ListIdentifier] {
         return identifiers
     }
-    public lazy var selection: Action<IndexPath, DataValue, Error> = Action {[unowned self] input in
+    public lazy var selection: Action<IndexPath, DataValue> = Action {[unowned self] input in
         
         let output = (self.modelAtIndex(input) as? DataValue)  ?? DataValue.empty
         
         
-        return SignalProducer(value:output)
+        return .just(output)
     }
     public required init () {}
     
@@ -231,16 +234,18 @@ open class MultiselectionItemViewModel<DataValue:FormModel> : FormItemViewModel,
         return DataValue.empty
     }
     func setup(data:FormData<DataValue>) {
-        self.string <~ data.value.map {[weak self] in self?.toString($0) ?? ""}.skipRepeats()
-        //data.value <~ self.string.map {[weak self] in return (self?.toValue($0) ?? DataValue.empty)}.skipRepeats().producer.delay(0.0, on: QueueScheduler.main)
-        data.value <~ self.selection.values.delay(0.0, on: QueueScheduler.main)
+        
+        let bag = DisposeBag()
+        data.value.asObservable().map {[weak self] in self?.toString($0) ?? ""}.distinctUntilChanged().bindTo(string).addDisposableTo(bag)
+        self.selection.executionObservables.switchLatest().delay(0.0, scheduler: MainScheduler.instance).bindTo(data.value).addDisposableTo(bag)
     }
     
     public func select(_ selection: SelectionInput) {
         guard let ip = selection as? IndexPath else {
             return
         }
-        self.selection.apply(ip).start()
+        self.selection.execute(ip)
+        
     }
     
 }

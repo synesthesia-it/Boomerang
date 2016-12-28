@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import ReactiveSwift
-import ReactiveCocoa
+import RxCocoa
+import RxSwift
+
 
 private struct AssociatedKeys {
     static var viewModel = "viewModel"
@@ -54,8 +55,8 @@ extension UIPickerView : ViewModelBindable {
         set { objc_setAssociatedObject(self, &AssociatedKeys.viewModel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
     
-    public var disposable: CompositeDisposable? {
-        get { return objc_getAssociatedObject(self, &AssociatedKeys.disposable) as? CompositeDisposable}
+    public var disposable: DisposeBag? {
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.disposable) as? DisposeBag}
         set { objc_setAssociatedObject(self, &AssociatedKeys.disposable, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
     public func bind(_ viewModel: ViewModelType?) {
@@ -73,10 +74,8 @@ extension UIPickerView : ViewModelBindable {
         }
         self.dataSource = vm.pickerViewDataSource
         self.delegate = vm.pickerViewDataSource
-        
-        vm.dataHolder.resultsCount.producer.map {_ in return ()}.startWithValues { _ in
-            picker.reloadAllComponents()
-        }
-        vm.reload()
+        self.disposable?.dispose()
+        self.disposable = DisposeBag()
+        vm.dataHolder.resultsCount.asObservable().subscribe(onNext:{_ in picker.reloadAllComponents()}).addDisposableTo(self.disposable!)
     }
 }

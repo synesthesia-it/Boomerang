@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import ReactiveSwift
-import ReactiveCocoa
+import RxCocoa
+import RxSwift
 
 //extension UICollectionReusableView : ViewModelBindable {
 //
@@ -109,6 +109,7 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
 }
 private struct AssociatedKeys {
     static var viewModel = "viewModel"
+    static var disposable = "disposable"
     static var collectionViewDataSource = "collectionViewDataSource"
 }
 public extension ListViewModelType  {
@@ -129,7 +130,10 @@ extension UICollectionView : ViewModelBindable {
         set { objc_setAssociatedObject(self, &AssociatedKeys.viewModel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
     
-    
+    public var disposable: DisposeBag? {
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.disposable) as? DisposeBag}
+        set { objc_setAssociatedObject(self, &AssociatedKeys.disposable, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
+    }
     
     public func bind(_ viewModel: ViewModelType?) {
         guard let vm = viewModel as? ListViewModelType else {
@@ -155,9 +159,14 @@ extension UICollectionView : ViewModelBindable {
             vm.collectionViewDataSource = ViewModelCollectionViewDataSource(viewModel: vm)
         }
         self.dataSource = vm.collectionViewDataSource
-        collectionView.reactive.reloadData <~ vm.dataHolder.reloadAction.values.map {_ in return ()}
+        self.disposable?.dispose()
+        self.disposable = DisposeBag()
+        vm.dataHolder.reloadAction.executionObservables.switchLatest().subscribe(onNext:{ _ in
+            collectionView.reloadData()
+        }).addDisposableTo(self.disposable!)
+        
         if (collectionView.backgroundView != nil) {
-            collectionView.backgroundView!.reactive.isHidden <~ vm.isEmpty.producer.map {!$0}
+            vm.isEmpty.asObservable().map{!$0}.bindTo(collectionView.backgroundView!.rx.isHidden).addDisposableTo(self.disposable!)
         }
     }
     public func autosizeItemAt(indexPath:IndexPath, constrainedToWidth width:Float) -> CGSize {

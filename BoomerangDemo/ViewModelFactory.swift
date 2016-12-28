@@ -8,7 +8,7 @@
 
 import Foundation
 import Boomerang
-import ReactiveSwift
+
 
 struct HeaderIdentifier : ListIdentifier {
     var name: String
@@ -34,7 +34,8 @@ struct ViewModelFactory {
                                     sectionModel:Item(string:"Title \(i)"))]
         }
         let full = ModelStructure(children:a)
-        return TestViewModel(dataProducer: SignalProducer(value:full))
+        return TestViewModel(data: .just(full))
+        //return TestViewModel(dataProducer: SignalProducer(value:full))
     }
 }
 
@@ -53,6 +54,6 @@ extension ViewModelFactory {
                                     sectionModel:Item(string:"Title \(i)"))]
         }
         let full = ModelStructure(children:a)
-        return TestViewModel(dataProducer: SignalProducer(value:full))
+         return TestViewModel(data: .just(full))
     }
 }
