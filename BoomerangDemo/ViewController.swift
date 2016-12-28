@@ -38,7 +38,8 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, Rout
         return collectionView.autosizeItemAt(indexPath: indexPath, itemsPerLine: 3)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        Router.from(self, viewModel: self.viewModel!.select(selection: indexPath)).execute()
+        self.viewModel!.selection.apply(.item(indexPath)).start()
+        //Router.from(self, viewModel: self.viewModel!.select(selection: indexPath)).execute()
         
     }
     
@@ -50,6 +51,16 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, Rout
         self.viewModel = vm
         self.collectionView?.delegate = self
         self.collectionView?.bind(self.viewModel)
+        vm.selection.values.observeValues {[weak self] sel in
+            guard let vm = sel as? ViewModelType else {
+                return
+            }
+            if (self == nil) {
+                return
+            }
+            Router.from(self!, viewModel: vm).execute()
+            
+        }
         self.viewModel?.reload()
         
     }

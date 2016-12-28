@@ -47,6 +47,8 @@
 		7B440FA91DD9044F005787EF /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B440F9D1DD90435005787EF /* Result.framework */; };
 		7B440FB91DD9163E005787EF /* Boomerang iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B440FB71DD9163E005787EF /* Boomerang iOS.h */; };
 		7B440FBA1DD9163E005787EF /* Info-iOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B440FB81DD9163E005787EF /* Info-iOS.plist */; };
+		7B52C16F1E13CA27008929A2 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B52C16D1E13CA27008929A2 /* RxCocoa.framework */; };
+		7B52C1701E13CA27008929A2 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B52C16E1E13CA27008929A2 /* RxSwift.framework */; };
 		7B57E24A1DD201FD0042C158 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B57E2481DD201FC0042C158 /* Nimble.framework */; };
 		7B57E24B1DD201FD0042C158 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B57E2481DD201FC0042C158 /* Nimble.framework */; };
 		7B57E24C1DD201FD0042C158 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B57E2491DD201FC0042C158 /* Quick.framework */; };
@@ -167,6 +169,8 @@
 		7B440FB41DD9086B005787EF /* libswiftCore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCore.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/PrivateFrameworks/Swift/libswiftCore.tbd; sourceTree = DEVELOPER_DIR; };
 		7B440FB71DD9163E005787EF /* Boomerang iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Boomerang iOS.h"; sourceTree = "<group>"; };
 		7B440FB81DD9163E005787EF /* Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		7B52C16D1E13CA27008929A2 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		7B52C16E1E13CA27008929A2 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		7B57E2481DD201FC0042C158 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		7B57E2491DD201FC0042C158 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		7B5EB3E71DF0109600CF967D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B52C1701E13CA27008929A2 /* RxSwift.framework in Frameworks */,
+				7B52C16F1E13CA27008929A2 /* RxCocoa.framework in Frameworks */,
 				7B2CC8721DB019A80005E500 /* Result.framework in Frameworks */,
 				7B2CC8701DB019A80005E500 /* ReactiveCocoa.framework in Frameworks */,
 				7B2CC8711DB019A80005E500 /* ReactiveSwift.framework in Frameworks */,
@@ -440,6 +446,8 @@
 		7B440F991DD8F6F9005787EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7B52C16D1E13CA27008929A2 /* RxCocoa.framework */,
+				7B52C16E1E13CA27008929A2 /* RxSwift.framework */,
 				7B8A31D71DDB4FA700828075 /* ReactiveCocoa.framework */,
 				7B8A31D81DDB4FA700828075 /* ReactiveSwift.framework */,
 				7B8A31D91DDB4FA700828075 /* Result.framework */,
@@ -787,6 +795,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 			);
 			outputPaths = (
 			);
