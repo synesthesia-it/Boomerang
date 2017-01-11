@@ -76,18 +76,27 @@ private struct AssociatedKeys {
 }
 extension FormItemViewModel {
     
-    public var disposeBag: DisposeBag? {
-        get { return objc_getAssociatedObject(self, &AssociatedKeys.DisposeBag) as? DisposeBag}
-        set { objc_setAssociatedObject(self, &AssociatedKeys.DisposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
+    public var disposeBag: DisposeBag {
+        var disposeBag: DisposeBag
+        
+        if let lookup = objc_getAssociatedObject(self, &AssociatedKeys.DisposeBag) as? DisposeBag {
+            disposeBag = lookup
+        } else {
+            disposeBag = DisposeBag()
+            objc_setAssociatedObject(self, &AssociatedKeys.DisposeBag, disposeBag, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        
+        return disposeBag
     }
     public var title: String? {
         return nil
     }
     func setup(data:FormData<DataValue>) {
-        let bag = DisposeBag()
+        self.model = data
+        let bag = self.disposeBag
         data.value.asObservable().map {[weak self] in self?.toString($0) ?? ""}.distinctUntilChanged().bindTo(string).addDisposableTo(bag)
         self.string.asObservable().delay(0.0, scheduler: MainScheduler.instance).map {[weak self] in self?.toValue($0) ?? DataValue.empty}.bindTo(data.value).addDisposableTo(bag)
-        self.disposeBag = bag
+        
     }
     public init(data:FormData<DataValue>) {
         self.init(model:data)
@@ -163,6 +172,7 @@ open class BoolFormItemViewModel : FormItemViewModel {
         self.init(model:data as ItemViewModelType.Model)
         self.title = title
         self.setup(data: data)
+        self.value.asObservable().bindTo(data.value).addDisposableTo(self.disposeBag)
         self.itemIdentifier = itemIdentifier
     }
     public func toString(_ value: DataValue) -> String {
