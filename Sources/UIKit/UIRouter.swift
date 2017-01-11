@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import ReactiveSwift
 
 
 public enum UIViewControllerRouterAction : RouterAction {
@@ -41,3 +41,25 @@ public enum UIViewControllerRouterAction : RouterAction {
     
 }
 
+
+//class PeekPopRouterAction<Source:UIViewController> : NSObject, UIViewControllerPreviewingDelegate {
+//    
+//    private weak var committingViewController:UIViewController?
+//    private weak var fromViewController:Source?
+//    private weak var destinationViewModel:ViewModelType?
+//    var convert:((_ location:CGPoint) -> UIView?)
+//    
+//    init(from viewController:Source, converting:@escaping ((_ location:CGPoint) -> UIView?)) {
+//        self.fromViewController = viewController
+//        self.convert = converting
+//    }
+//    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+//        
+//    }
+//    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+//        let view = self.convert(location)
+//        previewingContext.sourceRect = view?.frame ?? CGRect.zero
+//        
+//        
+//    }
+//}
