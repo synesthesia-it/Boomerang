@@ -9,10 +9,6 @@
 import Foundation
 import Boomerang
 
-extension String : ModelType {
-    public var title: String? {return self}
-}
-
 final class TestItemViewModel: ItemViewModelType {
     
     

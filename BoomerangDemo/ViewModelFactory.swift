@@ -16,6 +16,9 @@ struct HeaderIdentifier : ListIdentifier {
 }
 
 struct ViewModelFactory {
+    static func item(model:ModelType) -> ViewModelType {
+        return self.testViewModel()
+    }
     static func testViewModel() -> TestViewModel {
         var a:[ModelStructure] = []
         for i in 0...100 {
