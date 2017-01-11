@@ -56,7 +56,7 @@ public class FormData<Value : FormValueEquatable> : FormDataMutableType {
     }
 }
 
-public protocol TextInput {
+public protocol TextInput : ViewModelType {
     var title:String? {get}
     var string:Variable<String> {get set}
 }
