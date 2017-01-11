@@ -69,7 +69,17 @@ public protocol FormItemViewModel : ItemViewModelType, ModelType , TextInput{
     func toValue(_ value:String) -> DataValue
     init(data:FormData<DataValue>)
 }
+private struct AssociatedKeys {
+    
+    static var DisposeBag = "disposeBag"
+    
+}
 extension FormItemViewModel {
+    
+    public var disposeBag: DisposeBag? {
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.DisposeBag) as? DisposeBag}
+        set { objc_setAssociatedObject(self, &AssociatedKeys.DisposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
+    }
     public var title: String? {
         return nil
     }
@@ -77,15 +87,14 @@ extension FormItemViewModel {
         let bag = DisposeBag()
         data.value.asObservable().map {[weak self] in self?.toString($0) ?? ""}.distinctUntilChanged().bindTo(string).addDisposableTo(bag)
         self.string.asObservable().delay(0.0, scheduler: MainScheduler.instance).map {[weak self] in self?.toValue($0) ?? DataValue.empty}.bindTo(data.value).addDisposableTo(bag)
-        
+        self.disposeBag = bag
     }
     public init(data:FormData<DataValue>) {
         self.init(model:data)
         self.setup(data: data)
     }
-    
-    
 }
+
 
 public protocol FormViewModelType : ListViewModelType {
     //func formData() -> [String : Any]
