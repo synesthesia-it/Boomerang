@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol ItemViewModelType : ViewModelType {
+public protocol ItemViewModelType : ViewModelType, ModelType {
     typealias Model = ModelType
     var itemIdentifier:ListIdentifier {get set}
     var itemTitle:String? {get}
@@ -18,6 +18,7 @@ public protocol ItemViewModelType : ViewModelType {
 
 public extension ItemViewModelType {
     var itemTitle:String? {return model.title}
+    var title:String? {return self.itemTitle}
     public init(model:ItemViewModelType.Model) {
         self.init()
         self.model = model
