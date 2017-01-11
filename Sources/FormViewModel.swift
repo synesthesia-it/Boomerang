@@ -172,7 +172,7 @@ open class BoolFormItemViewModel : FormItemViewModel {
         self.init(model:data as ItemViewModelType.Model)
         self.title = title
         self.setup(data: data)
-        self.value.asObservable().bindTo(data.value).addDisposableTo(self.disposeBag)
+        self.value = data.value
         self.itemIdentifier = itemIdentifier
     }
     public func toString(_ value: DataValue) -> String {
