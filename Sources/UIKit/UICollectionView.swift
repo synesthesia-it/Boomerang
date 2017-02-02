@@ -188,10 +188,10 @@ extension UICollectionView : ViewModelBindable {
         let spacing =  flowDelegate?.responds(to:#selector(UICollectionViewDelegateFlowLayout.collectionView(_:layout:minimumInteritemSpacingForSectionAt:))) == true ? flowDelegate!.collectionView!(self, layout: flow, minimumInteritemSpacingForSectionAt: indexPath.section) : flow.minimumInteritemSpacing
 
         
-        let globalWidth = self.frame.size.width - insets.left - insets.right
+        let globalWidth = self.frame.size.width - insets.left - insets.right - self.contentInset.left - self.contentInset.right
         
         let singleWidth = (CGFloat(globalWidth) - (CGFloat(max(0,itemsPerLine - 1)) * spacing)) / CGFloat(max(itemsPerLine,1))
-        return self.autosizeItemAt(indexPath: indexPath, constrainedToWidth: Float(singleWidth))
+        return self.autosizeItemAt(indexPath: indexPath, constrainedToWidth: floor(Float(singleWidth)))
         
     }
 }
