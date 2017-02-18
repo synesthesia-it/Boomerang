@@ -10,10 +10,14 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-//extension UICollectionReusableView : ViewModelBindable {
-//
-//}
 
+public extension UICollectionReusableView {
+    
+    public var isPlaceholder:Bool {
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.isPlaceholder) as? Bool ?? false}
+        set { objc_setAssociatedObject(self, &AssociatedKeys.isPlaceholder, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
+    }
+}
 
 private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewDataSource {
     weak var viewModel: ListViewModelType?
@@ -72,7 +76,9 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
         var parameters = self.staticCells[nib.name]
         
         if (parameters == nil) {
-            let cell = Bundle.main.loadNibNamed(nib.name, owner: self, options: [:])!.first as! UICollectionViewCell
+            guard let cell = Bundle.main.loadNibNamed(nib.name, owner: self, options: [:])!.first as? UICollectionViewCell else {
+                return nil
+            }
             cell.contentView.translatesAutoresizingMaskIntoConstraints = false
             let constraint = NSLayoutConstraint(
                 item: cell.contentView,
@@ -83,6 +89,7 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
                 multiplier: 1.0,
                 constant: CGFloat(width))
             cell.contentView.addConstraint(constraint)
+            cell.isPlaceholder = true
             parameters = StaticCellParameters(constraint: constraint, cell:cell)
             
         }
@@ -110,6 +117,7 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
 private struct AssociatedKeys {
     static var viewModel = "viewModel"
     static var disposeBag = "disposeBag"
+    static var isPlaceholder = "isPlaceholder"
     static var collectionViewDataSource = "collectionViewDataSource"
 }
 public extension ListViewModelType  {

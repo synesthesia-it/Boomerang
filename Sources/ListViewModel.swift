@@ -140,7 +140,7 @@ public extension ListViewModelType  {
         var d = self.dataHolder.viewModels.value
         let vm = d[index]
         if (vm == nil) {
-            guard let model:ModelType = self.model(atIndex:index) else {
+            guard let model:ModelType =  self.dataHolder.modelStructure.value.modelAtIndex(index) else {
                 return nil
             }
             let item =  self.itemViewModel(fromModel: model)
