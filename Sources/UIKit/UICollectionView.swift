@@ -23,31 +23,31 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
         
     }
     @objc public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell  {
-        let viewModel:ItemViewModelType? = self.viewModel?.viewModelAtIndex(indexPath)
+        let viewModel:ItemViewModelType? = self.viewModel?.viewModel(atIndex:indexPath)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewModel?.itemIdentifier.name ?? defaultListIdentifier, for: indexPath)
-        (cell as? ViewModelBindableType)?.bind(viewModel)
+        (cell as? ViewModelBindableType)?.bindTo(viewModel:viewModel)
         return cell
     }
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
-         let count =  self.viewModel?.dataHolder.models.value.children?.count ?? 1
+        let count =  self.viewModel?.dataHolder.modelStructure.value.children?.count ?? 1
         return count
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        var count =  self.viewModel?.dataHolder.models.value.children?[section].models?.count
-        count =  count ?? self.viewModel?.dataHolder.models.value.models?.count
+        var count =  self.viewModel?.dataHolder.modelStructure.value.children?[section].models?.count
+        count =  count ?? self.viewModel?.dataHolder.modelStructure.value.models?.count
         return count ?? 0
     }
     
     @objc public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let model = self.viewModel?.dataHolder.models.value.sectionModelAtIndexPath(indexPath)//self.viewModel?.dataHolder.models.value.children?[indexPath.section].sectionModel
+        let model = self.viewModel?.dataHolder.modelStructure.value.sectionModelAtIndexPath(indexPath)//self.viewModel?.dataHolder.models.value.children?[indexPath.section].sectionModel
         if nil != model {
             
-            let vm =  self.viewModel?.itemViewModel(model!)
-            if (vm != nil) {
-                let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: vm!.itemIdentifier.name, for: indexPath)
-                (cell as? ViewModelBindableType)?.bind(vm)
+            let viewModel =  self.viewModel?.itemViewModel(fromModel: model!)
+            if (viewModel != nil) {
+                let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: viewModel!.itemIdentifier.name, for: indexPath)
+                (cell as? ViewModelBindableType)?.bindTo(viewModel:viewModel)
                 return cell
             }
         }
@@ -58,17 +58,17 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
         var constraint:NSLayoutConstraint!
         var cell:UICollectionViewCell!
     }
-
+    
     
     
     var staticCells = [String:StaticCellParameters]()
     
     func staticCellForSizeAtIndexPath (_ indexPath:IndexPath ,width:Float) -> UICollectionViewCell?{
         
-        guard let nib = self.viewModel?.identifierAtIndex(indexPath) else {
+        guard let nib = self.viewModel?.identifier(atIndex:indexPath) else {
             return nil
         }
-
+        
         var parameters = self.staticCells[nib.name]
         
         if (parameters == nil) {
@@ -88,8 +88,8 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
         }
         
         parameters!.constraint?.constant = CGFloat(width)
-        (parameters!.cell as? ViewModelBindableType)?.bind(self.viewModel?.viewModelAtIndex(indexPath))
-//        self.bindViewModelToCellAtIndexPath(parameters!.cell, indexPath: indexPath, forResize: true)
+        (parameters!.cell as? ViewModelBindableType)?.bindTo(viewModel:self.viewModel?.viewModel(atIndex:indexPath))
+        //        self.bindViewModelToCellAtIndexPath(parameters!.cell, indexPath: indexPath, forResize: true)
         var newCells = staticCells
         newCells[nib.name] = parameters
         
@@ -109,7 +109,7 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
 }
 private struct AssociatedKeys {
     static var viewModel = "viewModel"
-    static var disposable = "disposable"
+    static var disposeBag = "disposeBag"
     static var collectionViewDataSource = "collectionViewDataSource"
 }
 public extension ListViewModelType  {
@@ -130,24 +130,37 @@ extension UICollectionView : ViewModelBindable {
         set { objc_setAssociatedObject(self, &AssociatedKeys.viewModel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
     
-    public var disposable: DisposeBag? {
-        get { return objc_getAssociatedObject(self, &AssociatedKeys.disposable) as? DisposeBag}
-        set { objc_setAssociatedObject(self, &AssociatedKeys.disposable, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
+    public var disposeBag: DisposeBag {
+        get {
+            var disposeBag: DisposeBag
+            
+            if let lookup = objc_getAssociatedObject(self, &AssociatedKeys.disposeBag) as? DisposeBag {
+                disposeBag = lookup
+            } else {
+                disposeBag = DisposeBag()
+                objc_setAssociatedObject(self, &AssociatedKeys.disposeBag, disposeBag, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            }
+            
+            return disposeBag
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.disposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
     }
     
-    public func bind(_ viewModel: ViewModelType?) {
-        guard let vm = viewModel as? ListViewModelType else {
+    public func bindTo(viewModel: ViewModelType?) {
+        guard let viewModel = viewModel as? ListViewModelType else {
             self.viewModel = nil
             return
         }
-        self.viewModel = vm
+        self.viewModel = viewModel
         
         let collectionView = self
-        _ = vm.listIdentifiers().map { $0.name}.reduce("", { (_, value) in
+        _ = viewModel.listIdentifiers.map { $0.name}.reduce("", { (_, value) in
             collectionView.register(UINib(nibName: value, bundle: nil), forCellWithReuseIdentifier: value)
             return ""
         })
-        _ = (vm as? ListViewModelTypeHeaderable)?.headerIdentifiers().reduce("", { (_, value) in
+        _ = (viewModel as? ListViewModelTypeHeaderable)?.headerIdentifiers.reduce("", { (_, value) in
             
             collectionView.register(UINib(nibName: value.name, bundle: nil), forSupplementaryViewOfKind: value.type ?? UICollectionElementKindSectionHeader, withReuseIdentifier: value.name)
             return ""
@@ -155,25 +168,27 @@ extension UICollectionView : ViewModelBindable {
         
         collectionView.register(EmptyReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader , withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
         collectionView.register(EmptyReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionFooter , withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
-        if (vm.collectionViewDataSource == nil) {
-            vm.collectionViewDataSource = ViewModelCollectionViewDataSource(viewModel: vm)
+        if (viewModel.collectionViewDataSource == nil) {
+            viewModel.collectionViewDataSource = ViewModelCollectionViewDataSource(viewModel: viewModel)
         }
-        self.dataSource = vm.collectionViewDataSource
-        self.disposable?.dispose()
-        self.disposable = DisposeBag()
-        vm.dataHolder.reloadAction.executionObservables.switchLatest().subscribe(onNext:{ _ in
-            collectionView.reloadData()
-        }).addDisposableTo(self.disposable!)
+        self.dataSource = viewModel.collectionViewDataSource
+        
+        viewModel
+            .dataHolder
+            .reloadAction
+            .elements
+            .subscribe(onNext:{ _ in collectionView.reloadData() })
+            .addDisposableTo(self.disposeBag)
         
         if (collectionView.backgroundView != nil) {
-            vm.isEmpty.asObservable().map{!$0}.bindTo(collectionView.backgroundView!.rx.isHidden).addDisposableTo(self.disposable!)
+            viewModel.isEmpty.asObservable().map{!$0}.bindTo(collectionView.backgroundView!.rx.isHidden).addDisposableTo(self.disposeBag)
         }
     }
     public func autosizeItemAt(indexPath:IndexPath, constrainedToWidth width:Float) -> CGSize {
-        guard let vm = viewModel as? ListViewModelType else {
+        guard let viewModel = viewModel as? ListViewModelType else {
             return .zero
         }
-        guard let dataSource = vm.collectionViewDataSource as? ViewModelCollectionViewDataSource else {
+        guard let dataSource = viewModel.collectionViewDataSource as? ViewModelCollectionViewDataSource else {
             return .zero
         }
         return dataSource.autoSizeForItemAtIndexPath(indexPath, width: width)
@@ -186,7 +201,7 @@ extension UICollectionView : ViewModelBindable {
         let insets =  flowDelegate?.responds(to:#selector(UICollectionViewDelegateFlowLayout.collectionView(_:layout:insetForSectionAt:))) == true ? flowDelegate!.collectionView!(self, layout: flow, insetForSectionAt: indexPath.section) : flow.sectionInset
         
         let spacing =  flowDelegate?.responds(to:#selector(UICollectionViewDelegateFlowLayout.collectionView(_:layout:minimumInteritemSpacingForSectionAt:))) == true ? flowDelegate!.collectionView!(self, layout: flow, minimumInteritemSpacingForSectionAt: indexPath.section) : flow.minimumInteritemSpacing
-
+        
         
         let globalWidth = self.frame.size.width - insets.left - insets.right - self.contentInset.left - self.contentInset.right
         

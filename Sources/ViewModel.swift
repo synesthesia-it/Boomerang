@@ -22,7 +22,7 @@ public struct Error : Swift.Error {
     }
 }
 
-public protocol ViewModelType : class, SelectionOutput {
+public protocol ViewModelType : class {
     init()
 }
 
@@ -32,20 +32,33 @@ public protocol ViewModelBindable : ViewModelBindableType{
     
 }
 public protocol ViewModelBindableType {
-    var disposable:CompositeDisposable? {get set}
-    func bind(_ viewModel: ViewModelType?)
+    var disposeBag:DisposeBag {get}
+    func bindTo(viewModel: ViewModelType?)
 }
-extension ViewModelBindableType {
-    public var disposable:CompositeDisposable? {
-        get {return nil}
-        set {}
-    }
-
+extension ViewModelBindableType {}
+private struct AssociatedKeys {
+    static var disposeBag = "disposeBag"
 }
-
 extension ViewModelType {
     public init() {
         self.init()
+    }
+    public var disposeBag: DisposeBag {
+        get {
+            var disposeBag: DisposeBag
+            
+            if let lookup = objc_getAssociatedObject(self, &AssociatedKeys.disposeBag) as? DisposeBag {
+                disposeBag = lookup
+            } else {
+                disposeBag = DisposeBag()
+                objc_setAssociatedObject(self, &AssociatedKeys.disposeBag, disposeBag, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            }
+            
+            return disposeBag
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.disposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
     }
 }
 
@@ -63,7 +76,7 @@ public protocol ViewModelTypeSelectable : ViewModelType {
     
 }
 public protocol ViewModelTypeActionSelectable : ViewModelType {
-    func select(_ input:SelectionInput)
+    func select(withInput input:SelectionInput)
 }
 //extension ViewModelTypeSelectable {
 //    func select(_ selection:Input) {
@@ -73,11 +86,9 @@ public protocol ViewModelTypeActionSelectable : ViewModelType {
 
 public protocol ViewModelTypeLoadable : ViewModelType {
     var loading: Observable<Bool> {get set}
-//    var loading: SignalProducer<Bool, NoError> {get set}
 }
 public protocol ViewModelTypeFailable : ViewModelType {
     var fail : Observable<Error> {get set}
-//    var fail : Signal<Error, NoError> {get set}
 }
 
 

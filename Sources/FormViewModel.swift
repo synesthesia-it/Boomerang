@@ -112,7 +112,7 @@ public protocol FormViewModelType : ListViewModelType {
 extension FormViewModelType {
     public func formData() -> [String : Any] {
         //        return self.dataHolder.models.value.
-        return self.dataHolder.models.value.allData()
+        return self.dataHolder.modelStructure.value.allData()
             .map { item -> FormDataType? in
                 guard let vm = item as? ItemViewModelType else {
                     return item as? FormDataType
@@ -218,18 +218,16 @@ open class MultiselectionItemViewModel<DataValue:FormModel> : FormItemViewModel,
     public var title:String?
     //    public typealias DataValue = FormValue
     public var itemIdentifier: ListIdentifier  = defaultListIdentifier
-    public var dataHolder: ListDataHolderType = ListDataHolder.empty
+    public var dataHolder: ListDataHolderType = ListDataHolder()
     public var model:ItemViewModelType.Model = FormData<DataValue>(reference: "")
     public var itemViewModelClosure: (ModelType) -> (ItemViewModelType?)  = {_ in return nil}
     private var identifiers:[ListIdentifier] = []
-    public func listIdentifiers() -> [ListIdentifier] {
+    public var listIdentifiers : [ListIdentifier] {
         return identifiers
     }
     public lazy var selection: Action<IndexPath, DataValue> = Action {[unowned self] input in
         
-        let output = (self.modelAtIndex(input) as? DataValue)  ?? DataValue.empty
-        
-        
+        let output = ((self.model(atIndex:input) ) as? DataValue)  ?? DataValue.empty
         return .just(output)
     }
     public required init () {}
@@ -243,7 +241,7 @@ open class MultiselectionItemViewModel<DataValue:FormModel> : FormItemViewModel,
         self.identifiers = [innerIdentifier]
         self.itemViewModelClosure = itemViewModelClosure
     }
-    public func itemViewModel(_ model: ModelType) -> ItemViewModelType? {
+    public func itemViewModel(fromModel model: ModelType) -> ItemViewModelType? {
         return self.itemViewModelClosure(model)
     }
     public func toString(_ v: DataValue) -> String {
@@ -254,12 +252,12 @@ open class MultiselectionItemViewModel<DataValue:FormModel> : FormItemViewModel,
     }
     func setup(data:FormData<DataValue>) {
         
-        let bag = DisposeBag()
-        data.value.asObservable().map {[weak self] in self?.toString($0) ?? ""}.distinctUntilChanged().bindTo(string).addDisposableTo(bag)
-        self.selection.executionObservables.switchLatest().delay(0.0, scheduler: MainScheduler.instance).bindTo(data.value).addDisposableTo(bag)
+        
+        data.value.asObservable().map {[weak self] in self?.toString($0) ?? ""}.distinctUntilChanged().bindTo(string).addDisposableTo(self.disposeBag)
+        self.selection.executionObservables.switchLatest().delay(0.0, scheduler: MainScheduler.instance).bindTo(data.value).addDisposableTo(self.disposeBag)
     }
     
-    public func select(_ selection: SelectionInput) {
+    public func select(withInput selection: SelectionInput) {
         guard let ip = selection as? IndexPath else {
             return
         }

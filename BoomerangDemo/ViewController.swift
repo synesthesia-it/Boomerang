@@ -13,11 +13,11 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, Rout
     @IBOutlet weak var collectionView:UICollectionView?
     @IBOutlet weak var tableView: UITableView!
     var viewModel:TestViewModel?
-    var disposable: DisposeBag?
+    let  disposeBag: DisposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
         if (self.viewModel == nil) {
-            self.bind(ViewModelFactory.anotherTestViewModel())
+            self.bindTo(viewModel:ViewModelFactory.anotherTestViewModel())
         }
         
         
@@ -41,14 +41,14 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, Rout
         
     }
     
-    func bind(_ viewModel: ViewModelType?) {
+    func bindTo(viewModel: ViewModelType?) {
         
         guard let vm = viewModel as? TestViewModel else {
             return
         }
         self.viewModel = vm
         self.collectionView?.delegate = self
-        self.collectionView?.bind(self.viewModel)
+        self.collectionView?.bindTo(viewModel:self.viewModel)
         _ = vm.selection.executionObservables.switchLatest().subscribe(onNext:{[weak self] sel in
             guard let vm = sel as? ViewModelType else {
                 return

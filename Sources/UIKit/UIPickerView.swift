@@ -13,7 +13,7 @@ import RxSwift
 
 private struct AssociatedKeys {
     static var viewModel = "viewModel"
-    static var disposable = "disposable"
+    static var disposeBag = "disposeBag"
     static var pickerViewDataSource = "pickerViewDataSource"
     
 }
@@ -26,17 +26,17 @@ private class ViewModelPickerViewDataSource : NSObject, PickerViewCombinedDelega
         
     }
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        let count =  self.viewModel?.dataHolder.models.value.children?.count ?? 1
+        let count =  self.viewModel?.dataHolder.modelStructure.value.children?.count ?? 1
         return count
     }
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        var count =  self.viewModel?.dataHolder.models.value.children?[component].models?.count
-        count =  count ?? self.viewModel?.dataHolder.models.value.models?.count
+        var count =  self.viewModel?.dataHolder.modelStructure.value.children?[component].models?.count
+        count =  count ?? self.viewModel?.dataHolder.modelStructure.value.models?.count
         return count ?? 0
     }
     
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let viewModel:ItemViewModelType? = self.viewModel?.viewModelAtIndex(IndexPath(row: row, section: component))
+        let viewModel:ItemViewModelType? = self.viewModel?.viewModel(atIndex:IndexPath(row: row, section: component))
         return viewModel?.itemTitle ?? ""
     }
 }
@@ -55,11 +55,11 @@ extension UIPickerView : ViewModelBindable {
         set { objc_setAssociatedObject(self, &AssociatedKeys.viewModel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
     
-    public var disposable: DisposeBag? {
-        get { return objc_getAssociatedObject(self, &AssociatedKeys.disposable) as? DisposeBag}
-        set { objc_setAssociatedObject(self, &AssociatedKeys.disposable, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
+    public var disposeBag: DisposeBag {
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.disposeBag) as? DisposeBag ?? DisposeBag()}
+        set { objc_setAssociatedObject(self, &AssociatedKeys.disposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
-    public func bind(_ viewModel: ViewModelType?) {
+    public func bindTo(viewModel: ViewModelType?) {
         
         guard let vm = viewModel as? ListViewModelType else {
             return
@@ -74,8 +74,8 @@ extension UIPickerView : ViewModelBindable {
         }
         self.dataSource = vm.pickerViewDataSource
         self.delegate = vm.pickerViewDataSource
-        self.disposable?.dispose()
-        self.disposable = DisposeBag()
-        vm.dataHolder.resultsCount.asObservable().subscribe(onNext:{_ in picker.reloadAllComponents()}).addDisposableTo(self.disposable!)
+        
+        self.disposeBag = DisposeBag()
+        vm.dataHolder.resultsCount.asObservable().subscribe(onNext:{_ in picker.reloadAllComponents()}).addDisposableTo(self.disposeBag)
     }
 }

@@ -40,23 +40,43 @@ public protocol ResultRangeType {
 
 extension IndexPath : SelectionInput {}
 public protocol ListDataHolderType : class {
-//    var viewModels:MutableProperty<[IndexPath:ItemViewModelType]> {get set}
+
     var viewModels:Variable<[IndexPath:ItemViewModelType]> {get set}
-    //var resultsCount:MutableProperty<Int> {get set}
+    
     var resultsCount:Variable<Int> {get set}
-//    var newDataAvailable:MutableProperty<ResultRangeType?> {get set}
+
     var newDataAvailable:Variable<ResultRangeType?> {get set}
-//    var models:MutableProperty<ModelStructure> {get set}
-    var models : Variable<ModelStructure> {get set}
-//    var reloadAction:Action<ResultRangeType?,ModelStructure,Error> {get set}
-    //var dataProducer:SignalProducer<ModelStructure,Error> {get set}
+
+    var modelStructure : Variable<ModelStructure> {get set}
+
+    
     var reloadAction:Action<ResultRangeType?,ModelStructure> {get set}
     var data:Observable<ModelStructure> {get set}
     func reload()
     init()
 }
+private struct AssociatedKeys {
+    static var disposeBag = "disposeBag"
+}
 extension ListDataHolderType {
-
+    
+    public var disposeBag: DisposeBag {
+        get {
+            var disposeBag: DisposeBag
+            
+            if let lookup = objc_getAssociatedObject(self, &AssociatedKeys.disposeBag) as? DisposeBag {
+                disposeBag = lookup
+            } else {
+                disposeBag = DisposeBag()
+                objc_setAssociatedObject(self, &AssociatedKeys.disposeBag, disposeBag, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            }
+            
+            return disposeBag
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.disposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
     public static var empty:ListDataHolderType { return Self.init(data: Observable.just(ModelStructure.empty)) }
     public func reload() {
         self.reloadAction.execute(nil)
@@ -72,9 +92,9 @@ extension ListDataHolderType {
             }
         }
         
-        _ = reloadAction.executionObservables.switchLatest().bindTo(self.models)//.addDisposableTo(bag)
-        _ = self.models.asObservable().map{_ in return [IndexPath:ItemViewModelType]()}.bindTo(viewModels)//.addDisposableTo(bag)
-         _ = self.models.asObservable().map { return $0.count}.bindTo(resultsCount)//.addDisposableTo(bag)
+        reloadAction.executionObservables.switchLatest().bindTo(self.modelStructure).addDisposableTo(self.disposeBag)
+        self.modelStructure.asObservable().map{_ in return [IndexPath:ItemViewModelType]()}.bindTo(viewModels).addDisposableTo(self.disposeBag)
+        self.modelStructure.asObservable().map { return $0.count}.bindTo(resultsCount).addDisposableTo(self.disposeBag)
         
     }
 }
@@ -82,7 +102,7 @@ public final class ListDataHolder : ListDataHolderType {
     
     
     public var reloadAction: Action<ResultRangeType?, ModelStructure> = Action {_ in return Observable.just(ModelStructure.empty)}
-    public var models:Variable<ModelStructure> = Variable(ModelStructure.empty)
+    public var modelStructure:Variable<ModelStructure> = Variable(ModelStructure.empty)
     public var viewModels:Variable = Variable([IndexPath:ItemViewModelType]())
     public var resultsCount:Variable<Int> = Variable(0)
     public var newDataAvailable:Variable<ResultRangeType?> = Variable(nil)
@@ -94,18 +114,17 @@ public final class ListDataHolder : ListDataHolderType {
 }
 public protocol ListViewModelType : ViewModelType {
     var dataHolder:ListDataHolderType {get set}
-    func identifierAtIndex(_ index:IndexPath) -> ListIdentifier?
-    func modelAtIndex (_ index:IndexPath) -> ModelType?
-    func itemViewModel(_ model:ModelType) -> ItemViewModelType?
-    func listIdentifiers() -> [ListIdentifier]
-    
+    func identifier(atIndex index:IndexPath) -> ListIdentifier?
+    func model (atIndex index:IndexPath) -> ModelType?
+    func itemViewModel(fromModel model:ModelType) -> ItemViewModelType?
+    var listIdentifiers:[ListIdentifier] {get}
     func reload()
     init()
 }
 
 
 public protocol ListViewModelTypeHeaderable : ListViewModelType {
-    func headerIdentifiers() -> [ListIdentifier]
+    var headerIdentifiers: [ListIdentifier]{get}
 }
 public extension ListViewModelType  {
     
@@ -113,30 +132,29 @@ public extension ListViewModelType  {
         return self.dataHolder.resultsCount.asObservable().map {$0 == 0}
     }
     
-    public func identifierAtIndex(_ index:IndexPath) -> ListIdentifier? {
-        return self.viewModelAtIndex(index)?.itemIdentifier
+    public func identifier(atIndex index:IndexPath) -> ListIdentifier? {
+        return self.viewModel(atIndex:index)?.itemIdentifier
     }
-    public func viewModelAtIndex (_ index:IndexPath) -> ItemViewModelType? {
+    public func viewModel (atIndex index:IndexPath) -> ItemViewModelType? {
         
         var d = self.dataHolder.viewModels.value
         let vm = d[index]
         if (vm == nil) {
-            let item =  self.itemViewModel(self.modelAtIndex(index)!)
+            guard let model:ModelType = self.model(atIndex:index) else {
+                return nil
+            }
+            let item =  self.itemViewModel(fromModel: model)
             d[index] = item
             self.dataHolder.viewModels.value = d
             return item
         }
         return vm
     }
-    public func itemViewModel(_ model:ModelType) -> ItemViewModelType? {
+    public func itemViewModel(fromModel model:ModelType) -> ItemViewModelType? {
         if (model is ItemViewModelType) {
             return model as? ItemViewModelType
         }
         return nil
-    }
-    init(data:Observable<ModelStructure>) {
-        self.init()
-        self.dataHolder = ListDataHolder(data:data)
     }
     
     //    init() {
@@ -145,9 +163,19 @@ public extension ListViewModelType  {
 }
 
 public extension ListViewModelType {
-    public func modelAtIndex (_ index:IndexPath) -> ModelType? {
-        return self.dataHolder.models.value.modelAtIndex(index)
-        
+//    public func model<Model:ModelType> (atIndex index:IndexPath) -> Model? {
+//        let model = self.dataHolder.modelStructure.value.modelAtIndex(index) as? Model
+//        guard let viewModel = model as? ItemViewModelType else {
+//            return model
+//        }
+//        return viewModel.model as? Model
+//    }
+    public func model (atIndex index:IndexPath) -> ModelType? {
+        let model = self.dataHolder.modelStructure.value.modelAtIndex(index)
+        guard let viewModel = model as? ItemViewModelType else {
+            return model
+        }
+        return viewModel.model 
     }
     public func reload() {
         self.dataHolder.reload()

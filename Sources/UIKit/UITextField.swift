@@ -13,7 +13,7 @@ import RxCocoa
 
 private struct AssociatedKeys {
     static var viewModel = "viewModel"
-    static var DisposeBag = "boomerang_disposeBag"
+    static var disposeBag = "boomerang_disposeBag"
     
 }
 extension UITextField : ViewModelBindable {
@@ -24,20 +24,20 @@ extension UITextField : ViewModelBindable {
     }
     
     public var disposeBag: DisposeBag {
-        get { return objc_getAssociatedObject(self, &AssociatedKeys.DisposeBag) as! DisposeBag}
-        set { objc_setAssociatedObject(self, &AssociatedKeys.DisposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.disposeBag) as! DisposeBag}
+        set { objc_setAssociatedObject(self, &AssociatedKeys.disposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
     
-    public func bind(_ viewModel: ViewModelType?) {
+    public func bindTo(viewModel: ViewModelType?) {
         self.viewModel = viewModel
-        guard let vm = viewModel as? TextInput else {
+        guard let viewModel = viewModel as? TextInput else {
             return
         }
-        self.placeholder = vm.title
+        self.placeholder = viewModel.title
         
         self.disposeBag = DisposeBag()
-        vm.string.asObservable().distinctUntilChanged().delay(0.0, scheduler: MainScheduler.instance).bindTo(self.rx.text).addDisposableTo(self.disposeBag)
-        self.rx.text.map { $0 ?? ""}.bindTo(vm.string).addDisposableTo(self.disposeBag)
+        self.text = viewModel.string.value
+        self.rx.text.map { $0 ?? ""}.bindTo(viewModel.string).addDisposableTo(self.disposeBag)
         
     }
     
@@ -54,21 +54,18 @@ extension UITextView : ViewModelBindable {
     }
     
     public var disposeBag: DisposeBag {
-        get { return objc_getAssociatedObject(self, &AssociatedKeys.DisposeBag) as! DisposeBag}
-        set { objc_setAssociatedObject(self, &AssociatedKeys.DisposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.disposeBag) as! DisposeBag}
+        set { objc_setAssociatedObject(self, &AssociatedKeys.disposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
     
-    public func bind(_ viewModel: ViewModelType?) {
+    public func bindTo(viewModel: ViewModelType?) {
         self.viewModel = viewModel
-        guard let vm = viewModel as? TextInput else {
+        guard let viewModel = viewModel as? TextInput else {
             return
         }
-        
-        
         self.disposeBag = DisposeBag()
-        
-        vm.string.asObservable().distinctUntilChanged().delay(0.0, scheduler: MainScheduler.instance).bindTo(self.rx.text).addDisposableTo(self.disposeBag)
-        self.rx.text.map { $0 ?? ""}.bindTo(vm.string).addDisposableTo(self.disposeBag)
+        self.text = viewModel.string.value
+        self.rx.text.map { $0 ?? ""}.bindTo(viewModel.string).addDisposableTo(self.disposeBag)
     }
     
     
