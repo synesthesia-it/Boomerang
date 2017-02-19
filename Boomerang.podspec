@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   
   s.source       = { :git => "https://github.com/stefanomondino/Boomerang.git", :tag => "#{s.version}" }
   s.source_files = "Sources/*.{swift,h,m}"
-  s.ios.source_files = "Sources/UIKit/*.{swift}"
+  s.ios.source_files = "Sources/UIKit/**.{swift}"
   s.tvos.source_files = "Sources/UIKit/*.{swift}"
   s.module_map = "Sources/module.modulemap"
   s.dependency 'RxSwift', '~> 3.0'

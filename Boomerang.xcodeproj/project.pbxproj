@@ -12,7 +12,19 @@
 		7B087DBB1DD47F5800F9E39D /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DBA1DD47F5800F9E39D /* ItemViewModel.swift */; };
 		7B087DC01DD4825800F9E39D /* ItemViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DBF1DD4825800F9E39D /* ItemViewModelTests.swift */; };
 		7B087DC21DD4826B00F9E39D /* ModelStructureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DC11DD4826B00F9E39D /* ModelStructureTests.swift */; };
-		7B27E2361DCA43BB007C4C9C /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B27E2351DCA43BB007C4C9C /* UICollectionView.swift */; };
+		7B17AA5B1E599E1F00C66F37 /* UIPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA541E599E1F00C66F37 /* UIPickerView.swift */; };
+		7B17AA5D1E599E1F00C66F37 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA551E599E1F00C66F37 /* UIButton.swift */; };
+		7B17AA5E1E599E1F00C66F37 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA551E599E1F00C66F37 /* UIButton.swift */; };
+		7B17AA5F1E599E1F00C66F37 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA561E599E1F00C66F37 /* UICollectionView.swift */; };
+		7B17AA601E599E1F00C66F37 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA561E599E1F00C66F37 /* UICollectionView.swift */; };
+		7B17AA611E599E1F00C66F37 /* UIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA571E599E1F00C66F37 /* UIRouter.swift */; };
+		7B17AA621E599E1F00C66F37 /* UIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA571E599E1F00C66F37 /* UIRouter.swift */; };
+		7B17AA631E599E1F00C66F37 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA581E599E1F00C66F37 /* UITableView.swift */; };
+		7B17AA641E599E1F00C66F37 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA581E599E1F00C66F37 /* UITableView.swift */; };
+		7B17AA651E599E1F00C66F37 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA591E599E1F00C66F37 /* UITextField.swift */; };
+		7B17AA661E599E1F00C66F37 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA591E599E1F00C66F37 /* UITextField.swift */; };
+		7B17AA671E599E1F00C66F37 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA5A1E599E1F00C66F37 /* UIViewController.swift */; };
+		7B17AA681E599E1F00C66F37 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA5A1E599E1F00C66F37 /* UIViewController.swift */; };
 		7B27E2401DCB5352007C4C9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B27E23F1DCB5352007C4C9C /* AppDelegate.swift */; };
 		7B27E2421DCB5352007C4C9C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B27E2411DCB5352007C4C9C /* ViewController.swift */; };
 		7B27E2451DCB5352007C4C9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B27E2431DCB5352007C4C9C /* Main.storyboard */; };
@@ -64,9 +76,6 @@
 		7B65F4761DE300F2000684D0 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65F4751DE300F2000684D0 /* FormViewModel.swift */; };
 		7B65F4771DE300F2000684D0 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65F4751DE300F2000684D0 /* FormViewModel.swift */; };
 		7B65F4781DE300F2000684D0 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65F4751DE300F2000684D0 /* FormViewModel.swift */; };
-		7B65F47D1DE32BC2000684D0 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65F47C1DE32BC2000684D0 /* UITextField.swift */; };
-		7B7508431DD5CC98006C82A0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC8751DB021310005E500 /* UIViewController.swift */; };
-		7B7508451DD5FD36006C82A0 /* UIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7508441DD5FD36006C82A0 /* UIRouter.swift */; };
 		7B8A31BF1DDB4EFA00828075 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31B61DDB4EFA00828075 /* Boomerang.framework */; };
 		7B8A31C41DDB4EFA00828075 /* Boomerang_tvOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8A31C31DDB4EFA00828075 /* Boomerang_tvOSTests.swift */; };
 		7B8A31C61DDB4EFA00828075 /* Boomerang tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B8A31B81DDB4EFA00828075 /* Boomerang tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -78,9 +87,6 @@
 		7B8A31DA1DDB4FA700828075 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D71DDB4FA700828075 /* ReactiveCocoa.framework */; };
 		7B8A31DB1DDB4FA700828075 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D81DDB4FA700828075 /* ReactiveSwift.framework */; };
 		7B8A31DC1DDB4FA700828075 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D91DDB4FA700828075 /* Result.framework */; };
-		7BAC0A2F1E015B2100BEA18E /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BEE081DCCCD1000FF2F85 /* UITableView.swift */; };
-		7BD1A5401DEC32E700ECB0F6 /* UIPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD1A53F1DEC32E700ECB0F6 /* UIPickerView.swift */; };
-		7BE2E8E21DE49AA000700548 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2E8E11DE49AA000700548 /* UIButton.swift */; };
 		7BF11CC11DDC5AD500518BC0 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2CC8531DB016510005E500 /* Boomerang.framework */; };
 /* End PBXBuildFile section */
 
@@ -131,7 +137,13 @@
 		7B087DBA1DD47F5800F9E39D /* ItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 		7B087DBF1DD4825800F9E39D /* ItemViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewModelTests.swift; sourceTree = "<group>"; };
 		7B087DC11DD4826B00F9E39D /* ModelStructureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelStructureTests.swift; sourceTree = "<group>"; };
-		7B27E2351DCA43BB007C4C9C /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		7B17AA541E599E1F00C66F37 /* UIPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPickerView.swift; sourceTree = "<group>"; };
+		7B17AA551E599E1F00C66F37 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		7B17AA561E599E1F00C66F37 /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		7B17AA571E599E1F00C66F37 /* UIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRouter.swift; sourceTree = "<group>"; };
+		7B17AA581E599E1F00C66F37 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		7B17AA591E599E1F00C66F37 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		7B17AA5A1E599E1F00C66F37 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		7B27E23D1DCB5352007C4C9C /* BoomerangDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoomerangDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B27E23F1DCB5352007C4C9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B27E2411DCB5352007C4C9C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -152,7 +164,6 @@
 		7B2CC86E1DB019A80005E500 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		7B2CC86F1DB019A80005E500 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		7B2CC8731DB019BA0005E500 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		7B2CC8751DB021310005E500 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		7B2CC87B1DB112FD0005E500 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		7B440F531DD8F1C6005787EF /* Boomerang.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Boomerang.podspec; sourceTree = "<group>"; };
 		7B440F601DD8F28E005787EF /* ViewModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
@@ -179,9 +190,6 @@
 		7B57E2491DD201FC0042C158 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		7B5EB3E71DF0109600CF967D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7B65F4751DE300F2000684D0 /* FormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
-		7B65F47C1DE32BC2000684D0 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
-		7B6BEE081DCCCD1000FF2F85 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
-		7B7508441DD5FD36006C82A0 /* UIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRouter.swift; sourceTree = "<group>"; };
 		7B8A31B61DDB4EFA00828075 /* Boomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8A31B81DDB4EFA00828075 /* Boomerang tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Boomerang tvOS.h"; sourceTree = "<group>"; };
 		7B8A31B91DDB4EFA00828075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -191,8 +199,6 @@
 		7B8A31D71DDB4FA700828075 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/tvOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		7B8A31D81DDB4FA700828075 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/tvOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		7B8A31D91DDB4FA700828075 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/tvOS/Result.framework; sourceTree = "<group>"; };
-		7BD1A53F1DEC32E700ECB0F6 /* UIPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPickerView.swift; sourceTree = "<group>"; };
-		7BE2E8E11DE49AA000700548 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,18 +305,26 @@
 			name = Routing;
 			sourceTree = "<group>";
 		};
-		7B27E2341DCA43A8007C4C9C /* UIKit */ = {
+		7B17AA521E599E1F00C66F37 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				7B2CC8751DB021310005E500 /* UIViewController.swift */,
-				7B6BEE081DCCCD1000FF2F85 /* UITableView.swift */,
-				7B27E2351DCA43BB007C4C9C /* UICollectionView.swift */,
-				7BE2E8E11DE49AA000700548 /* UIButton.swift */,
-				7B7508441DD5FD36006C82A0 /* UIRouter.swift */,
-				7B65F47C1DE32BC2000684D0 /* UITextField.swift */,
-				7BD1A53F1DEC32E700ECB0F6 /* UIPickerView.swift */,
+				7B17AA531E599E1F00C66F37 /* ios */,
+				7B17AA551E599E1F00C66F37 /* UIButton.swift */,
+				7B17AA561E599E1F00C66F37 /* UICollectionView.swift */,
+				7B17AA571E599E1F00C66F37 /* UIRouter.swift */,
+				7B17AA581E599E1F00C66F37 /* UITableView.swift */,
+				7B17AA591E599E1F00C66F37 /* UITextField.swift */,
+				7B17AA5A1E599E1F00C66F37 /* UIViewController.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		7B17AA531E599E1F00C66F37 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				7B17AA541E599E1F00C66F37 /* UIPickerView.swift */,
+			);
+			path = ios;
 			sourceTree = "<group>";
 		};
 		7B27E23E1DCB5352007C4C9C /* BoomerangDemo */ = {
@@ -372,10 +386,10 @@
 		7B2CC8551DB016510005E500 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				7B17AA521E599E1F00C66F37 /* UIKit */,
 				7B087DBC1DD47F5D00F9E39D /* ViewModel */,
 				7B087DBD1DD47F6500F9E39D /* Model */,
 				7B087DBE1DD47F6A00F9E39D /* Routing */,
-				7B27E2341DCA43A8007C4C9C /* UIKit */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -841,19 +855,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B65F47D1DE32BC2000684D0 /* UITextField.swift in Sources */,
-				7BD1A5401DEC32E700ECB0F6 /* UIPickerView.swift in Sources */,
-				7B7508451DD5FD36006C82A0 /* UIRouter.swift in Sources */,
-				7B7508431DD5CC98006C82A0 /* UIViewController.swift in Sources */,
 				7B087DB91DD47F4300F9E39D /* ListViewModel.swift in Sources */,
 				7B65F4761DE300F2000684D0 /* FormViewModel.swift in Sources */,
+				7B17AA611E599E1F00C66F37 /* UIRouter.swift in Sources */,
 				7B087DB71DD47EE100F9E39D /* ModelStructure.swift in Sources */,
-				7B27E2361DCA43BB007C4C9C /* UICollectionView.swift in Sources */,
+				7B17AA5F1E599E1F00C66F37 /* UICollectionView.swift in Sources */,
+				7B17AA5D1E599E1F00C66F37 /* UIButton.swift in Sources */,
 				7B087DBB1DD47F5800F9E39D /* ItemViewModel.swift in Sources */,
-				7BE2E8E21DE49AA000700548 /* UIButton.swift in Sources */,
-				7BAC0A2F1E015B2100BEA18E /* UITableView.swift in Sources */,
+				7B17AA671E599E1F00C66F37 /* UIViewController.swift in Sources */,
+				7B17AA631E599E1F00C66F37 /* UITableView.swift in Sources */,
 				7B2CC8741DB019BA0005E500 /* ViewModel.swift in Sources */,
 				7B2CC87C1DB112FD0005E500 /* Router.swift in Sources */,
+				7B17AA5B1E599E1F00C66F37 /* UIPickerView.swift in Sources */,
+				7B17AA651E599E1F00C66F37 /* UITextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -886,10 +900,16 @@
 			files = (
 				7B65F4781DE300F2000684D0 /* FormViewModel.swift in Sources */,
 				7B8A31CE1DDB4F3800828075 /* ListViewModel.swift in Sources */,
+				7B17AA621E599E1F00C66F37 /* UIRouter.swift in Sources */,
 				7B8A31D01DDB4F3800828075 /* ModelStructure.swift in Sources */,
+				7B17AA601E599E1F00C66F37 /* UICollectionView.swift in Sources */,
+				7B17AA5E1E599E1F00C66F37 /* UIButton.swift in Sources */,
 				7B8A31D11DDB4F3800828075 /* Router.swift in Sources */,
+				7B17AA681E599E1F00C66F37 /* UIViewController.swift in Sources */,
+				7B17AA641E599E1F00C66F37 /* UITableView.swift in Sources */,
 				7B8A31CD1DDB4F3800828075 /* ViewModel.swift in Sources */,
 				7B8A31CF1DDB4F3800828075 /* ItemViewModel.swift in Sources */,
+				7B17AA661E599E1F00C66F37 /* UITextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
