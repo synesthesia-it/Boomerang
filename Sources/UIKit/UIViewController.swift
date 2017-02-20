@@ -32,20 +32,20 @@ public protocol ViewControllerActionBindable {
 }
 
 public extension ViewControllerActionBindable where Self: UIViewController {
-    public func bind(_ observable:Observable<ActionError>) -> Disposable {
+    public func bindTo(observable:Observable<ActionError>) -> Disposable {
         return observable.subscribe(onNext: {[weak self] error in
                 self?.showError(error)
         })
     }
     
-    public func bind<Input,Output>(_ action:Action<Input,Output>) -> Disposable {
+    public func bindTo<Input,Output>(action:Action<Input,Output>) -> Disposable {
         let disposable = CompositeDisposable()
         
-        _ = disposable.insert(self.bind(action.errors))
-        _ = disposable.insert(self.bind(action.executing))
+        _ = disposable.insert(self.bindTo(observable:action.errors))
+        _ = disposable.insert(self.bindTo(observable:action.executing))
         return disposable
     }
-    public func bind(_ observable:Observable<Bool>) -> Disposable {
+    public func bindTo(observable:Observable<Bool>) -> Disposable {
         return observable.subscribe(onNext: {[weak self] isLoading in
              isLoading ? self?.showLoader() : self?.hideLoader()
         })

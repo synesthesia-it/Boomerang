@@ -11,14 +11,14 @@ import Foundation
 public protocol ItemViewModelType : ViewModelType, ModelType {
     typealias Model = ModelType
     var itemIdentifier:ListIdentifier {get set}
-    var itemTitle:String? {get}
+    
     var model:Model {get set}
     init(model:Model)
 }
 
 public extension ItemViewModelType {
-    var itemTitle:String? {return model.title}
-    var title:String? {return self.itemTitle}
+    var itemTitle:String? {return ""}
+    
     public init(model:ItemViewModelType.Model) {
         self.init()
         self.model = model

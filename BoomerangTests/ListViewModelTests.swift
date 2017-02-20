@@ -16,16 +16,14 @@ final class TestListViewModel:ListViewModelType {
     
     var dataHolder: ListDataHolderType = ListDataHolder.empty
     
-    func itemViewModel(_ model: ModelType) -> ItemViewModelType? {
+    func itemViewModel(fromModel model: ModelType) -> ItemViewModelType? {
         return TestItemViewModel(model: model)
     }
-    func listIdentifiers() -> [ListIdentifier] {
+    var listIdentifiers:[ListIdentifier] {
         return ["TestItem"]
     }
     
-    func select(selection: SelectionInput) -> ViewModelType {
-        return TestListViewModel()
-    }
+
 }
 
 class ListDataHolderSpec: QuickSpec {

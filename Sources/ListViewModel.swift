@@ -110,7 +110,9 @@ public final class ListDataHolder : ListDataHolderType {
     public init() {
         self.data = .just(ModelStructure.empty)
     }
-    
+    public init(withModels models:[ModelType]) {
+        self.data = .just(ModelStructure(models))
+    }
 }
 public protocol ListViewModelType : ViewModelType {
     var dataHolder:ListDataHolderType {get set}

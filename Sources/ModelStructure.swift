@@ -7,16 +7,28 @@
 //
 
 import Foundation
-
+import RxSwift
 
 public protocol ModelType {
-    var title:String? {get}
+    
 }
 public protocol ModelStructureType {
     var modelCount:Int {get}
     var childrenCount:Int {get}
 }
 
+public extension Observable where Element : Collection {
+    func structured() -> Observable<ModelStructure> {
+        
+        return self.map({ (element:Element) -> ModelStructure in
+            guard let array = element as? [ModelType] else {
+                return ModelStructure([ModelType]())
+            }
+            return ModelStructure(array)
+        })
+        //        return self.map({$0 as?[ModelType]}).ignoreNil().map{ModelStructure($0)}
+    }
+}
 public final class ModelStructure : ModelStructureType {
     public typealias ModelClass = ModelType
     public var models:[ModelClass]?

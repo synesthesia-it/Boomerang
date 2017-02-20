@@ -13,7 +13,13 @@ import RxCocoa
 import Action
 
 public protocol FormValue   {
+    var title:String? {get}
     static var empty: Self {get}
+}
+extension FormValue {
+    public var title:String? {
+        return nil
+    }
 }
 public protocol FormValueEquatable : FormValue, Equatable {
     
