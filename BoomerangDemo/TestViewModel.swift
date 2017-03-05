@@ -16,7 +16,7 @@ enum TestSelection : SelectionInput {
 enum TestSelectionOutput : SelectionOutput {
     case viewModel(ViewModelType)
 }
-final class TestViewModel:ListViewModelTypeHeaderable, ViewModelTypeSelectable {
+final class TestViewModel:ListViewModelTypeHeaderable, ViewModelTypeSelectable, EditableViewModel {
     
     lazy var selection:Action<TestSelection, TestSelectionOutput> = Action  { choice in
         switch choice {
@@ -35,14 +35,30 @@ final class TestViewModel:ListViewModelTypeHeaderable, ViewModelTypeSelectable {
     var dataHolder: ListDataHolderType = ListDataHolder.empty
     
     func itemViewModel(fromModel model: ModelType) -> ItemViewModelType? {
+        switch model {
+        case is Item:
+            return TestItemViewModel(model: model as! Item)
+        case is Section:
+            return TestItemViewModel(model: model as! Section)
+        default : return nil
+        }
         
-        return TestItemViewModel(model: model as! Item)
+        
     }
     var listIdentifiers: [ListIdentifier] {
-        return ["TestCollectionViewCell"]
+        return ["TestCollectionViewCell", "TestTableViewCell"]
     }
     var headerIdentifiers : [ListIdentifier] {
-        return [HeaderIdentifier(name:"TestCollectionViewCell", type:"UICollectionElementKindSectionHeader")]
+        return [HeaderIdentifier(name:"TestHeaderTableViewCell", type:TableViewHeaderType.footer.identifier)]
     }
-
+    func canInsertItem(atIndexPath indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func canMoveItem(atIndexPath indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func moveItem(fromIndexPath from: IndexPath, to: IndexPath) {
+        self.dataHolder.modelStructure.value.moveItem(fromIndexPath: from, to: to)
+    }
+    
 }

@@ -66,7 +66,7 @@ public final class ModelStructure : ModelStructureType {
             return accumulator + structure.indexPaths(current: IndexPath(indexes:(ip + [count])))
         }) ?? [IndexPath]()
     }
-
+    
     var count : Int {
         if (self.children != nil) {
             return self.children!.reduce(0, { (count, structure) -> Int in
@@ -99,6 +99,45 @@ public final class ModelStructure : ModelStructureType {
         return self.children?.reduce([], { (accumulator, structure) -> [ModelClass] in
             return accumulator + structure.allData()
         }) ?? []
+    }
+    @discardableResult public func deleteItem(atIndex index:IndexPath) -> ModelClass? {
+        if (index.count == 1) {
+            let model = self.models?[index.first!]
+            self.models?.remove(at: index.first!)
+            return model
+        }
+        if (self.children == nil) {
+            let model = self.models?[index.last ?? 0]
+            self.models?.remove(at: index.last ?? 0)
+            return model
+            
+        }
+        return self.children?[(index.first ?? 0)].deleteItem(atIndex:index.dropFirst())
+    }
+    @discardableResult public func insert(item:ModelClass, atIndex index:IndexPath) -> ModelClass? {
+        if (index.count == 1) {
+            let model = self.models?[index.first!]
+            self.models?.insert(item, at: index.first!)
+            return model
+        }
+        if (self.children == nil) {
+            let model = self.models?[index.last ?? 0]
+            self.models?.insert(item, at: index.last ?? 0)
+            return model
+            
+        }
+        return self.children?[(index.first ?? 0)].insert(item:item, atIndex:index.dropFirst())
+    }
+    @discardableResult public func moveItem(fromIndexPath from: IndexPath, to: IndexPath) -> ModelClass? {
+        guard let model = self.modelAtIndex(from) else {
+            return nil
+        }
+        self.insert(item: model, atIndex: to)
+        self.deleteItem(atIndex: from)
+        return model
+        
+        
+        
     }
     
 }

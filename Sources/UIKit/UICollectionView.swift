@@ -170,7 +170,7 @@ extension UICollectionView : ViewModelBindable {
         })
         _ = (viewModel as? ListViewModelTypeHeaderable)?.headerIdentifiers.reduce("", { (_, value) in
             
-            collectionView.register(UINib(nibName: value.name, bundle: nil), forSupplementaryViewOfKind: value.type ?? UICollectionElementKindSectionHeader, withReuseIdentifier: value.name)
+            collectionView.register(UINib(nibName: value.name, bundle: nil), forSupplementaryViewOfKind: value.type?.name ?? UICollectionElementKindSectionHeader, withReuseIdentifier: value.name)
             return ""
         })
         

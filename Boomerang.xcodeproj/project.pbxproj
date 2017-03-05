@@ -76,6 +76,11 @@
 		7B65F4761DE300F2000684D0 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65F4751DE300F2000684D0 /* FormViewModel.swift */; };
 		7B65F4771DE300F2000684D0 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65F4751DE300F2000684D0 /* FormViewModel.swift */; };
 		7B65F4781DE300F2000684D0 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65F4751DE300F2000684D0 /* FormViewModel.swift */; };
+		7B7772801E6C71C70074DF5E /* UIPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B77727F1E6C71C70074DF5E /* UIPagerViewController.swift */; };
+		7B7772811E6C71C70074DF5E /* UIPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B77727F1E6C71C70074DF5E /* UIPagerViewController.swift */; };
+		7B7772841E6C762E0074DF5E /* TestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7772821E6C762E0074DF5E /* TestTableViewCell.swift */; };
+		7B7772851E6C762E0074DF5E /* TestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B7772831E6C762E0074DF5E /* TestTableViewCell.xib */; };
+		7B7772871E6C8D990074DF5E /* TestHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B7772861E6C8D980074DF5E /* TestHeaderTableViewCell.xib */; };
 		7B8A31BF1DDB4EFA00828075 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31B61DDB4EFA00828075 /* Boomerang.framework */; };
 		7B8A31C41DDB4EFA00828075 /* Boomerang_tvOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8A31C31DDB4EFA00828075 /* Boomerang_tvOSTests.swift */; };
 		7B8A31C61DDB4EFA00828075 /* Boomerang tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B8A31B81DDB4EFA00828075 /* Boomerang tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -190,6 +195,10 @@
 		7B57E2491DD201FC0042C158 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		7B5EB3E71DF0109600CF967D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7B65F4751DE300F2000684D0 /* FormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
+		7B77727F1E6C71C70074DF5E /* UIPagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPagerViewController.swift; sourceTree = "<group>"; };
+		7B7772821E6C762E0074DF5E /* TestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewCell.swift; sourceTree = "<group>"; };
+		7B7772831E6C762E0074DF5E /* TestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestTableViewCell.xib; sourceTree = "<group>"; };
+		7B7772861E6C8D980074DF5E /* TestHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		7B8A31B61DDB4EFA00828075 /* Boomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8A31B81DDB4EFA00828075 /* Boomerang tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Boomerang tvOS.h"; sourceTree = "<group>"; };
 		7B8A31B91DDB4EFA00828075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -310,6 +319,7 @@
 			children = (
 				7B17AA531E599E1F00C66F37 /* ios */,
 				7B17AA551E599E1F00C66F37 /* UIButton.swift */,
+				7B77727F1E6C71C70074DF5E /* UIPagerViewController.swift */,
 				7B17AA561E599E1F00C66F37 /* UICollectionView.swift */,
 				7B17AA571E599E1F00C66F37 /* UIRouter.swift */,
 				7B17AA581E599E1F00C66F37 /* UITableView.swift */,
@@ -335,6 +345,8 @@
 				7B440F6B1DD8F3ED005787EF /* Router */,
 				7B440F6A1DD8F3E7005787EF /* Model */,
 				7B27E2641DCB86E0007C4C9C /* TestCollectionViewCell.xib */,
+				7B7772831E6C762E0074DF5E /* TestTableViewCell.xib */,
+				7B7772861E6C8D980074DF5E /* TestHeaderTableViewCell.xib */,
 				7B27E2431DCB5352007C4C9C /* Main.storyboard */,
 				7B27E2461DCB5352007C4C9C /* Assets.xcassets */,
 				7B27E2481DCB5352007C4C9C /* LaunchScreen.storyboard */,
@@ -435,6 +447,7 @@
 			isa = PBXGroup;
 			children = (
 				7B27E2631DCB86E0007C4C9C /* TestCollectionViewCell.swift */,
+				7B7772821E6C762E0074DF5E /* TestTableViewCell.swift */,
 				7B440F681DD8F33F005787EF /* TestItemViewModel.swift */,
 				7B27E2411DCB5352007C4C9C /* ViewController.swift */,
 				7B440F641DD8F2BF005787EF /* TestViewModel.swift */,
@@ -758,6 +771,8 @@
 				7B27E24A1DCB5352007C4C9C /* LaunchScreen.storyboard in Resources */,
 				7B27E2471DCB5352007C4C9C /* Assets.xcassets in Resources */,
 				7B27E2661DCB86E0007C4C9C /* TestCollectionViewCell.xib in Resources */,
+				7B7772851E6C762E0074DF5E /* TestTableViewCell.xib in Resources */,
+				7B7772871E6C8D990074DF5E /* TestHeaderTableViewCell.xib in Resources */,
 				7B27E2451DCB5352007C4C9C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -834,6 +849,7 @@
 			files = (
 				7B440F651DD8F2BF005787EF /* TestViewModel.swift in Sources */,
 				7B440F631DD8F2AA005787EF /* Item.swift in Sources */,
+				7B7772841E6C762E0074DF5E /* TestTableViewCell.swift in Sources */,
 				7B27E2651DCB86E0007C4C9C /* TestCollectionViewCell.swift in Sources */,
 				7B440F671DD8F2F9005787EF /* Router.swift in Sources */,
 				7B440F611DD8F28E005787EF /* ViewModelFactory.swift in Sources */,
@@ -855,6 +871,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B7772801E6C71C70074DF5E /* UIPagerViewController.swift in Sources */,
 				7B087DB91DD47F4300F9E39D /* ListViewModel.swift in Sources */,
 				7B65F4761DE300F2000684D0 /* FormViewModel.swift in Sources */,
 				7B17AA611E599E1F00C66F37 /* UIRouter.swift in Sources */,
@@ -898,6 +915,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B7772811E6C71C70074DF5E /* UIPagerViewController.swift in Sources */,
 				7B65F4781DE300F2000684D0 /* FormViewModel.swift in Sources */,
 				7B8A31CE1DDB4F3800828075 /* ListViewModel.swift in Sources */,
 				7B17AA621E599E1F00C66F37 /* UIRouter.swift in Sources */,

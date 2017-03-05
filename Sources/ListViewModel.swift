@@ -20,13 +20,13 @@ extension String : ListIdentifier {
     public var name : String {
         return self
     }
-    public var type: String? {
+    public var type: ListIdentifier? {
         return nil
     }
 }
 public protocol ListIdentifier {
     var name : String {get }
-    var type : String? {get }
+    var type : ListIdentifier? {get }
 }
 
 
@@ -52,6 +52,7 @@ public protocol ListDataHolderType : class {
     
     var reloadAction:Action<ResultRangeType?,ModelStructure> {get set}
     var data:Observable<ModelStructure> {get set}
+    func deleteItem(atIndex index:IndexPath)
     func reload()
     init()
 }
@@ -81,6 +82,11 @@ extension ListDataHolderType {
     public func reload() {
         self.reloadAction.execute(nil)
 
+    }
+    public func deleteItem(atIndex index:IndexPath) {
+        let model = self.modelStructure.value
+        model.deleteItem(atIndex: index)
+        self.modelStructure.value = model
     }
     public init(data:Observable<ModelStructure>) {
         self.init()
