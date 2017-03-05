@@ -13,7 +13,7 @@ import RxSwift
 public enum TableViewHeaderType : String {
     case header = "boomerang_tableview_header"
     case footer = "boomerang_tableview_footer"
-    public var identifier:ListIdentifier {
+    public var identifier:String {
         return self.rawValue
     }
 }

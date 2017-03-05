@@ -12,7 +12,7 @@ import Boomerang
 
 struct HeaderIdentifier : ListIdentifier {
     var name: String
-    var type: ListIdentifier?
+    var type: String?
 }
 
 struct ViewModelFactory {

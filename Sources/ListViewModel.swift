@@ -20,13 +20,13 @@ extension String : ListIdentifier {
     public var name : String {
         return self
     }
-    public var type: ListIdentifier? {
+    public var type: String? {
         return nil
     }
 }
 public protocol ListIdentifier {
     var name : String {get }
-    var type : ListIdentifier? {get }
+    var type : String? {get }
 }
 
 
