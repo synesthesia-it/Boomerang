@@ -28,6 +28,9 @@ public class ViewModelPagerViewDataSource : NSObject, UIPageViewControllerDataSo
     func indexForViewController(_ viewController: UIViewController) -> Int {
         return self.viewControllers.first (where:  { $1 == viewController })?.0 ?? 0
     }
+    func reset() {
+        self.viewControllers = [:]
+    }
     open func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         var index: Int = self.indexForViewController(viewController)
         index -= 1
@@ -113,7 +116,10 @@ extension UIPageViewController : ViewModelBindable {
             .dataHolder
             .reloadAction
             .elements
-            .subscribe(onNext:{[weak self] _ in self?.setViewControllers([viewModel.pagerDataSource?.viewControllerAtIndex(viewModel.startingIndex) ?? UIViewController()], direction: .forward, animated:false, completion: nil) })
+            .subscribe(onNext:{[weak self] _ in
+                viewModel.pagerDataSource?.reset()
+                self?.setViewControllers([viewModel.pagerDataSource?.viewControllerAtIndex(viewModel.startingIndex) ?? UIViewController()], direction: .forward, animated:false, completion: nil)
+            })
             .addDisposableTo(self.disposeBag)
         viewModel.reload()
         
