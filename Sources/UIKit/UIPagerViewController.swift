@@ -25,6 +25,7 @@ public class ViewModelPagerViewDataSource : NSObject, UIPageViewControllerDataSo
         self.viewModel = viewModel
         
     }
+    /* 
     public func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return self.viewModel?.dataHolder.modelStructure.value.models?.count ?? 0
     }
@@ -33,7 +34,7 @@ public class ViewModelPagerViewDataSource : NSObject, UIPageViewControllerDataSo
             return 0
         }
         return self.indexForViewController(vc)
-    }
+    }*/
     func indexForViewController(_ viewController: UIViewController) -> Int {
         return self.viewControllers.first (where:  { $1 == viewController })?.0 ?? 0
     }
