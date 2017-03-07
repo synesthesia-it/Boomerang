@@ -25,6 +25,15 @@ public class ViewModelPagerViewDataSource : NSObject, UIPageViewControllerDataSo
         self.viewModel = viewModel
         
     }
+    public func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return self.viewModel?.dataHolder.modelStructure.value.models?.count ?? 0
+    }
+    public func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        guard let vc = pageViewController.viewControllers?.first else {
+            return 0
+        }
+        return self.indexForViewController(vc)
+    }
     func indexForViewController(_ viewController: UIViewController) -> Int {
         return self.viewControllers.first (where:  { $1 == viewController })?.0 ?? 0
     }
@@ -99,7 +108,15 @@ extension UIPageViewController : ViewModelBindable {
         
         return disposeBag
     }
-    
+    public func presentationCount() -> Int {
+        return (self.viewModel as? ListViewModelType)?.dataHolder.modelStructure.value.models?.count ?? 0
+    }
+    public func presentationIndex() -> Int {
+        guard let vc = self.viewControllers?.first else {
+            return 0
+        }
+        return (self.viewModel as? ListPagerViewModelType)?.pagerDataSource?.indexForViewController(vc) ?? 0
+    }
     public func bindTo(viewModel: ViewModelType?) {
         guard let viewModel = viewModel as? ListPagerViewModelType else {
             self.viewModel = nil
