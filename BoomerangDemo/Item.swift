@@ -14,3 +14,10 @@ struct Item : ModelType {
     
     var string:String
 }
+
+
+struct Section : ModelType {
+    public var title: String? {get {return self.string}}
+    
+    var string:String
+}

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Boomerang"
-  s.version      = "0.1"
+  s.version      = "0.9"
   s.summary      = "Swift microframework for MVVM"
   s.description  = <<-DESC
 			Boomerang is a swift microframework for better crossplatform apps 
@@ -16,9 +16,9 @@ Pod::Spec.new do |s|
   
   s.source       = { :git => "https://github.com/stefanomondino/Boomerang.git", :tag => "#{s.version}" }
   s.source_files = "Sources/*.{swift,h,m}"
-  s.ios.source_files = "Sources/UIKit/*.{swift}"
+  s.ios.source_files = "Sources/UIKit/**.{swift}"
   s.tvos.source_files = "Sources/UIKit/*.{swift}"
   s.module_map = "Sources/module.modulemap"
-  s.dependency 'ReactiveSwift', '~> 1.0.0-alpha.4'
-  s.ios.dependency 'ReactiveCocoa', '~> 5.0.0-alpha.3'
+  s.dependency 'RxSwift', '~> 3.0'
+  s.dependency 'Action', '~> 2.1'
 end

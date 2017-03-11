@@ -8,25 +8,39 @@
 
 import UIKit
 import Boomerang
-import ReactiveSwift
-
-
-class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, RouterDestination, ViewModelBindable  {
+import RxSwift
+class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UITableViewDelegate, RouterDestination, ViewModelBindable  {
     @IBOutlet weak var collectionView:UICollectionView?
-    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var tableView: UITableView?
     var viewModel:TestViewModel?
-    var disposable: CompositeDisposable?
+    let  disposeBag: DisposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.automaticallyAdjustsScrollViewInsets = false
         if (self.viewModel == nil) {
-            self.bind(ViewModelFactory.anotherTestViewModel())
+            self.bindTo(viewModel:ViewModelFactory.anotherTestViewModel())
         }
         
+        self.tableView?.rowHeight = UITableViewAutomaticDimension
+        self.tableView?.estimatedRowHeight = 44
+        self.tableView?.sectionHeaderHeight = 44
+        self.tableView?.sectionFooterHeight = 44
         
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.viewModel?.reload()
+    }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return tableView.autosizeItemAt(indexPath: indexPath, constrainedToWidth: view.frame.size.width)
+//    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return tableView.viewForHeader(inSection: section)
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+         return tableView.viewForFooter(inSection: section)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -38,20 +52,25 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, Rout
         return collectionView.autosizeItemAt(indexPath: indexPath, itemsPerLine: 3)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.viewModel!.selection.apply(.item(indexPath)).start()
+        self.viewModel!.selection.execute(.item(indexPath))
         //Router.from(self, viewModel: self.viewModel!.select(selection: indexPath)).execute()
         
     }
     
-    func bind(_ viewModel: ViewModelType?) {
+    func bindTo(viewModel: ViewModelType?) {
         
         guard let vm = viewModel as? TestViewModel else {
             return
         }
         self.viewModel = vm
         self.collectionView?.delegate = self
-        self.collectionView?.bind(self.viewModel)
-        vm.selection.values.observeValues {[weak self] sel in
+        self.collectionView?.bindTo(viewModel:self.viewModel)
+        
+        
+        self.tableView?.delegate = self
+        self.tableView?.bindTo(viewModel:self.viewModel)
+        
+        _ = vm.selection.executionObservables.switchLatest().subscribe(onNext:{[weak self] sel in
             guard let vm = sel as? ViewModelType else {
                 return
             }
@@ -60,7 +79,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, Rout
             }
             Router.from(self!, viewModel: vm).execute()
             
-        }
+        })
         self.viewModel?.reload()
         
     }

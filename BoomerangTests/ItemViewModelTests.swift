@@ -12,11 +12,7 @@ import Quick
 import ReactiveSwift
 @testable import Boomerang
 
-extension String : ModelType {
-    public var title: String? {
-        return self
-    }
-}
+extension String : ModelType {}
 
 
 final class TestItemViewModel:ItemViewModelType {

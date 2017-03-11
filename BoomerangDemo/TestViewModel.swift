@@ -7,38 +7,58 @@
 //
 
 import Foundation
-import ReactiveSwift
 import Boomerang
-
+import RxSwift
+import Action
 enum TestSelection : SelectionInput {
     case item(IndexPath)
 }
-
-final class TestViewModel:ListViewModelTypeHeaderable, ViewModelTypeSelectable {
+enum TestSelectionOutput : SelectionOutput {
+    case viewModel(ViewModelType)
+}
+final class TestViewModel:ListViewModelTypeHeaderable, ViewModelTypeSelectable, EditableViewModel {
     
-    lazy var selection:Action<TestSelection, SelectionOutput, Boomerang.Error> = Action  { choice in
+    lazy var selection:Action<TestSelection, TestSelectionOutput> = Action  { choice in
         switch choice {
         case .item (let indexPath) :
-            let model = self.modelAtIndex(indexPath)
+            let model = self.model(atIndex:indexPath)
             if (model == nil) {
-                return .empty
+                return .just(.viewModel(ViewModelFactory.item(model:model!)))
             }
             
-            return SignalProducer(value:ViewModelFactory.item(model:model!))
+            return .just(.viewModel(ViewModelFactory.item(model:model!)))
         }
     }
-    
+    init (data:Observable<ModelStructure>) {
+        self.dataHolder = ListDataHolder(data: data)
+    }
     var dataHolder: ListDataHolderType = ListDataHolder.empty
     
-    func itemViewModel(_ model: ModelType) -> ItemViewModelType? {
+    func itemViewModel(fromModel model: ModelType) -> ItemViewModelType? {
+        switch model {
+        case is Item:
+            return TestItemViewModel(model: model as! Item)
+        case is Section:
+            return TestItemViewModel(model: model as! Section)
+        default : return nil
+        }
         
-        return TestItemViewModel(model: model as! Item)
+        
     }
-    func listIdentifiers() -> [ListIdentifier] {
-        return ["TestCollectionViewCell"]
+    var listIdentifiers: [ListIdentifier] {
+        return ["TestCollectionViewCell", "TestTableViewCell"]
     }
-    func headerIdentifiers() -> [ListIdentifier] {
-        return [HeaderIdentifier(name:"TestCollectionViewCell", type:"UICollectionElementKindSectionHeader")]
+    var headerIdentifiers : [ListIdentifier] {
+        return [HeaderIdentifier(name:"TestHeaderTableViewCell", type:TableViewHeaderType.footer.identifier)]
     }
-
+    func canInsertItem(atIndexPath indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func canMoveItem(atIndexPath indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func moveItem(fromIndexPath from: IndexPath, to: IndexPath) {
+        self.dataHolder.modelStructure.value.moveItem(fromIndexPath: from, to: to)
+    }
+    
 }

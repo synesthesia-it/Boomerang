@@ -8,19 +8,17 @@
 
 import UIKit
 import Boomerang
-import ReactiveSwift
-import ReactiveCocoa
-
-
+import RxSwift
 final class TestCollectionViewCell: UICollectionViewCell , ViewModelBindable {
     
     var viewModel: ViewModelType?
+    let disposeBag: DisposeBag = DisposeBag()
     @IBOutlet weak var lbl_title: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         
     }
-    func bind(_ viewModel:ViewModelType?) {
+    func bindTo(viewModel:ViewModelType?) {
         guard let vm = viewModel as? TestItemViewModel else {
             return
         }

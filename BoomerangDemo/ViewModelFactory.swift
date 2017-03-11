@@ -8,7 +8,7 @@
 
 import Foundation
 import Boomerang
-import ReactiveSwift
+
 
 struct HeaderIdentifier : ListIdentifier {
     var name: String
@@ -21,7 +21,7 @@ struct ViewModelFactory {
     }
     static func testViewModel() -> TestViewModel {
         var a:[ModelStructure] = []
-        for i in 0...100 {
+        for i in 0...199 {
             a = a + [ModelStructure([
                 Item(string:"\(i*1000)"),
                 Item(string:"\(i*1000)"),
@@ -31,28 +31,26 @@ struct ViewModelFactory {
                 
                 Item(string:"(i+1)")
                 ],
-                                    sectionModel:Item(string:"Title \(i)"))]
+                                    sectionModel:Section(string:"Title \(i)"))]
         }
         let full = ModelStructure(children:a)
-        return TestViewModel(dataProducer: SignalProducer(value:full))
+        return TestViewModel(data: .just(full))
+        //return TestViewModel(dataProducer: SignalProducer(value:full))
     }
 }
 
 extension ViewModelFactory {
     static func anotherTestViewModel() -> ViewModelType {
-        var a:[ModelStructure] = []
-        for i in 0...100 {
-            a = a + [ModelStructure([
-                Item(string:"2^\(i) = \(pow(2, i))"),
-                Item(string:"2^\(i) = \(pow(2, i))"),
-                Item(string:"2^\(i) = \(pow(2, i))"),
-                Item(string:"2^\(i) = \(pow(2, i))"),
-                Item(string:"2^\(i) = \(pow(2, i))"),
-                Item(string:"2^\(i) = \(pow(2, i))")
-                ],
-                                    sectionModel:Item(string:"Title \(i)"))]
-        }
-        let full = ModelStructure(children:a)
-        return TestViewModel(dataProducer: SignalProducer(value:full))
+        return testViewModel()
+        var a:[Item] = (0...10).map {Item(string:"\($0)")}
+        return TestViewModel(data:.just(ModelStructure(a)))
+//        for i in 0...10 {
+//            a = a + [ModelStructure([
+//                Item(string:"2^\(i) = \(pow(2, i))"),
+//                ],
+//                                    sectionModel:Item(string:"Title \(i)"))]
+//        }
+//        let full = ModelStructure(children:a)
+//         return TestViewModel(data: .just(full))
     }
 }

@@ -7,13 +7,10 @@
 //
 
 import Foundation
-
-import Foundation
 import UIKit
-import ReactiveSwift
-import ReactiveCocoa
-
-import Result
+import RxSwift
+import RxCocoa
+import Action
 
  extension UIViewController : RouterSource {
     
@@ -25,149 +22,47 @@ public protocol LoaderReceiver {
     func hideLoader()
 }
 public protocol ErrorReceiver {
-    func showError(_ error:NSError)
+    func showError(_ error:ActionError)
 }
 
 public protocol ViewControllerActionBindable {
      func showLoader()
      func hideLoader()
-     func showError(_ error:Error)
+     func showError(_ error:ActionError)
 }
 
 public extension ViewControllerActionBindable where Self: UIViewController {
-    public func bind(_ signal:Signal<Error,NoError>) -> Disposable? {
-        return signal.observeResult {[weak self] result in
-            if (result.value != nil) {
-                self?.showError(result.value!)
-            }
-        }
+    public func bindTo(observable:Observable<ActionError>) -> Disposable {
+        return observable.subscribe(onNext: {[weak self] error in
+                self?.showError(error)
+        })
     }
     
-    public func bind<Input,Output>(_ action:Action<Input,Output,Error>) -> Disposable? {
+    public func bindTo<Input,Output>(action:Action<Input,Output>) -> Disposable {
         let disposable = CompositeDisposable()
-        disposable.add(self.bind(action.action.errors))
-        disposable.add(self.bind(action.isExecuting.signal))
+        
+        _ = disposable.insert(self.bindTo(observable:action.errors))
+        _ = disposable.insert(self.bindTo(observable:action.executing))
         return disposable
     }
-    public func bind(_ signal:Signal<Bool,NoError>) -> Disposable? {
-        return signal.observeResult {[weak self] result in
-            guard let isLoading = result.value else {
-                return
-            }
-            isLoading ? self?.showLoader() : self?.hideLoader()
-        }
+    public func bindTo(observable:Observable<Bool>) -> Disposable {
+        return observable.subscribe(onNext: {[weak self] isLoading in
+             isLoading ? self?.showLoader() : self?.hideLoader()
+        })
     }
 }
 
 public extension ViewModelBindable where Self : UIViewController {
-
-//    public func performSegueWithIdentifier(_ identifier:String!, viewModel:ViewModel?) {
-//        
-//        
-//        let signalProducer:SignalProducer<UIViewController,NSError>  = self.rac_signal(for: #selector(prepare(for:sender:)))
-//            .toSignalProducer()
-//            .take(first:1)
-//            .map({
-//                let segue:UIStoryboardSegue = ($0! as! RACTuple).first as! UIStoryboardSegue
-//                return segue.destination
-//            }).flatMap(.latest) { (viewController:UIViewController) -> SignalProducer<UIViewController, NSError> in
-//                if (viewController is UINavigationController) {
-//                    let vc = (viewController as! UINavigationController).topViewController
-//                    return SignalProducer<UIViewController, NSError>(value:vc!)
-//                }
-//                return SignalProducer<UIViewController, NSError>(value:viewController)
-//            }.flatMap(.latest) {[weak self] vc in
-//                return self?.viewDidLoadSignalProducer().take(first: 1).map {_ in return vc} ?? SignalProducer(value:vc)
-//        }
-//        signalProducer.startWithResult { (result) in
-//            result.value?.bindViewModel(viewModel)
-//        }
-//        
-//        self.performSegue(withIdentifier: identifier, sender: self)
-//    }
-
-//    private func viewDidLoadSignalProducer() -> SignalProducer<Bool,NoError> {
-//        let signalProducer:SignalProducer<Bool,NoError> = self
-//            .rac_signal(for: #selector(UIViewController.viewDidLoad)).toSignalProducer()
-//            .flatMapError({_ in return .empty})
-//            .map({_ in
-//                return true
-//            })
-//        
-//        return signalProducer
-//    }
-//    
-//    public func viewWillAppearSignalProducer() -> SignalProducer<Bool,NoError> {
-//        let signalProducer:SignalProducer<Bool,NoError> = self
-//            .rac_signal(for: #selector(UIViewController.viewWillAppear(_:))).toSignalProducer()
-//            .flatMapError({_ in return .empty})
-//            .map({
-//                let animated:Bool = ($0! as! RACTuple).first as! Bool
-//                return animated
-//            })
-//        
-//        return signalProducer
-//    }
-//    public func viewDidAppearSignalProducer() -> SignalProducer<Bool,NoError> {
-//        let signalProducer:SignalProducer<Bool,NoError> = self
-//            .rac_signal(for: #selector(UIViewController.viewDidAppear(_:))).toSignalProducer()
-//            .flatMapError({_ in return .empty})
-//            .map({
-//                let animated:Bool = ($0! as! RACTuple).first as! Bool
-//                return animated
-//            })
-//        
-//        return signalProducer
-//    }
-//    public func viewWillDisappearSignalProducer() -> SignalProducer<Bool,NoError> {
-//        let signalProducer:SignalProducer<Bool,NoError> = self
-//            .rac_signal(for: #selector(UIViewController.viewWillDisappear(_:))).toSignalProducer()
-//            .flatMapError({_ in return .empty})
-//            .map({
-//                let animated:Bool = ($0! as! RACTuple).first as! Bool
-//                return animated
-//            })
-//        
-//        return signalProducer
-//    }
-//    public func viewDidDisappearSignalProducer() -> SignalProducer<Bool,NoError> {
-//        let signalProducer:SignalProducer<Bool,NoError> = self
-//            .rac_signal(for: #selector(UIViewController.viewDidDisappear(_:))).toSignalProducer()
-//            .flatMapError({_ in return .empty})
-//            .map({
-//                let animated:Bool = ($0! as! RACTuple).first as! Bool
-//                return animated
-//            })
-//        
-//        return signalProducer
-//    }
     
-    public mutating func bind(_ viewModel:ViewModel?) {
-        self.viewModel = viewModel
-        guard let vm = viewModel as? ListViewModelType else {
-            return
-        }
-        
-        
-//        _ = vm.reloadAction?.errors.observeResult({[weak self] (result) in
-//            self?.showError(result.value!)
-//            })
-//        vm.reloadAction?.isExecuting.producer.startWithResult({[weak self] (result) in
-//            if (result.value == true)  {
-//                self?.showLoader()
-//            }
-//            else {
-//                self?.hideLoader()
-//            }        })
-    }
-    public func bind(_ viewModel: ViewModelType? , afterLoad:Bool) {
+    public func bindTo(viewModel: ViewModelType? , afterLoad:Bool) {
         if (afterLoad) {
-        _ = (self as UIViewController).reactive.trigger(for: #selector(viewDidLoad)).take(first:1).observeCompleted {
-            self.bind(viewModel)
+            (self as UIViewController).rx.sentMessage(#selector(viewDidLoad)).take(1).subscribe(onCompleted: {[weak self] _ in
+                self?.bindTo(viewModel:viewModel)
+            }).addDisposableTo(self.disposeBag)
         }
-        }
+        
         else {
-            self.bind(viewModel)
+            self.bindTo(viewModel:viewModel)
         }
     }
    
