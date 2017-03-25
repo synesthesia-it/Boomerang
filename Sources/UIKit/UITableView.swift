@@ -165,6 +165,7 @@ private struct AssociatedKeys {
     static var isPlaceholder = "isPlaceholder"
     static var tableViewDataSource = "tableViewDataSource"
 }
+
 public extension ListViewModelType  {
     
     var tableViewDataSource:UITableViewDataSource? {
@@ -176,6 +177,9 @@ public extension ListViewModelType  {
 fileprivate class EmptyReusableView : UICollectionViewCell {
     fileprivate static let emptyReuseIdentifier = "_emptyReusableView"
 }
+
+
+
 extension UITableView : ViewModelBindable {
     
     public var viewModel: ViewModelType? {
@@ -183,14 +187,14 @@ extension UITableView : ViewModelBindable {
         set { objc_setAssociatedObject(self, &AssociatedKeys.viewModel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
     public func viewForHeader(inSection section: Int) -> UIView? {
-        guard let sectionable = self.viewModel as? ListViewModelTypeHeaderable else {
+        guard let sectionable = self.viewModel as? ListViewModelTypeSectionable else {
             return nil
         }
         let indexPath = IndexPath(row: 0, section: section)
-        guard let model = sectionable.dataHolder.modelStructure.value.sectionModelAtIndexPath(indexPath) else {
+        guard let model = sectionable.dataHolder.modelStructure.value.sectionModelAtIndexPath(indexPath, forType: TableViewHeaderType.header.identifier.name) else {
             return nil
         }
-        guard let viewModel = sectionable.itemViewModel(fromModel: model) else {
+        guard let viewModel = sectionable.sectionItemViewModel(fromModel: model, withType: TableViewHeaderType.header.identifier.name) else {
             return nil
         }
         if (viewModel.itemIdentifier.type?.name != TableViewHeaderType.header.identifier.name) {
@@ -203,19 +207,17 @@ extension UITableView : ViewModelBindable {
     }
     
     public func viewForFooter(inSection section: Int) -> UIView? {
-        guard let sectionable = self.viewModel as? ListViewModelTypeHeaderable else {
+        guard let sectionable = self.viewModel as? ListViewModelTypeSectionable else {
             return nil
         }
         let indexPath = IndexPath(row: 0, section: section)
-        guard let model = sectionable.dataHolder.modelStructure.value.sectionModelAtIndexPath(indexPath) else {
+        guard let model = sectionable.dataHolder.modelStructure.value.sectionModelAtIndexPath(indexPath, forType: TableViewHeaderType.footer.identifier.name) else {
             return nil
         }
-        guard let viewModel = sectionable.itemViewModel(fromModel: model) else {
+        guard let viewModel = sectionable.sectionItemViewModel(fromModel: model, withType: TableViewHeaderType.footer.identifier.name) else {
             return nil
         }
-        if (viewModel.itemIdentifier.type?.name != TableViewHeaderType.footer.identifier.name) {
-            return nil
-        }
+ 
         let cell = self.dequeueReusableHeaderFooterView(withIdentifier: viewModel.itemIdentifier.name)
         (cell as? ViewModelBindableType)?.bindTo(viewModel:viewModel)
         return cell
@@ -251,7 +253,7 @@ extension UITableView : ViewModelBindable {
             tableView.register(UINib(nibName: value, bundle: nil), forCellReuseIdentifier: value)
             return ""
         })
-        _ = (viewModel as? ListViewModelTypeHeaderable)?.headerIdentifiers.reduce("", { (_, value) in
+        _ = (viewModel as? ListViewModelTypeSectionable)?.sectionIdentifiers.reduce("", { (_, value) in
             tableView.register(UINib(nibName:value.name,bundle:nil), forHeaderFooterViewReuseIdentifier: value.name)
             return ""
         })

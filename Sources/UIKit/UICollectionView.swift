@@ -45,10 +45,11 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
     }
     
     @objc public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let model = self.viewModel?.dataHolder.modelStructure.value.sectionModelAtIndexPath(indexPath)//self.viewModel?.dataHolder.models.value.children?[indexPath.section].sectionModel
-        if nil != model {
+        if let model = self.viewModel?.dataHolder.modelStructure.value.sectionModelsAtIndexPath(indexPath)?[kind] ?? self.viewModel?.dataHolder.modelStructure.value.sectionModelAtIndexPath(indexPath){
+        //let model = self.viewModel?.dataHolder.modelStructure.value.sectionModelAtIndexPath(indexPath)//self.viewModel?.dataHolder.models.value.children?[indexPath.section].sectionModel
+        
             
-            let viewModel =  self.viewModel?.itemViewModel(fromModel: model!)
+            let viewModel =  (self.viewModel as? ListViewModelTypeSectionable)?.sectionItemViewModel(fromModel: model, withType:kind)
             if (viewModel != nil) {
                 let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: viewModel!.itemIdentifier.name, for: indexPath)
                 (cell as? ViewModelBindableType)?.bindTo(viewModel:viewModel)
@@ -168,7 +169,7 @@ extension UICollectionView : ViewModelBindable {
             collectionView.register(UINib(nibName: value, bundle: nil), forCellWithReuseIdentifier: value)
             return ""
         })
-        _ = (viewModel as? ListViewModelTypeHeaderable)?.headerIdentifiers.reduce("", { (_, value) in
+        _ = (viewModel as? ListViewModelTypeSectionable)?.sectionIdentifiers.reduce("", { (_, value) in
             
             collectionView.register(UINib(nibName: value.name, bundle: nil), forSupplementaryViewOfKind: value.type?.name ?? UICollectionElementKindSectionHeader, withReuseIdentifier: value.name)
             return ""

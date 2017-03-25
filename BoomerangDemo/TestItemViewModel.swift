@@ -21,9 +21,9 @@ final class TestItemViewModel: ItemViewModelType {
         self.init(model:model as ItemViewModelType.Model)
         self.customTitle = model.string
     }
-    convenience init(model: Section) {
+    convenience init(model: Section, type:String) {
         self.init(model:model as ItemViewModelType.Model)
         self.customTitle = model.string
-        self.itemIdentifier = HeaderIdentifier(name: "TestHeaderTableViewCell", type: TableViewHeaderType.footer.identifier)
+        self.itemIdentifier = HeaderIdentifier(name: "TestHeaderTableViewCell", type: type)
     }
 }

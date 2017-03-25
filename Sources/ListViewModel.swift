@@ -116,8 +116,8 @@ public final class ListDataHolder : ListDataHolderType {
     public init() {
         self.data = .just(ModelStructure.empty)
     }
-    public init(withModels models:[ModelType]) {
-        self.data = .just(ModelStructure(models))
+    public convenience init(withModels models:[ModelType]) {
+        self.init(data:.just(ModelStructure(models)))
     }
 }
 public protocol ListViewModelType : ViewModelType {
@@ -131,8 +131,16 @@ public protocol ListViewModelType : ViewModelType {
 }
 
 
-public protocol ListViewModelTypeHeaderable : ListViewModelType {
-    var headerIdentifiers: [ListIdentifier]{get}
+public protocol ListViewModelTypeSectionable : ListViewModelType {
+    var sectionIdentifiers: [ListIdentifier]{get}
+    func sectionItemViewModel(fromModel model:ModelType, withType type:String) -> ItemViewModelType?
+}
+
+public extension ListViewModelTypeSectionable {
+
+    public func sectionItemViewModel(fromModel model:ModelType, withType type:String) -> ItemViewModelType? {
+        return self.itemViewModel(fromModel: model)
+    }
 }
 public extension ListViewModelType  {
     

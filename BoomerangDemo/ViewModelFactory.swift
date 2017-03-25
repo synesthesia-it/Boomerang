@@ -31,7 +31,7 @@ struct ViewModelFactory {
                 
                 Item(string:"(i+1)")
                 ],
-                                    sectionModel:Section(string:"Title \(i)"))]
+                                    sectionModels:[TableViewHeaderType.header.identifier:Section(string:"Header \(i)"),TableViewHeaderType.footer.identifier:Section(string:"Footer \(i)")])]
         }
         let full = ModelStructure(children:a)
         return TestViewModel(data: .just(full))

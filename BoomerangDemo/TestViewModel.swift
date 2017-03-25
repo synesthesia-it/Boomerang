@@ -16,7 +16,7 @@ enum TestSelection : SelectionInput {
 enum TestSelectionOutput : SelectionOutput {
     case viewModel(ViewModelType)
 }
-final class TestViewModel:ListViewModelTypeHeaderable, ViewModelTypeSelectable, EditableViewModel {
+final class TestViewModel:ListViewModelTypeSectionable, ViewModelTypeSelectable, EditableViewModel {
     
     lazy var selection:Action<TestSelection, TestSelectionOutput> = Action  { choice in
         switch choice {
@@ -42,14 +42,15 @@ final class TestViewModel:ListViewModelTypeHeaderable, ViewModelTypeSelectable, 
             return TestItemViewModel(model: model as! Section)
         default : return nil
         }
-        
-        
+    }
+    func sectionItemViewModel(fromModel model: ModelType, withType type: String) -> ItemViewModelType? {
+        return TestItemViewModel(model: model as! Section, type:type)
     }
     var listIdentifiers: [ListIdentifier] {
         return ["TestCollectionViewCell", "TestTableViewCell"]
     }
-    var headerIdentifiers : [ListIdentifier] {
-        return [HeaderIdentifier(name:"TestHeaderTableViewCell", type:TableViewHeaderType.footer.identifier)]
+    var sectionIdentifiers : [ListIdentifier] {
+        return [HeaderIdentifier(name:"TestHeaderTableViewCell", type:TableViewHeaderType.header.identifier),HeaderIdentifier(name:"TestHeaderTableViewCell", type:TableViewHeaderType.footer.identifier) ]
     }
     func canInsertItem(atIndexPath indexPath: IndexPath) -> Bool {
         return true

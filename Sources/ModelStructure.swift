@@ -12,6 +12,7 @@ import RxSwift
 public protocol ModelType {
     
 }
+
 public protocol ModelStructureType {
     var modelCount:Int {get}
     var childrenCount:Int {get}
@@ -30,17 +31,24 @@ public extension Observable where Element : Collection {
     }
 }
 public final class ModelStructure : ModelStructureType {
+    public static var singleSectionModelIdentifier = ""
     public typealias ModelClass = ModelType
     public var models:[ModelClass]?
     public var children:[ModelStructure]?
-    public var sectionModel:ModelClass?
+    public var sectionModels:[String:ModelClass]?
+    public var sectionModel:ModelClass? {
+        return self.sectionModels?[ModelStructure.singleSectionModelIdentifier]
+    }
     public var childrenCount: Int {return self.children?.count ?? 0}
     public var modelCount: Int {return self.models?.count ?? 0}
     class public var empty:ModelStructure {return ModelStructure([])}
     
-    public init (_ models:[ModelClass], sectionModel:ModelClass? = nil) {
+    public convenience init (_ models:[ModelClass], sectionModel:ModelClass) {
+        self.init(models,sectionModels:[ModelStructure.singleSectionModelIdentifier:sectionModel])
+    }
+    public init (_ models:[ModelClass], sectionModels:[String:ModelClass]? = nil) {
         self.models = models
-        self.sectionModel = sectionModel
+        self.sectionModels = sectionModels
     }
     public init (children:[ModelStructure]? ) {
         self.children = children
@@ -67,7 +75,7 @@ public final class ModelStructure : ModelStructureType {
         }) ?? [IndexPath]()
     }
     
-    var count : Int {
+    public var count : Int {
         if (self.children != nil) {
             return self.children!.reduce(0, { (count, structure) -> Int in
                 return count + structure.count
@@ -76,7 +84,7 @@ public final class ModelStructure : ModelStructureType {
         return self.models?.count ?? 0
     }
     
-    func modelAtIndex(_ index: IndexPath) -> ModelClass? {
+    public func modelAtIndex(_ index: IndexPath) -> ModelClass? {
         
         if (index.count == 1) {
             return self.models?[index.first!]
@@ -86,11 +94,15 @@ public final class ModelStructure : ModelStructureType {
         }
         return self.children?[(index.first ?? 0)].modelAtIndex(index.dropFirst())
     }
-    func sectionModelAtIndexPath(_ index:IndexPath) -> ModelClass? {
+    
+    public func sectionModelAtIndexPath(_ index:IndexPath, forType type:String = ModelStructure.singleSectionModelIdentifier) -> ModelClass? {
+        return self.sectionModelsAtIndexPath(index)?[type]
+    }
+    public func sectionModelsAtIndexPath(_ index:IndexPath) -> [String:ModelClass]? {
         if (self.children == nil) {
-            return self.sectionModel
+            return self.sectionModels
         }
-        return self.children?[(index.first ?? 0)].sectionModel
+        return self.children?[(index.first ?? 0)].sectionModels
     }
     func allData() -> [ModelClass] {
         if (self.models != nil) {
