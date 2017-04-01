@@ -9,7 +9,7 @@
 import XCTest
 import Nimble
 import Quick
-import ReactiveSwift
+
 @testable import Boomerang
 
 class ModelStructureSpec: QuickSpec {
@@ -20,6 +20,9 @@ class ModelStructureSpec: QuickSpec {
                 let s = ModelStructure([ModelType]())
                 expect(s.models).to(haveCount(0))
                 expect(s.children).to(beNil())
+                
+                let index:IndexPath = IndexPath(item: 0, section: 0)
+                expect(s.modelAtIndex(index)).to(beNil())
                 
             }
             context ("when initialized with a single 'line'") {
@@ -82,29 +85,7 @@ class ModelStructureSpec: QuickSpec {
                     expect(s2.allData() as? [String]).to(equal(["A","D","B","C","A","D","B","C"]))
                 }
             }
-            
-//            context("when a dataProducer is provided") {
-//                it("should properly transform models in viewModels upon reload") {
-//                    let viewModel = TestListViewModel(dataProducer: SignalProducer(value: ModelStructure(["A","B","C"])))
-//                    expect(viewModel.models.value.models).to(haveCount(0))
-//                    viewModel.reload()
-//                    expect(viewModel.resultsCount.value).to(equal(3))
-//                    
-//                    expect(viewModel.viewModels.value).to(haveCount(0))
-//                    let ip = IndexPath(indexes: [0])
-//                    expect(viewModel.viewModelAtIndex(ip)?.model.title).to(equal("A"))
-//                    let matrixIP = IndexPath(indexes: [0,0])
-//                    expect(viewModel.viewModelAtIndex(matrixIP)?.model.title).to(equal("A"))
-//                }
-//            }
-//            context("when a dataProducer is meant to take time to provide results") {
-//                it("should properly sync the isLoading property on the viewModel") {
-//                    let viewModel = TestListViewModel(dataProducer: SignalProducer(value: ModelStructure(["A","B","C"])).delay(3.0, on:QueueScheduler.main))
-//                    viewModel.reload()
-//                    expect(viewModel.isLoading.value).toEventually(equal(true))
-//                    expect(viewModel.isLoading.value).toEventually(equal(false), timeout: 4.0, pollInterval: 1.0, description: "Loading didn't complete")
-//                }
-//            }
+
             
         }
     }

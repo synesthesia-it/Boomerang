@@ -9,16 +9,15 @@
 import XCTest
 import Nimble
 import Quick
-import ReactiveSwift
+
 @testable import Boomerang
 
-extension String : ModelType {}
+
 
 
 final class TestItemViewModel:ItemViewModelType {
     var itemIdentifier: ListIdentifier = "TestIdentifier"
     var model:ItemViewModelType.Model = ""
-    var title:String? { return model.title}
     convenience init (model:String) {
         self.init(model: model as ItemViewModelType.Model)
     }
@@ -33,7 +32,6 @@ class ItemViewModelSpec: QuickSpec {
                 it("has everything you need to get started") {
                     let viewModel = TestItemViewModel(model: "TEST")
                     expect(viewModel.itemIdentifier.name).to(equal("TestIdentifier"))
-                    expect(viewModel.model.title).to(equal("TEST"))
                 }
             }
         }

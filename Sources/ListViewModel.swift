@@ -44,6 +44,7 @@ public protocol ListDataHolderType : class {
     var viewModels:Variable<[IndexPath:ItemViewModelType]> {get set}
     
     var resultsCount:Variable<Int> {get set}
+    var isLoading:Variable<Bool> {get}
 
     var newDataAvailable:Variable<ResultRangeType?> {get set}
 
@@ -101,12 +102,12 @@ extension ListDataHolderType {
         reloadAction.executionObservables.switchLatest().bindTo(self.modelStructure).addDisposableTo(self.disposeBag)
         self.modelStructure.asObservable().map{_ in return [IndexPath:ItemViewModelType]()}.bindTo(viewModels).addDisposableTo(self.disposeBag)
         self.modelStructure.asObservable().map { return $0.count}.bindTo(resultsCount).addDisposableTo(self.disposeBag)
-        
+        reloadAction.executing.bindTo(self.isLoading).addDisposableTo(self.disposeBag)
     }
 }
 public final class ListDataHolder : ListDataHolderType {
     
-    
+    public let isLoading: Variable<Bool> = Variable(false)
     public var reloadAction: Action<ResultRangeType?, ModelStructure> = Action {_ in return Observable.just(ModelStructure.empty)}
     public var modelStructure:Variable<ModelStructure> = Variable(ModelStructure.empty)
     public var viewModels:Variable = Variable([IndexPath:ItemViewModelType]())

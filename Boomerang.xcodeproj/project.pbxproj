@@ -11,7 +11,6 @@
 		7B087DB91DD47F4300F9E39D /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DB81DD47F4300F9E39D /* ListViewModel.swift */; };
 		7B087DBB1DD47F5800F9E39D /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DBA1DD47F5800F9E39D /* ItemViewModel.swift */; };
 		7B087DC01DD4825800F9E39D /* ItemViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DBF1DD4825800F9E39D /* ItemViewModelTests.swift */; };
-		7B087DC21DD4826B00F9E39D /* ModelStructureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DC11DD4826B00F9E39D /* ModelStructureTests.swift */; };
 		7B17AA5B1E599E1F00C66F37 /* UIPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA541E599E1F00C66F37 /* UIPickerView.swift */; };
 		7B17AA5D1E599E1F00C66F37 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA551E599E1F00C66F37 /* UIButton.swift */; };
 		7B17AA5E1E599E1F00C66F37 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA551E599E1F00C66F37 /* UIButton.swift */; };
@@ -35,9 +34,6 @@
 		7B27E2661DCB86E0007C4C9C /* TestCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B27E2641DCB86E0007C4C9C /* TestCollectionViewCell.xib */; };
 		7B2CC85D1DB016510005E500 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2CC8531DB016510005E500 /* Boomerang.framework */; };
 		7B2CC8621DB016510005E500 /* ListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC8611DB016510005E500 /* ListViewModelTests.swift */; };
-		7B2CC8701DB019A80005E500 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2CC86D1DB019A80005E500 /* ReactiveCocoa.framework */; };
-		7B2CC8711DB019A80005E500 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2CC86E1DB019A80005E500 /* ReactiveSwift.framework */; };
-		7B2CC8721DB019A80005E500 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2CC86F1DB019A80005E500 /* Result.framework */; };
 		7B2CC8741DB019BA0005E500 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC8731DB019BA0005E500 /* ViewModel.swift */; };
 		7B2CC87C1DB112FD0005E500 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC87B1DB112FD0005E500 /* Router.swift */; };
 		7B440F611DD8F28E005787EF /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B440F601DD8F28E005787EF /* ViewModelFactory.swift */; };
@@ -69,10 +65,6 @@
 		7B57E24D1DD201FD0042C158 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B57E2491DD201FC0042C158 /* Quick.framework */; };
 		7B57E2501DD206660042C158 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B57E2481DD201FC0042C158 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7B57E2511DD206660042C158 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B57E2491DD201FC0042C158 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7B57E2521DD206ED0042C158 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2CC86E1DB019A80005E500 /* ReactiveSwift.framework */; };
-		7B57E2531DD206FA0042C158 /* ReactiveSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B2CC86E1DB019A80005E500 /* ReactiveSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7B57E2541DD207060042C158 /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B2CC86F1DB019A80005E500 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7B57E2551DD207130042C158 /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B2CC86D1DB019A80005E500 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7B65F4761DE300F2000684D0 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65F4751DE300F2000684D0 /* FormViewModel.swift */; };
 		7B65F4771DE300F2000684D0 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65F4751DE300F2000684D0 /* FormViewModel.swift */; };
 		7B65F4781DE300F2000684D0 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65F4751DE300F2000684D0 /* FormViewModel.swift */; };
@@ -81,6 +73,15 @@
 		7B7772841E6C762E0074DF5E /* TestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7772821E6C762E0074DF5E /* TestTableViewCell.swift */; };
 		7B7772851E6C762E0074DF5E /* TestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B7772831E6C762E0074DF5E /* TestTableViewCell.xib */; };
 		7B7772871E6C8D990074DF5E /* TestHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B7772861E6C8D980074DF5E /* TestHeaderTableViewCell.xib */; };
+		7B7F994B1E8F8A7600F21D29 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B52C1761E13EA4A008929A2 /* RxBlocking.framework */; };
+		7B7F994C1E8F8A7600F21D29 /* Action.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B52C1711E13D206008929A2 /* Action.framework */; };
+		7B7F994D1E8F8A7600F21D29 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B52C16D1E13CA27008929A2 /* RxCocoa.framework */; };
+		7B7F994E1E8F8A7600F21D29 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B52C16E1E13CA27008929A2 /* RxSwift.framework */; };
+		7B7F994F1E8F8A9E00F21D29 /* RxBlocking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B52C1761E13EA4A008929A2 /* RxBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7B7F99501E8F8A9E00F21D29 /* Action.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B52C1711E13D206008929A2 /* Action.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7B7F99511E8F8A9E00F21D29 /* RxCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B52C16D1E13CA27008929A2 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7B7F99521E8F8A9E00F21D29 /* RxSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B52C16E1E13CA27008929A2 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7B7F99571E8F8BD900F21D29 /* ModelStructureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DC11DD4826B00F9E39D /* ModelStructureTests.swift */; };
 		7B8A31BF1DDB4EFA00828075 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31B61DDB4EFA00828075 /* Boomerang.framework */; };
 		7B8A31C41DDB4EFA00828075 /* Boomerang_tvOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8A31C31DDB4EFA00828075 /* Boomerang_tvOSTests.swift */; };
 		7B8A31C61DDB4EFA00828075 /* Boomerang tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B8A31B81DDB4EFA00828075 /* Boomerang tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -89,8 +90,6 @@
 		7B8A31CF1DDB4F3800828075 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DBA1DD47F5800F9E39D /* ItemViewModel.swift */; };
 		7B8A31D01DDB4F3800828075 /* ModelStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DB61DD47EE100F9E39D /* ModelStructure.swift */; };
 		7B8A31D11DDB4F3800828075 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC87B1DB112FD0005E500 /* Router.swift */; };
-		7B8A31DA1DDB4FA700828075 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D71DDB4FA700828075 /* ReactiveCocoa.framework */; };
-		7B8A31DB1DDB4FA700828075 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D81DDB4FA700828075 /* ReactiveSwift.framework */; };
 		7B8A31DC1DDB4FA700828075 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D91DDB4FA700828075 /* Result.framework */; };
 		7BF11CC11DDC5AD500518BC0 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2CC8531DB016510005E500 /* Boomerang.framework */; };
 /* End PBXBuildFile section */
@@ -126,11 +125,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7B57E2551DD207130042C158 /* ReactiveCocoa.framework in CopyFiles */,
-				7B57E2541DD207060042C158 /* Result.framework in CopyFiles */,
-				7B57E2531DD206FA0042C158 /* ReactiveSwift.framework in CopyFiles */,
 				7B57E2501DD206660042C158 /* Nimble.framework in CopyFiles */,
 				7B57E2511DD206660042C158 /* Quick.framework in CopyFiles */,
+				7B7F994F1E8F8A9E00F21D29 /* RxBlocking.framework in CopyFiles */,
+				7B7F99501E8F8A9E00F21D29 /* Action.framework in CopyFiles */,
+				7B7F99511E8F8A9E00F21D29 /* RxCocoa.framework in CopyFiles */,
+				7B7F99521E8F8A9E00F21D29 /* RxSwift.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,8 +205,6 @@
 		7B8A31BE1DDB4EFA00828075 /* Boomerang tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Boomerang tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8A31C31DDB4EFA00828075 /* Boomerang_tvOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boomerang_tvOSTests.swift; sourceTree = "<group>"; };
 		7B8A31C51DDB4EFA00828075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7B8A31D71DDB4FA700828075 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/tvOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
-		7B8A31D81DDB4FA700828075 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/tvOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		7B8A31D91DDB4FA700828075 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/tvOS/Result.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -238,10 +236,7 @@
 				7B52C1771E13EA4A008929A2 /* RxBlocking.framework in Frameworks */,
 				7B52C1701E13CA27008929A2 /* RxSwift.framework in Frameworks */,
 				7B52C16F1E13CA27008929A2 /* RxCocoa.framework in Frameworks */,
-				7B2CC8721DB019A80005E500 /* Result.framework in Frameworks */,
-				7B2CC8701DB019A80005E500 /* ReactiveCocoa.framework in Frameworks */,
 				7B52C1721E13D206008929A2 /* Action.framework in Frameworks */,
-				7B2CC8711DB019A80005E500 /* ReactiveSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +247,10 @@
 				7B2CC85D1DB016510005E500 /* Boomerang.framework in Frameworks */,
 				7B57E24A1DD201FD0042C158 /* Nimble.framework in Frameworks */,
 				7B57E24C1DD201FD0042C158 /* Quick.framework in Frameworks */,
-				7B57E2521DD206ED0042C158 /* ReactiveSwift.framework in Frameworks */,
+				7B7F994B1E8F8A7600F21D29 /* RxBlocking.framework in Frameworks */,
+				7B7F994C1E8F8A7600F21D29 /* Action.framework in Frameworks */,
+				7B7F994D1E8F8A7600F21D29 /* RxCocoa.framework in Frameworks */,
+				7B7F994E1E8F8A7600F21D29 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,8 +268,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B8A31DA1DDB4FA700828075 /* ReactiveCocoa.framework in Frameworks */,
-				7B8A31DB1DDB4FA700828075 /* ReactiveSwift.framework in Frameworks */,
 				7B8A31DC1DDB4FA700828075 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,8 +479,6 @@
 				7B52C1711E13D206008929A2 /* Action.framework */,
 				7B52C16D1E13CA27008929A2 /* RxCocoa.framework */,
 				7B52C16E1E13CA27008929A2 /* RxSwift.framework */,
-				7B8A31D71DDB4FA700828075 /* ReactiveCocoa.framework */,
-				7B8A31D81DDB4FA700828075 /* ReactiveSwift.framework */,
 				7B8A31D91DDB4FA700828075 /* Result.framework */,
 				7B440FB41DD9086B005787EF /* libswiftCore.tbd */,
 				7B440F9A1DD8F705005787EF /* macOS */,
@@ -894,7 +888,7 @@
 			files = (
 				7B2CC8621DB016510005E500 /* ListViewModelTests.swift in Sources */,
 				7B087DC01DD4825800F9E39D /* ItemViewModelTests.swift in Sources */,
-				7B087DC21DD4826B00F9E39D /* ModelStructureTests.swift in Sources */,
+				7B7F99571E8F8BD900F21D29 /* ModelStructureTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1209,6 +1203,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
 				INFOPLIST_FILE = BoomerangTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1226,6 +1221,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
 				INFOPLIST_FILE = BoomerangTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

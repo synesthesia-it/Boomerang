@@ -87,9 +87,11 @@ public final class ModelStructure : ModelStructureType {
     public func modelAtIndex(_ index: IndexPath) -> ModelClass? {
         
         if (index.count == 1) {
+            if (self.models?.count == 0) { return nil }
             return self.models?[index.first!]
         }
         if (self.children == nil) {
+            if (self.models?.count == 0) { return nil }
             return self.models?[index.last ?? 0]
         }
         return self.children?[(index.first ?? 0)].modelAtIndex(index.dropFirst())
@@ -108,6 +110,7 @@ public final class ModelStructure : ModelStructureType {
         if (self.models != nil) {
             return self.models!
         }
+        
         return self.children?.reduce([], { (accumulator, structure) -> [ModelClass] in
             return accumulator + structure.allData()
         }) ?? []

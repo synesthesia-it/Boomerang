@@ -305,3 +305,55 @@ open class MultiselectionItemViewModel<DataValue:FormModel> : FormItemViewModel,
     
 }
 
+
+
+public class FormValueWrapper<Type:ModelType>: ModelType, FormValue {
+    public static var empty: FormValueWrapper {return FormValueWrapper(nil)}
+    public var value:Type?
+    public init(_ value:Type?) {
+        self.value = value
+    }
+}
+
+
+public protocol PickerViewModelType : ViewModelType {
+    var pickedItem:Variable<ModelType?> {get}
+}
+
+
+open class ModelFormItemViewModel<T:ModelType> : FormItemViewModel{
+    
+    
+    
+    public typealias DataValue = FormValueWrapper<T>
+    
+    public func with(picker:PickerViewModelType) -> ModelFormItemViewModel<T> {
+        self.picker = picker
+        (picker.pickedItem.asObservable().map {$0 as? T}.filter{$0 != nil}).map {FormValueWrapper($0!)}.bindTo(self.value).addDisposableTo(self.disposeBag)
+        return self
+    }
+    public var picker:PickerViewModelType?
+    
+    //static var defaultItemIdentifier: ListIdentifier = ""//defaultListIdentifier
+    public var itemIdentifier: ListIdentifier = StringFormItemViewModel.defaultItemIdentifier
+    public var model:ItemViewModelType.Model = FormData<DataValue>(DataValue.empty)
+    public var value:Variable<DataValue> {
+        return self.model as? FormData<DataValue> ?? FormData<DataValue>(DataValue.empty)
+    }
+    public var title: String?
+    public var style: FormStyle?
+    public var error:ObservableError?
+    public required init () {}
+    public required init (data:FormData<DataValue>,
+                   title:String? = nil,
+                   itemIdentifier:ListIdentifier,
+                   error:ObservableError? = nil,
+                   style:FormStyle? = nil
+        ) {
+        self.model = data
+        self.title = title
+        self.style = style
+        self.error = error
+        self.itemIdentifier = itemIdentifier
+    }
+}
