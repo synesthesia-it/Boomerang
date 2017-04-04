@@ -99,7 +99,7 @@ extension ListDataHolderType {
             }
         }
         
-        reloadAction.executionObservables.switchLatest().bindTo(self.modelStructure).addDisposableTo(self.disposeBag)
+        reloadAction.elements.bindTo(self.modelStructure).addDisposableTo(self.disposeBag)
         self.modelStructure.asObservable().map{_ in return [IndexPath:ItemViewModelType]()}.bindTo(viewModels).addDisposableTo(self.disposeBag)
         self.modelStructure.asObservable().map { return $0.count}.bindTo(resultsCount).addDisposableTo(self.disposeBag)
         reloadAction.executing.bindTo(self.isLoading).addDisposableTo(self.disposeBag)

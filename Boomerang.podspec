@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Boomerang"
-  s.version      = "0.9.1"
+  s.version      = "0.9.2"
   s.summary      = "Swift microframework for MVVM"
   s.description  = <<-DESC
 			Boomerang is a swift microframework for better crossplatform apps 
