@@ -165,11 +165,11 @@ extension UICollectionView : ViewModelBindable {
         self.viewModel = viewModel
         
         
-        viewModel.listIdentifiers.map { $0.name}.forEach {[weak self] (_, value) in
+        viewModel.listIdentifiers.map { $0.name}.forEach {[weak self] ( value) in
             self?.register(UINib(nibName: value, bundle: nil), forCellWithReuseIdentifier: value)
             
         }
-        (viewModel as? ListViewModelTypeSectionable)?.sectionIdentifiers.forEach {[weak self] (_, value) in
+        (viewModel as? ListViewModelTypeSectionable)?.sectionIdentifiers.forEach {[weak self] ( value) in
             self?.register(UINib(nibName: value.name, bundle: nil), forSupplementaryViewOfKind: value.type?.name ?? UICollectionElementKindSectionHeader, withReuseIdentifier: value.name)
         }
         

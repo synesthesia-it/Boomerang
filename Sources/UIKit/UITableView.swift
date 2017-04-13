@@ -248,12 +248,12 @@ extension UITableView : ViewModelBindable {
         self.viewModel = viewModel
         
         
-         viewModel.listIdentifiers.map { $0.name}.forEach {[weak self] (_, value) in
+         viewModel.listIdentifiers.map { $0.name}.forEach {[weak self] ( value) in
             
             self?.register(UINib(nibName: value, bundle: nil), forCellReuseIdentifier: value)
             
         }
-         (viewModel as? ListViewModelTypeSectionable)?.sectionIdentifiers.forEach { (_, value) in
+         (viewModel as? ListViewModelTypeSectionable)?.sectionIdentifiers.forEach { ( value) in
             self?.register(UINib(nibName:value.name,bundle:nil), forHeaderFooterViewReuseIdentifier: value.name)
             
         }
