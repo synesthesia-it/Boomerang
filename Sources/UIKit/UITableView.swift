@@ -266,11 +266,11 @@ extension UITableView : ViewModelBindable {
             .dataHolder
             .reloadAction
             .elements
-            .subscribe(onNext:{[weak] _ in self?.reloadData() })
+            .subscribe(onNext:{[weak self] _ in self?.reloadData() })
             .addDisposableTo(self.disposeBag)
         
-        if (tableView.backgroundView != nil) {
-            viewModel.isEmpty.asObservable().map{!$0}.bindTo(tableView.backgroundView!.rx.isHidden).addDisposableTo(self.disposeBag)
+        if (self.backgroundView != nil) {
+            viewModel.isEmpty.asObservable().map{!$0}.bindTo(self.backgroundView!.rx.isHidden).addDisposableTo(self.disposeBag)
         }
     }
     public func autosizeItemAt(indexPath:IndexPath, constrainedToWidth width:CGFloat) -> CGFloat {

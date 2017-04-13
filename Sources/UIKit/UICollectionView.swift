@@ -173,8 +173,8 @@ extension UICollectionView : ViewModelBindable {
             self?.register(UINib(nibName: value.name, bundle: nil), forSupplementaryViewOfKind: value.type?.name ?? UICollectionElementKindSectionHeader, withReuseIdentifier: value.name)
         }
         
-        collectionView.register(EmptyReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader , withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
-        collectionView.register(EmptyReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionFooter , withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
+        self.register(EmptyReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader , withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
+        self.register(EmptyReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionFooter , withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
         if (viewModel.collectionViewDataSource == nil) {
             viewModel.collectionViewDataSource = ViewModelCollectionViewDataSource(viewModel: viewModel)
         }
@@ -187,8 +187,8 @@ extension UICollectionView : ViewModelBindable {
             .subscribe(onNext:{[weak self] _ in self?.reloadData() })
             .addDisposableTo(self.disposeBag)
         
-        if (collectionView.backgroundView != nil) {
-            viewModel.isEmpty.asObservable().map{!$0}.bindTo(collectionView.backgroundView!.rx.isHidden).addDisposableTo(self.disposeBag)
+        if (self.backgroundView != nil) {
+            viewModel.isEmpty.asObservable().map{!$0}.bindTo(self.backgroundView!.rx.isHidden).addDisposableTo(self.disposeBag)
         }
     }
     public func autosizeItemAt(indexPath:IndexPath, constrainedToWidth width:Float) -> CGSize {
