@@ -253,7 +253,7 @@ extension UITableView : ViewModelBindable {
             self?.register(UINib(nibName: value, bundle: nil), forCellReuseIdentifier: value)
             
         }
-         (viewModel as? ListViewModelTypeSectionable)?.sectionIdentifiers.forEach { ( value) in
+         (viewModel as? ListViewModelTypeSectionable)?.sectionIdentifiers.forEach { [weak self] ( value) in
             self?.register(UINib(nibName:value.name,bundle:nil), forHeaderFooterViewReuseIdentifier: value.name)
             
         }
