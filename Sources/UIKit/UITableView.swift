@@ -247,16 +247,16 @@ extension UITableView : ViewModelBindable {
         }
         self.viewModel = viewModel
         
-        let tableView = self
-        _ = viewModel.listIdentifiers.map { $0.name}.reduce("", { (_, value) in
+        
+         viewModel.listIdentifiers.map { $0.name}.forEach {[weak self] (_, value) in
             
-            tableView.register(UINib(nibName: value, bundle: nil), forCellReuseIdentifier: value)
-            return ""
-        })
-        _ = (viewModel as? ListViewModelTypeSectionable)?.sectionIdentifiers.reduce("", { (_, value) in
-            tableView.register(UINib(nibName:value.name,bundle:nil), forHeaderFooterViewReuseIdentifier: value.name)
-            return ""
-        })
+            self?.register(UINib(nibName: value, bundle: nil), forCellReuseIdentifier: value)
+            
+        }
+         (viewModel as? ListViewModelTypeSectionable)?.sectionIdentifiers.forEach { (_, value) in
+            self?.register(UINib(nibName:value.name,bundle:nil), forHeaderFooterViewReuseIdentifier: value.name)
+            
+        }
                 if (viewModel.tableViewDataSource == nil) {
             viewModel.tableViewDataSource = ViewModelTableViewDataSource(viewModel: viewModel)
         }
@@ -266,7 +266,7 @@ extension UITableView : ViewModelBindable {
             .dataHolder
             .reloadAction
             .elements
-            .subscribe(onNext:{ _ in tableView.reloadData() })
+            .subscribe(onNext:{[weak] _ in self?.reloadData() })
             .addDisposableTo(self.disposeBag)
         
         if (tableView.backgroundView != nil) {

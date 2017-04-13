@@ -164,16 +164,14 @@ extension UICollectionView : ViewModelBindable {
         }
         self.viewModel = viewModel
         
-        let collectionView = self
-        _ = viewModel.listIdentifiers.map { $0.name}.reduce("", { (_, value) in
-            collectionView.register(UINib(nibName: value, bundle: nil), forCellWithReuseIdentifier: value)
-            return ""
-        })
-        _ = (viewModel as? ListViewModelTypeSectionable)?.sectionIdentifiers.reduce("", { (_, value) in
+        
+        viewModel.listIdentifiers.map { $0.name}.forEach {[weak self] (_, value) in
+            self?.register(UINib(nibName: value, bundle: nil), forCellWithReuseIdentifier: value)
             
-            collectionView.register(UINib(nibName: value.name, bundle: nil), forSupplementaryViewOfKind: value.type?.name ?? UICollectionElementKindSectionHeader, withReuseIdentifier: value.name)
-            return ""
-        })
+        }
+        (viewModel as? ListViewModelTypeSectionable)?.sectionIdentifiers.forEach {[weak self] (_, value) in
+            self?.register(UINib(nibName: value.name, bundle: nil), forSupplementaryViewOfKind: value.type?.name ?? UICollectionElementKindSectionHeader, withReuseIdentifier: value.name)
+        }
         
         collectionView.register(EmptyReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader , withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
         collectionView.register(EmptyReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionFooter , withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
@@ -186,7 +184,7 @@ extension UICollectionView : ViewModelBindable {
             .dataHolder
             .reloadAction
             .elements
-            .subscribe(onNext:{ _ in collectionView.reloadData() })
+            .subscribe(onNext:{[weak self] _ in self?.reloadData() })
             .addDisposableTo(self.disposeBag)
         
         if (collectionView.backgroundView != nil) {
