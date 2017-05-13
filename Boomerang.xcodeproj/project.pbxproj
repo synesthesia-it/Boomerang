@@ -195,6 +195,7 @@
 		7B57E2491DD201FC0042C158 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		7B5EB3E71DF0109600CF967D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7B65F4751DE300F2000684D0 /* FormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
+		7B70209C1EC6DE8500A01096 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		7B77727F1E6C71C70074DF5E /* UIPagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPagerViewController.swift; sourceTree = "<group>"; };
 		7B7772821E6C762E0074DF5E /* TestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewCell.swift; sourceTree = "<group>"; };
 		7B7772831E6C762E0074DF5E /* TestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestTableViewCell.xib; sourceTree = "<group>"; };
@@ -416,6 +417,7 @@
 		7B440F541DD8F1CA005787EF /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				7B70209C1EC6DE8500A01096 /* Cartfile */,
 				7B5EB3E71DF0109600CF967D /* README.md */,
 				7B440F531DD8F1C6005787EF /* Boomerang.podspec */,
 			);

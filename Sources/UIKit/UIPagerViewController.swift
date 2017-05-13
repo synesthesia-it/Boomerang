@@ -60,8 +60,8 @@ public class ViewModelPagerViewDataSource : NSObject, UIPageViewControllerDataSo
                 
             }
             
-            _ = viewController.view //triggers viewDidLoad before view model binding. Alternatives are really welcomed
-            (viewController as? ViewModelBindableType)?.bindTo(viewModel: viewModel)
+//            _ = viewController.view //triggers viewDidLoad before view model binding. Alternatives are really welcomed
+            (viewController as? ViewModelBindableType)?.bind(to: viewModel)
             self.viewControllers[index] = viewController
             return viewController
         
@@ -117,7 +117,7 @@ extension UIPageViewController : ViewModelBindable {
         }
         return (self.viewModel as? ListPagerViewModelType)?.pagerDataSource?.indexForViewController(vc) ?? 0
     }
-    public func bindTo(viewModel: ViewModelType?) {
+    public func bind(to viewModel: ViewModelType?) {
         guard let viewModel = viewModel as? ListPagerViewModelType else {
             self.viewModel = nil
             return

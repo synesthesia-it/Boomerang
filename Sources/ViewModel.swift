@@ -33,7 +33,7 @@ public protocol ViewModelBindable : ViewModelBindableType{
 }
 public protocol ViewModelBindableType {
     var disposeBag:DisposeBag {get}
-    func bindTo(viewModel: ViewModelType?)
+    func bind(to viewModel: ViewModelType?)
 }
 extension ViewModelBindableType {}
 private struct AssociatedKeys {
@@ -66,6 +66,11 @@ public protocol SelectionInput {}
 public protocol SelectionOutput {}
 public enum EmptySelection : SelectionOutput{
     case empty
+}
+
+
+public protocol ViewModelTypeIdentifiable : ViewModelType {
+    var itemIdentifier:ListIdentifier { get }
 }
 
 public protocol ViewModelTypeSelectable : ViewModelType {

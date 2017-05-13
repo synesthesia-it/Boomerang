@@ -59,7 +59,7 @@ extension UIPickerView : ViewModelBindable {
         get { return objc_getAssociatedObject(self, &AssociatedKeys.disposeBag) as? DisposeBag ?? DisposeBag()}
         set { objc_setAssociatedObject(self, &AssociatedKeys.disposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
-    public func bindTo(viewModel: ViewModelType?) {
+    public func bind(to viewModel: ViewModelType?) {
         
         guard let vm = viewModel as? ListViewModelType else {
             return

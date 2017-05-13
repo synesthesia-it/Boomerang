@@ -8,9 +8,8 @@
 
 import Foundation
 
-public protocol ItemViewModelType : ViewModelType, ModelType {
+public protocol ItemViewModelType : ViewModelTypeIdentifiable,  ModelType {
     typealias Model = ModelType
-    var itemIdentifier:ListIdentifier {get set}
     var itemTitle:String? { get }
     var model:Model {get set}
     init(model:Model)

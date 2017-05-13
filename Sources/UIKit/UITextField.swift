@@ -28,7 +28,7 @@ extension UITextField : ViewModelBindable {
         set { objc_setAssociatedObject(self, &AssociatedKeys.disposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
     
-    public func bindTo(viewModel: ViewModelType?) {
+    public func bind(to viewModel: ViewModelType?) {
         self.viewModel = viewModel
         guard let viewModel = viewModel as? TextInput else {
             return
@@ -37,7 +37,7 @@ extension UITextField : ViewModelBindable {
         
         self.disposeBag = DisposeBag()
         self.text = viewModel.string.value
-        self.rx.text.map { $0 ?? ""}.bindTo(viewModel.string).addDisposableTo(self.disposeBag)
+        self.rx.text.map { $0 ?? ""}.bind(to: viewModel.string).addDisposableTo(self.disposeBag)
         
     }
     
@@ -58,14 +58,14 @@ extension UITextView : ViewModelBindable {
         set { objc_setAssociatedObject(self, &AssociatedKeys.disposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
     
-    public func bindTo(viewModel: ViewModelType?) {
+    public func bind(to viewModel: ViewModelType?) {
         self.viewModel = viewModel
         guard let viewModel = viewModel as? TextInput else {
             return
         }
         self.disposeBag = DisposeBag()
         self.text = viewModel.string.value
-        self.rx.text.map { $0 ?? ""}.bindTo(viewModel.string).addDisposableTo(self.disposeBag)
+        self.rx.text.map { $0 ?? ""}.bind(to: viewModel.string).addDisposableTo(self.disposeBag)
     }
     
     

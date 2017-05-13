@@ -53,7 +53,7 @@ private class ViewModelTableViewDataSource : NSObject, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let viewModel:ItemViewModelType? = self.viewModel?.viewModel(atIndex:indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: viewModel?.itemIdentifier.name ?? "", for: indexPath)
-        (cell as? ViewModelBindableType)?.bindTo(viewModel:viewModel)
+        (cell as? ViewModelBindableType)?.bind(to:viewModel)
         return cell
     }
     public func numberOfSections(in tableView: UITableView) -> Int {
@@ -109,7 +109,7 @@ private class ViewModelTableViewDataSource : NSObject, UITableViewDataSource {
         }
         
         parameters!.constraint?.constant = CGFloat(width)
-        (parameters!.cell as? ViewModelBindableType)?.bindTo(viewModel:self.viewModel?.viewModel(atIndex:indexPath))
+        (parameters!.cell as? ViewModelBindableType)?.bind(to:self.viewModel?.viewModel(atIndex:indexPath))
         //        self.bindViewModelToCellAtIndexPath(parameters!.cell, indexPath: indexPath, forResize: true)
         var newCells = staticCells
         newCells[nib.name] = parameters
@@ -201,7 +201,7 @@ extension UITableView : ViewModelBindable {
             return nil
         }
         let cell = self.dequeueReusableHeaderFooterView(withIdentifier: viewModel.itemIdentifier.name)
-        (cell as? ViewModelBindableType)?.bindTo(viewModel:viewModel)
+        (cell as? ViewModelBindableType)?.bind(to:viewModel)
         return cell
         
     }
@@ -219,7 +219,7 @@ extension UITableView : ViewModelBindable {
         }
  
         let cell = self.dequeueReusableHeaderFooterView(withIdentifier: viewModel.itemIdentifier.name)
-        (cell as? ViewModelBindableType)?.bindTo(viewModel:viewModel)
+        (cell as? ViewModelBindableType)?.bind(to:viewModel)
         return cell
     }
     public var disposeBag: DisposeBag {
@@ -240,7 +240,7 @@ extension UITableView : ViewModelBindable {
         }
     }
     
-    public func bindTo(viewModel: ViewModelType?) {
+    public func bind(to viewModel: ViewModelType?) {
         guard let viewModel = viewModel as? ListViewModelType else {
             self.viewModel = nil
             return
@@ -270,7 +270,7 @@ extension UITableView : ViewModelBindable {
             .addDisposableTo(self.disposeBag)
         
         if (self.backgroundView != nil) {
-            viewModel.isEmpty.asObservable().map{!$0}.bindTo(self.backgroundView!.rx.isHidden).addDisposableTo(self.disposeBag)
+            viewModel.isEmpty.asObservable().map{!$0}.bind(to: self.backgroundView!.rx.isHidden).addDisposableTo(self.disposeBag)
         }
     }
     public func autosizeItemAt(indexPath:IndexPath, constrainedToWidth width:CGFloat) -> CGFloat {

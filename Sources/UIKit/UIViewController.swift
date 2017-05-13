@@ -52,17 +52,17 @@ public extension ViewControllerActionBindable where Self: UIViewController {
     }
 }
 
-public extension ViewModelBindable where Self : UIViewController {
+public extension ViewModelBindableType where Self : UIViewController {
     
-    public func bindTo(viewModel: ViewModelType? , afterLoad:Bool) {
+    public func bind(to viewModel: ViewModelType? , afterLoad:Bool) {
         if (afterLoad) {
             (self as UIViewController).rx.sentMessage(#selector(viewDidLoad)).take(1).subscribe(onCompleted: {[weak self] _ in
-                self?.bindTo(viewModel:viewModel)
+                self?.bind(to:viewModel)
             }).addDisposableTo(self.disposeBag)
         }
         
         else {
-            self.bindTo(viewModel:viewModel)
+            self.bind(to: viewModel)
         }
     }
    

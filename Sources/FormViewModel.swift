@@ -329,7 +329,7 @@ open class ModelFormItemViewModel<T:ModelType> : FormItemViewModel{
     
     public func with(picker:PickerViewModelType) -> ModelFormItemViewModel<T> {
         self.picker = picker
-        (picker.pickedItem.asObservable().map {$0 as? T}.filter{$0 != nil}).map {FormValueWrapper($0!)}.bindTo(self.value).addDisposableTo(self.disposeBag)
+        (picker.pickedItem.asObservable().map {$0 as? T}.filter{$0 != nil}).map {FormValueWrapper($0!)}.bind(to: self.value).addDisposableTo(self.disposeBag)
         return self
     }
     public var picker:PickerViewModelType?

@@ -1,5 +1,5 @@
 #github "ReactiveCocoa/ReactiveCocoa" "master"
 github "ReactiveX/RxSwift" ~> 3.0
-github "RxSwiftCommunity/Action" ~> 2.1.0
+github "RxSwiftCommunity/Action" ~> 3.0
 github "Quick/Quick"
 github "Quick/Nimble"

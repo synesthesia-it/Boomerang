@@ -99,10 +99,10 @@ extension ListDataHolderType {
             }
         }
         
-        reloadAction.elements.bindTo(self.modelStructure).addDisposableTo(self.disposeBag)
-        self.modelStructure.asObservable().map{_ in return [IndexPath:ItemViewModelType]()}.bindTo(viewModels).addDisposableTo(self.disposeBag)
-        self.modelStructure.asObservable().map { return $0.count}.bindTo(resultsCount).addDisposableTo(self.disposeBag)
-        reloadAction.executing.bindTo(self.isLoading).addDisposableTo(self.disposeBag)
+        reloadAction.elements.bind(to: self.modelStructure).addDisposableTo(self.disposeBag)
+        self.modelStructure.asObservable().map{_ in return [IndexPath:ItemViewModelType]()}.bind(to: viewModels).addDisposableTo(self.disposeBag)
+        self.modelStructure.asObservable().map { return $0.count}.bind(to: resultsCount).addDisposableTo(self.disposeBag)
+        reloadAction.executing.bind(to: self.isLoading).addDisposableTo(self.disposeBag)
     }
 }
 public final class ListDataHolder : ListDataHolderType {
@@ -145,7 +145,7 @@ public extension ListViewModelTypeSectionable {
 }
 public extension ListViewModelType  {
     
-    var isEmpty:Observable<Bool> {
+    public var isEmpty:Observable<Bool> {
         return self.dataHolder.resultsCount.asObservable().map {$0 == 0}
     }
     
@@ -167,16 +167,11 @@ public extension ListViewModelType  {
         }
         return vm
     }
+    
     public func itemViewModel(fromModel model:ModelType) -> ItemViewModelType? {
-        if (model is ItemViewModelType) {
             return model as? ItemViewModelType
-        }
-        return nil
     }
     
-    //    init() {
-    //        self.dataHolder = ListDataHolder(dataProducer:SignalProducer(value:ModelStructure.empty))
-    //    }
 }
 
 public extension ListViewModelType {
