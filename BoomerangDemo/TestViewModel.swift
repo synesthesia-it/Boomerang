@@ -47,7 +47,7 @@ final class TestViewModel:ListViewModelTypeSectionable, ViewModelTypeSelectable,
         return TestItemViewModel(model: model as! Section, type:type)
     }
     var listIdentifiers: [ListIdentifier] {
-        return ["TestCollectionViewCell", "TestTableViewCell"]
+        return ["TestCollectionViewCell", "TestTableViewCell", TestIdentifier.test]
     }
     var sectionIdentifiers : [ListIdentifier] {
         return [HeaderIdentifier(name:"TestHeaderTableViewCell", type:TableViewHeaderType.header.identifier),HeaderIdentifier(name:"TestHeaderTableViewCell", type:TableViewHeaderType.footer.identifier) ]

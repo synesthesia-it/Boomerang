@@ -29,6 +29,8 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
     @objc public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell  {
         let viewModel:ItemViewModelType? = self.viewModel?.viewModel(atIndex:indexPath)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewModel?.itemIdentifier.name ?? defaultListIdentifier, for: indexPath)
+        
+        
         (cell as? ViewModelBindableType)?.bind(to:viewModel)
         return cell
     }
@@ -46,8 +48,8 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
     
     @objc public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if let model = self.viewModel?.dataHolder.modelStructure.value.sectionModelsAtIndexPath(indexPath)?[kind] ?? self.viewModel?.dataHolder.modelStructure.value.sectionModelAtIndexPath(indexPath){
-        //let model = self.viewModel?.dataHolder.modelStructure.value.sectionModelAtIndexPath(indexPath)//self.viewModel?.dataHolder.models.value.children?[indexPath.section].sectionModel
-        
+            //let model = self.viewModel?.dataHolder.modelStructure.value.sectionModelAtIndexPath(indexPath)//self.viewModel?.dataHolder.models.value.children?[indexPath.section].sectionModel
+            
             
             let viewModel =  (self.viewModel as? ListViewModelTypeSectionable)?.sectionItemViewModel(fromModel: model, withType:kind)
             if (viewModel != nil) {
@@ -69,7 +71,7 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
     var staticCells = [String:StaticCellParameters]()
     
     func staticCellForSize (at indexPath:IndexPath , width:Float) -> UICollectionViewCell?{
-        
+        guard let viewModel = self.viewModel?.viewModel(atIndex:indexPath) else { return nil }
         guard let nib = self.viewModel?.identifier(atIndex:indexPath) else {
             return nil
         }
@@ -77,7 +79,13 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
         var parameters = self.staticCells[nib.name]
         
         if (parameters == nil) {
-            guard let cell = Bundle.main.loadNibNamed(nib.name, owner: self, options: [:])!.first as? UICollectionViewCell else {
+            var  c:UICollectionViewCell? = nil
+            if viewModel.itemIdentifier.isEmbeddable {
+                c = ContentCollectionViewCell()
+            }else {
+                c = Bundle.main.loadNibNamed(nib.name, owner: self, options: [:])!.first as? UICollectionViewCell
+            }
+            guard let cell = c else {
                 return nil
             }
             cell.contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -96,7 +104,7 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
         }
         
         parameters!.constraint?.constant = CGFloat(width)
-        (parameters!.cell as? ViewModelBindableType)?.bind(to:self.viewModel?.viewModel(atIndex:indexPath))
+        (parameters!.cell as? ViewModelBindableType)?.bind(to:viewModel)
         //        self.bindViewModelToCellAtIndexPath(parameters!.cell, indexPath: indexPath, forResize: true)
         var newCells = staticCells
         newCells[nib.name] = parameters
@@ -107,7 +115,7 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
     }
     
     func staticCellForSize (at indexPath:IndexPath , height:Float) -> UICollectionViewCell?{
-        
+        guard let viewModel = self.viewModel?.viewModel(atIndex:indexPath) else { return nil }
         guard let nib = self.viewModel?.identifier(atIndex:indexPath) else {
             return nil
         }
@@ -115,7 +123,13 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
         var parameters = self.staticCells[nib.name]
         
         if (parameters == nil) {
-            guard let cell = Bundle.main.loadNibNamed(nib.name, owner: self, options: [:])!.first as? UICollectionViewCell else {
+            var  c:UICollectionViewCell? = nil
+            if viewModel.itemIdentifier.isEmbeddable {
+                c = ContentCollectionViewCell()
+            }else {
+               c = Bundle.main.loadNibNamed(nib.name, owner: self, options: [:])!.first as? UICollectionViewCell
+            }
+            guard let cell = c else {
                 return nil
             }
             cell.contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -134,7 +148,7 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
         }
         
         parameters!.constraint?.constant = CGFloat(height)
-        (parameters!.cell as? ViewModelBindableType)?.bind(to:self.viewModel?.viewModel(atIndex:indexPath))
+        (parameters!.cell as? ViewModelBindableType)?.bind(to:viewModel)
         //        self.bindViewModelToCellAtIndexPath(parameters!.cell, indexPath: indexPath, forResize: true)
         var newCells = staticCells
         newCells[nib.name] = parameters
@@ -178,6 +192,34 @@ public extension ListViewModelType  {
 fileprivate class EmptyReusableView : UICollectionViewCell {
     fileprivate static let emptyReuseIdentifier = "_emptyReusableView"
 }
+
+
+open class ContentCollectionViewCell : UICollectionViewCell, ViewModelBindable {
+    public var viewModel: ViewModelType?
+    public var disposeBag: DisposeBag = DisposeBag()
+    weak var internalView:UIView?
+    public var insetConstraints: [NSLayoutConstraint] = []
+    
+    public func bind(to viewModel: ViewModelType?) {
+        guard let viewModel = viewModel as? ItemViewModelType else {
+            return
+        }
+        
+        self.disposeBag = DisposeBag()
+        self.viewModel = viewModel
+        if (self.internalView == nil) {
+            guard let view = Bundle.main.loadNibNamed(viewModel.itemIdentifier.name, owner: self, options: nil)?.first as? UIView else {
+                return
+            }
+            
+            self.insetConstraints = self.contentView.addAndFitSubview(view)
+            self.internalView = view
+        }
+        (self.internalView as? ViewModelBindableType)?.bind(to: viewModel)
+    }
+}
+
+
 extension UICollectionView : ViewModelBindable {
     
     public var viewModel: ViewModelType? {
@@ -211,12 +253,23 @@ extension UICollectionView : ViewModelBindable {
         self.viewModel = viewModel
         
         
-        viewModel.listIdentifiers.map { $0.name}.forEach {[weak self] ( value) in
-            self?.register(UINib(nibName: value, bundle: nil), forCellWithReuseIdentifier: value)
-            
+        viewModel.listIdentifiers
+            .forEach {[weak self] ( value) in
+                if value.isEmbeddable {
+                    self?.register(ContentCollectionViewCell.self, forCellWithReuseIdentifier: value.name)
+                }
+                else {
+                    self?.register(UINib(nibName: value.name, bundle: nil), forCellWithReuseIdentifier: value.name)
+                }
+                
         }
         (viewModel as? ListViewModelTypeSectionable)?.sectionIdentifiers.forEach {[weak self] ( value) in
-            self?.register(UINib(nibName: value.name, bundle: nil), forSupplementaryViewOfKind: value.type?.name ?? UICollectionElementKindSectionHeader, withReuseIdentifier: value.name)
+            if value.isEmbeddable {
+                self?.register(ContentCollectionViewCell.self, forSupplementaryViewOfKind: value.type?.name ?? UICollectionElementKindSectionHeader, withReuseIdentifier: value.name)
+            }
+            else {
+                self?.register(UINib(nibName: value.name, bundle: nil), forSupplementaryViewOfKind: value.type?.name ?? UICollectionElementKindSectionHeader, withReuseIdentifier: value.name)
+            }
         }
         
         self.register(EmptyReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader , withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)

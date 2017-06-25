@@ -19,7 +19,7 @@ class TestTableViewCell: UITableViewCell, ViewModelBindable {
         super.awakeFromNib()
         
     }
-    func bindTo(viewModel:ViewModelType?) {
+    func bind(to viewModel:ViewModelType?) {
         guard let vm = viewModel as? TestItemViewModel else {
             return
         }
@@ -36,7 +36,7 @@ class TestHeaderTableViewCell: UITableViewHeaderFooterView, ViewModelBindable {
         super.awakeFromNib()
         
     }
-    func bindTo(viewModel:ViewModelType?) {
+    func bind(to viewModel:ViewModelType?) {
         guard let vm = viewModel as? TestItemViewModel else {
             return
         }

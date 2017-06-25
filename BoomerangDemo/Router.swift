@@ -18,7 +18,7 @@ extension RouterType {
     static func from<Source>(_ source:Source, viewModel:ViewModelType) -> RouterAction where Source : ViewController {
         
         let vc = self.viewController(storyboardId: "Main", storyboardIdentifier: "testViewController") as! ViewController
-        vc.bindTo(viewModel:viewModel, afterLoad:true)
+        vc.bind(to:viewModel, afterLoad:true)
         return UIViewControllerRouterAction.push(source:source, destination:vc)
     }
     

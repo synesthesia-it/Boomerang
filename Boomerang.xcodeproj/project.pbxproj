@@ -91,6 +91,10 @@
 		7B8A31D01DDB4F3800828075 /* ModelStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DB61DD47EE100F9E39D /* ModelStructure.swift */; };
 		7B8A31D11DDB4F3800828075 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC87B1DB112FD0005E500 /* Router.swift */; };
 		7B8A31DC1DDB4FA700828075 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D91DDB4FA700828075 /* Result.framework */; };
+		7BD3ED8E1EFFBDFD004DFEA5 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD3ED8D1EFFBDFD004DFEA5 /* Utilities.swift */; };
+		7BD3ED8F1EFFBDFD004DFEA5 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD3ED8D1EFFBDFD004DFEA5 /* Utilities.swift */; };
+		7BD3ED911EFFC0DB004DFEA5 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BD3ED901EFFC0DB004DFEA5 /* TestView.xib */; };
+		7BD3ED931EFFC0F3004DFEA5 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD3ED921EFFC0F3004DFEA5 /* TestView.swift */; };
 		7BF11CC11DDC5AD500518BC0 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2CC8531DB016510005E500 /* Boomerang.framework */; };
 /* End PBXBuildFile section */
 
@@ -207,6 +211,9 @@
 		7B8A31C31DDB4EFA00828075 /* Boomerang_tvOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boomerang_tvOSTests.swift; sourceTree = "<group>"; };
 		7B8A31C51DDB4EFA00828075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B8A31D91DDB4FA700828075 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/tvOS/Result.framework; sourceTree = "<group>"; };
+		7BD3ED8D1EFFBDFD004DFEA5 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		7BD3ED901EFFC0DB004DFEA5 /* TestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
+		7BD3ED921EFFC0F3004DFEA5 /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +329,7 @@
 				7B17AA581E599E1F00C66F37 /* UITableView.swift */,
 				7B17AA591E599E1F00C66F37 /* UITextField.swift */,
 				7B17AA5A1E599E1F00C66F37 /* UIViewController.swift */,
+				7BD3ED8D1EFFBDFD004DFEA5 /* Utilities.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -343,6 +351,7 @@
 				7B440F6A1DD8F3E7005787EF /* Model */,
 				7B27E2641DCB86E0007C4C9C /* TestCollectionViewCell.xib */,
 				7B7772831E6C762E0074DF5E /* TestTableViewCell.xib */,
+				7BD3ED901EFFC0DB004DFEA5 /* TestView.xib */,
 				7B7772861E6C8D980074DF5E /* TestHeaderTableViewCell.xib */,
 				7B27E2431DCB5352007C4C9C /* Main.storyboard */,
 				7B27E2461DCB5352007C4C9C /* Assets.xcassets */,
@@ -445,6 +454,7 @@
 			isa = PBXGroup;
 			children = (
 				7B27E2631DCB86E0007C4C9C /* TestCollectionViewCell.swift */,
+				7BD3ED921EFFC0F3004DFEA5 /* TestView.swift */,
 				7B7772821E6C762E0074DF5E /* TestTableViewCell.swift */,
 				7B440F681DD8F33F005787EF /* TestItemViewModel.swift */,
 				7B27E2411DCB5352007C4C9C /* ViewController.swift */,
@@ -769,6 +779,7 @@
 				7B27E2661DCB86E0007C4C9C /* TestCollectionViewCell.xib in Resources */,
 				7B7772851E6C762E0074DF5E /* TestTableViewCell.xib in Resources */,
 				7B7772871E6C8D990074DF5E /* TestHeaderTableViewCell.xib in Resources */,
+				7BD3ED911EFFC0DB004DFEA5 /* TestView.xib in Resources */,
 				7B27E2451DCB5352007C4C9C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -849,6 +860,7 @@
 				7B27E2651DCB86E0007C4C9C /* TestCollectionViewCell.swift in Sources */,
 				7B440F671DD8F2F9005787EF /* Router.swift in Sources */,
 				7B440F611DD8F28E005787EF /* ViewModelFactory.swift in Sources */,
+				7BD3ED931EFFC0F3004DFEA5 /* TestView.swift in Sources */,
 				7B440F691DD8F33F005787EF /* TestItemViewModel.swift in Sources */,
 				7B27E2421DCB5352007C4C9C /* ViewController.swift in Sources */,
 				7B27E2401DCB5352007C4C9C /* AppDelegate.swift in Sources */,
@@ -870,6 +882,7 @@
 				7B7772801E6C71C70074DF5E /* UIPagerViewController.swift in Sources */,
 				7B087DB91DD47F4300F9E39D /* ListViewModel.swift in Sources */,
 				7B65F4761DE300F2000684D0 /* FormViewModel.swift in Sources */,
+				7BD3ED8E1EFFBDFD004DFEA5 /* Utilities.swift in Sources */,
 				7B17AA611E599E1F00C66F37 /* UIRouter.swift in Sources */,
 				7B087DB71DD47EE100F9E39D /* ModelStructure.swift in Sources */,
 				7B17AA5F1E599E1F00C66F37 /* UICollectionView.swift in Sources */,
@@ -913,6 +926,7 @@
 			files = (
 				7B7772811E6C71C70074DF5E /* UIPagerViewController.swift in Sources */,
 				7B65F4781DE300F2000684D0 /* FormViewModel.swift in Sources */,
+				7BD3ED8F1EFFBDFD004DFEA5 /* Utilities.swift in Sources */,
 				7B8A31CE1DDB4F3800828075 /* ListViewModel.swift in Sources */,
 				7B17AA621E599E1F00C66F37 /* UIRouter.swift in Sources */,
 				7B8A31D01DDB4F3800828075 /* ModelStructure.swift in Sources */,

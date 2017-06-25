@@ -9,13 +9,22 @@
 import Foundation
 import Boomerang
 
+
+enum TestIdentifier : ListIdentifier {
+    case test
+    
+    var type: String? { return nil }
+    var name: String { return "TestView" }
+    var isEmbeddable: Bool { return true }
+}
+
 final class TestItemViewModel: ItemViewModelType {
     
     
     public var model: ItemViewModelType.Model = ""
     var title:String { return (self.model as? String)?.title ?? "" }
     var customTitle:String?
-    var itemIdentifier: ListIdentifier = "TestTableViewCell"
+    var itemIdentifier: ListIdentifier = TestIdentifier.test//"TestTableViewCell"
     
     convenience init(model: Item) {
         self.init(model:model as ItemViewModelType.Model)

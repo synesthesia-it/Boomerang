@@ -19,7 +19,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UITa
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
         if (self.viewModel == nil) {
-            self.bindTo(viewModel:ViewModelFactory.anotherTestViewModel())
+            self.bind(to:ViewModelFactory.anotherTestViewModel())
         }
         
         self.tableView?.rowHeight = UITableViewAutomaticDimension
@@ -57,18 +57,18 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout, UITa
         
     }
     
-    func bindTo(viewModel: ViewModelType?) {
+    func bind(to viewModel: ViewModelType?) {
         
         guard let vm = viewModel as? TestViewModel else {
             return
         }
         self.viewModel = vm
         self.collectionView?.delegate = self
-        self.collectionView?.bindTo(viewModel:self.viewModel)
+        self.collectionView?.bind(to:self.viewModel)
         
         
         self.tableView?.delegate = self
-        self.tableView?.bindTo(viewModel:self.viewModel)
+        self.tableView?.bind(to:self.viewModel)
         
         _ = vm.selection.executionObservables.switchLatest().subscribe(onNext:{[weak self] sel in
             guard let vm = sel as? ViewModelType else {
