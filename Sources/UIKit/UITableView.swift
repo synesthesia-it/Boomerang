@@ -18,13 +18,13 @@ public enum TableViewHeaderType : String {
     }
 }
 
-public extension UITableViewCell {
-    
-    public var isPlaceholder:Bool {
-        get { return objc_getAssociatedObject(self, &AssociatedKeys.isPlaceholder) as? Bool ?? false}
-        set { objc_setAssociatedObject(self, &AssociatedKeys.isPlaceholder, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
-    }
-}
+//public extension UITableViewCell {
+//
+//    public var isPlaceholder:Bool {
+//        get { return objc_getAssociatedObject(self, &AssociatedKeys.isPlaceholder) as? Bool ?? false}
+//        set { objc_setAssociatedObject(self, &AssociatedKeys.isPlaceholder, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
+//    }
+//}
 public protocol EditableViewModel : ListViewModelType{
     func canEditItem(atIndexPath indexPath:IndexPath) -> Bool
     func canDeleteItem(atIndexPath indexPath:IndexPath) -> Bool
@@ -74,14 +74,14 @@ private class ViewModelTableViewDataSource : NSObject, UITableViewDataSource {
     
     struct StaticCellParameters {
         var constraint:NSLayoutConstraint!
-        var cell:UITableViewCell!
+        var cell:UIView!
     }
     
     
     
     var staticCells = [String:StaticCellParameters]()
     
-    func staticCellForSizeAtIndexPath (_ indexPath:IndexPath ,width:Float) -> UITableViewCell?{
+    func staticCellForSizeAtIndexPath (_ indexPath:IndexPath ,width:Float) -> UIView?{
         
         guard let nib = self.viewModel?.identifier(atIndex:indexPath) else {
             return nil
@@ -90,20 +90,19 @@ private class ViewModelTableViewDataSource : NSObject, UITableViewDataSource {
         var parameters = self.staticCells[nib.name]
         
         if (parameters == nil) {
-            guard let cell = Bundle.main.loadNibNamed(nib.name, owner: self, options: [:])!.first as? UITableViewCell else {
-                return nil
-            }
-            cell.contentView.translatesAutoresizingMaskIntoConstraints = false
+            guard let cell = Bundle.main.loadNibNamed(nib.name, owner: self, options: [:])!.first as? UIView else { return nil}
+            guard let embeddable = cell as? EmbeddableView else { return nil }
+            embeddable.customContentView.translatesAutoresizingMaskIntoConstraints = false
             let constraint = NSLayoutConstraint(
-                item: cell.contentView,
+                item: embeddable.customContentView,
                 attribute: .width,
                 relatedBy: .equal,
                 toItem: nil,
                 attribute: .notAnAttribute,
                 multiplier: 1.0,
                 constant: CGFloat(width))
-            cell.contentView.addConstraint(constraint)
-            cell.isPlaceholder = true
+            embeddable.customContentView.addConstraint(constraint)
+            embeddable.isPlaceholder = true
             parameters = StaticCellParameters(constraint: constraint, cell:cell)
             
         }
@@ -142,19 +141,19 @@ private class ViewModelTableViewDataSource : NSObject, UITableViewDataSource {
         //tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     public func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-         return (tableView.viewModel as? EditableViewModel)?.canMoveItem(atIndexPath: indexPath) ?? false
+        return (tableView.viewModel as? EditableViewModel)?.canMoveItem(atIndexPath: indexPath) ?? false
     }
     
     public func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-         (tableView.viewModel as? EditableViewModel)?.moveItem(fromIndexPath: sourceIndexPath, to: destinationIndexPath)
+        (tableView.viewModel as? EditableViewModel)?.moveItem(fromIndexPath: sourceIndexPath, to: destinationIndexPath)
         tableView.moveRow(at: sourceIndexPath, to: destinationIndexPath)
     }
     
     func autoSizeForItemAtIndexPath(_ indexPath:IndexPath, width:Float) -> CGSize {
-        let cell = self.staticCellForSizeAtIndexPath(indexPath, width: width)
-        cell?.contentView.setNeedsLayout()
-        cell?.contentView.layoutIfNeeded()
-        let size = cell?.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize) ?? CGSize.zero
+        let cell = self.staticCellForSizeAtIndexPath(indexPath, width: width) as? EmbeddableView
+        cell?.customContentView.setNeedsLayout()
+        cell?.customContentView.layoutIfNeeded()
+        let size = cell?.customContentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize) ?? CGSize.zero
         return size
     }
     
@@ -178,8 +177,54 @@ fileprivate class EmptyReusableView : UICollectionViewCell {
     fileprivate static let emptyReuseIdentifier = "_emptyReusableView"
 }
 
-
-
+open class ContentTableViewCell : UITableViewCell, ViewModelBindable {
+    public var viewModel: ViewModelType?
+    public var disposeBag: DisposeBag = DisposeBag()
+    weak var internalView:UIView?
+    public var insetConstraints: [NSLayoutConstraint] = []
+    
+    public func bind(to viewModel: ViewModelType?) {
+        guard let viewModel = viewModel as? ItemViewModelType else {
+            return
+        }
+        
+        self.disposeBag = DisposeBag()
+        self.viewModel = viewModel
+        if (self.internalView == nil) {
+            guard let view = Bundle.main.loadNibNamed(viewModel.itemIdentifier.name, owner: self, options: nil)?.first as? UIView else {
+                return
+            }
+            
+            self.insetConstraints = self.contentView.addAndFitSubview(view)
+            self.internalView = view
+        }
+        (self.internalView as? ViewModelBindableType)?.bind(to: viewModel)
+    }
+}
+open class ContentTableHeaderFooterView : UITableViewHeaderFooterView, ViewModelBindable {
+    public var viewModel: ViewModelType?
+    public var disposeBag: DisposeBag = DisposeBag()
+    weak var internalView:UIView?
+    public var insetConstraints: [NSLayoutConstraint] = []
+    
+    public func bind(to viewModel: ViewModelType?) {
+        guard let viewModel = viewModel as? ItemViewModelType else {
+            return
+        }
+        
+        self.disposeBag = DisposeBag()
+        self.viewModel = viewModel
+        if (self.internalView == nil) {
+            guard let view = Bundle.main.loadNibNamed(viewModel.itemIdentifier.name, owner: self, options: nil)?.first as? UIView else {
+                return
+            }
+            
+            self.insetConstraints = self.contentView.addAndFitSubview(view)
+            self.internalView = view
+        }
+        (self.internalView as? ViewModelBindableType)?.bind(to: viewModel)
+    }
+}
 extension UITableView : ViewModelBindable {
     
     public var viewModel: ViewModelType? {
@@ -217,7 +262,7 @@ extension UITableView : ViewModelBindable {
         guard let viewModel = sectionable.sectionItemViewModel(fromModel: model, withType: TableViewHeaderType.footer.identifier.name) else {
             return nil
         }
- 
+        
         let cell = self.dequeueReusableHeaderFooterView(withIdentifier: viewModel.itemIdentifier.name)
         (cell as? ViewModelBindableType)?.bind(to:viewModel)
         return cell
@@ -248,16 +293,22 @@ extension UITableView : ViewModelBindable {
         self.viewModel = viewModel
         
         
-         viewModel.listIdentifiers.map { $0.name}.forEach {[weak self] ( value) in
-            
-            self?.register(UINib(nibName: value, bundle: nil), forCellReuseIdentifier: value)
-            
+        viewModel.listIdentifiers.forEach {[weak self] ( value) in
+            if (value.isEmbeddable) {
+                self?.register(ContentTableViewCell.self, forCellReuseIdentifier: value.name)
+            } else {
+                self?.register(UINib(nibName: value.name, bundle: nil), forCellReuseIdentifier: value.name)
+            }
         }
-         (viewModel as? ListViewModelTypeSectionable)?.sectionIdentifiers.forEach { [weak self] ( value) in
-            self?.register(UINib(nibName:value.name,bundle:nil), forHeaderFooterViewReuseIdentifier: value.name)
-            
+        (viewModel as? ListViewModelTypeSectionable)?.sectionIdentifiers.forEach { [weak self] ( value) in
+            if (value.isEmbeddable) {
+                self?.register(ContentTableHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: value.name)
+            }
+            else {
+                self?.register(UINib(nibName:value.name,bundle:nil), forHeaderFooterViewReuseIdentifier: value.name)
+            }
         }
-                if (viewModel.tableViewDataSource == nil) {
+        if (viewModel.tableViewDataSource == nil) {
             viewModel.tableViewDataSource = ViewModelTableViewDataSource(viewModel: viewModel)
         }
         self.dataSource = viewModel.tableViewDataSource

@@ -95,6 +95,8 @@
 		7BD3ED8F1EFFBDFD004DFEA5 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD3ED8D1EFFBDFD004DFEA5 /* Utilities.swift */; };
 		7BD3ED911EFFC0DB004DFEA5 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BD3ED901EFFC0DB004DFEA5 /* TestView.xib */; };
 		7BD3ED931EFFC0F3004DFEA5 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD3ED921EFFC0F3004DFEA5 /* TestView.swift */; };
+		7BDEC78A1EFFDAAE00322CCE /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDEC7891EFFDAAE00322CCE /* UIView.swift */; };
+		7BDEC78B1EFFDAAE00322CCE /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDEC7891EFFDAAE00322CCE /* UIView.swift */; };
 		7BF11CC11DDC5AD500518BC0 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2CC8531DB016510005E500 /* Boomerang.framework */; };
 /* End PBXBuildFile section */
 
@@ -214,6 +216,7 @@
 		7BD3ED8D1EFFBDFD004DFEA5 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		7BD3ED901EFFC0DB004DFEA5 /* TestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
 		7BD3ED921EFFC0F3004DFEA5 /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		7BDEC7891EFFDAAE00322CCE /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,6 +328,7 @@
 				7B17AA551E599E1F00C66F37 /* UIButton.swift */,
 				7B77727F1E6C71C70074DF5E /* UIPagerViewController.swift */,
 				7B17AA561E599E1F00C66F37 /* UICollectionView.swift */,
+				7BDEC7891EFFDAAE00322CCE /* UIView.swift */,
 				7B17AA571E599E1F00C66F37 /* UIRouter.swift */,
 				7B17AA581E599E1F00C66F37 /* UITableView.swift */,
 				7B17AA591E599E1F00C66F37 /* UITextField.swift */,
@@ -894,6 +898,7 @@
 				7B2CC87C1DB112FD0005E500 /* Router.swift in Sources */,
 				7B17AA5B1E599E1F00C66F37 /* UIPickerView.swift in Sources */,
 				7B17AA651E599E1F00C66F37 /* UITextField.swift in Sources */,
+				7BDEC78A1EFFDAAE00322CCE /* UIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -930,6 +935,7 @@
 				7B8A31CE1DDB4F3800828075 /* ListViewModel.swift in Sources */,
 				7B17AA621E599E1F00C66F37 /* UIRouter.swift in Sources */,
 				7B8A31D01DDB4F3800828075 /* ModelStructure.swift in Sources */,
+				7BDEC78B1EFFDAAE00322CCE /* UIView.swift in Sources */,
 				7B17AA601E599E1F00C66F37 /* UICollectionView.swift in Sources */,
 				7B17AA5E1E599E1F00C66F37 /* UIButton.swift in Sources */,
 				7B8A31D11DDB4F3800828075 /* Router.swift in Sources */,

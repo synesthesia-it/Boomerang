@@ -10,7 +10,7 @@ import UIKit
 import Boomerang
 import RxSwift
 
-class TestView : UIView, ViewModelBindable {
+class TestView : UIView, ViewModelBindable , EmbeddableView{
     
     var viewModel: ViewModelType?
     let disposeBag: DisposeBag = DisposeBag()

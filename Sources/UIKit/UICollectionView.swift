@@ -11,12 +11,8 @@ import RxCocoa
 import RxSwift
 
 
-public extension UICollectionReusableView {
+extension UICollectionReusableView : EmbeddableView{
     
-    public var isPlaceholder:Bool {
-        get { return objc_getAssociatedObject(self, &AssociatedKeys.isPlaceholder) as? Bool ?? false}
-        set { objc_setAssociatedObject(self, &AssociatedKeys.isPlaceholder, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
-    }
 }
 
 private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewDataSource {
@@ -63,14 +59,14 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
     }
     struct StaticCellParameters {
         var constraint:NSLayoutConstraint!
-        var cell:UICollectionViewCell!
+        var cell:UIView!
     }
     
     
     
     var staticCells = [String:StaticCellParameters]()
     
-    func staticCellForSize (at indexPath:IndexPath , width:Float) -> UICollectionViewCell?{
+    func staticCellForSize (at indexPath:IndexPath , width:Float) -> UIView?{
         guard let viewModel = self.viewModel?.viewModel(atIndex:indexPath) else { return nil }
         guard let nib = self.viewModel?.identifier(atIndex:indexPath) else {
             return nil
@@ -79,32 +75,29 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
         var parameters = self.staticCells[nib.name]
         
         if (parameters == nil) {
-            var  c:UICollectionViewCell? = nil
-            if viewModel.itemIdentifier.isEmbeddable {
-                c = ContentCollectionViewCell()
-            }else {
-                c = Bundle.main.loadNibNamed(nib.name, owner: self, options: [:])!.first as? UICollectionViewCell
-            }
-            guard let cell = c else {
-                return nil
-            }
-            cell.contentView.translatesAutoresizingMaskIntoConstraints = false
+            
+         
+            guard let cell = Bundle.main.loadNibNamed(nib.name, owner: self, options: [:])!.first as? UIView else { return nil}
+            guard let embeddable = cell as? EmbeddableView else { return nil }
+        
+            embeddable.customContentView.translatesAutoresizingMaskIntoConstraints = false
             let constraint = NSLayoutConstraint(
-                item: cell.contentView,
+                item: embeddable.customContentView,
                 attribute: .width,
                 relatedBy: .equal,
                 toItem: nil,
                 attribute: .notAnAttribute,
                 multiplier: 1.0,
                 constant: CGFloat(width))
-            cell.contentView.addConstraint(constraint)
-            cell.isPlaceholder = true
+            embeddable.customContentView.addConstraint(constraint)
+            embeddable.isPlaceholder = true
             parameters = StaticCellParameters(constraint: constraint, cell:cell)
             
         }
         
         parameters!.constraint?.constant = CGFloat(width)
         (parameters!.cell as? ViewModelBindableType)?.bind(to:viewModel)
+        
         //        self.bindViewModelToCellAtIndexPath(parameters!.cell, indexPath: indexPath, forResize: true)
         var newCells = staticCells
         newCells[nib.name] = parameters
@@ -114,7 +107,7 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
         
     }
     
-    func staticCellForSize (at indexPath:IndexPath , height:Float) -> UICollectionViewCell?{
+    func staticCellForSize (at indexPath:IndexPath , height:Float) -> UIView?{
         guard let viewModel = self.viewModel?.viewModel(atIndex:indexPath) else { return nil }
         guard let nib = self.viewModel?.identifier(atIndex:indexPath) else {
             return nil
@@ -123,26 +116,20 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
         var parameters = self.staticCells[nib.name]
         
         if (parameters == nil) {
-            var  c:UICollectionViewCell? = nil
-            if viewModel.itemIdentifier.isEmbeddable {
-                c = ContentCollectionViewCell()
-            }else {
-               c = Bundle.main.loadNibNamed(nib.name, owner: self, options: [:])!.first as? UICollectionViewCell
-            }
-            guard let cell = c else {
-                return nil
-            }
-            cell.contentView.translatesAutoresizingMaskIntoConstraints = false
+            guard let cell = Bundle.main.loadNibNamed(nib.name, owner: self, options: [:])!.first as? UIView else { return nil}
+            guard let embeddable = cell as? EmbeddableView else { return nil }
+            
+            embeddable.customContentView.translatesAutoresizingMaskIntoConstraints = false
             let constraint = NSLayoutConstraint(
-                item: cell.contentView,
+                item: embeddable.customContentView,
                 attribute: .height,
                 relatedBy: .equal,
                 toItem: nil,
                 attribute: .notAnAttribute,
                 multiplier: 1.0,
                 constant: CGFloat(height))
-            cell.contentView.addConstraint(constraint)
-            cell.isPlaceholder = true
+            embeddable.customContentView.addConstraint(constraint)
+            embeddable.isPlaceholder = true
             parameters = StaticCellParameters(constraint: constraint, cell:cell)
             
         }
@@ -159,18 +146,18 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
     }
     
     func autoSizeForItem(at indexPath:IndexPath, width:Float) -> CGSize {
-        let cell = self.staticCellForSize(at:indexPath, width: width)
-        cell?.contentView.setNeedsLayout()
-        cell?.contentView.layoutIfNeeded()
-        let size = cell?.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize) ?? CGSize.zero
+        let cell = self.staticCellForSize(at:indexPath, width: width) as? EmbeddableView
+        cell?.customContentView.setNeedsLayout()
+        cell?.customContentView.layoutIfNeeded()
+        let size = cell?.customContentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize) ?? CGSize.zero
         return size
     }
     
     func autoSizeForItem(at indexPath:IndexPath, height:Float) -> CGSize {
-        let cell = self.staticCellForSize(at:indexPath, height: height)
-        cell?.contentView.setNeedsLayout()
-        cell?.contentView.layoutIfNeeded()
-        let size = cell?.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize) ?? CGSize.zero
+        let cell = self.staticCellForSize(at:indexPath, height: height) as? EmbeddableView
+        cell?.customContentView.setNeedsLayout()
+        cell?.customContentView.layoutIfNeeded()
+        let size = cell?.customContentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize) ?? CGSize.zero
         return size
     }
     
@@ -299,9 +286,11 @@ extension UICollectionView : ViewModelBindable {
         }
         return dataSource.autoSizeForItem(at:indexPath, width: width)
     }
-    public func autosizeItemAt(indexPath:IndexPath, itemsPerLine:Int = 1) -> CGSize {
+    
+    public func autoWidthForItemAt(indexPath:IndexPath, itemsPerLine:Int = 1) -> CGFloat {
         guard let flow = self.collectionViewLayout as? UICollectionViewFlowLayout else {
-            return self.autosizeItemAt(indexPath: indexPath, constrainedToWidth: Float(self.frame.size.width))
+            return self.frame.size.width
+          //  return self.autosizeItemAt(indexPath: indexPath, constrainedToWidth: Float(self.frame.size.width))
         }
         let flowDelegate = self.delegate as? UICollectionViewDelegateFlowLayout
         let insets =  flowDelegate?.responds(to:#selector(UICollectionViewDelegateFlowLayout.collectionView(_:layout:insetForSectionAt:))) == true ? flowDelegate!.collectionView!(self, layout: flow, insetForSectionAt: indexPath.section) : flow.sectionInset
@@ -312,7 +301,12 @@ extension UICollectionView : ViewModelBindable {
         let globalWidth = self.frame.size.width - insets.left - insets.right - self.contentInset.left - self.contentInset.right
         
         let singleWidth = (CGFloat(globalWidth) - (CGFloat(max(0,itemsPerLine - 1)) * spacing)) / CGFloat(max(itemsPerLine,1))
-        return self.autosizeItemAt(indexPath: indexPath, constrainedToWidth: floor(Float(singleWidth)))
+        return singleWidth
+    }
+    
+    public func autosizeItemAt(indexPath:IndexPath, itemsPerLine:Int = 1) -> CGSize {
+       
+        return self.autosizeItemAt(indexPath: indexPath, constrainedToWidth: floor(Float(self.autoWidthForItemAt(indexPath: indexPath, itemsPerLine: itemsPerLine))))
         
     }
 }
