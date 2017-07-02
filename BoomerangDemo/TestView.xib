@@ -17,12 +17,13 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VkL-lx-1Ia">
                     <rect key="frame" x="10" y="10" width="355" height="95"/>
+                    <color key="backgroundColor" white="0.66000000000000003" alpha="0.1652632130872482" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="29"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.56000000000000005" alpha="0.10486052852348982" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="VkL-lx-1Ia" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="awv-hM-QSB"/>
                 <constraint firstAttribute="bottom" secondItem="VkL-lx-1Ia" secondAttribute="bottom" constant="10" id="hKN-0S-RCi"/>

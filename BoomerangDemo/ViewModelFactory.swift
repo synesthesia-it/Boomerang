@@ -21,7 +21,7 @@ struct ViewModelFactory {
     }
     static func testViewModel() -> TestViewModel {
         var a:[ModelStructure] = []
-        for i in 0...199 {
+        for i in 0...2 {
             a = a + [ModelStructure([
                 Item(string:"\(i*1000)"),
                 Item(string:"\(i*1000)"),

@@ -50,6 +50,39 @@
             </objects>
             <point key="canvasLocation" x="1079.2" y="138.98050974512745"/>
         </scene>
+        <!--Stackable View Controller-->
+        <scene sceneID="fBa-AO-DDT">
+            <objects>
+                <viewController id="BMR-SY-BXp" customClass="StackableViewController" customModule="BoomerangDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kpy-ia-2ix"/>
+                        <viewControllerLayoutGuide type="bottom" id="XNc-Rj-mQ2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KPC-bQ-oJN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TdN-dY-mWJ" customClass="StackableScrollView" customModule="Boomerang">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="TdN-dY-mWJ" secondAttribute="trailing" id="1sV-A9-nLf"/>
+                            <constraint firstItem="TdN-dY-mWJ" firstAttribute="top" secondItem="Kpy-ia-2ix" secondAttribute="bottom" id="BGi-c9-86G"/>
+                            <constraint firstItem="XNc-Rj-mQ2" firstAttribute="top" secondItem="TdN-dY-mWJ" secondAttribute="bottom" id="nlD-XS-a3y"/>
+                            <constraint firstItem="TdN-dY-mWJ" firstAttribute="leading" secondItem="KPC-bQ-oJN" secondAttribute="leading" id="v6C-Xr-hC7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="nlr-UT-82U"/>
+                    <connections>
+                        <outlet property="scrollView" destination="TdN-dY-mWJ" id="NjG-XW-R5N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DGJ-ly-P8D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1073" y="-582"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="DVb-eD-UIH">
             <objects>
@@ -95,7 +128,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="gIT-GO-Pbw"/>
+                        <segue destination="BMR-SY-BXp" kind="relationship" relationship="rootViewController" id="8yC-Km-ClP"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cy2-N1-SsF" userLabel="First Responder" sceneMemberID="firstResponder"/>
