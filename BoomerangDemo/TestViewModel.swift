@@ -36,10 +36,10 @@ final class TestViewModel:ListViewModelTypeSectionable, ViewModelTypeSelectable,
     
     func itemViewModel(fromModel model: ModelType) -> ItemViewModelType? {
         switch model {
-        case is Item:
-            return TestItemViewModel(model: model as! Item)
-        case is Section:
-            return TestItemViewModel(model: model as! Section)
+        case let item as Item:
+            return TestItemViewModel(model:item)
+        case let section as Section:
+            return TestItemViewModel(model:section)
         default : return nil
         }
     }

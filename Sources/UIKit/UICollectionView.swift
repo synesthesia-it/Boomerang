@@ -287,6 +287,16 @@ extension UICollectionView : ViewModelBindable {
         return dataSource.autoSizeForItem(at:indexPath, width: width)
     }
     
+    public func autosizeItemAt(indexPath:IndexPath, constrainedToHeight height:Float) -> CGSize {
+        guard let viewModel = viewModel as? ListViewModelType else {
+            return .zero
+        }
+        guard let dataSource = viewModel.collectionViewDataSource as? ViewModelCollectionViewDataSource else {
+            return .zero
+        }
+        return dataSource.autoSizeForItem(at:indexPath, height: height)
+    }
+    
     public func autoWidthForItemAt(indexPath:IndexPath, itemsPerLine:Int = 1) -> CGFloat {
         guard let flow = self.collectionViewLayout as? UICollectionViewFlowLayout else {
             return self.frame.size.width
@@ -304,6 +314,37 @@ extension UICollectionView : ViewModelBindable {
         return singleWidth
     }
     
+    public func autoHeightForItemAt(indexPath:IndexPath, itemsPerLine:Int = 1) -> CGFloat {
+        guard let flow = self.collectionViewLayout as? UICollectionViewFlowLayout else {
+            return self.frame.size.height
+            //  return self.autosizeItemAt(indexPath: indexPath, constrainedToWidth: Float(self.frame.size.width))
+        }
+        let flowDelegate = self.delegate as? UICollectionViewDelegateFlowLayout
+        let insets =  flowDelegate?.responds(to:#selector(UICollectionViewDelegateFlowLayout.collectionView(_:layout:insetForSectionAt:))) == true ? flowDelegate!.collectionView!(self, layout: flow, insetForSectionAt: indexPath.section) : flow.sectionInset
+        
+        let spacing =  flowDelegate?.responds(to:#selector(UICollectionViewDelegateFlowLayout.collectionView(_:layout:minimumInteritemSpacingForSectionAt:))) == true ? flowDelegate!.collectionView!(self, layout: flow, minimumInteritemSpacingForSectionAt: indexPath.section) : flow.minimumInteritemSpacing
+        
+        
+        let globalHeight = self.frame.size.height - insets.top - insets.bottom - self.contentInset.top - self.contentInset.bottom
+        
+        let singleHeight = (CGFloat(globalHeight) - (CGFloat(max(0,itemsPerLine - 1)) * spacing)) / CGFloat(max(itemsPerLine,1))
+        return singleHeight
+    }
+    
+    
+    public func autosizeItemConstrainedToWidth(at indexPath:IndexPath, itemsPerLine:Int = 1) -> CGSize {
+        
+        return self.autosizeItemAt(indexPath: indexPath, constrainedToWidth: floor(Float(self.autoWidthForItemAt(indexPath: indexPath, itemsPerLine: itemsPerLine))))
+        
+    }
+    
+    public func autosizeItemConstrainedToHeight(at indexPath:IndexPath, itemsPerLine:Int = 1) -> CGSize {
+        
+        return self.autosizeItemAt(indexPath: indexPath, constrainedToHeight: floor(Float(self.autoHeightForItemAt(indexPath: indexPath, itemsPerLine: itemsPerLine))))
+        
+    }
+    
+    @available(*, deprecated, message: "use autosizeItemConstrainedToWidth instead")
     public func autosizeItemAt(indexPath:IndexPath, itemsPerLine:Int = 1) -> CGSize {
        
         return self.autosizeItemAt(indexPath: indexPath, constrainedToWidth: floor(Float(self.autoWidthForItemAt(indexPath: indexPath, itemsPerLine: itemsPerLine))))

@@ -12,16 +12,11 @@ public protocol ItemViewModelType : ViewModelTypeIdentifiable,  ModelType {
     typealias Model = ModelType
     var itemTitle:String? { get }
     var model:Model {get set}
-    init(model:Model)
+    
 }
 
 public extension ItemViewModelType {
     var itemTitle:String? {return ""}
-    
-    public init(model:ItemViewModelType.Model) {
-        self.init()
-        self.model = model
-    }
 }
 extension String : ModelType {
     public var title:String? {
@@ -31,8 +26,11 @@ extension String : ModelType {
 public final class SimpleItemViewModel : ItemViewModelType {
     public var model:ModelType
     public var itemIdentifier: ListIdentifier = defaultListIdentifier
-    public  init(model:ItemViewModelType.Model, itemIdentifier:ListIdentifier = defaultListIdentifier) {
+    public init(model: Model) {
         self.model = model
+    }
+    convenience public init(model:ItemViewModelType.Model, itemIdentifier:ListIdentifier = defaultListIdentifier) {
+        self.init(model: model)
         self.itemIdentifier = itemIdentifier
     }
 }

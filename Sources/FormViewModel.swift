@@ -106,10 +106,12 @@ extension FormItemViewModel {
 //        self.string.asObservable().delay(0.0, scheduler: MainScheduler.instance).map {[weak self] in self?.toValue($0) ?? DataValue.empty}.bindTo(data.value).addDisposableTo(bag)
 //        
 //    }
-    public init(data:FormData<DataValue>) {
-        self.init(model:data)
-        
-    }
+//    public init(data:FormData<DataValue>) {
+////        self.init(model:data)
+//        
+//        self.model = data
+//        
+//    }
 }
 
 
@@ -144,6 +146,8 @@ extension String :FormValueEquatable {
     public static var empty: String = ""
 }
 open class StringFormItemViewModel : FormItemViewModel , TextInput{
+
+
     public typealias DataValue = String
     public static var defaultItemIdentifier: ListIdentifier = defaultListIdentifier
     public var string:Variable<String> = Variable("")
@@ -156,14 +160,16 @@ open class StringFormItemViewModel : FormItemViewModel , TextInput{
     public var style: FormStyle?
     public var error:ObservableError?
     
-    public required init () {}
+    public required init (data: Variable<String>) {
+        self.model = data
+    }
     public required convenience init (data:FormData<DataValue>,
                                       title:String? = nil,
                                       itemIdentifier:ListIdentifier = StringFormItemViewModel.defaultItemIdentifier,
                                       error:ObservableError? = nil,
                                       style:FormStyle? = nil
                                       ) {
-        self.init(model:data as ItemViewModelType.Model)
+        self.init(data:data )
         self.title = title
         self.style = style
         self.error = error
@@ -190,9 +196,11 @@ open class BoolFormItemViewModel : FormItemViewModel {
     public var value:Variable<DataValue> = Variable(DataValue.empty)
     public var title: String?
     public var error:ObservableError?
-    public required init () {}
+    public required init (data: Variable<Bool>) {
+        self.model = data
+    }
     public required convenience init (data:FormData<DataValue>, title:String? = nil, itemIdentifier:ListIdentifier = BoolFormItemViewModel.defaultItemIdentifier, error:ObservableError? = nil) {
-        self.init(model:data as ItemViewModelType.Model)
+        self.init(data:data)
         self.title = title
         self.itemIdentifier = itemIdentifier
         self.error = error
@@ -218,9 +226,11 @@ open class IntFormItemViewModel : FormItemViewModel {
     public var value:Variable<DataValue> = Variable(DataValue.empty)
     public var title: String?
     public var error: ObservableError?
-    public required init () {}
+    public required init (data: Variable<Int>) {
+        self.model = data
+    }
     public required convenience init (data:FormData<DataValue>, title:String? = nil , itemIdentifier:ListIdentifier = IntFormItemViewModel.defaultItemIdentifier, error:ObservableError? = nil) {
-        self.init(model:data as ItemViewModelType.Model)
+        self.init(data:data )
         self.title = title
         self.error = error
         self.itemIdentifier = itemIdentifier
@@ -268,10 +278,14 @@ open class MultiselectionItemViewModel<DataValue:FormModel> : FormItemViewModel,
         }
         return .just(output)
     }
-    public required init () {}
-    
+    public required init (data: Variable<DataValue>) {
+        self.model = data
+    }
+    required public init() {
+        
+    }
     public required convenience init (data:FormData<DataValue>, title:String? = nil , itemIdentifier:ListIdentifier , dataHolder:ListDataHolderType, innerIdentifier:ListIdentifier = defaultListIdentifier, error:ObservableError? , converting itemViewModelClosure:@escaping (ModelType) -> (ItemViewModelType?)) {
-        self.init(model:data as ItemViewModelType.Model)
+        self.init(data:data)
         self.title = title
         self.itemIdentifier = itemIdentifier
         self.error = error
@@ -343,7 +357,9 @@ open class ModelFormItemViewModel<T:ModelType> : FormItemViewModel{
     public var title: String?
     public var style: FormStyle?
     public var error:ObservableError?
-    public required init () {}
+    public required init (data: Variable<DataValue>) {
+        self.model = data
+    }
     public required init (data:FormData<DataValue>,
                    title:String? = nil,
                    itemIdentifier:ListIdentifier,

@@ -23,7 +23,7 @@ public struct Error : Swift.Error {
 }
 
 public protocol ViewModelType : class {
-    init()
+//    init()
 }
 
 public protocol ViewModelBindable : ViewModelBindableType{
@@ -40,9 +40,9 @@ private struct AssociatedKeys {
     static var disposeBag = "disposeBag"
 }
 extension ViewModelType {
-    public init() {
-        self.init()
-    }
+//    public init() {
+//        self.init()
+//    }
     public var disposeBag: DisposeBag {
         get {
             var disposeBag: DisposeBag

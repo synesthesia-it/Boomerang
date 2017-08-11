@@ -131,7 +131,7 @@ public protocol ListViewModelType : ViewModelType {
     func itemViewModel(fromModel model:ModelType) -> ItemViewModelType?
     var listIdentifiers:[ListIdentifier] {get}
     func reload()
-    init()
+    
 }
 
 

@@ -26,12 +26,12 @@ final class TestItemViewModel: ItemViewModelType {
     var customTitle:String?
     var itemIdentifier: ListIdentifier = TestIdentifier.test//"TestTableViewCell"
     
-    convenience init(model: Item) {
-        self.init(model:model as ItemViewModelType.Model)
+     init(model: Item) {
+        self.model = model
         self.customTitle = model.string
     }
-    convenience init(model: Section, type:String) {
-        self.init(model:model as ItemViewModelType.Model)
+    init(model: Section, type:String = "") {
+        self.model = model
         self.customTitle = model.string
         self.itemIdentifier = HeaderIdentifier(name: "TestHeaderTableViewCell", type: type)
     }
