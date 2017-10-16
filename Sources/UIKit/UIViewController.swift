@@ -56,9 +56,9 @@ public extension ViewModelBindableType where Self : UIViewController {
     
     public func bind(to viewModel: ViewModelType? , afterLoad:Bool) {
         if (afterLoad) {
-            (self as UIViewController).rx.sentMessage(#selector(viewDidLoad)).take(1).subscribe(onCompleted: {[weak self] _ in
+            (self as UIViewController).rx.sentMessage(#selector(viewDidLoad)).take(1).subscribe(onCompleted: {[weak self]  in
                 self?.bind(to:viewModel)
-            }).addDisposableTo(self.disposeBag)
+            }).disposed(by:self.disposeBag)
         }
         
         else {

@@ -137,7 +137,7 @@ extension UIPageViewController : ViewModelBindable {
                 viewModel.pagerDataSource?.reset()
                 self?.setViewControllers([viewModel.pagerDataSource?.viewControllerAtIndex(viewModel.startingIndex) ?? UIViewController()], direction: .forward, animated:false, completion: nil)
             })
-            .addDisposableTo(self.disposeBag)
+            .disposed(by:self.disposeBag)
         viewModel.reload()
         
     }

@@ -13,13 +13,13 @@ import Quick
 @testable import Boomerang
 
 
-
+extension String : ModelType {}
 
 final class TestItemViewModel:ItemViewModelType {
     var itemIdentifier: ListIdentifier = "TestIdentifier"
     var model:ItemViewModelType.Model = ""
-    convenience init (model:String) {
-        self.init(model: model as ItemViewModelType.Model)
+    init (model:String) {
+        self.model = model
     }
 }
 

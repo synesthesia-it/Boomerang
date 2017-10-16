@@ -17,6 +17,7 @@ final class TestListViewModel:ListViewModelType {
     var dataHolder: ListDataHolderType = ListDataHolder.empty
     
     func itemViewModel(fromModel model: ModelType) -> ItemViewModelType? {
+        guard let model = model as? String else { return nil }
         return TestItemViewModel(model: model)
     }
     var listIdentifiers:[ListIdentifier] {

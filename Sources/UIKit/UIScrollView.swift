@@ -126,7 +126,7 @@ extension StackableScrollView : ViewModelBindable {
                 self?.install(viewModels:viewModels)
                 
             })
-            .addDisposableTo(self.disposeBag)
+            .disposed(by:self.disposeBag)
         
         
     }

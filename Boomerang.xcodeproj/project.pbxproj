@@ -11,6 +11,12 @@
 		7B087DB91DD47F4300F9E39D /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DB81DD47F4300F9E39D /* ListViewModel.swift */; };
 		7B087DBB1DD47F5800F9E39D /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DBA1DD47F5800F9E39D /* ItemViewModel.swift */; };
 		7B087DC01DD4825800F9E39D /* ItemViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DBF1DD4825800F9E39D /* ItemViewModelTests.swift */; };
+		7B147F251F94ABAC00EEF817 /* Action.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B52C1711E13D206008929A2 /* Action.framework */; };
+		7B147F261F94ABAC00EEF817 /* Action.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7B52C1711E13D206008929A2 /* Action.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7B147F271F94ABAC00EEF817 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B52C16D1E13CA27008929A2 /* RxCocoa.framework */; };
+		7B147F281F94ABAC00EEF817 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7B52C16D1E13CA27008929A2 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7B147F291F94ABAC00EEF817 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B52C16E1E13CA27008929A2 /* RxSwift.framework */; };
+		7B147F2A1F94ABAC00EEF817 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7B52C16E1E13CA27008929A2 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7B17AA5B1E599E1F00C66F37 /* UIPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA541E599E1F00C66F37 /* UIPickerView.swift */; };
 		7B17AA5D1E599E1F00C66F37 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA551E599E1F00C66F37 /* UIButton.swift */; };
 		7B17AA5E1E599E1F00C66F37 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA551E599E1F00C66F37 /* UIButton.swift */; };
@@ -51,13 +57,9 @@
 		7B440FA71DD90442005787EF /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B440F9B1DD90435005787EF /* ReactiveCocoa.framework */; };
 		7B440FA91DD9044F005787EF /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B440F9D1DD90435005787EF /* Result.framework */; };
 		7B440FB91DD9163E005787EF /* Boomerang iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B440FB71DD9163E005787EF /* Boomerang iOS.h */; };
-		7B440FBA1DD9163E005787EF /* Info-iOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B440FB81DD9163E005787EF /* Info-iOS.plist */; };
 		7B52C16F1E13CA27008929A2 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B52C16D1E13CA27008929A2 /* RxCocoa.framework */; };
 		7B52C1701E13CA27008929A2 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B52C16E1E13CA27008929A2 /* RxSwift.framework */; };
 		7B52C1721E13D206008929A2 /* Action.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B52C1711E13D206008929A2 /* Action.framework */; };
-		7B52C1731E13E896008929A2 /* Action.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B52C1711E13D206008929A2 /* Action.framework */; };
-		7B52C1741E13E896008929A2 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B52C16D1E13CA27008929A2 /* RxCocoa.framework */; };
-		7B52C1751E13E896008929A2 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B52C16E1E13CA27008929A2 /* RxSwift.framework */; };
 		7B52C1771E13EA4A008929A2 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B52C1761E13EA4A008929A2 /* RxBlocking.framework */; };
 		7B57E24A1DD201FD0042C158 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B57E2481DD201FC0042C158 /* Nimble.framework */; };
 		7B57E24B1DD201FD0042C158 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B57E2481DD201FC0042C158 /* Nimble.framework */; };
@@ -90,7 +92,6 @@
 		7B8A31CF1DDB4F3800828075 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DBA1DD47F5800F9E39D /* ItemViewModel.swift */; };
 		7B8A31D01DDB4F3800828075 /* ModelStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DB61DD47EE100F9E39D /* ModelStructure.swift */; };
 		7B8A31D11DDB4F3800828075 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2CC87B1DB112FD0005E500 /* Router.swift */; };
-		7B8A31DC1DDB4FA700828075 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A31D91DDB4FA700828075 /* Result.framework */; };
 		7B8EBF0A1F08DF21003BB2A3 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EBF091F08DF21003BB2A3 /* UIScrollView.swift */; };
 		7B8EBF0B1F08DF21003BB2A3 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EBF091F08DF21003BB2A3 /* UIScrollView.swift */; };
 		7B8EBF0D1F08E8F0003BB2A3 /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8EBF0C1F08E8F0003BB2A3 /* MKMapView.swift */; };
@@ -129,6 +130,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		7B147F2B1F94ABAD00EEF817 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7B147F281F94ABAC00EEF817 /* RxCocoa.framework in Embed Frameworks */,
+				7B147F261F94ABAC00EEF817 /* Action.framework in Embed Frameworks */,
+				7B147F2A1F94ABAC00EEF817 /* RxSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7B57E24F1DD2065C0042C158 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -230,10 +244,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B147F291F94ABAC00EEF817 /* RxSwift.framework in Frameworks */,
+				7B147F271F94ABAC00EEF817 /* RxCocoa.framework in Frameworks */,
+				7B147F251F94ABAC00EEF817 /* Action.framework in Frameworks */,
 				7BF11CC11DDC5AD500518BC0 /* Boomerang.framework in Frameworks */,
-				7B52C1731E13E896008929A2 /* Action.framework in Frameworks */,
-				7B52C1741E13E896008929A2 /* RxCocoa.framework in Frameworks */,
-				7B52C1751E13E896008929A2 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +299,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B8A31DC1DDB4FA700828075 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,7 +608,8 @@
 				7B27E2391DCB5352007C4C9C /* Sources */,
 				7B27E23A1DCB5352007C4C9C /* Frameworks */,
 				7B27E23B1DCB5352007C4C9C /* Resources */,
-				7B27E2621DCB598D007C4C9C /* ShellScript */,
+				7B27E2621DCB598D007C4C9C /* Run Script */,
+				7B147F2B1F94ABAD00EEF817 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -807,7 +821,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B440FBA1DD9163E005787EF /* Info-iOS.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -842,17 +855,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7B27E2621DCB598D007C4C9C /* ShellScript */ = {
+		7B27E2621DCB598D007C4C9C /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Action.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1021,7 +1031,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefanomondino.BoomerangDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1039,7 +1049,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefanomondino.BoomerangDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1057,7 +1067,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefanomondino.BoomerangDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BoomerangDemo.app/BoomerangDemo";
 			};
 			name = Debug;
@@ -1076,7 +1086,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefanomondino.BoomerangDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BoomerangDemo.app/BoomerangDemo";
 			};
 			name = Release;
@@ -1201,7 +1211,7 @@
 				PRODUCT_NAME = Boomerang;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1225,7 +1235,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefanomondino.Boomerang;
 				PRODUCT_NAME = Boomerang;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1243,7 +1253,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefanomondino.BoomerangTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1261,7 +1271,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefanomondino.BoomerangTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1287,7 +1297,7 @@
 				PRODUCT_NAME = Boomerang;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1313,7 +1323,7 @@
 				PRODUCT_NAME = Boomerang;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1336,7 +1346,7 @@
 				PRODUCT_NAME = Boomerang;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
@@ -1361,7 +1371,7 @@
 				PRODUCT_NAME = Boomerang;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};

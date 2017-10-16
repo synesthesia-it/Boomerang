@@ -71,7 +71,7 @@ public protocol TextInput : ViewModelType {
     var string:Variable<String> {get set}
 }
 
-public protocol FormItemViewModel : ItemViewModelType, ModelType {
+public protocol FormItemViewModel : ItemViewModelType {
     associatedtype DataValue : FormValue
     
     var error:ObservableError? {get}
@@ -343,7 +343,7 @@ open class ModelFormItemViewModel<T:ModelType> : FormItemViewModel{
     
     public func with(picker:PickerViewModelType) -> ModelFormItemViewModel<T> {
         self.picker = picker
-        (picker.pickedItem.asObservable().map {$0 as? T}.filter{$0 != nil}).map {FormValueWrapper($0!)}.bind(to: self.value).addDisposableTo(self.disposeBag)
+        (picker.pickedItem.asObservable().map {$0 as? T}.filter{$0 != nil}).map {FormValueWrapper($0!)}.bind(to: self.value).disposed(by:self.disposeBag)
         return self
     }
     public var picker:PickerViewModelType?

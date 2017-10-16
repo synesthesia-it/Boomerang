@@ -76,6 +76,6 @@ extension UIPickerView : ViewModelBindable {
         self.delegate = vm.pickerViewDataSource
         
         self.disposeBag = DisposeBag()
-        vm.dataHolder.resultsCount.asObservable().subscribe(onNext:{_ in picker.reloadAllComponents()}).addDisposableTo(self.disposeBag)
+        vm.dataHolder.resultsCount.asObservable().subscribe(onNext:{_ in picker.reloadAllComponents()}).disposed(by:self.disposeBag)
     }
 }
