@@ -20,5 +20,5 @@ Pod::Spec.new do |s|
   s.tvos.source_files = "Sources/UIKit/*.{swift}"
   s.module_map = "Sources/module.modulemap"
   s.dependency 'RxSwift', '~> 4'
-  s.dependency 'Action', '~> 3.2'
+  s.dependency 'Action'
 end
