@@ -43,13 +43,13 @@ public protocol FormDataMutableType : FormDataType {
     
     associatedtype Value : FormValue
     
-    var value:Variable<Value> {get}
+    var value:BehaviorRelay<Value> {get}
 }
 
-extension Variable : ModelType {
+extension BehaviorRelay : ModelType {
     
 }
-public typealias FormData<T> = Variable<T>
+public typealias FormData<T> = BehaviorRelay<T>
 
 //public class FormData<Value : FormValueEquatable> : FormDataMutableType {
 //    public var reference : FormDataReference
@@ -68,7 +68,7 @@ public typealias FormData<T> = Variable<T>
 
 public protocol TextInput : ViewModelType {
     var title:String? {get}
-    var string:Variable<String> {get set}
+    var string:FormData<String> {get set}
 }
 
 public protocol FormItemViewModel : ItemViewModelType {
@@ -150,17 +150,17 @@ open class StringFormItemViewModel : FormItemViewModel , TextInput{
 
     public typealias DataValue = String
     public static var defaultItemIdentifier: ListIdentifier = defaultListIdentifier
-    public var string:Variable<String> = Variable("")
+    public var string:FormData<DataValue> = FormData(value:"")
     public var itemIdentifier: ListIdentifier = StringFormItemViewModel.defaultItemIdentifier
-    public var model:ItemViewModelType.Model = FormData<DataValue>(DataValue.empty)
-    public var value:Variable<DataValue> {
-        return self.model as? FormData<DataValue> ?? FormData<DataValue>(DataValue.empty)
+    public var model:ItemViewModelType.Model = FormData<DataValue>(value:DataValue.empty)
+    public var value:FormData<DataValue> {
+        return self.model as? FormData<DataValue> ?? FormData<DataValue>(value:DataValue.empty)
     }
     public var title: String?
     public var style: FormStyle?
     public var error:ObservableError?
     
-    public required init (data: Variable<String>) {
+    public required init (data: FormData<DataValue>) {
         self.model = data
     }
     public required convenience init (data:FormData<DataValue>,
@@ -192,11 +192,11 @@ open class BoolFormItemViewModel : FormItemViewModel {
     public static var defaultItemIdentifier: ListIdentifier = defaultListIdentifier
     public var string:Variable<String> = Variable("")
     public var itemIdentifier: ListIdentifier = BoolFormItemViewModel.defaultItemIdentifier
-    public var model:ItemViewModelType.Model = FormData<DataValue>(DataValue.empty)
+    public var model:ItemViewModelType.Model = FormData<DataValue>(value:DataValue.empty)
     public var value:Variable<DataValue> = Variable(DataValue.empty)
     public var title: String?
     public var error:ObservableError?
-    public required init (data: Variable<Bool>) {
+    public required init (data: FormData<Bool>) {
         self.model = data
     }
     public required convenience init (data:FormData<DataValue>, title:String? = nil, itemIdentifier:ListIdentifier = BoolFormItemViewModel.defaultItemIdentifier, error:ObservableError? = nil) {
@@ -222,11 +222,11 @@ open class IntFormItemViewModel : FormItemViewModel {
     public typealias DataValue = Int
     public static var defaultItemIdentifier: ListIdentifier = defaultListIdentifier
     public var itemIdentifier: ListIdentifier = IntFormItemViewModel.defaultItemIdentifier
-    public var model:ItemViewModelType.Model = FormData<DataValue>(DataValue.empty)
+    public var model:ItemViewModelType.Model = FormData<DataValue>(value:DataValue.empty)
     public var value:Variable<DataValue> = Variable(DataValue.empty)
     public var title: String?
     public var error: ObservableError?
-    public required init (data: Variable<Int>) {
+    public required init (data: FormData<Int>) {
         self.model = data
     }
     public required convenience init (data:FormData<DataValue>, title:String? = nil , itemIdentifier:ListIdentifier = IntFormItemViewModel.defaultItemIdentifier, error:ObservableError? = nil) {
@@ -264,7 +264,7 @@ open class MultiselectionItemViewModel<DataValue:FormModel> : FormItemViewModel,
     public var title:String?
     public var itemIdentifier: ListIdentifier  = defaultListIdentifier
     public var dataHolder: ListDataHolderType = ListDataHolder()
-    public var model:ItemViewModelType.Model = FormData<DataValue>(DataValue.empty)
+    public var model:ItemViewModelType.Model = FormData<DataValue>(value:DataValue.empty)
     public var itemViewModelClosure: (ModelType) -> (ItemViewModelType?)  = {_ in return nil}
     private var identifiers:[ListIdentifier] = []
     public var error: ObservableError?
@@ -278,7 +278,7 @@ open class MultiselectionItemViewModel<DataValue:FormModel> : FormItemViewModel,
         }
         return .just(output)
     }
-    public required init (data: Variable<DataValue>) {
+    public required init (data: FormData<DataValue>) {
         self.model = data
     }
     required public init() {
@@ -323,15 +323,28 @@ open class MultiselectionItemViewModel<DataValue:FormModel> : FormItemViewModel,
 
 public class FormValueWrapper<Type:ModelType>: ModelType, FormValue {
     public static var empty: FormValueWrapper {return FormValueWrapper(nil)}
-    public var value:Type?
+    public var values:[Type]?
+    public var value:Type? {
+        get { return values?.first }
+        set {
+            guard let value = newValue else {
+                values = nil
+                return
+            }
+            values = [value]
+        }
+    }
     public init(_ value:Type?) {
         self.value = value
+    }
+    public init(values:[Type]?) {
+        self.values = values
     }
 }
 
 
 public protocol PickerViewModelType : ViewModelType {
-    var pickedItem:Variable<ModelType?> {get}
+    var pickedItem:BehaviorRelay<ModelType?> {get}
 }
 
 
@@ -343,21 +356,21 @@ open class ModelFormItemViewModel<T:ModelType> : FormItemViewModel{
     
     public func with(picker:PickerViewModelType) -> ModelFormItemViewModel<T> {
         self.picker = picker
-        (picker.pickedItem.asObservable().map {$0 as? T}.filter{$0 != nil}).map {FormValueWrapper($0!)}.bind(to: self.value).disposed(by:self.disposeBag)
+        (picker.pickedItem.asDriver().map {$0 as? T}.filter{$0 != nil}).map {FormValueWrapper($0!)}.drive(self.value).disposed(by:self.disposeBag)
         return self
     }
     public var picker:PickerViewModelType?
     
     //static var defaultItemIdentifier: ListIdentifier = ""//defaultListIdentifier
     public var itemIdentifier: ListIdentifier = StringFormItemViewModel.defaultItemIdentifier
-    public var model:ItemViewModelType.Model = FormData<DataValue>(DataValue.empty)
-    public var value:Variable<DataValue> {
-        return self.model as? FormData<DataValue> ?? FormData<DataValue>(DataValue.empty)
+    public var model:ItemViewModelType.Model = FormData<DataValue>(value:DataValue.empty)
+    public var value:FormData<DataValue> {
+        return self.model as? FormData<DataValue> ?? FormData<DataValue>(value:DataValue.empty)
     }
     public var title: String?
     public var style: FormStyle?
     public var error:ObservableError?
-    public required init (data: Variable<DataValue>) {
+    public required init (data: BehaviorRelay<DataValue>) {
         self.model = data
     }
     public required init (data:FormData<DataValue>,

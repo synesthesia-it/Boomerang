@@ -37,7 +37,7 @@ extension UITextField : ViewModelBindable {
         
         self.disposeBag = DisposeBag()
         self.text = viewModel.string.value
-        self.rx.text.map { $0 ?? ""}.bind(to: viewModel.string).disposed(by:self.disposeBag)
+        self.rx.text.asDriver().map { $0 ?? ""}.drive(viewModel.string).disposed(by:self.disposeBag)
         
     }
     
@@ -65,7 +65,8 @@ extension UITextView : ViewModelBindable {
         }
         self.disposeBag = DisposeBag()
         self.text = viewModel.string.value
-        self.rx.text.map { $0 ?? ""}.bind(to: viewModel.string).disposed(by:self.disposeBag)
+        self.rx.text.asDriver().map { $0 ?? ""}.drive(viewModel.string).disposed(by:self.disposeBag)
+        
     }
     
     
