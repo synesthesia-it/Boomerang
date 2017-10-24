@@ -5,20 +5,27 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CatItemCollectionViewCell" customModule="SimpleApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="298" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="298" height="281"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="298" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="298" height="281"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zuc-BY-SbQ">
+                        <rect key="frame" x="0.0" y="0.0" width="298" height="167.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Zuc-BY-SbQ" secondAttribute="height" multiplier="16:9" id="ccY-bE-iPj"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BFp-3n-E2C">
-                        <rect key="frame" x="0.0" y="0.0" width="298" height="50"/>
+                        <rect key="frame" x="0.0" y="147" width="298" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -26,16 +33,20 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="BFp-3n-E2C" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="P69-eC-UhB"/>
+                <constraint firstAttribute="trailing" secondItem="Zuc-BY-SbQ" secondAttribute="trailing" id="0c1-aZ-vYZ"/>
+                <constraint firstItem="BFp-3n-E2C" firstAttribute="bottom" secondItem="Zuc-BY-SbQ" secondAttribute="bottom" id="2mw-3i-0dG"/>
+                <constraint firstItem="Zuc-BY-SbQ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="DPP-u3-nNj"/>
                 <constraint firstAttribute="trailing" secondItem="BFp-3n-E2C" secondAttribute="trailing" id="lFu-vx-XLA"/>
-                <constraint firstAttribute="bottom" secondItem="BFp-3n-E2C" secondAttribute="bottom" id="s8S-mq-9Pe"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Zuc-BY-SbQ" secondAttribute="bottom" id="rbt-mk-eSG"/>
                 <constraint firstItem="BFp-3n-E2C" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ugS-GV-zER"/>
+                <constraint firstItem="Zuc-BY-SbQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="wki-Pf-S5M"/>
             </constraints>
-            <size key="customSize" width="298" height="50"/>
+            <size key="customSize" width="298" height="281"/>
             <connections>
+                <outlet property="imageView" destination="Zuc-BY-SbQ" id="q0l-bM-HaX"/>
                 <outlet property="titleLabel" destination="BFp-3n-E2C" id="ZjR-Go-sqH"/>
             </connections>
-            <point key="canvasLocation" x="231" y="54"/>
+            <point key="canvasLocation" x="231" y="169.5"/>
         </collectionViewCell>
     </objects>
 </document>

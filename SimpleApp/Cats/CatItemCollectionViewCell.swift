@@ -14,6 +14,7 @@ import RxCocoa
 
 class CatItemCollectionViewCell: UICollectionViewCell, ViewModelBindable {
     
+    @IBOutlet weak var imageView: UIImageView!
     var viewModel:ItemViewModelType?
     var disposeBag = DisposeBag()
     @IBOutlet weak var titleLabel:UILabel?
@@ -27,5 +28,11 @@ class CatItemCollectionViewCell: UICollectionViewCell, ViewModelBindable {
         }
         self.viewModel = viewModel
         self.titleLabel?.text = viewModel.title
+        
+        if self.isPlaceholder { return }
+        
+        disposeBag = DisposeBag()
+        viewModel.image.bind(to: imageView.rx.image).disposed(by: disposeBag)
+        
     }
 }
