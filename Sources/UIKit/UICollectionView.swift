@@ -76,10 +76,10 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
         
         if (parameters == nil) {
             
-         
+            
             guard let cell = Bundle.main.loadNibNamed(nib.name, owner: self, options: [:])!.first as? UIView else { return nil}
             guard let embeddable = cell as? EmbeddableView else { return nil }
-        
+            
             embeddable.customContentView.translatesAutoresizingMaskIntoConstraints = false
             let constraint = NSLayoutConstraint(
                 item: embeddable.customContentView,
@@ -268,9 +268,46 @@ extension UICollectionView : ViewModelBindable {
         
         viewModel
             .dataHolder
-            .reloadAction
-            .elements
-            .subscribe(onNext:{[weak self] _ in self?.reloadData() })
+            .newDataAvailable
+            .asDriver(onErrorJustReturn: nil)
+            .asObservable()
+            .subscribe(onNext:{[weak self] in
+                
+                print (Date())
+                guard let action = $0 else { self?.reloadData() ; return }
+                var isInsert = false
+                let items:ResultRangeType?
+                switch action {
+                case .delete(let _items): items = _items
+                case   .reload :
+                    self?.reloadData();
+                    return
+                case     .insert(let _items):
+                    items = _items
+                    isInsert = true
+                }
+                self?.performBatchUpdates({
+                    
+                
+                guard let range = items else { self?.reloadData() ; return }
+                    print (self?.numberOfItems(inSection: 0) ?? 0)
+                    
+                if (range.start.count < 2) {
+                    let indexes = ((range.start.first ?? 0) ... (range.end.first ?? 0)).map {IndexPath(item:$0, section:0)}
+                    isInsert ? self?.insertItems(at: indexes) : self?.reloadItems(at:indexes)
+                }
+//                else if range.start.section == range.end.section {
+//                    let indexes = (range.start.item ... range.end.item).map {IndexPath(item:$0, section:range.start.section)}
+//                    isInsert ? self?.insertItems(at: indexes) : self?.reloadItems(at:indexes)
+//                }
+                else {
+                    let indexSet = IndexSet((range.start.section ... range.end.section))
+                    
+                    isInsert ? self?.insertSections(indexSet) : self?.reloadSections(indexSet)
+                }
+                    }, completion: nil)
+            })
+  
             .disposed(by:self.disposeBag)
         
         if (self.backgroundView != nil) {
@@ -300,7 +337,7 @@ extension UICollectionView : ViewModelBindable {
     public func autoWidthForItemAt(indexPath:IndexPath, itemsPerLine:Int = 1) -> CGFloat {
         guard let flow = self.collectionViewLayout as? UICollectionViewFlowLayout else {
             return self.frame.size.width
-          //  return self.autosizeItemAt(indexPath: indexPath, constrainedToWidth: Float(self.frame.size.width))
+            //  return self.autosizeItemAt(indexPath: indexPath, constrainedToWidth: Float(self.frame.size.width))
         }
         let flowDelegate = self.delegate as? UICollectionViewDelegateFlowLayout
         let insets =  flowDelegate?.responds(to:#selector(UICollectionViewDelegateFlowLayout.collectionView(_:layout:insetForSectionAt:))) == true ? flowDelegate!.collectionView!(self, layout: flow, insetForSectionAt: indexPath.section) : flow.sectionInset
@@ -346,7 +383,7 @@ extension UICollectionView : ViewModelBindable {
     
     @available(*, deprecated, message: "use autosizeItemConstrainedToWidth instead")
     public func autosizeItemAt(indexPath:IndexPath, itemsPerLine:Int = 1) -> CGSize {
-       
+        
         return self.autosizeItemAt(indexPath: indexPath, constrainedToWidth: floor(Float(self.autoWidthForItemAt(indexPath: indexPath, itemsPerLine: itemsPerLine))))
         
     }

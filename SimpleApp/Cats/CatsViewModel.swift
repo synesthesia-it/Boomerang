@@ -37,6 +37,9 @@ final class CatsViewModel : ListViewModelType {
     
     init() {
 //        self.dataHolder = ListDataHolder(withModels: Cat.all)
-        self.dataHolder = ListDataHolder(data: Observable<[Cat]>.just(Cat.all).map({ModelStructure($0)}))
+        self.dataHolder = ListDataHolder(data: Observable<[Cat]>.just(Cat.all)
+            .map({ModelStructure(children:[ModelStructure($0)])})
+            
+            , more:Observable<[Cat]>.just(Array(Cat.all.prefix(upTo: 4))).map({ModelStructure($0)}))
     }
 }

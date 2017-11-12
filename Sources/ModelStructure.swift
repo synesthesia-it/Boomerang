@@ -107,8 +107,8 @@ public final class ModelStructure : ModelStructureType {
         return self.children?[(index.first ?? 0)].sectionModels
     }
     func allData() -> [ModelClass] {
-        if (self.models != nil) {
-            return self.models!
+        if let models = self.models {
+            return models
         }
         
         return self.children?.reduce([], { (accumulator, structure) -> [ModelClass] in
@@ -154,5 +154,15 @@ public final class ModelStructure : ModelStructureType {
         
         
     }
+    
+}
+func + (left: ModelStructure, right: ModelStructure) -> ModelStructure {
+    
+    if left.models != nil {
+        left.models! += right.allData()
+    } else  if left.children != nil {
+        left.children! += right.children ?? [ModelStructure(right.models ?? [])]
+    }
+    return left
     
 }

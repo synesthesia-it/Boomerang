@@ -38,23 +38,41 @@ public protocol ResultRangeType {
     var end:IndexPath {get set}
 }
 
-
+fileprivate struct ResultRange : ResultRangeType {
+    var start: IndexPath
+    var end:IndexPath
+    init?(start:IndexPath?, end:IndexPath?) {
+    guard let start = start, let end = end else { return nil }
+        self.start = start
+        self.end = end
+    }
+}
 
 
 extension IndexPath : SelectionInput {}
+
+public enum ListDataUpdate {
+    case reload(ResultRangeType?)
+    case insert(ResultRangeType?)
+    case delete(ResultRangeType?)
+}
+
+
 public protocol ListDataHolderType : class {
 
-    var viewModels:Variable<[IndexPath:ItemViewModelType]> {get set}
+    var viewModels:BehaviorRelay<[IndexPath:ItemViewModelType]> {get set}
     
-    var resultsCount:Variable<Int> {get set}
-    var isLoading:Variable<Bool> {get}
+    var resultsCount:BehaviorRelay<Int> {get set}
+    var isLoading:BehaviorRelay<Bool> {get}
 
-    var newDataAvailable:Variable<ResultRangeType?> {get set}
+    var newDataAvailable:BehaviorRelay<ListDataUpdate?> {get set}
 
-    var modelStructure : Variable<ModelStructure> {get set}
+    var modelStructure : BehaviorRelay<ModelStructure> {get set}
 
     
     var reloadAction:Action<ResultRangeType?,ModelStructure> {get set}
+    var moreAction:Action<ResultRangeType?,ModelStructure> {get set}
+    
     var data:Observable<ModelStructure> {get set}
     func deleteItem(atIndex index:IndexPath)
     func reload()
@@ -90,9 +108,9 @@ extension ListDataHolderType {
     public func deleteItem(atIndex index:IndexPath) {
         let model = self.modelStructure.value
         model.deleteItem(atIndex: index)
-        self.modelStructure.value = model
+        self.modelStructure.accept(model)
     }
-    public init(data:Observable<ModelStructure>) {
+    public init(data:Observable<ModelStructure>, more:Observable<ModelStructure>? = nil) {
         self.init()
         self.data = data
         self.reloadAction = Action { range in
@@ -101,21 +119,64 @@ extension ListDataHolderType {
                 return Observable.just(result)
             }
         }
+        if let more = more {
+            self.moreAction = Action(enabledIf: reloadAction.enabled.delay(0, scheduler: MainScheduler.instance)) {[weak self] range in
+               if (self?.resultsCount.value ?? 0) < 1 { return .empty() }
+                return more
+            }
+        }
+        let moreAction = self.moreAction
         
-        reloadAction.elements.bind(to: self.modelStructure).disposed(by:self.disposeBag)
-        self.modelStructure.asObservable().map{_ in return [IndexPath:ItemViewModelType]()}.bind(to: viewModels).disposed(by:self.disposeBag)
-        self.modelStructure.asObservable().map { return $0.count}.bind(to: resultsCount).disposed(by:self.disposeBag)
-        reloadAction.executing.bind(to: self.isLoading).disposed(by:self.disposeBag)
+        reloadAction.elements.flatMapLatest { reload in
+            return moreAction.elements.startWith(.empty).map {
+                reload + $0
+                
+            }
+            
+        }
+//        Observable.combineLatest(reloadAction.elements,moreAction.elements.startWith(.empty)) { original, newItems -> ModelStructure in
+//                let result =  original + newItems
+//            return result
+//            }
+            
+            .asDriver(onErrorJustReturn: ModelStructure.empty).drive(modelStructure).disposed(by:self.disposeBag)
+        
+        
+        Observable.from([reloadAction.elements
+                        .map  { $0.indexPaths()}.map { indexPaths in
+                            let range:ResultRangeType? = ResultRange(start:indexPaths.first,end:indexPaths.last)
+                            return ListDataUpdate.reload(range)
+            }
+            , moreAction.elements
+                .delay(0,scheduler: MainScheduler.instance)
+                .map { [weak self ] in
+                    self?.modelStructure.value.indexPaths().suffix($0.count) ?? []
+                }.map {
+                    indexPaths in
+                    let range:ResultRangeType? = ResultRange(start:indexPaths.first,end:indexPaths.last)
+                    return ListDataUpdate.insert(range)
+            }
+            ]
+            ).merge()
+            .asDriver(onErrorJustReturn:nil)
+            
+            .drive(newDataAvailable).disposed(by: disposeBag)
+        
+        
+        self.reloadAction.elements.asObservable().map{_ in return [IndexPath:ItemViewModelType]()}.asDriver(onErrorJustReturn: [:]).drive(viewModels).disposed(by:self.disposeBag)
+        self.modelStructure.asObservable().map { return $0.count}.asDriver(onErrorJustReturn: 0).drive(resultsCount).disposed(by:self.disposeBag)
+        reloadAction.executing.asDriver(onErrorJustReturn: false).drive(self.isLoading).disposed(by:self.disposeBag)
     }
 }
 public final class ListDataHolder : ListDataHolderType {
     
-    public let isLoading: Variable<Bool> = Variable(false)
+    public let isLoading: BehaviorRelay<Bool> = BehaviorRelay(value:false)
     public var reloadAction: Action<ResultRangeType?, ModelStructure> = Action {_ in return Observable.just(ModelStructure.empty)}
-    public var modelStructure:Variable<ModelStructure> = Variable(ModelStructure.empty)
-    public var viewModels:Variable = Variable([IndexPath:ItemViewModelType]())
-    public var resultsCount:Variable<Int> = Variable(0)
-    public var newDataAvailable:Variable<ResultRangeType?> = Variable(nil)
+    public var moreAction:Action<ResultRangeType?, ModelStructure> = Action { _ in return .just(.empty) }
+    public var modelStructure:BehaviorRelay<ModelStructure> = BehaviorRelay(value:ModelStructure.empty)
+    public var viewModels:BehaviorRelay = BehaviorRelay(value:[IndexPath:ItemViewModelType]())
+    public var resultsCount:BehaviorRelay<Int> = BehaviorRelay(value:0)
+    public var newDataAvailable:BehaviorRelay<ListDataUpdate?> = BehaviorRelay(value:nil)
     public var data:Observable<ModelStructure>
     public init() {
         self.data = .just(ModelStructure.empty)
@@ -165,7 +226,7 @@ public extension ListViewModelType  {
             }
             let item =  self.itemViewModel(fromModel: model)
             d[index] = item
-            self.dataHolder.viewModels.value = d
+            self.dataHolder.viewModels.accept(d)
             return item
         }
         return vm
