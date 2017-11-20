@@ -38,11 +38,11 @@ public protocol ResultRangeType {
     var end:IndexPath {get set}
 }
 
-fileprivate struct ResultRange : ResultRangeType {
-    var start: IndexPath
-    var end:IndexPath
-    init?(start:IndexPath?, end:IndexPath?) {
-    guard let start = start, let end = end else { return nil }
+public struct ResultRange : ResultRangeType {
+    public var start: IndexPath
+    public var end:IndexPath
+    public init?(start:IndexPath?, end:IndexPath?) {
+        guard let start = start, let end = end else { return nil }
         self.start = start
         self.end = end
     }
@@ -59,16 +59,16 @@ public enum ListDataUpdate {
 
 
 public protocol ListDataHolderType : class {
-
+    
     var viewModels:BehaviorRelay<[IndexPath:ItemViewModelType]> {get set}
     
     var resultsCount:BehaviorRelay<Int> {get set}
     var isLoading:BehaviorRelay<Bool> {get}
-
+    
     var newDataAvailable:BehaviorRelay<ListDataUpdate?> {get set}
-
+    
     var modelStructure : BehaviorRelay<ModelStructure> {get set}
-
+    
     
     var reloadAction:Action<ResultRangeType?,ModelStructure> {get set}
     var moreAction:Action<ResultRangeType?,ModelStructure> {get set}
@@ -78,6 +78,9 @@ public protocol ListDataHolderType : class {
     func reload()
     init()
 }
+
+
+
 private struct AssociatedKeys {
     static var disposeBag = "disposeBag"
 }
@@ -103,14 +106,19 @@ extension ListDataHolderType {
     public static var empty:ListDataHolderType { return Self.init(data: Observable.just(ModelStructure.empty)) }
     public func reload() {
         self.reloadAction.execute(nil)
-
+        
     }
     public func deleteItem(atIndex index:IndexPath) {
         let model = self.modelStructure.value
+        
         model.deleteItem(atIndex: index)
+        var vms = self.viewModels.value
+        vms[index] = nil
+        self.viewModels.accept(vms)
         self.modelStructure.accept(model)
+        self.newDataAvailable.accept(ListDataUpdate.delete(ResultRange(start: index, end: index)))
     }
-    public init(data:Observable<ModelStructure>, more:Observable<ModelStructure>? = nil) {
+    public init(data:Observable<ModelStructure>, more:Observable<(ModelStructure)>? = nil) {
         self.init()
         self.data = data
         self.reloadAction = Action { range in
@@ -121,36 +129,51 @@ extension ListDataHolderType {
         }
         if let more = more {
             self.moreAction = Action(enabledIf: reloadAction.enabled.delay(0, scheduler: MainScheduler.instance)) {[weak self] range in
-               if (self?.resultsCount.value ?? 0) < 1 { return .empty() }
-                return more
+                if (self?.resultsCount.value ?? 0) < 1 { return .empty() }
+                return more.map {
+                    $0.preferredIndexPath = range?.start
+                    return $0
+                }
             }
         }
         let moreAction = self.moreAction
         
-        reloadAction.elements.flatMapLatest { reload in
-            return moreAction.elements.startWith(.empty).map {
-                reload + $0
-                
+        reloadAction.elements.flatMapLatest {[weak self] reload -> Observable<ModelStructure> in
+            self?.modelStructure.accept(reload)
+            
+            return moreAction.elements.startWith(.empty).map { [weak self] in
+                (self?.modelStructure.value ?? reload).inserting($0)
             }
             
-        }
-//        Observable.combineLatest(reloadAction.elements,moreAction.elements.startWith(.empty)) { original, newItems -> ModelStructure in
-//                let result =  original + newItems
-//            return result
-//            }
-            
+            }
+            //        Observable.combineLatest(reloadAction.elements,moreAction.elements.startWith(.empty)) { original, newItems -> ModelStructure in
+            //                let result =  original + newItems
+            //            return result
+            //            }
+            .skip(1)
             .asDriver(onErrorJustReturn: ModelStructure.empty).drive(modelStructure).disposed(by:self.disposeBag)
         
         
         Observable.from([reloadAction.elements
-                        .map  { $0.indexPaths()}.map { indexPaths in
-                            let range:ResultRangeType? = ResultRange(start:indexPaths.first,end:indexPaths.last)
-                            return ListDataUpdate.reload(range)
+            .map  { $0.indexPaths()}.map { indexPaths -> ListDataUpdate? in
+                let range:ResultRangeType? = ResultRange(start:indexPaths.first,end:indexPaths.last)
+                return ListDataUpdate.reload(range)
             }
             , moreAction.elements
                 .delay(0,scheduler: MainScheduler.instance)
-                .map { [weak self ] in
-                    self?.modelStructure.value.indexPaths().suffix($0.count) ?? []
+                .map { [weak self ] structure -> [IndexPath] in
+                    if let ip = structure.preferredIndexPath, let s = self?.modelStructure.value {
+                        let finalIp:IndexPath
+                        if let children = s.children {
+                            finalIp =  IndexPath(item:max((children[ip.section].models?.count ?? 1)-1,ip.item), section:ip.section)
+                        } else {
+                            finalIp = IndexPath(item: max((s.models?.count ?? 1)-1,ip.item), section: 0)
+                        }
+                        let startIp = IndexPath(item: min(finalIp.item, ip.item), section:ip.section)
+                        return [startIp,finalIp]
+                    } else {
+                        return Array(self?.modelStructure.value.indexPaths().suffix(structure.count) ?? [])
+                    }
                 }.map {
                     indexPaths in
                     let range:ResultRangeType? = ResultRange(start:indexPaths.first,end:indexPaths.last)
@@ -202,7 +225,7 @@ public protocol ListViewModelTypeSectionable : ListViewModelType {
 }
 
 public extension ListViewModelTypeSectionable {
-
+    
     public func sectionItemViewModel(fromModel model:ModelType, withType type:String) -> ItemViewModelType? {
         return self.itemViewModel(fromModel: model)
     }
@@ -233,25 +256,25 @@ public extension ListViewModelType  {
     }
     
     public func itemViewModel(fromModel model:ModelType) -> ItemViewModelType? {
-            return model as? ItemViewModelType
+        return model as? ItemViewModelType
     }
     
 }
 
 public extension ListViewModelType {
-//    public func model<Model:ModelType> (atIndex index:IndexPath) -> Model? {
-//        let model = self.dataHolder.modelStructure.value.modelAtIndex(index) as? Model
-//        guard let viewModel = model as? ItemViewModelType else {
-//            return model
-//        }
-//        return viewModel.model as? Model
-//    }
+    //    public func model<Model:ModelType> (atIndex index:IndexPath) -> Model? {
+    //        let model = self.dataHolder.modelStructure.value.modelAtIndex(index) as? Model
+    //        guard let viewModel = model as? ItemViewModelType else {
+    //            return model
+    //        }
+    //        return viewModel.model as? Model
+    //    }
     public func model (atIndex index:IndexPath) -> ModelType? {
         let model = self.dataHolder.modelStructure.value.modelAtIndex(index)
         guard let viewModel = model as? ItemViewModelType else {
             return model
         }
-        return viewModel.model 
+        return viewModel.model
     }
     public func reload() {
         self.dataHolder.reload()
@@ -268,9 +291,9 @@ public extension ListViewModelType where Self :  ViewModelTypeLoadable , Self: V
     var loading:Observable<Bool> {
         return Observable.combineLatest(self.dataHolder.reloadAction.executing, self.selection.executing, resultSelector: { $0 || $1})
         
-//        return self.dataHolder.reloadAction.isExecuting.signal.combineLatest(with: (self.selection.isExecuting.signal ?? Signal<Bool,NoError>.empty) ).map {return $0 || $1}
-    
-    
+        //        return self.dataHolder.reloadAction.isExecuting.signal.combineLatest(with: (self.selection.isExecuting.signal ?? Signal<Bool,NoError>.empty) ).map {return $0 || $1}
+        
+        
     }
 }
 public extension ListViewModelType where Self :  ViewModelTypeFailable , Self: ViewModelTypeSelectable {

@@ -33,6 +33,7 @@ public extension Observable where Element : Collection {
 public final class ModelStructure : ModelStructureType {
     public static var singleSectionModelIdentifier = ""
     public typealias ModelClass = ModelType
+    var preferredIndexPath:IndexPath?
     public var models:[ModelClass]?
     public var children:[ModelStructure]?
     public var sectionModels:[String:ModelClass]?
@@ -154,9 +155,34 @@ public final class ModelStructure : ModelStructureType {
         
         
     }
-    
+    func inserting(_ structure:ModelStructure) -> ModelStructure {
+        
+        guard let ip =  structure.preferredIndexPath,
+            let section = ip.first,
+            let item = ip.last
+            
+            else {
+                return self + structure
+        }
+        
+        if var models = self.models {
+            if (models.count >= item) {
+                models.insert(contentsOf: structure.allData() ?? [], at: item)
+                self.models = models
+            }
+        } else if var children = self.children {
+            if (childrenCount >= section) {
+                let childStructure = children[section]
+                children[section] = childStructure.inserting(structure)
+                self.children = children
+            }
+        }
+        return self
+    }
 }
 func + (left: ModelStructure, right: ModelStructure) -> ModelStructure {
+    
+    
     
     if left.models != nil {
         left.models! += right.allData()
@@ -166,3 +192,4 @@ func + (left: ModelStructure, right: ModelStructure) -> ModelStructure {
     return left
     
 }
+
