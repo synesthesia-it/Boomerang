@@ -237,6 +237,7 @@ extension UICollectionView : ViewModelBindable {
             self.viewModel = nil
             return
         }
+        self.disposeBag = DisposeBag()
         self.viewModel = viewModel
         
         
@@ -272,8 +273,7 @@ extension UICollectionView : ViewModelBindable {
             .asDriver(onErrorJustReturn: nil)
             .asObservable()
             .subscribe(onNext:{[weak self] in
-                
-                print (Date())
+    
                 guard let action = $0 else { self?.reloadData() ; return }
                 var isInsert = false
                 
@@ -290,15 +290,14 @@ extension UICollectionView : ViewModelBindable {
                     items = _items
                     isInsert = true
                 }
-                self?.performBatchUpdates({
+                self?.performBatchUpdates({ [weak self] in
                     
                     
                     guard let range = items else { self?.reloadData() ; return }
-                    print (self?.numberOfItems(inSection: 0) ?? 0)
-                    
+ 
                     if (range.start.count < 2) {
                         let indexes = ((range.start.first ?? 0) ... (range.end.first ?? 0)).map {IndexPath(item:$0, section:0)}
-                        isInsert ? self?.insertItems(at: indexes) : self?.deleteItems(at:indexes)
+                        isInsert ? self?.insertItems(at: indexes) :  self?.deleteItems(at:indexes)
                     }
                     else if range.start.section == range.end.section {
                         let indexes = (range.start.item ... range.end.item).map {IndexPath(item:$0, section:range.start.section)}
@@ -309,7 +308,7 @@ extension UICollectionView : ViewModelBindable {
                         
                         isInsert ? self?.insertSections(indexSet) : self?.deleteSections(indexSet)
                     }
-                }, completion: nil)
+                    }, completion: nil)
             })
             
             .disposed(by:self.disposeBag)
