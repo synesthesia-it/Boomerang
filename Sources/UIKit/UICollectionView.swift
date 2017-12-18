@@ -314,7 +314,8 @@ extension UICollectionView : ViewModelBindable {
                     }
                 }
             }
-            .buffer(timeSpan: self.updateBufferTime, count: 0, scheduler: MainScheduler.instance)
+            //.buffer(timeSpan: self.updateBufferTime, count: 0, scheduler: MainScheduler.instance)
+            .buffer(Observable<Int>.interval(self.updateBufferTime, scheduler: MainScheduler.instance))
             .subscribe(onNext: {[weak self] actions in
                 if actions.count == 0 { return }
                 if actions.filter ({$0 == nil}).count > 0 {
@@ -407,4 +408,37 @@ extension UICollectionView : ViewModelBindable {
         
     }
 }
-
+extension Observable {
+    
+    /// collects elements from the source sequence until the boundary sequence fires. Then it emits the elements as an array and begins collecting again.
+    func buffer<U>(_ boundary: Observable<U>) -> Observable<[E]> {
+        return Observable<[E]>.create { observer in
+            var buffer: [E] = []
+            let lock = NSRecursiveLock()
+            let boundaryDisposable = boundary.subscribe { event in
+                lock.lock(); defer { lock.unlock() }
+                switch event {
+                case .next:
+                    observer.onNext(buffer)
+                    buffer = []
+                default:
+                    break
+                }
+            }
+            let disposable = self.subscribe { event in
+                lock.lock(); defer { lock.unlock() }
+                switch event {
+                case .next(let element):
+                    buffer.append(element)
+                case .completed:
+                    observer.onNext(buffer)
+                    observer.onCompleted()
+                case .error(let error):
+                    observer.onError(error)
+                    buffer = []
+                }
+            }
+            return Disposables.create([disposable, boundaryDisposable])
+        }
+    }
+}

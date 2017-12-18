@@ -118,6 +118,26 @@ extension ListDataHolderType {
         self.modelStructure.accept(model)
         self.newDataAvailable.accept(ListDataUpdate.delete(ResultRange(start: index, end: index)))
     }
+    public func insert(item:ModelType , atIndex index:IndexPath) {
+        let model = self.modelStructure.value
+        model.insert(item: item, atIndex: index)
+        
+        var vms = self.viewModels.value
+        vms = [:]
+        self.viewModels.accept(vms)
+        self.modelStructure.accept(model)
+        self.newDataAvailable.accept(ListDataUpdate.insert(ResultRange(start: index, end: index)))
+    }
+    public func insert(items:[ModelType], startingFromIndex index:IndexPath) {
+        let model = self.modelStructure.value
+        let lastIndex = IndexPath(item: index.item + items.count - 1 , section: index.section)
+        items.reversed().forEach { model.insert(item: $0, atIndex: index)}
+        var vms = self.viewModels.value
+        vms = [:]
+        self.viewModels.accept(vms)
+        self.modelStructure.accept(model)
+        self.newDataAvailable.accept(ListDataUpdate.insert(ResultRange(start: index, end: lastIndex)))
+    }
     public init(data:Observable<ModelStructure>, more:Observable<(ModelStructure)>? = nil) {
         self.init()
         self.data = data

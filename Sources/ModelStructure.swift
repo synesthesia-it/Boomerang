@@ -132,9 +132,10 @@ public final class ModelStructure : ModelStructureType {
     }
     @discardableResult public func insert(item:ModelClass, atIndex index:IndexPath) -> ModelClass? {
         if (index.count == 1) {
-            let model = self.models?[index.first!]
+            
+            //let model = self.models?[index.first!]
             self.models?.insert(item, at: index.first!)
-            return model
+            return nil //model
         }
         if (self.children == nil) {
             let model = self.models?[index.last ?? 0]
