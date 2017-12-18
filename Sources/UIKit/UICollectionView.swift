@@ -164,6 +164,7 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
 }
 private struct AssociatedKeys {
     static var viewModel = "viewModel"
+    static var bufferTime = "bufferTime"
     static var disposeBag = "disposeBag"
     static var isPlaceholder = "isPlaceholder"
     static var collectionViewDataSource = "collectionViewDataSource"
@@ -212,6 +213,10 @@ extension UICollectionView : ViewModelBindable {
     public var viewModel: ViewModelType? {
         get { return objc_getAssociatedObject(self, &AssociatedKeys.viewModel) as? ViewModelType}
         set { objc_setAssociatedObject(self, &AssociatedKeys.viewModel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
+    }
+    public var updateBufferTime: TimeInterval {
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.bufferTime) as? TimeInterval ?? 0.2}
+        set { objc_setAssociatedObject(self, &AssociatedKeys.bufferTime, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
     
     public var disposeBag: DisposeBag {
@@ -272,9 +277,8 @@ extension UICollectionView : ViewModelBindable {
             .newDataAvailable
             .asDriver(onErrorJustReturn: nil)
             .asObservable()
-            .subscribe(onNext:{[weak self] in
-    
-                guard let action = $0 else { self?.reloadData() ; return }
+            .map { action -> (() -> ())? in
+                guard let action = action else { return nil }
                 var isInsert = false
                 
                 let items:ResultRangeType?
@@ -283,18 +287,18 @@ extension UICollectionView : ViewModelBindable {
                     items = _items
                     
                 case   .reload :
-                    self?.reloadData();
-                    return
+                    return nil
+                    
                     
                 case     .insert(let _items):
                     items = _items
                     isInsert = true
                 }
-                self?.performBatchUpdates({ [weak self] in
+                return { [weak self] in
                     
                     
                     guard let range = items else { self?.reloadData() ; return }
- 
+                    
                     if (range.start.count < 2) {
                         let indexes = ((range.start.first ?? 0) ... (range.end.first ?? 0)).map {IndexPath(item:$0, section:0)}
                         isInsert ? self?.insertItems(at: indexes) :  self?.deleteItems(at:indexes)
@@ -308,7 +312,19 @@ extension UICollectionView : ViewModelBindable {
                         
                         isInsert ? self?.insertSections(indexSet) : self?.deleteSections(indexSet)
                     }
-                    }, completion: nil)
+                }
+            }
+            .buffer(timeSpan: self.updateBufferTime, count: 0, scheduler: MainScheduler.instance)
+            .subscribe(onNext: {[weak self] actions in
+                if actions.count == 0 { return }
+                if actions.filter ({$0 == nil}).count > 0 {
+                    self?.reloadData()
+                    return
+                }
+                
+                self?.performBatchUpdates({
+                    actions.flatMap{$0}.forEach { $0() }
+                }, completion: nil)
             })
             
             .disposed(by:self.disposeBag)
