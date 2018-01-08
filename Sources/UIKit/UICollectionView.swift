@@ -271,12 +271,23 @@ extension UICollectionView : ViewModelBindable {
             viewModel.collectionViewDataSource = ViewModelCollectionViewDataSource(viewModel: viewModel)
         }
         self.dataSource = viewModel.collectionViewDataSource
+        let lockAnimation = BehaviorRelay<Bool>(value:false)
+        let customObservable = Observable<Bool>.deferred {[unowned self ] in
+            return self.updateBufferTime == 0 ?
+                viewModel.dataHolder.commitEditing.asObservable().skip(1).delay(0.0, scheduler: MainScheduler.instance) :
+                Observable<Int>.interval(self.updateBufferTime, scheduler: MainScheduler.instance).map {_ in return true}
+        }
+        let bufferObservable = Observable.combineLatest(customObservable, lockAnimation.asDriver().asObservable()) { time, lock in return time && !lock}.filter {$0}
+        
+        
         
         viewModel
             .dataHolder
             .newDataAvailable
             .asDriver(onErrorJustReturn: nil)
             .asObservable()
+            
+            
             .map { action -> (() -> ())? in
                 guard let action = action else { return nil }
                 var isInsert = false
@@ -315,17 +326,24 @@ extension UICollectionView : ViewModelBindable {
                 }
             }
             //.buffer(timeSpan: self.updateBufferTime, count: 0, scheduler: MainScheduler.instance)
-            .buffer(Observable<Int>.interval(self.updateBufferTime, scheduler: MainScheduler.instance))
+            //.buffer(Observable<Int>.interval(self.updateBufferTime, scheduler: MainScheduler.instance))
+            .do(onNext: {
+                if ($0 == nil) { viewModel.dataHolder.commitEditing.accept(true)}
+            })
+            .buffer(bufferObservable.throttle(0.5, scheduler: MainScheduler.instance))
             .subscribe(onNext: {[weak self] actions in
                 if actions.count == 0 { return }
                 if actions.filter ({$0 == nil}).count > 0 {
                     self?.reloadData()
                     return
                 }
-                
+                lockAnimation.accept(true)
                 self?.performBatchUpdates({
                     actions.flatMap{$0}.forEach { $0() }
-                }, completion: nil)
+                }, completion: {
+                    lockAnimation.accept(!$0)
+                    
+                })
             })
             
             .disposed(by:self.disposeBag)
@@ -442,3 +460,4 @@ extension Observable {
         }
     }
 }
+

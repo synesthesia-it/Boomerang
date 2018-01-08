@@ -88,8 +88,13 @@ public final class ModelStructure : ModelStructureType {
     public func modelAtIndex(_ index: IndexPath) -> ModelClass? {
         
         if (index.count == 1) {
-            if (self.models?.count == 0) { return nil }
-            return self.models?[index.first!]
+            guard let i = index.first,
+                let count = self.models?.count,
+                count > 0 && i < count
+                else { return nil}
+            
+            
+            return self.models?[i]
         }
         if (self.children == nil) {
             if (self.models?.count == 0) { return nil }

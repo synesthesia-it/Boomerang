@@ -69,6 +69,7 @@ public protocol ListDataHolderType : class {
     
     var modelStructure : BehaviorRelay<ModelStructure> {get set}
     
+    var commitEditing: BehaviorRelay<Bool> { get }
     
     var reloadAction:Action<ResultRangeType?,ModelStructure> {get set}
     var moreAction:Action<ResultRangeType?,ModelStructure> {get set}
@@ -76,6 +77,7 @@ public protocol ListDataHolderType : class {
     var data:Observable<ModelStructure> {get set}
     func deleteItem(atIndex index:IndexPath)
     func reload()
+    func commit()
     init()
 }
 
@@ -106,6 +108,10 @@ extension ListDataHolderType {
     public static var empty:ListDataHolderType { return Self.init(data: Observable.just(ModelStructure.empty)) }
     public func reload() {
         self.reloadAction.execute(nil)
+        
+    }
+    public func commit() {
+        self.commitEditing.accept(true)
         
     }
     public func deleteItem(atIndex index:IndexPath) {
@@ -162,7 +168,8 @@ extension ListDataHolderType {
             self?.modelStructure.accept(reload)
             
             return moreAction.elements.startWith(.empty).map { [weak self] in
-                (self?.modelStructure.value ?? reload).inserting($0)
+                print ("!!!!")
+                return (self?.modelStructure.value ?? reload).inserting($0)
             }
             
             }
@@ -221,6 +228,7 @@ public final class ListDataHolder : ListDataHolderType {
     public var resultsCount:BehaviorRelay<Int> = BehaviorRelay(value:0)
     public var newDataAvailable:BehaviorRelay<ListDataUpdate?> = BehaviorRelay(value:nil)
     public var data:Observable<ModelStructure>
+    public var commitEditing: BehaviorRelay<Bool> = BehaviorRelay(value:true)
     public init() {
         self.data = .just(ModelStructure.empty)
     }
