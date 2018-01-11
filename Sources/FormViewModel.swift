@@ -190,18 +190,22 @@ extension Bool :FormValueEquatable {
 open class BoolFormItemViewModel : FormItemViewModel {
     public typealias DataValue = Bool
     public static var defaultItemIdentifier: ListIdentifier = defaultListIdentifier
-    public var string:Variable<String> = Variable("")
+    public var string:FormData<DataValue> = FormData(value:"")
+    public var style: FormStyle?
     public var itemIdentifier: ListIdentifier = BoolFormItemViewModel.defaultItemIdentifier
     public var model:ItemViewModelType.Model = FormData<DataValue>(value:DataValue.empty)
-    public var value:Variable<DataValue> = Variable(DataValue.empty)
+    public var value:FormData<DataValue> {
+        return self.model as? FormData<DataValue> ?? FormData<DataValue>(value:DataValue.empty)
+    }
     public var title: String?
     public var error:ObservableError?
     public required init (data: FormData<Bool>) {
         self.model = data
     }
-    public required convenience init (data:FormData<DataValue>, title:String? = nil, itemIdentifier:ListIdentifier = BoolFormItemViewModel.defaultItemIdentifier, error:ObservableError? = nil) {
+    public required convenience init (data:FormData<DataValue>, title:String? = nil, itemIdentifier:ListIdentifier = BoolFormItemViewModel.defaultItemIdentifier, error:ObservableError? = nil,style:FormStyle? = nil) {
         self.init(data:data)
         self.title = title
+        self.style = style
         self.itemIdentifier = itemIdentifier
         self.error = error
     }
