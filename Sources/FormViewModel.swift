@@ -190,7 +190,7 @@ extension Bool :FormValueEquatable {
 open class BoolFormItemViewModel : FormItemViewModel {
     public typealias DataValue = Bool
     public static var defaultItemIdentifier: ListIdentifier = defaultListIdentifier
-    public var string:FormData<DataValue> = FormData(value:"")
+    
     public var style: FormStyle?
     public var itemIdentifier: ListIdentifier = BoolFormItemViewModel.defaultItemIdentifier
     public var model:ItemViewModelType.Model = FormData<DataValue>(value:DataValue.empty)
