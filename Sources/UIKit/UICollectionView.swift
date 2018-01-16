@@ -288,7 +288,7 @@ extension UICollectionView : ViewModelBindable {
             .asObservable()
             
             
-            .map { action -> (() -> ())? in
+            .map {[weak self] action -> (() -> ())? in
                 guard let action = action else { return nil }
                 var isInsert = false
                 
