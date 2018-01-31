@@ -161,8 +161,9 @@ public final class ModelStructure : ModelStructureType {
         
         
     }
-    func inserting(_ structure:ModelStructure) -> ModelStructure {
-        
+  
+    func inserting(_ structure:ModelStructure?) -> ModelStructure {
+        guard let structure = structure else { return self }
         guard let ip =  structure.preferredIndexPath,
             let section = ip.first,
             let item = ip.last

@@ -30,7 +30,7 @@ open class StackableScrollView : UIScrollView {
     public var spacing:CGFloat = 0
     
     
-    func install(viewModels:[ItemViewModelType]) {
+    open func install(viewModels:[ItemViewModelType]) {
         self.subviews.forEach { $0.removeFromSuperview()}
         let container = UIView()
         container.backgroundColor = .clear
