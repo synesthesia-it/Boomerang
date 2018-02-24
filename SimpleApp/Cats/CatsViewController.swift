@@ -62,7 +62,7 @@ class CatsViewController : UIViewController, ViewModelBindable, UICollectionView
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         if offsetY > contentHeight - scrollView.frame.size.height  + 100 {
-            self.viewModel?.dataHolder.moreAction.execute(nil)
+            
         }
     }
    

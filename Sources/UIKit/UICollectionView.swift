@@ -11,9 +11,7 @@ import RxCocoa
 import RxSwift
 
 
-extension UICollectionReusableView : EmbeddableView{
-    
-}
+extension UICollectionReusableView : EmbeddableView{}
 
 private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewDataSource {
     weak var viewModel: ListViewModelType?
@@ -44,9 +42,6 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
     
     @objc public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if let model = self.viewModel?.dataHolder.modelStructure.value.sectionModelsAtIndexPath(indexPath)?[kind] ?? self.viewModel?.dataHolder.modelStructure.value.sectionModelAtIndexPath(indexPath){
-            //let model = self.viewModel?.dataHolder.modelStructure.value.sectionModelAtIndexPath(indexPath)//self.viewModel?.dataHolder.models.value.children?[indexPath.section].sectionModel
-            
-            
             let viewModel =  (self.viewModel as? ListViewModelTypeSectionable)?.sectionItemViewModel(fromModel: model, withType:kind)
             if (viewModel != nil) {
                 let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: viewModel!.itemIdentifier.name, for: indexPath)
@@ -98,7 +93,6 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
         parameters!.constraint?.constant = CGFloat(width)
         (parameters!.cell as? ViewModelBindableType)?.bind(to:viewModel)
         
-        //        self.bindViewModelToCellAtIndexPath(parameters!.cell, indexPath: indexPath, forResize: true)
         var newCells = staticCells
         newCells[nib.name] = parameters
         
@@ -325,8 +319,6 @@ extension UICollectionView : ViewModelBindable {
                     }
                 }
             }
-            //.buffer(timeSpan: self.updateBufferTime, count: 0, scheduler: MainScheduler.instance)
-            //.buffer(Observable<Int>.interval(self.updateBufferTime, scheduler: MainScheduler.instance))
             .do(onNext: {
                 if ($0 == nil) { viewModel.dataHolder.commitEditing.accept(true)}
             })
@@ -375,7 +367,6 @@ extension UICollectionView : ViewModelBindable {
     public func autoWidthForItemAt(indexPath:IndexPath, itemsPerLine:Int = 1) -> CGFloat {
         guard let flow = self.collectionViewLayout as? UICollectionViewFlowLayout else {
             return self.frame.size.width
-            //  return self.autosizeItemAt(indexPath: indexPath, constrainedToWidth: Float(self.frame.size.width))
         }
         let flowDelegate = self.delegate as? UICollectionViewDelegateFlowLayout
         let insets =  flowDelegate?.responds(to:#selector(UICollectionViewDelegateFlowLayout.collectionView(_:layout:insetForSectionAt:))) == true ? flowDelegate!.collectionView!(self, layout: flow, insetForSectionAt: indexPath.section) : flow.sectionInset
@@ -392,7 +383,6 @@ extension UICollectionView : ViewModelBindable {
     public func autoHeightForItemAt(indexPath:IndexPath, itemsPerLine:Int = 1) -> CGFloat {
         guard let flow = self.collectionViewLayout as? UICollectionViewFlowLayout else {
             return self.frame.size.height
-            //  return self.autosizeItemAt(indexPath: indexPath, constrainedToWidth: Float(self.frame.size.width))
         }
         let flowDelegate = self.delegate as? UICollectionViewDelegateFlowLayout
         let insets =  flowDelegate?.responds(to:#selector(UICollectionViewDelegateFlowLayout.collectionView(_:layout:insetForSectionAt:))) == true ? flowDelegate!.collectionView!(self, layout: flow, insetForSectionAt: indexPath.section) : flow.sectionInset

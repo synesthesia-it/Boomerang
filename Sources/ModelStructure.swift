@@ -174,7 +174,7 @@ public final class ModelStructure : ModelStructureType {
         
         if var models = self.models {
             if (models.count >= item) {
-                models.insert(contentsOf: structure.allData() ?? [], at: item)
+                models.insert(contentsOf: structure.allData(), at: item)
                 self.models = models
             }
         } else if var children = self.children {
