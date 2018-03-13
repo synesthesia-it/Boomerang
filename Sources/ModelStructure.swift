@@ -143,9 +143,9 @@ public final class ModelStructure : ModelStructureType {
             return nil //model
         }
         if (self.children == nil) {
-            let model = self.models?[index.last ?? 0]
+            
             self.models?.insert(item, at: index.last ?? 0)
-            return model
+            return nil
             
         }
         return self.children?[(index.first ?? 0)].insert(item:item, atIndex:index.dropFirst())
