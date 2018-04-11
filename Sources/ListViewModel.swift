@@ -167,9 +167,12 @@ extension ListDataHolderType {
         reloadAction.elements.flatMapLatest {[weak self] reload -> Observable<ModelStructure> in
             self?.modelStructure.accept(reload)
             
-            return moreAction.elements.startWith(ModelStructure.empty).map { [weak self] in
-                
-                return (self?.modelStructure.value ?? reload).inserting($0)
+            return moreAction.elements.map { $0 as? ModelStructure}.startWith(nil).map { [weak self] in
+                if let ms = $0 {
+                    return (self?.modelStructure.value ?? reload).inserting(ms)
+                } else {
+                    return self?.modelStructure.value ?? reload
+                }
             }
             
             }
