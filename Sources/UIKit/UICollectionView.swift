@@ -308,8 +308,10 @@ extension UICollectionView : ViewModelBindable {
                         let indexes = ((range.start.first ?? 0) ... (range.end.first ?? 0)).map {IndexPath(item:$0, section:0)}
                         isInsert ? self?.insertItems(at: indexes) :  self?.deleteItems(at:indexes)
                     }
-                    else if range.start.section == range.end.section {
+                    else if range.start.section == range.end.section && (self?.numberOfSections ?? 0) > range.start.section && (self?.numberOfItems(inSection: range.start.section) ?? 0) > 0{
                         let indexes = (range.start.item ... range.end.item).map {IndexPath(item:$0, section:range.start.section)}
+                        
+                        
                         isInsert ? self?.insertItems(at: indexes) : self?.deleteItems(at:indexes)
                     }
                     else {
