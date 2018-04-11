@@ -55,6 +55,8 @@ public enum ListDataUpdate {
     case reload(ResultRangeType?)
     case insert(ResultRangeType?)
     case delete(ResultRangeType?)
+    case insertSections(ResultRangeType?)
+    case deleteSections(ResultRangeType?)
 }
 
 
@@ -143,6 +145,20 @@ extension ListDataHolderType {
         self.viewModels.accept(vms)
         self.modelStructure.accept(model)
         self.newDataAvailable.accept(ListDataUpdate.insert(ResultRange(start: index, end: lastIndex)))
+    }
+    public func insert(structure:ModelStructure, startingFromIndex index:IndexPath) {
+        var oldModel = self.modelStructure.value
+        var model = oldModel.inserting(structure)
+        model.children = model.children?.filter {($0.models?.count ?? 0) > 0}
+        //        let lastIndex = IndexPath(item: index.item + items.count - 1 , section: index.section)
+        //        items.reversed().forEach { model.insert(item: $0, atIndex: index)}
+        var vms = self.viewModels.value
+        vms = [:]
+        self.viewModels.accept(vms)
+        self.modelStructure.accept(model)
+        if let lastIndex = structure.indexPaths().last {
+            self.newDataAvailable.accept(ListDataUpdate.insert(ResultRange(start: index, end: lastIndex)))
+        }
     }
     public init(data:Observable<ModelStructure>, more:Observable<(ModelStructure)>? = nil) {
         self.init()

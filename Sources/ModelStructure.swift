@@ -100,6 +100,9 @@ public final class ModelStructure : ModelStructureType {
             if (self.models?.count == 0) { return nil }
             return self.models?[index.last ?? 0]
         }
+        if index.first ?? 0 >= self.children?.count ?? 0 {
+            return nil
+        }
         return self.children?[(index.first ?? 0)].modelAtIndex(index.dropFirst())
     }
     
@@ -161,7 +164,7 @@ public final class ModelStructure : ModelStructureType {
         
         
     }
-  
+    
     func inserting(_ structure:ModelStructure?) -> ModelStructure {
         guard let structure = structure else { return self }
         guard let ip =  structure.preferredIndexPath,
@@ -191,10 +194,11 @@ func + (left: ModelStructure, right: ModelStructure) -> ModelStructure {
     
     
     
-    if left.models != nil {
+    if left.models != nil && (right.models?.count ?? 0) > 0{
         left.models! += right.allData()
     } else  if left.children != nil {
-        left.children! += right.children ?? [ModelStructure(right.models ?? [])]
+        let rightChildren = right.children ?? [ModelStructure(right.models ?? [])]
+        left.children! += rightChildren
     }
     return left
     
