@@ -96,14 +96,15 @@ public final class ModelStructure : ModelStructureType {
             
             return self.models?[i]
         }
-        if (self.children == nil) {
-            if (self.models?.count == 0) { return nil }
-            return self.models?[index.last ?? 0]
+        guard let children = self.children else {
+            let index = index.last ?? 0
+            if ((self.models?.count ?? 0) <= index ) { return nil }
+            return self.models?[index]
         }
-        if index.first ?? 0 >= self.children?.count ?? 0 {
-            return nil
-        }
-        return self.children?[(index.first ?? 0)].modelAtIndex(index.dropFirst())
+        guard let i = index.first, i < children.count else { return nil}
+
+        
+        return children[i].modelAtIndex(index.dropFirst())
     }
     
     public func sectionModelAtIndexPath(_ index:IndexPath, forType type:String = ModelStructure.singleSectionModelIdentifier) -> ModelClass? {
@@ -113,7 +114,11 @@ public final class ModelStructure : ModelStructureType {
         if (self.children == nil) {
             return self.sectionModels
         }
-        return self.children?[(index.first ?? 0)].sectionModels
+        guard let i = index.first,
+            let children = self.children,
+            i < children.count
+            else { return nil }
+        return children[i].sectionModels
     }
     func allData() -> [ModelClass] {
         if let models = self.models {
@@ -125,18 +130,25 @@ public final class ModelStructure : ModelStructureType {
         }) ?? []
     }
     @discardableResult public func deleteItem(atIndex index:IndexPath) -> ModelClass? {
-        if (index.count == 1) {
-            let model = self.models?[index.first!]
-            self.models?.remove(at: index.first!)
+        if
+            let i = index.first,
+            (index.count == 1) {
+            let model = self.models?[i]
+            self.models?.remove(at: i)
             return model
         }
-        if (self.children == nil) {
-            let model = self.models?[index.last ?? 0]
-            self.models?.remove(at: index.last ?? 0)
+        if let i = index.last,
+            let models = self.models,
+            self.children == nil && i < models.count{
+            let model = self.models?[i]
+            self.models?.remove(at: i)
             return model
             
         }
-        return self.children?[(index.first ?? 0)].deleteItem(atIndex:index.dropFirst())
+        guard let i = index.first,
+            let children = self.children,
+            i < children.count else { return nil }
+        return self.children?[i].deleteItem(atIndex:index.dropFirst())
     }
     @discardableResult public func insert(item:ModelClass, atIndex index:IndexPath) -> ModelClass? {
         if (index.count == 1) {
