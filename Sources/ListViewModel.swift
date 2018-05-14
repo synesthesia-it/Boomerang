@@ -197,7 +197,11 @@ extension ListDataHolderType {
             //            return result
             //            }
             .skip(1)
-            .asDriver(onErrorJustReturn: ModelStructure.empty).drive(modelStructure).disposed(by:self.disposeBag)
+            .observeOn(MainScheduler.instance)
+            .catchErrorJustReturn(ModelStructure.empty)
+            .bind(to: modelStructure)
+            .disposed(by: disposeBag)
+        //            .asDriver(onErrorJustReturn: ModelStructure.empty).drive(modelStructure).disposed(by:self.disposeBag)
         
         
         Observable.from([reloadAction.elements
@@ -227,14 +231,36 @@ extension ListDataHolderType {
             }
             ]
             ).merge()
-            .asDriver(onErrorJustReturn:nil)
-            
-            .drive(newDataAvailable).disposed(by: disposeBag)
+            //.asDriver(onErrorJustReturn:nil)
+            .asObservable()
+            .catchErrorJustReturn(nil)
+            .observeOn(MainScheduler.instance)
+            .bind(to: newDataAvailable)
+            .disposed(by: disposeBag)
         
         
-        self.reloadAction.elements.asObservable().map{_ in return [IndexPath:ItemViewModelType]()}.asDriver(onErrorJustReturn: [:]).drive(viewModels).disposed(by:self.disposeBag)
-        self.modelStructure.asObservable().map { return $0.count}.asDriver(onErrorJustReturn: 0).drive(resultsCount).disposed(by:self.disposeBag)
-        reloadAction.executing.asDriver(onErrorJustReturn: false).drive(self.isLoading).disposed(by:self.disposeBag)
+        self.reloadAction.elements
+            .asObservable()
+            .map{_ in return [IndexPath:ItemViewModelType]()}
+            .asObservable()
+            .catchErrorJustReturn([:])
+            .observeOn(MainScheduler.instance)
+            .bind(to: viewModels)
+            .disposed(by:self.disposeBag)
+        
+        self.modelStructure
+            .asObservable()
+            .map { return $0.count}
+            .catchErrorJustReturn(0)
+            .observeOn(MainScheduler.instance)
+            .bind(to: resultsCount)
+            .disposed(by:self.disposeBag)
+        
+        reloadAction.executing
+            .catchErrorJustReturn(false)
+            .observeOn(MainScheduler.instance)
+            .bind(to: isLoading)
+            .disposed(by:self.disposeBag)
     }
 }
 public final class ListDataHolder : ListDataHolderType {
