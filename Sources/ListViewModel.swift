@@ -147,8 +147,8 @@ extension ListDataHolderType {
         self.newDataAvailable.accept(ListDataUpdate.insert(ResultRange(start: index, end: lastIndex)))
     }
     public func insert(structure:ModelStructure, startingFromIndex index:IndexPath) {
-        var oldModel = self.modelStructure.value
-        var model = oldModel.inserting(structure)
+        let oldModel = self.modelStructure.value
+        let model = oldModel.inserting(structure)
         model.children = model.children?.filter {($0.models?.count ?? 0) > 0}
         //        let lastIndex = IndexPath(item: index.item + items.count - 1 , section: index.section)
         //        items.reversed().forEach { model.insert(item: $0, atIndex: index)}
@@ -183,7 +183,7 @@ extension ListDataHolderType {
         reloadAction.elements.flatMapLatest {[weak self] reload -> Observable<ModelStructure> in
             self?.modelStructure.accept(reload)
             
-            return moreAction.elements.map { $0 as? ModelStructure}.startWith(nil).map { [weak self] in
+            return moreAction.elements.map { $0 }.startWith(nil).map { [weak self] in
                 if let ms = $0 {
                     return (self?.modelStructure.value ?? reload).inserting(ms)
                 } else {

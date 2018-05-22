@@ -13,7 +13,7 @@ import Quick
 @testable import Boomerang
 
 
-extension String : ModelType {}
+
 
 final class TestItemViewModel:ItemViewModelType {
     var itemIdentifier: ListIdentifier = "TestIdentifier"
