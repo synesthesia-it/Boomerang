@@ -51,7 +51,7 @@ extension MKMapView : ViewModelBindable {
             .reloadAction
             .elements
             .subscribe(onNext:{ [weak self] modelStructure in
-                 let annotations = modelStructure.indexPaths().flatMap { viewModel.viewModel(atIndex: $0) as? MKAnnotation}
+                let annotations = modelStructure.indexPaths().compactMap { viewModel.viewModel(atIndex: $0) as? MKAnnotation}
                 if let oldAnnotations = self?.annotations {
                     self?.removeAnnotations(oldAnnotations)
                 }

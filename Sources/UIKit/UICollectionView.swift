@@ -22,9 +22,16 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
     }
     @objc public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell  {
         let viewModel:ItemViewModelType? = self.viewModel?.viewModel(atIndex:indexPath)
+        if let value = viewModel?.itemIdentifier {
+            if value.isEmbeddable {
+                collectionView.register(ContentCollectionViewCell.self, forCellWithReuseIdentifier: value.name)
+            }
+            else {
+                collectionView.register(UINib(nibName: value.name, bundle: nil), forCellWithReuseIdentifier: value.name)
+            }
+        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewModel?.itemIdentifier.name ?? defaultListIdentifier, for: indexPath)
-        
-        
+
         (cell as? ViewModelBindableType)?.bind(to:viewModel)
         return cell
     }
@@ -42,9 +49,17 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
     
     @objc public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if let model = self.viewModel?.dataHolder.modelStructure.value.sectionModelsAtIndexPath(indexPath)?[kind] ?? self.viewModel?.dataHolder.modelStructure.value.sectionModelAtIndexPath(indexPath){
-            let viewModel =  (self.viewModel as? ListViewModelTypeSectionable)?.sectionItemViewModel(fromModel: model, withType:kind)
-            if (viewModel != nil) {
-                let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: viewModel!.itemIdentifier.name, for: indexPath)
+           
+            if let viewModel =  (self.viewModel as? ListViewModelTypeSectionable)?.sectionItemViewModel(fromModel: model, withType:kind) {
+                let value = viewModel.itemIdentifier
+                if viewModel.itemIdentifier.isEmbeddable {
+                    collectionView.register(ContentCollectionViewCell.self, forSupplementaryViewOfKind: kind, withReuseIdentifier: value.name)
+                }
+                else {
+                    collectionView.register(UINib(nibName: value.name, bundle: nil), forSupplementaryViewOfKind: kind, withReuseIdentifier: value.name)
+                }
+                
+                let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: value.name, for: indexPath)
                 (cell as? ViewModelBindableType)?.bind(to:viewModel)
                 return cell
             }
@@ -239,26 +254,6 @@ extension UICollectionView : ViewModelBindable {
         self.disposeBag = DisposeBag()
         self.viewModel = viewModel
         
-        
-        viewModel.listIdentifiers
-            .forEach {[weak self] ( value) in
-                if value.isEmbeddable {
-                    self?.register(ContentCollectionViewCell.self, forCellWithReuseIdentifier: value.name)
-                }
-                else {
-                    self?.register(UINib(nibName: value.name, bundle: nil), forCellWithReuseIdentifier: value.name)
-                }
-                
-        }
-        (viewModel as? ListViewModelTypeSectionable)?.sectionIdentifiers.forEach {[weak self] ( value) in
-            if value.isEmbeddable {
-                self?.register(ContentCollectionViewCell.self, forSupplementaryViewOfKind: value.type?.name ?? UICollectionElementKindSectionHeader, withReuseIdentifier: value.name)
-            }
-            else {
-                self?.register(UINib(nibName: value.name, bundle: nil), forSupplementaryViewOfKind: value.type?.name ?? UICollectionElementKindSectionHeader, withReuseIdentifier: value.name)
-            }
-        }
-        
         self.register(EmptyReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader , withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
         self.register(EmptyReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionFooter , withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
         if (viewModel.collectionViewDataSource == nil) {
@@ -341,7 +336,7 @@ extension UICollectionView : ViewModelBindable {
                 }
                 lockAnimation.accept(true)
                 self?.performBatchUpdates({
-                    actions.flatMap{$0}.forEach { $0() }
+                    actions.compactMap{$0}.forEach { $0() }
                 }, completion: {
                     lockAnimation.accept(!$0)
                     

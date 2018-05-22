@@ -12,9 +12,6 @@ import Quick
 
 @testable import Boomerang
 
-
-
-
 final class TestItemViewModel:ItemViewModelType {
     var itemIdentifier: ListIdentifier = "TestIdentifier"
     var model:ItemViewModelType.Model = ""

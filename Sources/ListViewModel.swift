@@ -20,13 +20,10 @@ extension String : ListIdentifier {
     public var name : String {
         return self
     }
-    public var type: String? {
-        return nil
-    }
 }
 public protocol ListIdentifier {
     var name : String { get }
-    var type : String? { get }
+    
     var isEmbeddable : Bool { get }
 }
 extension ListIdentifier {
@@ -286,14 +283,12 @@ public protocol ListViewModelType : ViewModelType {
     func identifier(atIndex index:IndexPath) -> ListIdentifier?
     func model (atIndex index:IndexPath) -> ModelType?
     func itemViewModel(fromModel model:ModelType) -> ItemViewModelType?
-    var listIdentifiers:[ListIdentifier] {get}
     func reload()
     
 }
 
 
 public protocol ListViewModelTypeSectionable : ListViewModelType {
-    var sectionIdentifiers: [ListIdentifier]{get}
     func sectionItemViewModel(fromModel model:ModelType, withType type:String) -> ItemViewModelType?
 }
 

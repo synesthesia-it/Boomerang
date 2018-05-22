@@ -122,7 +122,7 @@ extension StackableScrollView : ViewModelBindable {
             .reloadAction
             .elements
             .subscribe(onNext:{[weak self] structure in
-                let viewModels = structure.indexPaths().flatMap { viewModel.viewModel(atIndex: $0)}
+                let viewModels = structure.indexPaths().compactMap { viewModel.viewModel(atIndex: $0)}
                 self?.install(viewModels:viewModels)
                 
             })

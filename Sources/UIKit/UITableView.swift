@@ -52,6 +52,14 @@ private class ViewModelTableViewDataSource : NSObject, UITableViewDataSource {
     }
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let viewModel:ItemViewModelType? = self.viewModel?.viewModel(atIndex:indexPath)
+        if let value = viewModel?.itemIdentifier {
+            if value.isEmbeddable {
+                tableView.register(ContentTableViewCell.self, forCellReuseIdentifier: value.name)
+            }
+            else {
+                tableView.register(UINib(nibName: value.name, bundle: nil), forCellReuseIdentifier: value.name)
+            }
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: viewModel?.itemIdentifier.name ?? "", for: indexPath)
         (cell as? ViewModelBindableType)?.bind(to:viewModel)
         return cell
@@ -242,10 +250,15 @@ extension UITableView : ViewModelBindable {
         guard let viewModel = sectionable.sectionItemViewModel(fromModel: model, withType: TableViewHeaderType.header.identifier.name) else {
             return nil
         }
-        if (viewModel.itemIdentifier.type?.name != TableViewHeaderType.header.identifier.name) {
-            return nil
+        let value = viewModel.itemIdentifier
+        if viewModel.itemIdentifier.isEmbeddable {
+            self.register(ContentTableHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: value.name)
         }
-        let cell = self.dequeueReusableHeaderFooterView(withIdentifier: viewModel.itemIdentifier.name)
+        else {
+            self.register(UINib(nibName: value.name, bundle: nil), forHeaderFooterViewReuseIdentifier: value.name)
+        }
+        
+        let cell = self.dequeueReusableHeaderFooterView(withIdentifier: value.name)
         (cell as? ViewModelBindableType)?.bind(to:viewModel)
         return cell
         
@@ -263,10 +276,19 @@ extension UITableView : ViewModelBindable {
             return nil
         }
         
-        let cell = self.dequeueReusableHeaderFooterView(withIdentifier: viewModel.itemIdentifier.name)
+            let value = viewModel.itemIdentifier
+            if viewModel.itemIdentifier.isEmbeddable {
+                self.register(ContentTableHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: value.name)
+            }
+            else {
+                self.register(UINib(nibName: value.name, bundle: nil), forHeaderFooterViewReuseIdentifier: value.name)
+            }
+        
+        let cell = self.dequeueReusableHeaderFooterView(withIdentifier: value.name)
         (cell as? ViewModelBindableType)?.bind(to:viewModel)
         return cell
     }
+    
     public var disposeBag: DisposeBag {
         get {
             var disposeBag: DisposeBag
@@ -292,22 +314,6 @@ extension UITableView : ViewModelBindable {
         }
         self.viewModel = viewModel
         
-        
-        viewModel.listIdentifiers.forEach {[weak self] ( value) in
-            if (value.isEmbeddable) {
-                self?.register(ContentTableViewCell.self, forCellReuseIdentifier: value.name)
-            } else {
-                self?.register(UINib(nibName: value.name, bundle: nil), forCellReuseIdentifier: value.name)
-            }
-        }
-        (viewModel as? ListViewModelTypeSectionable)?.sectionIdentifiers.forEach { [weak self] ( value) in
-            if (value.isEmbeddable) {
-                self?.register(ContentTableHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: value.name)
-            }
-            else {
-                self?.register(UINib(nibName:value.name,bundle:nil), forHeaderFooterViewReuseIdentifier: value.name)
-            }
-        }
         if (viewModel.tableViewDataSource == nil) {
             viewModel.tableViewDataSource = ViewModelTableViewDataSource(viewModel: viewModel)
         }
