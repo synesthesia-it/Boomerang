@@ -317,6 +317,7 @@ extension UITableView : ViewModelBindable {
         if (viewModel.tableViewDataSource == nil) {
             viewModel.tableViewDataSource = ViewModelTableViewDataSource(viewModel: viewModel)
         }
+        self.register(ContentTableViewCell.self, forHeaderFooterViewReuseIdentifier: defaultListIdentifier)
         self.dataSource = viewModel.tableViewDataSource
         
         viewModel

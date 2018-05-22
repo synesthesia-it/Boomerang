@@ -253,7 +253,7 @@ extension UICollectionView : ViewModelBindable {
         }
         self.disposeBag = DisposeBag()
         self.viewModel = viewModel
-        
+        self.register(ContentCollectionViewCell.self, forCellWithReuseIdentifier: defaultListIdentifier)
         self.register(EmptyReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader , withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
         self.register(EmptyReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionFooter , withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
         if (viewModel.collectionViewDataSource == nil) {
