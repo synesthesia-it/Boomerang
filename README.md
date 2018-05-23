@@ -1,6 +1,6 @@
 ![alt text](boomerang.png "Boomerang")
 
-Boomerang is a Swift 3 micro-framework for MVVM (Model-View-ViewModel) native applications.
+Boomerang is a Swift micro-framework for MVVM (Model-View-ViewModel) native applications.
 
 [![Build Status](https://travis-ci.org/Boomerang/Boomerang.svg)](https://travis-ci.org/Boomerang/Boomerang)
 [![Platform](https://img.shields.io/cocoapods/p/Boomerang.svg?style=flat)](https://github.com/Boomerang/Boomerang)
@@ -9,7 +9,8 @@ Boomerang is a Swift 3 micro-framework for MVVM (Model-View-ViewModel) native ap
 
 # ⚠️ Warning ⚠️
 
-Boomerang is currently under development. It can be used in production projects but breaking changes may occur until we reach v1.0
+Boomerang is stable from v 4.0, but still on active development. 
+Development and releases follow proper semantic versioning.
 Documentation is on its way :)
 
 ## What is it?
@@ -21,9 +22,9 @@ With a clean architecture in mind it's easier to quickly and harmlessly port an 
 
 ## Requirements
 
-- iOS 8.0+ / Mac OS X 10.11+ / tvOS 9.0+ / watchOS 3.0+
-- Xcode 8.0+
-- Swift 3.0+
+- iOS 9.0+ / Mac OS X 10.11+ / tvOS 9.2+ / watchOS 3.0+
+- Xcode 9.0+
+- Swift 4.0+
 
 # Before we begin
 
@@ -37,15 +38,6 @@ Boomerang is a framework, something that will heavily impact on your codebase an
 - [Templates](docs/templates.md)
 - [Example app](docs/freesbee.md)
 
-
-
-
-
-
-
-
-
-
 # Credits
 
-Boomerang is entirely written by [Synesthesia](http://www.synesthesia.it "Synesthesia") team.
+Boomerang is entirely written by [Synesthesia](https://www.synesthesia.it "Synesthesia") team.
