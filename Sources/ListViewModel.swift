@@ -280,7 +280,7 @@ public final class ListDataHolder : ListDataHolderType {
 }
 public protocol ListViewModelType : ViewModelType {
     var dataHolder:ListDataHolderType {get set}
-    func identifier(atIndex index:IndexPath) -> ListIdentifier?
+    func reuseIdentifier(for identifier:ListIdentifier, at indexPath:IndexPath) -> String?
     func model (atIndex index:IndexPath) -> ModelType?
     func itemViewModel(fromModel model:ModelType) -> ItemViewModelType?
     func reload()
@@ -306,6 +306,9 @@ public extension ListViewModelType  {
     
     public func identifier(atIndex index:IndexPath) -> ListIdentifier? {
         return self.viewModel(atIndex:index)?.itemIdentifier
+    }
+    public func reuseIdentifier(for identifier:ListIdentifier, at indexPath:IndexPath) -> String? {
+        return nil
     }
     public func viewModel (atIndex index:IndexPath) -> ItemViewModelType? {
         

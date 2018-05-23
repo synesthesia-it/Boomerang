@@ -22,16 +22,18 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
     }
     @objc public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell  {
         let viewModel:ItemViewModelType? = self.viewModel?.viewModel(atIndex:indexPath)
+        var reuseIdentifier = defaultListIdentifier
         if let value = viewModel?.itemIdentifier {
+            reuseIdentifier = self.viewModel?.reuseIdentifier(for:value, at:indexPath) ?? value.name
             if value.isEmbeddable {
-                collectionView.register(ContentCollectionViewCell.self, forCellWithReuseIdentifier: value.name)
+                collectionView.register(ContentCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
             }
             else {
-                collectionView.register(UINib(nibName: value.name, bundle: nil), forCellWithReuseIdentifier: value.name)
+                collectionView.register(UINib(nibName: value.name, bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
             }
         }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewModel?.itemIdentifier.name ?? defaultListIdentifier, for: indexPath)
-
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        
         (cell as? ViewModelBindableType)?.bind(to:viewModel)
         return cell
     }
@@ -48,18 +50,20 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
     }
     
     @objc public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
         if let model = self.viewModel?.dataHolder.modelStructure.value.sectionModelsAtIndexPath(indexPath)?[kind] ?? self.viewModel?.dataHolder.modelStructure.value.sectionModelAtIndexPath(indexPath){
-           
+            
             if let viewModel =  (self.viewModel as? ListViewModelTypeSectionable)?.sectionItemViewModel(fromModel: model, withType:kind) {
                 let value = viewModel.itemIdentifier
+                let reuseIdentifier = self.viewModel?.reuseIdentifier(for:value, at:indexPath) ?? value.name
                 if viewModel.itemIdentifier.isEmbeddable {
-                    collectionView.register(ContentCollectionViewCell.self, forSupplementaryViewOfKind: kind, withReuseIdentifier: value.name)
+                    collectionView.register(ContentCollectionViewCell.self, forSupplementaryViewOfKind: kind, withReuseIdentifier: reuseIdentifier)
                 }
                 else {
-                    collectionView.register(UINib(nibName: value.name, bundle: nil), forSupplementaryViewOfKind: kind, withReuseIdentifier: value.name)
+                    collectionView.register(UINib(nibName: value.name, bundle: nil), forSupplementaryViewOfKind: kind, withReuseIdentifier: reuseIdentifier)
                 }
                 
-                let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: value.name, for: indexPath)
+                let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reuseIdentifier, for: indexPath)
                 (cell as? ViewModelBindableType)?.bind(to:viewModel)
                 return cell
             }
