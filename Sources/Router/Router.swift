@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 public protocol RouterSource {
     
 }
@@ -32,6 +31,7 @@ public protocol RouterType   {
     static func from<Source,DestinationViewModel>(_ source:Source, viewModel:DestinationViewModel)  -> RouterAction
     static func backTo<Source>(_ source:Source, destination:Destination?) -> RouterAction
 }
+
 extension RouterType {
     public static func from<Source,Destination,DestinationViewModel> (_ source:Source, destination:Destination, viewModel:DestinationViewModel)  -> RouterAction {
         return EmptyRouterAction()

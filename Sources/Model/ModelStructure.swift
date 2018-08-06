@@ -8,49 +8,81 @@
 
 import Foundation
 import RxSwift
-
-public protocol ModelType {
+/**
+ A wrapper object for custom data structures and Model nesting
+ 
+ Usually, a list of models could be simply initialized with a flat array of models, that will be independently transformed in ItemViewModels and  sequentially rendered by proper UI components (for example, a list of views in a UIScrollView).
+ 
+ Sometimes, nesting is required to section, separate and reorganize data (for example, a UITableView that renders a contact list, with a pinned header for each initial letter)
+ 
+ ModelStructure is a universal wrapper for these kind of nesting. It can be initialized in two different ways:
+ 
+ - with an array of Model objects
+ - with an array of ModelStructure objects.
+ 
+ When accessed with an IndexPath, its last index will always match a ModelType object; previous indexes are used to traverse provided hierarchy.
+ 
+ - Note:
+ The most common case is two-dimensional ModelStructures, meaning a ModelStructure with single array of child ModelStructures, each one with its models. This is working out-of-the-box with UICollectionView and UITableView. However, multi-dimensional structures are theoretically supported, but will require proper handling on the View layer.
+ 
+ */
+public final class ModelStructure {
     
-}
-
-public protocol ModelStructureType {
-    var modelCount:Int {get}
-    var childrenCount:Int {get}
-}
-
-public extension Observable where Element : Collection {
-    func structured() -> Observable<ModelStructure> {
-        
-        return self.map({ (element:Element) -> ModelStructure in
-            guard let array = element as? [ModelType] else {
-                return ModelStructure([ModelType]())
-            }
-            return ModelStructure(array)
-        })
-        //        return self.map({$0 as?[ModelType]}).ignoreNil().map{ModelStructure($0)}
-    }
-}
-public final class ModelStructure : ModelStructureType {
     public static var singleSectionModelIdentifier = ""
+    
     public typealias ModelClass = ModelType
-    var preferredIndexPath:IndexPath?
+    
+    /**
+     The array of ModelType objects contained by current ModelStructure. If this array has values, the `children` array must be nil
+     */
     public var models:[ModelClass]?
+    /**
+     The array of children ModelStructure objects contained by current ModelStructure. If this array has values, the `models` array must be nil
+     */
     public var children:[ModelStructure]?
+    
+    /**
+     A map of models (one or more) that are related to current array of models (or child structures).
+     
+     For example, in a UITableView, each section can be a header and/or footer, each one represented by its ItemViewModel/ModelType object.
+     In a UICollectionView, this is where each supplementary view's underlying models must be stored
+     */
     public var sectionModels:[String:ModelClass]?
+    
+    /**
+     Convenience method to retrieve a single section model
+     */
     public var sectionModel:ModelClass? {
         return self.sectionModels?[ModelStructure.singleSectionModelIdentifier]
     }
-    public var childrenCount: Int {return self.children?.count ?? 0}
-    public var modelCount: Int {return self.models?.count ?? 0}
-    class public var empty:ModelStructure {return ModelStructure([])}
     
-    public convenience init (_ models:[ModelClass], sectionModel:ModelClass) {
-        self.init(models,sectionModels:[ModelStructure.singleSectionModelIdentifier:sectionModel])
-    }
+    /**
+     In a ModelStructure with child structures, it's the count of children.
+     If the ModelStructure has no children, 0 is returned.
+     */
+    public var childrenCount: Int {return self.children?.count ?? 0}
+    
+    /**
+     In a ModelStructure with models and no child structures, it's the count of contained models.
+     If the ModelStructure has no models, 0 is returned.
+     */
+    public var modelCount: Int {return self.models?.count ?? 0}
+    
+    /**
+     Convenience structure with no child structures and 0 models
+     */
+    public class var empty:ModelStructure {return ModelStructure([])}
+    
+    internal var preferredIndexPath:IndexPath?
+    
     public init (_ models:[ModelClass], sectionModels:[String:ModelClass]? = nil) {
         self.models = models
         self.sectionModels = sectionModels
     }
+    public convenience init (_ models:[ModelClass], sectionModel:ModelClass) {
+        self.init(models,sectionModels:[ModelStructure.singleSectionModelIdentifier:sectionModel])
+    }
+    
     public init (children:[ModelStructure]? ) {
         self.children = children
     }
@@ -102,7 +134,7 @@ public final class ModelStructure : ModelStructureType {
             return self.models?[index]
         }
         guard let i = index.first, i < children.count else { return nil}
-
+        
         
         return children[i].modelAtIndex(index.dropFirst())
     }
@@ -216,3 +248,14 @@ func + (left: ModelStructure, right: ModelStructure) -> ModelStructure {
     
 }
 
+public extension Observable where Element : Collection {
+    func structured() -> Observable<ModelStructure> {
+        
+        return self.map({ (element:Element) -> ModelStructure in
+            guard let array = element as? [ModelType] else {
+                return ModelStructure([ModelType]())
+            }
+            return ModelStructure(array)
+        })
+    }
+}

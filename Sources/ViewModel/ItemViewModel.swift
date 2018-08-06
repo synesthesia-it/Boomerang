@@ -12,17 +12,18 @@ public protocol ItemViewModelType : ViewModelTypeIdentifiable,  ModelType {
     typealias Model = ModelType
     var itemTitle:String? { get }
     var model:Model {get set}
-    
 }
 
 public extension ItemViewModelType {
     var itemTitle:String? {return ""}
 }
+
 extension String : ModelType {
     public var title:String? {
     return self
     }
 }
+
 public final class SimpleItemViewModel : ItemViewModelType {
     public var model:ModelType
     public var itemIdentifier: ListIdentifier = defaultListIdentifier
