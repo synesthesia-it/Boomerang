@@ -23,3 +23,7 @@ extension String : ListIdentifier {
         return self
     }
 }
+
+public protocol ViewModelTypeIdentifiable : ViewModelType {
+    var itemIdentifier:ListIdentifier { get }
+}

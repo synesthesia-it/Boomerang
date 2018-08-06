@@ -230,6 +230,7 @@
 		7BC7083B2118856100421757 /* ModelStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelStructure.swift; sourceTree = "<group>"; };
 		7BC7083F211885A000421757 /* ListDataHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataHolder.swift; sourceTree = "<group>"; };
 		7BC708432118876900421757 /* ModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelType.swift; sourceTree = "<group>"; };
+		7BC708472118984D00421757 /* Boomerang.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Boomerang.h; sourceTree = "<group>"; };
 		7BD3ED8D1EFFBDFD004DFEA5 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		7BDEC7891EFFDAAE00322CCE /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -372,6 +373,7 @@
 		7B2CC8551DB016510005E500 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				7BC708472118984D00421757 /* Boomerang.h */,
 				7BC7083A2118856100421757 /* Model */,
 				7BC707EE2118842900421757 /* Router */,
 				7BC707FE2118842900421757 /* ViewModel */,
@@ -523,12 +525,12 @@
 		7BC707FE2118842900421757 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				7BC707FF2118842900421757 /* ItemViewModel.swift */,
 				7BC708002118842900421757 /* ViewModel.swift */,
+				7BC7083F211885A000421757 /* ListDataHolder.swift */,
+				7BC708012118842900421757 /* ListViewModel.swift */,
+				7BC707FF2118842900421757 /* ItemViewModel.swift */,
 				7BC708322118848300421757 /* ViewModel+Selection.swift */,
 				7BC708362118850F00421757 /* ViewModel+Identifiable.swift */,
-				7BC708012118842900421757 /* ListViewModel.swift */,
-				7BC7083F211885A000421757 /* ListDataHolder.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

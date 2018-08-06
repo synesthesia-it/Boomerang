@@ -73,22 +73,51 @@ public final class ModelStructure {
      */
     public class var empty:ModelStructure {return ModelStructure([])}
     
+    /// Used to determine where to begin a partial update in a list
     internal var preferredIndexPath:IndexPath?
+    
+    /** Initializes a new ModelStructure with an array of Models.
+     - Parameters:
+        - models: An array of `ModelType` conforming objects intended to be listed somewhere
+        - sectionModels: A map of Models with informations related to the whole group of models (ex: a header and a footer model for a UITableView's section)
+     
+     - Returns: a new ModelStructure
+     */
     
     public init (_ models:[ModelClass], sectionModels:[String:ModelClass]? = nil) {
         self.models = models
         self.sectionModels = sectionModels
     }
+    
+    /** Initializes a new ModelStructure with an array of Models.
+     - Parameters:
+        - models: An array of `ModelType` conforming objects intended to be listed somewhere
+        - sectionModel: A single model with informations related to the whole group of models (ex: a header model for a UITableView's section)
+ 
+     - Returns: a new ModelStructure
+     */
     public convenience init (_ models:[ModelClass], sectionModel:ModelClass) {
         self.init(models,sectionModels:[ModelStructure.singleSectionModelIdentifier:sectionModel])
     }
     
+    /** Initializes a new ModelStructure with an array of child ModelStructure.
+     - Parameters:
+     - children: An array of `ModelStructure`s, each one made up by Models or ModelStructures.
+     
+     - Returns: a new ModelStructure
+     */
+    
     public init (children:[ModelStructure]? ) {
         self.children = children
     }
+    
+    /**
+     A recursive list of all contained `IndexPath`s
+     */
     public func indexPaths() -> [IndexPath] {
         return self.indexPaths(current: nil)
     }
+    
     private func indexPaths(current:IndexPath?) -> [IndexPath] {
         let ip = current ?? IndexPath(indexes: [Int]())
         if (self.models != nil) {
@@ -107,7 +136,9 @@ public final class ModelStructure {
             return accumulator + structure.indexPaths(current: IndexPath(indexes:(ip + [count])))
         }) ?? [IndexPath]()
     }
-    
+    /**
+     Global count of all contained models. If current structure has child ModelStructures, those are expanded and count is aggregated
+     */
     public var count : Int {
         if (self.children != nil) {
             return self.children!.reduce(0, { (count, structure) -> Int in
@@ -116,6 +147,11 @@ public final class ModelStructure {
         }
         return self.models?.count ?? 0
     }
+    
+    /**
+        Model at corresponding index.
+     - Returns: a `ModelType` object if indexPath is valid, nil otherwise
+     */
     
     public func modelAtIndex(_ index: IndexPath) -> ModelClass? {
         
@@ -138,10 +174,25 @@ public final class ModelStructure {
         
         return children[i].modelAtIndex(index.dropFirst())
     }
+    /**
+     Section model at corresponding index and for matching string identifier.
+     - Parameters:
+        - indexPath: IndexPath object, used to retrieve proper section
+        - type: a string identifier used to identify proper model in a section. Example: in a UITableView with both header and footer views, it could be "header" or "footer".
+     - Returns: a `ModelType` object if indexPath and type are valid, nil otherwise
+     */
     
     public func sectionModelAtIndexPath(_ index:IndexPath, forType type:String = ModelStructure.singleSectionModelIdentifier) -> ModelClass? {
         return self.sectionModelsAtIndexPath(index)?[type]
     }
+    
+    /**
+     A map of Section models at corresponding index.
+     - Parameters:
+        - indexPath: IndexPath object, used to retrieve proper section
+     
+     - Returns: a `[String:ModelType]` map object if found at indexPath, nil otherwise
+     */
     public func sectionModelsAtIndexPath(_ index:IndexPath) -> [String:ModelClass]? {
         if (self.children == nil) {
             return self.sectionModels
@@ -152,7 +203,10 @@ public final class ModelStructure {
             else { return nil }
         return children[i].sectionModels
     }
-    func allData() -> [ModelClass] {
+    /**
+     Sequentially returns all contained models or all models contained in child ModelStructures.
+    */
+    public func allData() -> [ModelClass] {
         if let models = self.models {
             return models
         }
@@ -161,6 +215,10 @@ public final class ModelStructure {
             return accumulator + structure.allData()
         }) ?? []
     }
+    
+    /**
+     Deletes an item at matching indexPath. The item is returned
+     */
     @discardableResult public func deleteItem(atIndex index:IndexPath) -> ModelClass? {
         if
             let i = index.first,
@@ -182,6 +240,10 @@ public final class ModelStructure {
             i < children.count else { return nil }
         return self.children?[i].deleteItem(atIndex:index.dropFirst())
     }
+    
+    /**
+     Insert an item at indexPath. The new element is inserted before the element currently at the specified index.
+    */
     @discardableResult public func insert(item:ModelClass, atIndex index:IndexPath) -> ModelClass? {
         if (index.count == 1) {
             
@@ -197,6 +259,11 @@ public final class ModelStructure {
         }
         return self.children?[(index.first ?? 0)].insert(item:item, atIndex:index.dropFirst())
     }
+    
+    /**
+     Moves the item at starting indexPath to the specified indexPath.
+     The moved element is inserted before the element currently at the specified index.
+     */
     @discardableResult public func moveItem(fromIndexPath from: IndexPath, to: IndexPath) -> ModelClass? {
         guard let model = self.modelAtIndex(from) else {
             return nil
@@ -247,7 +314,14 @@ func + (left: ModelStructure, right: ModelStructure) -> ModelStructure {
     return left
     
 }
-
+/**
+    Creates an observable that emits a ModelStructure containg the collections' elements if the collection is an array of ModelType objects.
+    Basically, it's the same of
+        ```
+    let observable:Observable<[ModelType]> = ...
+    let structured = observable.map { ModelStructure($0) }
+ ```
+ */
 public extension Observable where Element : Collection {
     func structured() -> Observable<ModelStructure> {
         
