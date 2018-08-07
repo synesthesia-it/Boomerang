@@ -8,6 +8,6 @@
 
 import UIKit
 
-extension UIButton : SelectionInput {
+extension UIButton: SelectionInput {
     
 }

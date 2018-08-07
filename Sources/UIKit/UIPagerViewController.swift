@@ -6,19 +6,18 @@
 //
 //
 
-
 import UIKit
 import RxSwift
 
-public protocol ListPagerViewModelType : ListViewModelType {
-    var startingIndex:Int {get}
-    func viewController(fromIdentifier:ListIdentifier) -> UIViewController?
+public protocol ListPagerViewModelType: ListViewModelType {
+    var startingIndex: Int {get}
+    func viewController(fromIdentifier: ListIdentifier) -> UIViewController?
 }
 
-public class ViewModelPagerViewDataSource : NSObject, UIPageViewControllerDataSource {
+public class ViewModelPagerViewDataSource: NSObject, UIPageViewControllerDataSource {
     weak var viewModel: ListPagerViewModelType?
     weak var pageViewController: UIPageViewController?
-    var viewControllers:[Int:UIViewController] = [:]
+    var viewControllers: [Int: UIViewController] = [:]
     init (viewModel: ListPagerViewModelType) {
         super.init()
         self.viewModel = viewModel
@@ -35,7 +34,7 @@ public class ViewModelPagerViewDataSource : NSObject, UIPageViewControllerDataSo
         return self.indexForViewController(vc)
     }*/
     func indexForViewController(_ viewController: UIViewController) -> Int {
-        return self.viewControllers.first (where:  { $1 == viewController })?.0 ?? 0
+        return self.viewControllers.first (where: { $1 == viewController })?.0 ?? 0
     }
     func reset() {
         self.viewControllers = [:]
@@ -82,15 +81,15 @@ private struct AssociatedKeys {
     static var disposeBag = "disposeBag"
     static var pagerDataSource = "pagerDataSource"
 }
-private extension ListPagerViewModelType  {
+private extension ListPagerViewModelType {
     
-    var pagerDataSource:ViewModelPagerViewDataSource? {
+    var pagerDataSource: ViewModelPagerViewDataSource? {
         get { return objc_getAssociatedObject(self, &AssociatedKeys.pagerDataSource) as? ViewModelPagerViewDataSource}
         set { objc_setAssociatedObject(self, &AssociatedKeys.pagerDataSource, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
 }
 
-extension UIPageViewController : ViewModelBindable {
+extension UIPageViewController: ViewModelBindable {
     
     public var viewModel: ViewModelType? {
         get { return objc_getAssociatedObject(self, &AssociatedKeys.viewModel) as? ViewModelType}
@@ -133,11 +132,11 @@ extension UIPageViewController : ViewModelBindable {
             .dataHolder
             .reloadAction
             .elements
-            .subscribe(onNext:{[weak self] _ in
+            .subscribe(onNext: {[weak self] _ in
                 viewModel.pagerDataSource?.reset()
-                self?.setViewControllers([viewModel.pagerDataSource?.viewControllerAtIndex(viewModel.startingIndex) ?? UIViewController()], direction: .forward, animated:false, completion: nil)
+                self?.setViewControllers([viewModel.pagerDataSource?.viewControllerAtIndex(viewModel.startingIndex) ?? UIViewController()], direction: .forward, animated: false, completion: nil)
             })
-            .disposed(by:self.disposeBag)
+            .disposed(by: self.disposeBag)
         viewModel.reload()
         
     }

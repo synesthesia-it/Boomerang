@@ -8,29 +8,29 @@
 
 import Foundation
 
-public protocol ItemViewModelType : ViewModelTypeIdentifiable,  ModelType {
+public protocol ItemViewModelType: ViewModelTypeIdentifiable, ModelType {
     typealias Model = ModelType
-    var itemTitle:String? { get }
-    var model:Model {get set}
+    var itemTitle: String? { get }
+    var model: Model {get set}
 }
 
 public extension ItemViewModelType {
-    var itemTitle:String? {return ""}
+    var itemTitle: String? {return ""}
 }
 
-extension String : ModelType {
-    public var title:String? {
+extension String: ModelType {
+    public var title: String? {
     return self
     }
 }
 
-public final class SimpleItemViewModel : ItemViewModelType {
-    public var model:ModelType
+public final class SimpleItemViewModel: ItemViewModelType {
+    public var model: ModelType
     public var itemIdentifier: ListIdentifier = defaultListIdentifier
     public init(model: Model) {
         self.model = model
     }
-    convenience public init(model:ItemViewModelType.Model, itemIdentifier:ListIdentifier = defaultListIdentifier) {
+    convenience public init(model: ItemViewModelType.Model, itemIdentifier: ListIdentifier = defaultListIdentifier) {
         self.init(model: model)
         self.itemIdentifier = itemIdentifier
     }

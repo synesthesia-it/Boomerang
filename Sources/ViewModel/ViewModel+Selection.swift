@@ -11,18 +11,18 @@ import Action
 public protocol SelectionInput {}
 public protocol SelectionOutput {}
 
-public enum EmptySelection : SelectionOutput{
+public enum EmptySelection: SelectionOutput {
     case empty
 }
 
-public protocol ViewModelTypeSelectable : ViewModelType {
+public protocol ViewModelTypeSelectable: ViewModelType {
     associatedtype Input = SelectionInput
     associatedtype Output = SelectionOutput
     
-    var selection:Action<Input,Output> {get set}
+    var selection: Action<Input, Output> {get set}
     
 }
 
-public protocol ViewModelTypeActionSelectable : ViewModelType {
-    func select(withInput input:SelectionInput)
+public protocol ViewModelTypeActionSelectable: ViewModelType {
+    func select(withInput input: SelectionInput)
 }

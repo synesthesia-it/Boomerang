@@ -35,11 +35,11 @@ public final class ModelStructure {
     /**
      The array of ModelType objects contained by current ModelStructure. If this array has values, the `children` array must be nil
      */
-    public var models:[ModelClass]?
+    public var models: [ModelClass]?
     /**
      The array of children ModelStructure objects contained by current ModelStructure. If this array has values, the `models` array must be nil
      */
-    public var children:[ModelStructure]?
+    public var children: [ModelStructure]?
     
     /**
      A map of models (one or more) that are related to current array of models (or child structures).
@@ -47,12 +47,12 @@ public final class ModelStructure {
      For example, in a UITableView, each section can be a header and/or footer, each one represented by its ItemViewModel/ModelType object.
      In a UICollectionView, this is where each supplementary view's underlying models must be stored
      */
-    public var sectionModels:[String:ModelClass]?
+    public var sectionModels: [String: ModelClass]?
     
     /**
      Convenience method to retrieve a single section model
      */
-    public var sectionModel:ModelClass? {
+    public var sectionModel: ModelClass? {
         return self.sectionModels?[ModelStructure.singleSectionModelIdentifier]
     }
     
@@ -71,10 +71,10 @@ public final class ModelStructure {
     /**
      Convenience structure with no child structures and 0 models
      */
-    public class var empty:ModelStructure {return ModelStructure([])}
+    public class var empty: ModelStructure {return ModelStructure([])}
     
     /// Used to determine where to begin a partial update in a list
-    internal var preferredIndexPath:IndexPath?
+    internal var preferredIndexPath: IndexPath?
     
     /** Initializes a new ModelStructure with an array of Models.
      - Parameters:
@@ -84,7 +84,7 @@ public final class ModelStructure {
      - Returns: a new ModelStructure
      */
     
-    public init (_ models:[ModelClass], sectionModels:[String:ModelClass]? = nil) {
+    public init (_ models: [ModelClass], sectionModels: [String: ModelClass]? = nil) {
         self.models = models
         self.sectionModels = sectionModels
     }
@@ -96,8 +96,8 @@ public final class ModelStructure {
  
      - Returns: a new ModelStructure
      */
-    public convenience init (_ models:[ModelClass], sectionModel:ModelClass) {
-        self.init(models,sectionModels:[ModelStructure.singleSectionModelIdentifier:sectionModel])
+    public convenience init (_ models: [ModelClass], sectionModel: ModelClass) {
+        self.init(models, sectionModels: [ModelStructure.singleSectionModelIdentifier: sectionModel])
     }
     
     /** Initializes a new ModelStructure with an array of child ModelStructure.
@@ -107,7 +107,7 @@ public final class ModelStructure {
      - Returns: a new ModelStructure
      */
     
-    public init (children:[ModelStructure]? ) {
+    public init (children: [ModelStructure]? ) {
         self.children = children
     }
     
@@ -118,28 +118,28 @@ public final class ModelStructure {
         return self.indexPaths(current: nil)
     }
     
-    private func indexPaths(current:IndexPath?) -> [IndexPath] {
+    private func indexPaths(current: IndexPath?) -> [IndexPath] {
         let ip = current ?? IndexPath(indexes: [Int]())
         if (self.models != nil) {
             
-            let new = self.models?.reduce([], { (accumulator, item) -> [Int] in
+            let new = self.models?.reduce([], { (accumulator, _) -> [Int] in
                 return accumulator + [accumulator.count]
             })
-                .map {(n:Int) -> IndexPath in
+                .map {(n: Int) -> IndexPath in
                     return IndexPath(indexes: ip + [n])
             }
             return new ?? []
         }
         var count = -1
-        return self.children?.reduce( [IndexPath](), { (accumulator:[IndexPath], structure:ModelStructure) -> [IndexPath] in
+        return self.children?.reduce( [IndexPath](), { (accumulator: [IndexPath], structure: ModelStructure) -> [IndexPath] in
             count += 1
-            return accumulator + structure.indexPaths(current: IndexPath(indexes:(ip + [count])))
+            return accumulator + structure.indexPaths(current: IndexPath(indexes: (ip + [count])))
         }) ?? [IndexPath]()
     }
     /**
      Global count of all contained models. If current structure has child ModelStructures, those are expanded and count is aggregated
      */
-    public var count : Int {
+    public var count: Int {
         if (self.children != nil) {
             return self.children!.reduce(0, { (count, structure) -> Int in
                 return count + structure.count
@@ -161,7 +161,6 @@ public final class ModelStructure {
                 count > 0 && i < count
                 else { return nil}
             
-            
             return self.models?[i]
         }
         guard let children = self.children else {
@@ -170,7 +169,6 @@ public final class ModelStructure {
             return self.models?[index]
         }
         guard let i = index.first, i < children.count else { return nil}
-        
         
         return children[i].modelAtIndex(index.dropFirst())
     }
@@ -182,7 +180,7 @@ public final class ModelStructure {
      - Returns: a `ModelType` object if indexPath and type are valid, nil otherwise
      */
     
-    public func sectionModelAtIndexPath(_ index:IndexPath, forType type:String = ModelStructure.singleSectionModelIdentifier) -> ModelClass? {
+    public func sectionModelAtIndexPath(_ index: IndexPath, forType type: String = ModelStructure.singleSectionModelIdentifier) -> ModelClass? {
         return self.sectionModelsAtIndexPath(index)?[type]
     }
     
@@ -193,7 +191,7 @@ public final class ModelStructure {
      
      - Returns: a `[String:ModelType]` map object if found at indexPath, nil otherwise
      */
-    public func sectionModelsAtIndexPath(_ index:IndexPath) -> [String:ModelClass]? {
+    public func sectionModelsAtIndexPath(_ index: IndexPath) -> [String: ModelClass]? {
         if (self.children == nil) {
             return self.sectionModels
         }
@@ -219,7 +217,7 @@ public final class ModelStructure {
     /**
      Deletes an item at matching indexPath. The item is returned
      */
-    @discardableResult public func deleteItem(atIndex index:IndexPath) -> ModelClass? {
+    @discardableResult public func deleteItem(atIndex index: IndexPath) -> ModelClass? {
         if
             let i = index.first,
             (index.count == 1) {
@@ -229,7 +227,7 @@ public final class ModelStructure {
         }
         if let i = index.last,
             let models = self.models,
-            self.children == nil && i < models.count{
+            self.children == nil && i < models.count {
             let model = self.models?[i]
             self.models?.remove(at: i)
             return model
@@ -238,13 +236,13 @@ public final class ModelStructure {
         guard let i = index.first,
             let children = self.children,
             i < children.count else { return nil }
-        return self.children?[i].deleteItem(atIndex:index.dropFirst())
+        return self.children?[i].deleteItem(atIndex: index.dropFirst())
     }
     
     /**
      Insert an item at indexPath. The new element is inserted before the element currently at the specified index.
     */
-    @discardableResult public func insert(item:ModelClass, atIndex index:IndexPath) -> ModelClass? {
+    @discardableResult public func insert(item: ModelClass, atIndex index: IndexPath) -> ModelClass? {
         if (index.count == 1) {
             
             //let model = self.models?[index.first!]
@@ -257,7 +255,7 @@ public final class ModelStructure {
             return nil
             
         }
-        return self.children?[(index.first ?? 0)].insert(item:item, atIndex:index.dropFirst())
+        return self.children?[(index.first ?? 0)].insert(item: item, atIndex: index.dropFirst())
     }
     
     /**
@@ -272,11 +270,9 @@ public final class ModelStructure {
         self.deleteItem(atIndex: from)
         return model
         
-        
-        
     }
     
-    func inserting(_ structure:ModelStructure?) -> ModelStructure {
+    func inserting(_ structure: ModelStructure?) -> ModelStructure {
         guard let structure = structure else { return self }
         guard let ip =  structure.preferredIndexPath,
             let section = ip.first,
@@ -302,10 +298,8 @@ public final class ModelStructure {
     }
 }
 func + (left: ModelStructure, right: ModelStructure) -> ModelStructure {
-    
-    
-    
-    if left.models != nil && (right.models?.count ?? 0) > 0{
+
+    if left.models != nil && (right.models?.count ?? 0) > 0 {
         left.models! += right.allData()
     } else  if left.children != nil {
         let rightChildren = right.children ?? [ModelStructure(right.models ?? [])]
@@ -314,18 +308,19 @@ func + (left: ModelStructure, right: ModelStructure) -> ModelStructure {
     return left
     
 }
-/**
-    Creates an observable that emits a ModelStructure containg the collections' elements if the collection is an array of ModelType objects.
-    Basically, it's the same of
-        ```
-    let observable:Observable<[ModelType]> = ...
-    let structured = observable.map { ModelStructure($0) }
- ```
- */
-public extension Observable where Element : Collection {
+
+public extension Observable where Element: Collection {
+    /**
+     Creates an observable that emits a ModelStructure containg the collections' elements if the collection is an array of ModelType objects.
+     Basically, it's the same of
+     ```
+     let observable:Observable<[ModelType]> = ...
+     let structured = observable.map { ModelStructure($0) }
+     ```
+     */
     func structured() -> Observable<ModelStructure> {
         
-        return self.map({ (element:Element) -> ModelStructure in
+        return self.map({ (element: Element) -> ModelStructure in
             guard let array = element as? [ModelType] else {
                 return ModelStructure([ModelType]())
             }

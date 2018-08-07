@@ -10,20 +10,20 @@ import Foundation
 public let defaultListIdentifier = "default_list_identifier"
 
 public protocol ListIdentifier {
-    var name : String { get }
-    var isEmbeddable : Bool { get }
+    var name: String { get }
+    var isEmbeddable: Bool { get }
 }
 
 extension ListIdentifier {
-    public var isEmbeddable : Bool { return false }
+    public var isEmbeddable: Bool { return false }
 }
 
-extension String : ListIdentifier {
-    public var name : String {
+extension String: ListIdentifier {
+    public var name: String {
         return self
     }
 }
 
-public protocol ViewModelTypeIdentifiable : ViewModelType {
-    var itemIdentifier:ListIdentifier { get }
+public protocol ViewModelTypeIdentifiable: ViewModelType {
+    var itemIdentifier: ListIdentifier { get }
 }

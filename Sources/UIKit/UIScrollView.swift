@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 
 extension ListIdentifier {
-    var view:UIView? {
+    var view: UIView? {
         return Bundle.main.loadNibNamed(self.name, owner: nil, options: nil)?.first as? UIView
     }
 }
@@ -24,13 +24,12 @@ public enum StackableScrollViewDirection {
     case vertical
 }
 
-open class StackableScrollView : UIScrollView {
-    public var direction:StackableScrollViewDirection = .vertical
-    public var insets:UIEdgeInsets = .zero
-    public var spacing:CGFloat = 0
+open class StackableScrollView: UIScrollView {
+    public var direction: StackableScrollViewDirection = .vertical
+    public var insets: UIEdgeInsets = .zero
+    public var spacing: CGFloat = 0
     
-    
-    open func install(viewModels:[ItemViewModelType]) {
+    open func install(viewModels: [ItemViewModelType]) {
         self.subviews.forEach { $0.removeFromSuperview()}
         let container = UIView()
         container.backgroundColor = .clear
@@ -48,8 +47,7 @@ open class StackableScrollView : UIScrollView {
                     view.addConstraintsToPinTrailingToSuperview(constant: insets.right)
                     if let lastView = lastView {
                         view.addConstraintsToPinTop(to: lastView, constant: space)
-                    }
-                    else {
+                    } else {
                         view.addConstraintsToPinTopToSuperview(constant: insets.top)
                     }
                     bindable.bind(to: viewModel)
@@ -68,8 +66,7 @@ open class StackableScrollView : UIScrollView {
                     view.addConstraintsToPinBottomToSuperview(constant: insets.bottom)
                     if let lastView = lastView {
                         view.addConstraintsToPinLeft(to: lastView, constant: space)
-                    }
-                    else {
+                    } else {
                         view.addConstraintsToPinLeadingToSuperview(constant: insets.left)
                     }
                     bindable.bind(to: viewModel)
@@ -84,7 +81,7 @@ open class StackableScrollView : UIScrollView {
     }
 }
 
-extension StackableScrollView : ViewModelBindable {
+extension StackableScrollView: ViewModelBindable {
     
     public var viewModel: ViewModelType? {
         get { return objc_getAssociatedObject(self, &AssociatedKeys.viewModel) as? ViewModelType}
@@ -121,13 +118,12 @@ extension StackableScrollView : ViewModelBindable {
             .dataHolder
             .reloadAction
             .elements
-            .subscribe(onNext:{[weak self] structure in
+            .subscribe(onNext: {[weak self] structure in
                 let viewModels = structure.indexPaths().compactMap { viewModel.viewModel(atIndex: $0)}
-                self?.install(viewModels:viewModels)
+                self?.install(viewModels: viewModels)
                 
             })
-            .disposed(by:self.disposeBag)
-        
+            .disposed(by: self.disposeBag)
         
     }
     

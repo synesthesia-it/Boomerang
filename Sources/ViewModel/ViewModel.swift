@@ -23,7 +23,7 @@ import Action
     Base implementation is empty as long as the implementing object is a class.
     Structs and enums are not allowed to implement this protocol since (in Boomerang) a ViewModel object can be shared between more than one view as the same time.
  */
-public protocol ViewModelType : class {}
+public protocol ViewModelType: class {}
 
 /**
  An object that can be bound to a viewModel.
@@ -40,7 +40,7 @@ public protocol ViewModelBindableType {
  **IMPORTANT**
  When ViewModelBindable protocol is implemented, ViewModels must be retained somewhere: the `viewModel` variable should be used for this purpose.
  */
-public protocol ViewModelBindable: ViewModelBindableType{
+public protocol ViewModelBindable: ViewModelBindableType {
     associatedtype ViewModel = ViewModelType
     var viewModel: ViewModel? {get set}
 }
@@ -76,7 +76,7 @@ extension ViewModelType {
 /**
  Convenience protocol used to identify some view model that *loads* something.
  */
-public protocol ViewModelTypeLoadable : ViewModelType {
+public protocol ViewModelTypeLoadable: ViewModelType {
     var loading: Observable<Bool> {get set}
 }
 
@@ -84,8 +84,8 @@ public protocol ViewModelTypeLoadable : ViewModelType {
  Convenience protocol used to identify some view model whose actions can *fail*
  */
 
-public protocol ViewModelTypeFailable : ViewModelType {
-    var fail : Observable<Error> {get set}
+public protocol ViewModelTypeFailable: ViewModelType {
+    var fail: Observable<Error> {get set}
 }
 
 /**

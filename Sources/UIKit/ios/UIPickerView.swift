@@ -10,7 +10,6 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-
 private struct AssociatedKeys {
     static var viewModel = "viewModel"
     static var disposeBag = "disposeBag"
@@ -18,7 +17,7 @@ private struct AssociatedKeys {
     
 }
 
-private class ViewModelPickerViewDataSource : NSObject, PickerViewCombinedDelegate {
+private class ViewModelPickerViewDataSource: NSObject, PickerViewCombinedDelegate {
     weak var viewModel: ListViewModelType?
     init (viewModel: ListViewModelType) {
         super.init()
@@ -36,20 +35,20 @@ private class ViewModelPickerViewDataSource : NSObject, PickerViewCombinedDelega
     }
     
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let viewModel:ItemViewModelType? = self.viewModel?.viewModel(atIndex:IndexPath(row: row, section: component))
+        let viewModel: ItemViewModelType? = self.viewModel?.viewModel(atIndex: IndexPath(row: row, section: component))
         return viewModel?.itemTitle ?? ""
     }
 }
-public protocol PickerViewCombinedDelegate : UIPickerViewDelegate, UIPickerViewDataSource{}
-public extension ListViewModelType  {
+public protocol PickerViewCombinedDelegate: UIPickerViewDelegate, UIPickerViewDataSource {}
+public extension ListViewModelType {
     
-    var pickerViewDataSource:PickerViewCombinedDelegate? {
+    var pickerViewDataSource: PickerViewCombinedDelegate? {
         get { return objc_getAssociatedObject(self, &AssociatedKeys.pickerViewDataSource) as? PickerViewCombinedDelegate}
         set { objc_setAssociatedObject(self, &AssociatedKeys.pickerViewDataSource, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
 }
 
-extension UIPickerView : ViewModelBindable {
+extension UIPickerView: ViewModelBindable {
     public var viewModel: ListViewModelType? {
         get { return objc_getAssociatedObject(self, &AssociatedKeys.viewModel) as? ListViewModelType}
         set { objc_setAssociatedObject(self, &AssociatedKeys.viewModel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
@@ -65,7 +64,6 @@ extension UIPickerView : ViewModelBindable {
             return
         }
         self.viewModel = vm
-
         
         let picker = self
         
@@ -76,6 +74,6 @@ extension UIPickerView : ViewModelBindable {
         self.delegate = vm.pickerViewDataSource
         
         self.disposeBag = DisposeBag()
-        vm.dataHolder.resultsCount.asObservable().subscribe(onNext:{_ in picker.reloadAllComponents()}).disposed(by:self.disposeBag)
+        vm.dataHolder.resultsCount.asObservable().subscribe(onNext: {_ in picker.reloadAllComponents()}).disposed(by: self.disposeBag)
     }
 }
