@@ -8,26 +8,9 @@
 import Foundation
 import Action
 
+
+@available(*, deprecated, message: "Boomerang dropped Selection support as they were out of scope. Declare this protocol directly in your codebase if needed")
 public protocol SelectionInput {}
+@available(*, deprecated, message: "Boomerang dropped Selection support as they were out of scope. Declare this protocol directly in your codebase if needed")
 public protocol SelectionOutput {}
 
-public enum EmptySelection: SelectionOutput {
-    case empty
-}
-
-public protocol ViewModelTypeSelectable: ViewModelType {
-    associatedtype Input = SelectionInput
-    associatedtype Output = SelectionOutput
-    
-    var selection: Action<Input, Output> {get set}
-    
-}
-
-public protocol ViewModelTypeActionSelectable: ViewModelType {
-    func select(withInput input: SelectionInput)
-}
-
-/**
- IndexPath can be used as SelectionInput in Actions
- */
-extension IndexPath: SelectionInput {}

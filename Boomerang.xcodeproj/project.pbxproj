@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		7B087DC01DD4825800F9E39D /* ItemViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B087DBF1DD4825800F9E39D /* ItemViewModelTests.swift */; };
 		7B17AA5B1E599E1F00C66F37 /* UIPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA541E599E1F00C66F37 /* UIPickerView.swift */; };
-		7B17AA5D1E599E1F00C66F37 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA551E599E1F00C66F37 /* UIButton.swift */; };
-		7B17AA5E1E599E1F00C66F37 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA551E599E1F00C66F37 /* UIButton.swift */; };
 		7B17AA5F1E599E1F00C66F37 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA561E599E1F00C66F37 /* UICollectionView.swift */; };
 		7B17AA601E599E1F00C66F37 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA561E599E1F00C66F37 /* UICollectionView.swift */; };
 		7B17AA611E599E1F00C66F37 /* UIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17AA571E599E1F00C66F37 /* UIRouter.swift */; };
@@ -162,7 +160,6 @@
 		7B087DBF1DD4825800F9E39D /* ItemViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewModelTests.swift; sourceTree = "<group>"; };
 		7B087DC11DD4826B00F9E39D /* ModelStructureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelStructureTests.swift; sourceTree = "<group>"; };
 		7B17AA541E599E1F00C66F37 /* UIPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPickerView.swift; sourceTree = "<group>"; };
-		7B17AA551E599E1F00C66F37 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		7B17AA561E599E1F00C66F37 /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		7B17AA571E599E1F00C66F37 /* UIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIRouter.swift; sourceTree = "<group>"; };
 		7B17AA581E599E1F00C66F37 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
@@ -308,7 +305,6 @@
 			isa = PBXGroup;
 			children = (
 				7B17AA531E599E1F00C66F37 /* ios */,
-				7B17AA551E599E1F00C66F37 /* UIButton.swift */,
 				7B77727F1E6C71C70074DF5E /* UIPagerViewController.swift */,
 				7B17AA561E599E1F00C66F37 /* UICollectionView.swift */,
 				7B8EBF091F08DF21003BB2A3 /* UIScrollView.swift */,
@@ -528,9 +524,9 @@
 				7BC708002118842900421757 /* ViewModel.swift */,
 				7BC7083F211885A000421757 /* ListDataHolder.swift */,
 				7BC708012118842900421757 /* ListViewModel.swift */,
+				7BC708362118850F00421757 /* ViewModel+Identifiable.swift */,
 				7BC707FF2118842900421757 /* ItemViewModel.swift */,
 				7BC708322118848300421757 /* ViewModel+Selection.swift */,
-				7BC708362118850F00421757 /* ViewModel+Identifiable.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -844,7 +840,6 @@
 				7B17AA611E599E1F00C66F37 /* UIRouter.swift in Sources */,
 				7B17AA5F1E599E1F00C66F37 /* UICollectionView.swift in Sources */,
 				7BC708332118848300421757 /* ViewModel+Selection.swift in Sources */,
-				7B17AA5D1E599E1F00C66F37 /* UIButton.swift in Sources */,
 				7B17AA671E599E1F00C66F37 /* UIViewController.swift in Sources */,
 				7B17AA631E599E1F00C66F37 /* UITableView.swift in Sources */,
 				7BC7082C2118842900421757 /* ViewModel.swift in Sources */,
@@ -914,7 +909,6 @@
 				7B8EBF0E1F08E8F0003BB2A3 /* MKMapView.swift in Sources */,
 				7BDEC78B1EFFDAAE00322CCE /* UIView.swift in Sources */,
 				7B17AA601E599E1F00C66F37 /* UICollectionView.swift in Sources */,
-				7B17AA5E1E599E1F00C66F37 /* UIButton.swift in Sources */,
 				7BC708462118876900421757 /* ModelType.swift in Sources */,
 				7B17AA681E599E1F00C66F37 /* UIViewController.swift in Sources */,
 				7BC70842211885A000421757 /* ListDataHolder.swift in Sources */,

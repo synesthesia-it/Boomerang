@@ -75,29 +75,62 @@ public protocol ListViewModelType: ViewModelType {
     func reload()
     
 }
-
+/**
+ A special `ListViewModelType` that also implements concepts of sections
+ */
 public protocol ListViewModelTypeSectionable: ListViewModelType {
+    /**
+     Retrieves proper section ItemViewModel from a model and with custom type identifier
+     - Parameters:
+        - model : a model object that has to be converted into a viewModel
+     - type : a string used to identify what kind of view model is needed. ex: "header" or "footer"
+    */
     func sectionItemViewModel(fromModel model: ModelType, withType type: String) -> ItemViewModelType?
 }
 
 public extension ListViewModelTypeSectionable {
-    
+    /**
+     Default protocol implementation. Fallbacks to `itemViewmodel(fromModel)`
+    */
     public func sectionItemViewModel(fromModel model: ModelType, withType type: String) -> ItemViewModelType? {
         return self.itemViewModel(fromModel: model)
     }
 }
 public extension ListViewModelType {
-    
+    /**
+     Defines if current dataHolder is empty or not.
+     
+     Observable returns true if dataHolder's `resultsCount` is 0, false otherwise
+    */
     public var isEmpty: Observable<Bool> {
         return self.dataHolder.resultsCount.asObservable().map {$0 == 0}
     }
     
+    /**
+     Proper item identifier from matching viewModel at indexPath.
+     Item identifiers are used to automatically generate views from the view layer.
+     - Parameters:
+        - index : current index path
+     - Returns:
+        A list identifier belonging to proper item view model. If the itemViewModel is requested for the first time, it gets created.
+    */
     public func identifier(atIndex index: IndexPath) -> ListIdentifier? {
         return self.viewModel(atIndex: index)?.itemIdentifier
     }
+    /**
+     SeeAlso: `ListViewModelType`
+    */
     public func reuseIdentifier(for identifier: ListIdentifier, at indexPath: IndexPath) -> String? {
         return nil
     }
+    /**
+     Returns an `ItemViewModelType` for provided indexPath.
+     The ItemViewModel is created once and then cached for further requests until next reload or insert/delete operation
+     - Parameters:
+        - index: current index path
+     - Returns:
+        Matching itemViewModel
+    */
     public func viewModel (atIndex index: IndexPath) -> ItemViewModelType? {
         
         var d = self.dataHolder.viewModels.value
@@ -113,7 +146,9 @@ public extension ListViewModelType {
         }
         return vm
     }
-    
+    /**
+     Default implementation returns provided model as an ItemViewModel if casting succeed, nil otherwise
+    */
     public func itemViewModel(fromModel model: ModelType) -> ItemViewModelType? {
         return model as? ItemViewModelType
     }
@@ -121,7 +156,13 @@ public extension ListViewModelType {
 }
 
 public extension ListViewModelType {
-
+    /**
+     Returns current model at provided indexPath
+     - Note:
+     This method is slightly different from the one from `ListDataHolderType`.
+     If the modelStructure contains an ItemViewModelType object at provided indexPath, its inner model is returned instead.
+     To obtain the exact modelStructure content, explore it with lower-level accessor methods (ex: `self.dataHolder.modelStructure.value.model(atIndex:indexPath)`
+     */
     public func model (atIndex index: IndexPath) -> ModelType? {
         let model = self.dataHolder.modelStructure.value.modelAtIndex(index)
         guard let viewModel = model as? ItemViewModelType else {
@@ -129,27 +170,26 @@ public extension ListViewModelType {
         }
         return viewModel.model
     }
+    /**
+     Reloads the dataHolder
+    */
     public func reload() {
         self.dataHolder.reload()
     }
 }
 
 public extension ListViewModelType where Self: ViewModelTypeFailable {
+    /**
+     - Returns: all errors from underlying reloadAction
+    */
     var fail: Observable<ActionError> { return self.dataHolder.reloadAction.errors }
 }
 
 public extension ListViewModelType where Self: ViewModelTypeLoadable {
+    /**
+     - Returns: loading status  from underlying reloadAction
+     */
     var loading: Observable<Bool> { return self.dataHolder.reloadAction.executing }
 }
 
-public extension ListViewModelType where Self: ViewModelTypeLoadable, Self: ViewModelTypeSelectable {
-    var loading: Observable<Bool> {
-        return Observable.combineLatest(self.dataHolder.reloadAction.executing, self.selection.executing, resultSelector: { $0 || $1})
-    }
-}
 
-public extension ListViewModelType where Self: ViewModelTypeFailable, Self: ViewModelTypeSelectable {
-    var fail: Observable<ActionError> {
-        return Observable.from([self.dataHolder.reloadAction.errors, self.selection.errors], scheduler: MainScheduler.instance).switchLatest()
-    }
-}

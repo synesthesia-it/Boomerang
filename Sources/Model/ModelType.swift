@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxCocoa
 /**
     A single entity that represents a listable object in the MVVM pattern, inside the Model layer.
  
@@ -25,3 +26,5 @@ import Foundation
     ```
  */
 public protocol ModelType {}
+
+extension BehaviorRelay: ModelType {}
