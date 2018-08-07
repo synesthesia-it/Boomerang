@@ -9,15 +9,32 @@ import Foundation
 import RxSwift
 import RxCocoa
 import Action
-
+/**
+ A generic protocol used to identify ranges with indexPaths
+ */
 public protocol ResultRangeType {
+    /**
+     Range's starting index
+     */
     var start: IndexPath {get set}
+    /**
+     Range's end index
+     */
     var end: IndexPath {get set}
 }
 
+/**
+ Concrete implementation of ResultRangeType
+ */
+
 public struct ResultRange: ResultRangeType {
+    
     public var start: IndexPath
     public var end: IndexPath
+    
+    /**
+     Creates a  new ResultRange object with provided start and end indexes
+    */
     public init?(start: IndexPath?, end: IndexPath?) {
         guard let start = start, let end = end else { return nil }
         self.start = start
@@ -25,36 +42,69 @@ public struct ResultRange: ResultRangeType {
     }
 }
 
-extension IndexPath: SelectionInput {}
-
+/**
+ Defines how a generic list should be updated
+ */
 public enum ListDataUpdate {
+    /// Fully reload the list
     case reload(ResultRangeType?)
+    /// Insert the object at index's start. Current item at index will be placed after the new data
     case insert(ResultRangeType?)
+    /// Delete items in range
     case delete(ResultRangeType?)
+    /// Insert incoming data as new sections. Last index indexpath is ignored (ex: in two-dimensional ModelStructure, new content is inserted as a new child ModelStructure, before the one currently at indexPath.section's index.
     case insertSections(ResultRangeType?)
+    /// Deletes full section in a multidimensional ModelStructure
     case deleteSections(ResultRangeType?)
 }
 
+/**
+ Generic definition of a ListDataHolder.
+ A ListDataHolder is used by ListViewModels to handle the retrieval of external data, store and update them, and lazily convert them into ItemViewModels.
+ */
 public protocol ListDataHolderType: class {
-    
+    /**
+    A map used to hold references to ItemViewModels
+    */
     var viewModels: BehaviorRelay<[IndexPath: ItemViewModelType]> {get set}
     
+    /**
+     An observable property with current results count.
+     */
     var resultsCount: BehaviorRelay<Int> {get set}
+    
+    /**
+     An observable property with current loading status.
+    */
     var isLoading: BehaviorRelay<Bool> {get}
     
+    /**
+     Notify (manually if needed) if new data is available in the list.
+     */
     var newDataAvailable: BehaviorRelay<ListDataUpdate?> {get set}
     
+    /// Observable relay for for current ModelStructure.
     var modelStructure: BehaviorRelay<ModelStructure> {get set}
     
+    /// Triggers a reload after inner data has changed
     var commitEditing: BehaviorRelay<Bool> { get }
     
+    /// Inner Action used to trigger updates and emit new values when available
     var reloadAction: Action<ResultRangeType?, ModelStructure> {get set}
+    
+    /// Supplementary action useful for "infinite scrolling" scenarios, where new data has to be added to the list without a complete reload
     var moreAction: Action<ResultRangeType?, ModelStructure> {get set}
     
-    var data: Observable<ModelStructure> {get set}
+    /// Deletes item from inner model structure at provided index path
     func deleteItem(atIndex index: IndexPath)
+    
+    /// Completely reloads current data by creating a new subscription to provided data observable
     func reload()
+    
+    /// Notify every subscriber that an update procedure over inner ModelStructure has completed. This is useful in scenarios where some items are deleted AND inserted at once: in that case, `commit()` must be called at the end to notify UI components to only update once
     func commit()
+    
+    /// Basic initializer. Returns an empty data holder
     init()
 }
 
@@ -64,6 +114,9 @@ private struct AssociatedKeys {
 
 extension ListDataHolderType {
     
+    /**
+     A lazily-created disposeBag where disposables can be easily stored.
+     */
     public var disposeBag: DisposeBag {
         get {
             var disposeBag: DisposeBag
@@ -81,15 +134,32 @@ extension ListDataHolderType {
             objc_setAssociatedObject(self, &AssociatedKeys.disposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
+    
+    /**
+     Returns an empty data holder with an empty model structure
+     */
     public static var empty: ListDataHolderType { return Self.init(data: Observable.just(ModelStructure.empty)) }
+    
+    /**
+     Reloads data by executing inner `reloadAction` with no ResultRange provided. Data is expected to be fully refreshed.
+    */
     public func reload() {
         self.reloadAction.execute(nil)
         
     }
+    
+    /** Notify every subscriber that an update procedure over inner ModelStructure has completed.
+ 
+        This is useful in scenarios where some items are deleted AND inserted at once: in that case, `commit()` must be called at the end to notify UI components to only update once.
+        The `commitEditing` relay's value is set to `true`
+     */
+    
     public func commit() {
         self.commitEditing.accept(true)
         
     }
+    /// Deletes item from current model structure at provided index path
+    /// `newDataAvailable` is immediately set to `.delete` with proper index path
     public func deleteItem(atIndex index: IndexPath) {
         let model = self.modelStructure.value
         
@@ -100,16 +170,33 @@ extension ListDataHolderType {
         self.modelStructure.accept(model)
         self.newDataAvailable.accept(ListDataUpdate.delete(ResultRange(start: index, end: index)))
     }
+    
+    /**
+        Insert a new ModelType at provided indexPath
+     
+        - Note:
+        This causes a complete recalculation of contents of `viewModels`
+        This will likely change in the future
+    */
     public func insert(item: ModelType, atIndex index: IndexPath) {
         let model = self.modelStructure.value
         model.insert(item: item, atIndex: index)
-        
+        // This is a potentially dangerous operation.
+        // It would be better to find a way to shift previous viewModels instead of destroying all of them (if not already retained somewhere else)
         var vms = self.viewModels.value
         vms = [:]
         self.viewModels.accept(vms)
         self.modelStructure.accept(model)
         self.newDataAvailable.accept(ListDataUpdate.insert(ResultRange(start: index, end: index)))
     }
+    
+    /**
+     Insert an array of ModelType objects starting at provided indexPath
+     
+     - Note:
+     This causes a complete recalculation of contents of `viewModels`
+     This will likely change in the future
+     */
     public func insert(items: [ModelType], startingFromIndex index: IndexPath) {
         let model = self.modelStructure.value
         let lastIndex = IndexPath(item: index.item + items.count - 1, section: index.section)
@@ -120,8 +207,18 @@ extension ListDataHolderType {
         self.modelStructure.accept(model)
         self.newDataAvailable.accept(ListDataUpdate.insert(ResultRange(start: index, end: lastIndex)))
     }
+    
+    /**
+     Insert a new ModelStructure as children of current ModelStructure at provided indexPath
+     
+     - Note:
+     This causes a complete recalculation of contents of `viewModels`
+     This will likely change in the future
+     */
     public func insert(structure: ModelStructure, startingFromIndex index: IndexPath) {
         let oldModel = self.modelStructure.value
+        //Probably a bug here, we should add:
+        //structure.preferredIndexPath = index
         let model = oldModel.inserting(structure)
         model.children = model.children?.filter {($0.models?.count ?? 0) > 0}
         //        let lastIndex = IndexPath(item: index.item + items.count - 1 , section: index.section)
@@ -134,9 +231,25 @@ extension ListDataHolderType {
             self.newDataAvailable.accept(ListDataUpdate.insert(ResultRange(start: index, end: lastIndex)))
         }
     }
+    
+    /**
+     Creates a new ListDataHolder
+     - Parameters:
+        - data: an observable that will emit the root ModelStructure after reload.
+        - more: an optional observable that will be triggered whenever `moreAction` will be executed and will append its ModelStructure's contents to current ModelStructure.
+     
+     - Example:
+     ```
+     let dataHolder = ListDataHolder(data:.just(ModelStructure(["A","B","C"])), more:.just(ModelStructure(["D","E","F"]))
+     dataHolder.reload()
+     /// current contents: "A", "B", "C"
+     dataHolder.moreAction.execute(nil)
+     /// current contents: "A", "B", "C", "D", "E", "F"
+     ```
+     
+     */
     public init(data: Observable<ModelStructure>, more: Observable<(ModelStructure)>? = nil) {
         self.init()
-        self.data = data
         self.reloadAction = Action { _ in
             return data.flatMapLatest { (s: ModelStructure?) -> Observable<ModelStructure> in
                 let result = (s ?? ModelStructure.empty)
@@ -228,20 +341,45 @@ extension ListDataHolderType {
             .disposed(by: self.disposeBag)
     }
 }
+
+/**
+ Concrete implementation of ListDataHolderType
+ */
 public final class ListDataHolder: ListDataHolderType {
-    
+    /**
+     An observable property with current loading status.
+     */
     public let isLoading: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    
+     /// Inner Action used to trigger updates and emit new values when available
     public var reloadAction: Action<ResultRangeType?, ModelStructure> = Action {_ in return Observable.just(ModelStructure.empty)}
+    
+     /// Supplementary action useful for "infinite scrolling" scenarios, where new data has to be added to the list without a complete reload
     public var moreAction: Action<ResultRangeType?, ModelStructure> = Action { _ in return .just(.empty) }
+    
+    /// Observable relay for for current ModelStructure.
     public var modelStructure: BehaviorRelay<ModelStructure> = BehaviorRelay(value: ModelStructure.empty)
+    
+    /// A map used to hold references to ItemViewModels
     public var viewModels: BehaviorRelay = BehaviorRelay(value: [IndexPath: ItemViewModelType]())
+    
+    /// An observable property with current results count.
     public var resultsCount: BehaviorRelay<Int> = BehaviorRelay(value: 0)
+    
+    /// Notify (manually if needed) if new data is available in the list.
     public var newDataAvailable: BehaviorRelay<ListDataUpdate?> = BehaviorRelay(value: nil)
-    public var data: Observable<ModelStructure>
+    
+     /// Triggers a reload after inner data has changed
     public var commitEditing: BehaviorRelay<Bool> = BehaviorRelay(value: true)
-    public init() {
-        self.data = .just(ModelStructure.empty)
-    }
+    
+    /// Initializes an empty ListDataHolder
+    public init() {}
+    
+    /**
+     Convenience method to create a ListDataHolder that instantly emits a single-dimension ModelStructure upon reloading
+     - Parameters:
+        - models: a ModelType array that will be used to create a single-dimension (no children) ModelStructure (``` ModelStructure(models)```)
+     */
     public convenience init(withModels models: [ModelType]) {
         self.init(data: .just(ModelStructure(models)))
     }

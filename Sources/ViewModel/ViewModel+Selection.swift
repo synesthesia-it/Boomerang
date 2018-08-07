@@ -26,3 +26,8 @@ public protocol ViewModelTypeSelectable: ViewModelType {
 public protocol ViewModelTypeActionSelectable: ViewModelType {
     func select(withInput input: SelectionInput)
 }
+
+/**
+ IndexPath can be used as SelectionInput in Actions
+ */
+extension IndexPath: SelectionInput {}

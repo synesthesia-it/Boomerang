@@ -49,11 +49,9 @@ private struct AssociatedKeys {
     static var disposeBag = "disposeBag"
 }
 
-//extension BehaviorRelay : ModelType {}
-
 extension ViewModelType {
     /**
-     A useful, lazily-created disposeBag where disposables can be easily stored.
+     A lazily-created disposeBag where disposables can be easily stored.
      */
     public var disposeBag: DisposeBag {
         get {
