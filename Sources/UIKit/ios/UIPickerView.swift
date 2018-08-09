@@ -39,9 +39,12 @@ private class ViewModelPickerViewDataSource: NSObject, PickerViewCombinedDelegat
         return viewModel?.itemTitle ?? ""
     }
 }
+/// Simultaneous compliance to `UIPickerViewDelegate` and `UIPickerViewDataSource`
 public protocol PickerViewCombinedDelegate: UIPickerViewDelegate, UIPickerViewDataSource {}
 public extension ListViewModelType {
-    
+    /**
+     A pickerViewDataSource used for UIPickerView binding
+    */
     var pickerViewDataSource: PickerViewCombinedDelegate? {
         get { return objc_getAssociatedObject(self, &AssociatedKeys.pickerViewDataSource) as? PickerViewCombinedDelegate}
         set { objc_setAssociatedObject(self, &AssociatedKeys.pickerViewDataSource, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
@@ -49,15 +52,22 @@ public extension ListViewModelType {
 }
 
 extension UIPickerView: ViewModelBindable {
+    /// Current viewModel for pickerView. Value it's retained.
     public var viewModel: ListViewModelType? {
         get { return objc_getAssociatedObject(self, &AssociatedKeys.viewModel) as? ListViewModelType}
         set { objc_setAssociatedObject(self, &AssociatedKeys.viewModel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
-    
+    /**
+     A disposeBag where disposables can be easily stored.
+     */
     public var disposeBag: DisposeBag {
         get { return objc_getAssociatedObject(self, &AssociatedKeys.disposeBag) as? DisposeBag ?? DisposeBag()}
         set { objc_setAssociatedObject(self, &AssociatedKeys.disposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
+    /**
+     Binds a `ListViewModelType` view model to current UIPickerView. A proper `PickerViewCombinedDelegate` is created if nil on provided viewmModel.
+        List view model is *not* automatically reloaded.
+    */
     public func bind(to viewModel: ViewModelType?) {
         
         guard let vm = viewModel as? ListViewModelType else {

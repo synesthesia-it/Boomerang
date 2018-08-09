@@ -9,11 +9,19 @@
 import UIKit
 import RxSwift
 
+/**
+ Generic protocol used to handle pagers (usually horizontal collections of view controllers such as UIPageViewController).
+ - Note:
+ In MVVM, any view model should not have any reference to view-layer related components.
+ However, due to UIPageViewController behavior and original design, we find reasonable to have a method, in the view model layer, that somehow retrieves and returns ViewControllers, as long as those components are not used elsewhere inside the view model itself.
+ */
 public protocol ListPagerViewModelType: ListViewModelType {
+    ///The initial index to display when pager is reloaded
     var startingIndex: Int {get}
+    /// The viewController matching provided identifier
     func viewController(fromIdentifier: ListIdentifier) -> UIViewController?
 }
-
+/// Concrete, objc compliant, implementation for UIPageViewControllerDataSource
 public class ViewModelPagerViewDataSource: NSObject, UIPageViewControllerDataSource {
     weak var viewModel: ListPagerViewModelType?
     weak var pageViewController: UIPageViewController?
@@ -90,11 +98,14 @@ private extension ListPagerViewModelType {
 }
 
 extension UIPageViewController: ViewModelBindable {
-    
+    /// Current viewModel. Property is retained.
     public var viewModel: ViewModelType? {
         get { return objc_getAssociatedObject(self, &AssociatedKeys.viewModel) as? ViewModelType}
         set { objc_setAssociatedObject(self, &AssociatedKeys.viewModel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
+    /**
+     A lazily-created disposeBag where disposables can be easily stored.
+     */
     public var disposeBag: DisposeBag {
         var disposeBag: DisposeBag
         
@@ -107,15 +118,18 @@ extension UIPageViewController: ViewModelBindable {
         
         return disposeBag
     }
+    /// Current number of viewControllers inside the list
     public func presentationCount() -> Int {
         return (self.viewModel as? ListViewModelType)?.dataHolder.modelStructure.value.models?.count ?? 0
     }
+    /// Current viewController index
     public func presentationIndex() -> Int {
         guard let vc = self.viewControllers?.first else {
             return 0
         }
         return (self.viewModel as? ListPagerViewModelType)?.pagerDataSource?.indexForViewController(vc) ?? 0
     }
+    /// Binds current pager to a `ListPagerViewModelType`. If provided view model doesn't conform to that procol, previous view model is set to nil and nothing further happens.
     public func bind(to viewModel: ViewModelType?) {
         guard let viewModel = viewModel as? ListPagerViewModelType else {
             self.viewModel = nil
