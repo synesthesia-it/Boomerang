@@ -16,7 +16,7 @@ private struct AssociatedKeys {
     static var disposeBag = "disposeBag"
 }
 
-extension MKMapView : ViewModelBindable {
+extension MKMapView: ViewModelBindable {
     
     public var viewModel: ViewModelType? {
         get { return objc_getAssociatedObject(self, &AssociatedKeys.viewModel) as? ViewModelType}
@@ -50,14 +50,14 @@ extension MKMapView : ViewModelBindable {
             .dataHolder
             .reloadAction
             .elements
-            .subscribe(onNext:{ [weak self] modelStructure in
+            .subscribe(onNext: { [weak self] modelStructure in
                 let annotations = modelStructure.indexPaths().compactMap { viewModel.viewModel(atIndex: $0) as? MKAnnotation}
                 if let oldAnnotations = self?.annotations {
                     self?.removeAnnotations(oldAnnotations)
                 }
                 self?.showAnnotations(annotations, animated: true)
             })
-            .disposed(by:self.disposeBag)
+            .disposed(by: self.disposeBag)
     }
     
 }

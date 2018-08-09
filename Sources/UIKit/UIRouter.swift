@@ -8,9 +8,7 @@
 
 import UIKit
 
-
-
-public enum UIViewControllerRouterAction : RouterAction {
+public enum UIViewControllerRouterAction: RouterAction {
     case push (source:UIViewController, destination:UIViewController)
     case pop (source:UIViewController)
     case dismiss (source:UIViewController, completion: (() -> Void)?)
@@ -40,7 +38,6 @@ public enum UIViewControllerRouterAction : RouterAction {
     }
     
 }
-
 
 //class PeekPopRouterAction<Source:UIViewController> : NSObject, UIViewControllerPreviewingDelegate {
 //    

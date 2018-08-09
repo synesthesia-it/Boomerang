@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ModelStructure Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/ModelStructure" class="dashAnchor"></a>
+    <a title="ModelStructure Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Boomerang Docs</a> (59% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Boomerang Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ModelStructure Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ContentCollectionViewCell.html">ContentCollectionViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ContentTableHeaderFooterView.html">ContentTableHeaderFooterView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ContentTableViewCell.html">ContentTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ListDataHolder.html">ListDataHolder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ModelStructure.html">ModelStructure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/StackableScrollView.html">StackableScrollView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ViewModelPagerViewDataSource.html">ViewModelPagerViewDataSource</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:9Boomerang21defaultListIdentifierSSvp">defaultListIdentifier</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/ListDataUpdate.html">ListDataUpdate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/StackableScrollViewDirection.html">StackableScrollViewDirection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TableViewHeaderType.html">TableViewHeaderType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/UIViewControllerRouterAction.html">UIViewControllerRouterAction</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/MKMapView.html">MKMapView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Observable.html">Observable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UICollectionView.html">UICollectionView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIPageViewController.html">UIPageViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIPickerView.html">UIPickerView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITableView.html">UITableView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/EditableViewModel.html">EditableViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/EmbeddableView.html">EmbeddableView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ErrorReceiver.html">ErrorReceiver</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang9FormStyleP">FormStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ItemViewModelType.html">ItemViewModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ListDataHolderType.html">ListDataHolderType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ListIdentifier.html">ListIdentifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ListPagerViewModelType.html">ListPagerViewModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ListViewModelType.html">ListViewModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ListViewModelTypeSectionable.html">ListViewModelTypeSectionable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/LoaderReceiver.html">LoaderReceiver</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang9ModelTypeP">ModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang26PickerViewCombinedDelegateP">PickerViewCombinedDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ResultRangeType.html">ResultRangeType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RouterAction.html">RouterAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang17RouterDestinationP">RouterDestination</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang12RouterSourceP">RouterSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RouterType.html">RouterType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang14SelectionInputP">SelectionInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang15SelectionOutputP">SelectionOutput</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewControllerActionBindable.html">ViewControllerActionBindable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewModelBindable.html">ViewModelBindable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewModelBindableType.html">ViewModelBindableType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewModelType.html">ViewModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewModelTypeFailable.html">ViewModelTypeFailable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewModelTypeIdentifiable.html">ViewModelTypeIdentifiable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewModelTypeLoadable.html">ViewModelTypeLoadable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/EmptyRouterAction.html">EmptyRouterAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ResultRange.html">ResultRange</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Boomerang15ObservableErrora">ObservableError</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ModelStructure</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">ModelStructure</span></code></pre>
+
+                </div>
+              </div>
+            <p>A wrapper object for custom data structures and Model nesting</p>
+
+<p>Usually, a list of models could be simply initialized with a flat array of models, that will be independently transformed in ItemViewModels and  sequentially rendered by proper UI components (for example, a list of views in a UIScrollView).</p>
+
+<p>Sometimes, nesting is required to section, separate and reorganize data (for example, a UITableView that renders a contact list, with a pinned header for each initial letter)</p>
+
+<p>ModelStructure is a universal wrapper for these kind of nesting. It can be initialized in two different ways:</p>
+
+<ul>
+<li>with an array of Model objects</li>
+<li>with an array of ModelStructure objects.</li>
+</ul>
+
+<p>When accessed with an IndexPath, its last index will always match a ModelType object; previous indexes are used to traverse provided hierarchy.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The most common case is two-dimensional ModelStructures, meaning a ModelStructure with single array of child ModelStructures, each one with its models. This is working out-of-the-box with UICollectionView and UITableView. However, multi-dimensional structures are theoretically supported, but will require proper handling on the View layer.
+
+</div>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureC013singleSectionB10IdentifierSSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/singleSectionModelIdentifier" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureC013singleSectionB10IdentifierSSvpZ">singleSectionModelIdentifier</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">singleSectionModelIdentifier</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureC0B5Classa"></a>
+                    <a name="//apple_ref/swift/Alias/ModelClass" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureC0B5Classa">ModelClass</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">ModelClass</span> <span class="o">=</span> <span class="kt"><a href="../Protocols.html#/s:9Boomerang9ModelTypeP">ModelType</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureC6modelsSayAA0B4Type_pGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/models" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureC6modelsSayAA0B4Type_pGSgvp">models</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The array of ModelType objects contained by current ModelStructure. If this array has values, the <code><a href="../Classes/ModelStructure.html#/s:9Boomerang14ModelStructureC8childrenSayACGSgvp">children</a></code> array must be nil</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">models</span><span class="p">:</span> <span class="p">[</span><span class="kt">ModelStructure</span><span class="o">.</span><span class="kt"><a href="../Classes/ModelStructure.html#/s:9Boomerang14ModelStructureC0B5Classa">ModelClass</a></span><span class="p">]?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureC8childrenSayACGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/children" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureC8childrenSayACGSgvp">children</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The array of children ModelStructure objects contained by current ModelStructure. If this array has values, the <code><a href="../Classes/ModelStructure.html#/s:9Boomerang14ModelStructureC6modelsSayAA0B4Type_pGSgvp">models</a></code> array must be nil</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">children</span><span class="p">:</span> <span class="p">[</span><span class="kt">ModelStructure</span><span class="p">]?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureC13sectionModelss10DictionaryVySSAA0B4Type_pGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/sectionModels" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureC13sectionModelss10DictionaryVySSAA0B4Type_pGSgvp">sectionModels</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A map of models (one or more) that are related to current array of models (or child structures).</p>
+
+<p>For example, in a UITableView, each section can be a header and/or footer, each one represented by its ItemViewModel/ModelType object.
+In a UICollectionView, this is where each supplementary view&rsquo;s underlying models must be stored</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">sectionModels</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">ModelStructure</span><span class="o">.</span><span class="kt"><a href="../Classes/ModelStructure.html#/s:9Boomerang14ModelStructureC0B5Classa">ModelClass</a></span><span class="p">]?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureC07sectionB0AA0B4Type_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/sectionModel" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureC07sectionB0AA0B4Type_pSgvp">sectionModel</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience method to retrieve a single section model</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">sectionModel</span><span class="p">:</span> <span class="kt"><a href="../Classes/ModelStructure.html#/s:9Boomerang14ModelStructureC0B5Classa">ModelClass</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureC13childrenCountSivp"></a>
+                    <a name="//apple_ref/swift/Property/childrenCount" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureC13childrenCountSivp">childrenCount</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>In a ModelStructure with child structures, it&rsquo;s the count of children.
+If the ModelStructure has no children, 0 is returned.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">childrenCount</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureC10modelCountSivp"></a>
+                    <a name="//apple_ref/swift/Property/modelCount" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureC10modelCountSivp">modelCount</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>In a ModelStructure with models and no child structures, it&rsquo;s the count of contained models.
+If the ModelStructure has no models, 0 is returned.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">modelCount</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureC5emptyACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/empty" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureC5emptyACvpZ">empty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience structure with no child structures and 0 models</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="k">var</span> <span class="nv">empty</span><span class="p">:</span> <span class="kt">ModelStructure</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureCACSayAA0B4Type_pG_s10DictionaryVySSAaD_pGSg13sectionModelstcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:sectionModels:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureCACSayAA0B4Type_pG_s10DictionaryVySSAaD_pGSg13sectionModelstcfc">init(_:sectionModels:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a new ModelStructure with an array of Models.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span> <span class="p">(</span><span class="n">_</span> <span class="nv">models</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/ModelStructure.html#/s:9Boomerang14ModelStructureC0B5Classa">ModelClass</a></span><span class="p">],</span> <span class="nv">sectionModels</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt"><a href="../Classes/ModelStructure.html#/s:9Boomerang14ModelStructureC0B5Classa">ModelClass</a></span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a new ModelStructure</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureCACSayAA0B4Type_pG_AaD_p07sectionB0tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:sectionModel:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureCACSayAA0B4Type_pG_AaD_p07sectionB0tcfc">init(_:sectionModel:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a new ModelStructure with an array of Models.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">models</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/ModelStructure.html#/s:9Boomerang14ModelStructureC0B5Classa">ModelClass</a></span><span class="p">],</span> <span class="nv">sectionModel</span><span class="p">:</span> <span class="kt"><a href="../Classes/ModelStructure.html#/s:9Boomerang14ModelStructureC0B5Classa">ModelClass</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a new ModelStructure</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureCACSayACGSg8children_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(children:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureCACSayACGSg8children_tcfc">init(children:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a new ModelStructure with an array of child ModelStructure.</p>
+
+<ul>
+<li><p>children: An array of <code>ModelStructure</code>s, each one made up by Models or ModelStructures.</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">children</span><span class="p">:</span> <span class="p">[</span><span class="kt">ModelStructure</span><span class="p">]?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a new ModelStructure</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureC10indexPathsSay10Foundation9IndexPathVGyF"></a>
+                    <a name="//apple_ref/swift/Method/indexPaths()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureC10indexPathsSay10Foundation9IndexPathVGyF">indexPaths()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A recursive list of all contained <code>IndexPath</code>s</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">indexPaths</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">IndexPath</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureC5countSivp"></a>
+                    <a name="//apple_ref/swift/Property/count" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureC5countSivp">count</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Global count of all contained models. If current structure has child ModelStructures, those are expanded and count is aggregated</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureC12modelAtIndexAA0B4Type_pSg10Foundation0F4PathVF"></a>
+                    <a name="//apple_ref/swift/Method/modelAtIndex(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureC12modelAtIndexAA0B4Type_pSg10Foundation0F4PathVF">modelAtIndex(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Model at corresponding index.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">modelAtIndex</span><span class="p">(</span><span class="n">_</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/ModelStructure.html#/s:9Boomerang14ModelStructureC0B5Classa">ModelClass</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a <code><a href="../Protocols.html#/s:9Boomerang9ModelTypeP">ModelType</a></code> object if indexPath is valid, nil otherwise</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureC07sectionB11AtIndexPathAA0B4Type_pSg10Foundation0fG0V_SS03forH0tF"></a>
+                    <a name="//apple_ref/swift/Method/sectionModelAtIndexPath(_:forType:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureC07sectionB11AtIndexPathAA0B4Type_pSg10Foundation0fG0V_SS03forH0tF">sectionModelAtIndexPath(_:forType:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Section model at corresponding index and for matching string identifier.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sectionModelAtIndexPath</span><span class="p">(</span><span class="n">_</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">,</span> <span class="n">forType</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="kt">ModelStructure</span><span class="o">.</span><span class="n"><a href="../Classes/ModelStructure.html#/s:9Boomerang14ModelStructureC013singleSectionB10IdentifierSSvpZ">singleSectionModelIdentifier</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/ModelStructure.html#/s:9Boomerang14ModelStructureC0B5Classa">ModelClass</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>indexPath</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>IndexPath object, used to retrieve proper section</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a string identifier used to identify proper model in a section. Example: in a UITableView with both header and footer views, it could be <q>header</q> or <q>footer</q>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a <code><a href="../Protocols.html#/s:9Boomerang9ModelTypeP">ModelType</a></code> object if indexPath and type are valid, nil otherwise</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureC24sectionModelsAtIndexPaths10DictionaryVySSAA0B4Type_pGSg10Foundation0gH0VF"></a>
+                    <a name="//apple_ref/swift/Method/sectionModelsAtIndexPath(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureC24sectionModelsAtIndexPaths10DictionaryVySSAA0B4Type_pGSg10Foundation0gH0VF">sectionModelsAtIndexPath(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A map of Section models at corresponding index.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sectionModelsAtIndexPath</span><span class="p">(</span><span class="n">_</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt"><a href="../Classes/ModelStructure.html#/s:9Boomerang14ModelStructureC0B5Classa">ModelClass</a></span><span class="p">]?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>indexPath</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>IndexPath object, used to retrieve proper section</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a <code>[String:ModelType]</code> map object if found at indexPath, nil otherwise</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureC7allDataSayAA0B4Type_pGyF"></a>
+                    <a name="//apple_ref/swift/Method/allData()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureC7allDataSayAA0B4Type_pGyF">allData()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sequentially returns all contained models or all models contained in child ModelStructures.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">allData</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/ModelStructure.html#/s:9Boomerang14ModelStructureC0B5Classa">ModelClass</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureC10deleteItemAA0B4Type_pSg10Foundation9IndexPathV02atH0_tF"></a>
+                    <a name="//apple_ref/swift/Method/deleteItem(atIndex:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureC10deleteItemAA0B4Type_pSg10Foundation9IndexPathV02atH0_tF">deleteItem(atIndex:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Deletes an item at matching indexPath. The item is returned</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">deleteItem</span><span class="p">(</span><span class="n">atIndex</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/ModelStructure.html#/s:9Boomerang14ModelStructureC0B5Classa">ModelClass</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureC6insertAA0B4Type_pSgAaE_p4item_10Foundation9IndexPathV02atH0tF"></a>
+                    <a name="//apple_ref/swift/Method/insert(item:atIndex:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureC6insertAA0B4Type_pSgAaE_p4item_10Foundation9IndexPathV02atH0tF">insert(item:atIndex:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Insert an item at indexPath. The new element is inserted before the element currently at the specified index.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">insert</span><span class="p">(</span><span class="nv">item</span><span class="p">:</span> <span class="kt"><a href="../Classes/ModelStructure.html#/s:9Boomerang14ModelStructureC0B5Classa">ModelClass</a></span><span class="p">,</span> <span class="n">atIndex</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/ModelStructure.html#/s:9Boomerang14ModelStructureC0B5Classa">ModelClass</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ModelStructureC8moveItemAA0B4Type_pSg10Foundation9IndexPathV04fromhI0_AI2totF"></a>
+                    <a name="//apple_ref/swift/Method/moveItem(fromIndexPath:to:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ModelStructureC8moveItemAA0B4Type_pSg10Foundation9IndexPathV04fromhI0_AI2totF">moveItem(fromIndexPath:to:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Moves the item at starting indexPath to the specified indexPath.
+The moved element is inserted before the element currently at the specified index.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">moveItem</span><span class="p">(</span><span class="n">fromIndexPath</span> <span class="nv">from</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">,</span> <span class="nv">to</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/ModelStructure.html#/s:9Boomerang14ModelStructureC0B5Classa">ModelClass</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/stefanomondino/Boomerang" target="_blank" rel="external">Stefano Mondino</a>. All rights reserved. (Last updated: 2018-08-09)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

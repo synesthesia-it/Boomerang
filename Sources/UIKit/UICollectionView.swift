@@ -10,31 +10,29 @@ import UIKit
 import RxCocoa
 import RxSwift
 
+extension UICollectionReusableView: EmbeddableView {}
 
-extension UICollectionReusableView : EmbeddableView{}
-
-private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewDataSource {
+private class ViewModelCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     weak var viewModel: ListViewModelType?
     init (viewModel: ListViewModelType) {
         super.init()
         self.viewModel = viewModel
         
     }
-    @objc public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell  {
-        let viewModel:ItemViewModelType? = self.viewModel?.viewModel(atIndex:indexPath)
+    @objc public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let viewModel: ItemViewModelType? = self.viewModel?.viewModel(atIndex: indexPath)
         var reuseIdentifier = defaultListIdentifier
         if let value = viewModel?.itemIdentifier {
-            reuseIdentifier = self.viewModel?.reuseIdentifier(for:value, at:indexPath) ?? value.name
+            reuseIdentifier = self.viewModel?.reuseIdentifier(for: value, at: indexPath) ?? value.name
             if value.isEmbeddable {
                 collectionView.register(ContentCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-            }
-            else {
+            } else {
                 collectionView.register(UINib(nibName: value.name, bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
             }
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         
-        (cell as? ViewModelBindableType)?.bind(to:viewModel)
+        (cell as? ViewModelBindableType)?.bind(to: viewModel)
         return cell
     }
     
@@ -51,20 +49,19 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
     
     @objc public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        if let model = self.viewModel?.dataHolder.modelStructure.value.sectionModelsAtIndexPath(indexPath)?[kind] ?? self.viewModel?.dataHolder.modelStructure.value.sectionModelAtIndexPath(indexPath){
+        if let model = self.viewModel?.dataHolder.modelStructure.value.sectionModelsAtIndexPath(indexPath)?[kind] ?? self.viewModel?.dataHolder.modelStructure.value.sectionModelAtIndexPath(indexPath) {
             
-            if let viewModel =  (self.viewModel as? ListViewModelTypeSectionable)?.sectionItemViewModel(fromModel: model, withType:kind) {
+            if let viewModel =  (self.viewModel as? ListViewModelTypeSectionable)?.sectionItemViewModel(fromModel: model, withType: kind) {
                 let value = viewModel.itemIdentifier
-                let reuseIdentifier = self.viewModel?.reuseIdentifier(for:value, at:indexPath) ?? value.name
+                let reuseIdentifier = self.viewModel?.reuseIdentifier(for: value, at: indexPath) ?? value.name
                 if viewModel.itemIdentifier.isEmbeddable {
                     collectionView.register(ContentCollectionViewCell.self, forSupplementaryViewOfKind: kind, withReuseIdentifier: reuseIdentifier)
-                }
-                else {
+                } else {
                     collectionView.register(UINib(nibName: value.name, bundle: nil), forSupplementaryViewOfKind: kind, withReuseIdentifier: reuseIdentifier)
                 }
                 
                 let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reuseIdentifier, for: indexPath)
-                (cell as? ViewModelBindableType)?.bind(to:viewModel)
+                (cell as? ViewModelBindableType)?.bind(to: viewModel)
                 return cell
             }
         }
@@ -72,24 +69,21 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
         return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier, for: indexPath)
     }
     struct StaticCellParameters {
-        var constraint:NSLayoutConstraint!
-        var cell:UIView!
+        var constraint: NSLayoutConstraint!
+        var cell: UIView!
     }
     
+    var staticCells = [String: StaticCellParameters]()
     
-    
-    var staticCells = [String:StaticCellParameters]()
-    
-    func staticCellForSize (at indexPath:IndexPath , width:Float) -> UIView?{
-        guard let viewModel = self.viewModel?.viewModel(atIndex:indexPath) else { return nil }
-        guard let nib = self.viewModel?.identifier(atIndex:indexPath) else {
+    func staticCellForSize (at indexPath: IndexPath, width: Float) -> UIView? {
+        guard let viewModel = self.viewModel?.viewModel(atIndex: indexPath) else { return nil }
+        guard let nib = self.viewModel?.identifier(atIndex: indexPath) else {
             return nil
         }
         
         var parameters = self.staticCells[nib.name]
         
         if (parameters == nil) {
-            
             
             guard let cell = Bundle.main.loadNibNamed(nib.name, owner: self, options: [:])!.first as? UIView else { return nil}
             guard let embeddable = cell as? EmbeddableView else { return nil }
@@ -105,12 +99,12 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
                 constant: CGFloat(width))
             embeddable.customContentView.addConstraint(constraint)
             embeddable.isPlaceholder = true
-            parameters = StaticCellParameters(constraint: constraint, cell:cell)
+            parameters = StaticCellParameters(constraint: constraint, cell: cell)
             
         }
         
         parameters!.constraint?.constant = CGFloat(width)
-        (parameters!.cell as? ViewModelBindableType)?.bind(to:viewModel)
+        (parameters!.cell as? ViewModelBindableType)?.bind(to: viewModel)
         
         var newCells = staticCells
         newCells[nib.name] = parameters
@@ -120,9 +114,9 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
         
     }
     
-    func staticCellForSize (at indexPath:IndexPath , height:Float) -> UIView?{
-        guard let viewModel = self.viewModel?.viewModel(atIndex:indexPath) else { return nil }
-        guard let nib = self.viewModel?.identifier(atIndex:indexPath) else {
+    func staticCellForSize (at indexPath: IndexPath, height: Float) -> UIView? {
+        guard let viewModel = self.viewModel?.viewModel(atIndex: indexPath) else { return nil }
+        guard let nib = self.viewModel?.identifier(atIndex: indexPath) else {
             return nil
         }
         
@@ -143,12 +137,12 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
                 constant: CGFloat(height))
             embeddable.customContentView.addConstraint(constraint)
             embeddable.isPlaceholder = true
-            parameters = StaticCellParameters(constraint: constraint, cell:cell)
+            parameters = StaticCellParameters(constraint: constraint, cell: cell)
             
         }
         
         parameters!.constraint?.constant = CGFloat(height)
-        (parameters!.cell as? ViewModelBindableType)?.bind(to:viewModel)
+        (parameters!.cell as? ViewModelBindableType)?.bind(to: viewModel)
         //        self.bindViewModelToCellAtIndexPath(parameters!.cell, indexPath: indexPath, forResize: true)
         var newCells = staticCells
         newCells[nib.name] = parameters
@@ -158,16 +152,16 @@ private class ViewModelCollectionViewDataSource : NSObject, UICollectionViewData
         
     }
     
-    func autoSizeForItem(at indexPath:IndexPath, width:Float) -> CGSize {
-        let cell = self.staticCellForSize(at:indexPath, width: width) as? EmbeddableView
+    func autoSizeForItem(at indexPath: IndexPath, width: Float) -> CGSize {
+        let cell = self.staticCellForSize(at: indexPath, width: width) as? EmbeddableView
         cell?.customContentView.setNeedsLayout()
         cell?.customContentView.layoutIfNeeded()
         let size = cell?.customContentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize) ?? CGSize.zero
         return size
     }
     
-    func autoSizeForItem(at indexPath:IndexPath, height:Float) -> CGSize {
-        let cell = self.staticCellForSize(at:indexPath, height: height) as? EmbeddableView
+    func autoSizeForItem(at indexPath: IndexPath, height: Float) -> CGSize {
+        let cell = self.staticCellForSize(at: indexPath, height: height) as? EmbeddableView
         cell?.customContentView.setNeedsLayout()
         cell?.customContentView.layoutIfNeeded()
         let size = cell?.customContentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize) ?? CGSize.zero
@@ -182,25 +176,36 @@ private struct AssociatedKeys {
     static var isPlaceholder = "isPlaceholder"
     static var collectionViewDataSource = "collectionViewDataSource"
 }
-public extension ListViewModelType  {
-    
-    var collectionViewDataSource:UICollectionViewDataSource? {
+
+public extension ListViewModelType {
+    /// A concrete implementation for `UICollectionViewDataSource` (UIKit requires it to be objc compatible). Value is retained.
+    var collectionViewDataSource: UICollectionViewDataSource? {
         get { return objc_getAssociatedObject(self, &AssociatedKeys.collectionViewDataSource) as? UICollectionViewDataSource}
         set { objc_setAssociatedObject(self, &AssociatedKeys.collectionViewDataSource, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
 }
 
-fileprivate class EmptyReusableView : UICollectionViewCell {
+private class EmptyReusableView: UICollectionViewCell {
     fileprivate static let emptyReuseIdentifier = "_emptyReusableView"
 }
-
-
-open class ContentCollectionViewCell : UICollectionViewCell, ViewModelBindable {
+/**
+ A custom UICollectionViewCell that automatically embeds any UIView
+ This class is automatically used by Boomerang to allow any view to be used in any list, and instantly swap (for example) a table view with a collection view without redesigning all the xibs.
+ */
+open class ContentCollectionViewCell: UICollectionViewCell, ViewModelBindable {
+    //Current Item view model
     public var viewModel: ViewModelType?
+    /**
+     A disposeBag where disposables can be easily stored.
+     */
     public var disposeBag: DisposeBag = DisposeBag()
-    weak var internalView:UIView?
+    weak var internalView: UIView?
+    ///Constraints between cell and inner view. By defaults, insets are all 0.
     public var insetConstraints: [NSLayoutConstraint] = []
-    
+    /** Binds an external itemViewModel to current cell.
+     If no content view was previously set, a new one is created from nib and installed.
+     View model is then properly bound to inner view.
+     */
     public func bind(to viewModel: ViewModelType?) {
         guard let viewModel = viewModel as? ItemViewModelType else {
             return
@@ -220,18 +225,26 @@ open class ContentCollectionViewCell : UICollectionViewCell, ViewModelBindable {
     }
 }
 
-
-extension UICollectionView : ViewModelBindable {
-    
+extension UICollectionView: ViewModelBindable {
+    /// Current ListViewModel. Retained.
     public var viewModel: ViewModelType? {
         get { return objc_getAssociatedObject(self, &AssociatedKeys.viewModel) as? ViewModelType}
         set { objc_setAssociatedObject(self, &AssociatedKeys.viewModel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
+    /**
+     The amount of time the UICollectionView is given to buffer UI updates before dispatching a batchUpdate.
+     This is useful if datasource is asyncrously dispatching updates that are really close in time, but not completely in synch. In this way, strange updates and animations are avoided.
+     In most of cases, there's no need to change this value.
+     Defaults to 0.2 seconds.
+    */
+    
     public var updateBufferTime: TimeInterval {
         get { return objc_getAssociatedObject(self, &AssociatedKeys.bufferTime) as? TimeInterval ?? 0.2}
         set { objc_setAssociatedObject(self, &AssociatedKeys.bufferTime, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
     }
-    
+    /**
+     A lazily-created disposeBag where disposables can be easily stored.
+     */
     public var disposeBag: DisposeBag {
         get {
             var disposeBag: DisposeBag
@@ -249,7 +262,7 @@ extension UICollectionView : ViewModelBindable {
             objc_setAssociatedObject(self, &AssociatedKeys.disposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-    
+    /// Binds a list view model to current collectionView and automatically handles cell creations when viewModel gets reloaded.
     public func bind(to viewModel: ViewModelType?) {
         guard let viewModel = viewModel as? ListViewModelType else {
             self.viewModel = nil
@@ -258,13 +271,13 @@ extension UICollectionView : ViewModelBindable {
         self.disposeBag = DisposeBag()
         self.viewModel = viewModel
         self.register(ContentCollectionViewCell.self, forCellWithReuseIdentifier: defaultListIdentifier)
-        self.register(EmptyReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader , withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
-        self.register(EmptyReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionFooter , withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
+        self.register(EmptyReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
+        self.register(EmptyReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
         if (viewModel.collectionViewDataSource == nil) {
             viewModel.collectionViewDataSource = ViewModelCollectionViewDataSource(viewModel: viewModel)
         }
         self.dataSource = viewModel.collectionViewDataSource
-        let lockAnimation = BehaviorRelay<Bool>(value:false)
+        let lockAnimation = BehaviorRelay<Bool>(value: false)
         let customObservable = Observable<Bool>.deferred {[unowned self ] in
             return self.updateBufferTime == 0 ?
                 viewModel.dataHolder.commitEditing.asObservable().skip(1).delay(0.0, scheduler: MainScheduler.instance) :
@@ -272,20 +285,17 @@ extension UICollectionView : ViewModelBindable {
         }
         let bufferObservable = Observable.combineLatest(customObservable, lockAnimation.asDriver().asObservable()) { time, lock in return time && !lock}.filter {$0}
         
-        
-        
         viewModel
             .dataHolder
             .newDataAvailable
             .asDriver(onErrorJustReturn: nil)
             .asObservable()
             
-            
-            .map {[weak self] action -> (() -> ())? in
+            .map {[weak self] action -> (() -> Void)? in
                 guard let action = action else { return nil }
                 var isInsert = false
                 var isSection = false
-                let items:ResultRangeType?
+                let items: ResultRangeType?
                 switch action {
                 case .delete(let _items):
                     items = _items
@@ -294,7 +304,6 @@ extension UICollectionView : ViewModelBindable {
                     isSection = true
                 case   .reload :
                     return nil
-                    
                     
                 case     .insert(let _items):
                     items = _items
@@ -306,22 +315,19 @@ extension UICollectionView : ViewModelBindable {
                 }
                 return { [weak self] in
                     
-                    
                     guard let range = items else { self?.reloadData() ; return }
                     if isSection && range.start.count > 1 {
                         let indexSet = IndexSet((range.start.section ... range.end.section))
                         isInsert ?  self?.insertSections(indexSet)  : self?.deleteSections(indexSet)
                     } else if (range.start.count < 2) {
-                        let indexes = ((range.start.first ?? 0) ... (range.end.first ?? 0)).map {IndexPath(item:$0, section:0)}
-                        isInsert ? self?.insertItems(at: indexes) :  self?.deleteItems(at:indexes)
-                    }
-                    else if range.start.section == range.end.section {
-                        let indexes = (range.start.item ... range.end.item).map {IndexPath(item:$0, section:range.start.section)}
+                        let indexes = ((range.start.first ?? 0) ... (range.end.first ?? 0)).map {IndexPath(item: $0, section: 0)}
+                        isInsert ? self?.insertItems(at: indexes) :  self?.deleteItems(at: indexes)
+                    } else if range.start.section == range.end.section {
+                        let indexes = (range.start.item ... range.end.item).map {IndexPath(item: $0, section: range.start.section)}
                         
-                        isInsert ? self?.insertItems(at: indexes) : self?.deleteItems(at:indexes)
+                        isInsert ? self?.insertItems(at: indexes) : self?.deleteItems(at: indexes)
                         
-                    }
-                    else {
+                    } else {
                         let indexSet = IndexSet((range.start.section ... range.end.section))
                         
                         isInsert ? self?.insertSections(indexSet) : self?.deleteSections(indexSet)
@@ -340,93 +346,95 @@ extension UICollectionView : ViewModelBindable {
                 }
                 lockAnimation.accept(true)
                 self?.performBatchUpdates({
-                    actions.compactMap{$0}.forEach { $0() }
+                    actions.compactMap {$0}.forEach { $0() }
                 }, completion: {
                     lockAnimation.accept(!$0)
                     
                 })
             })
             
-            .disposed(by:self.disposeBag)
+            .disposed(by: self.disposeBag)
         
         if (self.backgroundView != nil) {
-            viewModel.isEmpty.asObservable().map{!$0}.bind(to: self.backgroundView!.rx.isHidden).disposed(by:self.disposeBag)
+            viewModel.isEmpty.asObservable().map {!$0}.bind(to: self.backgroundView!.rx.isHidden).disposed(by: self.disposeBag)
         }
     }
-    public func autosizeItemAt(indexPath:IndexPath, constrainedToWidth width:Float) -> CGSize {
+    
+    /// Creates a UICollectionViewCell with matching viewModel at indexPath without adding to any view, and determine its size by keeping width fixed at provided value.
+    
+    public func autosizeItemAt(indexPath: IndexPath, constrainedToWidth width: Float) -> CGSize {
         guard let viewModel = viewModel as? ListViewModelType else {
             return .zero
         }
         guard let dataSource = viewModel.collectionViewDataSource as? ViewModelCollectionViewDataSource else {
             return .zero
         }
-        return dataSource.autoSizeForItem(at:indexPath, width: width)
+        return dataSource.autoSizeForItem(at: indexPath, width: width)
     }
     
-    public func autosizeItemAt(indexPath:IndexPath, constrainedToHeight height:Float) -> CGSize {
+    /// Creates a UICollectionViewCell with matching viewModel at indexPath without adding to any view, and determine its size by keeping height fixed at provided value.
+
+    public func autosizeItemAt(indexPath: IndexPath, constrainedToHeight height: Float) -> CGSize {
         guard let viewModel = viewModel as? ListViewModelType else {
             return .zero
         }
         guard let dataSource = viewModel.collectionViewDataSource as? ViewModelCollectionViewDataSource else {
             return .zero
         }
-        return dataSource.autoSizeForItem(at:indexPath, height: height)
+        return dataSource.autoSizeForItem(at: indexPath, height: height)
     }
-    
-    public func autoWidthForItemAt(indexPath:IndexPath, itemsPerLine:Int = 1) -> CGFloat {
+    /// Calculates a cell's width that, multiplied by itemsPerLine,  will fit collectionView's width minus insets and horizontal spacings
+    public func autoWidthForItemAt(indexPath: IndexPath, itemsPerLine: Int = 1) -> CGFloat {
         guard let flow = self.collectionViewLayout as? UICollectionViewFlowLayout else {
             return self.frame.size.width
         }
         let flowDelegate = self.delegate as? UICollectionViewDelegateFlowLayout
-        let insets =  flowDelegate?.responds(to:#selector(UICollectionViewDelegateFlowLayout.collectionView(_:layout:insetForSectionAt:))) == true ? flowDelegate!.collectionView!(self, layout: flow, insetForSectionAt: indexPath.section) : flow.sectionInset
+        let insets =  flowDelegate?.responds(to: #selector(UICollectionViewDelegateFlowLayout.collectionView(_:layout:insetForSectionAt:))) == true ? flowDelegate!.collectionView!(self, layout: flow, insetForSectionAt: indexPath.section) : flow.sectionInset
         
-        let spacing =  flowDelegate?.responds(to:#selector(UICollectionViewDelegateFlowLayout.collectionView(_:layout:minimumInteritemSpacingForSectionAt:))) == true ? flowDelegate!.collectionView!(self, layout: flow, minimumInteritemSpacingForSectionAt: indexPath.section) : flow.minimumInteritemSpacing
-        
+        let spacing =  flowDelegate?.responds(to: #selector(UICollectionViewDelegateFlowLayout.collectionView(_:layout:minimumInteritemSpacingForSectionAt:))) == true ? flowDelegate!.collectionView!(self, layout: flow, minimumInteritemSpacingForSectionAt: indexPath.section) : flow.minimumInteritemSpacing
         
         let globalWidth = self.frame.size.width - insets.left - insets.right - self.contentInset.left - self.contentInset.right
         
-        let singleWidth = (CGFloat(globalWidth) - (CGFloat(max(0,itemsPerLine - 1)) * spacing)) / CGFloat(max(itemsPerLine,1))
+        let singleWidth = (CGFloat(globalWidth) - (CGFloat(max(0, itemsPerLine - 1)) * spacing)) / CGFloat(max(itemsPerLine, 1))
         return singleWidth
     }
-    
-    public func autoHeightForItemAt(indexPath:IndexPath, itemsPerLine:Int = 1) -> CGFloat {
+    /// Calculates a cell's height that, multiplied by itemsPerLine,  will fit collectionView's height minus insets and vertical spacings
+    public func autoHeightForItemAt(indexPath: IndexPath, itemsPerLine: Int = 1) -> CGFloat {
         guard let flow = self.collectionViewLayout as? UICollectionViewFlowLayout else {
             return self.frame.size.height
         }
         let flowDelegate = self.delegate as? UICollectionViewDelegateFlowLayout
-        let insets =  flowDelegate?.responds(to:#selector(UICollectionViewDelegateFlowLayout.collectionView(_:layout:insetForSectionAt:))) == true ? flowDelegate!.collectionView!(self, layout: flow, insetForSectionAt: indexPath.section) : flow.sectionInset
+        let insets =  flowDelegate?.responds(to: #selector(UICollectionViewDelegateFlowLayout.collectionView(_:layout:insetForSectionAt:))) == true ? flowDelegate!.collectionView!(self, layout: flow, insetForSectionAt: indexPath.section) : flow.sectionInset
         
-        let spacing =  flowDelegate?.responds(to:#selector(UICollectionViewDelegateFlowLayout.collectionView(_:layout:minimumInteritemSpacingForSectionAt:))) == true ? flowDelegate!.collectionView!(self, layout: flow, minimumInteritemSpacingForSectionAt: indexPath.section) : flow.minimumInteritemSpacing
-        
+        let spacing =  flowDelegate?.responds(to: #selector(UICollectionViewDelegateFlowLayout.collectionView(_:layout:minimumInteritemSpacingForSectionAt:))) == true ? flowDelegate!.collectionView!(self, layout: flow, minimumInteritemSpacingForSectionAt: indexPath.section) : flow.minimumInteritemSpacing
         
         let globalHeight = self.frame.size.height - insets.top - insets.bottom - self.contentInset.top - self.contentInset.bottom
         
-        let singleHeight = (CGFloat(globalHeight) - (CGFloat(max(0,itemsPerLine - 1)) * spacing)) / CGFloat(max(itemsPerLine,1))
+        let singleHeight = (CGFloat(globalHeight) - (CGFloat(max(0, itemsPerLine - 1)) * spacing)) / CGFloat(max(itemsPerLine, 1))
         return singleHeight
     }
-    
-    
-    public func autosizeItemConstrainedToWidth(at indexPath:IndexPath, itemsPerLine:Int = 1) -> CGSize {
+        /// Creates a UICollectionViewCell with matching viewModel at indexPath without adding to any view, and determine its size by calculating a fixed width that will fit current insets and spacing so that `itemsPerLine` are able to fit remaining width, and height by inflating the cell with viewModel's contents
+    public func autosizeItemConstrainedToWidth(at indexPath: IndexPath, itemsPerLine: Int = 1) -> CGSize {
         
         return self.autosizeItemAt(indexPath: indexPath, constrainedToWidth: floor(Float(self.autoWidthForItemAt(indexPath: indexPath, itemsPerLine: itemsPerLine))))
         
     }
-    
-    public func autosizeItemConstrainedToHeight(at indexPath:IndexPath, itemsPerLine:Int = 1) -> CGSize {
+    /// Creates a UICollectionViewCell with matching viewModel at indexPath without adding to any view, and determine its size by calculating a fixed height that will fit current insets and spacing so that `itemsPerLine` are able to fit remaining height, and width by inflating the cell with viewModel's contents
+    public func autosizeItemConstrainedToHeight(at indexPath: IndexPath, itemsPerLine: Int = 1) -> CGSize {
         
         return self.autosizeItemAt(indexPath: indexPath, constrainedToHeight: floor(Float(self.autoHeightForItemAt(indexPath: indexPath, itemsPerLine: itemsPerLine))))
         
     }
     
     @available(*, deprecated, message: "use autosizeItemConstrainedToWidth instead")
-    public func autosizeItemAt(indexPath:IndexPath, itemsPerLine:Int = 1) -> CGSize {
+    public func autosizeItemAt(indexPath: IndexPath, itemsPerLine: Int = 1) -> CGSize {
         
         return self.autosizeItemAt(indexPath: indexPath, constrainedToWidth: floor(Float(self.autoWidthForItemAt(indexPath: indexPath, itemsPerLine: itemsPerLine))))
         
     }
 }
+
 extension Observable {
-    
     /// collects elements from the source sequence until the boundary sequence fires. Then it emits the elements as an array and begins collecting again.
     func buffer<U>(_ boundary: Observable<U>) -> Observable<[E]> {
         return Observable<[E]>.create { observer in
@@ -459,4 +467,3 @@ extension Observable {
         }
     }
 }
-

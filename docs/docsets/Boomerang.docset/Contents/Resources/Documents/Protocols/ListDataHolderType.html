@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ListDataHolderType Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/ListDataHolderType" class="dashAnchor"></a>
+    <a title="ListDataHolderType Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Boomerang Docs</a> (59% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Boomerang Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ListDataHolderType Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ContentCollectionViewCell.html">ContentCollectionViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ContentTableHeaderFooterView.html">ContentTableHeaderFooterView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ContentTableViewCell.html">ContentTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ListDataHolder.html">ListDataHolder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ModelStructure.html">ModelStructure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/StackableScrollView.html">StackableScrollView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ViewModelPagerViewDataSource.html">ViewModelPagerViewDataSource</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:9Boomerang21defaultListIdentifierSSvp">defaultListIdentifier</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/ListDataUpdate.html">ListDataUpdate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/StackableScrollViewDirection.html">StackableScrollViewDirection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TableViewHeaderType.html">TableViewHeaderType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/UIViewControllerRouterAction.html">UIViewControllerRouterAction</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/MKMapView.html">MKMapView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Observable.html">Observable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UICollectionView.html">UICollectionView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIPageViewController.html">UIPageViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIPickerView.html">UIPickerView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITableView.html">UITableView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/EditableViewModel.html">EditableViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/EmbeddableView.html">EmbeddableView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ErrorReceiver.html">ErrorReceiver</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang9FormStyleP">FormStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ItemViewModelType.html">ItemViewModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ListDataHolderType.html">ListDataHolderType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ListIdentifier.html">ListIdentifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ListPagerViewModelType.html">ListPagerViewModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ListViewModelType.html">ListViewModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ListViewModelTypeSectionable.html">ListViewModelTypeSectionable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/LoaderReceiver.html">LoaderReceiver</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang9ModelTypeP">ModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang26PickerViewCombinedDelegateP">PickerViewCombinedDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ResultRangeType.html">ResultRangeType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RouterAction.html">RouterAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang17RouterDestinationP">RouterDestination</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang12RouterSourceP">RouterSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RouterType.html">RouterType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang14SelectionInputP">SelectionInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang15SelectionOutputP">SelectionOutput</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewControllerActionBindable.html">ViewControllerActionBindable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewModelBindable.html">ViewModelBindable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewModelBindableType.html">ViewModelBindableType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewModelType.html">ViewModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewModelTypeFailable.html">ViewModelTypeFailable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewModelTypeIdentifiable.html">ViewModelTypeIdentifiable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewModelTypeLoadable.html">ViewModelTypeLoadable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/EmptyRouterAction.html">EmptyRouterAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ResultRange.html">ResultRange</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Boomerang15ObservableErrora">ObservableError</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ListDataHolderType</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ListDataHolderType</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>Generic definition of a ListDataHolder.
+A ListDataHolder is used by ListViewModels to handle the retrieval of external data, store and update them, and lazily convert them into ItemViewModels.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang18ListDataHolderTypeP10viewModels7RxCocoa13BehaviorRelayCys10DictionaryVy10Foundation9IndexPathVAA013ItemViewModelE0_pGGvp"></a>
+                    <a name="//apple_ref/swift/Property/viewModels" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang18ListDataHolderTypeP10viewModels7RxCocoa13BehaviorRelayCys10DictionaryVy10Foundation9IndexPathVAA013ItemViewModelE0_pGGvp">viewModels</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A map used to hold references to ItemViewModels</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">viewModels</span><span class="p">:</span> <span class="kt">BehaviorRelay</span><span class="o">&lt;</span><span class="p">[</span><span class="kt">IndexPath</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ItemViewModelType.html">ItemViewModelType</a></span><span class="p">]</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang18ListDataHolderTypeP12resultsCount7RxCocoa13BehaviorRelayCySiGvp"></a>
+                    <a name="//apple_ref/swift/Property/resultsCount" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang18ListDataHolderTypeP12resultsCount7RxCocoa13BehaviorRelayCySiGvp">resultsCount</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An observable property with current results count.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">resultsCount</span><span class="p">:</span> <span class="kt">BehaviorRelay</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang18ListDataHolderTypeP9isLoading7RxCocoa13BehaviorRelayCySbGvp"></a>
+                    <a name="//apple_ref/swift/Property/isLoading" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang18ListDataHolderTypeP9isLoading7RxCocoa13BehaviorRelayCySbGvp">isLoading</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An observable property with current loading status.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">isLoading</span><span class="p">:</span> <span class="kt">BehaviorRelay</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang18ListDataHolderTypeP03newC9Available7RxCocoa13BehaviorRelayCyAA0bC6UpdateOSgGvp"></a>
+                    <a name="//apple_ref/swift/Property/newDataAvailable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang18ListDataHolderTypeP03newC9Available7RxCocoa13BehaviorRelayCyAA0bC6UpdateOSgGvp">newDataAvailable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Notify (manually if needed) if new data is available in the list.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">newDataAvailable</span><span class="p">:</span> <span class="kt">BehaviorRelay</span><span class="o">&lt;</span><span class="kt"><a href="../Enums/ListDataUpdate.html">ListDataUpdate</a></span><span class="p">?</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang18ListDataHolderTypeP14modelStructure7RxCocoa13BehaviorRelayCyAA05ModelG0CGvp"></a>
+                    <a name="//apple_ref/swift/Property/modelStructure" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang18ListDataHolderTypeP14modelStructure7RxCocoa13BehaviorRelayCyAA05ModelG0CGvp">modelStructure</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Observable relay for for current ModelStructure.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">modelStructure</span><span class="p">:</span> <span class="kt">BehaviorRelay</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/ModelStructure.html">ModelStructure</a></span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang18ListDataHolderTypeP13commitEditing7RxCocoa13BehaviorRelayCySbGvp"></a>
+                    <a name="//apple_ref/swift/Property/commitEditing" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang18ListDataHolderTypeP13commitEditing7RxCocoa13BehaviorRelayCySbGvp">commitEditing</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Triggers a reload after inner data has changed</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">commitEditing</span><span class="p">:</span> <span class="kt">BehaviorRelay</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang18ListDataHolderTypeP12reloadAction0G0AECyAA011ResultRangeE0_pSgAA14ModelStructureCGvp"></a>
+                    <a name="//apple_ref/swift/Property/reloadAction" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang18ListDataHolderTypeP12reloadAction0G0AECyAA011ResultRangeE0_pSgAA14ModelStructureCGvp">reloadAction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Inner Action used to trigger updates and emit new values when available</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">reloadAction</span><span class="p">:</span> <span class="kt">Action</span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/ResultRangeType.html">ResultRangeType</a></span><span class="p">?,</span> <span class="kt"><a href="../Classes/ModelStructure.html">ModelStructure</a></span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang18ListDataHolderTypeP10moreAction0G0AECyAA011ResultRangeE0_pSgAA14ModelStructureCGvp"></a>
+                    <a name="//apple_ref/swift/Property/moreAction" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang18ListDataHolderTypeP10moreAction0G0AECyAA011ResultRangeE0_pSgAA14ModelStructureCGvp">moreAction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Supplementary action useful for <q>infinite scrolling</q> scenarios, where new data has to be added to the list without a complete reload</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">moreAction</span><span class="p">:</span> <span class="kt">Action</span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/ResultRangeType.html">ResultRangeType</a></span><span class="p">?,</span> <span class="kt"><a href="../Classes/ModelStructure.html">ModelStructure</a></span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang18ListDataHolderTypeP10deleteItemy10Foundation9IndexPathV02atI0_tF"></a>
+                    <a name="//apple_ref/swift/Method/deleteItem(atIndex:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang18ListDataHolderTypeP10deleteItemy10Foundation9IndexPathV02atI0_tF">deleteItem(atIndex:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Deletes item from inner model structure at provided index path</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>Deletes item from current model structure at provided index path
+<code>newDataAvailable</code> is immediately set to <code>.delete</code> with proper index path</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">deleteItem</span><span class="p">(</span><span class="n">atIndex</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang18ListDataHolderTypeP6reloadyyF"></a>
+                    <a name="//apple_ref/swift/Method/reload()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang18ListDataHolderTypeP6reloadyyF">reload()</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Completely reloads current data by creating a new subscription to provided data observable</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>Reloads data by executing inner <code>reloadAction</code> with no ResultRange provided. Data is expected to be fully refreshed.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">reload</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang18ListDataHolderTypeP6commityyF"></a>
+                    <a name="//apple_ref/swift/Method/commit()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang18ListDataHolderTypeP6commityyF">commit()</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Notify every subscriber that an update procedure over inner ModelStructure has completed. This is useful in scenarios where some items are deleted AND inserted at once: in that case, <code>commit()</code> must be called at the end to notify UI components to only update once</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>Notify every subscriber that an update procedure over inner ModelStructure has completed.</p>
+<pre class="highlight swift"><code><span class="kt">This</span> <span class="k">is</span> <span class="n">useful</span> <span class="k">in</span> <span class="n">scenarios</span> <span class="k">where</span> <span class="n">some</span> <span class="n">items</span> <span class="n">are</span> <span class="n">deleted</span> <span class="kt">AND</span> <span class="n">inserted</span> <span class="n">at</span> <span class="nv">once</span><span class="p">:</span> <span class="k">in</span> <span class="n">that</span> <span class="k">case</span><span class="p">,</span> <span class="err">`</span><span class="nf">commit</span><span class="p">()</span><span class="err">`</span> <span class="n">must</span> <span class="n">be</span> <span class="n">called</span> <span class="n">at</span> <span class="n">the</span> <span class="n">end</span> <span class="n">to</span> <span class="n">notify</span> <span class="kt">UI</span> <span class="n">components</span> <span class="n">to</span> <span class="n">only</span> <span class="n">update</span> <span class="n">once</span><span class="o">.</span>
+<span class="kt">The</span> <span class="p">`</span><span class="nv">commitEditing</span><span class="p">`</span> <span class="n">relay</span><span class="err">'</span><span class="n">s</span> <span class="n">value</span> <span class="k">is</span> <span class="k">set</span> <span class="n">to</span> <span class="p">`</span><span class="nv">true</span><span class="p">`</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">commit</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang18ListDataHolderTypePxycfc"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang18ListDataHolderTypePxycfc">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Basic initializer. Returns an empty data holder</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang18ListDataHolderTypePAAE10disposeBag7RxSwift07DisposeG0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/disposeBag" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang18ListDataHolderTypePAAE10disposeBag7RxSwift07DisposeG0Cvp">disposeBag</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A lazily-created disposeBag where disposables can be easily stored.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">disposeBag</span><span class="p">:</span> <span class="kt">DisposeBag</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang18ListDataHolderTypePAAE5emptyAaB_pvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/empty" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang18ListDataHolderTypePAAE5emptyAaB_pvpZ">empty</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns an empty data holder with an empty model structure</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">empty</span><span class="p">:</span> <span class="kt">ListDataHolderType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang18ListDataHolderTypePAAE6insertyAA05ModelE0_p4item_10Foundation9IndexPathV02atJ0tF"></a>
+                    <a name="//apple_ref/swift/Method/insert(item:atIndex:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang18ListDataHolderTypePAAE6insertyAA05ModelE0_p4item_10Foundation9IndexPathV02atJ0tF">insert(item:atIndex:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Insert a new ModelType at provided indexPath</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This causes a complete recalculation of contents of <code><a href="../Protocols/ListDataHolderType.html#/s:9Boomerang18ListDataHolderTypeP10viewModels7RxCocoa13BehaviorRelayCys10DictionaryVy10Foundation9IndexPathVAA013ItemViewModelE0_pGGvp">viewModels</a></code>
+This will likely change in the future
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">insert</span><span class="p">(</span><span class="nv">item</span><span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:9Boomerang9ModelTypeP">ModelType</a></span><span class="p">,</span> <span class="n">atIndex</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang18ListDataHolderTypePAAE6insertySayAA05ModelE0_pG5items_10Foundation9IndexPathV012startingFromJ0tF"></a>
+                    <a name="//apple_ref/swift/Method/insert(items:startingFromIndex:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang18ListDataHolderTypePAAE6insertySayAA05ModelE0_pG5items_10Foundation9IndexPathV012startingFromJ0tF">insert(items:startingFromIndex:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Insert an array of ModelType objects starting at provided indexPath</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This causes a complete recalculation of contents of <code><a href="../Protocols/ListDataHolderType.html#/s:9Boomerang18ListDataHolderTypeP10viewModels7RxCocoa13BehaviorRelayCys10DictionaryVy10Foundation9IndexPathVAA013ItemViewModelE0_pGGvp">viewModels</a></code>
+This will likely change in the future
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">insert</span><span class="p">(</span><span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols.html#/s:9Boomerang9ModelTypeP">ModelType</a></span><span class="p">],</span> <span class="n">startingFromIndex</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang18ListDataHolderTypePAAE6insertyAA14ModelStructureC9structure_10Foundation9IndexPathV012startingFromK0tF"></a>
+                    <a name="//apple_ref/swift/Method/insert(structure:startingFromIndex:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang18ListDataHolderTypePAAE6insertyAA14ModelStructureC9structure_10Foundation9IndexPathV012startingFromK0tF">insert(structure:startingFromIndex:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Insert a new ModelStructure as children of current ModelStructure at provided indexPath</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This causes a complete recalculation of contents of <code><a href="../Protocols/ListDataHolderType.html#/s:9Boomerang18ListDataHolderTypeP10viewModels7RxCocoa13BehaviorRelayCys10DictionaryVy10Foundation9IndexPathVAA013ItemViewModelE0_pGGvp">viewModels</a></code>
+This will likely change in the future
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">insert</span><span class="p">(</span><span class="nv">structure</span><span class="p">:</span> <span class="kt"><a href="../Classes/ModelStructure.html">ModelStructure</a></span><span class="p">,</span> <span class="n">startingFromIndex</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang18ListDataHolderTypePAAEx7RxSwift10ObservableCyAA14ModelStructureCG4data_AISg4moretcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(data:more:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang18ListDataHolderTypePAAEx7RxSwift10ObservableCyAA14ModelStructureCG4data_AISg4moretcfc">init(data:more:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new ListDataHolder</p>
+
+<ul>
+<li><p>Example:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">dataHolder</span> <span class="o">=</span> <span class="kt">ListDataHolder</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span><span class="o">.</span><span class="nf">just</span><span class="p">(</span><span class="kt">ModelStructure</span><span class="p">([</span><span class="s">"A"</span><span class="p">,</span><span class="s">"B"</span><span class="p">,</span><span class="s">"C"</span><span class="p">])),</span> <span class="nv">more</span><span class="p">:</span><span class="o">.</span><span class="nf">just</span><span class="p">(</span><span class="kt">ModelStructure</span><span class="p">([</span><span class="s">"D"</span><span class="p">,</span><span class="s">"E"</span><span class="p">,</span><span class="s">"F"</span><span class="p">]))</span>
+<span class="n">dataHolder</span><span class="o">.</span><span class="nf">reload</span><span class="p">()</span>
+<span class="c1">/// current contents: "A", "B", "C"</span>
+<span class="n">dataHolder</span><span class="o">.</span><span class="n">moreAction</span><span class="o">.</span><span class="nf">execute</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span>
+<span class="c1">/// current contents: "A", "B", "C", "D", "E", "F"</span>
+</code></pre></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="kt">Observable</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/ModelStructure.html">ModelStructure</a></span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">more</span><span class="p">:</span> <span class="kt">Observable</span><span class="o">&lt;</span><span class="p">(</span><span class="kt"><a href="../Classes/ModelStructure.html">ModelStructure</a></span><span class="p">)</span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>data</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>an observable that will emit the root ModelStructure after reload.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>more</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>an optional observable that will be triggered whenever <code><a href="../Protocols/ListDataHolderType.html#/s:9Boomerang18ListDataHolderTypeP10moreAction0G0AECyAA011ResultRangeE0_pSgAA14ModelStructureCGvp">moreAction</a></code> will be executed and will append its ModelStructure&rsquo;s contents to current ModelStructure.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/stefanomondino/Boomerang" target="_blank" rel="external">Stefano Mondino</a>. All rights reserved. (Last updated: 2018-08-09)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

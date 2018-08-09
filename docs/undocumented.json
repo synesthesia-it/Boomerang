@@ -1,0 +1,747 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Model/ModelStructure.swift",
+      "line": 31,
+      "symbol": "ModelStructure.singleSectionModelIdentifier",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Model/ModelStructure.swift",
+      "line": 33,
+      "symbol": "ModelStructure.ModelClass",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Router/Router.swift",
+      "line": null,
+      "symbol": "RouterType",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Router/Router.swift",
+      "line": 11,
+      "symbol": "RouterSource",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Router/Router.swift",
+      "line": 14,
+      "symbol": "RouterAction",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Router/Router.swift",
+      "line": 15,
+      "symbol": "RouterAction.execute()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Router/Router.swift",
+      "line": 17,
+      "symbol": "EmptyRouterAction",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Router/Router.swift",
+      "line": 18,
+      "symbol": "EmptyRouterAction.execute()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Router/Router.swift",
+      "line": 19,
+      "symbol": "EmptyRouterAction.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Router/Router.swift",
+      "line": 22,
+      "symbol": "RouterDestination",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Router/Router.swift",
+      "line": 26,
+      "symbol": "RouterType",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Router/Router.swift",
+      "line": 27,
+      "symbol": "RouterType.Source",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Router/Router.swift",
+      "line": 28,
+      "symbol": "RouterType.Destination",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Router/Router.swift",
+      "line": 29,
+      "symbol": "RouterType.DestinationViewModel",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Router/Router.swift",
+      "line": 30,
+      "symbol": "RouterType.from(_:destination:viewModel:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Router/Router.swift",
+      "line": 31,
+      "symbol": "RouterType.from(_:viewModel:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Router/Router.swift",
+      "line": 32,
+      "symbol": "RouterType.backTo(_:destination:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Router/Router.swift",
+      "line": 36,
+      "symbol": "RouterType.from(_:destination:viewModel:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Router/Router.swift",
+      "line": 39,
+      "symbol": "RouterType.from(_:viewModel:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/Router/Router.swift",
+      "line": 42,
+      "symbol": "RouterType.backTo(_:destination:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/MKMapView.swift",
+      "line": 21,
+      "symbol": "MKMapView.viewModel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/MKMapView.swift",
+      "line": 25,
+      "symbol": "MKMapView.disposeBag",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/MKMapView.swift",
+      "line": 42,
+      "symbol": "MKMapView.bind(to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UICollectionView.swift",
+      "line": 197,
+      "symbol": "ContentCollectionViewCell.viewModel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UICollectionView.swift",
+      "line": 430,
+      "symbol": "UICollectionView.autosizeItemAt(indexPath:itemsPerLine:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIPagerViewController.swift",
+      "line": 50,
+      "symbol": "ViewModelPagerViewDataSource.pageViewController(_:viewControllerBefore:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIPagerViewController.swift",
+      "line": 78,
+      "symbol": "ViewModelPagerViewDataSource.pageViewController(_:viewControllerAfter:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIRouter.swift",
+      "line": 11,
+      "symbol": "UIViewControllerRouterAction",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIRouter.swift",
+      "line": 12,
+      "symbol": "UIViewControllerRouterAction.push",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIRouter.swift",
+      "line": 13,
+      "symbol": "UIViewControllerRouterAction.pop",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIRouter.swift",
+      "line": 14,
+      "symbol": "UIViewControllerRouterAction.dismiss",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIRouter.swift",
+      "line": 15,
+      "symbol": "UIViewControllerRouterAction.modal",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIRouter.swift",
+      "line": 16,
+      "symbol": "UIViewControllerRouterAction.custom",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIRouter.swift",
+      "line": 17,
+      "symbol": "UIViewControllerRouterAction.execute()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIScrollView.swift",
+      "line": null,
+      "symbol": "StackableScrollView",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIScrollView.swift",
+      "line": 22,
+      "symbol": "StackableScrollViewDirection",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIScrollView.swift",
+      "line": 23,
+      "symbol": "StackableScrollViewDirection.horizontal",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIScrollView.swift",
+      "line": 24,
+      "symbol": "StackableScrollViewDirection.vertical",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIScrollView.swift",
+      "line": 27,
+      "symbol": "StackableScrollView",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIScrollView.swift",
+      "line": 28,
+      "symbol": "StackableScrollView.direction",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIScrollView.swift",
+      "line": 29,
+      "symbol": "StackableScrollView.insets",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIScrollView.swift",
+      "line": 30,
+      "symbol": "StackableScrollView.spacing",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIScrollView.swift",
+      "line": 32,
+      "symbol": "StackableScrollView.install(viewModels:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIScrollView.swift",
+      "line": 86,
+      "symbol": "StackableScrollView.viewModel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIScrollView.swift",
+      "line": 91,
+      "symbol": "StackableScrollView.disposeBag",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIScrollView.swift",
+      "line": 109,
+      "symbol": "StackableScrollView.bind(to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": null,
+      "symbol": "EditableViewModel",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 13,
+      "symbol": "TableViewHeaderType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 14,
+      "symbol": "TableViewHeaderType.header",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 15,
+      "symbol": "TableViewHeaderType.footer",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 16,
+      "symbol": "TableViewHeaderType.identifier",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 28,
+      "symbol": "EditableViewModel",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 29,
+      "symbol": "EditableViewModel.canEditItem(atIndexPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 30,
+      "symbol": "EditableViewModel.canDeleteItem(atIndexPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 31,
+      "symbol": "EditableViewModel.deleteItem(atIndexPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 32,
+      "symbol": "EditableViewModel.canInsertItem(atIndexPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 33,
+      "symbol": "EditableViewModel.insertItem(atIndexPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 34,
+      "symbol": "EditableViewModel.canMoveItem(atIndexPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 35,
+      "symbol": "EditableViewModel.moveItem(fromIndexPath:to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 38,
+      "symbol": "EditableViewModel.canEditItem(atIndexPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 39,
+      "symbol": "EditableViewModel.canDeleteItem(atIndexPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 40,
+      "symbol": "EditableViewModel.deleteItem(atIndexPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 41,
+      "symbol": "EditableViewModel.canInsertItem(atIndexPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 42,
+      "symbol": "EditableViewModel.insertItem(atIndexPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 43,
+      "symbol": "EditableViewModel.canMoveItem(atIndexPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 44,
+      "symbol": "EditableViewModel.moveItem(fromIndexPath:to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 177,
+      "symbol": "ListViewModelType.tableViewDataSource",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 187,
+      "symbol": "ContentTableViewCell",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 188,
+      "symbol": "ContentTableViewCell.viewModel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 189,
+      "symbol": "ContentTableViewCell.disposeBag",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 191,
+      "symbol": "ContentTableViewCell.insetConstraints",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 193,
+      "symbol": "ContentTableViewCell.bind(to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 211,
+      "symbol": "ContentTableHeaderFooterView",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 212,
+      "symbol": "ContentTableHeaderFooterView.viewModel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 213,
+      "symbol": "ContentTableHeaderFooterView.disposeBag",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 215,
+      "symbol": "ContentTableHeaderFooterView.insetConstraints",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 217,
+      "symbol": "ContentTableHeaderFooterView.bind(to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 237,
+      "symbol": "UITableView.viewModel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 241,
+      "symbol": "UITableView.viewForHeader(inSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 266,
+      "symbol": "UITableView.viewForFooter(inSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 291,
+      "symbol": "UITableView.disposeBag",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 309,
+      "symbol": "UITableView.bind(to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UITableView.swift",
+      "line": 333,
+      "symbol": "UITableView.autosizeItemAt(indexPath:constrainedToWidth:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIViewController.swift",
+      "line": null,
+      "symbol": "ViewControllerActionBindable",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIViewController.swift",
+      "line": 19,
+      "symbol": "LoaderReceiver",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIViewController.swift",
+      "line": 20,
+      "symbol": "LoaderReceiver.showLoader()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIViewController.swift",
+      "line": 21,
+      "symbol": "LoaderReceiver.hideLoader()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIViewController.swift",
+      "line": 23,
+      "symbol": "ErrorReceiver",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIViewController.swift",
+      "line": 24,
+      "symbol": "ErrorReceiver.showError(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIViewController.swift",
+      "line": 27,
+      "symbol": "ViewControllerActionBindable",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIViewController.swift",
+      "line": 28,
+      "symbol": "ViewControllerActionBindable.showLoader()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIViewController.swift",
+      "line": 29,
+      "symbol": "ViewControllerActionBindable.hideLoader()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIViewController.swift",
+      "line": 30,
+      "symbol": "ViewControllerActionBindable.showError(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIViewController.swift",
+      "line": 34,
+      "symbol": "ViewControllerActionBindable.bindTo(observable:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIViewController.swift",
+      "line": 40,
+      "symbol": "ViewControllerActionBindable.bindTo(action:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIViewController.swift",
+      "line": 46,
+      "symbol": "ViewControllerActionBindable.bindTo(observable:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/UIKit/UIViewController.swift",
+      "line": 55,
+      "symbol": "ViewModelBindableType.bind(to:afterLoad:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/ViewModel/ItemViewModel.swift",
+      "line": 17,
+      "symbol": "ItemViewModelType.Model",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/ViewModel/ViewModel+Selection.swift",
+      "line": 13,
+      "symbol": "SelectionInput",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/ViewModel/ViewModel+Selection.swift",
+      "line": 15,
+      "symbol": "SelectionOutput",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/ViewModel/ViewModel.swift",
+      "line": 32,
+      "symbol": "ViewModelBindableType.disposeBag",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/ViewModel/ViewModel.swift",
+      "line": 33,
+      "symbol": "ViewModelBindableType.bind(to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/ViewModel/ViewModel.swift",
+      "line": 44,
+      "symbol": "ViewModelBindable.ViewModel",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/ViewModel/ViewModel.swift",
+      "line": 45,
+      "symbol": "ViewModelBindable.viewModel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/ViewModel/ViewModel.swift",
+      "line": 78,
+      "symbol": "ViewModelTypeLoadable.loading",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/stefano/XCodeProjects/Boomerang/Sources/ViewModel/ViewModel.swift",
+      "line": 86,
+      "symbol": "ViewModelTypeFailable.fail",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/stefano/XCodeProjects/Boomerang"
+}

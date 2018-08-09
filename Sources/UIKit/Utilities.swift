@@ -51,16 +51,16 @@ import UIKit
         prepareForConstraints()
         self.superview!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(padding)-[view]-(padding)-|",
                                                                                       options: NSLayoutFormatOptions(rawValue: 0),
-                                                                                      metrics: ["padding":padding],
-                                                                                      views: ["view":self]))
+                                                                                      metrics: ["padding": padding],
+                                                                                      views: ["view": self]))
     }
     
     func addConstraintsToPinVerticalEdgesToSuperView(with padding: CGFloat = 0) {
         prepareForConstraints()
         self.superview!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(padding)-[view]-(padding)-|",
                                                                                       options: NSLayoutFormatOptions(rawValue: 0),
-                                                                                      metrics: ["padding":padding],
-                                                                                      views: ["view":self]))
+                                                                                      metrics: ["padding": padding],
+                                                                                      views: ["view": self]))
     }
     
     func addConstraintsToCenterVertically() {
@@ -152,7 +152,7 @@ import UIKit
         return constraint
     }
     @discardableResult
-    func addConstraintsToPinTop(to view:UIView,constant: CGFloat) -> NSLayoutConstraint {
+    func addConstraintsToPinTop(to view: UIView, constant: CGFloat) -> NSLayoutConstraint {
         prepareForConstraints()
         let constraint = NSLayoutConstraint(item: self,
                                             attribute: .top,
@@ -164,7 +164,7 @@ import UIKit
         return constraint
     }
     @discardableResult
-    func addConstraintsToPinLeft(to view:UIView,constant: CGFloat) -> NSLayoutConstraint {
+    func addConstraintsToPinLeft(to view: UIView, constant: CGFloat) -> NSLayoutConstraint {
         prepareForConstraints()
         let constraint = NSLayoutConstraint(item: self,
                                             attribute: .left,
@@ -176,7 +176,7 @@ import UIKit
         return constraint
     }
     @discardableResult
-    func addConstraintsToPinRight(to view:UIView,constant: CGFloat) -> NSLayoutConstraint {
+    func addConstraintsToPinRight(to view: UIView, constant: CGFloat) -> NSLayoutConstraint {
         prepareForConstraints()
         let constraint = NSLayoutConstraint(item: self,
                                             attribute: .right,
@@ -188,7 +188,7 @@ import UIKit
         return constraint
     }
     @discardableResult
-    func addConstraintsToPinBottom(to view:UIView,constant: CGFloat) -> NSLayoutConstraint {
+    func addConstraintsToPinBottom(to view: UIView, constant: CGFloat) -> NSLayoutConstraint {
         prepareForConstraints()
         let constraint = NSLayoutConstraint(item: self,
                                             attribute: .bottom,
@@ -199,7 +199,6 @@ import UIKit
         self.superview!.addConstraint(constraint)
         return constraint
     }
-    
     
     func addConstraintsToFillSuperview(withPadding padding: CGFloat = 0) {
         prepareForConstraints()
@@ -213,9 +212,5 @@ import UIKit
             assert(false, "You need to have a superview before you can add contraints")
         }
     }
-    
-    
-    
-    
     
 }

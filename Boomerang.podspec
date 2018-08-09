@@ -13,12 +13,12 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "9.0"
   s.tvos.deployment_target = "9.2"
  #s.watchos.deployment_target = "2.0"
-  
+# s.public_header_files = 'Sources/Boomerang.h'
   s.source       = { :git => "https://github.com/stefanomondino/Boomerang.git", :tag => "#{s.version}" }
-  s.source_files = "Sources/*.{swift,h,m}"
+  s.source_files = "Sources/{.,Model,Router,ViewModel}/*.{swift,h,m}"
   s.ios.source_files = "Sources/UIKit/{*,ios/*}.{swift}"
   s.tvos.source_files = "Sources/UIKit/*.{swift}"
-  s.module_map = "Sources/module.modulemap"
+#s.module_map = "Sources/module.modulemap"
   s.dependency 'RxSwift'
   s.dependency 'Action'
 end
