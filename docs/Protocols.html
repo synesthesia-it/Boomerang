@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Protocols  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Section/Protocols" class="dashAnchor"></a>
+    <a title="Protocols  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">Boomerang Docs</a> (59% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">Boomerang Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Protocols  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/ContentCollectionViewCell.html">ContentCollectionViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ContentTableHeaderFooterView.html">ContentTableHeaderFooterView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ContentTableViewCell.html">ContentTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ListDataHolder.html">ListDataHolder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ModelStructure.html">ModelStructure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/StackableScrollView.html">StackableScrollView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ViewModelPagerViewDataSource.html">ViewModelPagerViewDataSource</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:9Boomerang21defaultListIdentifierSSvp">defaultListIdentifier</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/ListDataUpdate.html">ListDataUpdate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/StackableScrollViewDirection.html">StackableScrollViewDirection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/TableViewHeaderType.html">TableViewHeaderType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/UIViewControllerRouterAction.html">UIViewControllerRouterAction</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/MKMapView.html">MKMapView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Observable.html">Observable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UICollectionView.html">UICollectionView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UIPageViewController.html">UIPageViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UIPickerView.html">UIPickerView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UITableView.html">UITableView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/EditableViewModel.html">EditableViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/EmbeddableView.html">EmbeddableView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ErrorReceiver.html">ErrorReceiver</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/s:9Boomerang9FormStyleP">FormStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ItemViewModelType.html">ItemViewModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ListDataHolderType.html">ListDataHolderType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ListIdentifier.html">ListIdentifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ListPagerViewModelType.html">ListPagerViewModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ListViewModelType.html">ListViewModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ListViewModelTypeSectionable.html">ListViewModelTypeSectionable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/LoaderReceiver.html">LoaderReceiver</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/s:9Boomerang9ModelTypeP">ModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/s:9Boomerang26PickerViewCombinedDelegateP">PickerViewCombinedDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ResultRangeType.html">ResultRangeType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/RouterAction.html">RouterAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/s:9Boomerang17RouterDestinationP">RouterDestination</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/s:9Boomerang12RouterSourceP">RouterSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/RouterType.html">RouterType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/s:9Boomerang14SelectionInputP">SelectionInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/s:9Boomerang15SelectionOutputP">SelectionOutput</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ViewControllerActionBindable.html">ViewControllerActionBindable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ViewModelBindable.html">ViewModelBindable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ViewModelBindableType.html">ViewModelBindableType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ViewModelType.html">ViewModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ViewModelTypeFailable.html">ViewModelTypeFailable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ViewModelTypeIdentifiable.html">ViewModelTypeIdentifiable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ViewModelTypeLoadable.html">ViewModelTypeLoadable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/EmptyRouterAction.html">EmptyRouterAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ResultRange.html">ResultRange</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Boomerang15ObservableErrora">ObservableError</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Protocols</h1>
+            <p>The following protocols are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang9ModelTypeP"></a>
+                    <a name="//apple_ref/swift/Protocol/ModelType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang9ModelTypeP">ModelType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A single entity that represents a listable object in the MVVM pattern, inside the Model layer.</p>
+
+<p>A Model object is usually something that is created somewhere in the model layer, usually (but not necessarily) immutable, in response to an API call, a local database query, or after reading local files.
+   It should be something easy to understand, maintain and manipulate by the developer, but not ready yet to be presented to the final user.</p>
+
+<p>The protocol is empty at the moment, but should be implemented by every object that is intended to be used as model inside Boomerang.</p>
+
+<p>Example:</p>
+<pre class="highlight swift"><code><span class="err">```</span>
+</code></pre>
+
+<p>struct Product: ModelType {
+       var id: String
+       var name: String
+   }</p>
+<pre class="highlight swift"><code></code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ModelType</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang12RouterSourceP"></a>
+                    <a name="//apple_ref/swift/Protocol/RouterSource" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang12RouterSourceP">RouterSource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RouterSource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang12RouterActionP"></a>
+                    <a name="//apple_ref/swift/Protocol/RouterAction" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang12RouterActionP">RouterAction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/RouterAction.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RouterAction</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang17RouterDestinationP"></a>
+                    <a name="//apple_ref/swift/Protocol/RouterDestination" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang17RouterDestinationP">RouterDestination</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RouterDestination</span> <span class="p">:</span> <span class="kt"><a href="Protocols/ViewModelBindableType.html">ViewModelBindableType</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang10RouterTypeP"></a>
+                    <a name="//apple_ref/swift/Protocol/RouterType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang10RouterTypeP">RouterType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/RouterType.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RouterType</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang17ListViewModelTypeP"></a>
+                    <a name="//apple_ref/swift/Protocol/ListViewModelType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang17ListViewModelTypeP">ListViewModelType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A special ViewModel used to handle lists and collections of smaller viewModels</p>
+
+<ul>
+<li><p>Discussion:
+Almost all app&rsquo;s screens can be intended as a list of views, each one bound to its specific viewModel.</p>
+
+<p>A ListViewModel acts as a coordinator between a list manager (on iOS, usually a UITableView/UICollectionView, but also more specific components such a MKMapView or custom lists.</p>
+
+<p>It handles list data download/retrieval through associated <code><a href="Protocols/ListDataHolderType.html">ListDataHolderType</a></code> and translates each ModelType (one per indexPath) into proper ItemViewModel.</p>
+
+<p>This kind of <em>translation</em> between Model and ViewModel is handled lazily, meaning that no ItemViewModel is generated until needed.</p></li>
+</ul>
+
+                        <a href="Protocols/ListViewModelType.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ListViewModelType</span> <span class="p">:</span> <span class="kt"><a href="Protocols/ViewModelType.html">ViewModelType</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang28ListViewModelTypeSectionableP"></a>
+                    <a name="//apple_ref/swift/Protocol/ListViewModelTypeSectionable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang28ListViewModelTypeSectionableP">ListViewModelTypeSectionable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A special <code><a href="Protocols/ListViewModelType.html">ListViewModelType</a></code> that also implements concepts of sections</p>
+
+                        <a href="Protocols/ListViewModelTypeSectionable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ListViewModelTypeSectionable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/ListViewModelType.html">ListViewModelType</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang22ListPagerViewModelTypeP"></a>
+                    <a name="//apple_ref/swift/Protocol/ListPagerViewModelType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang22ListPagerViewModelTypeP">ListPagerViewModelType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Generic protocol used to handle pagers (usually horizontal collections of view controllers such as UIPageViewController).</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    In MVVM, any view model should not have any reference to view-layer related components.
+However, due to UIPageViewController behavior and original design, we find reasonable to have a method, in the view model layer, that somehow retrieves and returns ViewControllers, as long as those components are not used elsewhere inside the view model itself.
+
+</div>
+
+                        <a href="Protocols/ListPagerViewModelType.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ListPagerViewModelType</span> <span class="p">:</span> <span class="kt"><a href="Protocols/ListViewModelType.html">ListViewModelType</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang17EditableViewModelP"></a>
+                    <a name="//apple_ref/swift/Protocol/EditableViewModel" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang17EditableViewModelP">EditableViewModel</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/EditableViewModel.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">EditableViewModel</span> <span class="p">:</span> <span class="kt"><a href="Protocols/ListViewModelType.html">ListViewModelType</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14EmbeddableViewP"></a>
+                    <a name="//apple_ref/swift/Protocol/EmbeddableView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14EmbeddableViewP">EmbeddableView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A view that can be embedded in cells (UICollectionViewCells or UITableViewCells).</p>
+
+                        <a href="Protocols/EmbeddableView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">EmbeddableView</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14LoaderReceiverP"></a>
+                    <a name="//apple_ref/swift/Protocol/LoaderReceiver" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14LoaderReceiverP">LoaderReceiver</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/LoaderReceiver.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">LoaderReceiver</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang13ErrorReceiverP"></a>
+                    <a name="//apple_ref/swift/Protocol/ErrorReceiver" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang13ErrorReceiverP">ErrorReceiver</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/ErrorReceiver.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ErrorReceiver</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang28ViewControllerActionBindableP"></a>
+                    <a name="//apple_ref/swift/Protocol/ViewControllerActionBindable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang28ViewControllerActionBindableP">ViewControllerActionBindable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/ViewControllerActionBindable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ViewControllerActionBindable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang21ViewModelBindableTypeP"></a>
+                    <a name="//apple_ref/swift/Protocol/ViewModelBindableType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang21ViewModelBindableTypeP">ViewModelBindableType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An object that can be bound to a viewModel.</p>
+
+                        <a href="Protocols/ViewModelBindableType.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ViewModelBindableType</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang13ViewModelTypeP"></a>
+                    <a name="//apple_ref/swift/Protocol/ViewModelType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang13ViewModelTypeP">ViewModelType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A generic ViewModel element in MVVM pattern</p>
+<pre class="highlight swift"><code><span class="kt">Base</span> <span class="n">implementation</span> <span class="k">is</span> <span class="n">empty</span> <span class="k">as</span> <span class="n">long</span> <span class="k">as</span> <span class="n">the</span> <span class="n">implementing</span> <span class="n">object</span> <span class="k">is</span> <span class="n">a</span> <span class="kd">class</span><span class="o">.</span>
+<span class="kt">Structs</span> <span class="n">and</span> <span class="n">enums</span> <span class="n">are</span> <span class="n">not</span> <span class="n">allowed</span> <span class="n">to</span> <span class="n">implement</span> <span class="n">this</span> <span class="kd">protocol</span> <span class="nf">since</span> <span class="p">(</span><span class="k">in</span> <span class="kt">Boomerang</span><span class="p">)</span> <span class="n">a</span> <span class="kt">ViewModel</span> <span class="n">object</span> <span class="n">can</span> <span class="n">be</span> <span class="n">shared</span> <span class="n">between</span> <span class="n">more</span> <span class="n">than</span> <span class="n">one</span> <span class="n">view</span> <span class="k">as</span> <span class="n">the</span> <span class="n">same</span> <span class="n">time</span><span class="o">.</span>
+</code></pre>
+
+                        <a href="Protocols/ViewModelType.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ViewModelType</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang17ViewModelBindableP"></a>
+                    <a name="//apple_ref/swift/Protocol/ViewModelBindable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang17ViewModelBindableP">ViewModelBindable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An object (usually, a view or a view controller) that can be bound to a viewModel.
+Since <code>viewModel</code> is declared through an associatedtype, ViewModelBindable and ViewModelBindableType are kept separated to allow <code><a href="Protocols/ViewModelBindableType.html">ViewModelBindableType</a></code> typecasts through Boomerang&rsquo;s codebase.</p>
+
+<p><strong>IMPORTANT</strong>
+When ViewModelBindable protocol is implemented, ViewModels must be retained somewhere: the <code>viewModel</code> variable should be used for this purpose.</p>
+
+                        <a href="Protocols/ViewModelBindable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ViewModelBindable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/ViewModelBindableType.html">ViewModelBindableType</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang21ViewModelTypeLoadableP"></a>
+                    <a name="//apple_ref/swift/Protocol/ViewModelTypeLoadable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang21ViewModelTypeLoadableP">ViewModelTypeLoadable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience protocol used to identify some view model that <em>loads</em> something.</p>
+
+                        <a href="Protocols/ViewModelTypeLoadable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ViewModelTypeLoadable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/ViewModelType.html">ViewModelType</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang21ViewModelTypeFailableP"></a>
+                    <a name="//apple_ref/swift/Protocol/ViewModelTypeFailable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang21ViewModelTypeFailableP">ViewModelTypeFailable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience protocol used to identify some view model whose actions can <em>fail</em></p>
+
+                        <a href="Protocols/ViewModelTypeFailable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ViewModelTypeFailable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/ViewModelType.html">ViewModelType</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang9FormStyleP"></a>
+                    <a name="//apple_ref/swift/Protocol/FormStyle" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang9FormStyleP">FormStyle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Previously used to pass some style informations to Form view models.
+Due to increasing complexity, Form items are out of Boomerang&rsquo;s scope.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@available(*, deprecated, message: "Boomerang dropped Form support as they were out of scope. Declare this protocol directly in your codebase if needed")</span>
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">FormStyle</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang26PickerViewCombinedDelegateP"></a>
+                    <a name="//apple_ref/swift/Protocol/PickerViewCombinedDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang26PickerViewCombinedDelegateP">PickerViewCombinedDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Simultaneous compliance to <code>UIPickerViewDelegate</code> and <code>UIPickerViewDataSource</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">PickerViewCombinedDelegate</span> <span class="p">:</span> <span class="kt">UIPickerViewDataSource</span><span class="p">,</span> <span class="kt">UIPickerViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang17ItemViewModelTypeP"></a>
+                    <a name="//apple_ref/swift/Protocol/ItemViewModelType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang17ItemViewModelTypeP">ItemViewModelType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A view model that is created from a Model and can be inserted in a list handled by a ListViewModelType.
+<code><a href="Protocols/ViewModelTypeIdentifiable.html">ViewModelTypeIdentifiable</a></code> conformance allows supporting components (tableViews, collectionViews, ecc&hellip;) to automatically generate a cell/view and bind this view model to it.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Exceptionally, <code>ItemViewModelType</code> conforms to <code><a href="Protocols.html#/s:9Boomerang9ModelTypeP">ModelType</a></code>. This can be misleading, but has the enormous advantage that allows a developer to instantly embed in a <code><a href="Classes/ListDataHolder.html">ListDataHolder</a></code> an array of pre-baked item view models that shares the same underlying model.
+For example, a detail page for a product is usually a list of graphical components that shows part of the same model. In those cases, the product model is split across many itemViewModels (with proper logic, whether to include some of them or not according to product status and properties) and directly loaded into a ModelStructure.
+
+</div>
+
+                        <a href="Protocols/ItemViewModelType.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ItemViewModelType</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:9Boomerang9ModelTypeP">ModelType</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/ViewModelTypeIdentifiable.html">ViewModelTypeIdentifiable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang15ResultRangeTypeP"></a>
+                    <a name="//apple_ref/swift/Protocol/ResultRangeType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang15ResultRangeTypeP">ResultRangeType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A generic protocol used to identify ranges with indexPaths</p>
+
+                        <a href="Protocols/ResultRangeType.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ResultRangeType</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang18ListDataHolderTypeP"></a>
+                    <a name="//apple_ref/swift/Protocol/ListDataHolderType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang18ListDataHolderTypeP">ListDataHolderType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Generic definition of a ListDataHolder.
+A ListDataHolder is used by ListViewModels to handle the retrieval of external data, store and update them, and lazily convert them into ItemViewModels.</p>
+
+                        <a href="Protocols/ListDataHolderType.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ListDataHolderType</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ListIdentifierP"></a>
+                    <a name="//apple_ref/swift/Protocol/ListIdentifier" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ListIdentifierP">ListIdentifier</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Generic protocol to identify a view Model in a list</p>
+
+                        <a href="Protocols/ListIdentifier.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ListIdentifier</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang25ViewModelTypeIdentifiableP"></a>
+                    <a name="//apple_ref/swift/Protocol/ViewModelTypeIdentifiable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang25ViewModelTypeIdentifiableP">ViewModelTypeIdentifiable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A view model that has an itemIdentifier</p>
+
+                        <a href="Protocols/ViewModelTypeIdentifiable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ViewModelTypeIdentifiable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/ViewModelType.html">ViewModelType</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14SelectionInputP"></a>
+                    <a name="//apple_ref/swift/Protocol/SelectionInput" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14SelectionInputP">SelectionInput</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">SelectionInput</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang15SelectionOutputP"></a>
+                    <a name="//apple_ref/swift/Protocol/SelectionOutput" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang15SelectionOutputP">SelectionOutput</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">SelectionOutput</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/stefanomondino/Boomerang" target="_blank" rel="external">Stefano Mondino</a>. All rights reserved. (Last updated: 2018-08-09)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

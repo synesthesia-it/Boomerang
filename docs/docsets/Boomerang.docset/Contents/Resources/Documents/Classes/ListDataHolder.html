@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ListDataHolder Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/ListDataHolder" class="dashAnchor"></a>
+    <a title="ListDataHolder Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Boomerang Docs</a> (59% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Boomerang Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ListDataHolder Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ContentCollectionViewCell.html">ContentCollectionViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ContentTableHeaderFooterView.html">ContentTableHeaderFooterView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ContentTableViewCell.html">ContentTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ListDataHolder.html">ListDataHolder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ModelStructure.html">ModelStructure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/StackableScrollView.html">StackableScrollView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ViewModelPagerViewDataSource.html">ViewModelPagerViewDataSource</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:9Boomerang21defaultListIdentifierSSvp">defaultListIdentifier</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/ListDataUpdate.html">ListDataUpdate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/StackableScrollViewDirection.html">StackableScrollViewDirection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TableViewHeaderType.html">TableViewHeaderType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/UIViewControllerRouterAction.html">UIViewControllerRouterAction</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/MKMapView.html">MKMapView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Observable.html">Observable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UICollectionView.html">UICollectionView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIPageViewController.html">UIPageViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIPickerView.html">UIPickerView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITableView.html">UITableView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/EditableViewModel.html">EditableViewModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/EmbeddableView.html">EmbeddableView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ErrorReceiver.html">ErrorReceiver</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang9FormStyleP">FormStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ItemViewModelType.html">ItemViewModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ListDataHolderType.html">ListDataHolderType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ListIdentifier.html">ListIdentifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ListPagerViewModelType.html">ListPagerViewModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ListViewModelType.html">ListViewModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ListViewModelTypeSectionable.html">ListViewModelTypeSectionable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/LoaderReceiver.html">LoaderReceiver</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang9ModelTypeP">ModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang26PickerViewCombinedDelegateP">PickerViewCombinedDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ResultRangeType.html">ResultRangeType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RouterAction.html">RouterAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang17RouterDestinationP">RouterDestination</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang12RouterSourceP">RouterSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RouterType.html">RouterType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang14SelectionInputP">SelectionInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:9Boomerang15SelectionOutputP">SelectionOutput</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewControllerActionBindable.html">ViewControllerActionBindable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewModelBindable.html">ViewModelBindable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewModelBindableType.html">ViewModelBindableType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewModelType.html">ViewModelType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewModelTypeFailable.html">ViewModelTypeFailable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewModelTypeIdentifiable.html">ViewModelTypeIdentifiable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewModelTypeLoadable.html">ViewModelTypeLoadable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/EmptyRouterAction.html">EmptyRouterAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ResultRange.html">ResultRange</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Boomerang15ObservableErrora">ObservableError</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ListDataHolder</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">ListDataHolder</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ListDataHolderType.html">ListDataHolderType</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Concrete implementation of ListDataHolderType</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ListDataHolderC9isLoading7RxCocoa13BehaviorRelayCySbGvp"></a>
+                    <a name="//apple_ref/swift/Property/isLoading" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ListDataHolderC9isLoading7RxCocoa13BehaviorRelayCySbGvp">isLoading</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An observable property with current loading status.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">isLoading</span><span class="p">:</span> <span class="kt">BehaviorRelay</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ListDataHolderC12reloadAction0F0AECyAA15ResultRangeType_pSgAA14ModelStructureCGvp"></a>
+                    <a name="//apple_ref/swift/Property/reloadAction" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ListDataHolderC12reloadAction0F0AECyAA15ResultRangeType_pSgAA14ModelStructureCGvp">reloadAction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Inner Action used to trigger updates and emit new values when available</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">reloadAction</span><span class="p">:</span> <span class="kt">Action</span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/ResultRangeType.html">ResultRangeType</a></span><span class="p">?,</span> <span class="kt"><a href="../Classes/ModelStructure.html">ModelStructure</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ListDataHolderC10moreAction0F0AECyAA15ResultRangeType_pSgAA14ModelStructureCGvp"></a>
+                    <a name="//apple_ref/swift/Property/moreAction" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ListDataHolderC10moreAction0F0AECyAA15ResultRangeType_pSgAA14ModelStructureCGvp">moreAction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Supplementary action useful for <q>infinite scrolling</q> scenarios, where new data has to be added to the list without a complete reload</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">moreAction</span><span class="p">:</span> <span class="kt">Action</span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/ResultRangeType.html">ResultRangeType</a></span><span class="p">?,</span> <span class="kt"><a href="../Classes/ModelStructure.html">ModelStructure</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ListDataHolderC14modelStructure7RxCocoa13BehaviorRelayCyAA05ModelF0CGvp"></a>
+                    <a name="//apple_ref/swift/Property/modelStructure" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ListDataHolderC14modelStructure7RxCocoa13BehaviorRelayCyAA05ModelF0CGvp">modelStructure</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Observable relay for for current ModelStructure.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">modelStructure</span><span class="p">:</span> <span class="kt">BehaviorRelay</span><span class="o">&lt;</span><span class="kt"><a href="../Classes/ModelStructure.html">ModelStructure</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ListDataHolderC10viewModels7RxCocoa13BehaviorRelayCys10DictionaryVy10Foundation9IndexPathVAA17ItemViewModelType_pGGvp"></a>
+                    <a name="//apple_ref/swift/Property/viewModels" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ListDataHolderC10viewModels7RxCocoa13BehaviorRelayCys10DictionaryVy10Foundation9IndexPathVAA17ItemViewModelType_pGGvp">viewModels</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A map used to hold references to ItemViewModels</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">viewModels</span><span class="p">:</span> <span class="kt">BehaviorRelay</span><span class="o">&lt;</span><span class="p">[</span><span class="kt">IndexPath</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ItemViewModelType.html">ItemViewModelType</a></span><span class="p">]</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ListDataHolderC12resultsCount7RxCocoa13BehaviorRelayCySiGvp"></a>
+                    <a name="//apple_ref/swift/Property/resultsCount" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ListDataHolderC12resultsCount7RxCocoa13BehaviorRelayCySiGvp">resultsCount</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An observable property with current results count.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">resultsCount</span><span class="p">:</span> <span class="kt">BehaviorRelay</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ListDataHolderC03newC9Available7RxCocoa13BehaviorRelayCyAA0bC6UpdateOSgGvp"></a>
+                    <a name="//apple_ref/swift/Property/newDataAvailable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ListDataHolderC03newC9Available7RxCocoa13BehaviorRelayCyAA0bC6UpdateOSgGvp">newDataAvailable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Notify (manually if needed) if new data is available in the list.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">newDataAvailable</span><span class="p">:</span> <span class="kt">BehaviorRelay</span><span class="o">&lt;</span><span class="kt"><a href="../Enums/ListDataUpdate.html">ListDataUpdate</a></span><span class="p">?</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ListDataHolderC13commitEditing7RxCocoa13BehaviorRelayCySbGvp"></a>
+                    <a name="//apple_ref/swift/Property/commitEditing" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ListDataHolderC13commitEditing7RxCocoa13BehaviorRelayCySbGvp">commitEditing</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Triggers a reload after inner data has changed</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">commitEditing</span><span class="p">:</span> <span class="kt">BehaviorRelay</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ListDataHolderCACycfc"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ListDataHolderCACycfc">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes an empty ListDataHolder</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Boomerang14ListDataHolderCACSayAA9ModelType_pG10withModels_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(withModels:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Boomerang14ListDataHolderCACSayAA9ModelType_pG10withModels_tcfc">init(withModels:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience method to create a ListDataHolder that instantly emits a single-dimension ModelStructure upon reloading</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="n">withModels</span> <span class="nv">models</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols.html#/s:9Boomerang9ModelTypeP">ModelType</a></span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>models</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a ModelType array that will be used to create a single-dimension (no children) ModelStructure (<code>ModelStructure(models)</code>)</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/stefanomondino/Boomerang" target="_blank" rel="external">Stefano Mondino</a>. All rights reserved. (Last updated: 2018-08-09)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
