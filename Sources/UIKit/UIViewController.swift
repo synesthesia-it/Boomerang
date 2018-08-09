@@ -39,7 +39,6 @@ public extension ViewControllerActionBindable where Self: UIViewController {
     
     public func bindTo<Input, Output>(action: Action<Input, Output>) -> Disposable {
         let disposable = CompositeDisposable()
-        
         _ = disposable.insert(self.bindTo(observable: action.errors))
         _ = disposable.insert(self.bindTo(observable: action.executing))
         return disposable

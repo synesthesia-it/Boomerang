@@ -1,43 +1,41 @@
 ![alt text](boomerang.png "Boomerang")
 
-Boomerang is a Swift micro-framework for MVVM (Model-View-ViewModel) native applications.
+Boomerang is a (Rx)Swift micro-framework used to speed up and standardize MVVM (Model-View-ViewModel) native applications development.
 
-[![Build Status](https://travis-ci.org/Boomerang/Boomerang.svg)](https://travis-ci.org/Boomerang/Boomerang)
 [![Platform](https://img.shields.io/cocoapods/p/Boomerang.svg?style=flat)](https://github.com/Boomerang/Boomerang)
 [![Cocoapods Compatible](https://img.shields.io/cocoapods/v/Boomerang.svg)](https://cocoapods.org/pods/Boomerang)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-# ⚠️ Warning ⚠️
+# What is it?
 
-Boomerang is stable from v 4.0, but still on active development. 
-Development and releases follow proper semantic versioning.
-Documentation is on its way :)
+Boomerang is a micro-framework that helps any developer with MVVM knowledge to standardize the development of an app (currently iOS and tvOS) through common best-practices and data structures.
 
-## What is it?
+It's designed with Swift in mind, `protocol` friendly and tightly bound to `RxSwift` (as MVVM is not so meaningful without a proper DataBinding framework)
 
-Boomerang's main objective is to help developers to quickly build apps in a standard and clean way.
-It enforces an architecture based on SOLID principles, implementing the MVVM pattern with some concepts from VIPER architecture and steering away from M(assive)VC.
+The main idea behind Boomerang is that any "screen" of the app (usually, but not always, a ViewController) can be represented by a list of views. Users will first ask to (re)load a set of data to be displayed and later interact with it.
 
-With a clean architecture in mind it's easier to quickly and harmlessly port an iOS app to macOS/tvOS and vice-versa, without affecting the business logic and the model logic of the entire software. At the end, the differences between platforms in a cross platform software should always be a matter of views.
+Boomerang clears up all usual boilerplate (e.g: UICollectionView dataSource methods) by re-organizing how data is handled:
 
-## Requirements
+- a `UIViewController` with a UICollectionView/UITableView is firstly created and associated (`bind`) to a `ListViewModelType` compliant object: a view model. The list view is also bound to the same view model.
+
+- the ModelLayer usually exposes an `Observable` of data (an array of Boomerang's `ModelType` compliant objects) that gets triggered (`subscribe`d) by ListViewModel
+- every model, according to developer's need, is used to create a single `ItemViewModelType` view model for each model.
+
+- each item view model contains a `ListIdentifier` information that is automatically used by the list view to generate proper cells.
+
+- each cell is then bound to the ItemViewModel where actual properties are read and displayed.
+
+# Requirements
 
 - iOS 9.0+ / Mac OS X 10.11+ / tvOS 9.2+ / watchOS 3.0+
 - Xcode 9.0+
 - Swift 4.0+
-
-# Before we begin
-
-Boomerang is a framework, something that will heavily impact on your codebase and on how you design your app. It's not a drag'n'drop library addressing a single task. It requires some basic understanding of what problem is trying to solve and what tools are involved in the process.
-
-# Documentation
-
-- [MVVM Basics](docs/MVVM.md)
-- [Rx Programming Basics](docs/rx.md)
-- [Framework concepts](docs/concepts.md)
-- [Templates](docs/templates.md)
-- [Example app](docs/freesbee.md)
+- basic knowledge of RxSwift
 
 # Credits
 
-Boomerang is entirely written by [Synesthesia](https://www.synesthesia.it "Synesthesia") team.
+Boomerang is entirely developed and open-sourced by [Synesthesia](https://www.synesthesia.it "Synesthesia").
+
+# License
+
+Boomerang is MIT licensed.
