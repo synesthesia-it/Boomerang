@@ -10,6 +10,12 @@ import UIKit
 import RxCocoa
 import RxSwift
 
+#if swift(>=4.2)
+public typealias TableViewCellEditingStyle = UITableViewCell.EditingStyle
+#else
+public typealias TableViewCellEditingStyle = UITableViewCellEditingStyle
+#endif
+
 public enum TableViewHeaderType: String {
     case header = "boomerang_tableview_header"
     case footer = "boomerang_tableview_footer"
@@ -128,7 +134,7 @@ private class ViewModelTableViewDataSource: NSObject, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return (tableView.viewModel as? EditableViewModel)?.canEditItem(atIndexPath: indexPath) ?? false
     }
-    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, commit editingStyle: TableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         guard let viewModel = tableView.viewModel as? EditableViewModel else {
             return
         }
@@ -160,7 +166,12 @@ private class ViewModelTableViewDataSource: NSObject, UITableViewDataSource {
         let cell = self.staticCellForSizeAtIndexPath(indexPath, width: width) as? EmbeddableView
         cell?.customContentView.setNeedsLayout()
         cell?.customContentView.layoutIfNeeded()
+        #if swift(>=4.2)
+        let size = cell?.customContentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize) ?? CGSize.zero
+        #else
         let size = cell?.customContentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize) ?? CGSize.zero
+        #endif
+        
         return size
     }
     

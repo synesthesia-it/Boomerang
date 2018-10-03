@@ -10,6 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
+
 extension UICollectionReusableView: EmbeddableView {}
 
 private class ViewModelCollectionViewDataSource: NSObject, UICollectionViewDataSource {
@@ -156,7 +157,11 @@ private class ViewModelCollectionViewDataSource: NSObject, UICollectionViewDataS
         let cell = self.staticCellForSize(at: indexPath, width: width) as? EmbeddableView
         cell?.customContentView.setNeedsLayout()
         cell?.customContentView.layoutIfNeeded()
+        #if swift(>=4.2)
+        let size = cell?.customContentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize) ?? CGSize.zero
+        #else
         let size = cell?.customContentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize) ?? CGSize.zero
+        #endif
         return size
     }
     
@@ -164,7 +169,11 @@ private class ViewModelCollectionViewDataSource: NSObject, UICollectionViewDataS
         let cell = self.staticCellForSize(at: indexPath, height: height) as? EmbeddableView
         cell?.customContentView.setNeedsLayout()
         cell?.customContentView.layoutIfNeeded()
+        #if swift(>=4.2)
+        let size = cell?.customContentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize) ?? CGSize.zero
+        #else
         let size = cell?.customContentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize) ?? CGSize.zero
+        #endif
         return size
     }
     
@@ -271,8 +280,16 @@ extension UICollectionView: ViewModelBindable {
         self.disposeBag = DisposeBag()
         self.viewModel = viewModel
         self.register(ContentCollectionViewCell.self, forCellWithReuseIdentifier: defaultListIdentifier)
-        self.register(EmptyReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
-        self.register(EmptyReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
+        
+        #if swift(>=4.2)
+        let headerName = UICollectionView.elementKindSectionHeader
+        let footerName = UICollectionView.elementKindSectionFooter
+        #else
+        let size = cell?.customContentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize) ?? CGSize.zero
+        #endif
+        
+        self.register(EmptyReusableView.self, forSupplementaryViewOfKind: headerName, withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
+        self.register(EmptyReusableView.self, forSupplementaryViewOfKind: footerName, withReuseIdentifier: EmptyReusableView.emptyReuseIdentifier)
         if (viewModel.collectionViewDataSource == nil) {
             viewModel.collectionViewDataSource = ViewModelCollectionViewDataSource(viewModel: viewModel)
         }

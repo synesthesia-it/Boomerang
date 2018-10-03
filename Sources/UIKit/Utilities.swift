@@ -7,6 +7,19 @@
 //
 
 import UIKit
+
+#if swift(>=4.2)
+public typealias LayoutAttribute = NSLayoutConstraint.Attribute
+#else
+public typealias LayoutAttribute = NSLayoutAttribute
+#endif
+
+#if swift(>=4.2)
+public typealias LayoutFormatOptions = NSLayoutConstraint.FormatOptions
+#else
+public typealias LayoutFormatOptions = NSLayoutFormatOptions
+#endif
+
  extension UIView {
     @discardableResult
     func addAndFitSubview(_ subview: UIView, insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
@@ -20,7 +33,7 @@ import UIKit
             return []
         }
         
-        let applyInset: (NSLayoutAttribute, UIEdgeInsets) -> CGFloat = {
+        let applyInset: (LayoutAttribute, UIEdgeInsets) -> CGFloat = {
             switch $0 {
             case .top: return $1.top
             case .bottom: return -$1.bottom
@@ -33,7 +46,7 @@ import UIKit
         
         translatesAutoresizingMaskIntoConstraints = false
         
-        let attributes = [NSLayoutAttribute.top, .left, .right, .bottom]
+        let attributes = [LayoutAttribute.top, .left, .right, .bottom]
         let constraints = attributes.map {
             return NSLayoutConstraint(item: self,
                                       attribute: $0,
@@ -50,7 +63,7 @@ import UIKit
     func addConstraintsToPinHorizontalEdgesToSuperView(with padding: CGFloat = 0) {
         prepareForConstraints()
         self.superview!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(padding)-[view]-(padding)-|",
-                                                                                      options: NSLayoutFormatOptions(rawValue: 0),
+                                                                                      options: LayoutFormatOptions(rawValue: 0),
                                                                                       metrics: ["padding": padding],
                                                                                       views: ["view": self]))
     }
@@ -58,7 +71,7 @@ import UIKit
     func addConstraintsToPinVerticalEdgesToSuperView(with padding: CGFloat = 0) {
         prepareForConstraints()
         self.superview!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(padding)-[view]-(padding)-|",
-                                                                                      options: NSLayoutFormatOptions(rawValue: 0),
+                                                                                      options: LayoutFormatOptions(rawValue: 0),
                                                                                       metrics: ["padding": padding],
                                                                                       views: ["view": self]))
     }
