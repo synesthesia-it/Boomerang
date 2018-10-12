@@ -208,6 +208,7 @@ open class ContentTableViewCell: UITableViewCell, ViewModelBindable {
         
         self.disposeBag = DisposeBag()
         self.viewModel = viewModel
+        self.backgroundColor = .clear
         if (self.internalView == nil) {
             guard let view = Bundle.main.loadNibNamed(viewModel.itemIdentifier.name, owner: self, options: nil)?.first as? UIView else {
                 return
@@ -229,7 +230,7 @@ open class ContentTableHeaderFooterView: UITableViewHeaderFooterView, ViewModelB
         guard let viewModel = viewModel as? ItemViewModelType else {
             return
         }
-        
+        self.backgroundColor = .clear
         self.disposeBag = DisposeBag()
         self.viewModel = viewModel
         if (self.internalView == nil) {
@@ -327,13 +328,14 @@ extension UITableView: ViewModelBindable {
         if (viewModel.tableViewDataSource == nil) {
             viewModel.tableViewDataSource = ViewModelTableViewDataSource(viewModel: viewModel)
         }
-        self.register(ContentTableViewCell.self, forHeaderFooterViewReuseIdentifier: defaultListIdentifier)
+        self.register(ContentTableHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: defaultListIdentifier)
         self.dataSource = viewModel.tableViewDataSource
         
         viewModel
             .dataHolder
             .reloadAction
             .elements
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: {[weak self] _ in self?.reloadData() })
             .disposed(by: self.disposeBag)
         
