@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 extension ListIdentifier {
     var view: UIView? {
@@ -29,7 +30,13 @@ open class StackableScrollView: UIScrollView {
     public var insets: UIEdgeInsets = .zero
     public var spacing: CGFloat = 0
     
-    open func install(viewModels: [ItemViewModelType]) {
+    public var containerView: UIView {
+        return self.subviews.first!
+    }
+    
+    fileprivate var _touchedIndexPath = BehaviorRelay<IndexPath?>(value:nil)
+    
+    open func install(viewModels: [ViewModelPack]) {
         self.subviews.forEach { $0.removeFromSuperview()}
         let container = UIView()
         container.backgroundColor = .clear
@@ -40,9 +47,11 @@ open class StackableScrollView: UIScrollView {
         switch direction {
         case .vertical :
             container.addConstraintsToPinWidthToSuperview()
-            let lastView = viewModels.reduce(nil, { (lastView, viewModel) -> UIView? in
+            let lastView = viewModels.reduce(nil, { (lastView, pack) -> UIView? in
+                let viewModel = pack.viewModel
                 if let view = viewModel.itemIdentifier.view, let bindable = view as? ViewModelBindableType {
                     container.addSubview(view)
+                    
                     view.addConstraintsToPinLeadingToSuperview(constant: insets.left)
                     view.addConstraintsToPinTrailingToSuperview(constant: insets.right)
                     if let lastView = lastView {
@@ -51,6 +60,9 @@ open class StackableScrollView: UIScrollView {
                         view.addConstraintsToPinTopToSuperview(constant: insets.top)
                     }
                     bindable.bind(to: viewModel)
+                    view.rx.didTouch()
+                        .bind {[weak self] _ in self?._touchedIndexPath.accept(pack.indexPath) }
+                        .disposed(by:bindable.disposeBag)
                     return view
                 }
                 return lastView
@@ -59,7 +71,8 @@ open class StackableScrollView: UIScrollView {
             return
         case .horizontal:
             container.addConstraintsToPinHeightToSuperview()
-            let lastView = viewModels.reduce(nil, { (lastView, viewModel) -> UIView? in
+            let lastView = viewModels.reduce(nil, { (lastView, pack) -> UIView? in
+                let viewModel = pack.viewModel
                 if let view = viewModel.itemIdentifier.view, let bindable = view as? ViewModelBindableType {
                     container.addSubview(view)
                     view.addConstraintsToPinTopToSuperview(constant: insets.top)
@@ -70,6 +83,9 @@ open class StackableScrollView: UIScrollView {
                         view.addConstraintsToPinLeadingToSuperview(constant: insets.left)
                     }
                     bindable.bind(to: viewModel)
+                    view.rx.didTouch()
+                        .bind {[weak self] _ in self?._touchedIndexPath.accept(pack.indexPath) }
+                        .disposed(by:bindable.disposeBag)
                     return view
                 }
                 return lastView
@@ -80,6 +96,7 @@ open class StackableScrollView: UIScrollView {
         }
     }
 }
+public typealias ViewModelPack = (viewModel:ItemViewModelType,indexPath: IndexPath)
 
 extension StackableScrollView: ViewModelBindable {
     
@@ -119,7 +136,13 @@ extension StackableScrollView: ViewModelBindable {
             .reloadAction
             .elements
             .subscribe(onNext: {[weak self] structure in
-                let viewModels = structure.indexPaths().compactMap { viewModel.viewModel(atIndex: $0)}
+                let viewModels: [ViewModelPack] = structure.indexPaths().compactMap {
+                    if let vm = (viewModel.viewModel(atIndex: $0)) {
+                        return (viewModel:vm, indexPath:$0)
+                    }
+                    return nil
+                    
+                }
                 self?.install(viewModels: viewModels)
                 
             })
@@ -127,4 +150,20 @@ extension StackableScrollView: ViewModelBindable {
         
     }
     
+}
+
+extension Reactive where Base: UIView {
+    func didTouch() -> Observable<()> {
+        return methodInvoked(#selector(UIView.touchesEnded(_:with:))).map {_ in ()}
+    }
+}
+
+public extension Reactive where Base: StackableScrollView {
+    public var didSelectIndexPath: Driver<IndexPath> {
+        return base._touchedIndexPath
+            .skip(1)
+            .asDriver(onErrorJustReturn: nil)
+            .filter {$0 != nil}
+            .map { $0!}
+    }
 }
