@@ -1,4 +1,4 @@
-//
+``` //
 //  UIScrollView.swift
 //  Boomerang
 //
@@ -133,8 +133,8 @@ extension StackableScrollView: ViewModelBindable {
         
         viewModel
             .dataHolder
-            .reloadAction
-            .elements
+            .newDataAvailable
+            .map { _ in viewModel.dataHolder.modelStructure.value }
             .subscribe(onNext: {[weak self] structure in
                 let viewModels: [ViewModelPack] = structure.indexPaths().compactMap {
                     if let vm = (viewModel.viewModel(atIndex: $0)) {
@@ -167,3 +167,4 @@ public extension Reactive where Base: StackableScrollView {
             .map { $0!}
     }
 }
+```
