@@ -244,11 +244,11 @@ extension ListDataHolderType {
         let fromVM = vms[from]
         let toVM = vms[to]
         
-        let dummy = Dummy()
+        
         structure.deleteItem(atIndex: from)
-        structure.insert(item: dummy, atIndex: from)
+        
         structure.insert(item: item, atIndex: to)
-        structure.deleteItem(atIndex: from)
+        
         
         // This is a potentially dangerous operation.
         // It would be better to find a way to shift previous viewModels instead of destroying all of them (if not already retained somewhere else)
