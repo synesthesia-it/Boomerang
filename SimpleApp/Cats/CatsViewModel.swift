@@ -20,7 +20,7 @@ enum CellIdentifiers : String, ListIdentifier {
 }
 
 
-final class CatsViewModel : ListViewModelType {
+final class CatsViewModel : ListViewModelType, EditableViewModel {
     var dataHolder: ListDataHolderType = ListDataHolder()
     
     func itemViewModel(fromModel model: ModelType) -> ItemViewModelType? {
@@ -30,7 +30,12 @@ final class CatsViewModel : ListViewModelType {
         return ViewModelFactory.catItem(with:item)
     }
     
-
+    func canMoveItem(atIndexPath indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func moveItem(fromIndexPath from: IndexPath, to: IndexPath) {
+        self.dataHolder.move(from: from, to: to)
+    }
     var listIdentifiers: [ListIdentifier] {
         return [CellIdentifiers.cat]
     }

@@ -98,6 +98,9 @@ public protocol ListDataHolderType: class {
     /// Deletes item from inner model structure at provided index path
     func deleteItem(atIndex index: IndexPath)
     
+    /// Moves an item between indexes
+    func move(from: IndexPath, to: IndexPath) 
+    
     /// Completely reloads current data by creating a new subscription to provided data observable
     func reload()
     
@@ -111,7 +114,7 @@ public protocol ListDataHolderType: class {
 private struct AssociatedKeys {
     static var disposeBag = "disposeBag"
 }
-
+private struct Dummy: ModelType {}
 extension ListDataHolderType {
     
     /**
@@ -178,6 +181,8 @@ extension ListDataHolderType {
         This causes a complete recalculation of contents of `viewModels`
         This will likely change in the future
     */
+    
+
     public func insert(item: ModelType, atIndex index: IndexPath) {
         let model = self.modelStructure.value
         model.insert(item: item, atIndex: index)
@@ -230,6 +235,28 @@ extension ListDataHolderType {
         if let lastIndex = structure.indexPaths().last {
             self.newDataAvailable.accept(ListDataUpdate.insert(ResultRange(start: index, end: lastIndex)))
         }
+    }
+    
+    public func move(from: IndexPath, to: IndexPath) {
+        let structure = self.modelStructure.value
+        guard let item = structure.modelAtIndex(from) else { return }
+        var vms = self.viewModels.value
+        let fromVM = vms[from]
+        let toVM = vms[to]
+        
+        let dummy = Dummy()
+        structure.deleteItem(atIndex: from)
+        structure.insert(item: dummy, atIndex: from)
+        structure.insert(item: item, atIndex: to)
+        structure.deleteItem(atIndex: from)
+        
+        // This is a potentially dangerous operation.
+        // It would be better to find a way to shift previous viewModels instead of destroying all of them (if not already retained somewhere else)
+        vms[to] = fromVM
+        vms[from] = toVM
+        self.viewModels.accept(vms)
+        self.modelStructure.accept(structure)
+//        self.newDataAvailable.accept(ListDataUpdate.insert(ResultRange(start: index, end: index)))
     }
     
     /**

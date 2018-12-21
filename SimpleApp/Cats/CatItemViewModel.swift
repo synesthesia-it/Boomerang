@@ -23,6 +23,5 @@ final class CatItemViewModel : ItemViewModelType {
         self.image = URLSession.shared.rx.data(request: URLRequest(url: model.image)).map {
             UIImage(data: $0)
         }.share(replay: 1, scope: SubjectLifetimeScope.forever).startWith(nil)
-        
     }
 }

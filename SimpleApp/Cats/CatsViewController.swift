@@ -41,10 +41,27 @@ class CatsViewController : UIViewController, ViewModelBindable, UICollectionView
         refresh.rx.bind(to: viewModel.dataHolder.reloadAction, controlEvent: refresh.rx.controlEvent(.allEvents), inputTransform: {_ in return nil})
         viewModel.dataHolder.reloadAction.executing.asDriver(onErrorJustReturn: false).drive(refresh.rx.isRefreshing).disposed(by:disposeBag)
         self.collectionView.addSubview(refresh)
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
+        collectionView.addGestureRecognizer(longPressGesture)
         
         viewModel.reload()
     }
-    
+    @objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+        switch(gesture.state) {
+            
+        case .began:
+            guard let selectedIndexPath = collectionView.indexPathForItem(at: gesture.location(in: collectionView)) else {
+                break
+            }
+            collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+        case .changed:
+            collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+        case .ended:
+            collectionView.endInteractiveMovement()
+        default:
+            collectionView.cancelInteractiveMovement()
+        }
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }

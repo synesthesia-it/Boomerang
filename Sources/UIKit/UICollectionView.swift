@@ -48,7 +48,7 @@ private class ViewModelCollectionViewDataSource: NSObject, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         (collectionView.viewModel as? EditableViewModel)?.moveItem(fromIndexPath: sourceIndexPath, to: destinationIndexPath)
-        collectionView.moveItem(at: sourceIndexPath, to: destinationIndexPath)
+//        collectionView.moveItem(at: sourceIndexPath, to: destinationIndexPath)
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
