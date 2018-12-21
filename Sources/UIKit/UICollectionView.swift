@@ -42,6 +42,15 @@ private class ViewModelCollectionViewDataSource: NSObject, UICollectionViewDataS
         return count
     }
     
+    public func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return (collectionView.viewModel as? EditableViewModel)?.canMoveItem(atIndexPath: indexPath) ?? false
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        (collectionView.viewModel as? EditableViewModel)?.moveItem(fromIndexPath: sourceIndexPath, to: destinationIndexPath)
+        collectionView.moveItem(at: sourceIndexPath, to: destinationIndexPath)
+    }
+    
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var count =  self.viewModel?.dataHolder.modelStructure.value.children?[section].models?.count
         count =  count ?? self.viewModel?.dataHolder.modelStructure.value.models?.count

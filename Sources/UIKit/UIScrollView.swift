@@ -1,4 +1,4 @@
-``` //
+//
 //  UIScrollView.swift
 //  Boomerang
 //
@@ -167,4 +167,4 @@ public extension Reactive where Base: StackableScrollView {
             .map { $0!}
     }
 }
-```
+
