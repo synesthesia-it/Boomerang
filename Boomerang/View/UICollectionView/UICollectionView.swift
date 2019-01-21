@@ -13,7 +13,7 @@ import RxCocoa
 
 extension Boomerang where Base: UICollectionView {
     
-    func configure(with viewModel: ListViewModelType, dataSource: UICollectionViewDataSource? = nil) {
+    public func configure(with viewModel: ListViewModelType, dataSource: UICollectionViewDataSource? = nil) {
         
         let dataSource = dataSource ?? CollectionViewDataSource(viewModel: viewModel)
         base.dataSource = dataSource

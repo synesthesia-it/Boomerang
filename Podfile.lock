@@ -17,6 +17,7 @@ DEPENDENCIES:
   - Action
   - Nimble
   - Quick
+  - RxAtomic
   - RxBlocking
   - RxCocoa
   - RxSwift
@@ -40,6 +41,6 @@ SPEC CHECKSUMS:
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
 
-PODFILE CHECKSUM: 1e996e972548804c9a7b036b2638c7757fe5238b
+PODFILE CHECKSUM: 3b5891abf8c476e0005809a5c4450433779f0c34
 
 COCOAPODS: 1.5.3

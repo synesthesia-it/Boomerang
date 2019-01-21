@@ -5,7 +5,6 @@ platform :ios, '10.0'
 target 'Boomerang' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'Action'
@@ -20,3 +19,12 @@ target 'Boomerang' do
   end
 
 end
+
+target 'Demo' do
+    use_frameworks!
+    pod 'RxSwift'
+    pod 'RxCocoa'
+    pod 'RxAtomic'
+    pod 'Action'
+end
+

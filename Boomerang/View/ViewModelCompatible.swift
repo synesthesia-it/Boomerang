@@ -14,7 +14,7 @@ public protocol ViewModelCompatibleType: class {
 public protocol ViewModelCompatible: ViewModelCompatibleType {
     associatedtype ViewModel: ViewModelType
     var viewModel: ViewModel? { get set }
-    func configure(with viewModel: ViewModelType?)
+    func configure(with viewModel: ViewModel?)
 }
 extension ViewModelCompatible {
     public func set(viewModel: ViewModelType) {

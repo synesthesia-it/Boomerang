@@ -46,7 +46,7 @@ extension ListViewModelType {
         self.dataHolder.cancel()
     }
     
-    func identifier(at indexPath: IndexPath, for type: String?) -> Identifier? {
+    public func identifier(at indexPath: IndexPath, for type: String?) -> Identifier? {
         return nil
     }
 }
