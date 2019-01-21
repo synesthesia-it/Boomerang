@@ -7,9 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B26187C6CB7AA21BD173372 /* Pods_BoomerangTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E07F53E78320D38D2E1AA44 /* Pods_BoomerangTests.framework */; };
+		66594B20556B37A55AFAB09A /* Pods_Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB47686ACF68258C9D667D66 /* Pods_Boomerang.framework */; };
 		704B476C21F363F3007E11DA /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 704B476221F363F3007E11DA /* Boomerang.framework */; };
-		704B477121F363F3007E11DA /* BoomerangTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704B477021F363F3007E11DA /* BoomerangTests.swift */; };
 		704B477321F363F3007E11DA /* Boomerang.h in Headers */ = {isa = PBXBuildFile; fileRef = 704B476521F363F3007E11DA /* Boomerang.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		704B477D21F36581007E11DA /* ModelGroupSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704B477C21F36581007E11DA /* ModelGroupSpec.swift */; };
+		704B478021F36615007E11DA /* ModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704B477F21F36615007E11DA /* ModelType.swift */; };
+		704B478221F3667A007E11DA /* DataGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704B478121F3667A007E11DA /* DataGroup.swift */; };
+		706142A921F3C280003040D2 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142A821F3C280003040D2 /* ViewModelType.swift */; };
+		706142AB21F3C29C003040D2 /* ListViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142AA21F3C29C003040D2 /* ListViewModelType.swift */; };
+		706142AD21F3C2A3003040D2 /* ItemViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142AC21F3C2A3003040D2 /* ItemViewModelType.swift */; };
+		706142AF21F3C82F003040D2 /* DataHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142AE21F3C82F003040D2 /* DataHolder.swift */; };
+		706142B121F3CB7F003040D2 /* DataHolderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142B021F3CB7E003040D2 /* DataHolderSpec.swift */; };
+		706142B321F4C078003040D2 /* ViewModelCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142B221F4C078003040D2 /* ViewModelCache.swift */; };
+		706142B521F4C7FF003040D2 /* ListViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142B421F4C7FF003040D2 /* ListViewModelSpec.swift */; };
+		706142B821F4F367003040D2 /* BoomerangProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142B721F4F367003040D2 /* BoomerangProxy.swift */; };
+		706142BA21F4F5B0003040D2 /* UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142B921F4F5B0003040D2 /* UIKit.swift */; };
+		706142BC21F4F701003040D2 /* ViewModelCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142BB21F4F701003040D2 /* ViewModelCompatible.swift */; };
+		706142C021F4FBD5003040D2 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142BF21F4FBD5003040D2 /* UICollectionView.swift */; };
+		706142C321F5018B003040D2 /* ContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142C221F5018B003040D2 /* ContentCollectionViewCell.swift */; };
+		706142C521F50693003040D2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142C421F50693003040D2 /* Utilities.swift */; };
+		706142C721F509A7003040D2 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142C621F509A7003040D2 /* CollectionViewDataSource.swift */; };
+		706142C921F51C0F003040D2 /* CollectionViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142C821F51C0F003040D2 /* CollectionViewSpec.swift */; };
+		706142CB21F51DF3003040D2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142CA21F51DF3003040D2 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +43,36 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1DCBF363D50936A87C64D97F /* Pods-BoomerangTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoomerangTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BoomerangTests/Pods-BoomerangTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5051652554CDA5E75F60AC87 /* Pods-Boomerang.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boomerang.release.xcconfig"; path = "Pods/Target Support Files/Pods-Boomerang/Pods-Boomerang.release.xcconfig"; sourceTree = "<group>"; };
 		704B476221F363F3007E11DA /* Boomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		704B476521F363F3007E11DA /* Boomerang.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Boomerang.h; sourceTree = "<group>"; };
 		704B476621F363F3007E11DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		704B476B21F363F3007E11DA /* BoomerangTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoomerangTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		704B477021F363F3007E11DA /* BoomerangTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoomerangTests.swift; sourceTree = "<group>"; };
 		704B477221F363F3007E11DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		704B477C21F36581007E11DA /* ModelGroupSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelGroupSpec.swift; sourceTree = "<group>"; };
+		704B477F21F36615007E11DA /* ModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelType.swift; sourceTree = "<group>"; };
+		704B478121F3667A007E11DA /* DataGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGroup.swift; sourceTree = "<group>"; };
+		706142A821F3C280003040D2 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		706142AA21F3C29C003040D2 /* ListViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelType.swift; sourceTree = "<group>"; };
+		706142AC21F3C2A3003040D2 /* ItemViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModelType.swift; sourceTree = "<group>"; };
+		706142AE21F3C82F003040D2 /* DataHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHolder.swift; sourceTree = "<group>"; };
+		706142B021F3CB7E003040D2 /* DataHolderSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHolderSpec.swift; sourceTree = "<group>"; };
+		706142B221F4C078003040D2 /* ViewModelCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelCache.swift; sourceTree = "<group>"; };
+		706142B421F4C7FF003040D2 /* ListViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelSpec.swift; sourceTree = "<group>"; };
+		706142B721F4F367003040D2 /* BoomerangProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoomerangProxy.swift; sourceTree = "<group>"; };
+		706142B921F4F5B0003040D2 /* UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKit.swift; sourceTree = "<group>"; };
+		706142BB21F4F701003040D2 /* ViewModelCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelCompatible.swift; sourceTree = "<group>"; };
+		706142BF21F4FBD5003040D2 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		706142C221F5018B003040D2 /* ContentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewCell.swift; sourceTree = "<group>"; };
+		706142C421F50693003040D2 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		706142C621F509A7003040D2 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
+		706142C821F51C0F003040D2 /* CollectionViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewSpec.swift; sourceTree = "<group>"; };
+		706142CA21F51DF3003040D2 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		8E07F53E78320D38D2E1AA44 /* Pods_BoomerangTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoomerangTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6D333DAE6B6C3C09A8A3D38 /* Pods-BoomerangTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoomerangTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BoomerangTests/Pods-BoomerangTests.release.xcconfig"; sourceTree = "<group>"; };
+		B5FC278EAB4BB2C1E0DA745D /* Pods-Boomerang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boomerang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Boomerang/Pods-Boomerang.debug.xcconfig"; sourceTree = "<group>"; };
+		EB47686ACF68258C9D667D66 /* Pods_Boomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Boomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66594B20556B37A55AFAB09A /* Pods_Boomerang.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +89,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				704B476C21F363F3007E11DA /* Boomerang.framework in Frameworks */,
+				4B26187C6CB7AA21BD173372 /* Pods_BoomerangTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +102,8 @@
 				704B476421F363F3007E11DA /* Boomerang */,
 				704B476F21F363F3007E11DA /* BoomerangTests */,
 				704B476321F363F3007E11DA /* Products */,
+				9B66854522D4AE6F2C3559D1 /* Pods */,
+				A89D94B72DC3DFEDD2A69B88 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +119,9 @@
 		704B476421F363F3007E11DA /* Boomerang */ = {
 			isa = PBXGroup;
 			children = (
+				706142B621F4F349003040D2 /* View */,
+				706142A721F3C24C003040D2 /* ViewModel */,
+				704B477E21F36600007E11DA /* Model */,
 				704B476521F363F3007E11DA /* Boomerang.h */,
 				704B476621F363F3007E11DA /* Info.plist */,
 			);
@@ -80,10 +131,77 @@
 		704B476F21F363F3007E11DA /* BoomerangTests */ = {
 			isa = PBXGroup;
 			children = (
-				704B477021F363F3007E11DA /* BoomerangTests.swift */,
+				704B477C21F36581007E11DA /* ModelGroupSpec.swift */,
+				706142C821F51C0F003040D2 /* CollectionViewSpec.swift */,
+				706142CA21F51DF3003040D2 /* Utilities.swift */,
+				706142B021F3CB7E003040D2 /* DataHolderSpec.swift */,
+				706142B421F4C7FF003040D2 /* ListViewModelSpec.swift */,
 				704B477221F363F3007E11DA /* Info.plist */,
 			);
 			path = BoomerangTests;
+			sourceTree = "<group>";
+		};
+		704B477E21F36600007E11DA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				704B477F21F36615007E11DA /* ModelType.swift */,
+				704B478121F3667A007E11DA /* DataGroup.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		706142A721F3C24C003040D2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				706142A821F3C280003040D2 /* ViewModelType.swift */,
+				706142AE21F3C82F003040D2 /* DataHolder.swift */,
+				706142B221F4C078003040D2 /* ViewModelCache.swift */,
+				706142AA21F3C29C003040D2 /* ListViewModelType.swift */,
+				706142AC21F3C2A3003040D2 /* ItemViewModelType.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		706142B621F4F349003040D2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				706142B721F4F367003040D2 /* BoomerangProxy.swift */,
+				706142B921F4F5B0003040D2 /* UIKit.swift */,
+				706142C421F50693003040D2 /* Utilities.swift */,
+				706142C121F5017C003040D2 /* UICollectionView */,
+				706142BB21F4F701003040D2 /* ViewModelCompatible.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		706142C121F5017C003040D2 /* UICollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				706142BF21F4FBD5003040D2 /* UICollectionView.swift */,
+				706142C621F509A7003040D2 /* CollectionViewDataSource.swift */,
+				706142C221F5018B003040D2 /* ContentCollectionViewCell.swift */,
+			);
+			path = UICollectionView;
+			sourceTree = "<group>";
+		};
+		9B66854522D4AE6F2C3559D1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B5FC278EAB4BB2C1E0DA745D /* Pods-Boomerang.debug.xcconfig */,
+				5051652554CDA5E75F60AC87 /* Pods-Boomerang.release.xcconfig */,
+				1DCBF363D50936A87C64D97F /* Pods-BoomerangTests.debug.xcconfig */,
+				A6D333DAE6B6C3C09A8A3D38 /* Pods-BoomerangTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A89D94B72DC3DFEDD2A69B88 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EB47686ACF68258C9D667D66 /* Pods_Boomerang.framework */,
+				8E07F53E78320D38D2E1AA44 /* Pods_BoomerangTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,6 +222,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 704B477621F363F3007E11DA /* Build configuration list for PBXNativeTarget "Boomerang" */;
 			buildPhases = (
+				81AD28D699FF7FBE9A561267 /* [CP] Check Pods Manifest.lock */,
 				704B475D21F363F3007E11DA /* Headers */,
 				704B475E21F363F3007E11DA /* Sources */,
 				704B475F21F363F3007E11DA /* Frameworks */,
@@ -122,9 +241,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 704B477921F363F3007E11DA /* Build configuration list for PBXNativeTarget "BoomerangTests" */;
 			buildPhases = (
+				96A5F3F7B3F55C1D2A807881 /* [CP] Check Pods Manifest.lock */,
 				704B476721F363F3007E11DA /* Sources */,
 				704B476821F363F3007E11DA /* Frameworks */,
 				704B476921F363F3007E11DA /* Resources */,
+				A42C785B9F03465398EA860F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -148,6 +269,7 @@
 				TargetAttributes = {
 					704B476121F363F3007E11DA = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					704B476A21F363F3007E11DA = {
 						CreatedOnToolsVersion = 10.1;
@@ -189,11 +311,106 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		81AD28D699FF7FBE9A561267 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Boomerang-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96A5F3F7B3F55C1D2A807881 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BoomerangTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A42C785B9F03465398EA860F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BoomerangTests/Pods-BoomerangTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
+				"${BUILT_PRODUCTS_DIR}/Action/Action.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Action.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BoomerangTests/Pods-BoomerangTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		704B475E21F363F3007E11DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				706142AD21F3C2A3003040D2 /* ItemViewModelType.swift in Sources */,
+				706142B321F4C078003040D2 /* ViewModelCache.swift in Sources */,
+				706142AF21F3C82F003040D2 /* DataHolder.swift in Sources */,
+				706142B821F4F367003040D2 /* BoomerangProxy.swift in Sources */,
+				706142C521F50693003040D2 /* Utilities.swift in Sources */,
+				706142AB21F3C29C003040D2 /* ListViewModelType.swift in Sources */,
+				706142BC21F4F701003040D2 /* ViewModelCompatible.swift in Sources */,
+				704B478021F36615007E11DA /* ModelType.swift in Sources */,
+				704B478221F3667A007E11DA /* DataGroup.swift in Sources */,
+				706142C321F5018B003040D2 /* ContentCollectionViewCell.swift in Sources */,
+				706142BA21F4F5B0003040D2 /* UIKit.swift in Sources */,
+				706142C021F4FBD5003040D2 /* UICollectionView.swift in Sources */,
+				706142A921F3C280003040D2 /* ViewModelType.swift in Sources */,
+				706142C721F509A7003040D2 /* CollectionViewDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +418,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				704B477121F363F3007E11DA /* BoomerangTests.swift in Sources */,
+				704B477D21F36581007E11DA /* ModelGroupSpec.swift in Sources */,
+				706142C921F51C0F003040D2 /* CollectionViewSpec.swift in Sources */,
+				706142B521F4C7FF003040D2 /* ListViewModelSpec.swift in Sources */,
+				706142CB21F51DF3003040D2 /* Utilities.swift in Sources */,
+				706142B121F3CB7F003040D2 /* DataHolderSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,7 +561,9 @@
 		};
 		704B477721F363F3007E11DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5FC278EAB4BB2C1E0DA745D /* Pods-Boomerang.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -357,6 +580,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = it.synesthesia.Boomerang;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -364,7 +588,9 @@
 		};
 		704B477821F363F3007E11DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5051652554CDA5E75F60AC87 /* Pods-Boomerang.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -388,7 +614,9 @@
 		};
 		704B477A21F363F3007E11DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1DCBF363D50936A87C64D97F /* Pods-BoomerangTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = BoomerangTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -405,7 +633,9 @@
 		};
 		704B477B21F363F3007E11DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6D333DAE6B6C3C09A8A3D38 /* Pods-BoomerangTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = BoomerangTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
