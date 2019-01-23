@@ -11,6 +11,14 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+
+extension UICollectionView: ViewModelCompatibleType {
+    public func set(viewModel: ViewModelType?) {
+        if let viewModel = viewModel as? ListViewModelType {
+            self.boomerang.configure(with: viewModel)
+        }
+    }
+}
 extension Boomerang where Base: UICollectionView {
     
     public func configure(with viewModel: ListViewModelType, dataSource: UICollectionViewDataSource? = nil) {

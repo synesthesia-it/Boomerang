@@ -44,11 +44,10 @@ struct TestItemViewModel: IdentifiableItemViewModelType {
 }
 
 final class TestCollectionViewCell: UICollectionViewCell, ViewModelCompatible {
-    
+    typealias ViewModel = TestItemViewModel
     func configure(with viewModel: TestItemViewModel?) {
         self.backgroundColor = viewModel?.color
     }
-    var viewModel: TestItemViewModel?
 }
 
 

@@ -41,7 +41,7 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
             return groups[section].count
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let viewModel: IdentifiableViewModelType = self.viewModel.mainViewModel(at: indexPath) as? IdentifiableItemViewModelType {
             let identifier = viewModel.identifier

@@ -14,7 +14,15 @@ import Nimble
 extension String: ModelType {}
 extension Int: ModelType {}
 extension Double: ModelType {}
+extension DataGroup {
+    func combined() -> String {
+        return self.compactMap {$0 as? String}.reduce("",+)
+    }
+}
+
 class ModelGroupSpec: QuickSpec {
+    
+    
     override func spec() {
         describe("a 'ModelGroup' object") {
             
@@ -51,6 +59,35 @@ class ModelGroupSpec: QuickSpec {
                     expect(combined) == "ABCDEF"
                     let reversed: String = modelGroup.reversed().compactMap { $0 as? String }.reduce("",+)
                     expect(reversed) == "FEDCBA"
+                }
+                it ("should allow moving items") {
+                   
+                }
+            }
+            context ("When an item is moved") {
+                var modelGroup = DataGroup()
+                beforeEach {
+                    modelGroup = DataGroup(["A","B","C","D","E"])
+                }
+                it ("should work back and forth") {
+                    let from = IndexPath(row: 0, section: 0)
+                    let to = IndexPath(row: 2, section: 0)
+                    modelGroup.move(from: from, to: to)
+                    expect(modelGroup.combined()) == "BCADE"
+                    modelGroup.move(from: to, to: from)
+                    expect(modelGroup.combined()) == "ABCDE"
+                }
+                it ("should not allow same index modifications") {
+                    let to = IndexPath(row: 2, section: 0)
+                    modelGroup.move(from: to, to: to)
+                    expect(modelGroup.combined()) == "ABCDE"
+                }
+                
+                it ("should not do anything if indexes are out of bounds") {
+                    let from = IndexPath(row: 10, section: 10)
+                    let to = IndexPath(row: 20, section: 10)
+                    modelGroup.move(from: from, to: to)
+                    expect(modelGroup.combined()) == "ABCDE"
                 }
             }
             context("when initialized with nestedObjects") {

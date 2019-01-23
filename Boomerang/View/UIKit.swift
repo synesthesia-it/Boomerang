@@ -16,7 +16,7 @@ internal struct AssociatedKeys {
     static var collectionViewDataSource = "boomerang_collectionViewDataSource"
 }
 
-extension Boomerang where Base: NSObject {
+extension Boomerang where Base: NSObject, Base: ViewModelCompatibleType {
     public var disposeBag: DisposeBag {
         get {
             guard let lookup = objc_getAssociatedObject(base, &AssociatedKeys.disposeBag) as? DisposeBag else {
@@ -33,6 +33,7 @@ extension Boomerang where Base: NSObject {
 }
 
 extension Boomerang where Base: NSObject, Base: ViewModelCompatible {
+
     
     var viewModel: Base.ViewModel? {
         get {
@@ -42,7 +43,13 @@ extension Boomerang where Base: NSObject, Base: ViewModelCompatible {
             objc_setAssociatedObject(base, &AssociatedKeys.viewModel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-    
-    
-    
 }
+
+public extension ViewModelCompatible where Self: NSObject, Self: BoomerangCompatible {
+    
+    var viewModel: ViewModel? {
+        get { return boomerang.viewModel }
+        set { boomerang.viewModel = newValue }
+    }
+}
+

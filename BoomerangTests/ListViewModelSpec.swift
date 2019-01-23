@@ -84,6 +84,11 @@ class ListViewModelSpec: QuickSpec {
                         .toEventually(beTrue())
                     
                     expect(vm1?.date) == vm2?.date
+                    expect(vm1?.model).toNot(beNil())
+                    expect {
+                        let string: String? = vm1?.unwrappedModel()
+                        return string
+                        } == "A"
                 }
             }
         }

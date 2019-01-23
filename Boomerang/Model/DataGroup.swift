@@ -18,6 +18,8 @@ public struct DataGroup: MutableCollection, RandomAccessCollection {
     static var empty: DataGroup {
         return DataGroup([])
     }
+    public init()  {}
+    
     public init(_ models:[DataType]) {
         self.models = models
     }
@@ -190,26 +192,33 @@ public struct DataGroup: MutableCollection, RandomAccessCollection {
             return
         }
     }
-    
-    mutating public func delete(at indexPath: IndexPath) {
+    @discardableResult
+    mutating public func delete(at indexPath: IndexPath) -> DataType? {
         if let groups = self.groups,
             indexPath.count > 1,
             let index = indexPath.first,
             groups.count > index {
-            self.groups?[index].delete(at: indexPath.dropFirst())
-            return
+            return self.groups?[index].delete(at: indexPath.dropFirst())
+            
         }
         if let index = indexPath.last {
-            if models.count < index { return }
-            self.models.remove(at: index)
-            return
+            if models.count < index { return nil }
+            return self.models.remove(at: index)
         }
+        return nil
     }
     
-    mutating public func delete(at indexPaths: [IndexPath]) {
-        indexPaths.sorted().reversed().forEach { ip in
+    @discardableResult
+    mutating public func delete(at indexPaths: [IndexPath]) -> [DataType] {
+        return indexPaths.sorted().reversed().compactMap { ip in
             self.delete(at: ip)
         }
     }
+    
+    mutating public func move(from start: IndexPath, to end: IndexPath) {
+        if start == end { return }
+        if let data = self.delete(at: start) {
+            self.insert(data, at: end)
+        }
+    }
 }
-

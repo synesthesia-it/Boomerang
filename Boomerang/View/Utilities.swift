@@ -9,17 +9,9 @@
 import Foundation
 import UIKit
 
-#if swift(>=4.2)
-public typealias LayoutAttribute = NSLayoutConstraint.Attribute
-#else
-public typealias LayoutAttribute = NSLayoutAttribute
-#endif
 
-#if swift(>=4.2)
+public typealias LayoutAttribute = NSLayoutConstraint.Attribute
 public typealias LayoutFormatOptions = NSLayoutConstraint.FormatOptions
-#else
-public typealias LayoutFormatOptions = NSLayoutFormatOptions
-#endif
 
 extension UIView {
     @discardableResult
