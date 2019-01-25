@@ -18,6 +18,8 @@ public struct DataGroup: MutableCollection, RandomAccessCollection {
     static var empty: DataGroup {
         return DataGroup([])
     }
+    public init()  {}
+    
     public init(_ models:[DataType]) {
         self.models = models
     }
@@ -174,42 +176,57 @@ public struct DataGroup: MutableCollection, RandomAccessCollection {
     mutating public func insert(_ model: DataType, at indexPath: IndexPath) {
         self.insert([model], at: indexPath)
     }
-    mutating public func insert(_ models: [DataType], at indexPath: IndexPath) {
+    
+    @discardableResult
+    mutating public func insert(_ models: [DataType], at indexPath: IndexPath) -> IndexPath? {
         if let groups = self.groups,
             indexPath.count > 1,
             let index = indexPath.first,
             groups.count > index {
-            self.groups?[index].insert(models, at: indexPath.dropFirst())
-            return
+            if let inserted = self.groups?[index].insert(models, at: indexPath.dropFirst()) {
+                return IndexPath(indexes:[index] + inserted.indices)
+            }
+            
+            return nil
         }
         if let index = indexPath.last {
             if self.models.endIndex < index {
-                return
+                return nil
             }
             self.models.insert(contentsOf: models, at: index)
-            return
+            return indexPath.dropLast().appending([Swift.min(index, self.models.count - 1)])
         }
+        return nil
     }
-    
-    mutating public func delete(at indexPath: IndexPath) {
+    @discardableResult
+    mutating public func delete(at indexPath: IndexPath) -> DataType? {
         if let groups = self.groups,
             indexPath.count > 1,
             let index = indexPath.first,
             groups.count > index {
-            self.groups?[index].delete(at: indexPath.dropFirst())
-            return
+            return self.groups?[index].delete(at: indexPath.dropFirst())
+            
         }
         if let index = indexPath.last {
-            if models.count < index { return }
-            self.models.remove(at: index)
-            return
+            if models.count <= index { return nil }
+            return self.models.remove(at: index)
+        }
+        return nil
+    }
+    
+    @discardableResult
+    mutating public func delete(at indexPaths: [IndexPath]) -> [IndexPath: DataType?] {
+        return indexPaths.sorted().reversed().reduce([:]) {accumulator, ip in
+            var a = accumulator
+            a[ip] = self.delete(at: ip)
+            return a
         }
     }
     
-    mutating public func delete(at indexPaths: [IndexPath]) {
-        indexPaths.sorted().reversed().forEach { ip in
-            self.delete(at: ip)
+    mutating public func move(from start: IndexPath, to end: IndexPath) {
+        if start == end { return }
+        if let data = self.delete(at: start) {
+            self.insert(data, at: end)
         }
     }
 }
-

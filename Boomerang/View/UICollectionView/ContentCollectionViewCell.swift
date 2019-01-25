@@ -10,17 +10,31 @@ import Foundation
 import UIKit
 import RxSwift
 
-open class ContentCollectionViewCell: UICollectionViewCell {
-    public weak var internalView: UIView?
-    ///Constraints between cell and inner view. By defaults, insets are all 0.
-    public var insetConstraints: [NSLayoutConstraint] = []
+open class ContentCollectionViewCell: UICollectionViewCell, ViewModelCompatibleType {
+ 
+    public private(set) weak var internalView: UIView?
+    ///Constraints between cell and inner view.
+    public private(set) var insetConstraints: [NSLayoutConstraint] = []
+    
+    ///Insets between cell and innerView. By default, insets are all 0
+    public var insets: UIEdgeInsets = .zero {
+        didSet {
+            if self.internalView != nil {
+                insetConstraints.forEach { self.internalView?.removeConstraint($0)}
+                insetConstraints = self.fitInSuperview(with: insets)
+            }
+        }
+    }
     /** Binds an external itemViewModel to current cell.
      If no content view was previously set, a new one is created from nib and installed.
      View model is then properly bound to inner view.
      */
     
-    public func configure(with viewModel: IdentifiableViewModelType) {
-        self.boomerang.disposeBag = DisposeBag()
+    open func set(viewModel: ViewModelType?) {
+        guard let viewModel = viewModel as? IdentifiableViewModelType else { return }
+        
+        self.disposeBag = DisposeBag()
+        
         if (self.internalView == nil) {
             let view: UIView
             if let className = (viewModel.identifier as? ReusableListIdentifier)?.className {
@@ -34,7 +48,8 @@ open class ContentCollectionViewCell: UICollectionViewCell {
             }
                 view = innerView
             }
-            self.insetConstraints = self.contentView.addAndFitSubview(view)
+            self.contentView.addSubview(view)
+            self.insetConstraints = self.contentView.fitInSuperview(with: insets)
             self.internalView = view
         }
         (self.internalView as? ViewModelCompatibleType)?.set(viewModel: viewModel)

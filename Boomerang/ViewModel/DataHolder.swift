@@ -14,6 +14,7 @@ public typealias DataUpdate = () -> ([IndexPath])
 
 enum DataHolderUpdate {
     case reload
+    case deleteItems(DataUpdate)
     case insertItems(DataUpdate)
     case none
 }
@@ -126,9 +127,11 @@ extension DataHolder {
     public func insert(_ data: [DataType], at indexPath: IndexPath, immediate: Bool = false) {
         let insertion: DataUpdate = {[weak self] in
             guard let self = self else { return [] }
-            self.modelGroup.insert(data, at: indexPath.suffix(self.modelGroup.depth))
-            let lastIndex: Int = data.count + (indexPath.last ?? 0)
-            let firstIndex = indexPath.last ?? 0
+            guard let newIndexPath = self.modelGroup.insert(data, at: indexPath.suffix(self.modelGroup.depth)) else {
+                return []
+            }
+            let lastIndex: Int = data.count + (newIndexPath.last ?? 0)
+            let firstIndex = newIndexPath.last ?? 0
             
             return (firstIndex..<lastIndex).map {
                 let indexPath = indexPath.dropLast().appending($0)
@@ -140,6 +143,23 @@ extension DataHolder {
             _ = insertion()
         } else {
             self.updates.onNext(.insertItems(insertion))
+        }
+    }
+    public func delete(at indexPaths:[IndexPath], immediate: Bool = false) {
+        let delete: DataUpdate = {[weak self] in
+            guard let self = self else { return [] }
+            let deletedIndexPaths = self.modelGroup.delete(at: indexPaths).compactMap {
+                $0.value != nil ? $0.key : nil
+            }
+            deletedIndexPaths.forEach {
+                self.itemCache.replaceItem(nil, at: $0)
+            }
+            return deletedIndexPaths
+        }
+        if immediate {
+            _ = delete()
+        } else {
+            self.updates.onNext(.deleteItems(delete))
         }
     }
 }

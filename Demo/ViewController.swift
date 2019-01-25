@@ -44,11 +44,10 @@ struct TestItemViewModel: IdentifiableItemViewModelType {
 }
 
 final class TestCollectionViewCell: UICollectionViewCell, ViewModelCompatible {
-    
+    typealias ViewModel = TestItemViewModel
     func configure(with viewModel: TestItemViewModel?) {
         self.backgroundColor = viewModel?.color
     }
-    var viewModel: TestItemViewModel?
 }
 
 
@@ -86,11 +85,16 @@ class ViewController: UIViewController {
         self.collectionView.boomerang.configure(with: viewModel)
         viewModel.load()
         
-        let item = UIBarButtonItem(title: "ADD", style: .done, target: nil, action: nil)
-        self.navigationItem.rightBarButtonItem = item
+        let add = UIBarButtonItem(title: "+", style: .done, target: nil, action: nil)
+        let delete = UIBarButtonItem(title: "-", style: .done, target: nil, action: nil)
+        self.navigationItem.rightBarButtonItems = [delete,add]
         
-        item.rx.tap
-            .bind {[weak self] _ in self?.viewModel.dataHolder.insert(["4"], at: IndexPath(item: 5, section: 0))}
+        add.rx.tap
+            .bind {[weak self] _ in self?.viewModel.dataHolder.insert(["4"], at: IndexPath(item: 0, section: 0))}
+            .disposed(by: disposeBag)
+        
+        delete.rx.tap
+            .bind {[weak self] _ in self?.viewModel.dataHolder.delete(at: [IndexPath(item: 0, section: 0)])}
             .disposed(by: disposeBag)
         
     }

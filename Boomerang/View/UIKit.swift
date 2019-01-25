@@ -16,33 +16,31 @@ internal struct AssociatedKeys {
     static var collectionViewDataSource = "boomerang_collectionViewDataSource"
 }
 
-extension Boomerang where Base: NSObject {
+extension ViewModelCompatibleType where Self: NSObject {
     public var disposeBag: DisposeBag {
         get {
-            guard let lookup = objc_getAssociatedObject(base, &AssociatedKeys.disposeBag) as? DisposeBag else {
+            guard let lookup = objc_getAssociatedObject(self, &AssociatedKeys.disposeBag) as? DisposeBag else {
                 let value = DisposeBag()
-                objc_setAssociatedObject(base, &AssociatedKeys.disposeBag, value, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                objc_setAssociatedObject(self, &AssociatedKeys.disposeBag, value, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
                 return value
             }
             return lookup
         }
         set {
-            objc_setAssociatedObject(base, &AssociatedKeys.disposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &AssociatedKeys.disposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 }
 
-extension Boomerang where Base: NSObject, Base: ViewModelCompatible {
+public extension ViewModelCompatible where Self: NSObject {
     
-    var viewModel: Base.ViewModel? {
+    var viewModel: ViewModel? {
         get {
-            return objc_getAssociatedObject(base, &AssociatedKeys.viewModel) as? Base.ViewModel
+            return objc_getAssociatedObject(self, &AssociatedKeys.viewModel) as? ViewModel
         }
         set {
-            objc_setAssociatedObject(base, &AssociatedKeys.viewModel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &AssociatedKeys.viewModel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-    
-    
-    
 }
+

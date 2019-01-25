@@ -9,20 +9,20 @@
 import Foundation
 import UIKit
 
-class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
+open class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
-    var viewModel: ListViewModelType
-    var dataHolder: DataHolder {
+    public var viewModel: ListViewModelType
+    public var dataHolder: DataHolder {
         return viewModel.dataHolder
     }
     private var rootGroup: DataGroup {
         return dataHolder.modelGroup
     }
-    init(viewModel: ListViewModelType) {
+    public init(viewModel: ListViewModelType) {
         self.viewModel = viewModel
     }
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    open func numberOfSections(in collectionView: UICollectionView) -> Int {
         switch rootGroup.depth {
         case 0:
             return 0
@@ -31,7 +31,7 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
             return rootGroup.groups?.count ?? 0
         }
     }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch rootGroup.depth {
         case 0: return 0
         case 1: return rootGroup.count
@@ -41,8 +41,8 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
             return groups[section].count
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+    open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let viewModel: IdentifiableViewModelType = self.viewModel.mainViewModel(at: indexPath) as? IdentifiableItemViewModelType {
             let identifier = viewModel.identifier
             let reuseIdentifier = (self.viewModel.identifier(at: indexPath, for: nil) ?? identifier).name
@@ -73,7 +73,7 @@ extension Boomerang where Base: UICollectionView {
             return objc_getAssociatedObject(base, &AssociatedKeys.collectionViewDataSource) as? UICollectionViewDataSource
         }
         set {
-            return objc_setAssociatedObject(base, &AssociatedKeys.collectionViewDataSource, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(base, &AssociatedKeys.collectionViewDataSource, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 }

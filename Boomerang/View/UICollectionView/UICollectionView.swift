@@ -11,6 +11,14 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+
+extension UICollectionView: ViewModelCompatibleType {
+    public func set(viewModel: ViewModelType?) {
+        if let viewModel = viewModel as? ListViewModelType {
+            self.boomerang.configure(with: viewModel)
+        }
+    }
+}
 extension Boomerang where Base: UICollectionView {
     
     public func configure(with viewModel: ListViewModelType, dataSource: UICollectionViewDataSource? = nil) {
@@ -22,7 +30,7 @@ extension Boomerang where Base: UICollectionView {
         viewModel.updates
             .asDriver(onErrorJustReturn: .none)
             .drive(base.rx.dataUpdates())
-            .disposed(by: base.boomerang.disposeBag)
+            .disposed(by: base.disposeBag)
 //        viewModel.groups
 //            .asDriver(onErrorJustReturn: DataGroup.empty)
 //            .drive (onNext: {[weak base] _ in
@@ -40,6 +48,15 @@ extension Reactive where Base: UICollectionView {
             case .reload :
                 print("Reloading")
                 base.reloadData()
+                
+            case .deleteItems(let updates):
+                let indexPaths = updates()
+                print("Deleting \(indexPaths)")
+                base.performBatchUpdates({[weak base] in
+                    base?.deleteItems(at: indexPaths)
+                    }, completion: { (completed) in
+                        return
+                })
             case .insertItems(let updates):
                 let indexPaths = updates()
                 print("Inserting \(indexPaths)")

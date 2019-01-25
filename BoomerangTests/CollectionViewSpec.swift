@@ -124,6 +124,49 @@ class CollectionViewSpec: QuickSpec {
                         return optionalCell
                         }.toEventuallyNot(beNil())
                 }
+                
+                it ("should allow deletions") {
+                    let index = IndexPath(item:0, section: 0)
+                    var optionalCell: UICollectionViewCell?
+                    
+                    expect { () -> UICollectionViewCell? in
+                        optionalCell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? TestCollectionViewCell
+                        return optionalCell
+                        }.toEventuallyNot(beNil())
+                    waitUntil(timeout: 1) { done in
+                        
+                        viewModel.dataHolder.delete(at: [index])
+                        done()
+                    }
+                    
+                    waitUntil(timeout: 1, action: { $0()})
+                    //                     var optionalCell: UICollectionViewCell?
+                    expect(collectionView.dataSource).notTo(beNil())
+                    expect(collectionView.numberOfSections).toEventually(be(1))
+                    expect { viewModel.dataHolder.modelGroup.models as? [String] } ==  ["1","2","3","4"]
+                    
+                    expect { (viewModel.mainViewModel(at: index) as? TestItemViewModel)?.title } == "1"
+                    expect(collectionView.numberOfItems(inSection: 0)) == 4
+                    
+                    waitUntil(timeout: 1) { done in
+                        (0..<4).forEach {_ in
+                            viewModel.dataHolder.delete(at: [index])
+                        }
+                        done()
+                    }
+                    expect(collectionView.numberOfItems(inSection: 0)) == 0
+                    
+                }
+                it ("should not crash when too many delete are requested") {
+                    let index = IndexPath(item:0, section: 0)
+                    waitUntil(timeout: 1) { done in
+                        (0..<5).forEach {_ in
+                            viewModel.dataHolder.delete(at: [index])
+                        }
+                        done()
+                    }
+                    expect(collectionView.numberOfItems(inSection: 0)) == 0
+                }
             }
         }
     }
