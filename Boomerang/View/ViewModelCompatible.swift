@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 public protocol ViewModelCompatibleType: class {
     func set(viewModel: ViewModelType)
@@ -16,7 +17,7 @@ public protocol ViewModelCompatible: ViewModelCompatibleType {
     var viewModel: ViewModel? { get set }
     func configure(with viewModel: ViewModel?)
 }
-extension ViewModelCompatible {
+extension ViewModelCompatible where Self: BoomerangCompatible {
     public func set(viewModel: ViewModelType) {
         self.viewModel = viewModel as? ViewModel
         self.configure(with: self.viewModel)

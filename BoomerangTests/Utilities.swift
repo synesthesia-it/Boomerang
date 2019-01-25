@@ -37,7 +37,7 @@ struct TestItemViewModel: IdentifiableItemViewModelType {
 }
 
 final class TestCollectionViewCell: UICollectionViewCell, ViewModelCompatible {
-    func configure(with viewModel: ViewModelType?) {
+    func configure(with viewModel: TestItemViewModel?) {
          self.backgroundColor = .green
     }
     var viewModel: TestItemViewModel?
