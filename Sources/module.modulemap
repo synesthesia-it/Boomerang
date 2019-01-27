@@ -1,6 +1,0 @@
-framework module Boomerang {
-	umbrella header "Boomerang.h"
-
-	export *
-	module * { export * }
-}
