@@ -43,3 +43,13 @@ final class TestCollectionViewCell: UICollectionViewCell, ViewModelCompatible {
     var viewModel: TestItemViewModel?
 }
 
+class ViewController: UIViewController {
+    override func loadView() {
+        super.loadView()
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 50, height: 50)
+        //                    viewController = UICollectionViewController(collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 300, height: 300), collectionViewLayout: layout)
+        self.view = collectionView
+    }
+}

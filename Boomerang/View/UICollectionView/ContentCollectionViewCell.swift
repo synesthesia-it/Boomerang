@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 import RxSwift
 
+public protocol CollectionViewCellContained {
+    func apply(_ layoutAttributes: UICollectionViewLayoutAttributes)
+}
+
 open class ContentCollectionViewCell: UICollectionViewCell, ViewModelCompatibleType {
  
     public private(set) weak var internalView: UIView?
@@ -29,7 +33,7 @@ open class ContentCollectionViewCell: UICollectionViewCell, ViewModelCompatibleT
      If no content view was previously set, a new one is created from nib and installed.
      View model is then properly bound to inner view.
      */
-    
+
     open func set(viewModel: ViewModelType?) {
         guard let viewModel = viewModel as? IdentifiableViewModelType else { return }
         
@@ -53,6 +57,11 @@ open class ContentCollectionViewCell: UICollectionViewCell, ViewModelCompatibleT
             self.internalView = view
         }
         (self.internalView as? ViewModelCompatibleType)?.set(viewModel: viewModel)
+    }
+    
+    open override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+        super.apply(layoutAttributes)
+        (internalView as? CollectionViewCellContained)?.apply(layoutAttributes)
     }
 }
 

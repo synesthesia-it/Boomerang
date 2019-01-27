@@ -31,13 +31,6 @@ extension Boomerang where Base: UICollectionView {
             .asDriver(onErrorJustReturn: .none)
             .drive(base.rx.dataUpdates())
             .disposed(by: base.disposeBag)
-//        viewModel.groups
-//            .asDriver(onErrorJustReturn: DataGroup.empty)
-//            .drive (onNext: {[weak base] _ in
-//                base?.reloadData() })
-//            .disposed(by: base.boomerang.disposeBag)
-        
-        
     }
 }
 
