@@ -21,7 +21,7 @@ extension UICollectionView: ViewModelCompatibleType {
 }
 extension Boomerang where Base: UICollectionView {
     
-    public func configure(with viewModel: ListViewModelType, dataSource: UICollectionViewDataSource? = nil) {
+    public func configure(with viewModel: ListViewModelType, dataSource: CollectionViewDataSource? = nil) {
         
         let dataSource = dataSource ?? CollectionViewDataSource(viewModel: viewModel)
         base.dataSource = dataSource

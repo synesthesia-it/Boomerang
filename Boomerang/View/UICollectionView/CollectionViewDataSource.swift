@@ -68,9 +68,9 @@ open class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
 }
 
 extension Boomerang where Base: UICollectionView {
-    var internalDataSource: UICollectionViewDataSource? {
+    var internalDataSource: CollectionViewDataSource? {
         get {
-            return objc_getAssociatedObject(base, &AssociatedKeys.collectionViewDataSource) as? UICollectionViewDataSource
+            return objc_getAssociatedObject(base, &AssociatedKeys.collectionViewDataSource) as? CollectionViewDataSource
         }
         set {
             objc_setAssociatedObject(base, &AssociatedKeys.collectionViewDataSource, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)

@@ -11,6 +11,7 @@ import RxSwift
 import Action
 
 public typealias DataUpdate = () -> ([IndexPath])
+typealias ViewModelCache = GroupCache<IdentifiableViewModelType>
 
 enum DataHolderUpdate {
     case reload

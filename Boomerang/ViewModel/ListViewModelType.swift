@@ -12,7 +12,7 @@ import Action
 
 public protocol ListViewModelType: ViewModelType {
     var dataHolder: DataHolder { get }
-    func convert(model: ModelType, at indexPath: IndexPath, for type: String?) -> ItemViewModelType?
+    func convert(model: ModelType, at indexPath: IndexPath, for type: String?) -> IdentifiableViewModelType?
     func identifier(at indexPath: IndexPath, for type: String?) -> Identifier?
 }
 
@@ -23,12 +23,12 @@ extension ListViewModelType {
     var updates: Observable<DataHolderUpdate> {
         return dataHolder.updates.asObservable()
     }
-    func mainViewModel(at indexPath: IndexPath) -> ItemViewModelType? {
+    func mainViewModel(at indexPath: IndexPath) -> IdentifiableViewModelType? {
         guard let item = dataHolder.itemCache.mainItem(at: indexPath) else {
             guard let data = dataHolder[indexPath] else { return nil }
-            let viewModel: ItemViewModelType?
+            let viewModel: IdentifiableViewModelType?
             switch data {
-            case let itemViewModel as ItemViewModelType: viewModel = itemViewModel
+            case let itemViewModel as IdentifiableViewModelType: viewModel = itemViewModel
             case let model as ModelType: viewModel = self.convert(model: model, at: indexPath, for: nil)
             default: viewModel = nil
             }

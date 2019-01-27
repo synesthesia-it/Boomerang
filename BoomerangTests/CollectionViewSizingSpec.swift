@@ -22,7 +22,7 @@ class CollectionViewSizingSpec: QuickSpec {
             init() {
                 dataHolder = DataHolder(data: group(.just((0..<5).map {"\($0)"})))
             }
-            func convert(model: ModelType, at indexPath: IndexPath, for type: String?) -> ItemViewModelType? {
+            func convert(model: ModelType, at indexPath: IndexPath, for type: String?) -> IdentifiableViewModelType? {
                 switch model {
                 case let model as String : return TestItemViewModel(model: model)
                 default: return nil

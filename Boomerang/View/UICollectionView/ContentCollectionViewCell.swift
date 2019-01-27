@@ -40,20 +40,10 @@ open class ContentCollectionViewCell: UICollectionViewCell, ViewModelCompatibleT
         self.disposeBag = DisposeBag()
         
         if (self.internalView == nil) {
-            let view: UIView
-            if let className = (viewModel.identifier as? ReusableListIdentifier)?.className {
-                guard let innerView = (className as? UIView.Type)?.init() else {
-                    return
-                }
-                view = innerView
-            } else {
-            guard let innerView = Bundle.main.loadNibNamed(viewModel.identifier.name, owner: self, options: nil)?.first as? UIView else {
-                return
-            }
-                view = innerView
-            }
+            guard let view: UIView = (viewModel.identifier as? ViewIdentifier)?.view() else { return }
+            
             self.contentView.addSubview(view)
-            self.insetConstraints = self.contentView.fitInSuperview(with: insets)
+            self.insetConstraints = view.fitInSuperview(with: insets)
             self.internalView = view
         }
         (self.internalView as? ViewModelCompatibleType)?.set(viewModel: viewModel)

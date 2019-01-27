@@ -8,41 +8,41 @@
 
 import Foundation
 
-private struct ViewModelCacheItem {
-    var mainItem: ItemViewModelType?
-    var supplementaryItems: [String: ItemViewModelType] = [:]
+private struct GroupCacheItem<T> {
+    var mainItem: T?
+    var supplementaryItems: [String: T] = [:]
 }
 
-struct ViewModelCache {
-    private var cache:[IndexPath: ViewModelCacheItem] = [:]
+struct GroupCache<T> {
+    private var cache:[IndexPath: GroupCacheItem<T>] = [:]
     internal var isEnabled: Bool = true
     init() { }
     mutating func clear() {
         cache = [:]
     }
     
-    func mainItem(at indexPath: IndexPath) -> ItemViewModelType? {
+    func mainItem(at indexPath: IndexPath) -> T? {
         if !isEnabled { return nil }
         return cache[indexPath]?.mainItem
     }
     
-    mutating func replaceItem(_ item: ItemViewModelType?, at indexPath: IndexPath) {
+    mutating func replaceItem(_ item: T?, at indexPath: IndexPath) {
         if !isEnabled { return }
         
-        var cacheItem = cache[indexPath] ?? ViewModelCacheItem()
+        var cacheItem = cache[indexPath] ?? GroupCacheItem<T>()
         cacheItem.mainItem = item
         self.cache[indexPath] = cacheItem
 //        self.cache = cache
     }
     
-    func supplementaryItem(at indexPath: IndexPath, for type: String) -> ItemViewModelType? {
+    func supplementaryItem(at indexPath: IndexPath, for type: String) -> T? {
         if !isEnabled { return nil }
         return cache[indexPath]?.supplementaryItems[type]
     }
     
-    mutating func replaceSupplementaryItem(_ item: ItemViewModelType?, at indexPath: IndexPath, for type: String) {
+    mutating func replaceSupplementaryItem(_ item: T?, at indexPath: IndexPath, for type: String) {
         if !isEnabled { return }
-        var cacheItem = cache[indexPath] ?? ViewModelCacheItem()
+        var cacheItem = cache[indexPath] ?? GroupCacheItem<T>()
         cacheItem.supplementaryItems[type] = item
         cache[indexPath] = cacheItem
     }

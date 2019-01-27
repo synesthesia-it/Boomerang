@@ -15,9 +15,10 @@ import RxBlocking
 
 class ListViewModelSpec: QuickSpec {
     
-    struct TestItemViewModel: ItemViewModelType {
+    struct TestItemViewModel: IdentifiableItemViewModelType {
         var model: ModelType? { return title }
         var date: Date = Date()
+        var identifier: Identifier = ""
         var title: String
         init(model: String) {
             self.title = model
@@ -33,7 +34,7 @@ class ListViewModelSpec: QuickSpec {
         init(observable: Observable<DataType>){
             self.dataHolder = DataHolder(data: self.group(observable))
         }
-        func convert(model: ModelType, at indexPath: IndexPath, for type: String?) -> ItemViewModelType? {
+        func convert(model: ModelType, at indexPath: IndexPath, for type: String?) -> IdentifiableViewModelType? {
             switch model {
             case let model as String : return TestItemViewModel(model: model)
             default: return nil

@@ -13,7 +13,7 @@ import Boomerang
 
 extension String: ModelType { }
 
-extension String: ReusableListIdentifier {
+extension String: ViewIdentifier {
     public var name: String { return self }
     public var className: AnyClass? {
         if self.shouldBeEmbedded {
@@ -22,6 +22,11 @@ extension String: ReusableListIdentifier {
             return TestCollectionViewCell.self
         }
     }
+    
+    public func view<T: UIView>() -> T? {
+        return (className as? UIView.Type)?.init() as? T
+    }
+    
     public var shouldBeEmbedded: Bool { return self.contains("Cell") == false }
 }
 
@@ -45,6 +50,9 @@ struct TestItemViewModel: IdentifiableItemViewModelType {
 
 final class TestCollectionViewCell: UICollectionViewCell, ViewModelCompatible {
     typealias ViewModel = TestItemViewModel
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: 100, height: 100)
+    }
     func configure(with viewModel: TestItemViewModel?) {
         self.backgroundColor = viewModel?.color
     }
@@ -58,7 +66,7 @@ struct TestListViewModel: ListViewModel {
     init() {
         dataHolder = DataHolder(data: group(.just((0..<5).map {"\($0)"})))
     }
-    func convert(model: ModelType, at indexPath: IndexPath, for type: String?) -> ItemViewModelType? {
+    func convert(model: ModelType, at indexPath: IndexPath, for type: String?) -> IdentifiableViewModelType? {
         switch model {
         case let model as String : return TestItemViewModel(model: model)
         default: return nil
@@ -72,7 +80,7 @@ struct TestListViewModel: ListViewModel {
     }
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -81,7 +89,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.collectionView.delegate = self
         self.collectionView.boomerang.configure(with: viewModel)
         viewModel.load()
         
@@ -98,7 +106,9 @@ class ViewController: UIViewController {
             .disposed(by: disposeBag)
         
     }
-
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return collectionView.boomerang.automaticSizeForItem(at: indexPath)
+    }
 
 }
 

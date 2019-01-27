@@ -14,9 +14,39 @@ internal struct AssociatedKeys {
     static var disposeBag = "boomerang_disposeBag"
     static var viewModel = "boomerang_viewModel"
     static var collectionViewDataSource = "boomerang_collectionViewDataSource"
+    static var collectionViewCacheCell = "boomerang_collectionViewCacheCell"
+    static var isPlaceholderForAutosize = "boomerang_isPlaceholderForAutosize"
+}
+
+public protocol ViewIdentifier: ReusableListIdentifier {
+    func view<T: UIView>() -> T?
+}
+
+public protocol SceneIdentifier: ReusableListIdentifier {
+    func scene<T: UIViewController>() -> T?
+}
+
+internal extension Boomerang where Base: UIView {
+    var contentView: UIView {
+        switch base {
+        case let table as UITableViewCell: return table.contentView
+        case let collection as UICollectionViewCell: return collection.contentView
+        default: return base
+        }
+    }
 }
 
 extension ViewModelCompatibleType where Self: NSObject {
+    
+    public var isPlaceholderForAutosize: Bool {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.isPlaceholderForAutosize) as? Bool ?? false
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.isPlaceholderForAutosize, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
     public var disposeBag: DisposeBag {
         get {
             guard let lookup = objc_getAssociatedObject(self, &AssociatedKeys.disposeBag) as? DisposeBag else {
