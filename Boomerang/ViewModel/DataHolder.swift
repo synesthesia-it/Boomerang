@@ -17,6 +17,7 @@ public enum DataHolderUpdate {
     case reload
     case deleteItems(DataUpdate)
     case insertItems(DataUpdate)
+    case move(DataUpdate)
     case none
 }
 
@@ -164,6 +165,23 @@ extension DataHolder {
             _ = delete()
         } else {
             self.updates.onNext(.deleteItems(delete))
+        }
+    }
+    public func moveItem(from: IndexPath, to:IndexPath, immediate: Bool = false) {
+        let move: DataUpdate = {[weak self] in
+            guard let self = self else { return [] }
+            self.modelGroup.move(from: from, to: to)
+           
+            let tmp = self.itemCache.mainItem(at: from)
+            self.itemCache.replaceItem(self.itemCache.mainItem(at: to), at: from)
+            self.itemCache.replaceItem(tmp, at: to)
+            
+            return []
+        }
+        if immediate {
+            _ = move()
+        } else {
+            self.updates.onNext(.move(move))
         }
     }
 }

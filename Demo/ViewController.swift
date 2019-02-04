@@ -109,6 +109,5 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return collectionView.boomerang.automaticSizeForItem(at: indexPath)
     }
-
 }
 

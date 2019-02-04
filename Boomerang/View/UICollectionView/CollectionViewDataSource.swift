@@ -88,6 +88,13 @@ open class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
             return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: defaultItemIdentifier, for: indexPath)
         }
     }
+    
+    public func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return viewModel.canMoveItem(at: indexPath)
+    }
+    public func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        viewModel.moveItem(from: sourceIndexPath, to: destinationIndexPath)
+    }
 }
 
 extension Boomerang where Base: UICollectionView {

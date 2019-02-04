@@ -15,6 +15,7 @@ public protocol ListViewModelType: ViewModelType {
     var isLoadingData: Observable<Bool> { get }
     func convert(model: ModelType, at indexPath: IndexPath, for type: String?) -> IdentifiableViewModelType?
     func identifier(at indexPath: IndexPath, for type: String?) -> Identifier?
+    func canMoveItem(at indexPath: IndexPath) -> Bool
 }
 
 extension ListViewModelType {
@@ -67,6 +68,13 @@ extension ListViewModelType {
     
     public func identifier(at indexPath: IndexPath, for type: String?) -> Identifier? {
         return nil
+    }
+    
+    public func canMoveItem(at indexPath: IndexPath) -> Bool {
+        return false
+    }
+    public func moveItem(from: IndexPath, to: IndexPath) {
+        self.dataHolder.moveItem(from: from, to: to, immediate: true)
     }
 }
 

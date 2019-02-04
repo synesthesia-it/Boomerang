@@ -42,5 +42,5 @@ struct APIViewModel: ListViewModel {
         
         dataHolder = DataHolder(data: self.group(apiCall))
     }
-    
+        
 }

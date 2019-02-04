@@ -32,6 +32,27 @@ extension Boomerang where Base: UICollectionView {
             .drive(base.rx.dataUpdates())
             .disposed(by: base.disposeBag)
     }
+    
+    public func dragAndDrop() -> Disposable {
+        let gesture = UILongPressGestureRecognizer()
+        base.addGestureRecognizer(gesture)
+        return gesture.rx.event.bind {[weak base] gesture in
+            guard let base = base else { return }
+            switch gesture.state {
+            case .began:
+                guard let selectedIndexPath = base.indexPathForItem(at: gesture.location(in: base)) else {
+                    break
+                }
+                base.beginInteractiveMovementForItem(at: selectedIndexPath)
+            case .changed:
+                base.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view ?? base))
+            case .ended:
+                base.endInteractiveMovement()
+            default:
+                base.cancelInteractiveMovement()
+            }
+        }
+    }
 }
 
 extension Reactive where Base: UICollectionView {
@@ -58,6 +79,9 @@ extension Reactive where Base: UICollectionView {
                     }, completion: { (completed) in
                         return
                 })
+                
+            case .move(let updates):
+                 _ = updates()
             default: break
             }
         }

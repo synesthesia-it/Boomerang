@@ -46,6 +46,7 @@ class APIViewController: UIViewController, ViewModelCompatible, UICollectionView
         
         collectionView.addSubview(refreshControl)
         
+//        collectionView.boomerang.dragAndDrop().disposed(by: disposeBag)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
