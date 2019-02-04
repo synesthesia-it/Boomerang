@@ -10,12 +10,12 @@ import Foundation
 import Boomerang
 import RxSwift
 
-struct APIViewModel: ListViewModel {
+struct ScheduleViewModel: ListViewModel {
     
     func group(_ observable: Observable<[Show]>) -> Observable<DataGroup> {
         return observable.map { DataGroup($0, supplementaryData: [0: [
-            UICollectionView.elementKindSectionHeader: "Header",
-            UICollectionView.elementKindSectionFooter: "Footer"
+            UICollectionView.elementKindSectionHeader: "Tonight's schedule",
+            UICollectionView.elementKindSectionFooter: "Credits: tvmaze.com"
             ]]) }
     }
     
@@ -31,12 +31,10 @@ struct APIViewModel: ListViewModel {
     
     init() {
         
-        let session = URLSession(configuration: URLSessionConfiguration.default)
-        let decoder =  JSONDecoder()
-        let apiCall = session.rx
+        let apiCall = DataManager.session.rx
             .data(request: URLRequest(url: URL(string: "https://api.tvmaze.com/schedule")!))
             .map {
-            try decoder.decode([Show.Episode].self, from: $0)
+                try DataManager.decoder.decode([Show.Episode].self, from: $0)
             }
             .map { $0.map { $0.show } }
         

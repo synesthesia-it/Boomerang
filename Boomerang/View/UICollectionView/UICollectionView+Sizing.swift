@@ -95,10 +95,14 @@ extension Boomerang where Base: UICollectionView {
             return (collectionViewSize.height - insets.top - insets.bottom - (itemsPerLine - 1) * itemSpacing) / itemsPerLine
         }
     }
-    
+    private func properViewModel(at indexPath: IndexPath, for type: String?) -> IdentifiableViewModelType?{
+        guard let list = self.internalDataSource?.viewModel else { return nil }
+        guard let type = type else { return list.mainViewModel(at: indexPath)}
+        return list.supplementaryViewModel(at: indexPath, for: type)
+    }
     func placeholderCell (at indexPath: IndexPath, for type: String?, lockingTo size: LockingSize) -> UIView? {
         guard let list = self.internalDataSource?.viewModel,
-            let viewModel = list.mainViewModel(at: indexPath),
+            let viewModel = self.properViewModel(at: indexPath, for: type),
         let identifier = (list.identifier(at: indexPath, for: type) as? ViewIdentifier ?? viewModel.identifier) as? ViewIdentifier,
         let cell: UIView = cellCache[identifier.name] ?? identifier.view()
         else {

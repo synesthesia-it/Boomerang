@@ -11,6 +11,11 @@ import Boomerang
 
 struct Show: ModelType, Codable {
     
+    struct Image: Codable {
+        var medium: URL?
+        var original: URL?
+    }
+    
     struct Episode: Codable {
         var name: String
         var show: Show
@@ -21,7 +26,5 @@ struct Show: ModelType, Codable {
     }
     
     var name: String
-    enum ShowCodingKeys: CodingKey {
-        case name
-    }
+    var image: Image?
 }

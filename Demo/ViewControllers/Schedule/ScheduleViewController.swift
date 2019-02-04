@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 import Boomerang
 
-class APIViewController: UIViewController, ViewModelCompatible, UICollectionViewDelegateFlowLayout {
+class ScheduleViewController: UIViewController, ViewModelCompatible, UICollectionViewDelegateFlowLayout {
     
     
     
@@ -20,7 +20,7 @@ class APIViewController: UIViewController, ViewModelCompatible, UICollectionView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let viewModel = APIViewModel()
+        let viewModel = ScheduleViewModel()
         self.set(viewModel: viewModel)
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -28,7 +28,7 @@ class APIViewController: UIViewController, ViewModelCompatible, UICollectionView
         viewModel?.load()
     }
     
-    func configure(with viewModel: APIViewModel) {
+    func configure(with viewModel: ScheduleViewModel) {
         collectionView.delegate = self
         collectionView.alwaysBounceVertical = true
         collectionView.boomerang.configure(with: viewModel)
