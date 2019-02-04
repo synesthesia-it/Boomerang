@@ -156,6 +156,7 @@ extension DataHolder {
             }
             deletedIndexPaths.forEach {
                 self.itemCache.replaceItem(nil, at: $0)
+                self.itemCache.replaceSupplementaryItem(nil, at: $0, for: nil)
             }
             return deletedIndexPaths
         }
@@ -164,5 +165,11 @@ extension DataHolder {
         } else {
             self.updates.onNext(.deleteItems(delete))
         }
+    }
+}
+
+extension DataHolder {
+    func supplementaryItem(at indexPath: IndexPath, for type: String) -> DataType? {
+        return modelGroup.supplementaryData(at: indexPath, for: type)
     }
 }

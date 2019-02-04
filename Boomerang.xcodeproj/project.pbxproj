@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7032703222083E9B00D6C052 /* HeaderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7032703122083E9B00D6C052 /* HeaderItemView.swift */; };
+		7032703622083F0300D6C052 /* HeaderItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7032703522083EF500D6C052 /* HeaderItemView.xib */; };
 		704B476C21F363F3007E11DA /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 704B476221F363F3007E11DA /* Boomerang.framework */; };
 		704B477321F363F3007E11DA /* Boomerang.h in Headers */ = {isa = PBXBuildFile; fileRef = 704B476521F363F3007E11DA /* Boomerang.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		704B477D21F36581007E11DA /* ModelGroupSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704B477C21F36581007E11DA /* ModelGroupSpec.swift */; };
+		704B477D21F36581007E11DA /* DataGroupSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704B477C21F36581007E11DA /* DataGroupSpec.swift */; };
 		704B478021F36615007E11DA /* ModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704B477F21F36615007E11DA /* ModelType.swift */; };
 		704B478221F3667A007E11DA /* DataGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704B478121F3667A007E11DA /* DataGroup.swift */; };
 		706142A921F3C280003040D2 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142A821F3C280003040D2 /* ViewModelType.swift */; };
@@ -87,11 +89,13 @@
 		279D315F38ACD8DC938C5722 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49D5674D42FA0F335ECC7AE5 /* Pods-Boomerang.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boomerang.release.xcconfig"; path = "Pods/Target Support Files/Pods-Boomerang/Pods-Boomerang.release.xcconfig"; sourceTree = "<group>"; };
 		66BB7074E6DD4444BDAEBABF /* Pods_BoomerangTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoomerangTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7032703122083E9B00D6C052 /* HeaderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderItemView.swift; sourceTree = "<group>"; };
+		7032703522083EF500D6C052 /* HeaderItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderItemView.xib; sourceTree = "<group>"; };
 		704B476221F363F3007E11DA /* Boomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		704B476521F363F3007E11DA /* Boomerang.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Boomerang.h; sourceTree = "<group>"; };
 		704B476621F363F3007E11DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		704B476B21F363F3007E11DA /* BoomerangTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoomerangTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		704B477C21F36581007E11DA /* ModelGroupSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelGroupSpec.swift; sourceTree = "<group>"; };
+		704B477C21F36581007E11DA /* DataGroupSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGroupSpec.swift; sourceTree = "<group>"; };
 		704B477F21F36615007E11DA /* ModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelType.swift; sourceTree = "<group>"; };
 		704B478121F3667A007E11DA /* DataGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGroup.swift; sourceTree = "<group>"; };
 		706142A821F3C280003040D2 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
@@ -229,7 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				70A54FC921FE2E2300BC9252 /* Info.plist */,
-				704B477C21F36581007E11DA /* ModelGroupSpec.swift */,
+				704B477C21F36581007E11DA /* DataGroupSpec.swift */,
 				706142C821F51C0F003040D2 /* CollectionViewSpec.swift */,
 				70A54FB221FCC5B500BC9252 /* CollectionViewSizingSpec.swift */,
 				706142CA21F51DF3003040D2 /* Utilities.swift */,
@@ -264,10 +268,10 @@
 		706142B621F4F349003040D2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				706142C121F5017C003040D2 /* UICollectionView */,
 				706142B721F4F367003040D2 /* BoomerangProxy.swift */,
 				706142B921F4F5B0003040D2 /* UIKit.swift */,
 				706142C421F50693003040D2 /* Utilities.swift */,
-				706142C121F5017C003040D2 /* UICollectionView */,
 				706142BB21F4F701003040D2 /* ViewModelCompatible.swift */,
 			);
 			path = View;
@@ -322,7 +326,9 @@
 		70A54FBE21FDFB2400BC9252 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7032703122083E9B00D6C052 /* HeaderItemView.swift */,
 				70A54FBF21FDFB3A00BC9252 /* ShowItemView.swift */,
+				7032703522083EF500D6C052 /* HeaderItemView.xib */,
 				70A54FC521FE207700BC9252 /* ShowItemView.xib */,
 			);
 			path = Views;
@@ -463,6 +469,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7032703622083F0300D6C052 /* HeaderItemView.xib in Resources */,
 				70A54FC621FE207700BC9252 /* ShowItemView.xib in Resources */,
 				7061430121F5F95B003040D2 /* LaunchScreen.storyboard in Resources */,
 				706142FE21F5F95B003040D2 /* Assets.xcassets in Resources */,
@@ -631,7 +638,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				704B477D21F36581007E11DA /* ModelGroupSpec.swift in Sources */,
+				704B477D21F36581007E11DA /* DataGroupSpec.swift in Sources */,
 				70A54FB321FCC5B500BC9252 /* CollectionViewSizingSpec.swift in Sources */,
 				706142C921F51C0F003040D2 /* CollectionViewSpec.swift in Sources */,
 				706142B521F4C7FF003040D2 /* ListViewModelSpec.swift in Sources */,
@@ -652,6 +659,7 @@
 				70A54FB921FDF77400BC9252 /* APIViewController.swift in Sources */,
 				70A54FC821FE25B300BC9252 /* Show.swift in Sources */,
 				70A54FBB21FDF77C00BC9252 /* APIViewModel.swift in Sources */,
+				7032703222083E9B00D6C052 /* HeaderItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

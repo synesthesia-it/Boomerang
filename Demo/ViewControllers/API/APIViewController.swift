@@ -52,4 +52,11 @@ class APIViewController: UIViewController, ViewModelCompatible, UICollectionView
         let n = self.traitCollection.horizontalSizeClass == .compact ? 2 : 3
         return collectionView.boomerang.automaticSizeForItem(at: indexPath, itemsPerLine: n)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return collectionView.boomerang.automaticSizeForItem(at: IndexPath(item: 0, section: 0), type: UICollectionView.elementKindSectionHeader, itemsPerLine: 1)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return collectionView.boomerang.automaticSizeForItem(at: IndexPath(item: 0, section: 0), type: UICollectionView.elementKindSectionHeader, itemsPerLine: 1)
+    }
 }

@@ -117,7 +117,7 @@ class CollectionViewSpec: QuickSpec {
 //                     var optionalCell: UICollectionViewCell?
                     expect(collectionView.dataSource).notTo(beNil())
                      expect(collectionView.numberOfSections).toEventually(be(1))
-                    expect { viewModel.dataHolder.modelGroup.models as? [String] } ==  ["0","1","2","3","4","E", "F"]
+                    expect { viewModel.dataHolder.modelGroup.data as? [String] } ==  ["0","1","2","3","4","E", "F"]
                     expect(collectionView.numberOfItems(inSection: 0)) == 7
                     expect { () -> UICollectionViewCell? in
                         optionalCell = collectionView.cellForItem(at: index) as? TestCollectionViewCell
@@ -143,7 +143,7 @@ class CollectionViewSpec: QuickSpec {
                     //                     var optionalCell: UICollectionViewCell?
                     expect(collectionView.dataSource).notTo(beNil())
                     expect(collectionView.numberOfSections).toEventually(be(1))
-                    expect { viewModel.dataHolder.modelGroup.models as? [String] } ==  ["1","2","3","4"]
+                    expect { viewModel.dataHolder.modelGroup.data as? [String] } ==  ["1","2","3","4"]
                     
                     expect { (viewModel.mainViewModel(at: index) as? TestItemViewModel)?.title } == "1"
                     expect(collectionView.numberOfItems(inSection: 0)) == 4

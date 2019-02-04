@@ -13,13 +13,17 @@ import RxSwift
 struct APIViewModel: ListViewModel {
     
     func group(_ observable: Observable<[Show]>) -> Observable<DataGroup> {
-        return observable.map { DataGroup($0) }
+        return observable.map { DataGroup($0, supplementaryData: [0: [
+            UICollectionView.elementKindSectionHeader: "Header",
+            UICollectionView.elementKindSectionFooter: "Footer"
+            ]]) }
     }
     
     var dataHolder: DataHolder = DataHolder()
     
     func convert(model: ModelType, at indexPath: IndexPath, for type: String?) -> IdentifiableViewModelType? {
         switch model {
+        case let title as String: return HeaderItemViewModel(title: title)
         case let model as Show: return ShowItemViewModel(model: model)
         default: return nil
         }

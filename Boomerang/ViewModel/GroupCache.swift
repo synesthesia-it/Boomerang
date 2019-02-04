@@ -40,10 +40,14 @@ struct GroupCache<T> {
         return cache[indexPath]?.supplementaryItems[type]
     }
     
-    mutating func replaceSupplementaryItem(_ item: T?, at indexPath: IndexPath, for type: String) {
+    mutating func replaceSupplementaryItem(_ item: T?, at indexPath: IndexPath, for type: String?) {
         if !isEnabled { return }
         var cacheItem = cache[indexPath] ?? GroupCacheItem<T>()
-        cacheItem.supplementaryItems[type] = item
+        if let type = type {
+            cacheItem.supplementaryItems[type] = item
+        } else {
+            cache[indexPath] = nil
+        }
         cache[indexPath] = cacheItem
     }
     

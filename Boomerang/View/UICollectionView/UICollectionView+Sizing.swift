@@ -80,7 +80,8 @@ extension Boomerang where Base: UICollectionView {
     }
     
     var collectionViewSize: CGSize {
-        return CGSize(width: base.bounds.width - base.contentInset.left - base.contentInset.right, height: base.bounds.height - base.contentInset.top - base.contentInset.top)
+        return CGSize(width: base.bounds.width - base.contentInset.left - base.contentInset.right,
+                      height: base.bounds.height - base.contentInset.top - base.contentInset.top)
     }
     
     public func calculateFixedDimension(for direction:Direction, at indexPath: IndexPath, itemsPerLine: Int) -> CGFloat {
@@ -128,7 +129,6 @@ extension Boomerang where Base: UICollectionView {
         
         self.cellCache[identifier.name] = cell
         (cell as? ViewModelCompatibleType)?.set(viewModel: viewModel)
-//        (cell as? ViewModelCompatibleType)?.set(viewModel: viewModel)
         return cell
     }
     public func automaticSizeForItem(at indexPath: IndexPath, type: String? = nil, lockedTo lock: LockingSize) -> CGSize {

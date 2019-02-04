@@ -42,6 +42,21 @@ extension ListViewModelType {
         return item
     }
     
+    public func supplementaryViewModel(at indexPath: IndexPath, for type: String) -> IdentifiableViewModelType? {
+        guard let item = dataHolder.itemCache.supplementaryItem(at: indexPath, for: type) else {
+            guard let data = dataHolder.supplementaryItem(at: indexPath, for: type) else { return nil }
+            let viewModel: IdentifiableViewModelType?
+            switch data {
+            case let itemViewModel as IdentifiableViewModelType: viewModel = itemViewModel
+            case let model as ModelType: viewModel = self.convert(model: model, at: indexPath, for: type)
+            default: viewModel = nil
+            }
+            dataHolder.itemCache.replaceSupplementaryItem(viewModel, at: indexPath, for: type)
+            return viewModel
+        }
+        return item
+    }
+    
     public func load() {
         self.dataHolder.start()
     }

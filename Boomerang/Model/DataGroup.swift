@@ -1,5 +1,5 @@
 //
-//  ModelGroup.swift
+//  DataGroup.swift
 //  Boomerang
 //
 //  Created by Stefano Mondino on 19/01/2019.
@@ -10,18 +10,23 @@ import Foundation
 
 public protocol DataType {}
 
+
+
 public struct DataGroup: MutableCollection, RandomAccessCollection {
+    public typealias SupplementaryData = [Int: [String: DataType]]
     public typealias Index = IndexPath
     public typealias Element = DataType?
-    public private(set) var models: [DataType] = []
+    public private(set) var data: [DataType] = []
+    public private(set) var supplementaryData: SupplementaryData = [:]
     public private(set) var groups: [DataGroup]? = nil
     static var empty: DataGroup {
         return DataGroup([])
     }
     public init()  {}
     
-    public init(_ models:[DataType]) {
-        self.models = models
+    public init(_ data:[DataType], supplementaryData: SupplementaryData = [:]) {
+        self.data = data
+        self.supplementaryData = supplementaryData
     }
     public init(groups: [DataGroup]) {
         let depths = groups.map { $0.depth }
@@ -32,27 +37,35 @@ public struct DataGroup: MutableCollection, RandomAccessCollection {
             self.groups = groups.map { $0.group(rescaledTo: maxDepth) }
         }
     }
-    private var nestedModels: [DataType] {
-        return self.groups?.flatMap { $0.nestedModels } ?? models
+    private var nestedData: [DataType] {
+        return self.groups?.flatMap { $0.nestedData } ?? data
     }
     private func group (rescaledTo depth: Int) -> DataGroup {
         let localDepth = self.depth
         if localDepth == depth { return self }
         if localDepth > depth {
-            return DataGroup(self.nestedModels)
+            return DataGroup(self.nestedData)
         }
         return DataGroup(groups: [self.group(rescaledTo: depth - 1)])
     }
     
     public var last: DataType? {
-        return groups?.last?.last ?? models.last
+        return groups?.last?.last ?? data.last
     }
+    
+    /// Data used to provide supplementary information for a single item
+    /// Example use case: UICollectionView's supplementary view
+    public func supplementaryData(at indexPath: IndexPath, for type: String) -> DataType? {
+        guard let i = indexPath.last else { return nil }
+        return supplementaryData[i]?[type]
+    }
+    
     // The upper and lower bounds of the collection, used in iterations
     public var startIndex: Index {
         if let firstGroup = groups?.first {
             return IndexPath(indexes: [0] + firstGroup.startIndex)
         }
-        return IndexPath(indexes:[models.startIndex])
+        return IndexPath(indexes:[data.startIndex])
     }
     public var depth: Int {
         if let groups = self.groups {
@@ -66,7 +79,7 @@ public struct DataGroup: MutableCollection, RandomAccessCollection {
             let group = groups.last {
             return IndexPath(indexes: [groups.count - 1] + group.endIndex)
         }
-        return IndexPath(indexes:[models.endIndex])
+        return IndexPath(indexes:[data.endIndex])
     }
     
     public subscript(index: Index) -> Element {
@@ -79,8 +92,8 @@ public struct DataGroup: MutableCollection, RandomAccessCollection {
             }
             if
                 let lastIndex = index.last,
-                models.count > lastIndex {
-                return models[lastIndex]
+                data.count > lastIndex {
+                return data[lastIndex]
             }
             return nil
         }
@@ -94,14 +107,14 @@ public struct DataGroup: MutableCollection, RandomAccessCollection {
             }
             if
                 let lastIndex = index.last,
-                models.count > lastIndex,
+                data.count > lastIndex,
                 let value = newValue {
-                models[lastIndex] = value
+                data[lastIndex] = value
             }
         }
     }
     public var count: Int {
-        return self.groups?.map { $0.count }.reduce(0,+) ?? self.models.count
+        return self.groups?.map { $0.count }.reduce(0,+) ?? self.data.count
     }
     // Method that returns the next index when iterating
     public func index(after i: Index) -> Index {
@@ -120,7 +133,7 @@ public struct DataGroup: MutableCollection, RandomAccessCollection {
                 return self.endIndex
             }
         }
-        let lastIndex = self.models.index(after: i.last ?? 0)
+        let lastIndex = self.data.index(after: i.last ?? 0)
         let endIndex = self.endIndex
         if endIndex.last == lastIndex {
             return endIndex
@@ -150,19 +163,19 @@ public struct DataGroup: MutableCollection, RandomAccessCollection {
                 }
             }
         }
-        let firstIndex = self.models.index(before: i.last ?? 0)
+        let firstIndex = self.data.index(before: i.last ?? 0)
         let startIndex = self.startIndex
         if (startIndex.first ?? 0) >= firstIndex {
             return startIndex
         }
         return IndexPath(indexes: i.dropLast() + [firstIndex])
     }
-    mutating public func append(_ model: DataType) {
-        self.append([model])
+    mutating public func append(_ data: DataType) {
+        self.append([data])
     }
-    mutating public func append(_ models: [DataType]) {
+    mutating public func append(_ data: [DataType]) {
         if self.groups != nil { return }
-        self.models.append(contentsOf: models)
+        self.data.append(contentsOf: data)
     }
     mutating public func append(_ group: DataGroup) {
         let depth = self.depth - 1
@@ -173,28 +186,28 @@ public struct DataGroup: MutableCollection, RandomAccessCollection {
         self.groups?.append(contentsOf: groups.map { $0.group(rescaledTo: depth)})
     }
     
-    mutating public func insert(_ model: DataType, at indexPath: IndexPath) {
-        self.insert([model], at: indexPath)
+    mutating public func insert(_ data: DataType, at indexPath: IndexPath) {
+        self.insert([data], at: indexPath)
     }
     
     @discardableResult
-    mutating public func insert(_ models: [DataType], at indexPath: IndexPath) -> IndexPath? {
+    mutating public func insert(_ data: [DataType], at indexPath: IndexPath) -> IndexPath? {
         if let groups = self.groups,
             indexPath.count > 1,
             let index = indexPath.first,
             groups.count > index {
-            if let inserted = self.groups?[index].insert(models, at: indexPath.dropFirst()) {
+            if let inserted = self.groups?[index].insert(data, at: indexPath.dropFirst()) {
                 return IndexPath(indexes:[index] + inserted.indices)
             }
             
             return nil
         }
         if let index = indexPath.last {
-            if self.models.endIndex < index {
+            if self.data.endIndex < index {
                 return nil
             }
-            self.models.insert(contentsOf: models, at: index)
-            return indexPath.dropLast().appending([Swift.min(index, self.models.count - 1)])
+            self.data.insert(contentsOf: data, at: index)
+            return indexPath.dropLast().appending([Swift.min(index, self.data.count - 1)])
         }
         return nil
     }
@@ -208,8 +221,8 @@ public struct DataGroup: MutableCollection, RandomAccessCollection {
             
         }
         if let index = indexPath.last {
-            if models.count <= index { return nil }
-            return self.models.remove(at: index)
+            if data.count <= index { return nil }
+            return self.data.remove(at: index)
         }
         return nil
     }

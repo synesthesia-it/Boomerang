@@ -20,7 +20,7 @@ extension DataGroup {
     }
 }
 
-class ModelGroupSpec: QuickSpec {
+class DataGroupSpec: QuickSpec {
     
     
     override func spec() {
@@ -187,6 +187,23 @@ class ModelGroupSpec: QuickSpec {
                     expect(modelGroup[IndexPath(item: 1, section: 0)] as? Double) == 1.2
                     expect(modelGroup[IndexPath(item: 2, section: 0)] as? String) == "C"
                 }
+            }
+            
+            context ("when initialized with supplementary data") {
+                var modelGroup: DataGroup = DataGroup()
+                beforeEach {
+                    modelGroup = DataGroup(["A"], supplementaryData: [0: ["id":"supplementary"]])
+                }
+                
+                it ("should alter normal properties") {
+                    expect(modelGroup.depth) == 1
+                    expect(modelGroup[IndexPath(item: 0, section: 0)] as? String) == "A"
+                }
+                
+                it ("should properly store and retrieve supplementary data") {
+                    expect(modelGroup.supplementaryData(at: IndexPath(item: 0, section: 0), for: "id") as? String) == "supplementary"
+                }
+                
             }
         }
     }
