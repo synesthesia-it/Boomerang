@@ -2,14 +2,16 @@
 
 platform :ios, '10.0'
 
-target 'Boomerang' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
-  pod 'RxSwift'
-  pod 'RxCocoa'
-  pod 'Action'
-  # Pods for Boomerang
+def shared_pods
+    use_frameworks!
+    pod 'RxSwift'
+    pod 'RxCocoa'
+    pod 'Action'
+end
 
+target 'Boomerang' do
+  shared_pods
+  platform :ios, '10.0'
   target 'BoomerangTests' do
     inherit! :search_paths
     # Pods for testing
@@ -17,14 +19,19 @@ target 'Boomerang' do
    pod 'RxBlocking'
    pod 'Nimble'
   end
+end
 
+target 'Boomerang-tv' do
+    shared_pods
+    platform :tvos, '10.0'
 end
 
 target 'Demo' do
-    use_frameworks!
-    pod 'RxSwift'
-    pod 'RxCocoa'
-    pod 'RxAtomic'
-    pod 'Action'
+    platform :ios, '10.0'
+    shared_pods
 end
-
+target 'DemoTV' do
+    shared_pods
+    platform :tvos, '10.0'
+    
+end

@@ -33,24 +33,30 @@ class ScheduleViewController: UIViewController, ViewModelCompatible, UICollectio
         collectionView.alwaysBounceVertical = true
         collectionView.boomerang.configure(with: viewModel)
         
-        let refreshControl = UIRefreshControl()
-        viewModel.isLoadingData
-            .asDriver(onErrorJustReturn: false)
-            .drive(refreshControl.rx.isRefreshing)
-            .disposed(by: disposeBag)
-        
-        refreshControl.rx
-            .controlEvent(.valueChanged)
-            .bind { _ in viewModel.load() }
-            .disposed(by: disposeBag)
-        
-        collectionView.addSubview(refreshControl)
+//        let refreshControl = UIRefreshControl()
+//        viewModel.isLoadingData
+//            .asDriver(onErrorJustReturn: false)
+//            .drive(refreshControl.rx.isRefreshing)
+//            .disposed(by: disposeBag)
+//        
+//        refreshControl.rx
+//            .controlEvent(.valueChanged)
+//            .bind { _ in viewModel.load() }
+//            .disposed(by: disposeBag)
+//        
+//        collectionView.addSubview(refreshControl)
         
 //        collectionView.boomerang.dragAndDrop().disposed(by: disposeBag)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let n = self.traitCollection.horizontalSizeClass == .compact ? 2 : 3
+        let n: Int
+        if UIDevice.current.userInterfaceIdiom == .tv {
+            n = 8
+        }
+        else  {
+            n = self.traitCollection.horizontalSizeClass == .compact ? 2 : 3
+        }
         return collectionView.boomerang.automaticSizeForItem(at: indexPath, itemsPerLine: n)
     }
     

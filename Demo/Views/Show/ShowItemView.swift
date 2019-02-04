@@ -26,7 +26,7 @@ class ShowItemViewModel: IdentifiableItemViewModelType {
 
 class ShowItemView: UIView, ViewModelCompatible {
     
-    @IBOutlet var title: UILabel!
+    @IBOutlet var title: UILabel?
     @IBOutlet var image: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,10 +35,25 @@ class ShowItemView: UIView, ViewModelCompatible {
     }
     func configure(with viewModel: ShowItemViewModel) {
         disposeBag = DisposeBag()
-        title.text = viewModel.title
+        title?.text = viewModel.title
         if isPlaceholderForAutosize { return }
         
-        viewModel.image.asDriver(onErrorJustReturn: nil).drive(image.rx.image).disposed(by: disposeBag)
+        viewModel.image.startWith(nil).asDriver(onErrorJustReturn: nil).drive(image.rx.image).disposed(by: disposeBag)
     }
     
+    override var canBecomeFocused: Bool { return true }
+    
+    override func shouldUpdateFocus(in context: UIFocusUpdateContext) -> Bool {
+        return true
+    }
+    
+    override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        return [self]
+    }
+    
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        super.didUpdateFocus(in: context, with: coordinator)
+        
+        self.alpha = self.isFocused ? 0.5 : 1
+    }
 }

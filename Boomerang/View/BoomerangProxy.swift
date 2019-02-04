@@ -37,5 +37,3 @@ extension BoomerangCompatible {
     }
 }
 
-extension UIView: BoomerangCompatible { }
-extension UIViewController: BoomerangCompatible { }

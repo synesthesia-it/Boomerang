@@ -15,3 +15,9 @@ public protocol ReusableListIdentifier: Identifier {
     var shouldBeEmbedded: Bool { get }
     var className: AnyClass? { get }
 }
+
+public protocol ViewIdentifier: ReusableListIdentifier {
+    func view<T: View>() -> T?
+}
+
+

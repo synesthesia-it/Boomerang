@@ -10,20 +10,15 @@ import Foundation
 import RxSwift
 import UIKit
 
+public typealias Scene = UIViewController
+public typealias View = UIView
+
 internal struct AssociatedKeys {
     static var disposeBag = "boomerang_disposeBag"
     static var viewModel = "boomerang_viewModel"
     static var collectionViewDataSource = "boomerang_collectionViewDataSource"
     static var collectionViewCacheCell = "boomerang_collectionViewCacheCell"
     static var isPlaceholderForAutosize = "boomerang_isPlaceholderForAutosize"
-}
-
-public protocol ViewIdentifier: ReusableListIdentifier {
-    func view<T: UIView>() -> T?
-}
-
-public protocol SceneIdentifier: ReusableListIdentifier {
-    func scene<T: UIViewController>() -> T?
 }
 
 internal extension Boomerang where Base: UIView {
@@ -74,3 +69,6 @@ public extension ViewModelCompatible where Self: NSObject {
     }
 }
 
+
+extension UIView: BoomerangCompatible { }
+extension UIViewController: BoomerangCompatible { }

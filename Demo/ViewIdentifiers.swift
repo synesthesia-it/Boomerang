@@ -8,6 +8,8 @@
 
 import Foundation
 import Boomerang
+import UIKit
+
 struct Identifiers {
     enum View: String, ViewIdentifier {
         
@@ -23,7 +25,12 @@ struct Identifiers {
         var className: AnyClass? { return nil }
         
         var name: String {
-            return rawValue.firstCharacterCapitalized() + "ItemView"
+            var suffix = ""
+            if UIDevice.current.userInterfaceIdiom == .tv {
+                suffix = "~tv"
+            }
+            
+            return rawValue.firstCharacterCapitalized() + "ItemView" + suffix
         }
         
     }

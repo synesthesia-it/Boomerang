@@ -53,6 +53,13 @@ open class ContentCollectionViewCell: UICollectionViewCell, ViewModelCompatibleT
         super.apply(layoutAttributes)
         (internalView as? CollectionViewCellContained)?.apply(layoutAttributes)
     }
+    
+    open override var canBecomeFocused: Bool {
+        return internalView?.canBecomeFocused ?? super.canBecomeFocused
+    }
+    open override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        return internalView?.preferredFocusEnvironments ?? super.preferredFocusEnvironments
+    }
 }
 
 
