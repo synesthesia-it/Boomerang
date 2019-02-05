@@ -29,3 +29,7 @@ extension URL {
             .map { Image(data: $0) }
     }
 }
+struct NavigationRoute: ViewModelRoute {
+    var viewModel: SceneViewModelType
+}
+

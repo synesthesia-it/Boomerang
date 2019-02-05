@@ -14,11 +14,15 @@ import RxCocoa
 public typealias Selection = Action<Interaction,Interaction>
 
 public enum Interaction {
+    case none
     case restart
     case route(Route)
     case viewModel(ViewModelType)
-    case custom(()->())
+    case selectItem(IndexPath)
+    case custom(CustomInteraction)
 }
+
+public protocol CustomInteraction {}
 
 public protocol InteractionViewModelType: ViewModelType {
     var selection: Selection { get }
@@ -26,6 +30,7 @@ public protocol InteractionViewModelType: ViewModelType {
     func handleRestart() -> Observable<Interaction>
     func handleRoute(_ route: Route) -> Observable<Interaction>
     func handleViewModel(_ viewModel: ViewModelType) -> Observable<Interaction>
+    func handleSelectItem(_ indexPath: IndexPath) -> Observable<Interaction>
 }
 
 extension InteractionViewModelType {
@@ -41,7 +46,9 @@ extension InteractionViewModelType {
         case .restart: return self.handleRestart()
         case .route(let route): return self.handleRoute(route)
         case .viewModel(let viewModel): return self.handleViewModel(viewModel)
-        default: return .empty()
+        case .selectItem(let indexPath): return self.handleSelectItem(indexPath)
+        case .custom(let custom): return self.handleCustom(custom)
+        case .none: return .empty()
         }
     }
     
@@ -51,9 +58,17 @@ extension InteractionViewModelType {
     public func handleRoute(_ route: Route) -> Observable<Interaction> {
         return .just(.route(route))
     }
-    
-    public func handleRoute(_ viewModel: ViewModelType) -> Observable<Interaction> {
+    public func handleViewModel(_ viewModel: ViewModelType) -> Observable<Interaction> {
         return .just(.viewModel(viewModel))
+    }
+    public func handleSelectItem(_ indexPath: IndexPath) -> Observable<Interaction> {
+        return .empty()
+    }
+    func handleCustom(_ interaction: CustomInteraction) -> Observable<Interaction> {
+        return .empty()
+    }
+    public func interact(_ input: Interaction) {
+        self.selection.execute(input)
     }
 }
 

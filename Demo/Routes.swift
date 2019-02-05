@@ -14,9 +14,7 @@ struct MainRoute: ViewModelRoute {
     var viewModel: SceneViewModelType
 }
 
-struct NavigationRoute: ViewModelRoute {
-    var viewModel: SceneViewModelType
-}
+
 
 extension Router {
     static func bootstrap() {
@@ -24,6 +22,7 @@ extension Router {
             guard let controller = route.destination else {
                 fatalError("No root controller found. Please check your routes")
             }
+            (controller as? UIViewController & ViewModelCompatibleType)?.loadViewAndSet(viewModel: route.viewModel)
             let destination = UINavigationController(rootViewController:controller)
             UIApplication.shared.delegate?.window??.rootViewController = destination
         }
@@ -32,6 +31,7 @@ extension Router {
             guard let destination = route.destination else {
                 return
             }
+            (destination as? UIViewController & ViewModelCompatibleType)?.loadViewAndSet(viewModel: route.viewModel)
             source?.navigationController?.pushViewController(destination, animated: true)
         }
     }

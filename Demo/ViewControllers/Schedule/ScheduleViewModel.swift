@@ -10,7 +10,10 @@ import Foundation
 import Boomerang
 import RxSwift
 
-struct ScheduleViewModel: ListViewModel, SceneViewModelType {
+class ScheduleViewModel: ListViewModel, SceneViewModelType, InteractionViewModelType {
+    
+    lazy var selection: Selection = self.defaultSelection()
+    
     var sceneIdentifier: SceneIdentifier = Identifiers.Scenes.schedule
     
     func group(_ observable: Observable<[Show]>) -> Observable<DataGroup> {
@@ -41,5 +44,10 @@ struct ScheduleViewModel: ListViewModel, SceneViewModelType {
         
         dataHolder = DataHolder(data: self.group(apiCall))
     }
-        
+    
+    func handleSelectItem(_ indexPath: IndexPath) -> Observable<Interaction> {
+        guard let model = self.dataHolder[indexPath] else { return .empty() }
+        let vm = ScheduleViewModel()
+        return .just(.route(NavigationRoute(viewModel:vm)))
+    }
 }

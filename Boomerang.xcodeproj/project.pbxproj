@@ -126,6 +126,10 @@
 		70DBC7062209F60B00E0BB27 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC7052209F60B00E0BB27 /* Interaction.swift */; };
 		70DBC7072209F60B00E0BB27 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC7052209F60B00E0BB27 /* Interaction.swift */; };
 		70DBC7082209F60B00E0BB27 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC7052209F60B00E0BB27 /* Interaction.swift */; };
+		7B9FC85C220A0F7000E46539 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC85B220A0F7000E46539 /* UIViewController.swift */; };
+		7B9FC85E220A104100E46539 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC85B220A0F7000E46539 /* UIViewController.swift */; };
+		7B9FC860220A15D000E46539 /* ViewController+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC85F220A15D000E46539 /* ViewController+Setup.swift */; };
+		7B9FC861220A15D000E46539 /* ViewController+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC85F220A15D000E46539 /* ViewController+Setup.swift */; };
 		7E5731E462DBDE4C62B9E8B8 /* Pods_BoomerangTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B236ED10939A542FCEB1B052 /* Pods_BoomerangTests.framework */; };
 		8469E91E30C2F5140AE7A07B /* Pods_Boomerang_watch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E326479A355B1FCE1023CB5 /* Pods_Boomerang_watch.framework */; };
 		9D054F927B41F55BE8AD236F /* Pods_DemoTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A5234CA90940D58D22BE77 /* Pods_DemoTV.framework */; };
@@ -314,6 +318,8 @@
 		70DBC6FE2209CA3800E0BB27 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		70DBC7022209CFEF00E0BB27 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		70DBC7052209F60B00E0BB27 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
+		7B9FC85B220A0F7000E46539 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		7B9FC85F220A15D000E46539 /* ViewController+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Setup.swift"; sourceTree = "<group>"; };
 		8222C4EB855BB3250D38CA72 /* Pods-Boomerang-tv.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boomerang-tv.release.xcconfig"; path = "Pods/Target Support Files/Pods-Boomerang-tv/Pods-Boomerang-tv.release.xcconfig"; sourceTree = "<group>"; };
 		8584F9563C5DC69A093A7C18 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		858CF253BA7E7567C48FA791 /* Pods-DemoWatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoWatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemoWatch/Pods-DemoWatch.debug.xcconfig"; sourceTree = "<group>"; };
@@ -466,6 +472,7 @@
 			isa = PBXGroup;
 			children = (
 				706142B921F4F5B0003040D2 /* UIKit.swift */,
+				7B9FC85B220A0F7000E46539 /* UIViewController.swift */,
 				706142C421F50693003040D2 /* UIKit+Constraints.swift */,
 				706142C121F5017C003040D2 /* UICollectionView */,
 			);
@@ -589,6 +596,7 @@
 				706142F621F5F95A003040D2 /* AppDelegate.swift */,
 				706142F821F5F95A003040D2 /* ViewController.swift */,
 				70DBC7022209CFEF00E0BB27 /* Routes.swift */,
+				7B9FC85F220A15D000E46539 /* ViewController+Setup.swift */,
 				70A54FC321FE1E9700BC9252 /* Utilities.swift */,
 				70A54FC121FDFBCE00BC9252 /* ViewIdentifiers.swift */,
 				70A54FC721FE25B300BC9252 /* Show.swift */,
@@ -975,15 +983,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Demo-checkManifestLockResult.txt",
 			);
@@ -997,8 +1001,6 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Demo/Pods-Demo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Action-iOS10.0/Action.framework",
@@ -1007,8 +1009,6 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift-iOS10.0/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Action.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
@@ -1025,15 +1025,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-DemoWatch Extension-checkManifestLockResult.txt",
 			);
@@ -1047,18 +1043,18 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DemoWatch Extension/Pods-DemoWatch Extension-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Action-watchOS3.0/Action.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic-watchOS3.0/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa-watchOS3.0/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift-watchOS3.0/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Action-watchOS4.0/Action.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic-watchOS4.0/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa-watchOS4.0/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift-watchOS4.0/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Action.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
@@ -1075,15 +1071,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-DemoTV-checkManifestLockResult.txt",
 			);
@@ -1097,8 +1089,6 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BoomerangTests/Pods-BoomerangTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic-iOS10.0/RxAtomic.framework",
@@ -1110,8 +1100,6 @@
 				"${BUILT_PRODUCTS_DIR}/RxCocoa-iOS10.0/RxCocoa.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -1131,8 +1119,6 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DemoTV/Pods-DemoTV-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Action-tvOS10.0/Action.framework",
@@ -1141,8 +1127,6 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift-tvOS10.0/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Action.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
@@ -1159,15 +1143,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Boomerang-tv-checkManifestLockResult.txt",
 			);
@@ -1181,15 +1161,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-BoomerangTests-checkManifestLockResult.txt",
 			);
@@ -1203,15 +1179,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-DemoWatch-checkManifestLockResult.txt",
 			);
@@ -1225,15 +1197,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Boomerang-watch-checkManifestLockResult.txt",
 			);
@@ -1247,15 +1215,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Boomerang-checkManifestLockResult.txt",
 			);
@@ -1285,6 +1249,7 @@
 				7032704B22087CF300D6C052 /* ContentCollectionViewCell.swift in Sources */,
 				7032704C22087CF300D6C052 /* UIKit.swift in Sources */,
 				70DBC7072209F60B00E0BB27 /* Interaction.swift in Sources */,
+				7B9FC85E220A104100E46539 /* UIViewController.swift in Sources */,
 				7032704D22087CF300D6C052 /* UICollectionView.swift in Sources */,
 				7032704E22087CF300D6C052 /* ViewModelType.swift in Sources */,
 				7032704F22087CF300D6C052 /* CollectionViewDataSource.swift in Sources */,
@@ -1300,6 +1265,7 @@
 				7032707F22088E0F00D6C052 /* ViewController.swift in Sources */,
 				70DBC7042209CFEF00E0BB27 /* Routes.swift in Sources */,
 				7032708022088E0F00D6C052 /* ViewIdentifiers.swift in Sources */,
+				7B9FC861220A15D000E46539 /* ViewController+Setup.swift in Sources */,
 				70DBC6F5220985A900E0BB27 /* HeaderItemViewModel.swift in Sources */,
 				70DBC6EF220984FE00E0BB27 /* ShowItemViewModel.swift in Sources */,
 				7032708122088E0F00D6C052 /* Utilities.swift in Sources */,
@@ -1352,6 +1318,7 @@
 				706142C321F5018B003040D2 /* ContentCollectionViewCell.swift in Sources */,
 				706142BA21F4F5B0003040D2 /* UIKit.swift in Sources */,
 				70DBC7062209F60B00E0BB27 /* Interaction.swift in Sources */,
+				7B9FC85C220A0F7000E46539 /* UIViewController.swift in Sources */,
 				706142C021F4FBD5003040D2 /* UICollectionView.swift in Sources */,
 				706142A921F3C280003040D2 /* ViewModelType.swift in Sources */,
 				706142C721F509A7003040D2 /* CollectionViewDataSource.swift in Sources */,
@@ -1380,6 +1347,7 @@
 				706142F921F5F95A003040D2 /* ViewController.swift in Sources */,
 				70DBC7032209CFEF00E0BB27 /* Routes.swift in Sources */,
 				70A54FC221FDFBCE00BC9252 /* ViewIdentifiers.swift in Sources */,
+				7B9FC860220A15D000E46539 /* ViewController+Setup.swift in Sources */,
 				70DBC6F4220985A900E0BB27 /* HeaderItemViewModel.swift in Sources */,
 				70DBC6EE220984FE00E0BB27 /* ShowItemViewModel.swift in Sources */,
 				70A54FC421FE1E9700BC9252 /* Utilities.swift in Sources */,

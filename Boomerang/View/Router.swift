@@ -9,8 +9,7 @@
 import Foundation
 
 public protocol Route {
-    typealias S = Scene
-    var destination: S? { get }
+    var destination: Scene? { get }
 }
 
 public protocol ViewModelRoute: Route {
@@ -18,7 +17,7 @@ public protocol ViewModelRoute: Route {
 }
 
 extension ViewModelRoute {
-    public var destination: S? {
+    public var destination: Scene? {
         return viewModel.sceneIdentifier.scene()
     }
 }
@@ -31,14 +30,21 @@ extension Route {
 
 public struct Router {
     
-    private static var routeHandlers: [ObjectIdentifier: Any] = [:]
-    
-    public static func register<RouteType: Route>(_ type: RouteType.Type, handler: @escaping (RouteType, Scene?) -> () ) {
-        routeHandlers[type.typeIdentifier] = handler
+    private struct ClosureWrapper {
+        let closure: (Route, Scene?) -> ()
     }
     
-    public static func execute<RouteType: Route>(_ route: RouteType, from source: Scene?) {
-        if let handler = routeHandlers[type(of: route).typeIdentifier] as? ((RouteType, Scene?) -> ()) {
+    private static var routeHandlers: [ObjectIdentifier: Router.ClosureWrapper ] = [:]
+    
+    public static func register<RouteType: Route>(_ type: RouteType.Type, handler: @escaping (RouteType, Scene?) -> () ) {
+        routeHandlers[type.typeIdentifier] = ClosureWrapper(closure: {
+            guard let route = $0 as? RouteType else { return }
+            handler(route, $1) })
+    }
+    
+    public static func execute(_ route: Route, from source: Scene?) {
+        let routeType = type(of: route)
+        if let handler = routeHandlers[routeType.typeIdentifier]?.closure {
             handler(route, source)
         }
     }

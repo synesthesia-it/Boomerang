@@ -20,8 +20,6 @@ class ScheduleViewController: UIViewController, ViewModelCompatible, UICollectio
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let viewModel = ScheduleViewModel()
-        self.set(viewModel: viewModel)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -32,6 +30,7 @@ class ScheduleViewController: UIViewController, ViewModelCompatible, UICollectio
         collectionView.delegate = self
         collectionView.alwaysBounceVertical = true
         collectionView.set(viewModel: viewModel)
+        setupInteraction()
 //        let refreshControl = UIRefreshControl()
 //        viewModel.isLoadingData
 //            .asDriver(onErrorJustReturn: false)
@@ -64,5 +63,8 @@ class ScheduleViewController: UIViewController, ViewModelCompatible, UICollectio
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return collectionView.boomerang.automaticSizeForItem(at: IndexPath(item: 0, section: 0), type: UICollectionView.elementKindSectionHeader, itemsPerLine: 1)
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel?.interact(.selectItem(indexPath))
     }
 }
