@@ -46,8 +46,9 @@ class ScheduleViewModel: ListViewModel, SceneViewModelType, InteractionViewModel
     }
     
     func handleSelectItem(_ indexPath: IndexPath) -> Observable<Interaction> {
-        guard let model = self.dataHolder[indexPath] else { return .empty() }
-        let vm = ScheduleViewModel()
+        guard let model = self.dataHolder[indexPath] as? Show else { return .empty() }
+        let vm = ShowDetailViewModel(show: model)
         return .just(.route(NavigationRoute(viewModel:vm)))
     }
 }
+

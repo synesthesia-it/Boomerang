@@ -9,13 +9,15 @@
 import Foundation
 
 public protocol ViewModelCompatibleType: class {
+    func unwrapViewModel() -> ViewModelType?
     func set(viewModel: ViewModelType)
 }
-//extension ViewModelCompatibleType {
-//    func configure(with viewModel: ViewModelType?) {
-//        set(viewModel: viewModel)
-//    }
-//}
+extension ViewModelCompatibleType {
+    public func unwrapViewModel() -> ViewModelType? {
+        return nil
+    }
+}
+
 public protocol ViewModelCompatible: ViewModelCompatibleType {
     associatedtype ViewModel: ViewModelType
     var viewModel: ViewModel? { get set }
@@ -27,5 +29,8 @@ extension ViewModelCompatible {
             self.viewModel = viewModel
             self.configure(with: viewModel)
         }
+    }
+    public func unwrapViewModel()-> ViewModelType? {
+        return self.viewModel
     }
 }

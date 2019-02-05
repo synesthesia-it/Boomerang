@@ -42,14 +42,15 @@ open class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     }
 
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let viewModel: IdentifiableViewModelType = self.viewModel.mainViewModel(at: indexPath) as? IdentifiableViewModelType {
-            let identifier = viewModel.identifier
+        if let viewModel: IdentifiableViewModelType = self.viewModel.mainViewModel(at: indexPath) as? IdentifiableViewModelType,
+            let identifier = viewModel.identifier as? ReusableListIdentifier {
+            
             let reuseIdentifier = (self.viewModel.identifier(at: indexPath, for: nil) ?? identifier).name
             
-            if (identifier as? ReusableListIdentifier)?.shouldBeEmbedded == true {
-                collectionView.register(ContentCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+            if identifier.shouldBeEmbedded == true {
+                collectionView.register(identifier.containerClass as? UICollectionViewCell.Type ?? ContentCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
             } else {
-                if let className = (identifier as? ReusableListIdentifier)?.className as? UIView.Type {
+                if let className = identifier.class as? UIView.Type {
                     collectionView.register(className, forCellWithReuseIdentifier: reuseIdentifier)
                 } else {
                      collectionView.register(UINib(nibName: identifier.name, bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
@@ -66,14 +67,14 @@ open class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     }
     
     open func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if let viewModel: IdentifiableViewModelType = self.viewModel.supplementaryViewModel(at: indexPath, for: kind) as? IdentifiableViewModelType {
-            let identifier = viewModel.identifier
+        if let viewModel: IdentifiableViewModelType = self.viewModel.supplementaryViewModel(at: indexPath, for: kind),
+            let identifier = viewModel.identifier as? ReusableListIdentifier {
             let reuseIdentifier = (self.viewModel.identifier(at: indexPath, for: kind) ?? identifier).name
             
-            if (identifier as? ReusableListIdentifier)?.shouldBeEmbedded == true {
-                collectionView.register(ContentCollectionViewCell.self, forSupplementaryViewOfKind: kind, withReuseIdentifier: reuseIdentifier)
+            if identifier.shouldBeEmbedded == true {
+                collectionView.register(identifier.containerClass as? UICollectionViewCell.Type ?? ContentCollectionViewCell.self, forSupplementaryViewOfKind: kind, withReuseIdentifier: reuseIdentifier)
             } else {
-                if let className = (identifier as? ReusableListIdentifier)?.className as? UIView.Type {
+                if let className = identifier.class as? UIView.Type {
                     collectionView.register(className, forSupplementaryViewOfKind: kind, withReuseIdentifier: reuseIdentifier)
                 } else {
                     collectionView.register(UINib(nibName: identifier.name, bundle: nil), forSupplementaryViewOfKind: kind, withReuseIdentifier: reuseIdentifier)

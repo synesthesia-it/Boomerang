@@ -15,7 +15,7 @@ import RxBlocking
 
 class ListViewModelSpec: QuickSpec {
     
-    struct TestItemViewModel: IdentifiableItemViewModelType {
+    struct TestItemViewModel: ItemViewModelType {
         var model: ModelType? { return title }
         var date: Date = Date()
         var identifier: Identifier = ""

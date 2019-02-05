@@ -35,6 +35,7 @@ target 'Demo' do
 end
 target 'DemoTV' do
     platform :tvos, '10.0'
+    pod 'ParallaxView'
     shared_pods
 end
 target 'DemoWatch' do

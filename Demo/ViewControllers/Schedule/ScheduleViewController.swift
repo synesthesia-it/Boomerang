@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 import Boomerang
 
-class ScheduleViewController: UIViewController, ViewModelCompatible, UICollectionViewDelegateFlowLayout {
+class ScheduleViewController: UIViewController, ViewModelCompatible, InteractionCompatible, UICollectionViewDelegateFlowLayout {
     
     
     
@@ -30,7 +30,7 @@ class ScheduleViewController: UIViewController, ViewModelCompatible, UICollectio
         collectionView.delegate = self
         collectionView.alwaysBounceVertical = true
         collectionView.set(viewModel: viewModel)
-        setupInteraction()
+        
 //        let refreshControl = UIRefreshControl()
 //        viewModel.isLoadingData
 //            .asDriver(onErrorJustReturn: false)

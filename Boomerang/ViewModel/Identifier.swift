@@ -13,11 +13,16 @@ public protocol Identifier {
 }
 public protocol ReusableListIdentifier: Identifier {
     var shouldBeEmbedded: Bool { get }
-    var className: AnyClass? { get }
+    var containerClass: AnyClass? { get }
+    var `class`: AnyClass? { get }
 }
-
+public extension ReusableListIdentifier {
+    var `class`: AnyClass? { return nil }
+}
 public protocol ViewIdentifier: ReusableListIdentifier {
     func view<T: View>() -> T?
 }
+
+
 
 

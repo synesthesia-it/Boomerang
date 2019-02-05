@@ -27,7 +27,11 @@ struct Identifiers {
     
     enum Scenes: String, SceneIdentifier {
         func scene<T>() -> T? where T : Scene {
-            return UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: self.name) as? T
+            var suffix = ""
+            if UIDevice.current.userInterfaceIdiom == .tv {
+                suffix = "~tv"
+            }
+            return UIStoryboard.init(name: "Main" + suffix, bundle: nil).instantiateViewController(withIdentifier: self.name) as? T
         }
     
         var name: String {
@@ -35,6 +39,7 @@ struct Identifiers {
         }
         
         case schedule
+        case showDetail
     }
     
     enum Views: String, ViewIdentifier {
@@ -48,7 +53,12 @@ struct Identifiers {
         
         var shouldBeEmbedded: Bool { return true }
         
-        var className: AnyClass? { return nil }
+        var containerClass: AnyClass? {
+            switch self {
+            case .header: return ContentCollectionViewCell.self
+            default : return CustomContentCollectionViewCell.self
+            }
+        }
         
         var name: String {
             var suffix = ""

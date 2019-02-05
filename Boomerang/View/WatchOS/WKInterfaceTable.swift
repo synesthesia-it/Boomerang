@@ -12,6 +12,7 @@ import RxCocoa
 import WatchKit
 
 extension WKInterfaceTable: ViewModelCompatibleType {
+  
     public func set(viewModel: ViewModelType) {
         if let viewModel = viewModel as? ListViewModelType {
             self.boomerang.configure(with: viewModel)

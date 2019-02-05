@@ -3,6 +3,7 @@ PODS:
     - RxCocoa (~> 4.3)
     - RxSwift (~> 4.3)
   - Nimble (7.3.3)
+  - ParallaxView (2.0.8)
   - Quick (1.3.4)
   - RxAtomic (4.4.0)
   - RxBlocking (4.4.0):
@@ -16,6 +17,7 @@ PODS:
 DEPENDENCIES:
   - Action
   - Nimble
+  - ParallaxView
   - Quick
   - RxBlocking
   - RxCocoa
@@ -25,6 +27,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Action
     - Nimble
+    - ParallaxView
     - Quick
     - RxAtomic
     - RxBlocking
@@ -34,12 +37,13 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Action: 2f461c203c480b17aa99b3bb166e4329ecff6908
   Nimble: 3b434b1e7d0a92603a13550a82880b0d952f518e
+  ParallaxView: c2df9e49ab58cd8e0cd0b9d449a211d6f76fd53f
   Quick: f4f7f063c524394c73ed93ac70983c609805d481
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxBlocking: 138ad53217434444d6eeeb4fb406a45431d92e31
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
 
-PODFILE CHECKSUM: bf3a3e4c6eea211a295766067d34fb85f2da0ecc
+PODFILE CHECKSUM: 937e48b543c89ad2ddba4bb423131bcf040ba920
 
 COCOAPODS: 1.5.3

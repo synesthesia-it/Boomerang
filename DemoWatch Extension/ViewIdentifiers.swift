@@ -30,6 +30,7 @@ struct Identifiers {
         }
         
         case schedule
+        case showDetail
     }
     enum Views: String, ViewIdentifier {
         
@@ -44,7 +45,7 @@ struct Identifiers {
         var shouldBeEmbedded: Bool { return true }
         
         var className: AnyClass? { return nil }
-        
+        var containerClass: AnyClass? { return nil }
         var name: String {
             
             return rawValue.firstCharacterCapitalized() + "RowController"

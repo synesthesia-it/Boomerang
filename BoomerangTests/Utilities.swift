@@ -26,7 +26,7 @@ extension ListViewModelType {
     }
 }
 
-struct TestItemViewModel: IdentifiableItemViewModelType {
+struct TestItemViewModel: ItemViewModelType {
     var identifier: Identifier = "TestCollectionViewCell"
     var model: ModelType? { return title }
     var date: Date = Date()

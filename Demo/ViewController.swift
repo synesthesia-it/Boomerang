@@ -13,16 +13,18 @@ import Boomerang
 
 extension String: ViewIdentifier {
     public var name: String { return self }
-    public var className: AnyClass? {
+    public var `class`: AnyClass? {
         if self.shouldBeEmbedded {
             return nil
         } else {
             return TestCollectionViewCell.self
         }
     }
-    
+    public var containerClass: AnyClass? {
+        return ContentCollectionViewCell.self
+    }
     public func view<T: UIView>() -> T? {
-        return (className as? UIView.Type)?.init() as? T
+        return (self.class as? UIView.Type)?.init() as? T
     }
     
     public var shouldBeEmbedded: Bool { return self.contains("Cell") == false }

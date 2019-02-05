@@ -13,8 +13,12 @@ import RxSwift
 @testable import Boomerang
 
 extension String: ReusableListIdentifier {
+    public var containerClass: AnyClass? {
+        return nil
+    }
+    
     public var name: String { return self }
-    public var className: AnyClass? {
+    public var `class`: AnyClass? {
         if self.shouldBeEmbedded {
             return nil
         } else {

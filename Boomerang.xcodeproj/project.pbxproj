@@ -126,10 +126,18 @@
 		70DBC7062209F60B00E0BB27 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC7052209F60B00E0BB27 /* Interaction.swift */; };
 		70DBC7072209F60B00E0BB27 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC7052209F60B00E0BB27 /* Interaction.swift */; };
 		70DBC7082209F60B00E0BB27 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC7052209F60B00E0BB27 /* Interaction.swift */; };
+		7B501330220A3DE60087CDCB /* CollectionViewCell+Parallax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B50132F220A3DE60087CDCB /* CollectionViewCell+Parallax.swift */; };
+		7B501331220A3E3F0087CDCB /* CollectionViewCell+Parallax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B50132F220A3DE60087CDCB /* CollectionViewCell+Parallax.swift */; };
 		7B9FC85C220A0F7000E46539 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC85B220A0F7000E46539 /* UIViewController.swift */; };
 		7B9FC85E220A104100E46539 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC85B220A0F7000E46539 /* UIViewController.swift */; };
-		7B9FC860220A15D000E46539 /* ViewController+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC85F220A15D000E46539 /* ViewController+Setup.swift */; };
-		7B9FC861220A15D000E46539 /* ViewController+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC85F220A15D000E46539 /* ViewController+Setup.swift */; };
+		7B9FC863220A2B2300E46539 /* InteractionCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC862220A2B2300E46539 /* InteractionCompatible.swift */; };
+		7B9FC866220A2DBC00E46539 /* ShowDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC865220A2DBC00E46539 /* ShowDetailViewModel.swift */; };
+		7B9FC867220A2DBF00E46539 /* ShowDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC865220A2DBC00E46539 /* ShowDetailViewModel.swift */; };
+		7B9FC868220A2DC000E46539 /* ShowDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC865220A2DBC00E46539 /* ShowDetailViewModel.swift */; };
+		7B9FC86A220A2DCD00E46539 /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC869220A2DCD00E46539 /* ShowDetailViewController.swift */; };
+		7B9FC86B220A2DCD00E46539 /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC869220A2DCD00E46539 /* ShowDetailViewController.swift */; };
+		7B9FC86D220A303400E46539 /* InteractionCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC862220A2B2300E46539 /* InteractionCompatible.swift */; };
+		7B9FC86E220A303500E46539 /* InteractionCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC862220A2B2300E46539 /* InteractionCompatible.swift */; };
 		7E5731E462DBDE4C62B9E8B8 /* Pods_BoomerangTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B236ED10939A542FCEB1B052 /* Pods_BoomerangTests.framework */; };
 		8469E91E30C2F5140AE7A07B /* Pods_Boomerang_watch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E326479A355B1FCE1023CB5 /* Pods_Boomerang_watch.framework */; };
 		9D054F927B41F55BE8AD236F /* Pods_DemoTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A5234CA90940D58D22BE77 /* Pods_DemoTV.framework */; };
@@ -318,8 +326,11 @@
 		70DBC6FE2209CA3800E0BB27 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		70DBC7022209CFEF00E0BB27 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		70DBC7052209F60B00E0BB27 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
+		7B50132F220A3DE60087CDCB /* CollectionViewCell+Parallax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionViewCell+Parallax.swift"; sourceTree = "<group>"; };
 		7B9FC85B220A0F7000E46539 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		7B9FC85F220A15D000E46539 /* ViewController+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Setup.swift"; sourceTree = "<group>"; };
+		7B9FC862220A2B2300E46539 /* InteractionCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionCompatible.swift; sourceTree = "<group>"; };
+		7B9FC865220A2DBC00E46539 /* ShowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewModel.swift; sourceTree = "<group>"; };
+		7B9FC869220A2DCD00E46539 /* ShowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewController.swift; sourceTree = "<group>"; };
 		8222C4EB855BB3250D38CA72 /* Pods-Boomerang-tv.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boomerang-tv.release.xcconfig"; path = "Pods/Target Support Files/Pods-Boomerang-tv/Pods-Boomerang-tv.release.xcconfig"; sourceTree = "<group>"; };
 		8584F9563C5DC69A093A7C18 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		858CF253BA7E7567C48FA791 /* Pods-DemoWatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoWatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemoWatch/Pods-DemoWatch.debug.xcconfig"; sourceTree = "<group>"; };
@@ -574,6 +585,7 @@
 				703270C322089F8A00D6C052 /* WatchOS */,
 				706142B721F4F367003040D2 /* BoomerangProxy.swift */,
 				706142BB21F4F701003040D2 /* ViewModelCompatible.swift */,
+				7B9FC862220A2B2300E46539 /* InteractionCompatible.swift */,
 				70DBC6FE2209CA3800E0BB27 /* Router.swift */,
 			);
 			path = View;
@@ -596,8 +608,8 @@
 				706142F621F5F95A003040D2 /* AppDelegate.swift */,
 				706142F821F5F95A003040D2 /* ViewController.swift */,
 				70DBC7022209CFEF00E0BB27 /* Routes.swift */,
-				7B9FC85F220A15D000E46539 /* ViewController+Setup.swift */,
 				70A54FC321FE1E9700BC9252 /* Utilities.swift */,
+				7B50132F220A3DE60087CDCB /* CollectionViewCell+Parallax.swift */,
 				70A54FC121FDFBCE00BC9252 /* ViewIdentifiers.swift */,
 				70A54FC721FE25B300BC9252 /* Show.swift */,
 				70A54FBE21FDFB2400BC9252 /* Views */,
@@ -615,6 +627,7 @@
 			isa = PBXGroup;
 			children = (
 				70A54FBD21FDFB1900BC9252 /* Schedule */,
+				7B9FC864220A2DAB00E46539 /* ShowDetail */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -658,6 +671,15 @@
 				70DBC6E82209823F00E0BB27 /* ShowRowController.swift */,
 			);
 			path = "DemoWatch Extension";
+			sourceTree = "<group>";
+		};
+		7B9FC864220A2DAB00E46539 /* ShowDetail */ = {
+			isa = PBXGroup;
+			children = (
+				7B9FC865220A2DBC00E46539 /* ShowDetailViewModel.swift */,
+				7B9FC869220A2DCD00E46539 /* ShowDetailViewController.swift */,
+			);
+			path = ShowDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1125,6 +1147,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxAtomic-tvOS10.0/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa-tvOS10.0/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift-tvOS10.0/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ParallaxView/ParallaxView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1132,6 +1155,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ParallaxView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1242,6 +1266,7 @@
 				70DBC7002209CA3A00E0BB27 /* Router.swift in Sources */,
 				7032704522087CF300D6C052 /* UICollectionView+Sizing.swift in Sources */,
 				7032704622087CF300D6C052 /* UIKit+Constraints.swift in Sources */,
+				7B9FC86D220A303400E46539 /* InteractionCompatible.swift in Sources */,
 				7032704722087CF300D6C052 /* ListViewModelType.swift in Sources */,
 				7032704822087CF300D6C052 /* ViewModelCompatible.swift in Sources */,
 				7032704922087CF300D6C052 /* ModelType.swift in Sources */,
@@ -1265,13 +1290,15 @@
 				7032707F22088E0F00D6C052 /* ViewController.swift in Sources */,
 				70DBC7042209CFEF00E0BB27 /* Routes.swift in Sources */,
 				7032708022088E0F00D6C052 /* ViewIdentifiers.swift in Sources */,
-				7B9FC861220A15D000E46539 /* ViewController+Setup.swift in Sources */,
 				70DBC6F5220985A900E0BB27 /* HeaderItemViewModel.swift in Sources */,
 				70DBC6EF220984FE00E0BB27 /* ShowItemViewModel.swift in Sources */,
 				7032708122088E0F00D6C052 /* Utilities.swift in Sources */,
+				7B9FC867220A2DBF00E46539 /* ShowDetailViewModel.swift in Sources */,
 				7032708222088E0F00D6C052 /* ShowItemView.swift in Sources */,
 				7032708322088E0F00D6C052 /* AppDelegate.swift in Sources */,
 				7032708422088E0F00D6C052 /* ScheduleViewController.swift in Sources */,
+				7B501331220A3E3F0087CDCB /* CollectionViewCell+Parallax.swift in Sources */,
+				7B9FC86B220A2DCD00E46539 /* ShowDetailViewController.swift in Sources */,
 				7032708522088E0F00D6C052 /* Show.swift in Sources */,
 				7032708622088E0F00D6C052 /* ScheduleViewModel.swift in Sources */,
 				7032708722088E0F00D6C052 /* HeaderItemView.swift in Sources */,
@@ -1288,6 +1315,7 @@
 				703270C122089F8400D6C052 /* ModelType.swift in Sources */,
 				703270BC22089F7E00D6C052 /* DataHolder.swift in Sources */,
 				703270B922089F6E00D6C052 /* ViewModelCompatible.swift in Sources */,
+				7B9FC86E220A303500E46539 /* InteractionCompatible.swift in Sources */,
 				70DBC7082209F60B00E0BB27 /* Interaction.swift in Sources */,
 				703270C522089FA300D6C052 /* WatchOS.swift in Sources */,
 				703270C022089F7E00D6C052 /* SceneViewModelType.swift in Sources */,
@@ -1311,6 +1339,7 @@
 				70DBC6FF2209CA3800E0BB27 /* Router.swift in Sources */,
 				70A54FB121FCC20F00BC9252 /* UICollectionView+Sizing.swift in Sources */,
 				706142C521F50693003040D2 /* UIKit+Constraints.swift in Sources */,
+				7B9FC863220A2B2300E46539 /* InteractionCompatible.swift in Sources */,
 				706142AB21F3C29C003040D2 /* ListViewModelType.swift in Sources */,
 				706142BC21F4F701003040D2 /* ViewModelCompatible.swift in Sources */,
 				704B478021F36615007E11DA /* ModelType.swift in Sources */,
@@ -1347,13 +1376,15 @@
 				706142F921F5F95A003040D2 /* ViewController.swift in Sources */,
 				70DBC7032209CFEF00E0BB27 /* Routes.swift in Sources */,
 				70A54FC221FDFBCE00BC9252 /* ViewIdentifiers.swift in Sources */,
-				7B9FC860220A15D000E46539 /* ViewController+Setup.swift in Sources */,
 				70DBC6F4220985A900E0BB27 /* HeaderItemViewModel.swift in Sources */,
 				70DBC6EE220984FE00E0BB27 /* ShowItemViewModel.swift in Sources */,
 				70A54FC421FE1E9700BC9252 /* Utilities.swift in Sources */,
+				7B9FC866220A2DBC00E46539 /* ShowDetailViewModel.swift in Sources */,
 				70A54FC021FDFB3A00BC9252 /* ShowItemView.swift in Sources */,
 				706142F721F5F95A003040D2 /* AppDelegate.swift in Sources */,
 				70A54FB921FDF77400BC9252 /* ScheduleViewController.swift in Sources */,
+				7B501330220A3DE60087CDCB /* CollectionViewCell+Parallax.swift in Sources */,
+				7B9FC86A220A2DCD00E46539 /* ShowDetailViewController.swift in Sources */,
 				70A54FC821FE25B300BC9252 /* Show.swift in Sources */,
 				70A54FBB21FDF77C00BC9252 /* ScheduleViewModel.swift in Sources */,
 				7032703222083E9B00D6C052 /* HeaderItemView.swift in Sources */,
@@ -1366,6 +1397,7 @@
 			files = (
 				70DBC6EC220984E300E0BB27 /* Show.swift in Sources */,
 				70DBC6F22209852500E0BB27 /* ViewIdentifiers.swift in Sources */,
+				7B9FC868220A2DC000E46539 /* ShowDetailViewModel.swift in Sources */,
 				70DBC6F0220984FE00E0BB27 /* ShowItemViewModel.swift in Sources */,
 				70DBC6E92209823F00E0BB27 /* ShowRowController.swift in Sources */,
 				70DBC6D822097C4C00E0BB27 /* ExtensionDelegate.swift in Sources */,
