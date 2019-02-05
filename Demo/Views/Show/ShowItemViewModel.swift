@@ -11,7 +11,7 @@ import Boomerang
 import RxCocoa
 import RxSwift
 
-class ShowItemViewModel: IdentifiableItemViewModelType {
+class ShowItemViewModel: IdentifiableViewModelType {
     
     var identifier: Identifier = Identifiers.Views.show
     var title: String

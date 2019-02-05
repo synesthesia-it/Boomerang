@@ -13,7 +13,7 @@
         <!--Schedule View Controller-->
         <scene sceneID="TT5-j9-vsh">
             <objects>
-                <viewController id="9QW-nq-kGB" customClass="ScheduleViewController" customModule="DemoTV" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="schedule" id="9QW-nq-kGB" customClass="ScheduleViewController" customModule="DemoTV" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="crh-rR-kKz"/>
                         <viewControllerLayoutGuide type="bottom" id="N2X-ke-ak8"/>

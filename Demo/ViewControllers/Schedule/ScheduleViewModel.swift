@@ -10,7 +10,8 @@ import Foundation
 import Boomerang
 import RxSwift
 
-struct ScheduleViewModel: ListViewModel {
+struct ScheduleViewModel: ListViewModel, SceneViewModelType {
+    var sceneIdentifier: SceneIdentifier = Identifiers.Scenes.schedule
     
     func group(_ observable: Observable<[Show]>) -> Observable<DataGroup> {
         return observable.map { DataGroup($0, supplementaryData: [0: [

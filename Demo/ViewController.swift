@@ -28,7 +28,7 @@ extension String: ViewIdentifier {
     public var shouldBeEmbedded: Bool { return self.contains("Cell") == false }
 }
 
-struct TestItemViewModel: IdentifiableItemViewModelType {
+struct TestItemViewModel: IdentifiableViewModelType {
     var identifier: Identifier = "TestCollectionViewCell"
     var model: ModelType? { return title }
     var date: Date = Date()

@@ -8,14 +8,14 @@
 
 import Foundation
 
-public protocol SceneIdentifier: ReusableListIdentifier {
+public protocol SceneIdentifier: Identifier {
     func scene<T: Scene>() -> T?
 }
 
-protocol SceneViewModelType: IdentifiableViewModelType {
+public protocol SceneViewModelType: IdentifiableViewModelType {
     var sceneIdentifier: SceneIdentifier { get }
 }
 
-extension SceneViewModelType {
+public extension SceneViewModelType {
     var identifier: Identifier { return sceneIdentifier }
 }

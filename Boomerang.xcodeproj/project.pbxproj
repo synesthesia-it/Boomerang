@@ -118,6 +118,14 @@
 		70DBC6F7220987F600E0BB27 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703270AF22089F1000D6C052 /* Boomerang.framework */; };
 		70DBC6F8220987F600E0BB27 /* Boomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 703270AF22089F1000D6C052 /* Boomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		70DBC6FD22098CF400E0BB27 /* WKInterfaceTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC6FC22098CF400E0BB27 /* WKInterfaceTable.swift */; };
+		70DBC6FF2209CA3800E0BB27 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC6FE2209CA3800E0BB27 /* Router.swift */; };
+		70DBC7002209CA3A00E0BB27 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC6FE2209CA3800E0BB27 /* Router.swift */; };
+		70DBC7012209CA3B00E0BB27 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC6FE2209CA3800E0BB27 /* Router.swift */; };
+		70DBC7032209CFEF00E0BB27 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC7022209CFEF00E0BB27 /* Routes.swift */; };
+		70DBC7042209CFEF00E0BB27 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC7022209CFEF00E0BB27 /* Routes.swift */; };
+		70DBC7062209F60B00E0BB27 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC7052209F60B00E0BB27 /* Interaction.swift */; };
+		70DBC7072209F60B00E0BB27 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC7052209F60B00E0BB27 /* Interaction.swift */; };
+		70DBC7082209F60B00E0BB27 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC7052209F60B00E0BB27 /* Interaction.swift */; };
 		7E5731E462DBDE4C62B9E8B8 /* Pods_BoomerangTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B236ED10939A542FCEB1B052 /* Pods_BoomerangTests.framework */; };
 		8469E91E30C2F5140AE7A07B /* Pods_Boomerang_watch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E326479A355B1FCE1023CB5 /* Pods_Boomerang_watch.framework */; };
 		9D054F927B41F55BE8AD236F /* Pods_DemoTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A5234CA90940D58D22BE77 /* Pods_DemoTV.framework */; };
@@ -303,6 +311,9 @@
 		70DBC6F12209852500E0BB27 /* ViewIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewIdentifiers.swift; sourceTree = "<group>"; };
 		70DBC6F3220985A900E0BB27 /* HeaderItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderItemViewModel.swift; sourceTree = "<group>"; };
 		70DBC6FC22098CF400E0BB27 /* WKInterfaceTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKInterfaceTable.swift; sourceTree = "<group>"; };
+		70DBC6FE2209CA3800E0BB27 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		70DBC7022209CFEF00E0BB27 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
+		70DBC7052209F60B00E0BB27 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
 		8222C4EB855BB3250D38CA72 /* Pods-Boomerang-tv.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boomerang-tv.release.xcconfig"; path = "Pods/Target Support Files/Pods-Boomerang-tv/Pods-Boomerang-tv.release.xcconfig"; sourceTree = "<group>"; };
 		8584F9563C5DC69A093A7C18 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		858CF253BA7E7567C48FA791 /* Pods-DemoWatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoWatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemoWatch/Pods-DemoWatch.debug.xcconfig"; sourceTree = "<group>"; };
@@ -537,13 +548,14 @@
 		706142A721F3C24C003040D2 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				70A54FB621FDBD8F00BC9252 /* Identifier.swift */,
 				706142A821F3C280003040D2 /* ViewModelType.swift */,
-				706142AE21F3C82F003040D2 /* DataHolder.swift */,
-				70A54FB421FDB90600BC9252 /* GroupCache.swift */,
+				70DBC7052209F60B00E0BB27 /* Interaction.swift */,
 				706142AA21F3C29C003040D2 /* ListViewModelType.swift */,
 				706142AC21F3C2A3003040D2 /* ItemViewModelType.swift */,
 				7032703A22087C8A00D6C052 /* SceneViewModelType.swift */,
+				70A54FB621FDBD8F00BC9252 /* Identifier.swift */,
+				706142AE21F3C82F003040D2 /* DataHolder.swift */,
+				70A54FB421FDB90600BC9252 /* GroupCache.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -555,6 +567,7 @@
 				703270C322089F8A00D6C052 /* WatchOS */,
 				706142B721F4F367003040D2 /* BoomerangProxy.swift */,
 				706142BB21F4F701003040D2 /* ViewModelCompatible.swift */,
+				70DBC6FE2209CA3800E0BB27 /* Router.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -575,6 +588,7 @@
 			children = (
 				706142F621F5F95A003040D2 /* AppDelegate.swift */,
 				706142F821F5F95A003040D2 /* ViewController.swift */,
+				70DBC7022209CFEF00E0BB27 /* Routes.swift */,
 				70A54FC321FE1E9700BC9252 /* Utilities.swift */,
 				70A54FC121FDFBCE00BC9252 /* ViewIdentifiers.swift */,
 				70A54FC721FE25B300BC9252 /* Show.swift */,
@@ -1261,6 +1275,7 @@
 				7032704222087CF300D6C052 /* DataHolder.swift in Sources */,
 				7032704322087CF300D6C052 /* BoomerangProxy.swift in Sources */,
 				7032704422087CF300D6C052 /* SceneViewModelType.swift in Sources */,
+				70DBC7002209CA3A00E0BB27 /* Router.swift in Sources */,
 				7032704522087CF300D6C052 /* UICollectionView+Sizing.swift in Sources */,
 				7032704622087CF300D6C052 /* UIKit+Constraints.swift in Sources */,
 				7032704722087CF300D6C052 /* ListViewModelType.swift in Sources */,
@@ -1269,6 +1284,7 @@
 				7032704A22087CF300D6C052 /* DataGroup.swift in Sources */,
 				7032704B22087CF300D6C052 /* ContentCollectionViewCell.swift in Sources */,
 				7032704C22087CF300D6C052 /* UIKit.swift in Sources */,
+				70DBC7072209F60B00E0BB27 /* Interaction.swift in Sources */,
 				7032704D22087CF300D6C052 /* UICollectionView.swift in Sources */,
 				7032704E22087CF300D6C052 /* ViewModelType.swift in Sources */,
 				7032704F22087CF300D6C052 /* CollectionViewDataSource.swift in Sources */,
@@ -1282,6 +1298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7032707F22088E0F00D6C052 /* ViewController.swift in Sources */,
+				70DBC7042209CFEF00E0BB27 /* Routes.swift in Sources */,
 				7032708022088E0F00D6C052 /* ViewIdentifiers.swift in Sources */,
 				70DBC6F5220985A900E0BB27 /* HeaderItemViewModel.swift in Sources */,
 				70DBC6EF220984FE00E0BB27 /* ShowItemViewModel.swift in Sources */,
@@ -1305,10 +1322,12 @@
 				703270C122089F8400D6C052 /* ModelType.swift in Sources */,
 				703270BC22089F7E00D6C052 /* DataHolder.swift in Sources */,
 				703270B922089F6E00D6C052 /* ViewModelCompatible.swift in Sources */,
+				70DBC7082209F60B00E0BB27 /* Interaction.swift in Sources */,
 				703270C522089FA300D6C052 /* WatchOS.swift in Sources */,
 				703270C022089F7E00D6C052 /* SceneViewModelType.swift in Sources */,
 				703270BA22089F7E00D6C052 /* Identifier.swift in Sources */,
 				703270BD22089F7E00D6C052 /* GroupCache.swift in Sources */,
+				70DBC7012209CA3B00E0BB27 /* Router.swift in Sources */,
 				703270BE22089F7E00D6C052 /* ListViewModelType.swift in Sources */,
 				703270B822089F5200D6C052 /* BoomerangProxy.swift in Sources */,
 				703270BF22089F7E00D6C052 /* ItemViewModelType.swift in Sources */,
@@ -1323,6 +1342,7 @@
 				706142AF21F3C82F003040D2 /* DataHolder.swift in Sources */,
 				706142B821F4F367003040D2 /* BoomerangProxy.swift in Sources */,
 				7032703B22087C8A00D6C052 /* SceneViewModelType.swift in Sources */,
+				70DBC6FF2209CA3800E0BB27 /* Router.swift in Sources */,
 				70A54FB121FCC20F00BC9252 /* UICollectionView+Sizing.swift in Sources */,
 				706142C521F50693003040D2 /* UIKit+Constraints.swift in Sources */,
 				706142AB21F3C29C003040D2 /* ListViewModelType.swift in Sources */,
@@ -1331,6 +1351,7 @@
 				704B478221F3667A007E11DA /* DataGroup.swift in Sources */,
 				706142C321F5018B003040D2 /* ContentCollectionViewCell.swift in Sources */,
 				706142BA21F4F5B0003040D2 /* UIKit.swift in Sources */,
+				70DBC7062209F60B00E0BB27 /* Interaction.swift in Sources */,
 				706142C021F4FBD5003040D2 /* UICollectionView.swift in Sources */,
 				706142A921F3C280003040D2 /* ViewModelType.swift in Sources */,
 				706142C721F509A7003040D2 /* CollectionViewDataSource.swift in Sources */,
@@ -1357,6 +1378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				706142F921F5F95A003040D2 /* ViewController.swift in Sources */,
+				70DBC7032209CFEF00E0BB27 /* Routes.swift in Sources */,
 				70A54FC221FDFBCE00BC9252 /* ViewIdentifiers.swift in Sources */,
 				70DBC6F4220985A900E0BB27 /* HeaderItemViewModel.swift in Sources */,
 				70DBC6EE220984FE00E0BB27 /* ShowItemViewModel.swift in Sources */,

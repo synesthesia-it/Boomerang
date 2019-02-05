@@ -42,7 +42,7 @@ open class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     }
 
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let viewModel: IdentifiableViewModelType = self.viewModel.mainViewModel(at: indexPath) as? IdentifiableItemViewModelType {
+        if let viewModel: IdentifiableViewModelType = self.viewModel.mainViewModel(at: indexPath) as? IdentifiableViewModelType {
             let identifier = viewModel.identifier
             let reuseIdentifier = (self.viewModel.identifier(at: indexPath, for: nil) ?? identifier).name
             
@@ -66,7 +66,7 @@ open class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     }
     
     open func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if let viewModel: IdentifiableViewModelType = self.viewModel.supplementaryViewModel(at: indexPath, for: kind) as? IdentifiableItemViewModelType {
+        if let viewModel: IdentifiableViewModelType = self.viewModel.supplementaryViewModel(at: indexPath, for: kind) as? IdentifiableViewModelType {
             let identifier = viewModel.identifier
             let reuseIdentifier = (self.viewModel.identifier(at: indexPath, for: kind) ?? identifier).name
             

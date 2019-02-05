@@ -19,6 +19,18 @@ struct Identifiers {
             return rawValue
         }
     }
+    enum Scenes: String, SceneIdentifier {
+        func scene<T>() -> T? where T : Scene {
+            return nil
+//            return UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: self.name) as? T
+        }
+        
+        var name: String {
+            return rawValue
+        }
+        
+        case schedule
+    }
     enum Views: String, ViewIdentifier {
         
         case show

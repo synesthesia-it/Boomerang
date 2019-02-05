@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol ItemViewModelType: ViewModelType {
+public protocol ItemViewModelType: IdentifiableViewModelType {
     var model: ModelType? { get }
 }
 extension ItemViewModelType {
@@ -19,8 +19,8 @@ extension ItemViewModelType {
     }
 }
 
-public protocol IdentifiableViewModelType: ViewModelType {
+public protocol IdentifiableViewModelType: ViewModelType, DataType {
     var identifier: Identifier { get }
 }
 
-public protocol IdentifiableItemViewModelType: IdentifiableViewModelType, ItemViewModelType {}
+

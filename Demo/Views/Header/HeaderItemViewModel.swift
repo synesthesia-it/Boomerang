@@ -9,7 +9,7 @@
 import Foundation
 import Boomerang
 
-class HeaderItemViewModel: IdentifiableItemViewModelType {
+class HeaderItemViewModel: IdentifiableViewModelType {
     
     var identifier: Identifier = Identifiers.Views.header
     var title: String
