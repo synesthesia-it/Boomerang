@@ -26,6 +26,6 @@ extension URL {
         return DataManager.session
             .rx
             .data(request: URLRequest(url: self))
-            .map {_ in return nil }// Image(data: $0) }
+            .map { Image(data: $0) }
     }
 }

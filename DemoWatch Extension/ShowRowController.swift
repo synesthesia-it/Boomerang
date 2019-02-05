@@ -8,16 +8,26 @@
 
 import WatchKit
 import Boomerang
+import RxSwift
+import RxCocoa
 
 class ShowRowController: NSObject, ViewModelCompatible {
     var viewModel: ShowItemViewModel?
     
-    func configure(with viewModel: ShowItemViewModel) {
-        titleLabel.setText(viewModel.title)
-    }
-    
     typealias ViewModel = ShowItemViewModel
     
     @IBOutlet var titleLabel: WKInterfaceLabel!
-
+    @IBOutlet weak var image: WKInterfaceImage!
+    var disposeBag = DisposeBag()
+    func configure(with viewModel: ShowItemViewModel) {
+        disposeBag = DisposeBag()
+        titleLabel.setText(viewModel.title)
+        
+        viewModel.image
+            .asDriver(onErrorJustReturn: nil)
+            .asObservable()
+            .bind { [weak self] img in self?.image.setImage(img) }
+            .disposed(by:disposeBag)
+    }
+    
 }

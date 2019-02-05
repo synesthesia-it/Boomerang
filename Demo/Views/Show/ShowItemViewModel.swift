@@ -20,7 +20,7 @@ class ShowItemViewModel: IdentifiableItemViewModelType {
     init (model: Show) {
         self.model = model
         self.title = model.name
-        self.image = .just(nil)
-//        self.image = (model.image?.medium?.image() ?? .just(Image()))
+//        self.image = .just(nil)
+        self.image = (model.image?.medium?.image() ?? .just(Image()))
     }
 }

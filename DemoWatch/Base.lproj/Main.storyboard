@@ -17,12 +17,14 @@
                         <table alignment="left" id="a4C-rE-JvQ">
                             <items>
                                 <tableRow identifier="ShowRowController" id="Ieu-tC-bN8" customClass="ShowRowController" customModule="DemoWatch" customModuleProvider="target">
-                                    <group key="rootItem" width="1" alignment="left" id="ozU-Pa-rAS">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="ozU-Pa-rAS">
                                         <items>
-                                            <label width="1" height="1" alignment="center" verticalAlignment="center" text="Label" id="h0B-IP-isn"/>
+                                            <imageView width="44" height="44" alignment="left" verticalAlignment="center" contentMode="scaleAspectFill" id="ZRU-Ka-2Ac"/>
+                                            <label width="0.69999999999999996" alignment="center" verticalAlignment="center" text="Label" numberOfLines="0" id="h0B-IP-isn"/>
                                         </items>
                                     </group>
                                     <connections>
+                                        <outlet property="image" destination="ZRU-Ka-2Ac" id="9hb-mw-2y5"/>
                                         <outlet property="titleLabel" destination="h0B-IP-isn" id="oSc-x7-Gr9"/>
                                     </connections>
                                 </tableRow>

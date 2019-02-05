@@ -11,8 +11,9 @@ import Foundation
 import Boomerang
 import RxSwift
 import RxCocoa
+import UIKit
 
-typealias Image = WKImage
+typealias Image = UIImage
 
 class InterfaceController: WKInterfaceController {
     let viewModel = ScheduleViewModel()
