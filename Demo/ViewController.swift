@@ -11,8 +11,6 @@ import RxSwift
 import RxCocoa
 import Boomerang
 
-extension String: ModelType { }
-
 extension String: ViewIdentifier {
     public var name: String { return self }
     public var className: AnyClass? {

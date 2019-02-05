@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2007BFAEF9D54A6D4FA913D7 /* Pods_Boomerang_tv.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F81DCA974195202B1CAAFD /* Pods_Boomerang_tv.framework */; };
+		50C4DD80FD21F27558E9CBFC /* Pods_DemoWatch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9B8CDAE9D3F9D816CF6E18 /* Pods_DemoWatch_Extension.framework */; };
 		55883CE40EFD8841DD1271F8 /* Pods_Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A404B9D9CF0DAD37087562C /* Pods_Boomerang.framework */; };
 		57A60C766C796A3BA8C9DD54 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8584F9563C5DC69A093A7C18 /* Pods_Demo.framework */; };
 		7032703222083E9B00D6C052 /* HeaderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7032703122083E9B00D6C052 /* HeaderItemView.swift */; };
@@ -47,7 +48,6 @@
 		703270A42208990D00D6C052 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7032705922087CF400D6C052 /* Boomerang.framework */; };
 		703270A52208990D00D6C052 /* Boomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7032705922087CF400D6C052 /* Boomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		703270A922089B2A00D6C052 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 706142FF21F5F95B003040D2 /* LaunchScreen.storyboard */; };
-		703270B322089F1000D6C052 /* Boomerang_watch.h in Headers */ = {isa = PBXBuildFile; fileRef = 703270B122089F1000D6C052 /* Boomerang_watch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		703270B822089F5200D6C052 /* BoomerangProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142B721F4F367003040D2 /* BoomerangProxy.swift */; };
 		703270B922089F6E00D6C052 /* ViewModelCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142BB21F4F701003040D2 /* ViewModelCompatible.swift */; };
 		703270BA22089F7E00D6C052 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A54FB621FDBD8F00BC9252 /* Identifier.swift */; };
@@ -97,9 +97,31 @@
 		70A54FC421FE1E9700BC9252 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A54FC321FE1E9700BC9252 /* Utilities.swift */; };
 		70A54FC621FE207700BC9252 /* ShowItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70A54FC521FE207700BC9252 /* ShowItemView.xib */; };
 		70A54FC821FE25B300BC9252 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A54FC721FE25B300BC9252 /* Show.swift */; };
+		70DBC6C822097C4B00E0BB27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70DBC6C622097C4B00E0BB27 /* Main.storyboard */; };
+		70DBC6CA22097C4C00E0BB27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70DBC6C922097C4C00E0BB27 /* Assets.xcassets */; };
+		70DBC6D122097C4C00E0BB27 /* DemoWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 70DBC6D022097C4C00E0BB27 /* DemoWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		70DBC6D622097C4C00E0BB27 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC6D522097C4C00E0BB27 /* InterfaceController.swift */; };
+		70DBC6D822097C4C00E0BB27 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC6D722097C4C00E0BB27 /* ExtensionDelegate.swift */; };
+		70DBC6DA22097C4D00E0BB27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70DBC6D922097C4D00E0BB27 /* Assets.xcassets */; };
+		70DBC6DE22097C4D00E0BB27 /* DemoWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 70DBC6C422097C4B00E0BB27 /* DemoWatch.app */; };
+		70DBC6E92209823F00E0BB27 /* ShowRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC6E82209823F00E0BB27 /* ShowRowController.swift */; };
+		70DBC6EA220983B500E0BB27 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A54FBA21FDF77C00BC9252 /* ScheduleViewModel.swift */; };
+		70DBC6EB2209847500E0BB27 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A54FC321FE1E9700BC9252 /* Utilities.swift */; };
+		70DBC6EC220984E300E0BB27 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A54FC721FE25B300BC9252 /* Show.swift */; };
+		70DBC6EE220984FE00E0BB27 /* ShowItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC6ED220984FE00E0BB27 /* ShowItemViewModel.swift */; };
+		70DBC6EF220984FE00E0BB27 /* ShowItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC6ED220984FE00E0BB27 /* ShowItemViewModel.swift */; };
+		70DBC6F0220984FE00E0BB27 /* ShowItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC6ED220984FE00E0BB27 /* ShowItemViewModel.swift */; };
+		70DBC6F22209852500E0BB27 /* ViewIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC6F12209852500E0BB27 /* ViewIdentifiers.swift */; };
+		70DBC6F4220985A900E0BB27 /* HeaderItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC6F3220985A900E0BB27 /* HeaderItemViewModel.swift */; };
+		70DBC6F5220985A900E0BB27 /* HeaderItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC6F3220985A900E0BB27 /* HeaderItemViewModel.swift */; };
+		70DBC6F6220985A900E0BB27 /* HeaderItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC6F3220985A900E0BB27 /* HeaderItemViewModel.swift */; };
+		70DBC6F7220987F600E0BB27 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703270AF22089F1000D6C052 /* Boomerang.framework */; };
+		70DBC6F8220987F600E0BB27 /* Boomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 703270AF22089F1000D6C052 /* Boomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		70DBC6FD22098CF400E0BB27 /* WKInterfaceTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DBC6FC22098CF400E0BB27 /* WKInterfaceTable.swift */; };
 		7E5731E462DBDE4C62B9E8B8 /* Pods_BoomerangTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B236ED10939A542FCEB1B052 /* Pods_BoomerangTests.framework */; };
 		8469E91E30C2F5140AE7A07B /* Pods_Boomerang_watch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E326479A355B1FCE1023CB5 /* Pods_Boomerang_watch.framework */; };
 		9D054F927B41F55BE8AD236F /* Pods_DemoTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A5234CA90940D58D22BE77 /* Pods_DemoTV.framework */; };
+		A45D415FC0C73DC2CA0F7825 /* Pods_DemoWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFA1EFEA667CA15B49BFFA7 /* Pods_DemoWatch.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +145,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 704B476121F363F3007E11DA;
 			remoteInfo = Boomerang;
+		};
+		70DBC6D222097C4C00E0BB27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 704B475921F363F3007E11DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 70DBC6CF22097C4C00E0BB27;
+			remoteInfo = "DemoWatch Extension";
+		};
+		70DBC6DC22097C4D00E0BB27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 704B475921F363F3007E11DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 70DBC6C322097C4B00E0BB27;
+			remoteInfo = DemoWatch;
+		};
+		70DBC6F9220987F600E0BB27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 704B475921F363F3007E11DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 703270AE22089F1000D6C052;
+			remoteInfo = "Boomerang-watch";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -149,13 +192,49 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		70DBC6E222097C4D00E0BB27 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				70DBC6D122097C4C00E0BB27 /* DemoWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70DBC6E622097C4D00E0BB27 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				70DBC6DE22097C4D00E0BB27 /* DemoWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70DBC6FB220987F700E0BB27 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				70DBC6F8220987F600E0BB27 /* Boomerang.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		03AB6EFE7F735A5063DE9A71 /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		0AFA1EFEA667CA15B49BFFA7 /* Pods_DemoWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		118284391D66B351AB8546A4 /* Pods-BoomerangTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoomerangTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BoomerangTests/Pods-BoomerangTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1A404B9D9CF0DAD37087562C /* Pods_Boomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Boomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F9B8CDAE9D3F9D816CF6E18 /* Pods_DemoWatch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoWatch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		326672D35DC64B9D354F4E60 /* Pods-DemoTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemoTV/Pods-DemoTV.debug.xcconfig"; sourceTree = "<group>"; };
+		329BF548DAF4B70A7D08CFE9 /* Pods-DemoWatch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoWatch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemoWatch Extension/Pods-DemoWatch Extension.release.xcconfig"; sourceTree = "<group>"; };
 		3E326479A355B1FCE1023CB5 /* Pods_Boomerang_watch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Boomerang_watch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B56786E141E977CDAD6BF24 /* Pods-Boomerang.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boomerang.release.xcconfig"; path = "Pods/Target Support Files/Pods-Boomerang/Pods-Boomerang.release.xcconfig"; sourceTree = "<group>"; };
 		65767186795F4FAEBC514D4E /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
@@ -168,8 +247,6 @@
 		703270A02208976900D6C052 /* ShowItemView~tv.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "ShowItemView~tv.xib"; sourceTree = "<group>"; };
 		703270A22208980700D6C052 /* HeaderItemView~tv.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "HeaderItemView~tv.xib"; sourceTree = "<group>"; };
 		703270AF22089F1000D6C052 /* Boomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		703270B122089F1000D6C052 /* Boomerang_watch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Boomerang_watch.h; sourceTree = "<group>"; };
-		703270B222089F1000D6C052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		703270C422089FA300D6C052 /* WatchOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchOS.swift; sourceTree = "<group>"; };
 		704B476221F363F3007E11DA /* Boomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		704B476521F363F3007E11DA /* Boomerang.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Boomerang.h; sourceTree = "<group>"; };
@@ -212,14 +289,31 @@
 		70A54FC521FE207700BC9252 /* ShowItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowItemView.xib; sourceTree = "<group>"; };
 		70A54FC721FE25B300BC9252 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		70A54FC921FE2E2300BC9252 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70DBC6C422097C4B00E0BB27 /* DemoWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		70DBC6C722097C4B00E0BB27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		70DBC6C922097C4C00E0BB27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		70DBC6CB22097C4C00E0BB27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70DBC6D022097C4C00E0BB27 /* DemoWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DemoWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		70DBC6D522097C4C00E0BB27 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		70DBC6D722097C4C00E0BB27 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		70DBC6D922097C4D00E0BB27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		70DBC6DB22097C4D00E0BB27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70DBC6E82209823F00E0BB27 /* ShowRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRowController.swift; sourceTree = "<group>"; };
+		70DBC6ED220984FE00E0BB27 /* ShowItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowItemViewModel.swift; sourceTree = "<group>"; };
+		70DBC6F12209852500E0BB27 /* ViewIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewIdentifiers.swift; sourceTree = "<group>"; };
+		70DBC6F3220985A900E0BB27 /* HeaderItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderItemViewModel.swift; sourceTree = "<group>"; };
+		70DBC6FC22098CF400E0BB27 /* WKInterfaceTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKInterfaceTable.swift; sourceTree = "<group>"; };
 		8222C4EB855BB3250D38CA72 /* Pods-Boomerang-tv.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boomerang-tv.release.xcconfig"; path = "Pods/Target Support Files/Pods-Boomerang-tv/Pods-Boomerang-tv.release.xcconfig"; sourceTree = "<group>"; };
 		8584F9563C5DC69A093A7C18 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		858CF253BA7E7567C48FA791 /* Pods-DemoWatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoWatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemoWatch/Pods-DemoWatch.debug.xcconfig"; sourceTree = "<group>"; };
 		9CA8FB6394D82912ECA8D55F /* Pods-BoomerangTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoomerangTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BoomerangTests/Pods-BoomerangTests.release.xcconfig"; sourceTree = "<group>"; };
 		A3F81DCA974195202B1CAAFD /* Pods_Boomerang_tv.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Boomerang_tv.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9FD022D06A5D711509A9B92 /* Pods-DemoWatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoWatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemoWatch/Pods-DemoWatch.release.xcconfig"; sourceTree = "<group>"; };
 		AECDD350F43E0AE6161FEDD5 /* Pods-Boomerang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boomerang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Boomerang/Pods-Boomerang.debug.xcconfig"; sourceTree = "<group>"; };
 		B236ED10939A542FCEB1B052 /* Pods_BoomerangTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoomerangTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C20643E92EDCB624E9B2E746 /* Pods-Boomerang-tv.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boomerang-tv.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Boomerang-tv/Pods-Boomerang-tv.debug.xcconfig"; sourceTree = "<group>"; };
 		C6A5234CA90940D58D22BE77 /* Pods_DemoTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCFD6985F5FA6A01422F7EEE /* Pods-DemoWatch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoWatch Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemoWatch Extension/Pods-DemoWatch Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		DFA910F49E59B91C33C18035 /* Pods-DemoTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTV.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemoTV/Pods-DemoTV.release.xcconfig"; sourceTree = "<group>"; };
 		F4F03979D9A0FCD76F8A399F /* Pods-Boomerang-watch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boomerang-watch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Boomerang-watch/Pods-Boomerang-watch.debug.xcconfig"; sourceTree = "<group>"; };
 		FF35C2A8282FE57391130C6D /* Pods-Boomerang-watch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boomerang-watch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Boomerang-watch/Pods-Boomerang-watch.release.xcconfig"; sourceTree = "<group>"; };
@@ -277,6 +371,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		70DBC6CD22097C4C00E0BB27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C4DD80FD21F27558E9CBFC /* Pods_DemoWatch_Extension.framework in Frameworks */,
+				70DBC6F7220987F600E0BB27 /* Boomerang.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CEEFC3FECEEA80B0266C801 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A45D415FC0C73DC2CA0F7825 /* Pods_DemoWatch.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -289,6 +400,8 @@
 				B236ED10939A542FCEB1B052 /* Pods_BoomerangTests.framework */,
 				8584F9563C5DC69A093A7C18 /* Pods_Demo.framework */,
 				C6A5234CA90940D58D22BE77 /* Pods_DemoTV.framework */,
+				0AFA1EFEA667CA15B49BFFA7 /* Pods_DemoWatch.framework */,
+				2F9B8CDAE9D3F9D816CF6E18 /* Pods_DemoWatch_Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -308,6 +421,10 @@
 				65767186795F4FAEBC514D4E /* Pods-Demo.release.xcconfig */,
 				326672D35DC64B9D354F4E60 /* Pods-DemoTV.debug.xcconfig */,
 				DFA910F49E59B91C33C18035 /* Pods-DemoTV.release.xcconfig */,
+				858CF253BA7E7567C48FA791 /* Pods-DemoWatch.debug.xcconfig */,
+				A9FD022D06A5D711509A9B92 /* Pods-DemoWatch.release.xcconfig */,
+				DCFD6985F5FA6A01422F7EEE /* Pods-DemoWatch Extension.debug.xcconfig */,
+				329BF548DAF4B70A7D08CFE9 /* Pods-DemoWatch Extension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -316,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				7032703122083E9B00D6C052 /* HeaderItemView.swift */,
+				70DBC6F3220985A900E0BB27 /* HeaderItemViewModel.swift */,
 				7032703522083EF500D6C052 /* HeaderItemView.xib */,
 				703270A22208980700D6C052 /* HeaderItemView~tv.xib */,
 			);
@@ -326,19 +444,11 @@
 			isa = PBXGroup;
 			children = (
 				70A54FBF21FDFB3A00BC9252 /* ShowItemView.swift */,
+				70DBC6ED220984FE00E0BB27 /* ShowItemViewModel.swift */,
 				70A54FC521FE207700BC9252 /* ShowItemView.xib */,
 				703270A02208976900D6C052 /* ShowItemView~tv.xib */,
 			);
 			path = Show;
-			sourceTree = "<group>";
-		};
-		703270B022089F1000D6C052 /* Boomerang-watch */ = {
-			isa = PBXGroup;
-			children = (
-				703270B122089F1000D6C052 /* Boomerang_watch.h */,
-				703270B222089F1000D6C052 /* Info.plist */,
-			);
-			path = "Boomerang-watch";
 			sourceTree = "<group>";
 		};
 		703270B722089F3D00D6C052 /* UIKit */ = {
@@ -355,6 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				703270C422089FA300D6C052 /* WatchOS.swift */,
+				70DBC6FC22098CF400E0BB27 /* WKInterfaceTable.swift */,
 			);
 			path = WatchOS;
 			sourceTree = "<group>";
@@ -365,7 +476,8 @@
 				704B476421F363F3007E11DA /* Boomerang */,
 				704B476F21F363F3007E11DA /* BoomerangTests */,
 				706142F521F5F95A003040D2 /* Demo */,
-				703270B022089F1000D6C052 /* Boomerang-watch */,
+				70DBC6C522097C4B00E0BB27 /* DemoWatch */,
+				70DBC6D422097C4C00E0BB27 /* DemoWatch Extension */,
 				704B476321F363F3007E11DA /* Products */,
 				4BD6223192BE8B1BE3D4CD31 /* Pods */,
 				05364CAB5A054AE44C507309 /* Frameworks */,
@@ -381,6 +493,8 @@
 				7032705922087CF400D6C052 /* Boomerang.framework */,
 				7032709722088E0F00D6C052 /* DemoTV.app */,
 				703270AF22089F1000D6C052 /* Boomerang.framework */,
+				70DBC6C422097C4B00E0BB27 /* DemoWatch.app */,
+				70DBC6D022097C4C00E0BB27 /* DemoWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -501,6 +615,29 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		70DBC6C522097C4B00E0BB27 /* DemoWatch */ = {
+			isa = PBXGroup;
+			children = (
+				70DBC6C622097C4B00E0BB27 /* Main.storyboard */,
+				70DBC6C922097C4C00E0BB27 /* Assets.xcassets */,
+				70DBC6CB22097C4C00E0BB27 /* Info.plist */,
+			);
+			path = DemoWatch;
+			sourceTree = "<group>";
+		};
+		70DBC6D422097C4C00E0BB27 /* DemoWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				70DBC6F12209852500E0BB27 /* ViewIdentifiers.swift */,
+				70DBC6D522097C4C00E0BB27 /* InterfaceController.swift */,
+				70DBC6D722097C4C00E0BB27 /* ExtensionDelegate.swift */,
+				70DBC6D922097C4D00E0BB27 /* Assets.xcassets */,
+				70DBC6DB22097C4D00E0BB27 /* Info.plist */,
+				70DBC6E82209823F00E0BB27 /* ShowRowController.swift */,
+			);
+			path = "DemoWatch Extension";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -516,7 +653,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				703270B322089F1000D6C052 /* Boomerang_watch.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,16 +775,58 @@
 				706142F221F5F959003040D2 /* Resources */,
 				7061431421F5FC0A003040D2 /* Embed Frameworks */,
 				30CD97AFF2DA516D53A33FE0 /* [CP] Embed Pods Frameworks */,
+				70DBC6E622097C4D00E0BB27 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				7061431321F5FC0A003040D2 /* PBXTargetDependency */,
+				70DBC6DD22097C4D00E0BB27 /* PBXTargetDependency */,
 			);
 			name = Demo;
 			productName = Demo;
 			productReference = 706142F421F5F959003040D2 /* Demo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		70DBC6C322097C4B00E0BB27 /* DemoWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 70DBC6E322097C4D00E0BB27 /* Build configuration list for PBXNativeTarget "DemoWatch" */;
+			buildPhases = (
+				E2A394186558AE82F7D75A16 /* [CP] Check Pods Manifest.lock */,
+				70DBC6C222097C4B00E0BB27 /* Resources */,
+				70DBC6E222097C4D00E0BB27 /* Embed App Extensions */,
+				7CEEFC3FECEEA80B0266C801 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				70DBC6D322097C4C00E0BB27 /* PBXTargetDependency */,
+			);
+			name = DemoWatch;
+			productName = DemoWatch;
+			productReference = 70DBC6C422097C4B00E0BB27 /* DemoWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		70DBC6CF22097C4C00E0BB27 /* DemoWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 70DBC6DF22097C4D00E0BB27 /* Build configuration list for PBXNativeTarget "DemoWatch Extension" */;
+			buildPhases = (
+				3A810DD38037D31CBD01D3F5 /* [CP] Check Pods Manifest.lock */,
+				70DBC6CC22097C4C00E0BB27 /* Sources */,
+				70DBC6CD22097C4C00E0BB27 /* Frameworks */,
+				70DBC6CE22097C4C00E0BB27 /* Resources */,
+				3B676BE9149FA2CF15EE4611 /* [CP] Embed Pods Frameworks */,
+				70DBC6FB220987F700E0BB27 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				70DBC6FA220987F600E0BB27 /* PBXTargetDependency */,
+			);
+			name = "DemoWatch Extension";
+			productName = "DemoWatch Extension";
+			productReference = 70DBC6D022097C4C00E0BB27 /* DemoWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -673,6 +851,12 @@
 					706142F321F5F959003040D2 = {
 						CreatedOnToolsVersion = 10.1;
 					};
+					70DBC6C322097C4B00E0BB27 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					70DBC6CF22097C4C00E0BB27 = {
+						CreatedOnToolsVersion = 10.1;
+					};
 				};
 			};
 			buildConfigurationList = 704B475C21F363F3007E11DA /* Build configuration list for PBXProject "Boomerang" */;
@@ -694,6 +878,8 @@
 				704B476A21F363F3007E11DA /* BoomerangTests */,
 				706142F321F5F959003040D2 /* Demo */,
 				7032707A22088E0F00D6C052 /* DemoTV */,
+				70DBC6C322097C4B00E0BB27 /* DemoWatch */,
+				70DBC6CF22097C4C00E0BB27 /* DemoWatch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -750,6 +936,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		70DBC6C222097C4B00E0BB27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70DBC6CA22097C4C00E0BB27 /* Assets.xcassets in Resources */,
+				70DBC6C822097C4B00E0BB27 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70DBC6CE22097C4C00E0BB27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70DBC6DA22097C4D00E0BB27 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -784,10 +987,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Demo/Pods-Demo-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Action-iOS/Action.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic-iOS/RxAtomic.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa-iOS/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift-iOS/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Action-iOS10.0/Action.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic-iOS10.0/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa-iOS10.0/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift-iOS10.0/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -801,6 +1004,56 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Demo/Pods-Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3A810DD38037D31CBD01D3F5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DemoWatch Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3B676BE9149FA2CF15EE4611 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DemoWatch Extension/Pods-DemoWatch Extension-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Action-watchOS3.0/Action.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic-watchOS3.0/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa-watchOS3.0/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift-watchOS3.0/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Action.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DemoWatch Extension/Pods-DemoWatch Extension-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3E0EE31185528C7AB687256B /* [CP] Check Pods Manifest.lock */ = {
@@ -834,13 +1087,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BoomerangTests/Pods-BoomerangTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic-iOS/RxAtomic.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift-iOS/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic-iOS10.0/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift-iOS10.0/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
-				"${BUILT_PRODUCTS_DIR}/Action-iOS/Action.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa-iOS/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/Action-iOS10.0/Action.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa-iOS10.0/RxCocoa.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -868,10 +1121,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DemoTV/Pods-DemoTV-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Action-tvOS/Action.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic-tvOS/RxAtomic.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa-tvOS/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift-tvOS/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Action-tvOS10.0/Action.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic-tvOS10.0/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa-tvOS10.0/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift-tvOS10.0/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -925,6 +1178,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-BoomerangTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2A394186558AE82F7D75A16 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DemoWatch-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1008,6 +1283,8 @@
 			files = (
 				7032707F22088E0F00D6C052 /* ViewController.swift in Sources */,
 				7032708022088E0F00D6C052 /* ViewIdentifiers.swift in Sources */,
+				70DBC6F5220985A900E0BB27 /* HeaderItemViewModel.swift in Sources */,
+				70DBC6EF220984FE00E0BB27 /* ShowItemViewModel.swift in Sources */,
 				7032708122088E0F00D6C052 /* Utilities.swift in Sources */,
 				7032708222088E0F00D6C052 /* ShowItemView.swift in Sources */,
 				7032708322088E0F00D6C052 /* AppDelegate.swift in Sources */,
@@ -1024,6 +1301,7 @@
 			files = (
 				703270C222089F8400D6C052 /* DataGroup.swift in Sources */,
 				703270BB22089F7E00D6C052 /* ViewModelType.swift in Sources */,
+				70DBC6FD22098CF400E0BB27 /* WKInterfaceTable.swift in Sources */,
 				703270C122089F8400D6C052 /* ModelType.swift in Sources */,
 				703270BC22089F7E00D6C052 /* DataHolder.swift in Sources */,
 				703270B922089F6E00D6C052 /* ViewModelCompatible.swift in Sources */,
@@ -1080,6 +1358,8 @@
 			files = (
 				706142F921F5F95A003040D2 /* ViewController.swift in Sources */,
 				70A54FC221FDFBCE00BC9252 /* ViewIdentifiers.swift in Sources */,
+				70DBC6F4220985A900E0BB27 /* HeaderItemViewModel.swift in Sources */,
+				70DBC6EE220984FE00E0BB27 /* ShowItemViewModel.swift in Sources */,
 				70A54FC421FE1E9700BC9252 /* Utilities.swift in Sources */,
 				70A54FC021FDFB3A00BC9252 /* ShowItemView.swift in Sources */,
 				706142F721F5F95A003040D2 /* AppDelegate.swift in Sources */,
@@ -1087,6 +1367,22 @@
 				70A54FC821FE25B300BC9252 /* Show.swift in Sources */,
 				70A54FBB21FDF77C00BC9252 /* ScheduleViewModel.swift in Sources */,
 				7032703222083E9B00D6C052 /* HeaderItemView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70DBC6CC22097C4C00E0BB27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70DBC6EC220984E300E0BB27 /* Show.swift in Sources */,
+				70DBC6F22209852500E0BB27 /* ViewIdentifiers.swift in Sources */,
+				70DBC6F0220984FE00E0BB27 /* ShowItemViewModel.swift in Sources */,
+				70DBC6E92209823F00E0BB27 /* ShowRowController.swift in Sources */,
+				70DBC6D822097C4C00E0BB27 /* ExtensionDelegate.swift in Sources */,
+				70DBC6F6220985A900E0BB27 /* HeaderItemViewModel.swift in Sources */,
+				70DBC6D622097C4C00E0BB27 /* InterfaceController.swift in Sources */,
+				70DBC6EB2209847500E0BB27 /* Utilities.swift in Sources */,
+				70DBC6EA220983B500E0BB27 /* ScheduleViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1108,6 +1404,21 @@
 			target = 704B476121F363F3007E11DA /* Boomerang */;
 			targetProxy = 7061431221F5FC0A003040D2 /* PBXContainerItemProxy */;
 		};
+		70DBC6D322097C4C00E0BB27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 70DBC6CF22097C4C00E0BB27 /* DemoWatch Extension */;
+			targetProxy = 70DBC6D222097C4C00E0BB27 /* PBXContainerItemProxy */;
+		};
+		70DBC6DD22097C4D00E0BB27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 70DBC6C322097C4B00E0BB27 /* DemoWatch */;
+			targetProxy = 70DBC6DC22097C4D00E0BB27 /* PBXContainerItemProxy */;
+		};
+		70DBC6FA220987F600E0BB27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 703270AE22089F1000D6C052 /* Boomerang-watch */;
+			targetProxy = 70DBC6F9220987F600E0BB27 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1125,6 +1436,14 @@
 				7061430021F5F95B003040D2 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		70DBC6C622097C4B00E0BB27 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				70DBC6C722097C4B00E0BB27 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1238,7 +1557,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Boomerang-watch/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Boomerang/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1266,7 +1585,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Boomerang-watch/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Boomerang/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1538,6 +1857,88 @@
 			};
 			name = Release;
 		};
+		70DBC6E022097C4D00E0BB27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCFD6985F5FA6A01422F7EEE /* Pods-DemoWatch Extension.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "DemoWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = it.synesthesia.Demo.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Debug;
+		};
+		70DBC6E122097C4D00E0BB27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 329BF548DAF4B70A7D08CFE9 /* Pods-DemoWatch Extension.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "DemoWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = it.synesthesia.Demo.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Release;
+		};
+		70DBC6E422097C4D00E0BB27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 858CF253BA7E7567C48FA791 /* Pods-DemoWatch.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				IBSC_MODULE = DemoWatch_Extension;
+				INFOPLIST_FILE = DemoWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = it.synesthesia.Demo.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Debug;
+		};
+		70DBC6E522097C4D00E0BB27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9FD022D06A5D711509A9B92 /* Pods-DemoWatch.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				IBSC_MODULE = DemoWatch_Extension;
+				INFOPLIST_FILE = DemoWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = it.synesthesia.Demo.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1600,6 +2001,24 @@
 			buildConfigurations = (
 				7061430421F5F95B003040D2 /* Debug */,
 				7061430521F5F95B003040D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		70DBC6DF22097C4D00E0BB27 /* Build configuration list for PBXNativeTarget "DemoWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				70DBC6E022097C4D00E0BB27 /* Debug */,
+				70DBC6E122097C4D00E0BB27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		70DBC6E322097C4D00E0BB27 /* Build configuration list for PBXNativeTarget "DemoWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				70DBC6E422097C4D00E0BB27 /* Debug */,
+				70DBC6E522097C4D00E0BB27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

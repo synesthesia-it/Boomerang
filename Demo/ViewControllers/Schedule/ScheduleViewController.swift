@@ -31,8 +31,7 @@ class ScheduleViewController: UIViewController, ViewModelCompatible, UICollectio
     func configure(with viewModel: ScheduleViewModel) {
         collectionView.delegate = self
         collectionView.alwaysBounceVertical = true
-        collectionView.boomerang.configure(with: viewModel)
-        
+        collectionView.set(viewModel: viewModel)
 //        let refreshControl = UIRefreshControl()
 //        viewModel.isLoadingData
 //            .asDriver(onErrorJustReturn: false)

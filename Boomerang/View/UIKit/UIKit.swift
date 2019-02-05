@@ -31,7 +31,7 @@ internal extension Boomerang where Base: UIView {
     }
 }
 
-extension ViewModelCompatibleType where Self: NSObject {
+public extension ViewModelCompatibleType where Self: NSObject {
     
     public var isPlaceholderForAutosize: Bool {
         get {

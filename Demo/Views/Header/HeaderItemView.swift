@@ -9,15 +9,6 @@
 import Foundation
 import Boomerang
 
-class HeaderItemViewModel: IdentifiableItemViewModelType {
-    
-    var identifier: Identifier = Identifiers.View.header
-    var title: String
-    init (title: String) {
-        self.title = title
-    }
-}
-
 class HeaderItemView: UIView, ViewModelCompatible {
     
     @IBOutlet var title: UILabel!

@@ -14,8 +14,8 @@ struct ScheduleViewModel: ListViewModel {
     
     func group(_ observable: Observable<[Show]>) -> Observable<DataGroup> {
         return observable.map { DataGroup($0, supplementaryData: [0: [
-            UICollectionView.elementKindSectionHeader: "Tonight's schedule",
-            UICollectionView.elementKindSectionFooter: "Credits: tvmaze.com"
+            Identifiers.SupplementaryTypes.header.name: "Tonight's schedule",
+           Identifiers.SupplementaryTypes.footer.name: "Credits: tvmaze.com"
             ]]) }
     }
     

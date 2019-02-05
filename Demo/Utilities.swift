@@ -8,6 +8,8 @@
 
 import Foundation
 import RxSwift
+import Boomerang
+extension String: ModelType {}
 extension String {
     func firstCharacterCapitalized() -> String {
         return prefix(1).uppercased() + dropFirst()
@@ -20,10 +22,10 @@ struct DataManager {
 }
 
 extension URL {
-    func image() -> Observable<UIImage?> {
+    func image() -> Observable<Image?> {
         return DataManager.session
             .rx
             .data(request: URLRequest(url: self))
-            .map { UIImage(data: $0) }
+            .map {_ in return nil }// Image(data: $0) }
     }
 }

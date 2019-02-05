@@ -9,8 +9,8 @@
 import Foundation
 
 public struct Boomerang<Base> {
-    var base: Base
-    init(_ base: Base) {
+    public var base: Base
+    public init(_ base: Base) {
         self.base = base
     }
 }

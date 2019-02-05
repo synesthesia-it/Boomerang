@@ -37,3 +37,12 @@ target 'DemoTV' do
     platform :tvos, '10.0'
     shared_pods
 end
+target 'DemoWatch' do
+    platform :watchos, '3.0'
+    shared_pods
+end
+
+target 'DemoWatch Extension' do
+    platform :watchos, '3.0'
+    shared_pods
+end

@@ -14,7 +14,7 @@ public typealias DataUpdate = () -> ([IndexPath])
 typealias ViewModelCache = GroupCache<IdentifiableViewModelType>
 
 public enum DataHolderUpdate {
-    case reload
+    case reload(DataGroup)
     case deleteItems(DataUpdate)
     case insertItems(DataUpdate)
     case move(DataUpdate)
@@ -80,7 +80,7 @@ public class DataHolder {
             .disposed(by: disposeBag)
         
         self.action.elements
-            .map {_ in DataHolderUpdate.reload }
+            .map { DataHolderUpdate.reload($0) }
             .bind(to: updates)
             .disposed(by: disposeBag)
     }

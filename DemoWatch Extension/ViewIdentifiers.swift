@@ -10,18 +10,13 @@ import Foundation
 import Boomerang
 import UIKit
 
-typealias Image = UIImage
-
 struct Identifiers {
-    enum SupplementaryTypes {
+    enum SupplementaryTypes: String {
         case header
         case footer
         
         var name: String {
-            switch self {
-            case .header: return UICollectionView.elementKindSectionHeader
-            case .footer: return UICollectionView.elementKindSectionFooter
-            }
+            return rawValue
         }
     }
     enum Views: String, ViewIdentifier {
@@ -29,8 +24,9 @@ struct Identifiers {
         case show
         case header
         
-        func view<T>() -> T? where T : UIView {
-            return Bundle.main.loadNibNamed(self.name, owner: nil, options: nil)?.first as? T
+        func view<T>() -> T? where T : View {
+            return nil
+//            return Bundle.main.loadNibNamed(self.name, owner: nil, options: nil)?.first as? T
         }
         
         var shouldBeEmbedded: Bool { return true }
@@ -38,12 +34,8 @@ struct Identifiers {
         var className: AnyClass? { return nil }
         
         var name: String {
-            var suffix = ""
-            if UIDevice.current.userInterfaceIdiom == .tv {
-                suffix = "~tv"
-            }
             
-            return rawValue.firstCharacterCapitalized() + "ItemView" + suffix
+            return rawValue.firstCharacterCapitalized() + "RowController"
         }
         
     }
