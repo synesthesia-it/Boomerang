@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/stefanomondino/Boomerang.git", :tag => "#{s.version}" }
 
-  s.source_files  = "Sources/{.,Model,View,ViewModel}/*.{swift}"
+  s.source_files  = "Sources/{.,Model,View/Shared,ViewModel}/*.{swift}"
   s.ios.source_files = "Sources/View/UIKit/**/*.{swift}"
   s.tvos.source_files = "Sources/View/UIKit/**/*.{swift}"
   s.watchos.source_files = "Sources/View/WatchOS/**/*.{swift}"

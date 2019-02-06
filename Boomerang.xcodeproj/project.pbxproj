@@ -704,6 +704,7 @@
 		70DBC760220ACF2A00E0BB27 /* Rx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Rx.xcodeproj; path = Carthage/Checkouts/RxSwift/Rx.xcodeproj; sourceTree = "<group>"; };
 		70DBC7C4220AD1A500E0BB27 /* ParallaxView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ParallaxView.xcodeproj; path = Carthage/Checkouts/ParallaxView/ParallaxView.xcodeproj; sourceTree = "<group>"; };
 		7B50132F220A3DE60087CDCB /* CollectionViewCell+Parallax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionViewCell+Parallax.swift"; sourceTree = "<group>"; };
+		7B54F9B9220B988E002854DC /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		7B9FC85B220A0F7000E46539 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		7B9FC862220A2B2300E46539 /* InteractionCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionCompatible.swift; sourceTree = "<group>"; };
 		7B9FC865220A2DBC00E46539 /* ShowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewModel.swift; sourceTree = "<group>"; };
@@ -849,6 +850,7 @@
 		704B475821F363F3007E11DA = {
 			isa = PBXGroup;
 			children = (
+				7B54F9B9220B988E002854DC /* Package.swift */,
 				70DBC709220ACEE800E0BB27 /* Carthage */,
 				704B476421F363F3007E11DA /* Sources */,
 				704B476F21F363F3007E11DA /* Tests */,
@@ -928,12 +930,9 @@
 		706142B621F4F349003040D2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7B54F9BB220B9998002854DC /* Shared */,
 				703270B722089F3D00D6C052 /* UIKit */,
 				703270C322089F8A00D6C052 /* WatchOS */,
-				706142B721F4F367003040D2 /* BoomerangProxy.swift */,
-				706142BB21F4F701003040D2 /* ViewModelCompatible.swift */,
-				7B9FC862220A2B2300E46539 /* InteractionCompatible.swift */,
-				70DBC6FE2209CA3800E0BB27 /* Router.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1108,6 +1107,17 @@
 				70DBC7C9220AD1A500E0BB27 /* ParallaxView.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		7B54F9BB220B9998002854DC /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				706142B721F4F367003040D2 /* BoomerangProxy.swift */,
+				706142BB21F4F701003040D2 /* ViewModelCompatible.swift */,
+				7B9FC862220A2B2300E46539 /* InteractionCompatible.swift */,
+				70DBC6FE2209CA3800E0BB27 /* Router.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		7B9FC864220A2DAB00E46539 /* ShowDetail */ = {
