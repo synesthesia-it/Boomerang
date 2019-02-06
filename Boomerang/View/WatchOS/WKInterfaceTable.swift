@@ -34,9 +34,9 @@ extension Reactive where Base: WKInterfaceTable {
     func dataUpdates(with viewModel: ListViewModelType) -> Binder<DataHolderUpdate> {
         return Binder(base) { base, updates in
             switch updates {
-            case .reload(let group) :
-                
-                let viewModels = group.indices.compactMap {
+            case .reload(let updates) :
+                _ = updates()
+                let viewModels = viewModel.dataHolder.modelGroup.indices.compactMap {
                     viewModel.mainViewModel(at: $0)
                 }
                 if let first = viewModels.first {

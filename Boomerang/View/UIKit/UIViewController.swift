@@ -16,15 +16,15 @@ extension InteractionCompatible where Self: UIViewController {
             viewModel.selection
                 .elements
                 .asSignal(onErrorJustReturn: .none)
-                .asObservable()
-                .bind {[weak self] interaction in
+                .emit(onNext: {[weak self] interaction in
                     guard let self = self else { return }
                     switch interaction {
                     case .route(let route): self.handleInteraction(route)
                     case .custom(let custom): self.handleInteraction(custom)
                     default: self.handleInteraction(interaction)
                     }
-                }.disposed(by: disposeBag)
+                })
+                .disposed(by: disposeBag)
         }
 
     public func handleInteraction(_ route: Route) {

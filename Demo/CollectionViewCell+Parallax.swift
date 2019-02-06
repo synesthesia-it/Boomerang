@@ -82,5 +82,5 @@ class CustomContentCollectionViewCell: ParallaxCollectionViewCell, ContentCollec
 
 #elseif os(iOS)
 
-typealias CustomContentCollectionViewCell = Boomerang.ContentCollectionViewcell
+typealias CustomContentCollectionViewCell = ContentCollectionViewCell
 #endif

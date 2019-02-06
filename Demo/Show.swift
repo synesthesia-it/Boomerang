@@ -26,5 +26,6 @@ struct Show: ModelType, Codable {
     }
     
     var name: String
+    var genres: [String]
     var image: Image?
 }

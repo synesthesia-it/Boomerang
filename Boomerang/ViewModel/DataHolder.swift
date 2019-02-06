@@ -14,11 +14,21 @@ public typealias DataUpdate = () -> ([IndexPath])
 typealias ViewModelCache = GroupCache<IdentifiableViewModelType>
 
 public enum DataHolderUpdate {
-    case reload(DataGroup)
+    case reload(DataUpdate)
     case deleteItems(DataUpdate)
     case insertItems(DataUpdate)
     case move(DataUpdate)
     case none
+}
+/**
+ Defines how elements should be inserted in data holder. Temporary unimplemented
+ */
+typealias DataHolderUpdateCustomStrategy = (DataHolder) -> (Observable<DataHolderUpdate>)
+enum DataHolderUpdateStrategy {
+    case reload
+    case insert
+    case timedInsert
+    case custom(DataHolderUpdateCustomStrategy)
 }
 
 public class DataHolder {
@@ -27,6 +37,7 @@ public class DataHolder {
             self?.itemCache.clear()
         })
     }
+    
     public var isLoading: Observable<Bool> {
         return action.executing
     }
@@ -59,8 +70,8 @@ public class DataHolder {
     
     internal let updates: BehaviorSubject<DataHolderUpdate> = BehaviorSubject(value: .none)
     
-    private let disposeBag = DisposeBag()
-    private let action: Action<Void, DataGroup>
+    internal let disposeBag = DisposeBag()
+    private var action: Action<Void, DataHolderUpdate> = Action {_ in .empty()}
     private let _modelGroup: BehaviorSubject<DataGroup> = BehaviorSubject(value: DataGroup.empty)
     private let interrupt: BehaviorSubject<()>
     
@@ -68,19 +79,34 @@ public class DataHolder {
         action = Action { .empty() }
         interrupt = BehaviorSubject(value: ())
     }
-    public init(data: Observable<DataGroup>, cancelWith interrupt: BehaviorSubject<()> = BehaviorSubject(value: ()) ) {
+    public init(data: Observable<DataGroup>, cancelWith interrupt: BehaviorSubject<()> = BehaviorSubject(value: ())) {
+        let strategy: DataHolderUpdateStrategy = .reload
         self.interrupt = interrupt
-        self.action = Action { _ in
-            return data.takeUntil(interrupt.skip(1))
+        self.action = Action { [weak self] in
+            guard let self = self else { return .empty() }
+            return data
+                .takeUntil(interrupt.skip(1))
+                .flatMapLatest { group -> Observable<DataHolderUpdate>in
+                    switch strategy {
+                    case .reload:
+                        return .just(DataHolderUpdate.reload( {
+                            return self.reload(group)
+                        }))
+//                    case .insert:
+//                        return Observable.just(DataHolderUpdate.insertItems( {
+//                            self._insert(group.data, at: self.modelGroup.indices.last ?? IndexPath(indexes: (0..<group.depth).map {_ in 0 }))
+//                        })).startWith(.reload( { self.reload(DataGroup.empty) }))
+                    default: return .empty()
+                    }
+            }
         }
-       
-        self.action
-            .elements
-            .bind(to: _modelGroup)
-            .disposed(by: disposeBag)
+//
+//        self.action
+//            .elements
+//            .bind(to: _modelGroup)
+//            .disposed(by: disposeBag)
         
         self.action.elements
-            .map { DataHolderUpdate.reload($0) }
             .bind(to: updates)
             .disposed(by: disposeBag)
     }
@@ -127,21 +153,30 @@ extension DataHolder: MutableCollection, RandomAccessCollection {
 }
 
 extension DataHolder {
+    public func reload(_ group: DataGroup) -> [IndexPath] {
+        self.modelGroup = group
+        self.itemCache.clear()
+        return []
+    }
+    
+    private func _insert(_ data: [DataType], at indexPath: IndexPath) -> [IndexPath] {
+        guard let newIndexPath = self.modelGroup.insert(data, at: indexPath.suffix(self.modelGroup.depth)) else {
+            return []
+        }
+        let lastIndex: Int = data.count + (newIndexPath.last ?? 0)
+        let firstIndex = newIndexPath.last ?? 0
+        
+        return (firstIndex..<lastIndex).map {
+            let indexPath = indexPath.dropLast().appending($0)
+            self.itemCache.replaceItem(nil, at: indexPath)
+            return indexPath
+        }
+    }
     
     public func insert(_ data: [DataType], at indexPath: IndexPath, immediate: Bool = false) {
         let insertion: DataUpdate = {[weak self] in
             guard let self = self else { return [] }
-            guard let newIndexPath = self.modelGroup.insert(data, at: indexPath.suffix(self.modelGroup.depth)) else {
-                return []
-            }
-            let lastIndex: Int = data.count + (newIndexPath.last ?? 0)
-            let firstIndex = newIndexPath.last ?? 0
-            
-            return (firstIndex..<lastIndex).map {
-                let indexPath = indexPath.dropLast().appending($0)
-                self.itemCache.replaceItem(nil, at: indexPath)
-                return indexPath
-            }
+            return self._insert(data, at: indexPath)
         }
         if immediate {
             _ = insertion()

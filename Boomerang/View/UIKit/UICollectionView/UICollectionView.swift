@@ -59,8 +59,9 @@ extension Reactive where Base: UICollectionView {
     func dataUpdates() -> Binder<DataHolderUpdate> {
         return Binder(base) { base, updates in
             switch updates {
-            case .reload :
+            case .reload(let updates) :
                 print("Reloading")
+                _ = updates()
                 base.reloadData()
                 
             case .deleteItems(let updates):

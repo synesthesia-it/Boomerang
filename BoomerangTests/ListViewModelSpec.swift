@@ -55,6 +55,7 @@ class ListViewModelSpec: QuickSpec {
                 viewModel = TestListViewModel(observable: Observable
                     .just(["A","B","C","D"])
                     .delaySubscription(0.5, scheduler: MainScheduler.instance))
+                viewModel.dataHolder.forceViewModelConversionOnReload()
             }
             context("with default values") {
                 it ("should cache items") {
@@ -62,6 +63,7 @@ class ListViewModelSpec: QuickSpec {
                 }
             }
             context("when item view model cache is on") {
+                
                 it("should reload and emit proper viewModels") {
                     viewModel.load()
                     var vm:TestItemViewModel?
@@ -75,6 +77,7 @@ class ListViewModelSpec: QuickSpec {
                 it("should not create same view model when accessing it") {
                     viewModel.dataHolder.useCache = true
                     viewModel.load()
+                    
                     var vm1:TestItemViewModel?
                     var vm2:TestItemViewModel?
                     expect{

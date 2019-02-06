@@ -8,13 +8,21 @@
 
 import Foundation
 import UIKit
-import Boomerang
+@testable import Boomerang
 
 extension DataHolder {
     func delayedStart() {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
             self.start()
         }
+    }
+    func forceViewModelConversionOnReload() {
+        self.updates.subscribe(onNext: {[weak self] in
+            switch $0 {
+            case .reload(let update): update()
+            default: break
+            }
+        }).disposed(by: disposeBag)
     }
 }
 

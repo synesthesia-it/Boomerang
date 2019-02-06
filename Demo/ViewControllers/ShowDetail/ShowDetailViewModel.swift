@@ -14,7 +14,10 @@ import RxCocoa
 class ShowDetailViewModel: ListViewModel, SceneViewModelType, ItemViewModelType {
     func group(_ observable: Observable<Show>) -> Observable<DataGroup> {
         return observable.map {
-            DataGroup([HeaderItemViewModel(title: $0.name), ShowItemViewModel(model: $0)])
+            DataGroup(
+                [HeaderItemViewModel(title: $0.name)] +
+                    $0.genres.map { HeaderItemViewModel(title: "Genre: \($0)") }
+            )
         }
     }
     

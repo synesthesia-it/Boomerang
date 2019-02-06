@@ -31,6 +31,7 @@ class DataHolderSpec: QuickSpec {
                    dataHolder = DataHolder(data:
                     Observable.just(DataGroup(["A","B","C"])).delay(0.5, scheduler: MainScheduler.instance))
                     dataHolder.delayedStart()
+                    dataHolder.forceViewModelConversionOnReload()
                 }
             
             it ("Should properly map every model") {
