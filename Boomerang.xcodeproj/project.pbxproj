@@ -850,8 +850,8 @@
 			isa = PBXGroup;
 			children = (
 				70DBC709220ACEE800E0BB27 /* Carthage */,
-				704B476421F363F3007E11DA /* Boomerang */,
-				704B476F21F363F3007E11DA /* BoomerangTests */,
+				704B476421F363F3007E11DA /* Sources */,
+				704B476F21F363F3007E11DA /* Tests */,
 				706142F521F5F95A003040D2 /* Demo */,
 				70DBC6C522097C4B00E0BB27 /* DemoWatch */,
 				70DBC6D422097C4C00E0BB27 /* DemoWatch Extension */,
@@ -875,7 +875,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		704B476421F363F3007E11DA /* Boomerang */ = {
+		704B476421F363F3007E11DA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				706142B621F4F349003040D2 /* View */,
@@ -884,10 +884,10 @@
 				704B476521F363F3007E11DA /* Boomerang.h */,
 				704B476621F363F3007E11DA /* Info.plist */,
 			);
-			path = Boomerang;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		704B476F21F363F3007E11DA /* BoomerangTests */ = {
+		704B476F21F363F3007E11DA /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				70A54FC921FE2E2300BC9252 /* Info.plist */,
@@ -898,7 +898,7 @@
 				706142B021F3CB7E003040D2 /* DataHolderSpec.swift */,
 				706142B421F4C7FF003040D2 /* ListViewModelSpec.swift */,
 			);
-			path = BoomerangTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		704B477E21F36600007E11DA /* Model */ = {
@@ -2001,7 +2001,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Boomerang/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2028,7 +2028,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Boomerang/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2094,7 +2094,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Boomerang/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2121,7 +2121,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Boomerang/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2270,7 +2270,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Boomerang/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2297,7 +2297,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Boomerang/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2318,7 +2318,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = BoomerangTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2336,7 +2336,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = BoomerangTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
