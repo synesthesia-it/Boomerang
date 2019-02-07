@@ -25,5 +25,4 @@ Pod::Spec.new do |s|
   s.watchos.source_files = "Sources/View/WatchOS/**/*.{swift}"
 
   s.dependency "RxSwift", "~> 4.4"
-  s.dependency "Action"
 end

@@ -8,7 +8,6 @@
 
 import Foundation
 import RxSwift
-import Action
 
 public typealias DataUpdate = () -> ([IndexPath])
 typealias ViewModelCache = GroupCache<IdentifiableViewModelType>

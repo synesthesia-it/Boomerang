@@ -8,7 +8,6 @@
 
 import Foundation
 import RxSwift
-import Action
 
 public protocol ListViewModelType: ViewModelType {
     var dataHolder: DataHolder { get }
