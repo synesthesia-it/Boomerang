@@ -140,20 +140,10 @@
 		70DBC803220C228700E0BB27 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC802220C228700E0BB27 /* Nimble.framework */; };
 		70DBC805220C228700E0BB27 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC804220C228700E0BB27 /* Quick.framework */; };
 		70DBC807220C228700E0BB27 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC806220C228700E0BB27 /* RxBlocking.framework */; };
-		70DBC809220C22CD00E0BB27 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC808220C22CD00E0BB27 /* RxSwift.framework */; };
-		70DBC80A220C22CD00E0BB27 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC808220C22CD00E0BB27 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		70DBC80C220C22CD00E0BB27 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC80B220C22CD00E0BB27 /* RxCocoa.framework */; };
-		70DBC80D220C22CD00E0BB27 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC80B220C22CD00E0BB27 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		70DBC80F220C22CD00E0BB27 /* RxAtomic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC80E220C22CD00E0BB27 /* RxAtomic.framework */; };
-		70DBC810220C22CD00E0BB27 /* RxAtomic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC80E220C22CD00E0BB27 /* RxAtomic.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		70DBC811220C22F700E0BB27 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC7FE220C224000E0BB27 /* RxCocoa.framework */; };
 		70DBC812220C22F700E0BB27 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC7FE220C224000E0BB27 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		70DBC813220C22F700E0BB27 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC800220C224000E0BB27 /* RxSwift.framework */; };
 		70DBC814220C22F700E0BB27 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC800220C224000E0BB27 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		70DBC815220C230C00E0BB27 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC808220C22CD00E0BB27 /* RxSwift.framework */; };
-		70DBC816220C230C00E0BB27 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC808220C22CD00E0BB27 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		70DBC817220C231100E0BB27 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC80B220C22CD00E0BB27 /* RxCocoa.framework */; };
-		70DBC818220C231100E0BB27 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC80B220C22CD00E0BB27 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7B501330220A3DE60087CDCB /* CollectionViewCell+Parallax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B50132F220A3DE60087CDCB /* CollectionViewCell+Parallax.swift */; };
 		7B501331220A3E3F0087CDCB /* CollectionViewCell+Parallax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B50132F220A3DE60087CDCB /* CollectionViewCell+Parallax.swift */; };
 		7B9FC85C220A0F7000E46539 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC85B220A0F7000E46539 /* UIViewController.swift */; };
@@ -233,9 +223,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				70DBC80D220C22CD00E0BB27 /* RxCocoa.framework in Embed Frameworks */,
-				70DBC810220C22CD00E0BB27 /* RxAtomic.framework in Embed Frameworks */,
-				70DBC80A220C22CD00E0BB27 /* RxSwift.framework in Embed Frameworks */,
 				70DBC7D7220AE45500E0BB27 /* Boomerang.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -269,8 +256,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				70DBC818220C231100E0BB27 /* RxCocoa.framework in Embed Frameworks */,
-				70DBC816220C230C00E0BB27 /* RxSwift.framework in Embed Frameworks */,
 				70DBC6F8220987F600E0BB27 /* Boomerang.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -359,9 +344,6 @@
 		70DBC802220C228700E0BB27 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70DBC804220C228700E0BB27 /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70DBC806220C228700E0BB27 /* RxBlocking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxBlocking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		70DBC808220C22CD00E0BB27 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		70DBC80B220C22CD00E0BB27 /* RxCocoa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		70DBC80E220C22CD00E0BB27 /* RxAtomic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxAtomic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B50132F220A3DE60087CDCB /* CollectionViewCell+Parallax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionViewCell+Parallax.swift"; sourceTree = "<group>"; };
 		7B54F9B9220B988E002854DC /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		7B9FC85B220A0F7000E46539 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -423,9 +405,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70DBC80C220C22CD00E0BB27 /* RxCocoa.framework in Frameworks */,
-				70DBC80F220C22CD00E0BB27 /* RxAtomic.framework in Frameworks */,
-				70DBC809220C22CD00E0BB27 /* RxSwift.framework in Frameworks */,
 				70DBC7D6220AE45500E0BB27 /* Boomerang.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,8 +413,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70DBC817220C231100E0BB27 /* RxCocoa.framework in Frameworks */,
-				70DBC815220C230C00E0BB27 /* RxSwift.framework in Frameworks */,
 				70DBC6F7220987F600E0BB27 /* Boomerang.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,9 +472,6 @@
 		704B475821F363F3007E11DA = {
 			isa = PBXGroup;
 			children = (
-				70DBC80E220C22CD00E0BB27 /* RxAtomic.framework */,
-				70DBC80B220C22CD00E0BB27 /* RxCocoa.framework */,
-				70DBC808220C22CD00E0BB27 /* RxSwift.framework */,
 				7B54F9B9220B988E002854DC /* Package.swift */,
 				704B476421F363F3007E11DA /* Sources */,
 				704B476F21F363F3007E11DA /* Tests */,
@@ -1268,6 +1242,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -1294,6 +1269,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
@@ -1314,6 +1290,7 @@
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -1334,6 +1311,7 @@
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
@@ -1360,7 +1338,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
@@ -1387,7 +1365,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
@@ -1443,7 +1421,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1501,7 +1479,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1657,7 +1635,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
@@ -1678,7 +1656,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
@@ -1696,7 +1674,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
@@ -1714,7 +1692,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
