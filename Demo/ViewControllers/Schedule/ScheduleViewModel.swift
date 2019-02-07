@@ -11,7 +11,7 @@ import Boomerang
 import RxSwift
 
 class ScheduleViewModel: ListViewModel, SceneViewModelType, InteractionViewModelType {
-    
+
     lazy var selection: Selection = self.defaultSelection()
     
     var sceneIdentifier: SceneIdentifier = Identifiers.Scenes.schedule
@@ -49,6 +49,9 @@ class ScheduleViewModel: ListViewModel, SceneViewModelType, InteractionViewModel
         guard let model = self.dataHolder[indexPath] as? Show else { return .empty() }
         let vm = ShowDetailViewModel(show: model)
         return .just(.route(NavigationRoute(viewModel:vm)))
+    }
+    func handleCustom(_ interaction: CustomInteraction) -> Observable<Interaction> {
+        return .empty()
     }
 }
 

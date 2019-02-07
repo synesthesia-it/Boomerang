@@ -30,6 +30,7 @@ public protocol InteractionViewModelType: ViewModelType {
     func handleRoute(_ route: Route) -> Observable<Interaction>
     func handleViewModel(_ viewModel: ViewModelType) -> Observable<Interaction>
     func handleSelectItem(_ indexPath: IndexPath) -> Observable<Interaction>
+    func handleCustom(_ interaction: CustomInteraction) -> Observable<Interaction>
 }
 
 extension InteractionViewModelType {
@@ -61,9 +62,6 @@ extension InteractionViewModelType {
         return .just(.viewModel(viewModel))
     }
     public func handleSelectItem(_ indexPath: IndexPath) -> Observable<Interaction> {
-        return .empty()
-    }
-    func handleCustom(_ interaction: CustomInteraction) -> Observable<Interaction> {
         return .empty()
     }
     public func interact(_ input: Interaction) {

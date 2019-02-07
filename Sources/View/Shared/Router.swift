@@ -13,7 +13,7 @@ public protocol Route {
 }
 
 public protocol ViewModelRoute: Route {
-    var viewModel: SceneViewModelType { get set }
+    var viewModel: SceneViewModelType { get }
 }
 
 extension ViewModelRoute {

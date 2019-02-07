@@ -17,5 +17,5 @@ public protocol SceneViewModelType: IdentifiableViewModelType {
 }
 
 public extension SceneViewModelType {
-    var identifier: Identifier { return sceneIdentifier }
+    public var identifier: Identifier { return sceneIdentifier }
 }

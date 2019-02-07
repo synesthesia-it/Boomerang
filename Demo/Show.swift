@@ -19,10 +19,6 @@ struct Show: ModelType, Codable {
     struct Episode: Codable {
         var name: String
         var show: Show
-        enum EpisodeCodingKeys: CodingKey {
-            case name
-            case show
-        }
     }
     
     var name: String

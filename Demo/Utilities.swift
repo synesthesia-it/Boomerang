@@ -18,7 +18,13 @@ extension String {
 
 struct DataManager {
     static let session = URLSession(configuration: URLSessionConfiguration.default)
-    static let decoder =  JSONDecoder()
+    static let decoder: JSONDecoder =  {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .custom( { decoder in
+            return Date()
+        })
+        return decoder
+    }()
 }
 
 extension URL {
