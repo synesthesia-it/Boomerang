@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = "10.0"
   # s.osx.deployment_target = "10.7"
-  s.watchos.deployment_target = "3.0"
+  s.watchos.deployment_target = "4.0"
   s.tvos.deployment_target = "10.0"
 
   s.source       = { :git => "https://github.com/stefanomondino/Boomerang.git", :tag => "#{s.version}" }
