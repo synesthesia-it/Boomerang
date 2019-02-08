@@ -8,26 +8,41 @@
 import Foundation
 
 public protocol DependencyContainer {
-    associatedtype Key: DependencyKey
+//    associatedtype Key: DependencyKey
     associatedtype Value
-    static var container: Container<String,Value> { get set }
-    static func register(for key: Key, handler: @escaping () -> Value)
-    static func resolve(_ key: Key) -> Value?
+    static var container: Container<DependencyKey.KeyType,Value> { get set }
+//    static func register(_ key: DependencyKey, handler: @escaping () -> Value)
+//    static func resolve(_ key: DependencyKey) -> Value?
 }
 
 public protocol DependencyKey {
-    var keyValue: String { get }
+    typealias KeyType = Int
+    var dependencyKey: KeyType { get }
+//    static var dependencyKey: KeyType { get }
 }
 
-extension String: DependencyKey {
-    public var keyValue: String { return self }
+public extension DependencyKey where Self: Hashable {
+    var dependencyKey: DependencyKey.KeyType { return hashValue }
 }
-extension DependencyContainer {
-    public static func register(for key: Key, handler: @escaping () -> Value) {
-        container.register(for: key.keyValue, handler: handler)
+public extension DependencyKey {
+     public static var dependencyKey: DependencyKey.KeyType {
+        return ObjectIdentifier(self).hashValue
     }
-    public static func resolve(_ key: Key) -> Value? {
-        return container.resolve(key.keyValue)
+}
+
+extension DependencyContainer {
+    public static func register<T: DependencyKey>(_ key: T, handler: @escaping () -> Value) {
+        container.register(for: key.dependencyKey, handler: handler)
+    }
+    public static func resolve(_ key: DependencyKey) -> Value? {
+        return container.resolve(key.dependencyKey)
+    }
+    
+    public static func register<T: DependencyKey>(_ key: T.Type, handler: @escaping () -> Value) {
+        container.register(for: key.dependencyKey, handler: handler)
+    }
+    public static func resolve(_ key: DependencyKey.Type) -> Value? {
+        return container.resolve(key.dependencyKey)
     }
 }
 

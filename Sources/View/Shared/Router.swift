@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Route {
+public protocol Route: DependencyKey {
     var destination: Scene? { get }
 }
 
@@ -22,30 +22,42 @@ extension ViewModelRoute {
     }
 }
 
-extension Route {
-    static var typeIdentifier: ObjectIdentifier {
-        return ObjectIdentifier(self)
-    }
+public extension Route {
+    public var dependencyKey: KeyType { return -1 }
 }
 
 public struct Router {
     
-    private struct ClosureWrapper {
+    internal struct RouterContainer: DependencyContainer {
+        static var container: Container<Int, Router.Value> = Container()
+    }
+    
+    public typealias Value = ClosureWrapper
+    
+    
+    public struct ClosureWrapper {
         let closure: (Route, Scene?) -> ()
-    }
-    
-    private static var routeHandlers: [ObjectIdentifier: Router.ClosureWrapper ] = [:]
-    
-    public static func register<RouteType: Route>(_ type: RouteType.Type, handler: @escaping (RouteType, Scene?) -> () ) {
-        routeHandlers[type.typeIdentifier] = ClosureWrapper(closure: {
-            guard let route = $0 as? RouteType else { return }
-            handler(route, $1) })
-    }
-    
-    public static func execute(_ route: Route, from source: Scene?) {
-        let routeType = type(of: route)
-        if let handler = routeHandlers[routeType.typeIdentifier]?.closure {
-            handler(route, source)
+        init(closure: @escaping (Route, Scene?) -> ()) {
+            self.closure = closure
         }
+    }
+    public static func register<RouteType: Route>(_ type: RouteType.Type, handler: @escaping (RouteType, Scene?) -> () ) {
+        
+        RouterContainer.register(type) { () -> Value in
+            ClosureWrapper {
+                guard let route = $0 as? RouteType else { return }
+                handler(route, $1)
+            }
+            
+        }
+
+    }
+    public static func execute(_ route: Route, from source: Scene?) {
+//
+        if let routeType: DependencyKey.Type = type(of: route) as? DependencyKey.Type {
+//            self.resolve(routeType)
+            RouterContainer.resolve(routeType)?.closure(route,source)
+        }
+
     }
 }
