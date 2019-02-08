@@ -15,6 +15,8 @@ struct MainRoute: ViewModelRoute {
 }
 
 extension Router {
+    
+    
     static func bootstrap() {
         register(MainRoute.self) { route, _ in
             guard let controller = route.destination else {
@@ -36,6 +38,7 @@ extension Router {
     
     static func start() {
         bootstrap()
-        self.execute(MainRoute(viewModel: ScheduleViewModel()), from: nil)
+//        self.execute(MainRoute(viewModel: ScheduleViewModel()), from: nil)
+        self.execute(MainRoute(viewModel: TableViewScheduleViewModel()), from: nil)
     }
 }

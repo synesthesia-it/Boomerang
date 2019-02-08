@@ -13,6 +13,7 @@ import UIKit
 typealias Image = UIImage
 
 struct Identifiers {
+    
     enum SupplementaryTypes {
         case header
         case footer
@@ -26,6 +27,11 @@ struct Identifiers {
     }
     
     enum Scenes: String, SceneIdentifier {
+        
+        case schedule
+        case showDetail
+        case tableViewSchedule
+        
         func scene<T>() -> T? where T : Scene {
             var suffix = ""
             if UIDevice.current.userInterfaceIdiom == .tv {
@@ -37,15 +43,13 @@ struct Identifiers {
         var name: String {
             return rawValue
         }
-        
-        case schedule
-        case showDetail
     }
     
     enum Views: String, ViewIdentifier {
         
         case show
         case header
+        
         
         func view<T>() -> T? where T : UIView {
             return Bundle.main.loadNibNamed(self.name, owner: nil, options: nil)?.first as? T

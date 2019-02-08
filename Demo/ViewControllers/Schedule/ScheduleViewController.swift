@@ -14,8 +14,6 @@ import Boomerang
 
 class ScheduleViewController: UIViewController, ViewModelCompatible, InteractionCompatible, UICollectionViewDelegateFlowLayout {
     
-    
-    
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {

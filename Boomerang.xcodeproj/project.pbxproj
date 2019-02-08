@@ -161,6 +161,16 @@
 		7B9FC86B220A2DCD00E46539 /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC869220A2DCD00E46539 /* ShowDetailViewController.swift */; };
 		7B9FC86D220A303400E46539 /* InteractionCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC862220A2B2300E46539 /* InteractionCompatible.swift */; };
 		7B9FC86E220A303500E46539 /* InteractionCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC862220A2B2300E46539 /* InteractionCompatible.swift */; };
+		D5D600FF220D976300E2525A /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D600FE220D976300E2525A /* UITableView.swift */; };
+		D5D60100220D976C00E2525A /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D600FE220D976300E2525A /* UITableView.swift */; };
+		D5D60102220D979E00E2525A /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D60101220D979E00E2525A /* TableViewDataSource.swift */; };
+		D5D60103220D979E00E2525A /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D60101220D979E00E2525A /* TableViewDataSource.swift */; };
+		D5D60105220D981400E2525A /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D60104220D981400E2525A /* ContentTableViewCell.swift */; };
+		D5D60106220D981400E2525A /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D60104220D981400E2525A /* ContentTableViewCell.swift */; };
+		D5D60108220D9F2700E2525A /* UITableView+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D60107220D9F2700E2525A /* UITableView+Sizing.swift */; };
+		D5D60109220D9F2700E2525A /* UITableView+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D60107220D9F2700E2525A /* UITableView+Sizing.swift */; };
+		D5D6010C220DA7FB00E2525A /* TableViewScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D6010B220DA7FB00E2525A /* TableViewScheduleViewModel.swift */; };
+		D5D6010E220DA80D00E2525A /* TableViewScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D6010D220DA80D00E2525A /* TableViewScheduleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -358,6 +368,12 @@
 		7B9FC862220A2B2300E46539 /* InteractionCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionCompatible.swift; sourceTree = "<group>"; };
 		7B9FC865220A2DBC00E46539 /* ShowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewModel.swift; sourceTree = "<group>"; };
 		7B9FC869220A2DCD00E46539 /* ShowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewController.swift; sourceTree = "<group>"; };
+		D5D600FE220D976300E2525A /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		D5D60101220D979E00E2525A /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
+		D5D60104220D981400E2525A /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
+		D5D60107220D9F2700E2525A /* UITableView+Sizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Sizing.swift"; sourceTree = "<group>"; };
+		D5D6010B220DA7FB00E2525A /* TableViewScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewScheduleViewModel.swift; sourceTree = "<group>"; };
+		D5D6010D220DA80D00E2525A /* TableViewScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewScheduleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,6 +479,7 @@
 				706142B921F4F5B0003040D2 /* UIKit.swift */,
 				7B9FC85B220A0F7000E46539 /* UIViewController.swift */,
 				706142C421F50693003040D2 /* UIKit+Constraints.swift */,
+				D5D600FD220D970800E2525A /* UITableView */,
 				706142C121F5017C003040D2 /* UICollectionView */,
 			);
 			path = UIKit;
@@ -605,6 +622,7 @@
 		70A54FBC21FDFAFF00BC9252 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D5D6010A220DA6C700E2525A /* TableViewSchedule */,
 				70A54FBD21FDFB1900BC9252 /* Schedule */,
 				7B9FC864220A2DAB00E46539 /* ShowDetail */,
 			);
@@ -696,6 +714,26 @@
 				7B9FC869220A2DCD00E46539 /* ShowDetailViewController.swift */,
 			);
 			path = ShowDetail;
+			sourceTree = "<group>";
+		};
+		D5D600FD220D970800E2525A /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				D5D600FE220D976300E2525A /* UITableView.swift */,
+				D5D60101220D979E00E2525A /* TableViewDataSource.swift */,
+				D5D60104220D981400E2525A /* ContentTableViewCell.swift */,
+				D5D60107220D9F2700E2525A /* UITableView+Sizing.swift */,
+			);
+			path = UITableView;
+			sourceTree = "<group>";
+		};
+		D5D6010A220DA6C700E2525A /* TableViewSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				D5D6010B220DA7FB00E2525A /* TableViewScheduleViewModel.swift */,
+				D5D6010D220DA80D00E2525A /* TableViewScheduleViewController.swift */,
+			);
+			path = TableViewSchedule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1010,6 +1048,7 @@
 			files = (
 				7032704122087CF300D6C052 /* ItemViewModelType.swift in Sources */,
 				7032704222087CF300D6C052 /* DataHolder.swift in Sources */,
+				D5D60106220D981400E2525A /* ContentTableViewCell.swift in Sources */,
 				7032704322087CF300D6C052 /* BoomerangProxy.swift in Sources */,
 				7032704422087CF300D6C052 /* SceneViewModelType.swift in Sources */,
 				70DBC7002209CA3A00E0BB27 /* Router.swift in Sources */,
@@ -1020,12 +1059,15 @@
 				7032704622087CF300D6C052 /* UIKit+Constraints.swift in Sources */,
 				7B9FC86D220A303400E46539 /* InteractionCompatible.swift in Sources */,
 				7032704722087CF300D6C052 /* ListViewModelType.swift in Sources */,
+				D5D60103220D979E00E2525A /* TableViewDataSource.swift in Sources */,
 				7032704822087CF300D6C052 /* ViewModelCompatible.swift in Sources */,
 				7032704922087CF300D6C052 /* ModelType.swift in Sources */,
+				D5D60100220D976C00E2525A /* UITableView.swift in Sources */,
 				7032704A22087CF300D6C052 /* DataGroup.swift in Sources */,
 				70DBC7F4220C218D00E0BB27 /* Action.swift in Sources */,
 				7032704B22087CF300D6C052 /* ContentCollectionViewCell.swift in Sources */,
 				7032704C22087CF300D6C052 /* UIKit.swift in Sources */,
+				D5D60109220D9F2700E2525A /* UITableView+Sizing.swift in Sources */,
 				70DBC7072209F60B00E0BB27 /* Interaction.swift in Sources */,
 				7B9FC85E220A104100E46539 /* UIViewController.swift in Sources */,
 				7032704D22087CF300D6C052 /* UICollectionView.swift in Sources */,
@@ -1092,6 +1134,7 @@
 			files = (
 				706142AD21F3C2A3003040D2 /* ItemViewModelType.swift in Sources */,
 				706142AF21F3C82F003040D2 /* DataHolder.swift in Sources */,
+				D5D60105220D981400E2525A /* ContentTableViewCell.swift in Sources */,
 				706142B821F4F367003040D2 /* BoomerangProxy.swift in Sources */,
 				7032703B22087C8A00D6C052 /* SceneViewModelType.swift in Sources */,
 				70DBC6FF2209CA3800E0BB27 /* Router.swift in Sources */,
@@ -1102,12 +1145,15 @@
 				706142C521F50693003040D2 /* UIKit+Constraints.swift in Sources */,
 				7B9FC863220A2B2300E46539 /* InteractionCompatible.swift in Sources */,
 				706142AB21F3C29C003040D2 /* ListViewModelType.swift in Sources */,
+				D5D60102220D979E00E2525A /* TableViewDataSource.swift in Sources */,
 				706142BC21F4F701003040D2 /* ViewModelCompatible.swift in Sources */,
 				704B478021F36615007E11DA /* ModelType.swift in Sources */,
+				D5D600FF220D976300E2525A /* UITableView.swift in Sources */,
 				704B478221F3667A007E11DA /* DataGroup.swift in Sources */,
 				70DBC7F3220C218D00E0BB27 /* Action.swift in Sources */,
 				706142C321F5018B003040D2 /* ContentCollectionViewCell.swift in Sources */,
 				706142BA21F4F5B0003040D2 /* UIKit.swift in Sources */,
+				D5D60108220D9F2700E2525A /* UITableView+Sizing.swift in Sources */,
 				70DBC7062209F60B00E0BB27 /* Interaction.swift in Sources */,
 				7B9FC85C220A0F7000E46539 /* UIViewController.swift in Sources */,
 				706142C021F4FBD5003040D2 /* UICollectionView.swift in Sources */,
@@ -1137,6 +1183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				706142F921F5F95A003040D2 /* ViewController.swift in Sources */,
+				D5D6010E220DA80D00E2525A /* TableViewScheduleViewController.swift in Sources */,
 				70DBC7032209CFEF00E0BB27 /* Routes.swift in Sources */,
 				70A54FC221FDFBCE00BC9252 /* ViewIdentifiers.swift in Sources */,
 				70DBC6F4220985A900E0BB27 /* HeaderItemViewModel.swift in Sources */,
@@ -1150,6 +1197,7 @@
 				7B9FC86A220A2DCD00E46539 /* ShowDetailViewController.swift in Sources */,
 				70A54FC821FE25B300BC9252 /* Show.swift in Sources */,
 				70A54FBB21FDF77C00BC9252 /* ScheduleViewModel.swift in Sources */,
+				D5D6010C220DA7FB00E2525A /* TableViewScheduleViewModel.swift in Sources */,
 				7032703222083E9B00D6C052 /* HeaderItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
