@@ -25,6 +25,7 @@ extension Boomerang where Base: UICollectionView {
         
         let dataSource = dataSource ?? CollectionViewDataSource(viewModel: viewModel)
         base.dataSource = dataSource
+        base.delegate = delegate
         base.boomerang.internalDataSource = dataSource
         base.boomerang.internalDelegate = delegate
         viewModel.updates
