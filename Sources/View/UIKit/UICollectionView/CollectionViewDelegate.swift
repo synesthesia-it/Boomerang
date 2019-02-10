@@ -73,7 +73,7 @@ open class CollectionViewDelegate: NSObject, UICollectionViewDelegateFlowLayout 
     
     open func with(itemsPerLine: Int?) -> Self {
         self.size = { collectionView, indexPath, type in
-            guard let itemsPerLine = CollectionViewDelegate.defaultItemsPerLine else {
+            guard let itemsPerLine = itemsPerLine else {
                 return (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize ?? .zero
             }
             return collectionView.boomerang.automaticSizeForItem(at: indexPath, type: type, itemsPerLine: itemsPerLine)
