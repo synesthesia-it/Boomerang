@@ -21,12 +21,12 @@ extension UICollectionView: ViewModelCompatibleType {
 }
 extension Boomerang where Base: UICollectionView {
     
-    public func configure(with viewModel: ListViewModelType, dataSource: CollectionViewDataSource? = nil) {
+    public func configure(with viewModel: ListViewModelType, dataSource: CollectionViewDataSource? = nil, delegate: CollectionViewDelegate = CollectionViewDelegate()) {
         
         let dataSource = dataSource ?? CollectionViewDataSource(viewModel: viewModel)
         base.dataSource = dataSource
         base.boomerang.internalDataSource = dataSource
-        
+        base.boomerang.internalDelegate = delegate
         viewModel.updates
             .asDriver(onErrorJustReturn: .none)
             .drive(base.rx.dataUpdates())

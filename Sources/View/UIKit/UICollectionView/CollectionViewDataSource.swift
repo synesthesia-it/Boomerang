@@ -107,4 +107,12 @@ extension Boomerang where Base: UICollectionView {
             objc_setAssociatedObject(base, &AssociatedKeys.collectionViewDataSource, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
+    var internalDelegate: CollectionViewDelegate? {
+        get {
+            return objc_getAssociatedObject(base, &AssociatedKeys.collectionViewDelegate) as? CollectionViewDelegate
+        }
+        set {
+            objc_setAssociatedObject(base, &AssociatedKeys.collectionViewDelegate, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
 }

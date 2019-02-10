@@ -16,6 +16,7 @@ public typealias View = UIView
 internal struct AssociatedKeys {
     static var disposeBag = "boomerang_disposeBag"
     static var viewModel = "boomerang_viewModel"
+    static var collectionViewDelegate = "boomerang_collectionViewDelegate"
     static var collectionViewDataSource = "boomerang_collectionViewDataSource"
     static var collectionViewCacheCell = "boomerang_collectionViewCacheCell"
     static var isPlaceholderForAutosize = "boomerang_isPlaceholderForAutosize"

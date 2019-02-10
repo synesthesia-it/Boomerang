@@ -144,6 +144,11 @@
 		70DBC812220C22F700E0BB27 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC7FE220C224000E0BB27 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		70DBC813220C22F700E0BB27 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC800220C224000E0BB27 /* RxSwift.framework */; };
 		70DBC814220C22F700E0BB27 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70DBC800220C224000E0BB27 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		70DDF65522107A8600F3A126 /* CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DDF65422107A8600F3A126 /* CollectionViewDelegate.swift */; };
+		70DDF65622107A8600F3A126 /* CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DDF65422107A8600F3A126 /* CollectionViewDelegate.swift */; };
+		70DDF65822107B1C00F3A126 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DDF65722107B1C00F3A126 /* DependencyContainer.swift */; };
+		70DDF65922107B1C00F3A126 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DDF65722107B1C00F3A126 /* DependencyContainer.swift */; };
+		70DDF65A22107B1F00F3A126 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DDF65722107B1C00F3A126 /* DependencyContainer.swift */; };
 		7B501330220A3DE60087CDCB /* CollectionViewCell+Parallax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B50132F220A3DE60087CDCB /* CollectionViewCell+Parallax.swift */; };
 		7B501331220A3E3F0087CDCB /* CollectionViewCell+Parallax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B50132F220A3DE60087CDCB /* CollectionViewCell+Parallax.swift */; };
 		7B9FC85C220A0F7000E46539 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC85B220A0F7000E46539 /* UIViewController.swift */; };
@@ -345,6 +350,8 @@
 		70DBC804220C228700E0BB27 /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70DBC806220C228700E0BB27 /* RxBlocking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxBlocking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70DBC819220C243A00E0BB27 /* Boomerang.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Boomerang.podspec; sourceTree = "<group>"; };
+		70DDF65422107A8600F3A126 /* CollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDelegate.swift; sourceTree = "<group>"; };
+		70DDF65722107B1C00F3A126 /* DependencyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		7B50132F220A3DE60087CDCB /* CollectionViewCell+Parallax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionViewCell+Parallax.swift"; sourceTree = "<group>"; };
 		7B54F9B9220B988E002854DC /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		7B9FC85B220A0F7000E46539 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -539,6 +546,7 @@
 		706142A721F3C24C003040D2 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				70DDF65722107B1C00F3A126 /* DependencyContainer.swift */,
 				706142A821F3C280003040D2 /* ViewModelType.swift */,
 				70DBC7052209F60B00E0BB27 /* Interaction.swift */,
 				706142AA21F3C29C003040D2 /* ListViewModelType.swift */,
@@ -567,6 +575,7 @@
 				706142BF21F4FBD5003040D2 /* UICollectionView.swift */,
 				70A54FB021FCC20F00BC9252 /* UICollectionView+Sizing.swift */,
 				706142C621F509A7003040D2 /* CollectionViewDataSource.swift */,
+				70DDF65422107A8600F3A126 /* CollectionViewDelegate.swift */,
 				706142C221F5018B003040D2 /* ContentCollectionViewCell.swift */,
 			);
 			path = UICollectionView;
@@ -1005,7 +1014,9 @@
 				7032704422087CF300D6C052 /* SceneViewModelType.swift in Sources */,
 				70DBC7002209CA3A00E0BB27 /* Router.swift in Sources */,
 				7032704522087CF300D6C052 /* UICollectionView+Sizing.swift in Sources */,
+				70DDF65922107B1C00F3A126 /* DependencyContainer.swift in Sources */,
 				70DBC7F1220C218D00E0BB27 /* InputSubject.swift in Sources */,
+				70DDF65622107A8600F3A126 /* CollectionViewDelegate.swift in Sources */,
 				7032704622087CF300D6C052 /* UIKit+Constraints.swift in Sources */,
 				7B9FC86D220A303400E46539 /* InteractionCompatible.swift in Sources */,
 				7032704722087CF300D6C052 /* ListViewModelType.swift in Sources */,
@@ -1058,6 +1069,7 @@
 				70DBC6FD22098CF400E0BB27 /* WKInterfaceTable.swift in Sources */,
 				703270C122089F8400D6C052 /* ModelType.swift in Sources */,
 				703270BC22089F7E00D6C052 /* DataHolder.swift in Sources */,
+				70DDF65A22107B1F00F3A126 /* DependencyContainer.swift in Sources */,
 				703270B922089F6E00D6C052 /* ViewModelCompatible.swift in Sources */,
 				7B9FC86E220A303500E46539 /* InteractionCompatible.swift in Sources */,
 				70DBC7082209F60B00E0BB27 /* Interaction.swift in Sources */,
@@ -1084,7 +1096,9 @@
 				7032703B22087C8A00D6C052 /* SceneViewModelType.swift in Sources */,
 				70DBC6FF2209CA3800E0BB27 /* Router.swift in Sources */,
 				70A54FB121FCC20F00BC9252 /* UICollectionView+Sizing.swift in Sources */,
+				70DDF65822107B1C00F3A126 /* DependencyContainer.swift in Sources */,
 				70DBC7F0220C218D00E0BB27 /* InputSubject.swift in Sources */,
+				70DDF65522107A8600F3A126 /* CollectionViewDelegate.swift in Sources */,
 				706142C521F50693003040D2 /* UIKit+Constraints.swift in Sources */,
 				7B9FC863220A2B2300E46539 /* InteractionCompatible.swift in Sources */,
 				706142AB21F3C29C003040D2 /* ListViewModelType.swift in Sources */,
