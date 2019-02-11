@@ -12,6 +12,10 @@ import RxCocoa
 
 public typealias Selection = Action<Interaction,Interaction>
 
+public extension Action where Input == Interaction, Element == Interaction {
+    public static var empty: Selection = Selection { _ in .empty () }
+}
+
 public enum Interaction {
     case none
     case restart
