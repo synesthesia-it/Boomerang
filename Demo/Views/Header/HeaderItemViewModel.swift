@@ -12,6 +12,7 @@ import Boomerang
 class HeaderItemViewModel: IdentifiableViewModelType {
     
     var identifier: Identifier = Identifiers.Views.header
+    
     var title: String
     init (title: String) {
         self.title = title

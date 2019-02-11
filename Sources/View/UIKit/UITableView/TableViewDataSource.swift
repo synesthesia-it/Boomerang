@@ -17,7 +17,7 @@ public enum TableViewHeaderType: String {
     }
 }
 
-open class TableViewDataSource: NSObject, UITableViewDataSource, UITableViewDelegate{
+open class TableViewDataSource: NSObject, UITableViewDataSource{
     
     public var viewModel: ListViewModelType
     public var dataHolder: DataHolder {
@@ -29,9 +29,9 @@ open class TableViewDataSource: NSObject, UITableViewDataSource, UITableViewDele
     public init(viewModel: ListViewModelType) {
         self.viewModel = viewModel
     }
-    
-    
+
     open func numberOfSections(in tableView: UITableView) -> Int {
+        
         switch rootGroup.depth {
         case 0: return 0
         case 1: return 1
@@ -79,26 +79,16 @@ open class TableViewDataSource: NSObject, UITableViewDataSource, UITableViewDele
         }
     }
     
-    public func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return viewModel.canMoveItem(at: indexPath)
-    }
     
-    public func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        viewModel.moveItem(from: sourceIndexPath, to: destinationIndexPath)
-    }
-    
-    
-    private func getTableViewSupplementaryView() -> UIView?{
+    open func getSupplementaryDataType(for type:TableViewHeaderType) -> DataType?{
+        
+        if let supplementaryData = self.rootGroup.supplementaryData.first?.value,
+            let dataType = supplementaryData[type.identifier]{
+            return dataType
+        }
         return nil
     }
-    
-    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return nil
-    }
-    
-    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return nil
-    }
+  
 }
 
 extension Boomerang where Base: UITableView{
@@ -108,6 +98,15 @@ extension Boomerang where Base: UITableView{
         }
         set {
             objc_setAssociatedObject(base, &AssociatedKeys.tableViewDataSource, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
+    var internalDelegate: TableViewDelegate? {
+        get {
+            return objc_getAssociatedObject(base, &AssociatedKeys.tableViewDelegate) as? TableViewDelegate
+        }
+        set {
+            objc_setAssociatedObject(base, &AssociatedKeys.tableViewDelegate, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 }

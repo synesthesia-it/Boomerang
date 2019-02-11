@@ -50,7 +50,6 @@ struct Identifiers {
         case show
         case header
         
-        
         func view<T>() -> T? where T : UIView {
             return Bundle.main.loadNibNamed(self.name, owner: nil, options: nil)?.first as? T
         }

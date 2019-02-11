@@ -20,7 +20,9 @@ internal struct AssociatedKeys {
     static var collectionViewDataSource = "boomerang_collectionViewDataSource"
     static var collectionViewCacheCell = "boomerang_collectionViewCacheCell"
     static var isPlaceholderForAutosize = "boomerang_isPlaceholderForAutosize"
+    
     static var tableViewDataSource = "boomerang_tableViewDataSource"
+    static var tableViewDelegate = "boomerang_tableViewDelegate"
     static var tableViewCacheCell = "boomerang_tableViewCacheCell"
 }
 

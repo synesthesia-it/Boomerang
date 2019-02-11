@@ -13,7 +13,7 @@ import RxSwift
 import RxCocoa
 import Boomerang
 
-class TableViewScheduleViewController: UIViewController, ViewModelCompatible, InteractionCompatible, UITableViewDelegate{
+class TableViewScheduleViewController: UIViewController, ViewModelCompatible, InteractionCompatible{
 
     @IBOutlet var tableView: UITableView!
     
@@ -26,25 +26,12 @@ class TableViewScheduleViewController: UIViewController, ViewModelCompatible, In
     }
     
     func configure(with viewModel: TableViewScheduleViewModel) {
-        tableView.delegate = self
+//        tableView.delegate = self
         tableView.alwaysBounceVertical = true
-        tableView.set(viewModel: viewModel)
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.boomerang.automaticSizeForItem(at: indexPath).height
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.interact(.selectItem(indexPath))
+        let delegate = TableViewDelegate()
+            .with(size: { table, index, type in table.boomerang.automaticSizeForItem(at: index, type: type) })
+        
+        tableView.boomerang.configure(with: viewModel, delegate: delegate)
     }
     
 }

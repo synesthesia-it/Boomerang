@@ -12,6 +12,19 @@ import Boomerang
 import RxSwift
 
 
+class SupplementaryViewModel: NSObject, DataType{
+    
+    var title:String
+    var height:CGFloat
+    
+    init(title:String, height:CGFloat){
+        self.title = title
+        self.height = height
+        super.init()
+
+    }
+}
+
 
 class TableViewScheduleViewModel: ListViewModel, SceneViewModelType, InteractionViewModelType {
    
@@ -21,16 +34,16 @@ class TableViewScheduleViewModel: ListViewModel, SceneViewModelType, Interaction
     
     var dataHolder: DataHolder = DataHolder()
 
+    let header = SupplementaryViewModel(title: "Tonight's schedule", height: 80.0)
+    let footer = SupplementaryViewModel(title: "Credits: tvmaze.com", height: 30.0)
     
     func group(_ observable: Observable<[Show]>) -> Observable<DataGroup> {
-//        return observable.map { DataGroup($0, supplementaryData: [0: [
-//            Identifiers.SupplementaryTypes.header.name: "Tonight's schedule",
-//            Identifiers.SupplementaryTypes.footer.name: "Credits: tvmaze.com"
-//            ]]) }
-    
-        return observable.map { DataGroup($0, supplementaryData: [:]) }
+        return observable.map { DataGroup($0, supplementaryData: [0: [
+            TableViewHeaderType.header.identifier: "Tonight's schedule",
+            TableViewHeaderType.footer.identifier: "Credits: tvmaze.com"
+            ]]) }
+
     }
-    
     
     func convert(model: ModelType, at indexPath: IndexPath, for type: String?) -> IdentifiableViewModelType? {
         switch model {
@@ -40,7 +53,6 @@ class TableViewScheduleViewModel: ListViewModel, SceneViewModelType, Interaction
         }
     }
 
-    
     init() {
         
         let apiCall = DataManager.session.rx

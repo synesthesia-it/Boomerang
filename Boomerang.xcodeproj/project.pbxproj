@@ -161,6 +161,8 @@
 		7B9FC86B220A2DCD00E46539 /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC869220A2DCD00E46539 /* ShowDetailViewController.swift */; };
 		7B9FC86D220A303400E46539 /* InteractionCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC862220A2B2300E46539 /* InteractionCompatible.swift */; };
 		7B9FC86E220A303500E46539 /* InteractionCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC862220A2B2300E46539 /* InteractionCompatible.swift */; };
+		D581C4BF2211BC5200E2613B /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ABA55E2211760600F26E96 /* TableViewDelegate.swift */; };
+		D5ABA55F2211760600F26E96 /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ABA55E2211760600F26E96 /* TableViewDelegate.swift */; };
 		D5D600FF220D976300E2525A /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D600FE220D976300E2525A /* UITableView.swift */; };
 		D5D60100220D976C00E2525A /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D600FE220D976300E2525A /* UITableView.swift */; };
 		D5D60102220D979E00E2525A /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D60101220D979E00E2525A /* TableViewDataSource.swift */; };
@@ -368,6 +370,7 @@
 		7B9FC862220A2B2300E46539 /* InteractionCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionCompatible.swift; sourceTree = "<group>"; };
 		7B9FC865220A2DBC00E46539 /* ShowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewModel.swift; sourceTree = "<group>"; };
 		7B9FC869220A2DCD00E46539 /* ShowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewController.swift; sourceTree = "<group>"; };
+		D5ABA55E2211760600F26E96 /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
 		D5D600FE220D976300E2525A /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		D5D60101220D979E00E2525A /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		D5D60104220D981400E2525A /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
@@ -723,6 +726,7 @@
 				D5D60101220D979E00E2525A /* TableViewDataSource.swift */,
 				D5D60104220D981400E2525A /* ContentTableViewCell.swift */,
 				D5D60107220D9F2700E2525A /* UITableView+Sizing.swift */,
+				D5ABA55E2211760600F26E96 /* TableViewDelegate.swift */,
 			);
 			path = UITableView;
 			sourceTree = "<group>";
@@ -1072,6 +1076,7 @@
 				7B9FC85E220A104100E46539 /* UIViewController.swift in Sources */,
 				7032704D22087CF300D6C052 /* UICollectionView.swift in Sources */,
 				7032704E22087CF300D6C052 /* ViewModelType.swift in Sources */,
+				D581C4BF2211BC5200E2613B /* TableViewDelegate.swift in Sources */,
 				70DBC7EE220C218D00E0BB27 /* Action+Internal.swift in Sources */,
 				7032704F22087CF300D6C052 /* CollectionViewDataSource.swift in Sources */,
 				7032705022087CF300D6C052 /* Identifier.swift in Sources */,
@@ -1157,6 +1162,7 @@
 				70DBC7062209F60B00E0BB27 /* Interaction.swift in Sources */,
 				7B9FC85C220A0F7000E46539 /* UIViewController.swift in Sources */,
 				706142C021F4FBD5003040D2 /* UICollectionView.swift in Sources */,
+				D5ABA55F2211760600F26E96 /* TableViewDelegate.swift in Sources */,
 				706142A921F3C280003040D2 /* ViewModelType.swift in Sources */,
 				70DBC7ED220C218D00E0BB27 /* Action+Internal.swift in Sources */,
 				706142C721F509A7003040D2 /* CollectionViewDataSource.swift in Sources */,
@@ -1650,6 +1656,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1669,6 +1676,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

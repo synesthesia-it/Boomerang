@@ -93,6 +93,7 @@ public class ContentTableViewCell: UITableViewCell, ContentTableViewCellType {
 }
 
 open class ContentTableHeaderFooterView: UITableViewHeaderFooterView, ContentTableViewCellType {
+ 
     public weak var internalView: UIView?
     ///Constraints between cell and inner view.
     public var insetConstraints: [NSLayoutConstraint] = []
@@ -101,6 +102,25 @@ open class ContentTableHeaderFooterView: UITableViewHeaderFooterView, ContentTab
     //        super.apply(layoutAttributes)
     //        (internalView as? CollectionViewCellContained)?.apply(layoutAttributes)
     //    }
+    
+ 
+    public func set(viewModel: ViewModelType) {
+        
+        guard let viewModel = viewModel as? IdentifiableViewModelType else { return }
+        
+        self.disposeBag = DisposeBag()
+        
+        if (self.internalView == nil) {
+            guard let view: UIView = (viewModel.identifier as? ViewIdentifier)?.view() else { return }
+            self.backgroundColor = .clear
+            self.contentView.addSubview(view)
+            self.insetConstraints = view.fitInSuperview(with: .zero)
+            self.internalView = view
+        }
+        (self.internalView as? ViewModelCompatibleType)?.set(viewModel: viewModel)
+    }
+    
+    
     
     open override var canBecomeFocused: Bool {
         return internalView?.canBecomeFocused ?? super.canBecomeFocused
