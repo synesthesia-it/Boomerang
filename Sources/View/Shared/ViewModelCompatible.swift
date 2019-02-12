@@ -24,6 +24,7 @@ public protocol ViewModelCompatible: ViewModelCompatibleType {
     func configure(with viewModel: ViewModel)
 }
 extension ViewModelCompatible {
+    
     public func set(viewModel: ViewModelType) {
         if let viewModel = viewModel as? ViewModel {
             self.viewModel = viewModel

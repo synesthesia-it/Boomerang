@@ -24,7 +24,7 @@ class CollectionViewSizingSpec: QuickSpec {
             }
             func convert(model: ModelType, at indexPath: IndexPath, for type: String?) -> IdentifiableViewModelType? {
                 switch model {
-                case let model as String : return TestItemViewModel(model: model)
+                case let model as String : return CollectionTestItemViewModel(model: model)
                 default: return nil
                 }
             }
@@ -36,7 +36,7 @@ class CollectionViewSizingSpec: QuickSpec {
             }
         }
         var viewModel = TestListViewModel()
-        var viewController = ViewController(nibName: nil, bundle: nil)
+        var viewController = ViewController(nibName: nil, bundle: nil, testTable: false)
         let collectionWidth: CGFloat = 400.0
         let collectionHeight: CGFloat = 500.0
         let spacing:CGFloat = 10
@@ -48,7 +48,7 @@ class CollectionViewSizingSpec: QuickSpec {
                 
                 beforeEach {
                     
-                    viewController = ViewController(nibName: nil, bundle: nil)
+                    viewController = ViewController(nibName: nil, bundle: nil, testTable: false)
                     let window = UIWindow(frame: CGRect(x: 0, y: 0, width: collectionWidth, height: collectionHeight))
                     window.rootViewController = viewController
                     window.isHidden = false

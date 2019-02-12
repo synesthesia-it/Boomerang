@@ -34,7 +34,7 @@ extension ListViewModelType {
     }
 }
 
-struct TestItemViewModel: ItemViewModelType {
+struct CollectionTestItemViewModel: ItemViewModelType {
     var identifier: Identifier = "TestCollectionViewCell"
     var model: ModelType? { return title }
     var date: Date = Date()
@@ -44,19 +44,57 @@ struct TestItemViewModel: ItemViewModelType {
     }
 }
 
+struct TableTestItemViewModel: ItemViewModelType {
+    var identifier: Identifier = "TestTableViewCell"
+    var model: ModelType? { return title }
+    var date: Date = Date()
+    var title: String
+    init(model: String) {
+        self.title = model
+    }
+}
+
 final class TestCollectionViewCell: UICollectionViewCell, ViewModelCompatible {
-    func configure(with viewModel: TestItemViewModel) {
+    func configure(with viewModel: CollectionTestItemViewModel) {
          self.backgroundColor = .green
     }
 }
 
+
+final class TestTableViewCell: UITableViewCell, ViewModelCompatible {
+    func configure(with viewModel: TableTestItemViewModel) {
+        self.backgroundColor = .green
+    }
+}
+
 class ViewController: UIViewController {
+    
+    var testTable:Bool = true
+    
+    required init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, testTable:Bool = true) {
+        
+        self.testTable = testTable
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     override func loadView() {
         super.loadView()
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 50, height: 50)
-        //                    viewController = UICollectionViewController(collectionViewLayout: layout)
-        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 300, height: 300), collectionViewLayout: layout)
-        self.view = collectionView
+        
+        if self.testTable{
+            let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+            self.view = tableView
+        }else{
+            
+             let layout = UICollectionViewFlowLayout()
+             layout.itemSize = CGSize(width: 50, height: 50)
+             
+             let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 300, height: 300), collectionViewLayout: layout)
+             self.view = collectionView
+        }
     }
 }
