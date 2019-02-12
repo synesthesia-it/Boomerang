@@ -89,12 +89,14 @@ extension Boomerang where Base: UICollectionView {
         let itemsPerLine = CGFloat(itemsPerLine)
         let insets = self.insets(in: indexPath.section)
         let itemSpacing = self.itemSpacing(in: indexPath.section)
+        let value: CGFloat
         switch direction {
         case .vertical:
-            return (collectionViewSize.width - insets.left - insets.right - (itemsPerLine - 1) * itemSpacing) / itemsPerLine
+            value = (collectionViewSize.width - insets.left - insets.right - (itemsPerLine - 1) * itemSpacing) / itemsPerLine
         case .horizontal:
-            return (collectionViewSize.height - insets.top - insets.bottom - (itemsPerLine - 1) * itemSpacing) / itemsPerLine
+            value = (collectionViewSize.height - insets.top - insets.bottom - (itemsPerLine - 1) * itemSpacing) / itemsPerLine
         }
+        return floor(value * UIScreen.main.scale)/UIScreen.main.scale
     }
     private func properViewModel(at indexPath: IndexPath, for type: String?) -> IdentifiableViewModelType?{
         guard let list = self.internalDataSource?.viewModel else { return nil }
