@@ -26,41 +26,22 @@ extension Boomerang where Base: UITableView {
         }
     }
     
- 
     var delegate: UITableViewDelegate? {
         return base.delegate
     }
-    
-    func insets(in section:Int) -> UIEdgeInsets {
-        return .zero
-    }
-    
-    func itemSpacing(in section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func lineSpacing(in section: Int) -> CGFloat {
-        return 0
-    }
-    
+
     var tableViewSize: CGSize{
         return CGSize(width: base.bounds.width - base.contentInset.left - base.contentInset.right,
                       height: base.bounds.height - base.contentInset.top - base.contentInset.top)
     }
-    
-    public func calculateFixedDimension(at indexPath: IndexPath) -> CGFloat {
-        let insets = self.insets(in: indexPath.section)
-        let itemSpacing = self.itemSpacing(in: indexPath.section)
-        return tableViewSize.width - insets.left - insets.right * itemSpacing
-    }
-    
+
     private func properViewModel(at indexPath: IndexPath, for type: String?) -> IdentifiableViewModelType?{
         guard let list = self.internalDataSource?.viewModel else { return nil }
         guard let type = type else { return list.mainViewModel(at: indexPath)}
         return list.supplementaryViewModel(at: indexPath, for: type)
     }
     
-    func placeholderCell (at indexPath: IndexPath, for type: String?, lockingTo size: LockingSize) -> UIView? {
+    func placeholderCell (at indexPath: IndexPath, for type: String?) -> UIView? {
         guard let list = self.internalDataSource?.viewModel,
             let viewModel = self.properViewModel(at: indexPath, for: type),
             let identifier = (list.identifier(at: indexPath, for: type) as? ViewIdentifier ?? viewModel.identifier) as? ViewIdentifier,
@@ -77,16 +58,16 @@ extension Boomerang where Base: UITableView {
             }.first
         if constraint == nil {
             let newConstraint = NSLayoutConstraint(item: cell.boomerang.contentView,
-                                                   attribute: size.type,
+                                                   attribute: .width,
                                                    relatedBy: .equal,
                                                    toItem: nil,
                                                    attribute: .notAnAttribute,
                                                    multiplier: 1.0,
-                                                   constant: size.value)
+                                                   constant: tableViewSize.width)
             cell.boomerang.contentView.addConstraint(newConstraint)
             constraint = newConstraint
         } else {
-            constraint?.constant = size.value
+            constraint?.constant = tableViewSize.width
         }
         
         (cell as? (UIView & ViewModelCompatibleType))?.isPlaceholderForAutosize = true
@@ -96,20 +77,13 @@ extension Boomerang where Base: UITableView {
         return cell
     }
     
-    public func automaticSizeForItem(at indexPath: IndexPath, type: String? = nil, lockedTo lock: LockingSize) -> CGFloat {
-        guard let cell = placeholderCell(at: indexPath, for: type, lockingTo: lock) else {
-            return 0.0
+    public func automaticSizeForRow(at indexPath: IndexPath, type: String? = nil) -> CGFloat {
+        guard let cell = placeholderCell(at: indexPath, for: type) else {
+            return base.rowHeight
         }
         cell.boomerang.contentView.setNeedsLayout()
         cell.boomerang.contentView.layoutIfNeeded()
         return cell.boomerang.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-    }
-    
-    
-    public func automaticSizeForItem(at indexPath: IndexPath, type:String? = nil) -> CGFloat {
-        let fixedDimension = self.calculateFixedDimension(at: indexPath)
-        let lock = LockingSize(direction: Direction.vertical, value: fixedDimension)
-        return automaticSizeForItem(at: indexPath, type: type, lockedTo: lock)
     }
 }
 

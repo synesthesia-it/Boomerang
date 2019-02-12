@@ -60,7 +60,6 @@ extension ContentTableViewCellType where Self: UITableViewHeaderFooterView {
         
         if (self.internalView == nil) {
             guard let view: UIView = (viewModel.identifier as? ViewIdentifier)?.view() else { return }
-            self.backgroundColor = .clear
             self.contentView.addSubview(view)
             self.insetConstraints = view.fitInSuperview(with: .zero)
             self.internalView = view
@@ -100,7 +99,6 @@ open class ContentTableHeaderFooterView: UITableViewHeaderFooterView, ContentTab
         
         if (self.internalView == nil) {
             guard let view: UIView = (viewModel.identifier as? ViewIdentifier)?.view() else { return }
-            self.backgroundColor = .clear
             self.contentView.addSubview(view)
             self.insetConstraints = view.fitInSuperview(with: .zero)
             self.internalView = view

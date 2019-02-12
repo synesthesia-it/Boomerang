@@ -15,7 +15,7 @@ open class TableViewDelegate: NSObject, UITableViewDelegate {
     public static var defaultItemSpacing: CGFloat?
     public static var defaultItemsPerLine: Int = 1
     
-    public typealias Size = (UITableView, IndexPath, String?) -> CGFloat
+    public typealias Height = (UITableView, IndexPath, String?) -> CGFloat
     public typealias Spacing = (UITableView, Int) -> CGFloat
     public typealias Insets = (UITableView, Int) -> UIEdgeInsets
     
@@ -25,8 +25,8 @@ open class TableViewDelegate: NSObject, UITableViewDelegate {
     private var didDeselect: Select = { _ in }
     
     
-    private var size: Size = { tableView, indexPath, type in
-        return tableView.boomerang.automaticSizeForItem(at: indexPath, type: type)
+    private var height: Height = { tableView, indexPath, type in
+        return tableView.boomerang.automaticSizeForRow(at: indexPath, type: type)
     }
     
     private var insets: Insets = { tableView, section in
@@ -41,8 +41,8 @@ open class TableViewDelegate: NSObject, UITableViewDelegate {
         return TableViewDelegate.defaultItemSpacing ?? 0.0
     }
     
-    open func with(size: @escaping Size) -> Self {
-        self.size = size
+    open func with(height: @escaping Height) -> Self {
+        self.height = height
         return self
     }
     open func with(lineSpacing: @escaping Spacing) -> Self {
@@ -68,21 +68,12 @@ open class TableViewDelegate: NSObject, UITableViewDelegate {
         return self
     }
     
-    open func with(itemsPerLine: Int?) -> Self {
-        self.size = { tableView, indexPath, type in
-            return tableView.boomerang.automaticSizeForItem(at: indexPath, type: type)
-        }
-        return self
-    }
-    
-    
-    
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.size(tableView, IndexPath(row: 0, section: section), TableViewHeaderType.header.rawValue)
+        return self.height(tableView, IndexPath(row: 0, section: section), TableViewHeaderType.header.rawValue)
     }
     
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return self.size(tableView, IndexPath(row: 0, section: section), TableViewHeaderType.footer.rawValue)
+        return self.height(tableView, IndexPath(row: 0, section: section), TableViewHeaderType.footer.rawValue)
     }
 
     
@@ -122,8 +113,8 @@ open class TableViewDelegate: NSObject, UITableViewDelegate {
     }
     
     
-    private func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return size(tableView, indexPath, nil)
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return height(tableView, indexPath, nil)
     }
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.didSelect(indexPath)

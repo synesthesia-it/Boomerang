@@ -39,6 +39,6 @@ extension Router {
     static func start() {
         bootstrap()
 //        self.execute(MainRoute(viewModel: ScheduleViewModel()), from: nil)
-        self.execute(MainRoute(viewModel: TableViewScheduleViewModel()), from: nil)
+        self.execute(MainRoute(viewModel: ScheduleViewModel()), from: nil)
     }
 }

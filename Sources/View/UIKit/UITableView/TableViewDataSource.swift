@@ -81,14 +81,14 @@ open class TableViewDataSource: NSObject, UITableViewDataSource{
     
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        switch editingStyle{
+        switch editingStyle {
             
         case .delete:
             self.dataHolder.delete(at: [indexPath])
             break
             
         case .insert:
-            
+            //TODO.
             break
         
         default: break
