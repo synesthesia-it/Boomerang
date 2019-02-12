@@ -26,10 +26,11 @@ class TableViewScheduleViewController: UIViewController, ViewModelCompatible, In
     }
     
     func configure(with viewModel: TableViewScheduleViewModel) {
-//        tableView.delegate = self
         tableView.alwaysBounceVertical = true
         let delegate = TableViewDelegate()
-            .with(size: { table, index, type in table.boomerang.automaticSizeForItem(at: index, type: type) })
+            .with(size: { table, index, type in
+                table.boomerang.automaticSizeForItem(at: index, type: type)
+            })
         
         tableView.boomerang.configure(with: viewModel, delegate: delegate)
     }

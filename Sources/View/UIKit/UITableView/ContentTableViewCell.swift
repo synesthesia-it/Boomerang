@@ -73,14 +73,8 @@ extension ContentTableViewCellType where Self: UITableViewHeaderFooterView {
 public class ContentTableViewCell: UITableViewCell, ContentTableViewCellType {
     
     public weak var internalView: UIView?
-    ///Constraints between cell and inner view.
     public var insetConstraints: [NSLayoutConstraint] = []
-    
-//    open override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
-//        super.apply(layoutAttributes)
-//        (internalView as? CollectionViewCellContained)?.apply(layoutAttributes)
-//    }
-    
+
     open override var canBecomeFocused: Bool {
         return internalView?.canBecomeFocused ?? super.canBecomeFocused
     }
@@ -95,15 +89,9 @@ public class ContentTableViewCell: UITableViewCell, ContentTableViewCellType {
 open class ContentTableHeaderFooterView: UITableViewHeaderFooterView, ContentTableViewCellType {
  
     public weak var internalView: UIView?
-    ///Constraints between cell and inner view.
+
     public var insetConstraints: [NSLayoutConstraint] = []
     
-    //    open override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
-    //        super.apply(layoutAttributes)
-    //        (internalView as? CollectionViewCellContained)?.apply(layoutAttributes)
-    //    }
-    
- 
     public func set(viewModel: ViewModelType) {
         
         guard let viewModel = viewModel as? IdentifiableViewModelType else { return }
@@ -119,7 +107,6 @@ open class ContentTableHeaderFooterView: UITableViewHeaderFooterView, ContentTab
         }
         (self.internalView as? ViewModelCompatibleType)?.set(viewModel: viewModel)
     }
-    
     
     
     open override var canBecomeFocused: Bool {

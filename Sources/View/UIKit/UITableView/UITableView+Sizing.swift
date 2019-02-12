@@ -32,26 +32,14 @@ extension Boomerang where Base: UITableView {
     }
     
     func insets(in section:Int) -> UIEdgeInsets {
-
-//        if let flow = flow  {
-//            return delegate?.collectionView?(base, layout: flow, insetForSectionAt: section) ??
-//                flow.sectionInset
-//        }
-//        return UIEdgeInsets(top: 80, left: -20, bottom: -40, right: 40)
         return .zero
     }
     
     func itemSpacing(in section: Int) -> CGFloat {
-//        if let flow = flow {
-//            return delegate?.collectionView?(base, layout: flow, minimumInteritemSpacingForSectionAt: section) ?? flow.minimumInteritemSpacing
-//        }
         return 0
     }
     
     func lineSpacing(in section: Int) -> CGFloat {
-//        if let flow = flow {
-//            return delegate?.collectionView?(base, layout: flow, minimumLineSpacingForSectionAt: section) ?? flow.minimumLineSpacing
-//        }
         return 0
     }
     
@@ -108,17 +96,17 @@ extension Boomerang where Base: UITableView {
         return cell
     }
     
-    public func automaticSizeForItem(at indexPath: IndexPath, type: String? = nil, lockedTo lock: LockingSize) -> CGSize {
+    public func automaticSizeForItem(at indexPath: IndexPath, type: String? = nil, lockedTo lock: LockingSize) -> CGFloat {
         guard let cell = placeholderCell(at: indexPath, for: type, lockingTo: lock) else {
-            return .zero
+            return 0.0
         }
         cell.boomerang.contentView.setNeedsLayout()
         cell.boomerang.contentView.layoutIfNeeded()
-        return cell.boomerang.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        return cell.boomerang.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
     }
     
     
-    public func automaticSizeForItem(at indexPath: IndexPath, type:String? = nil) -> CGSize {
+    public func automaticSizeForItem(at indexPath: IndexPath, type:String? = nil) -> CGFloat {
         let fixedDimension = self.calculateFixedDimension(at: indexPath)
         let lock = LockingSize(direction: Direction.vertical, value: fixedDimension)
         return automaticSizeForItem(at: indexPath, type: type, lockedTo: lock)

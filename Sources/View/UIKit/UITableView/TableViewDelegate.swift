@@ -15,7 +15,7 @@ open class TableViewDelegate: NSObject, UITableViewDelegate {
     public static var defaultItemSpacing: CGFloat?
     public static var defaultItemsPerLine: Int = 1
     
-    public typealias Size = (UITableView, IndexPath, String?) -> CGSize
+    public typealias Size = (UITableView, IndexPath, String?) -> CGFloat
     public typealias Spacing = (UITableView, Int) -> CGFloat
     public typealias Insets = (UITableView, Int) -> UIEdgeInsets
     
@@ -78,11 +78,11 @@ open class TableViewDelegate: NSObject, UITableViewDelegate {
     
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.size(tableView, IndexPath(row: 0, section: section), TableViewHeaderType.header.rawValue).height
+        return self.size(tableView, IndexPath(row: 0, section: section), TableViewHeaderType.header.rawValue)
     }
     
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return self.size(tableView, IndexPath(row: 0, section: section), TableViewHeaderType.footer.rawValue).height
+        return self.size(tableView, IndexPath(row: 0, section: section), TableViewHeaderType.footer.rawValue)
     }
 
     
@@ -93,11 +93,8 @@ open class TableViewDelegate: NSObject, UITableViewDelegate {
         if let ds = tableView.dataSource as? TableViewDataSource,
             let viewModel:IdentifiableViewModelType = ds.viewModel.supplementaryViewModel(at: indexPath, for: type.rawValue){
             
-        
             let identifier:ReusableListIdentifier = viewModel.identifier as! ReusableListIdentifier 
         
-            //                let reuseIdentifier = (self.viewModel.identifier(at: indexPath, for: kind) ?? identifier).name
-
             if identifier.shouldBeEmbedded == true{
                 tableView.register(identifier.containerClass as? UITableViewHeaderFooterView.Type ?? ContentTableHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: identifier.name)
             }else{
@@ -111,10 +108,6 @@ open class TableViewDelegate: NSObject, UITableViewDelegate {
             
             let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier.name)
             (view as? ContentTableHeaderFooterView)?.set(viewModel: viewModel)
-//
-//            if let datatype = ds.getSupplementaryDataType(for: type){
-//                view?.backgroundColor = type == .header ? .red : .green
-//            }
             return view
         }
         return nil
@@ -130,17 +123,8 @@ open class TableViewDelegate: NSObject, UITableViewDelegate {
     
     
     private func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return size(tableView, indexPath, nil).height
+        return size(tableView, indexPath, nil)
     }
-    
-//    public func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-//        return size(tableView, IndexPath(row: 0, section: section), TableViewHeaderType.header.rawValue).height
-//    }
-//    
-//    public func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
-//        return size(tableView, IndexPath(row: 0, section: section), TableViewHeaderType.footer.rawValue).height
-//    }
-//    
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.didSelect(indexPath)
     }
