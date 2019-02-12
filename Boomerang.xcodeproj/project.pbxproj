@@ -161,9 +161,9 @@
 		7B9FC86B220A2DCD00E46539 /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC869220A2DCD00E46539 /* ShowDetailViewController.swift */; };
 		7B9FC86D220A303400E46539 /* InteractionCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC862220A2B2300E46539 /* InteractionCompatible.swift */; };
 		7B9FC86E220A303500E46539 /* InteractionCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC862220A2B2300E46539 /* InteractionCompatible.swift */; };
-		D55892E82212D1E0003B5548 /* TableViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55892E72212D1E0003B5548 /* TableViewSpec.swift */; };
-		D55892EA2212D1F3003B5548 /* TableViewSizingSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55892E92212D1F3003B5548 /* TableViewSizingSpec.swift */; };
 		D581C4BF2211BC5200E2613B /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ABA55E2211760600F26E96 /* TableViewDelegate.swift */; };
+		D5839C4C221313F500869DCE /* TableViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55892E72212D1E0003B5548 /* TableViewSpec.swift */; };
+		D5839C4D221313F800869DCE /* TableViewSizingSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55892E92212D1F3003B5548 /* TableViewSizingSpec.swift */; };
 		D5ABA55F2211760600F26E96 /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ABA55E2211760600F26E96 /* TableViewDelegate.swift */; };
 		D5D600FF220D976300E2525A /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D600FE220D976300E2525A /* UITableView.swift */; };
 		D5D60100220D976C00E2525A /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D600FE220D976300E2525A /* UITableView.swift */; };
@@ -1191,11 +1191,11 @@
 			files = (
 				704B477D21F36581007E11DA /* DataGroupSpec.swift in Sources */,
 				70A54FB321FCC5B500BC9252 /* CollectionViewSizingSpec.swift in Sources */,
-				D55892E82212D1E0003B5548 /* TableViewSpec.swift in Sources */,
+				D5839C4C221313F500869DCE /* TableViewSpec.swift in Sources */,
 				706142C921F51C0F003040D2 /* CollectionViewSpec.swift in Sources */,
 				706142B521F4C7FF003040D2 /* ListViewModelSpec.swift in Sources */,
 				706142CB21F51DF3003040D2 /* Utilities.swift in Sources */,
-				D55892EA2212D1F3003B5548 /* TableViewSizingSpec.swift in Sources */,
+				D5839C4D221313F800869DCE /* TableViewSizingSpec.swift in Sources */,
 				706142B121F3CB7F003040D2 /* DataHolderSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

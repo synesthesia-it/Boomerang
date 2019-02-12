@@ -18,13 +18,21 @@ extension String: ReusableListIdentifier {
     }
     
     public var name: String { return self }
+    
     public var `class`: AnyClass? {
         if self.shouldBeEmbedded {
             return nil
         } else {
-        return TestCollectionViewCell.self
+            
+            if self == "TestCollectionViewCell"{
+                return TestCollectionViewCell.self
+            }else{
+                return TestTableViewCell.self
+            }
+            
         }
     }
+    
     public var shouldBeEmbedded: Bool { return self.contains("Cell") == false }
 }
 
@@ -38,7 +46,7 @@ class CollectionViewSpec: QuickSpec {
         }
         func convert(model: ModelType, at indexPath: IndexPath, for type: String?) -> IdentifiableViewModelType? {
             switch model {
-            case let model as String : return TestItemViewModel(model: model)
+            case let model as String : return CollectionTestItemViewModel(model: model)
             default: return nil
             }
         }
@@ -55,25 +63,14 @@ class CollectionViewSpec: QuickSpec {
         describe("a Collection view") {
             context("When loaded with simple viewModel and not embeddable items") {
                 
-                class ViewController: UIViewController {
-                    override func loadView() {
-                        super.loadView()
-                        let layout = UICollectionViewFlowLayout()
-                        layout.itemSize = CGSize(width: 50, height: 50)
-                        //                    viewController = UICollectionViewController(collectionViewLayout: layout)
-                        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 300, height: 300), collectionViewLayout: layout)
-                        self.view = collectionView
-                    }
-                }
                 var viewModel = TestListViewModel()
-                var viewController = ViewController(nibName: nil, bundle: nil)
-                
+                var viewController = ViewController(nibName: nil, bundle: nil, testTable: false)
                 var collectionView: UICollectionView {
                     return viewController.view as! UICollectionView
                 }
                 beforeEach {
                     
-                   viewController = ViewController(nibName: nil, bundle: nil)
+                   viewController = ViewController(nibName: nil, bundle: nil, testTable: false)
                     let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 400, height: 400))
                     window.rootViewController = viewController
                     window.isHidden = false
@@ -149,7 +146,7 @@ class CollectionViewSpec: QuickSpec {
                     expect(collectionView.numberOfSections).toEventually(be(1))
                     expect { viewModel.dataHolder.modelGroup.data as? [String] } ==  ["1","2","3","4"]
                     
-                    expect { (viewModel.mainViewModel(at: index) as? TestItemViewModel)?.title } == "1"
+                    expect { (viewModel.mainViewModel(at: index) as? CollectionTestItemViewModel)?.title } == "1"
                     expect(collectionView.numberOfItems(inSection: 0)) == 4
                     
                     waitUntil(timeout: 1) { done in
