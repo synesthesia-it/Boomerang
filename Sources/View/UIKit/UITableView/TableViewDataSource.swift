@@ -79,15 +79,23 @@ open class TableViewDataSource: NSObject, UITableViewDataSource{
         }
     }
     
-    
-    open func getSupplementaryDataType(for type:TableViewHeaderType) -> DataType?{
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        if let supplementaryData = self.rootGroup.supplementaryData.first?.value,
-            let dataType = supplementaryData[type.identifier]{
-            return dataType
+        switch editingStyle{
+            
+        case .delete:
+            self.dataHolder.delete(at: [indexPath])
+            break
+            
+        case .insert:
+            
+            break
+        
+        default: break
+            
         }
-        return nil
     }
+    
   
 }
 

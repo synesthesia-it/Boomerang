@@ -33,6 +33,8 @@ class TableViewScheduleViewController: UIViewController, ViewModelCompatible, In
             })
         
         tableView.boomerang.configure(with: viewModel, delegate: delegate)
+
+
     }
     
 }

@@ -142,4 +142,14 @@ open class TableViewDelegate: NSObject, UITableViewDelegate {
        (tableView.dataSource as? TableViewDataSource)?.viewModel.moveItem(from: sourceIndexPath, to: destinationIndexPath)
     }
 
+  
+//
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            self.tableArray.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        }
+//    }
+//
+
 }
