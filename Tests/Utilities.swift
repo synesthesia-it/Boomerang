@@ -50,6 +50,13 @@ final class TestCollectionViewCell: UICollectionViewCell, ViewModelCompatible {
     }
 }
 
+
+final class TestTableViewCell: UITableViewCell, ViewModelCompatible {
+    func configure(with viewModel: TestItemViewModel) {
+        self.backgroundColor = .green
+    }
+}
+
 class ViewController: UIViewController {
     override func loadView() {
         super.loadView()
