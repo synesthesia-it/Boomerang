@@ -42,11 +42,12 @@ Model layer (API calls) and image download are implemented through simple `NSURL
 
 # Documentation
 - [Getting Started](documentation/getting_started.md)
-- [ListViewModel] (documentation/listviewmodel.md)
-- [Identifiers] (documentation/identifiers.md)
-- [Interactions] (documentation/interactions.md)
-- [Router] (documentation/router.md)
-- [Dependencies] (documentation/dependencies.md)
+- [ListViewModel](documentation/listviewmodel.md)
+- [Identifiers](documentation/identifiers.md)
+- [Interactions](documentation/interactions.md)
+- [Router](documentation/router.md)
+- [Dependencies](documentation/dependencies.md)
+
 # Requirements
 
 - iOS 10.0+ / Mac OS X 10.12+ / tvOS 10.0+ / watchOS 4.0+
