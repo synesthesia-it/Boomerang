@@ -10,7 +10,7 @@ A `ViewModelRoute` encapsulates a `SceneViewModelType` viewModel and provides a 
 
 A simple route can be something like
 
-```
+```swift
     struct SimpleRoute: ViewModelRoute {
         let viewModel: CustomViewModel
     }
@@ -18,7 +18,7 @@ A simple route can be something like
 
 This route is usually handed to a `Scene` by an `InteractionViewModel`. The scene is responsible of calling the main `Router` by passing itself as source context and the route as destination parameters.
 
-```
+```swift
 //somewhere inside a UIViewController
     func handle(route: SimpleRoute) {
         Router.execute(route, from: self)
@@ -29,7 +29,7 @@ If the main `Router` was configured to handle a route of type `SimpleRoute` with
 
 Routes should be configured during bootstrap phase of the app (right after `application:didFinishLaunching` on **iOS**), with something like
 
-```
+```swift
     static func bootstrap() {
         Router.register(SimpleRoute.self) { route, source in
             guard let destination = route.destination else {
