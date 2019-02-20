@@ -61,13 +61,11 @@ extension Reactive where Base: UICollectionView {
         return Binder(base) { base, updates in
             switch updates {
             case .reload(let updates) :
-                print("Reloading")
                 _ = updates()
                 base.reloadData()
                 
             case .deleteItems(let updates):
                 let indexPaths = updates()
-                print("Deleting \(indexPaths)")
                 base.performBatchUpdates({[weak base] in
                     base?.deleteItems(at: indexPaths)
                     }, completion: { (completed) in
@@ -75,7 +73,6 @@ extension Reactive where Base: UICollectionView {
                 })
             case .insertItems(let updates):
                 let indexPaths = updates()
-                print("Inserting \(indexPaths)")
                 base.performBatchUpdates({[weak base] in
                     base?.insertItems(at: indexPaths)
                     }, completion: { (completed) in

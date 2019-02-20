@@ -45,16 +45,16 @@ extension Boomerang where Base: UITableView {
             switch gesture.state {
                 
             case .began:
-                print("#####began")
+                
                 break
                 
             case .changed:
-                print("#####changed")
+                
                 break
                 
                 
             case .ended:
-                print("#####ended")
+                
                 break
                 
             default: break
@@ -85,15 +85,14 @@ extension Reactive where Base: UITableView {
             switch updates {
 
             case .reload(let updates) :
-                print("#####Reloading items")
+                
                 _ = updates()
                 base.reloadData()
                 break
                 
             case .deleteItems(let updates):
                 let indexPaths = updates()
-                print("#####Deleting \(indexPaths)")
-                
+            
                 if #available(iOS 11.0, *) {
                     base.performBatchUpdates({ [weak base] in
                         base?.deleteRows(at: indexPaths, with: .none)
@@ -109,8 +108,7 @@ extension Reactive where Base: UITableView {
                 break
                 
             case .insertItems(let updates):
-                let indexPaths = updates()
-                print("#####Inserting \(indexPaths)")
+                
                 if #available(iOS 11.0, *) {
                     base.performBatchUpdates({
                         base.insertRows(at: indexPaths, with: .none)
@@ -126,7 +124,7 @@ extension Reactive where Base: UITableView {
                 break
                 
             case .move(let updates):
-                print("#####move item")
+
                 _ = updates()
                 break
             default: break
