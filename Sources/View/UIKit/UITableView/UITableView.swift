@@ -108,7 +108,7 @@ extension Reactive where Base: UITableView {
                 break
                 
             case .insertItems(let updates):
-                
+                let indexPaths = updates()
                 if #available(iOS 11.0, *) {
                     base.performBatchUpdates({
                         base.insertRows(at: indexPaths, with: .none)
