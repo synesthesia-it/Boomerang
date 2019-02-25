@@ -48,7 +48,7 @@ private class ViewModelCollectionViewDataSource: NSObject, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         (collectionView.viewModel as? EditableViewModel)?.moveItem(fromIndexPath: sourceIndexPath, to: destinationIndexPath)
-//        collectionView.moveItem(at: sourceIndexPath, to: destinationIndexPath)
+        //        collectionView.moveItem(at: sourceIndexPath, to: destinationIndexPath)
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -206,6 +206,10 @@ public extension ListViewModelType {
 private class EmptyReusableView: UICollectionViewCell {
     fileprivate static let emptyReuseIdentifier = "_emptyReusableView"
 }
+
+public protocol CollectionViewContained: class {
+    func apply(_ layoutAttributes: UICollectionViewLayoutAttributes)
+}
 /**
  A custom UICollectionViewCell that automatically embeds any UIView
  This class is automatically used by Boomerang to allow any view to be used in any list, and instantly swap (for example) a table view with a collection view without redesigning all the xibs.
@@ -241,6 +245,10 @@ open class ContentCollectionViewCell: UICollectionViewCell, ViewModelBindable {
         }
         (self.internalView as? ViewModelBindableType)?.bind(to: viewModel)
     }
+    open override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+        super.apply(layoutAttributes)
+        (self.internalView as? CollectionViewContained)?.apply(layoutAttributes)
+    }
 }
 
 extension UICollectionView: ViewModelBindable {
@@ -254,7 +262,7 @@ extension UICollectionView: ViewModelBindable {
      This is useful if datasource is asyncrously dispatching updates that are really close in time, but not completely in synch. In this way, strange updates and animations are avoided.
      In most of cases, there's no need to change this value.
      Defaults to 0.2 seconds.
-    */
+     */
     
     public var updateBufferTime: TimeInterval {
         get { return objc_getAssociatedObject(self, &AssociatedKeys.bufferTime) as? TimeInterval ?? 0.2}
@@ -399,7 +407,7 @@ extension UICollectionView: ViewModelBindable {
     }
     
     /// Creates a UICollectionViewCell with matching viewModel at indexPath without adding to any view, and determine its size by keeping height fixed at provided value.
-
+    
     public func autosizeItemAt(indexPath: IndexPath, constrainedToHeight height: Float) -> CGSize {
         guard let viewModel = viewModel as? ListViewModelType else {
             return .zero
@@ -439,7 +447,7 @@ extension UICollectionView: ViewModelBindable {
         let singleHeight = (CGFloat(globalHeight) - (CGFloat(max(0, itemsPerLine - 1)) * spacing)) / CGFloat(max(itemsPerLine, 1))
         return singleHeight
     }
-        /// Creates a UICollectionViewCell with matching viewModel at indexPath without adding to any view, and determine its size by calculating a fixed width that will fit current insets and spacing so that `itemsPerLine` are able to fit remaining width, and height by inflating the cell with viewModel's contents
+    /// Creates a UICollectionViewCell with matching viewModel at indexPath without adding to any view, and determine its size by calculating a fixed width that will fit current insets and spacing so that `itemsPerLine` are able to fit remaining width, and height by inflating the cell with viewModel's contents
     public func autosizeItemConstrainedToWidth(at indexPath: IndexPath, itemsPerLine: Int = 1) -> CGSize {
         
         return self.autosizeItemAt(indexPath: indexPath, constrainedToWidth: floor(Float(self.autoWidthForItemAt(indexPath: indexPath, itemsPerLine: itemsPerLine))))
