@@ -14,6 +14,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "703270AE22089F1000D6C052"
+               BuildableName = "Boomerang.framework"
+               BlueprintName = "Boomerang-watch"
+               ReferencedContainer = "container:Boomerang.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "706142F321F5F959003040D2"
                BuildableName = "Demo.app"
                BlueprintName = "Demo"

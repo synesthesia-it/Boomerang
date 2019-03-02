@@ -58,10 +58,10 @@ class TableViewSizingSpec: QuickSpec {
                     viewModel.delayedLoad()
                 }
                 
-                it ("should properly calculate dimension for 1 item per line") {
-                    expect(tableView.boomerang.calculateFixedDimension(at: IndexPath(item: 0, section: 0))) == tableWidth
-                    
-                }
+//                it ("should properly calculate dimension for 1 item per line") {
+////                    expect(tableView.boomerang.calculateFixedDimension(at: IndexPath(item: 0, section: 0))) == tableWidth
+//                    
+//                }
             }
         }
     }

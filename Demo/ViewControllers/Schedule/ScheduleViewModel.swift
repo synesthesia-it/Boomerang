@@ -14,7 +14,7 @@ class ScheduleViewModel: ListViewModel, SceneViewModelType, InteractionViewModel
 
     lazy var selection: Selection = self.defaultSelection()
     
-    var sceneIdentifier: SceneIdentifier = Identifiers.Scenes.schedule
+    var sceneIdentifier: SceneIdentifier = Identifiers.Scenes.scheduleStacked
     
     func group(_ observable: Observable<[Show]>) -> Observable<DataGroup> {
         return observable.map { DataGroup($0, supplementaryData: [0: [

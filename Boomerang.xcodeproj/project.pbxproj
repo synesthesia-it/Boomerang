@@ -161,6 +161,9 @@
 		7B9FC86B220A2DCD00E46539 /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC869220A2DCD00E46539 /* ShowDetailViewController.swift */; };
 		7B9FC86D220A303400E46539 /* InteractionCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC862220A2B2300E46539 /* InteractionCompatible.swift */; };
 		7B9FC86E220A303500E46539 /* InteractionCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC862220A2B2300E46539 /* InteractionCompatible.swift */; };
+		7BC1DED1222AE654009EFD5B /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1DED0222AE654009EFD5B /* UIStackView.swift */; };
+		7BC1DED2222AE654009EFD5B /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1DED0222AE654009EFD5B /* UIStackView.swift */; };
+		7BC1DED4222AE883009EFD5B /* ScheduleStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1DED3222AE838009EFD5B /* ScheduleStackViewController.swift */; };
 		D581C4BF2211BC5200E2613B /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ABA55E2211760600F26E96 /* TableViewDelegate.swift */; };
 		D5839C4C221313F500869DCE /* TableViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55892E72212D1E0003B5548 /* TableViewSpec.swift */; };
 		D5839C4D221313F800869DCE /* TableViewSizingSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55892E92212D1F3003B5548 /* TableViewSizingSpec.swift */; };
@@ -372,6 +375,8 @@
 		7B9FC862220A2B2300E46539 /* InteractionCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionCompatible.swift; sourceTree = "<group>"; };
 		7B9FC865220A2DBC00E46539 /* ShowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewModel.swift; sourceTree = "<group>"; };
 		7B9FC869220A2DCD00E46539 /* ShowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewController.swift; sourceTree = "<group>"; };
+		7BC1DED0222AE654009EFD5B /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
+		7BC1DED3222AE838009EFD5B /* ScheduleStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStackViewController.swift; sourceTree = "<group>"; };
 		D55892E72212D1E0003B5548 /* TableViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSpec.swift; sourceTree = "<group>"; };
 		D55892E92212D1F3003B5548 /* TableViewSizingSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSizingSpec.swift; sourceTree = "<group>"; };
 		D5ABA55E2211760600F26E96 /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
@@ -486,6 +491,7 @@
 				706142B921F4F5B0003040D2 /* UIKit.swift */,
 				7B9FC85B220A0F7000E46539 /* UIViewController.swift */,
 				706142C421F50693003040D2 /* UIKit+Constraints.swift */,
+				7BC1DECF222AE643009EFD5B /* UIStackView */,
 				D5D600FD220D970800E2525A /* UITableView */,
 				706142C121F5017C003040D2 /* UICollectionView */,
 			);
@@ -641,6 +647,7 @@
 			isa = PBXGroup;
 			children = (
 				70A54FBA21FDF77C00BC9252 /* ScheduleViewModel.swift */,
+				7BC1DED3222AE838009EFD5B /* ScheduleStackViewController.swift */,
 				70A54FB821FDF77400BC9252 /* ScheduleViewController.swift */,
 			);
 			path = Schedule;
@@ -722,6 +729,14 @@
 				7B9FC869220A2DCD00E46539 /* ShowDetailViewController.swift */,
 			);
 			path = ShowDetail;
+			sourceTree = "<group>";
+		};
+		7BC1DECF222AE643009EFD5B /* UIStackView */ = {
+			isa = PBXGroup;
+			children = (
+				7BC1DED0222AE654009EFD5B /* UIStackView.swift */,
+			);
+			path = UIStackView;
 			sourceTree = "<group>";
 		};
 		D55892E62212D1B8003B5548 /* TableView */ = {
@@ -1091,6 +1106,7 @@
 				7032704D22087CF300D6C052 /* UICollectionView.swift in Sources */,
 				7032704E22087CF300D6C052 /* ViewModelType.swift in Sources */,
 				D581C4BF2211BC5200E2613B /* TableViewDelegate.swift in Sources */,
+				7BC1DED2222AE654009EFD5B /* UIStackView.swift in Sources */,
 				70DBC7EE220C218D00E0BB27 /* Action+Internal.swift in Sources */,
 				7032704F22087CF300D6C052 /* CollectionViewDataSource.swift in Sources */,
 				7032705022087CF300D6C052 /* Identifier.swift in Sources */,
@@ -1178,6 +1194,7 @@
 				706142C021F4FBD5003040D2 /* UICollectionView.swift in Sources */,
 				D5ABA55F2211760600F26E96 /* TableViewDelegate.swift in Sources */,
 				706142A921F3C280003040D2 /* ViewModelType.swift in Sources */,
+				7BC1DED1222AE654009EFD5B /* UIStackView.swift in Sources */,
 				70DBC7ED220C218D00E0BB27 /* Action+Internal.swift in Sources */,
 				706142C721F509A7003040D2 /* CollectionViewDataSource.swift in Sources */,
 				70A54FB721FDBD8F00BC9252 /* Identifier.swift in Sources */,
@@ -1220,6 +1237,7 @@
 				70A54FC821FE25B300BC9252 /* Show.swift in Sources */,
 				70A54FBB21FDF77C00BC9252 /* ScheduleViewModel.swift in Sources */,
 				D5D6010C220DA7FB00E2525A /* TableViewScheduleViewModel.swift in Sources */,
+				7BC1DED4222AE883009EFD5B /* ScheduleStackViewController.swift in Sources */,
 				7032703222083E9B00D6C052 /* HeaderItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

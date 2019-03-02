@@ -31,6 +31,7 @@ struct Identifiers {
         
         case schedule
         case showDetail
+        case scheduleStacked
     }
     enum Views: String, ViewIdentifier {
         

@@ -155,7 +155,7 @@ extension DataHolder {
     public func reload(_ group: DataGroup) -> [IndexPath] {
         self.modelGroup = group
         self.itemCache.clear()
-        return []
+        return group.indices.map { $0 }
     }
     
     private func _insert(_ data: [DataType], at indexPath: IndexPath) -> [IndexPath] {

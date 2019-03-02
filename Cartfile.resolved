@@ -1,5 +1,5 @@
 github "PGSSoft/ParallaxView" "2.0.8"
-github "Quick/Nimble" "v7.3.3"
+github "Quick/Nimble" "v7.3.4"
 github "Quick/Quick" "v1.3.4"
-github "ReactiveX/RxSwift" "4.4.0"
-github "RxSwiftCommunity/Action" "3.10.0"
+github "ReactiveX/RxSwift" "4.4.1"
+github "RxSwiftCommunity/Action" "3.10.1"

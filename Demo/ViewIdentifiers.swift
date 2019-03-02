@@ -29,6 +29,7 @@ struct Identifiers {
     enum Scenes: String, SceneIdentifier {
         
         case schedule
+        case scheduleStacked
         case showDetail
         case tableViewSchedule
         
