@@ -10,6 +10,20 @@ import Foundation
 import RxCocoa
 import RxSwift
 
+public protocol WithScenePageConfiguration {
+    func configure(scene: (Scene & ViewModelCompatibleType), with viewModel: PageViewModelType ) -> Scene
+}
+
+public extension UITabBarController {
+
+    public func defaultPageConfiguration(for scene: (Scene & ViewModelCompatibleType), with viewModel: PageViewModelType ) -> Scene {
+        let nav = UINavigationController(rootViewController: scene)
+        viewModel.pageImage.asDriver(onErrorJustReturn: UIImage()).drive(nav.tabBarItem.rx.image).disposed(by: scene.disposeBag)
+        viewModel.selectedPageImage.asDriver(onErrorJustReturn: UIImage()).drive(nav.tabBarItem.rx.selectedImage).disposed(by: scene.disposeBag)
+        viewModel.pageTitle.asDriver(onErrorJustReturn: "").drive(nav.tabBarItem.rx.title).disposed(by: scene.disposeBag)
+        return nav
+    }
+}
 
 extension Boomerang where Base: UITabBarController & ViewModelCompatible {
     public func configure(with viewModel: ListViewModelType) {
@@ -19,13 +33,6 @@ extension Boomerang where Base: UITabBarController & ViewModelCompatible {
             .disposed(by: base.disposeBag)
     }
 
-    func configure(viewController: (UIViewController & ViewModelCompatibleType), with viewModel: PageViewModelType ) -> UIViewController {
-        let nav = UINavigationController(rootViewController: viewController)
-        viewModel.pageImage.asDriver(onErrorJustReturn: UIImage()).drive(nav.tabBarItem.rx.image).disposed(by: viewController.disposeBag)
-        viewModel.selectedPageImage.asDriver(onErrorJustReturn: UIImage()).drive(nav.tabBarItem.rx.selectedImage).disposed(by: viewController.disposeBag)
-        viewModel.pageTitle.asDriver(onErrorJustReturn: "").drive(nav.tabBarItem.rx.title).disposed(by: viewController.disposeBag)
-        return nav
-    }
 }
 
 extension Reactive where Base: UITabBarController & ViewModelCompatible {
@@ -42,7 +49,7 @@ extension Reactive where Base: UITabBarController & ViewModelCompatible {
                 let viewControllers = viewModels.compactMap { vm -> UIViewController? in
                     if let vc = (vm.sceneIdentifier.scene() as? (UIViewController & ViewModelCompatibleType)) {
                         vc.loadViewAndSet(viewModel: vm)
-                        return base.boomerang.configure(viewController: vc, with: vm)
+                        return (base as? WithScenePageConfiguration)?.configure(scene: vc, with: vm) ?? vc
                     }
                     return nil
                 }

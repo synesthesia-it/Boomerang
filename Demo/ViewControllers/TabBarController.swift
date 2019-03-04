@@ -24,7 +24,7 @@ class MainViewModel: ListViewModelType, SceneViewModelType {
     
 }
 
-class TabBarController: UITabBarController, ViewModelCompatible {
+class TabBarController: UITabBarController, ViewModelCompatible, WithScenePageConfiguration {
     func configure(with viewModel: MainViewModel) {
         self.viewModel = viewModel
         self.boomerang.configure(with: viewModel)
@@ -34,5 +34,9 @@ class TabBarController: UITabBarController, ViewModelCompatible {
     var viewModel: MainViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func configure(scene: (Scene & ViewModelCompatibleType), with viewModel: PageViewModelType ) -> Scene {
+        return defaultPageConfiguration(for:scene, with:viewModel)
     }
 }
