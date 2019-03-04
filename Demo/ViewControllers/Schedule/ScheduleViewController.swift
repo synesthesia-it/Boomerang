@@ -29,8 +29,9 @@ class ScheduleViewController: UIViewController, ViewModelCompatible, Interaction
         collectionView.alwaysBounceVertical = true
         let delegate = CollectionViewDelegate()
             .with(itemsPerLine: 2)
-            .with(itemSpacing: {_,_ in 10.12345678})
-            .with(insets: {_,_ in return UIEdgeInsets(top: 10, left: 9.5757575757575, bottom: 10, right: 9.33333333)})
+            .with(itemSpacing: {_,_ in 10})
+            .with(insets: {_,_ in return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)})
+            .with(select: { viewModel.interact(.selectItem($0)) } )
         collectionView.boomerang.configure(with: viewModel, delegate: delegate)
     }
 }

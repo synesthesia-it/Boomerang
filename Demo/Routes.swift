@@ -23,8 +23,7 @@ extension Router {
                 fatalError("No root controller found. Please check your routes")
             }
             (controller as? UIViewController & ViewModelCompatibleType)?.loadViewAndSet(viewModel: route.viewModel)
-            let destination = UINavigationController(rootViewController:controller)
-            UIApplication.shared.delegate?.window??.rootViewController = destination
+            UIApplication.shared.delegate?.window??.rootViewController = controller
         }
         
         register(NavigationRoute.self) { route, source in
@@ -39,6 +38,6 @@ extension Router {
     static func start() {
         bootstrap()
 //        self.execute(MainRoute(viewModel: ScheduleViewModel()), from: nil)
-        self.execute(MainRoute(viewModel: ScheduleViewModel()), from: nil)
+        self.execute(MainRoute(viewModel: MainViewModel()), from: nil)
     }
 }

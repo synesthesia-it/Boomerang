@@ -36,6 +36,7 @@ struct Identifiers {
     enum Views: String, ViewIdentifier {
         
         case show
+        case showLine
         case header
         
         func view<T>() -> T? where T : View {

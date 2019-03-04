@@ -80,6 +80,15 @@
 		706142F921F5F95A003040D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706142F821F5F95A003040D2 /* ViewController.swift */; };
 		706142FC21F5F95A003040D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 706142FA21F5F95A003040D2 /* Main.storyboard */; };
 		706142FE21F5F95B003040D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 706142FD21F5F95B003040D2 /* Assets.xcassets */; };
+		708139B1222D215400A76ABC /* UITabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708139B0222D215400A76ABC /* UITabBarViewController.swift */; };
+		708139B2222D215400A76ABC /* UITabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708139B0222D215400A76ABC /* UITabBarViewController.swift */; };
+		708139B4222D226700A76ABC /* PageViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708139B3222D226700A76ABC /* PageViewModelType.swift */; };
+		708139B5222D226700A76ABC /* PageViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708139B3222D226700A76ABC /* PageViewModelType.swift */; };
+		708139B6222D226700A76ABC /* PageViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708139B3222D226700A76ABC /* PageViewModelType.swift */; };
+		708139B8222D261A00A76ABC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708139B7222D261A00A76ABC /* TabBarController.swift */; };
+		708139B9222D261B00A76ABC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708139B7222D261A00A76ABC /* TabBarController.swift */; };
+		708139BB222D2EB600A76ABC /* ShowLineItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 708139BA222D2E5A00A76ABC /* ShowLineItemView.xib */; };
+		708139BD222D2EE800A76ABC /* ShowLineItemView~tv.xib in Resources */ = {isa = PBXBuildFile; fileRef = 708139BC222D2EDD00A76ABC /* ShowLineItemView~tv.xib */; };
 		70A54FB121FCC20F00BC9252 /* UICollectionView+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A54FB021FCC20F00BC9252 /* UICollectionView+Sizing.swift */; };
 		70A54FB321FCC5B500BC9252 /* CollectionViewSizingSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A54FB221FCC5B500BC9252 /* CollectionViewSizingSpec.swift */; };
 		70A54FB521FDB90600BC9252 /* GroupCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A54FB421FDB90600BC9252 /* GroupCache.swift */; };
@@ -325,6 +334,11 @@
 		706142FD21F5F95B003040D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7061430021F5F95B003040D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7061430221F5F95B003040D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		708139B0222D215400A76ABC /* UITabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBarViewController.swift; sourceTree = "<group>"; };
+		708139B3222D226700A76ABC /* PageViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewModelType.swift; sourceTree = "<group>"; };
+		708139B7222D261A00A76ABC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		708139BA222D2E5A00A76ABC /* ShowLineItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowLineItemView.xib; sourceTree = "<group>"; };
+		708139BC222D2EDD00A76ABC /* ShowLineItemView~tv.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "ShowLineItemView~tv.xib"; sourceTree = "<group>"; };
 		70A54FB021FCC20F00BC9252 /* UICollectionView+Sizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Sizing.swift"; sourceTree = "<group>"; };
 		70A54FB221FCC5B500BC9252 /* CollectionViewSizingSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewSizingSpec.swift; sourceTree = "<group>"; };
 		70A54FB421FDB90600BC9252 /* GroupCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCache.swift; sourceTree = "<group>"; };
@@ -480,6 +494,8 @@
 				70A54FBF21FDFB3A00BC9252 /* ShowItemView.swift */,
 				70DBC6ED220984FE00E0BB27 /* ShowItemViewModel.swift */,
 				70A54FC521FE207700BC9252 /* ShowItemView.xib */,
+				708139BA222D2E5A00A76ABC /* ShowLineItemView.xib */,
+				708139BC222D2EDD00A76ABC /* ShowLineItemView~tv.xib */,
 				703270A02208976900D6C052 /* ShowItemView~tv.xib */,
 			);
 			path = Show;
@@ -491,6 +507,7 @@
 				706142B921F4F5B0003040D2 /* UIKit.swift */,
 				7B9FC85B220A0F7000E46539 /* UIViewController.swift */,
 				706142C421F50693003040D2 /* UIKit+Constraints.swift */,
+				708139AF222D213B00A76ABC /* UITabBarController */,
 				7BC1DECF222AE643009EFD5B /* UIStackView */,
 				D5D600FD220D970800E2525A /* UITableView */,
 				706142C121F5017C003040D2 /* UICollectionView */,
@@ -583,6 +600,7 @@
 				706142AA21F3C29C003040D2 /* ListViewModelType.swift */,
 				706142AC21F3C2A3003040D2 /* ItemViewModelType.swift */,
 				7032703A22087C8A00D6C052 /* SceneViewModelType.swift */,
+				708139B3222D226700A76ABC /* PageViewModelType.swift */,
 				70A54FB621FDBD8F00BC9252 /* Identifier.swift */,
 				706142AE21F3C82F003040D2 /* DataHolder.swift */,
 				70A54FB421FDB90600BC9252 /* GroupCache.swift */,
@@ -633,12 +651,21 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
+		708139AF222D213B00A76ABC /* UITabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				708139B0222D215400A76ABC /* UITabBarViewController.swift */,
+			);
+			path = UITabBarController;
+			sourceTree = "<group>";
+		};
 		70A54FBC21FDFAFF00BC9252 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				D5D6010A220DA6C700E2525A /* TableViewSchedule */,
 				70A54FBD21FDFB1900BC9252 /* Schedule */,
 				7B9FC864220A2DAB00E46539 /* ShowDetail */,
+				708139B7222D261A00A76ABC /* TabBarController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1018,6 +1045,7 @@
 				7032709F220895A500D6C052 /* Main~tv.storyboard in Resources */,
 				7032708F22088E0F00D6C052 /* Assets.xcassets in Resources */,
 				703270A32208981700D6C052 /* HeaderItemView~tv.xib in Resources */,
+				708139BD222D2EE800A76ABC /* ShowLineItemView~tv.xib in Resources */,
 				703270A12208976900D6C052 /* ShowItemView~tv.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1051,6 +1079,7 @@
 				70A54FC621FE207700BC9252 /* ShowItemView.xib in Resources */,
 				706142FE21F5F95B003040D2 /* Assets.xcassets in Resources */,
 				703270A922089B2A00D6C052 /* LaunchScreen.storyboard in Resources */,
+				708139BB222D2EB600A76ABC /* ShowLineItemView.xib in Resources */,
 				706142FC21F5F95A003040D2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1092,6 +1121,7 @@
 				7032704622087CF300D6C052 /* UIKit+Constraints.swift in Sources */,
 				7B9FC86D220A303400E46539 /* InteractionCompatible.swift in Sources */,
 				7032704722087CF300D6C052 /* ListViewModelType.swift in Sources */,
+				708139B2222D215400A76ABC /* UITabBarViewController.swift in Sources */,
 				D5D60103220D979E00E2525A /* TableViewDataSource.swift in Sources */,
 				7032704822087CF300D6C052 /* ViewModelCompatible.swift in Sources */,
 				7032704922087CF300D6C052 /* ModelType.swift in Sources */,
@@ -1099,6 +1129,7 @@
 				7032704A22087CF300D6C052 /* DataGroup.swift in Sources */,
 				70DBC7F4220C218D00E0BB27 /* Action.swift in Sources */,
 				7032704B22087CF300D6C052 /* ContentCollectionViewCell.swift in Sources */,
+				708139B5222D226700A76ABC /* PageViewModelType.swift in Sources */,
 				7032704C22087CF300D6C052 /* UIKit.swift in Sources */,
 				D5D60109220D9F2700E2525A /* UITableView+Sizing.swift in Sources */,
 				70DBC7072209F60B00E0BB27 /* Interaction.swift in Sources */,
@@ -1119,6 +1150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7032707F22088E0F00D6C052 /* ViewController.swift in Sources */,
+				708139B9222D261B00A76ABC /* TabBarController.swift in Sources */,
 				70DBC7042209CFEF00E0BB27 /* Routes.swift in Sources */,
 				7032708022088E0F00D6C052 /* ViewIdentifiers.swift in Sources */,
 				70DBC6F5220985A900E0BB27 /* HeaderItemViewModel.swift in Sources */,
@@ -1154,6 +1186,7 @@
 				70DBC7F2220C218D00E0BB27 /* InputSubject.swift in Sources */,
 				703270C022089F7E00D6C052 /* SceneViewModelType.swift in Sources */,
 				703270BA22089F7E00D6C052 /* Identifier.swift in Sources */,
+				708139B6222D226700A76ABC /* PageViewModelType.swift in Sources */,
 				703270BD22089F7E00D6C052 /* GroupCache.swift in Sources */,
 				70DBC7012209CA3B00E0BB27 /* Router.swift in Sources */,
 				703270BE22089F7E00D6C052 /* ListViewModelType.swift in Sources */,
@@ -1180,6 +1213,7 @@
 				706142C521F50693003040D2 /* UIKit+Constraints.swift in Sources */,
 				7B9FC863220A2B2300E46539 /* InteractionCompatible.swift in Sources */,
 				706142AB21F3C29C003040D2 /* ListViewModelType.swift in Sources */,
+				708139B1222D215400A76ABC /* UITabBarViewController.swift in Sources */,
 				D5D60102220D979E00E2525A /* TableViewDataSource.swift in Sources */,
 				706142BC21F4F701003040D2 /* ViewModelCompatible.swift in Sources */,
 				704B478021F36615007E11DA /* ModelType.swift in Sources */,
@@ -1187,6 +1221,7 @@
 				704B478221F3667A007E11DA /* DataGroup.swift in Sources */,
 				70DBC7F3220C218D00E0BB27 /* Action.swift in Sources */,
 				706142C321F5018B003040D2 /* ContentCollectionViewCell.swift in Sources */,
+				708139B4222D226700A76ABC /* PageViewModelType.swift in Sources */,
 				706142BA21F4F5B0003040D2 /* UIKit.swift in Sources */,
 				D5D60108220D9F2700E2525A /* UITableView+Sizing.swift in Sources */,
 				70DBC7062209F60B00E0BB27 /* Interaction.swift in Sources */,
@@ -1231,6 +1266,7 @@
 				7B9FC866220A2DBC00E46539 /* ShowDetailViewModel.swift in Sources */,
 				70A54FC021FDFB3A00BC9252 /* ShowItemView.swift in Sources */,
 				706142F721F5F95A003040D2 /* AppDelegate.swift in Sources */,
+				708139B8222D261A00A76ABC /* TabBarController.swift in Sources */,
 				70A54FB921FDF77400BC9252 /* ScheduleViewController.swift in Sources */,
 				7B501330220A3DE60087CDCB /* CollectionViewCell+Parallax.swift in Sources */,
 				7B9FC86A220A2DCD00E46539 /* ShowDetailViewController.swift in Sources */,

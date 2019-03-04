@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 public protocol SceneIdentifier: Identifier {
     func scene<T: Scene>() -> T?

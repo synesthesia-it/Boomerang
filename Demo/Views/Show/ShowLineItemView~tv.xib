@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="appleTV" orientation="landscape">
+        <adaptation id="light"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ShowItemView" customModule="DemoTV" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="658" height="1527"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Let-9S-jKa">
+                    <rect key="frame" x="0.0" y="0.0" width="658" height="1170"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Let-9S-jKa" secondAttribute="height" multiplier="9:16" id="ccK-Ol-01l"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Let-9S-jKa" secondAttribute="trailing" id="53a-2l-vr4"/>
+                <constraint firstAttribute="bottom" secondItem="Let-9S-jKa" secondAttribute="bottom" priority="999" id="JSZ-99-gMa"/>
+                <constraint firstItem="Let-9S-jKa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Qgl-Cg-dEG"/>
+                <constraint firstItem="Let-9S-jKa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gSL-Jb-LHq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="image" destination="Let-9S-jKa" id="SV8-ZX-CwZ"/>
+            </connections>
+            <point key="canvasLocation" x="-580" y="326.5"/>
+        </view>
+    </objects>
+</document>

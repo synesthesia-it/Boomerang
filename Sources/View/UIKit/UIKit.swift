@@ -12,6 +12,7 @@ import UIKit
 
 public typealias Scene = UIViewController
 public typealias View = UIView
+public typealias Image = UIImage
 
 internal struct AssociatedKeys {
     static var disposeBag = "boomerang_disposeBag"

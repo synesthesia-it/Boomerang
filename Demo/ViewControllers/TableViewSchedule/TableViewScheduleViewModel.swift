@@ -26,7 +26,13 @@ class SupplementaryViewModel: NSObject, DataType{
 }
 
 
-class TableViewScheduleViewModel: ListViewModel, SceneViewModelType, InteractionViewModelType {
+class TableViewScheduleViewModel: ListViewModel, PageViewModelType, InteractionViewModelType {
+    var pageTitle: Observable<String> { return .just("Table") }
+    
+    var selectedPageImage: Observable<Image> { return .empty() }
+    
+    var pageImage: Observable<Image> { return .empty() }
+    
    
     lazy var selection: Selection = self.defaultSelection()
     
@@ -48,7 +54,7 @@ class TableViewScheduleViewModel: ListViewModel, SceneViewModelType, Interaction
     func convert(model: ModelType, at indexPath: IndexPath, for type: String?) -> IdentifiableViewModelType? {
         switch model {
         case let title as String: return HeaderItemViewModel(title: title)
-        case let model as Show: return ShowItemViewModel(model: model)
+        case let model as Show: return ShowItemViewModel(model: model, identifier: .showLine)
         default: return nil
         }
     }

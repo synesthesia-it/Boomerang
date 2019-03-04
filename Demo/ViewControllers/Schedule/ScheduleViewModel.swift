@@ -10,11 +10,17 @@ import Foundation
 import Boomerang
 import RxSwift
 
-class ScheduleViewModel: ListViewModel, SceneViewModelType, InteractionViewModelType {
+class ScheduleViewModel: ListViewModel, PageViewModelType, InteractionViewModelType {
+    var pageTitle: Observable<String> { return .just("Schedule") }
+    
+    var selectedPageImage: Observable<Image> { return .empty() }
+    
+    var pageImage: Observable<Image> { return .empty() }
+    
 
     lazy var selection: Selection = self.defaultSelection()
     
-    var sceneIdentifier: SceneIdentifier = Identifiers.Scenes.scheduleStacked
+    var sceneIdentifier: SceneIdentifier = Identifiers.Scenes.schedule
     
     func group(_ observable: Observable<[Show]>) -> Observable<DataGroup> {
         return observable.map { DataGroup($0, supplementaryData: [0: [
@@ -28,9 +34,14 @@ class ScheduleViewModel: ListViewModel, SceneViewModelType, InteractionViewModel
     func convert(model: ModelType, at indexPath: IndexPath, for type: String?) -> IdentifiableViewModelType? {
         switch model {
         case let title as String: return HeaderItemViewModel(title: title)
-        case let model as Show: return ShowItemViewModel(model: model)
+        case let model as Show: return ShowItemViewModel(model: model, identifier: (self.identifier as? Identifiers.Scenes) == Identifiers.Scenes.schedule ? .show : Identifiers.Views.showLine)
         default: return nil
         }
+    }
+    
+    func with(identifier: Identifiers.Scenes) -> Self {
+        self.sceneIdentifier = identifier
+        return self
     }
     
     init() {

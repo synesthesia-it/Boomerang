@@ -13,6 +13,7 @@ import RxSwift
 
 public typealias Scene = WKInterfaceController
 public typealias View = NSObject
+public typealias Image = UIImage
 
 extension NSObject: BoomerangCompatible { }
 
