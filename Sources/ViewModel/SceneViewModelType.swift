@@ -15,8 +15,10 @@ public protocol SceneIdentifier: Identifier {
 
 public protocol SceneViewModelType: IdentifiableViewModelType {
     var sceneIdentifier: SceneIdentifier { get }
+    var sceneTitle: String { get }
 }
 
 public extension SceneViewModelType {
     public var identifier: Identifier { return sceneIdentifier }
+    public var sceneTitle: String { return "" }
 }
