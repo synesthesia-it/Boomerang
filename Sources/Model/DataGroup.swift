@@ -137,7 +137,12 @@ public struct DataGroup: MutableCollection, RandomAccessCollection {
     Example use case: UICollectionView's supplementary view
      */
     public func supplementaryData(at indexPath: IndexPath, for type: String) -> DataType? {
+        
         guard let i = indexPath.last else { return nil }
+        if let groups = self.groups {
+            guard let j = indexPath.first, j < groups.count else { return nil }
+            return groups[j].supplementaryData(at: indexPath.dropFirst(), for: type)
+        }
         return supplementaryData[i]?[type]
     }
     

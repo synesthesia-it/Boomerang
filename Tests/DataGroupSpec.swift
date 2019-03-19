@@ -192,11 +192,12 @@ class DataGroupSpec: QuickSpec {
             context ("when initialized with supplementary data") {
                 var modelGroup: DataGroup = DataGroup()
                 beforeEach {
-                    modelGroup = DataGroup(["A"], supplementaryData: [0: ["id":"supplementary"]])
+                    let innerGroup = DataGroup(["A"], supplementaryData: [0: ["id":"supplementary"]])
+                    modelGroup = DataGroup(groups: [innerGroup, innerGroup])
                 }
                 
                 it ("should alter normal properties") {
-                    expect(modelGroup.depth) == 1
+                    expect(modelGroup.depth) == 2
                     expect(modelGroup[IndexPath(item: 0, section: 0)] as? String) == "A"
                 }
                 
