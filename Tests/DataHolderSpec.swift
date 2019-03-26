@@ -38,7 +38,7 @@ class DataHolderSpec: QuickSpec {
                 expect(dataHolder[IndexPath(indexes: [0])]).toEventually(be("A"))
                 let expectedGroup = (try? dataHolder.groups.take(1).toBlocking().last())
                 expect(expectedGroup).notTo(beNil())
-                guard let group = expectedGroup! else { return }
+                guard let group = expectedGroup else { return }
                 expect(group.first as? String) == "A"
                 expect(group.last as? String) == "C"
             }
