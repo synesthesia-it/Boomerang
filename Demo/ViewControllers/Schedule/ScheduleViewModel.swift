@@ -23,10 +23,12 @@ class ScheduleViewModel: ListViewModel, PageViewModelType, InteractionViewModelT
     var sceneIdentifier: SceneIdentifier = Identifiers.Scenes.schedule
     
     func group(_ observable: Observable<[Show]>) -> Observable<DataGroup> {
-        return observable.map { DataGroup($0, supplementaryData: [0: [
+        return observable.map { DataGroup(groups: [
+            DataGroup([]),
+            DataGroup($0, supplementaryData: [0: [
             Identifiers.SupplementaryTypes.header.name: "Tonight's schedule",
            Identifiers.SupplementaryTypes.footer.name: "Credits: tvmaze.com"
-            ]]) }
+            ]]), DataGroup([])]) }
     }
     
     var dataHolder: DataHolder = DataHolder()

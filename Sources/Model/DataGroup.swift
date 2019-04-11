@@ -221,6 +221,10 @@ public struct DataGroup: MutableCollection, RandomAccessCollection {
             let firstIndex = i.first {
             if groups.count > firstIndex  {
                 let group = groups[firstIndex]
+                if group.groups == nil &&  group.data.count == 0 {
+                    let index = IndexPath(indexes: [((i.first ?? 0) + 1)] + i.dropFirst().map { _ in 0 })
+                    return self.index(after: index)
+                }
                 let after = group.index(after:i.dropFirst())
                 if after == group.endIndex {
                     return IndexPath(indexes: [((i.first ?? 0) + 1)] + i.dropFirst().map { _ in 0 })
