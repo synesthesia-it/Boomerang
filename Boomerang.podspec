@@ -24,6 +24,6 @@ Pod::Spec.new do |s|
   s.tvos.source_files = "Sources/View/UIKit/**/*.{swift}"
   s.watchos.source_files = "Sources/View/WatchOS/*.{swift}"
 
-  s.dependency "RxSwift", "~> 4.4"
-  s.dependency "RxCocoa", "~> 4.4"
+  s.dependency "RxSwift", "~> 5.0"
+  s.dependency "RxCocoa", "~> 5.0"
 end
