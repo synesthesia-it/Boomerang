@@ -89,7 +89,7 @@ public class DataHolder {
                     switch strategy {
                     case .reload:
                         return .just(DataHolderUpdate.reload( {[weak self] in
-                            return self?.reload(group)
+                            return self?.reload(group) ?? []
                         }))
 //                    case .insert:
 //                        return Observable.just(DataHolderUpdate.insertItems( {
