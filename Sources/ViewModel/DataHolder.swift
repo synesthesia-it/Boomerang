@@ -88,8 +88,8 @@ public class DataHolder {
                 .flatMapLatest { group -> Observable<DataHolderUpdate>in
                     switch strategy {
                     case .reload:
-                        return .just(DataHolderUpdate.reload( {
-                            return self.reload(group)
+                        return .just(DataHolderUpdate.reload( {[weak self] in
+                            return self?.reload(group)
                         }))
 //                    case .insert:
 //                        return Observable.just(DataHolderUpdate.insertItems( {
