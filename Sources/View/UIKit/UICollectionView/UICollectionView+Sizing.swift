@@ -59,23 +59,22 @@ extension Boomerang where Base: UICollectionView {
     }
     
     func insets(in section:Int) -> UIEdgeInsets {
-        if let flow = flow  {
-            return delegate?.collectionView?(base, layout: flow, insetForSectionAt: section) ??
-                 flow.sectionInset
+        if let delegate = delegate {
+            return delegate.collectionView?(base, layout: base.collectionViewLayout, insetForSectionAt: section) ?? (flow?.sectionInset ?? .zero)
         }
         return .zero
     }
     
     func itemSpacing(in section: Int) -> CGFloat {
-        if let flow = flow {
-            return delegate?.collectionView?(base, layout: flow, minimumInteritemSpacingForSectionAt: section) ?? flow.minimumInteritemSpacing
+        if let delegate = delegate {
+            return delegate.collectionView?(base, layout: base.collectionViewLayout, minimumInteritemSpacingForSectionAt: section) ?? (flow?.minimumInteritemSpacing ?? 0)
         }
         return 0
     }
     
     func lineSpacing(in section: Int) -> CGFloat {
-        if let flow = flow {
-            return delegate?.collectionView?(base, layout: flow, minimumLineSpacingForSectionAt: section) ?? flow.minimumLineSpacing
+        if let delegate = delegate {
+            return delegate.collectionView?(base, layout: base.collectionViewLayout, minimumLineSpacingForSectionAt: section) ?? (flow?.minimumLineSpacing ?? 0)
         }
         return 0
     }
