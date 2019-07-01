@@ -39,7 +39,7 @@ internal extension Boomerang where Base: UIView {
 
 public extension ViewModelCompatibleType where Self: NSObject {
     
-    public var isPlaceholderForAutosize: Bool {
+    var isPlaceholderForAutosize: Bool {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.isPlaceholderForAutosize) as? Bool ?? false
         }
@@ -48,7 +48,7 @@ public extension ViewModelCompatibleType where Self: NSObject {
         }
     }
     
-    public var disposeBag: DisposeBag {
+    var disposeBag: DisposeBag {
         get {
             guard let lookup = objc_getAssociatedObject(self, &AssociatedKeys.disposeBag) as? DisposeBag else {
                 let value = DisposeBag()

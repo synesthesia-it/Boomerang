@@ -23,7 +23,7 @@ extension ViewModelRoute {
 }
 
 public extension Route {
-    public var dependencyKey: KeyType { return -1 }
+    var dependencyKey: KeyType { return -1 }
 }
 
 public struct Router {

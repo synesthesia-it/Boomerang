@@ -18,6 +18,7 @@ public enum Direction {
         switch flow.scrollDirection {
         case .horizontal: return .horizontal
         case .vertical: return .vertical
+        @unknown default: return .vertical
         }
     }
 }

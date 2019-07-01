@@ -25,7 +25,7 @@ public extension DependencyKey where Self: Hashable {
     var dependencyKey: DependencyKey.KeyType { return hashValue }
 }
 public extension DependencyKey {
-     public static var dependencyKey: DependencyKey.KeyType {
+    static var dependencyKey: DependencyKey.KeyType {
         return ObjectIdentifier(self).hashValue
     }
 }

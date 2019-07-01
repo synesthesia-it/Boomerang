@@ -16,7 +16,7 @@ public protocol WithScenePageConfiguration {
 
 public extension UITabBarController {
 
-    public func defaultPageConfiguration(for scene: (Scene & ViewModelCompatibleType), with viewModel: PageViewModelType ) -> Scene {
+    func defaultPageConfiguration(for scene: (Scene & ViewModelCompatibleType), with viewModel: PageViewModelType ) -> Scene {
         let nav = UINavigationController(rootViewController: scene)
         viewModel.pageImage.asDriver(onErrorJustReturn: UIImage()).drive(nav.tabBarItem.rx.image).disposed(by: scene.disposeBag)
         viewModel.selectedPageImage.asDriver(onErrorJustReturn: UIImage()).drive(nav.tabBarItem.rx.selectedImage).disposed(by: scene.disposeBag)
@@ -62,13 +62,13 @@ extension Reactive where Base: UITabBarController & ViewModelCompatible {
 }
 
 public extension Reactive where Base: UITabBarItem {
-    public var title: Binder<String> {
+    var title: Binder<String> {
         return Binder(base) { base, text in base.title = text }
     }
-    public var image: Binder<UIImage> {
+    var image: Binder<UIImage> {
         return Binder(base) { base, image in base.image = image }
     }
-    public var selectedImage: Binder<UIImage> {
+    var selectedImage: Binder<UIImage> {
         return Binder(base) { base, image in base.selectedImage = image }
     }
 }
