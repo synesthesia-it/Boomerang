@@ -26,6 +26,11 @@ public struct LockingSize {
     public var direction: Direction
     public var value: CGFloat
     
+    public init(direction: Direction, value: CGFloat) {
+        self.direction = direction
+        self.value = value
+    }
+    
     var type: NSLayoutConstraint.Attribute {
         switch direction {
         case .horizontal: return .height
