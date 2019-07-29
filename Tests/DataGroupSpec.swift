@@ -77,6 +77,18 @@ class DataGroupSpec: QuickSpec {
                     modelGroup.move(from: to, to: from)
                     expect(modelGroup.combined()) == "ABCDE"
                 }
+                it ("should work back and forth") {
+                    let from = IndexPath(row: 2, section: 0)
+                    let to = IndexPath(row: 0, section: 0)
+                    modelGroup.move(from: from, to: to)
+                    expect(modelGroup.combined()) == "CABDE"
+                    modelGroup.move(from: from, to: to)
+                    expect(modelGroup.combined()) == "BCADE"
+                    modelGroup.move(from: to, to: from)
+                    expect(modelGroup.combined()) == "CABDE"
+                    modelGroup.move(from: to, to: from)
+                    expect(modelGroup.combined()) == "ABCDE"
+                }
                 it ("should not allow same index modifications") {
                     let to = IndexPath(row: 2, section: 0)
                     modelGroup.move(from: to, to: to)

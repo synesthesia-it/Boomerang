@@ -22,6 +22,7 @@ public enum Interaction {
     case route(Route)
     case viewModel(ViewModelType)
     case selectItem(IndexPath)
+    case observable(Observable<Interaction>)
     case custom(CustomInteraction)
 }
 
@@ -48,6 +49,7 @@ extension InteractionViewModelType {
     func `switch`(_ input: Interaction) -> Observable<Interaction> {
         switch input {
         case .restart: return self.handleRestart()
+        case .observable(let observable): return self.handleObservable(observable)
         case .route(let route): return self.handleRoute(route)
         case .viewModel(let viewModel): return self.handleViewModel(viewModel)
         case .selectItem(let indexPath): return self.handleSelectItem(indexPath)
@@ -55,7 +57,9 @@ extension InteractionViewModelType {
         case .none: return .empty()
         }
     }
-    
+    public func handleObservable(_ observable: Observable<Interaction>) -> Observable<Interaction> {
+        return observable
+    }
     public func handleRestart() -> Observable<Interaction> {
         return .just(.restart)
     }
