@@ -39,7 +39,7 @@ extension Reactive where Base: UIStackView {
             case .reload(let updates) :
                 
                 let indices = updates()
-                base.arrangedSubviews.forEach { base.removeArrangedSubview($0) }
+                base.arrangedSubviews.forEach { $0.removeFromSuperview() }
                 indices.forEach { index in
                     guard let vm = viewModel.mainViewModel(at: index),
                         let view = (vm.identifier as? ViewIdentifier)?.view() else {
