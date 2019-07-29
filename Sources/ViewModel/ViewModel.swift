@@ -31,8 +31,13 @@ public protocol ViewModelType: class {}
 public protocol ViewModelBindableType {
     var disposeBag: DisposeBag { get }
     func bind(to viewModel: ViewModelType?)
+    func unwrapViewModel() -> ViewModelType?
 }
-
+extension ViewModelBindableType {
+    public func unwrapViewModel() -> ViewModelType? {
+        return nil
+    }
+}
 /**
  An object (usually, a view or a view controller) that can be bound to a viewModel.
  Since `viewModel` is declared through an associatedtype, ViewModelBindable and ViewModelBindableType are kept separated to allow `ViewModelBindableType` typecasts through Boomerang's codebase.
@@ -44,7 +49,11 @@ public protocol ViewModelBindable: ViewModelBindableType {
     associatedtype ViewModel = ViewModelType
     var viewModel: ViewModel? {get set}
 }
-
+extension ViewModelBindable {
+    public func unwrapViewModel() -> ViewModelType? {
+        return self.viewModel as? ViewModelType
+    }
+}
 private struct AssociatedKeys {
     static var disposeBag = "disposeBag"
 }
