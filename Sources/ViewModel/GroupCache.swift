@@ -8,28 +8,28 @@
 
 import Foundation
 
-private struct GroupCacheItem<T>: DataType {
+private struct GroupCacheItem<T> {
     var mainItem: T?
     var supplementaryItems: [String: T] = [:]
 }
 
-class GroupCache<T> {
-    private var cache = DataGroup()
+struct GroupCache<T> {
+    private var cache:[IndexPath: GroupCacheItem<T>] = [:]
     internal var isEnabled: Bool = true
     init() { }
-    func clear() {
-        cache = DataGroup()
+    mutating func clear() {
+        cache = [:]
     }
     
     func mainItem(at indexPath: IndexPath) -> T? {
         if !isEnabled { return nil }
-        return (cache[indexPath] as? GroupCacheItem<T>)?.mainItem
+        return cache[indexPath]?.mainItem
     }
     
-    func replaceItem(_ item: T?, at indexPath: IndexPath) {
+    mutating func replaceItem(_ item: T?, at indexPath: IndexPath) {
         if !isEnabled { return }
         
-        var cacheItem = cache[indexPath] as? GroupCacheItem<T> ?? GroupCacheItem<T>()
+        var cacheItem = cache[indexPath] ?? GroupCacheItem<T>()
         cacheItem.mainItem = item
         self.cache[indexPath] = cacheItem
 //        self.cache = cache
@@ -37,12 +37,12 @@ class GroupCache<T> {
     
     func supplementaryItem(at indexPath: IndexPath, for type: String) -> T? {
         if !isEnabled { return nil }
-        return (cache[indexPath] as? GroupCacheItem<T>)?.supplementaryItems[type]
+        return cache[indexPath]?.supplementaryItems[type]
     }
     
-    func replaceSupplementaryItem(_ item: T?, at indexPath: IndexPath, for type: String?) {
+    mutating func replaceSupplementaryItem(_ item: T?, at indexPath: IndexPath, for type: String?) {
         if !isEnabled { return }
-        var cacheItem = (cache[indexPath] as? GroupCacheItem<T>) ?? GroupCacheItem<T>()
+        var cacheItem = cache[indexPath] ?? GroupCacheItem<T>()
         if let type = type {
             cacheItem.supplementaryItems[type] = item
         } else {

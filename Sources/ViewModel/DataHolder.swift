@@ -180,7 +180,7 @@ extension DataHolder {
         }
         let lastIndex: Int = groups.count + (newIndexPath.last ?? 0)
         let firstIndex = newIndexPath.last ?? 0
-//        self.itemCache.clear()
+        self.itemCache.clear()
         return (firstIndex..<lastIndex).map {
             let indexPath = indexPath.dropLast().appending($0)
 //            self.itemCache.replaceItem(nil, at: indexPath)
@@ -234,19 +234,14 @@ extension DataHolder {
     public func deleteGroups(at indexPaths:[IndexPath], immediate: Bool = false) {
         let delete: DataUpdate = {[weak self] in
             guard let self = self else { return [] }
-            
-            let indices = self.modelGroup.indices.filter {
-                //Check: is dropLast enough? Should it be $0.size - indexPaths.first?.count?
-                indexPaths.contains($0.dropLast())
-            }
-            
             let deletedIndexPaths = self.modelGroup.deleteGroups(at: indexPaths).compactMap {
                 $0.value != nil ? $0.key : nil
             }
-            indices.forEach {
-                self.itemCache.replaceItem(nil, at: $0)
-                self.itemCache.replaceSupplementaryItem(nil, at: $0, for: nil)
-            }
+            self.itemCache.clear()
+//            deletedIndexPaths.forEach {
+//                self.itemCache.replaceItem(nil, at: $0)
+//                self.itemCache.replaceSupplementaryItem(nil, at: $0, for: nil)
+//            }
             return deletedIndexPaths
         }
         if immediate {

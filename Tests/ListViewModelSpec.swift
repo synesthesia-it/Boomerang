@@ -15,7 +15,7 @@ import RxBlocking
 
 class ListViewModelSpec: QuickSpec {
     
-    class TestItemViewModel: ItemViewModelType {
+    struct TestItemViewModel: ItemViewModelType {
         var model: ModelType? { return title }
         var date: Date = Date()
         var identifier: Identifier = ""
@@ -86,8 +86,7 @@ class ListViewModelSpec: QuickSpec {
                         return vm1 != nil && vm2 != nil
                         }
                         .toEventually(beTrue())
-                    print (vm1)
-                    print (vm2)
+                    
                     expect(vm1?.date) == vm2?.date
                     expect(vm1?.model).toNot(beNil())
                     expect {
