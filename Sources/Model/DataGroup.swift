@@ -356,6 +356,28 @@ public struct DataGroup: MutableCollection, RandomAccessCollection {
         }
         return nil
     }
+    
+    /**
+        Insert new values starting from provided index path, shifting each subsequent item by new `data` element count
+        */
+       @discardableResult
+       mutating public func insert(_ groups: [DataGroup], at indexPath: IndexPath) -> IndexPath? {
+        if indexPath.count == 0 {
+            return nil
+        }
+        if indexPath.count == 1,
+            let index = indexPath.last
+            {
+                self.groups?.insert(contentsOf: groups, at: index)
+//                self.groups = groups
+                return indexPath
+        }
+        return insert(groups, at: indexPath.dropLast())
+
+       }
+    
+    
+    
     /**
      Removes and returns (if found) a data value from indexPath.
      */
@@ -375,6 +397,31 @@ public struct DataGroup: MutableCollection, RandomAccessCollection {
         return nil
     }
     
+    /**
+     Removes and returns (if found) a group from indexPath.
+     */
+    @discardableResult
+    mutating public func deleteGroup(at indexPath: IndexPath) -> DataGroup? {
+        if indexPath.count == 0 { return nil }
+        if let groups = self.groups,
+            indexPath.count == 1,
+            let index = indexPath.first,
+            groups.count > index {
+            return self.groups?.remove(at: index)
+            
+        }
+       
+        return deleteGroup(at: indexPath.dropLast())
+    }
+    
+    @discardableResult
+    mutating public func deleteGroups(at indexPaths: [IndexPath]) -> [IndexPath: DataGroup?] {
+        return indexPaths.sorted().reversed().reduce([:]) {accumulator, ip in
+            var a = accumulator
+            a[ip] = self.deleteGroup(at: ip)
+            return a
+        }
+    }
     /**
      Removes and returns (if found) values from each provided indexPath.
      */

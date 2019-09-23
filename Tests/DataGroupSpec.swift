@@ -170,6 +170,31 @@ class DataGroupSpec: QuickSpec {
                     modelGroup.delete(at: [IndexPath(indexes: [0,0]),IndexPath(indexes: [0,1])])
                     expect(modelGroup.compactMap {$0 as? String}.reduce("",+)) == "BCDEFGH"
                 }
+                it ("should allow group insetions") {
+                    expect(modelGroup.count) == 5
+                    
+                    let newGroups = [DataGroup(["A1"]), DataGroup(["B1"])]
+                     let preGroups = [DataGroup(["1"]), DataGroup(["0"])]
+                    modelGroup.insert(newGroups, at: IndexPath(indexes: [1]))
+                    expect(modelGroup.count) == 7
+                    
+                    expect(modelGroup.compactMap {$0 as? String}.reduce("",+)) == "ABCA1B1DE"
+                    modelGroup.insert(preGroups, at: IndexPath(indexes: [0]))
+                    expect(modelGroup.count) == 9
+                    expect(modelGroup.compactMap {$0 as? String}.reduce("",+)) == "10ABCA1B1DE"
+                                 
+                    modelGroup.deleteGroup(at: IndexPath(indexes: [0]))
+                    expect(modelGroup.count) == 8
+                    expect(modelGroup.compactMap {$0 as? String}.reduce("",+)) == "0ABCA1B1DE"
+                    modelGroup.deleteGroup(at: IndexPath(indexes: [0]))
+                    expect(modelGroup.count) == 7
+                    expect(modelGroup.compactMap {$0 as? String}.reduce("",+)) == "ABCA1B1DE"
+                    
+                    modelGroup.deleteGroups(at: (0...3).map { IndexPath(indexes:[$0])})
+                    expect(modelGroup.count) == 1
+                    expect(modelGroup.compactMap {$0 as? String}.reduce("",+)) == "E"
+                    
+                }
                 
                 it ("should behave like a collection") {
                     
