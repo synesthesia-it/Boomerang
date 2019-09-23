@@ -269,7 +269,7 @@ extension DataHolder {
         if immediate {
             _ = delete()
         } else {
-            self.updates.onNext(.deleteItems(delete))
+            self.updates.onNext(.deleteSections(delete))
         }
     }
     
