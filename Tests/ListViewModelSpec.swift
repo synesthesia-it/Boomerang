@@ -21,7 +21,7 @@ class ListViewModelSpec: QuickSpec {
         var identifier: Identifier = ""
         var title: String
         init(model: String) {
-            print("INIT \(model)")
+            print(" INIT \(model)")
             self.title = model
         }
     }
@@ -44,7 +44,7 @@ class ListViewModelSpec: QuickSpec {
         
         func group(_ observable: Observable<[String]>) -> Observable<DataGroup> {
             return observable.map {
-                DataGroup($0)
+                DataGroup(groups: [DataGroup($0)])
             }
         }
     }
@@ -117,6 +117,31 @@ class ListViewModelSpec: QuickSpec {
                         expect(vm1) === vm2
                         expect(vm1!.date) == vm2!.date
                     }
+                    it("should allow section insertions") {
+                        
+                        viewModel.dataHolder.useCache = true
+                        viewModel.load()
+                        
+                        expect { try viewModel.dataHolder.updates
+                            .debug()
+                            .delay(0.2, scheduler: MainScheduler.instance)
+                            .take(1).toBlocking().last()
+                        }.notTo(throwError())
+                        
+                        var vm1:TestItemViewModel?
+                        vm1 = viewModel.mainViewModel(at: IndexPath(item: 0, section: 0)) as? TestItemViewModel
+                        _ = viewModel.mainViewModel(at: IndexPath(item: 1, section: 0)) as? TestItemViewModel
+                        _ = viewModel.mainViewModel(at: IndexPath(item: 2, section: 0)) as? TestItemViewModel
+                        _ = viewModel.mainViewModel(at: IndexPath(item: 3, section: 0)) as? TestItemViewModel
+                        viewModel.dataHolder.insertGroups([DataGroup(["D", "E"])], at: IndexPath(indexes: [0]) , immediate: true)
+                        var vm2: TestItemViewModel?
+                        print ("NEW IN \(viewModel.dataHolder.indices.compactMap { viewModel.dataHolder[$0] as? String })")
+                        vm2 = viewModel.mainViewModel(at: IndexPath(item: 0, section: 1)) as? TestItemViewModel
+                        expect((viewModel.mainViewModel(at: IndexPath(item: 0, section: 0)) as? TestItemViewModel)?.title) == "D"
+                        expect(vm1) === vm2
+                        expect(vm1!.date) == vm2!.date
+                        expect(vm1!.title) == vm2!.title
+                    }
                     it("should allow movements") {
                         
                         viewModel.dataHolder.useCache = true
@@ -131,6 +156,8 @@ class ListViewModelSpec: QuickSpec {
                         var vm1:TestItemViewModel?
                         vm1 = viewModel.mainViewModel(at: IndexPath(item: 0, section: 0)) as? TestItemViewModel
 //                        viewModel.dataHolder.insert(["D"], at: IndexPath(item: 0, section: 0), immediate: true)
+                        
+                        //this is meant to "simulate" the presence of a second viewModel: there's no movement without other elements
                         var vm3: TestItemViewModel? = viewModel.mainViewModel(at: IndexPath(item: 1, section: 0)) as? TestItemViewModel
                         
                         viewModel.dataHolder.moveItem(from: IndexPath(item: 0, section: 0), to: IndexPath(item: 1, section: 0), immediate: true)

@@ -368,8 +368,9 @@ public struct DataGroup: MutableCollection, RandomAccessCollection {
         if indexPath.count == 1,
             let index = indexPath.last
             {
-                self.groups?.insert(contentsOf: groups, at: index)
-//                self.groups = groups
+                var oldGroups = self.groups
+                oldGroups?.insert(contentsOf: groups, at: index)
+                self.groups = oldGroups
                 return indexPath
         }
         return insert(groups, at: indexPath.dropLast())

@@ -8,7 +8,7 @@
 
 import Foundation
 
-private struct GroupCacheItem<T> {
+struct GroupCacheItem<T> {
     var mainItem: T?
     var supplementaryItems: [String: T] = [:]
 }
@@ -20,7 +20,15 @@ class GroupCache<T> {
      func clear() {
         cache = [:]
     }
-    
+    var indices: [IndexPath] {
+        return cache.keys.map { $0 }
+    }
+    func cacheItem(at indexPath: IndexPath) -> GroupCacheItem<T>? {
+        return cache[indexPath]
+    }
+    func insertCacheItem(_ item: GroupCacheItem<T>?, at indexPath: IndexPath) {
+        cache[indexPath] = item
+    }
     func mainItem(at indexPath: IndexPath) -> T? {
         if !isEnabled { return nil }
         return cache[indexPath]?.mainItem
@@ -58,6 +66,7 @@ class GroupCache<T> {
             cache[ip] = cacheItem
         }
     }
+    
    
      func removeItem(at indexPath: IndexPath) {
         let index = indexPath.last ?? 0

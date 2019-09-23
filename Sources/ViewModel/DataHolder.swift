@@ -172,13 +172,29 @@ extension DataHolder {
         }
     }
     
-    private func _insert(_ groups: [DataGroup], at indexPath: IndexPath) -> [IndexPath] {
+    private func _insertGroups(_ groups: [DataGroup], at indexPath: IndexPath) -> [IndexPath] {
+        
+        let oldIndices = self.indices.filter { $0.dropLast() >= indexPath && $0 < self.endIndex }
+        
         guard let newIndexPath = self.modelGroup.insert(groups, at: indexPath.prefix(self.modelGroup.depth - 1)) else {
             return []
         }
         let lastIndex: Int = groups.count + (newIndexPath.last ?? 0)
         let firstIndex = newIndexPath.last ?? 0
-        self.itemCache.clear()
+        oldIndices
+        .reversed()
+            .forEach { i in
+            let item = itemCache.cacheItem(at: i)
+            itemCache.removeItem(at: i)
+            let diff = Swift.max(1, i.count - indexPath.count)
+            let last = i.suffix(diff)
+                let current = i.dropLast(diff).last ?? 0
+            let section = current + groups.count
+            let newIndex = indexPath.dropLast().appending(section).appending(last)
+                
+                print("MOVING \(item?.mainItem?.identifier.name ?? "-") FROM \(i) TO NEW INDEX \(newIndex)")
+            itemCache.insertCacheItem(item, at: newIndex)
+        }
         return (firstIndex..<lastIndex).map {
             let indexPath = indexPath.dropLast().appending($0)
 //            self.itemCache.replaceItem(nil, at: indexPath)
@@ -198,10 +214,10 @@ extension DataHolder {
         }
     }
     
-    public func insert(_ groups: [DataGroup], at indexPath: IndexPath, immediate: Bool = false) {
+    public func insertGroups(_ groups: [DataGroup], at indexPath: IndexPath, immediate: Bool = false) {
           let insertion: DataUpdate = {[weak self] in
               guard let self = self else { return [] }
-              return self._insert(groups, at: indexPath)
+              return self._insertGroups(groups, at: indexPath)
           }
           if immediate {
               _ = insertion()
@@ -217,8 +233,9 @@ extension DataHolder {
                 $0.value != nil ? $0.key : nil
             }
             deletedIndexPaths.forEach {
-                self.itemCache.replaceItem(nil, at: $0)
-                self.itemCache.replaceSupplementaryItem(nil, at: $0, for: nil)
+                self.itemCache.removeItem(at: $0)
+//                self.itemCache.replaceItem(nil, at: $0)
+//                self.itemCache.replaceSupplementaryItem(nil, at: $0, for: nil)
             }
             return deletedIndexPaths
         }
@@ -235,7 +252,14 @@ extension DataHolder {
             let deletedIndexPaths = self.modelGroup.deleteGroups(at: indexPaths).compactMap {
                 $0.value != nil ? $0.key : nil
             }
-            self.itemCache.clear()
+            //TODO
+            let delete = Set(deletedIndexPaths)
+            self.itemCache.indices.reversed().forEach {
+                if delete.contains($0.dropLast()) {
+                    self.itemCache.removeItem(at: $0)
+                }
+            }
+//            self.itemCache.clear()
 //            deletedIndexPaths.forEach {
 //                self.itemCache.replaceItem(nil, at: $0)
 //                self.itemCache.replaceSupplementaryItem(nil, at: $0, for: nil)
