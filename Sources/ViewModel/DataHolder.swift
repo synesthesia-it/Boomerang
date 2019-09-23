@@ -166,11 +166,9 @@ extension DataHolder {
         }
         let lastIndex: Int = data.count + (newIndexPath.last ?? 0)
         let firstIndex = newIndexPath.last ?? 0
-        
+        itemCache.insertItems(data.map { _ in nil }, at: indexPath)
         return (firstIndex..<lastIndex).map {
-            let indexPath = indexPath.dropLast().appending($0)
-            self.itemCache.replaceItem(nil, at: indexPath)
-            return indexPath
+             indexPath.dropLast().appending($0)
         }
     }
     
@@ -257,8 +255,16 @@ extension DataHolder {
             self.modelGroup.move(from: from, to: to)
             //Probably there's a bug here: cache should recalculate every item.
             let tmp = self.itemCache.mainItem(at: from)
-            self.itemCache.replaceItem(self.itemCache.mainItem(at: to), at: from)
-            self.itemCache.replaceItem(tmp, at: to)
+            if to > from {
+                self.itemCache.removeItem(at: from)
+                self.itemCache.insertItem(item: tmp, at: to)
+            } else {
+                self.itemCache.insertItem(item: tmp, at: to)
+                 self.itemCache.removeItem(at: from)
+            }
+            
+//            self.itemCache.replaceItem(self.itemCache.mainItem(at: to), at: from)
+//            self.itemCache.replaceItem(tmp, at: to)
             
             return []
         }
