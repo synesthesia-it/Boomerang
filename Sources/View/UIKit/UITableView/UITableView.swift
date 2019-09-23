@@ -30,7 +30,7 @@ extension Boomerang where Base: UITableView {
         base.delegate = delegate
         base.boomerang.internalDataSource = dataSource
         base.boomerang.internalDelegate = delegate
-       
+        
         viewModel.updates
             .asDriver(onErrorJustReturn: .none)
             .drive(base.rx.dataUpdates())
@@ -59,17 +59,17 @@ extension Boomerang where Base: UITableView {
                 
             default: break
                 
-//            case .began:
-//                guard let selectedIndexPath = base.indexPathForItem(at: gesture.location(in: base)) else {
-//                    break
-//                }
-//                base.beginInteractiveMovementForItem(at: selectedIndexPath)
-//            case .changed:
-//                base.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view ?? base))
-//            case .ended:
-//                base.endInteractiveMovement()
-//            default:
-//                base.cancelInteractiveMovement()
+                //            case .began:
+                //                guard let selectedIndexPath = base.indexPathForItem(at: gesture.location(in: base)) else {
+                //                    break
+                //                }
+                //                base.beginInteractiveMovementForItem(at: selectedIndexPath)
+                //            case .changed:
+                //                base.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view ?? base))
+                //            case .ended:
+                //                base.endInteractiveMovement()
+                //            default:
+                //                base.cancelInteractiveMovement()
             }
         }
     }
@@ -81,9 +81,9 @@ extension Reactive where Base: UITableView {
     
     func dataUpdates() -> Binder<DataHolderUpdate> {
         return Binder(base) { base, updates in
- 
+            
             switch updates {
-
+                
             case .reload(let updates) :
                 
                 _ = updates()
@@ -92,11 +92,11 @@ extension Reactive where Base: UITableView {
                 
             case .deleteItems(let updates):
                 let indexPaths = updates()
-            
+                
                 if #available(iOS 11.0, *) {
                     base.performBatchUpdates({ [weak base] in
                         base?.deleteRows(at: indexPaths, with: .none)
-                    }, completion: { completed in
+                        }, completion: { completed in
                             return
                     })
                 } else {
@@ -104,9 +104,25 @@ extension Reactive where Base: UITableView {
                     base.deleteRows(at: indexPaths, with: .none)
                     base.endUpdates()
                 }
-
+                
                 break
                 
+            case .deleteSections(let updates):
+                let indexPaths = updates()
+                let indexSet = IndexSet(indexPaths.compactMap { $0.last })
+                if #available(iOS 11.0, *) {
+                    base.performBatchUpdates({ [weak base] in
+                        base?.deleteSections(indexSet, with: .none)
+                        }, completion: { completed in
+                            return
+                    })
+                } else {
+                    base.beginUpdates()
+                    base.deleteSections(indexSet, with: .none)
+                    base.endUpdates()
+                }
+                
+                break
             case .insertItems(let updates):
                 let indexPaths = updates()
                 if #available(iOS 11.0, *) {
@@ -120,11 +136,26 @@ extension Reactive where Base: UITableView {
                     base.insertRows(at: indexPaths, with: .none)
                     base.endUpdates()
                 }
-
-                break
                 
+                break
+            case .insertSections(let updates):
+                let indexPaths = updates()
+                let indexSet = IndexSet(indexPaths.compactMap { $0.last })
+                if #available(iOS 11.0, *) {
+                    base.performBatchUpdates({
+                        base.insertSections(indexSet, with: .none)
+                    }, completion: { completed in
+                        return
+                    })
+                } else {
+                    base.beginUpdates()
+                    base.insertSections(indexSet, with: .none)
+                    base.endUpdates()
+                }
+                
+                break
             case .move(let updates):
-
+                
                 _ = updates()
                 break
             default: break

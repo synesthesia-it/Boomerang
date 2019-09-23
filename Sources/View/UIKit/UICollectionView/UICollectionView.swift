@@ -71,6 +71,14 @@ extension Reactive where Base: UICollectionView {
                     }, completion: { (completed) in
                         return
                 })
+            case .deleteSections(let updates):
+                    let indexPaths = updates()
+                    let indexSet = IndexSet(indexPaths.compactMap { $0.last })
+                    base.performBatchUpdates({[weak base] in
+                        base?.deleteSections(indexSet)
+                        }, completion: { (completed) in
+                            return
+                    })
             case .insertItems(let updates):
                 let indexPaths = updates()
                 base.performBatchUpdates({[weak base] in
@@ -78,9 +86,19 @@ extension Reactive where Base: UICollectionView {
                     }, completion: { (completed) in
                         return
                 })
-                
+            
+            case .insertSections(let updates):
+                let indexPaths = updates()
+                let indexSet = IndexSet(indexPaths.compactMap { $0.last })
+                base.performBatchUpdates({[weak base] in
+                    base?.insertSections(indexSet)
+                    }, completion: { (completed) in
+                        return
+                })
+            
             case .move(let updates):
                  _ = updates()
+            
             default: break
             }
         }

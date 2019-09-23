@@ -15,7 +15,9 @@ typealias ViewModelCache = GroupCache<IdentifiableViewModelType>
 public enum DataHolderUpdate {
     case reload(DataUpdate)
     case deleteItems(DataUpdate)
+    case deleteSections(DataUpdate)
     case insertItems(DataUpdate)
+    case insertSections(DataUpdate)
     case move(DataUpdate)
     case none
 }
@@ -172,6 +174,20 @@ extension DataHolder {
         }
     }
     
+    private func _insert(_ groups: [DataGroup], at indexPath: IndexPath) -> [IndexPath] {
+        guard let newIndexPath = self.modelGroup.insert(groups, at: indexPath.prefix(self.modelGroup.depth - 1)) else {
+            return []
+        }
+        let lastIndex: Int = groups.count + (newIndexPath.last ?? 0)
+        let firstIndex = newIndexPath.last ?? 0
+        self.itemCache.clear()
+        return (firstIndex..<lastIndex).map {
+            let indexPath = indexPath.dropLast().appending($0)
+//            self.itemCache.replaceItem(nil, at: indexPath)
+            return indexPath
+        }
+    }
+    
     public func insert(_ data: [DataType], at indexPath: IndexPath, immediate: Bool = false) {
         let insertion: DataUpdate = {[weak self] in
             guard let self = self else { return [] }
@@ -183,6 +199,19 @@ extension DataHolder {
             self.updates.onNext(.insertItems(insertion))
         }
     }
+    
+    public func insert(_ groups: [DataGroup], at indexPath: IndexPath, immediate: Bool = false) {
+          let insertion: DataUpdate = {[weak self] in
+              guard let self = self else { return [] }
+              return self._insert(groups, at: indexPath)
+          }
+          if immediate {
+              _ = insertion()
+          } else {
+              self.updates.onNext(.insertSections(insertion))
+          }
+      }
+    
     public func delete(at indexPaths:[IndexPath], immediate: Bool = false) {
         let delete: DataUpdate = {[weak self] in
             guard let self = self else { return [] }
@@ -201,11 +230,32 @@ extension DataHolder {
             self.updates.onNext(.deleteItems(delete))
         }
     }
+    
+    public func deleteGroups(at indexPaths:[IndexPath], immediate: Bool = false) {
+        let delete: DataUpdate = {[weak self] in
+            guard let self = self else { return [] }
+            let deletedIndexPaths = self.modelGroup.deleteGroups(at: indexPaths).compactMap {
+                $0.value != nil ? $0.key : nil
+            }
+            self.itemCache.clear()
+//            deletedIndexPaths.forEach {
+//                self.itemCache.replaceItem(nil, at: $0)
+//                self.itemCache.replaceSupplementaryItem(nil, at: $0, for: nil)
+//            }
+            return deletedIndexPaths
+        }
+        if immediate {
+            _ = delete()
+        } else {
+            self.updates.onNext(.deleteItems(delete))
+        }
+    }
+    
     public func moveItem(from: IndexPath, to:IndexPath, immediate: Bool = false) {
         let move: DataUpdate = {[weak self] in
             guard let self = self else { return [] }
             self.modelGroup.move(from: from, to: to)
-           
+            //Probably there's a bug here: cache should recalculate every item.
             let tmp = self.itemCache.mainItem(at: from)
             self.itemCache.replaceItem(self.itemCache.mainItem(at: to), at: from)
             self.itemCache.replaceItem(tmp, at: to)
