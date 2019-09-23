@@ -198,16 +198,34 @@ public struct DataGroup: MutableCollection, RandomAccessCollection {
         set {
             if index.count == 0 { return }
             if var groups = self.groups,
-                let firstIndex = index.first,
-                groups.count > firstIndex {
-                groups[firstIndex][index.dropFirst()] = newValue
-                self.groups = groups
+                let firstIndex = index.first {
+                if groups.count > firstIndex {
+                    groups[firstIndex][index.dropFirst()] = newValue
+                    self.groups = groups
+                } else {
+                    if index.count > 1 {
+                        
+                        var newGroup = DataGroup(groups: [])
+                        newGroup[index.dropFirst()] = newValue
+                        groups.append(newGroup)
+                        
+                        return
+                    } else {
+                        
+                        groups.append(DataGroup([newValue].compactMap { $0 }))
+                    }
+               
+                }
             }
             if
                 let lastIndex = index.last,
-                data.count > lastIndex,
                 let value = newValue {
-                data[lastIndex] = value
+                if data.count > lastIndex
+                 {
+                    data[lastIndex] = value
+                    } else {
+                    data.append(value)
+                }
             }
         }
     }
