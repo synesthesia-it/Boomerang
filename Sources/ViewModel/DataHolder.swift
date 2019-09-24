@@ -192,8 +192,8 @@ extension DataHolder {
             let section = current + groups.count
             let newIndex = indexPath.dropLast().appending(section).appending(last)
                 
-                print("MOVING \(item?.mainItem?.identifier.name ?? "-") FROM \(i) TO NEW INDEX \(newIndex)")
-            itemCache.insertCacheItem(item, at: newIndex)
+            print("MOVING \(item?.mainItem?.identifier.name ?? "-") FROM \(i) TO NEW INDEX \(newIndex)")
+            itemCache.replaceCacheItem(item, at: newIndex)
         }
         return (firstIndex..<lastIndex).map {
             let indexPath = indexPath.dropLast().appending($0)
@@ -256,7 +256,8 @@ extension DataHolder {
             let delete = Set(deletedIndexPaths)
             self.itemCache.indices.reversed().forEach {
                 if delete.contains($0.dropLast()) {
-                    self.itemCache.removeItem(at: $0)
+                    self.itemCache.replaceItem(nil, at: $0)
+                    //self.itemCache.removeItem(at: $0)
                 }
             }
 //            self.itemCache.clear()

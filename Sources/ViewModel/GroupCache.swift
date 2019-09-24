@@ -26,7 +26,7 @@ class GroupCache<T> {
     func cacheItem(at indexPath: IndexPath) -> GroupCacheItem<T>? {
         return cache[indexPath]
     }
-    func insertCacheItem(_ item: GroupCacheItem<T>?, at indexPath: IndexPath) {
+    func replaceCacheItem(_ item: GroupCacheItem<T>?, at indexPath: IndexPath) {
         cache[indexPath] = item
     }
     func mainItem(at indexPath: IndexPath) -> T? {
