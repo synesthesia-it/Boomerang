@@ -53,7 +53,7 @@ extension Reactive where Base: UITabBarController & ViewModelCompatible {
                     }
                     return nil
                 }
-                base.setViewControllers(viewControllers, animated: true)
+                base.setViewControllers(viewControllers, animated: false)
             default: break
             }
             
