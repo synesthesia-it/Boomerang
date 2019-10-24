@@ -8,10 +8,12 @@
 
 import Foundation
 
-public protocol ItemIdentifier: CustomStringConvertible {}
+public protocol ItemIdentifier {
+    var identifierString: String { get }
+}
 
 public protocol ItemViewModel {
-    var itemIdentifier: ItemIdentifier { get set }
+    var itemIdentifier: ItemIdentifier { get }
 }
 
 public protocol WithItemViewModel: AnyObject {

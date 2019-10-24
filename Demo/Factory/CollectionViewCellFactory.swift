@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 import Boomerang
 
-class DefaultCollectionViewCellFactory: CollectionViewCellFactory {
+class MainCollectionViewCellFactory: CollectionViewCellFactory {
 
     private var viewFactory: ViewFactory
     
-    init(viewFactory: ViewFactory = DefaultViewFactory()) {
+    init(viewFactory: ViewFactory = MainViewFactory()) {
         self.viewFactory = viewFactory
     }
     
@@ -23,7 +23,7 @@ class DefaultCollectionViewCellFactory: CollectionViewCellFactory {
     }
     
     func name(from itemIdentifier: ItemIdentifier) -> String {
-        return itemIdentifier.description + "ItemView"
+        return viewFactory.name(from: itemIdentifier)
     }
     
     var defaultCellIdentifier: String {

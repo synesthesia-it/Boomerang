@@ -10,4 +10,9 @@ import Foundation
 
 struct Episode: Codable {
     let name: String
+    let show: Show
+}
+
+struct Show: Codable {
+    let name: String
 }

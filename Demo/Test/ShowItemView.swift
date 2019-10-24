@@ -14,7 +14,7 @@ class TestItemView: UIView, WithItemViewModel {
     @IBOutlet weak var testLabel: UILabel!
     
     func configure(with viewModel: ItemViewModel) {
-        guard let viewModel = viewModel as? TestItemViewModel else { return }
+        guard let viewModel = viewModel as? ShowItemViewModel else { return }
         self.testLabel.text = viewModel.title
     }
 }

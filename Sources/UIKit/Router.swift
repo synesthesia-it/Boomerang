@@ -12,9 +12,9 @@ public protocol Route: DependencyKey {
     var destination: Scene? { get }
 }
 
-//public protocol ViewModelRoute: Route {
-//    var viewModel: SceneViewModelType { get }
-//}
+public protocol ViewModelRoute: Route {
+    var viewModel: ItemViewModel { get }
+}
 
 //extension ViewModelRoute {
 //    public var destination: Scene? {
@@ -31,6 +31,7 @@ public class Router {
     private var container: Container<Int, Router.Value> = Container()
     public typealias Value = ClosureWrapper
     
+    public static let shared = Router()
     
     public struct ClosureWrapper {
         let closure: (Route, Scene?) -> ()

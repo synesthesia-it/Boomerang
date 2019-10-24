@@ -27,11 +27,13 @@ class ViewController: UIViewController, WithItemViewModel {
         }
     }
     
+    let router = Router.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let collectionViewDataSource = DefaultCollectionViewDataSource(viewModel: viewModel,
-                                                         factory: DefaultCollectionViewCellFactory())
+                                                         factory: MainCollectionViewCellFactory())
         
         let collectionViewDelegate = DefaultCollectionViewDelegate(viewModel: viewModel,
                                                      dataSource: collectionViewDataSource,
@@ -44,6 +46,17 @@ class ViewController: UIViewController, WithItemViewModel {
             DispatchQueue.main.async {
                 self?.collectionView.reloadData()
             }
+        }
+        
+        router.register(NavigationRoute.self) { (route, scene) in
+            let text = (route.viewModel as? ShowItemViewModel)?.title ?? "Unknown"
+            let alert = UIAlertController(title: "Navigation triggered", message: text, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            scene?.present(alert, animated: true, completion: nil)
+        }
+        
+        viewModel.onNavigation = { [weak self] in
+            Router.shared.execute($0, from: self)
         }
         
     }

@@ -9,7 +9,15 @@
 import UIKit
 import Boomerang
 
-class DefaultViewFactory: ViewFactory {
+enum ViewIdentifier: String, ItemIdentifier {
+    case show
+    
+    var identifierString: String {
+        return self.rawValue
+    }
+}
+
+class MainViewFactory: ViewFactory {
     func view(from itemIdentifier: ItemIdentifier) -> UIView? {
         return nib(from: itemIdentifier)?
         .instantiate(withOwner: nil, options: nil)
@@ -21,6 +29,9 @@ class DefaultViewFactory: ViewFactory {
     }
     
     func name(from itemIdentifier: ItemIdentifier) -> String {
-        return itemIdentifier.description + "ItemView"
+        let id = itemIdentifier.identifierString
+        
+        return id.prefix(1).uppercased() + id.dropFirst() + "ItemView"
     }
 }
+
