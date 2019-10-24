@@ -25,6 +25,7 @@ class TestItemViewModel: ItemViewModel {
 
 class TestViewModel: ItemViewModel, ListViewModel {
     var onUpdate: () -> () = {}
+    var onNavigation: () -> () = {}
     
     var itemIdentifier: ItemIdentifier = "VC"
     
@@ -45,5 +46,9 @@ class TestViewModel: ItemViewModel, ListViewModel {
             }
         }
         task.resume()
+    }
+        
+    func selectItem(at indexPath: IndexPath) {
+        
     }
 }
