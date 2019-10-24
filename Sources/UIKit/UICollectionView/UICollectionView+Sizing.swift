@@ -103,7 +103,7 @@ public class UICollectionViewSizeCalculator {
     }
     private func properViewModel(at indexPath: IndexPath, for type: String?) -> ItemViewModel?{
         let list = self.viewModel
-        guard let type = type else { return list[indexPath]}
+        guard let type = type else { return list[indexPath] }
         //TODO calculate size for supplementary view
         return nil
 //        return list.supplementaryViewModel(at: indexPath, for: type)

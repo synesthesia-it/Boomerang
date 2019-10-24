@@ -14,9 +14,10 @@ class ShowItemViewModel: ItemViewModel {
     let itemIdentifier: ItemIdentifier
     
     var title: String
-    
+    let show: Show
     init(episode: Episode, identifier: ViewIdentifier = .show) {
         self.itemIdentifier = identifier
         self.title = episode.name
+        self.show = episode.show
     }
 }

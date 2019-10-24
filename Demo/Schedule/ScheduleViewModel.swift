@@ -40,8 +40,8 @@ class ScheduleViewModel: ItemViewModel, ListViewModel {
     }
         
     func selectItem(at indexPath: IndexPath) {
-        if let viewModel = self[indexPath] {
-            onNavigation(NavigationRoute(viewModel: viewModel))
+        if let viewModel = self[indexPath] as? ShowItemViewModel {
+            onNavigation(NavigationRoute(viewModel: ShowDetailViewModel(show: viewModel.show)))
         }
     }
 }

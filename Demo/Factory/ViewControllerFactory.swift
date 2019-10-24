@@ -12,6 +12,7 @@ import Boomerang
 
 enum SceneIdentifier: String, ItemIdentifier {
     case schedule
+    case showDetail
     
     var identifierString: String {
         switch self {

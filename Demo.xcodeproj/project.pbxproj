@@ -16,6 +16,9 @@
 		70DFCA1B2361DB89004B49D6 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFCA1A2361DB89004B49D6 /* MainRouter.swift */; };
 		70DFCA1D2361E783004B49D6 /* ImageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFCA1C2361E783004B49D6 /* ImageDataSource.swift */; };
 		70DFCA1F2361E9B0004B49D6 /* UICollectionView+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFCA1E2361E9B0004B49D6 /* UICollectionView+Sizing.swift */; };
+		70DFCA212361F2A3004B49D6 /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFCA202361F2A3004B49D6 /* ShowDetailViewController.swift */; };
+		70DFCA242361F2C1004B49D6 /* ShowDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFCA232361F2C1004B49D6 /* ShowDetailViewModel.swift */; };
+		70DFCA262361F2CC004B49D6 /* ShowDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70DFCA252361F2CC004B49D6 /* ShowDetailViewController.xib */; };
 		7BA6D8B0235F89AD00EF4A60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6D8AF235F89AD00EF4A60 /* AppDelegate.swift */; };
 		7BA6D8B4235F89AD00EF4A60 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6D8B3235F89AD00EF4A60 /* ScheduleViewController.swift */; };
 		7BA6D8B9235F89AF00EF4A60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BA6D8B8235F89AF00EF4A60 /* Assets.xcassets */; };
@@ -83,6 +86,9 @@
 		70DFCA1A2361DB89004B49D6 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		70DFCA1C2361E783004B49D6 /* ImageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataSource.swift; sourceTree = "<group>"; };
 		70DFCA1E2361E9B0004B49D6 /* UICollectionView+Sizing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Sizing.swift"; sourceTree = "<group>"; };
+		70DFCA202361F2A3004B49D6 /* ShowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewController.swift; sourceTree = "<group>"; };
+		70DFCA232361F2C1004B49D6 /* ShowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewModel.swift; sourceTree = "<group>"; };
+		70DFCA252361F2CC004B49D6 /* ShowDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowDetailViewController.xib; sourceTree = "<group>"; };
 		7BA6D8AC235F89AD00EF4A60 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BA6D8AF235F89AD00EF4A60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BA6D8B3235F89AD00EF4A60 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +189,16 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		70DFCA222361F2AF004B49D6 /* ShowDetail */ = {
+			isa = PBXGroup;
+			children = (
+				70DFCA202361F2A3004B49D6 /* ShowDetailViewController.swift */,
+				70DFCA232361F2C1004B49D6 /* ShowDetailViewModel.swift */,
+				70DFCA252361F2CC004B49D6 /* ShowDetailViewController.xib */,
+			);
+			path = ShowDetail;
+			sourceTree = "<group>";
+		};
 		7BA6D8A3235F89AD00EF4A60 = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +226,7 @@
 				70DFCA1A2361DB89004B49D6 /* MainRouter.swift */,
 				7BA8F4B0235FA0B200027DE5 /* Factory */,
 				70DFCA162361D8B7004B49D6 /* Schedule */,
+				70DFCA222361F2AF004B49D6 /* ShowDetail */,
 				7BA8F4AE235FA05D00027DE5 /* Show */,
 				70DFCA112361D05F004B49D6 /* Model */,
 				7BA6D8B8235F89AF00EF4A60 /* Assets.xcassets */,
@@ -424,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BA6D8BC235F89AF00EF4A60 /* LaunchScreen.storyboard in Resources */,
+				70DFCA262361F2CC004B49D6 /* ShowDetailViewController.xib in Resources */,
 				7BA6D8B9235F89AF00EF4A60 /* Assets.xcassets in Resources */,
 				7BA6D8D8235F917E00EF4A60 /* ShowItemView.xib in Resources */,
 				70DFCA152361D350004B49D6 /* ScheduleViewController.xib in Resources */,
@@ -461,7 +479,9 @@
 				70DFCA132361D073004B49D6 /* RESTDataSource.swift in Sources */,
 				7BA8F4C0235FAB8A00027DE5 /* ViewControllerFactory.swift in Sources */,
 				70DFCA1D2361E783004B49D6 /* ImageDataSource.swift in Sources */,
+				70DFCA212361F2A3004B49D6 /* ShowDetailViewController.swift in Sources */,
 				70DFCA0C23618EEF004B49D6 /* Show.swift in Sources */,
+				70DFCA242361F2C1004B49D6 /* ShowDetailViewModel.swift in Sources */,
 				7BA8F4BE235FAB0800027DE5 /* MainViewFactory.swift in Sources */,
 				70DFCA0E23618F09004B49D6 /* TVMaze.swift in Sources */,
 			);
