@@ -35,7 +35,7 @@ class ViewController: UIViewController, WithItemViewModel {
         
         let collectionViewDelegate = DefaultCollectionViewDelegate(viewModel: viewModel,
                                                      dataSource: collectionViewDataSource,
-                                                     onSelect: { indexPath in viewModel.select(at: indexPath) })
+                                                     onSelect: {[weak self] indexPath in self?.viewModel.selectItem(at: indexPath) })
         
         self.collectionViewDataSource = collectionViewDataSource
         self.collectionViewDelegate = collectionViewDelegate
