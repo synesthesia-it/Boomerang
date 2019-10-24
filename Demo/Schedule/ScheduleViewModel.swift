@@ -14,7 +14,7 @@ struct NavigationRoute: ViewModelRoute {
     let viewModel: ItemViewModel
 }
 
-class TestViewModel: ItemViewModel, ListViewModel {
+class ScheduleViewModel: ItemViewModel, ListViewModel {
     var onUpdate: () -> () = {}
     var onNavigation: (Route) -> () = { _ in }
     
@@ -25,11 +25,11 @@ class TestViewModel: ItemViewModel, ListViewModel {
             onUpdate()
         }
     }
-    
-    init(identifier: SceneIdentifier = .main) {
+    var downloadTask: Task?
+    init(identifier: SceneIdentifier = .schedule) {
         self.itemIdentifier = identifier
-        //self.sections = [Section(items: (0..<10).map { TestItemViewModel(string: "\($0)") })]
-        let task = URLSession.shared.task([Episode].self, api: .schedule) {[weak self] result in
+        
+        downloadTask = URLSession.shared.getEntity([Episode].self, from: .schedule) {[weak self] result in
             switch result {
             case .success(let episodes):
                 self?.sections = [Section(items: episodes.map { ShowItemViewModel(episode: $0)})]
@@ -37,7 +37,6 @@ class TestViewModel: ItemViewModel, ListViewModel {
                 print(error)
             }
         }
-        task.resume()
     }
         
     func selectItem(at indexPath: IndexPath) {

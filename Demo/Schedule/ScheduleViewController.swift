@@ -8,10 +8,11 @@
 
 import UIKit
 import Boomerang
-class ViewController: UIViewController, WithItemViewModel {
+class ScheduleViewController: UIViewController, WithItemViewModel {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    var viewModel:TestViewModel!
+    
+    var viewModel:ScheduleViewModel?
 
     var collectionViewDataSource: DefaultCollectionViewDataSource? {
         didSet {
@@ -27,17 +28,24 @@ class ViewController: UIViewController, WithItemViewModel {
         }
     }
     
-    let router = Router.shared
+    var router: Router = MainRouter()
+    
+    func configure(with viewModel: ItemViewModel) {
+        guard let viewModel = viewModel as? ScheduleViewModel else { return }
+        self.viewModel = viewModel
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let viewModel = viewModel else { return }
         
         let collectionViewDataSource = DefaultCollectionViewDataSource(viewModel: viewModel,
                                                          factory: MainCollectionViewCellFactory())
         
         let collectionViewDelegate = DefaultCollectionViewDelegate(viewModel: viewModel,
                                                      dataSource: collectionViewDataSource,
-                                                     onSelect: {[weak self] indexPath in self?.viewModel.selectItem(at: indexPath) })
+                                                     onSelect: { indexPath in viewModel.selectItem(at: indexPath) })
         
         self.collectionViewDataSource = collectionViewDataSource
         self.collectionViewDelegate = collectionViewDelegate
@@ -47,24 +55,12 @@ class ViewController: UIViewController, WithItemViewModel {
                 self?.collectionView.reloadData()
             }
         }
-        
-        router.register(NavigationRoute.self) { (route, scene) in
-            let text = (route.viewModel as? ShowItemViewModel)?.title ?? "Unknown"
-            let alert = UIAlertController(title: "Navigation triggered", message: text, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            scene?.present(alert, animated: true, completion: nil)
-        }
-        
+                
         viewModel.onNavigation = { [weak self] in
-            Router.shared.execute($0, from: self)
+            self?.router.execute($0, from: self)
         }
         
     }
-    
-    func configure(with viewModel: ItemViewModel) {
-        guard let viewModel = viewModel as? TestViewModel else { return }
-        self.viewModel = viewModel
-    }
-    
+        
 }
 

@@ -11,19 +11,35 @@ import UIKit
 import Boomerang
 
 enum SceneIdentifier: String, ItemIdentifier {
-    case main
+    case schedule
     
     var identifierString: String {
         switch self {
-            case .main: return "vc"
+            default: return rawValue
         }
     }
 }
 
-class DefaultViewControllerFactory: ViewControllerFactory {
-    func viewController(from itemIdentifier: ItemIdentifier) -> UIViewController? {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: itemIdentifier.identifierString)
+class MainViewControllerFactory: ViewControllerFactory {
+    
+    func name(from itemIdentifier: ItemIdentifier) -> String {
+        let id = itemIdentifier.identifierString
+        return id.prefix(1).uppercased() + id.dropFirst() + "ViewController"
+        
     }
+    func `class`(from itemIdentifier: ItemIdentifier) -> UIViewController.Type? {
+        guard let info = Bundle.main.infoDictionary,
+            let bundleName = info["CFBundleExecutable"] as? String else { return nil }
+        let className = name(from: itemIdentifier)
+        return Bundle.main.classNamed([bundleName, className].joined(separator: ".")) as? UIViewController.Type
+    }
+    func viewController(from itemIdentifier: ItemIdentifier) -> UIViewController? {
+        
+        guard let viewControllerClass = `class`(from: itemIdentifier) else { return nil }
+        
+        return viewControllerClass.init(nibName: name(from: itemIdentifier), bundle: nil)
+    }
+    
     func viewController(with viewModel: ItemViewModel) -> UIViewController? {
         let viewController = self.viewController(from: viewModel.itemIdentifier)
         (viewController as? WithItemViewModel)?.configure(with: viewModel)

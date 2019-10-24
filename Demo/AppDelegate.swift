@@ -11,15 +11,13 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    let router = MainRouter()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        let viewModel = TestViewModel()
-        let factory = DefaultViewControllerFactory()
-        let main = factory.viewController(with: viewModel)
+        
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = main
         self.window = window
-        window.makeKeyAndVisible()
+        router.restart()
         return true
     }
 //
