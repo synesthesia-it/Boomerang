@@ -11,8 +11,16 @@ import Foundation
 struct Episode: Codable {
     let name: String
     let show: Show
+    let image: Poster?
+}
+
+struct Poster: Codable {
+    let medium: URL
+    let original: URL
 }
 
 struct Show: Codable {
     let name: String
+    let image: Poster?
+    let genres: [String]
 }

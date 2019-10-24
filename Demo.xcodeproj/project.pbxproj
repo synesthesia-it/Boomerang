@@ -14,6 +14,8 @@
 		70DFCA132361D073004B49D6 /* RESTDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFCA122361D073004B49D6 /* RESTDataSource.swift */; };
 		70DFCA152361D350004B49D6 /* ScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70DFCA142361D350004B49D6 /* ScheduleViewController.xib */; };
 		70DFCA1B2361DB89004B49D6 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFCA1A2361DB89004B49D6 /* MainRouter.swift */; };
+		70DFCA1D2361E783004B49D6 /* ImageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFCA1C2361E783004B49D6 /* ImageDataSource.swift */; };
+		70DFCA1F2361E9B0004B49D6 /* UICollectionView+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFCA1E2361E9B0004B49D6 /* UICollectionView+Sizing.swift */; };
 		7BA6D8B0235F89AD00EF4A60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6D8AF235F89AD00EF4A60 /* AppDelegate.swift */; };
 		7BA6D8B4235F89AD00EF4A60 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6D8B3235F89AD00EF4A60 /* ScheduleViewController.swift */; };
 		7BA6D8B9235F89AF00EF4A60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BA6D8B8235F89AF00EF4A60 /* Assets.xcassets */; };
@@ -79,6 +81,8 @@
 		70DFCA122361D073004B49D6 /* RESTDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTDataSource.swift; sourceTree = "<group>"; };
 		70DFCA142361D350004B49D6 /* ScheduleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleViewController.xib; sourceTree = "<group>"; };
 		70DFCA1A2361DB89004B49D6 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		70DFCA1C2361E783004B49D6 /* ImageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataSource.swift; sourceTree = "<group>"; };
+		70DFCA1E2361E9B0004B49D6 /* UICollectionView+Sizing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Sizing.swift"; sourceTree = "<group>"; };
 		7BA6D8AC235F89AD00EF4A60 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BA6D8AF235F89AD00EF4A60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BA6D8B3235F89AD00EF4A60 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 			children = (
 				70DFCA192361DB54004B49D6 /* API */,
 				70DFCA122361D073004B49D6 /* RESTDataSource.swift */,
+				70DFCA1C2361E783004B49D6 /* ImageDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 				7BA6D8F5235F9D4500EF4A60 /* ContentCollectionView.swift */,
 				7BA6D8F9235F9E0400EF4A60 /* CollectionViewDataSource.swift */,
 				70DFCA0523603792004B49D6 /* CollectionViewDelegate.swift */,
+				70DFCA1E2361E9B0004B49D6 /* UICollectionView+Sizing.swift */,
 				7BA8F4A8235F9EE200027DE5 /* CollectionViewCellFactory.swift */,
 			);
 			path = UICollectionView;
@@ -454,6 +460,7 @@
 				7BA6D8D4235F8AFE00EF4A60 /* ScheduleViewModel.swift in Sources */,
 				70DFCA132361D073004B49D6 /* RESTDataSource.swift in Sources */,
 				7BA8F4C0235FAB8A00027DE5 /* ViewControllerFactory.swift in Sources */,
+				70DFCA1D2361E783004B49D6 /* ImageDataSource.swift in Sources */,
 				70DFCA0C23618EEF004B49D6 /* Show.swift in Sources */,
 				7BA8F4BE235FAB0800027DE5 /* MainViewFactory.swift in Sources */,
 				70DFCA0E23618F09004B49D6 /* TVMaze.swift in Sources */,
@@ -478,6 +485,7 @@
 				7BA8F4AD235F9F3B00027DE5 /* ItemViewModel.swift in Sources */,
 				7BA8F4B7235FA6E800027DE5 /* Router.swift in Sources */,
 				70DFCA0723603819004B49D6 /* CollectionViewDelegate.swift in Sources */,
+				70DFCA1F2361E9B0004B49D6 /* UICollectionView+Sizing.swift in Sources */,
 				7BA8F4AB235F9F2100027DE5 /* Section.swift in Sources */,
 				7BA8F4B9235FA71F00027DE5 /* DependencyContainer.swift in Sources */,
 				7BA6D8FA235F9E0400EF4A60 /* CollectionViewDataSource.swift in Sources */,

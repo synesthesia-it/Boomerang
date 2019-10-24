@@ -21,7 +21,7 @@ class ScheduleViewController: UIViewController, WithItemViewModel {
         }
     }
     
-    var collectionViewDelegate: DefaultCollectionViewDelegate? {
+    var collectionViewDelegate: CollectionViewDelegate? {
         didSet {
             self.collectionView.delegate = collectionViewDelegate
             self.collectionView.collectionViewLayout.invalidateLayout()
@@ -43,9 +43,10 @@ class ScheduleViewController: UIViewController, WithItemViewModel {
         let collectionViewDataSource = DefaultCollectionViewDataSource(viewModel: viewModel,
                                                          factory: MainCollectionViewCellFactory())
         
-        let collectionViewDelegate = DefaultCollectionViewDelegate(viewModel: viewModel,
-                                                     dataSource: collectionViewDataSource,
-                                                     onSelect: { indexPath in viewModel.selectItem(at: indexPath) })
+        let collectionViewDelegate = CollectionViewDelegate(viewModel: viewModel, dataSource: collectionViewDataSource)
+            .withItemsPerLine(itemsPerLine: 3)
+            .withSelect { viewModel.selectItem(at: $0) }
+                                        
         
         self.collectionViewDataSource = collectionViewDataSource
         self.collectionViewDelegate = collectionViewDelegate
@@ -63,4 +64,3 @@ class ScheduleViewController: UIViewController, WithItemViewModel {
     }
         
 }
-
