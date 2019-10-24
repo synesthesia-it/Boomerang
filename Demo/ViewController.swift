@@ -12,21 +12,45 @@ class ViewController: UIViewController, WithItemViewModel {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var viewModel:TestViewModel!
-    
-    func configure(with viewModel: ItemViewModel) {
-        guard let viewModel = viewModel as? TestViewModel else { return }
-        self.viewModel = viewModel
-    }
-    
-    var dataSource: DefaultCollectionViewDataSource? {
+
+    var collectionViewDataSource: DefaultCollectionViewDataSource? {
         didSet {
-            self.collectionView.dataSource = dataSource
+            self.collectionView.dataSource = collectionViewDataSource
             self.collectionView.reloadData()
         }
     }
+    
+    var collectionViewDelegate: DefaultCollectionViewDelegate? {
+        didSet {
+            self.collectionView.delegate = collectionViewDelegate
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dataSource = DefaultCollectionViewDataSource(viewModel: viewModel, factory: DefaultCollectionViewCellFactory())
+        
+        let collectionViewDataSource = DefaultCollectionViewDataSource(viewModel: viewModel,
+                                                         factory: DefaultCollectionViewCellFactory())
+        
+        let collectionViewDelegate = DefaultCollectionViewDelegate(viewModel: viewModel,
+                                                     dataSource: collectionViewDataSource,
+                                                     onSelect: { indexPath in print(indexPath) })
+        
+        self.collectionViewDataSource = collectionViewDataSource
+        self.collectionViewDelegate = collectionViewDelegate
+        
+        viewModel.onUpdate = { [weak self] in
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
+        }
+        
+    }
+    
+    func configure(with viewModel: ItemViewModel) {
+        guard let viewModel = viewModel as? TestViewModel else { return }
+        self.viewModel = viewModel
     }
     
 }

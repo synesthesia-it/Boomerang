@@ -10,6 +10,7 @@ import Foundation
 
 public protocol ListViewModel: AnyObject {
     var sections: [Section] { get set }
+    var onUpdate: () -> () { get }
 }
 
 public extension ListViewModel {
