@@ -23,10 +23,6 @@ public enum Direction {
     }
 }
 
-private struct AssociatedKeys {
-    static var collectionViewCacheCell = "boomerang_collectionViewCacheCell"
-    static var isPlaceholderForAutosize = "boomerang_isPlaceholderForAutosize"
-}
 public struct LockingSize {
     public var direction: Direction
     public var value: CGFloat
