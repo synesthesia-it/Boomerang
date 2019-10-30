@@ -8,14 +8,17 @@
 
 import Foundation
 import Boomerang
+import RxSwift
+import RxRelay
 
 struct NavigationRoute: ViewModelRoute {
     var destination: Scene?
     let viewModel: ItemViewModel
 }
 
-class ScheduleViewModel: ItemViewModel, ListViewModel {
-    var onUpdate: () -> () = {}
+class ScheduleViewModel: ItemViewModel, RxListViewModel {
+//    var onUpdate: () -> () = {}
+    let observableSections: BehaviorRelay<[Section]> = BehaviorRelay(value: [])
     var onNavigation: (Route) -> () = { _ in }
     
     let itemIdentifier: ItemIdentifier
@@ -43,5 +46,20 @@ class ScheduleViewModel: ItemViewModel, ListViewModel {
         if let viewModel = self[indexPath] as? ShowItemViewModel {
             onNavigation(NavigationRoute(viewModel: ShowDetailViewModel(show: viewModel.show)))
         }
+    }
+}
+
+protocol RxListViewModel: ListViewModel {
+    var observableSections: BehaviorRelay<[Section]> { get }
+    
+}
+extension RxListViewModel {
+    var onUpdate: () -> () {
+        return {[weak self] in self?.observableSections.accept(self?.sections ?? []) }
+    }
+}
+extension Reactive where Base: RxListViewModel {
+    var sections: Observable<[Section]> {
+        return base.observableSections.asObservable()
     }
 }

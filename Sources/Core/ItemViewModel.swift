@@ -12,8 +12,12 @@ public protocol ItemIdentifier {
     var identifierString: String { get }
 }
 
-public protocol ItemViewModel {
+public protocol ItemViewModel: AnyObject {
+    var id: String? { get }
     var itemIdentifier: ItemIdentifier { get }
+}
+public extension ItemViewModel {
+    var id: String? { return nil }
 }
 
 public protocol WithItemViewModel: AnyObject {

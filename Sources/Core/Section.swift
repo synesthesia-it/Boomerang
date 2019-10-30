@@ -16,13 +16,16 @@ public class Section {
             
         }
     }
-    
+    public var id: String
     public var header: ItemViewModel?
     public var footer: ItemViewModel?
     public var items: [ItemViewModel]
-    public init(items: [ItemViewModel],
-                header: ItemViewModel? = nil,
-                footer: ItemViewModel? = nil) {
+    public init(
+        id: String = "",
+        items: [ItemViewModel],
+        header: ItemViewModel? = nil,
+        footer: ItemViewModel? = nil) {
+        self.id = ""
         self.items = items
         self.header = header
         self.footer = footer
