@@ -11,7 +11,7 @@ import Foundation
 public protocol Route {}
 
 public protocol ViewModelRoute: Route {
-    var viewModel: ItemViewModel { get }
+    var viewModel: ViewModel { get }
 }
 
 public protocol Router {

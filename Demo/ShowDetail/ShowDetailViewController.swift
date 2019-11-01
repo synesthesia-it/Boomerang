@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 import Boomerang
 
-class ShowDetailViewController: UIViewController, WithItemViewModel {
+class ShowDetailViewController: UIViewController, WithViewModel {
     
         @IBOutlet weak var titleLabel: UILabel!
     
     var viewModel: ShowDetailViewModel?
     
-    func configure(with viewModel: ItemViewModel) {
+    func configure(with viewModel: ViewModel) {
         guard let viewModel = viewModel as? ShowDetailViewModel else {
             return
         }

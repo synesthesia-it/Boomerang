@@ -1,5 +1,5 @@
 //
-//  ShowItemViewModel.swift
+//  ShowViewModel.swift
 //  Demo
 //
 //  Created by Stefano Mondino on 24/10/2019.
@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import Boomerang
 import UIKit
-class ShowItemViewModel: ItemViewModel {
+class ShowViewModel: ViewModel {
     
     let layoutIdentifier: LayoutIdentifier
     var uniqueIdentifier: UniqueIdentifier

@@ -18,7 +18,7 @@ import Boomerang
 public extension Reactive where Base: UICollectionView {
     func reloaded(by viewModel: RxListViewModel, dataSource collectionViewDataSource: CollectionViewDataSource) -> Disposable {
 
-        let reloadDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<Section, ItemViewModel>>(configureCell:  { (dataSource, cv, indexPath, viewModel) -> UICollectionViewCell in
+        let reloadDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<Section, ViewModel>>(configureCell:  { (dataSource, cv, indexPath, viewModel) -> UICollectionViewCell in
             return collectionViewDataSource.collectionView(cv, cellForItemAt: indexPath)
         })
             return viewModel.sectionsRelay

@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol NavigationViewModel: AnyObject {
+public protocol NavigationViewModel: ViewModel {
     var onNavigation: (Route) -> () { get set }
 }

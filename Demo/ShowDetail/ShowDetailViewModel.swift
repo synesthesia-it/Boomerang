@@ -9,7 +9,7 @@
 import Foundation
 import Boomerang
 
-class ShowDetailViewModel: ItemViewModel {
+class ShowDetailViewModel: ViewModel {
     let layoutIdentifier: LayoutIdentifier
     let title: String
     init(show: Show, identifier: SceneIdentifier = .showDetail) {

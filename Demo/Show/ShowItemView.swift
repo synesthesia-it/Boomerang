@@ -11,7 +11,7 @@ import Boomerang
 import RxSwift
 import RxCocoa
 
-class TestItemView: UIView, WithItemViewModel {
+class TestItemView: UIView, WithViewModel {
     
     @IBOutlet weak var testLabel: UILabel!
     
@@ -19,9 +19,9 @@ class TestItemView: UIView, WithItemViewModel {
     
     var disposeBag = DisposeBag()
     
-    func configure(with viewModel: ItemViewModel) {
+    func configure(with viewModel: ViewModel) {
         self.disposeBag = DisposeBag()
-        guard let viewModel = viewModel as? ShowItemViewModel else { return }
+        guard let viewModel = viewModel as? ShowViewModel else { return }
         
         self.testLabel.text = viewModel.title
         

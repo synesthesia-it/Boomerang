@@ -12,13 +12,13 @@ import Boomerang
 import RxDataSources
 import RxSwift
 
-class ScheduleViewController: UIViewController, WithItemViewModel {
+class ScheduleViewController: UIViewController, WithViewModel {
     
-    typealias ViewModel = ListViewModel & NavigationViewModel & ItemViewModel
+    typealias ScheduleViewModel = ListViewModel & NavigationViewModel & ViewModel
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var viewModel: ViewModel?
+    var viewModel: ScheduleViewModel?
     
     var collectionViewDataSource: CollectionViewDataSource? {
         didSet {
@@ -37,8 +37,8 @@ class ScheduleViewController: UIViewController, WithItemViewModel {
     var router: Router = MainRouter()
     var disposeBag = DisposeBag()
     
-    func configure(with viewModel: ItemViewModel) {
-        guard let viewModel = viewModel as? ViewModel else { return }
+    func configure(with viewModel: ViewModel) {
+        guard let viewModel = viewModel as? ScheduleViewModel else { return }
         self.viewModel = viewModel
     }
     

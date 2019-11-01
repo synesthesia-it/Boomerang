@@ -12,7 +12,7 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 
-public protocol RxViewModel {
+public protocol RxViewModel: ViewModel {
     var disposeBag: DisposeBag { get }
 }
 
@@ -64,7 +64,7 @@ struct IdentifiableViewModel: IdentifiableType, Equatable {
         lhs.identity == rhs.identity
     }
     
-    var viewModel: ItemViewModel
+    var viewModel: ViewModel
     var identity: String {
         return viewModel.uniqueIdentifier.stringValue
     }

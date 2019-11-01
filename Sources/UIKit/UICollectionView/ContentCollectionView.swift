@@ -11,7 +11,7 @@ public protocol CollectionViewCellContained {
     func apply(_ layoutAttributes: UICollectionViewLayoutAttributes)
 }
 
-public protocol ContentCollectionViewCellType: NSObjectProtocol, WithItemViewModel {
+public protocol ContentCollectionViewCellType: NSObjectProtocol, WithViewModel {
     var internalView: UIView? { get set }
     ///Constraints between cell and inner view.
     var insetConstraints: [NSLayoutConstraint] { get set }
@@ -19,8 +19,8 @@ public protocol ContentCollectionViewCellType: NSObjectProtocol, WithItemViewMod
 
 public class ContentCollectionViewCell: UICollectionViewCell, ContentCollectionViewCellType {
     
-    public func configure(with viewModel: ItemViewModel) {
-        (self.internalView as? WithItemViewModel)?.configure(with: viewModel)
+    public func configure(with viewModel: ViewModel) {
+        (self.internalView as? WithViewModel)?.configure(with: viewModel)
     }
     
     public weak var internalView: UIView? {

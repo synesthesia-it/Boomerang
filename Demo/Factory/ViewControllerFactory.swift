@@ -41,9 +41,9 @@ class MainViewControllerFactory: ViewControllerFactory {
         return viewControllerClass.init(nibName: name(from: itemIdentifier), bundle: nil)
     }
     
-    func viewController(with viewModel: ItemViewModel) -> UIViewController? {
+    func viewController(with viewModel: ViewModel) -> UIViewController? {
         let viewController = self.viewController(from: viewModel.layoutIdentifier)
-        (viewController as? WithItemViewModel)?.configure(with: viewModel)
+        (viewController as? WithViewModel)?.configure(with: viewModel)
         return viewController
     }
 }

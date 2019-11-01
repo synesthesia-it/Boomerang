@@ -1,5 +1,5 @@
 //
-//  ItemViewModel.swift
+//  ViewModel.swift
 //  Boomerang
 //
 //  Created by Stefano Mondino on 22/10/2019.
@@ -23,17 +23,17 @@ public protocol UniqueIdentifier {
     var stringValue: String { get }
 }
 
-public protocol ItemViewModel: AnyObject {
+public protocol ViewModel: AnyObject {
     var uniqueIdentifier: UniqueIdentifier { get }
     var layoutIdentifier: LayoutIdentifier { get }
 }
 
-public extension ItemViewModel {
+public extension ViewModel {
     var uniqueIdentifier: UniqueIdentifier {
         return UUID()
     }
 }
 
-public protocol WithItemViewModel: AnyObject {
-    func configure(with viewModel: ItemViewModel)
+public protocol WithViewModel: AnyObject {
+    func configure(with viewModel: ViewModel)
 }

@@ -97,7 +97,7 @@ public class UICollectionViewSizeCalculator {
         }
         return floor(value * UIScreen.main.scale)/UIScreen.main.scale
     }
-    private func properViewModel(at indexPath: IndexPath, for type: String?) -> ItemViewModel?{
+    private func properViewModel(at indexPath: IndexPath, for type: String?) -> ViewModel?{
         let list = self.viewModel
         guard let type = type else { return list[indexPath] }
         //TODO calculate size for supplementary view
@@ -133,10 +133,10 @@ public class UICollectionViewSizeCalculator {
             constraint?.constant = size.value
         }
         ///TODO Placeholder
-//        (cell as? (UIView & WithItemViewModel))?.isPlaceholderForAutosize = true
+//        (cell as? (UIView & WithViewModel))?.isPlaceholderForAutosize = true
         
         self.cellCache[identifier.identifierString] = cell
-        (cell as? WithItemViewModel)?.configure(with: viewModel)
+        (cell as? WithViewModel)?.configure(with: viewModel)
         return cell
     }
     public func automaticSizeForItem(at indexPath: IndexPath, type: String? = nil, lockedTo lock: LockingSize) -> CGSize {

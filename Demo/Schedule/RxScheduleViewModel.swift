@@ -12,7 +12,7 @@ import RxBoomerang
 import RxSwift
 import RxRelay
 
-class RxScheduleViewModel: ItemViewModel, RxListViewModel, RxNavigationViewModel {
+class RxScheduleViewModel: ViewModel, RxListViewModel, RxNavigationViewModel {
     let routes: PublishRelay<Route> = PublishRelay()
     
     let sectionsRelay: BehaviorRelay<[Section]> = BehaviorRelay(value: [])
@@ -50,11 +50,11 @@ class RxScheduleViewModel: ItemViewModel, RxListViewModel, RxNavigationViewModel
             .map {
                 Section(id: "Schedule_\($0.offset)", items:
                     $0.element
-                        .map { ShowItemViewModel(episode: $0)})
+                        .map { ShowViewModel(episode: $0)})
         }
     }
     func selectItem(at indexPath: IndexPath) {
-        if let viewModel = self[indexPath] as? ShowItemViewModel {
+        if let viewModel = self[indexPath] as? ShowViewModel {
             onNavigation(NavigationRoute(viewModel: ShowDetailViewModel(show: viewModel.show)))
         }
     }

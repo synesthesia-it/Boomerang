@@ -11,20 +11,20 @@ import Foundation
 public class Section {
     ///TODO implement supplementary items
     public class Supplementary {
-        private var items: [Int: [String: [ItemViewModel]]] = [:]
+        private var items: [Int: [String: [ViewModel]]] = [:]
         init() {
             
         }
     }
     public var id: String
-    public var header: ItemViewModel?
-    public var footer: ItemViewModel?
-    public var items: [ItemViewModel]
+    public var header: ViewModel?
+    public var footer: ViewModel?
+    public var items: [ViewModel]
     public init(
         id: String = "",
-        items: [ItemViewModel],
-        header: ItemViewModel? = nil,
-        footer: ItemViewModel? = nil) {
+        items: [ViewModel],
+        header: ViewModel? = nil,
+        footer: ViewModel? = nil) {
         self.id = id
         self.items = items
         self.header = header

@@ -11,10 +11,10 @@ import Boomerang
 
 struct NavigationRoute: ViewModelRoute {
     var destination: Scene?
-    let viewModel: ItemViewModel
+    let viewModel: ViewModel
 }
 
-class ScheduleViewModel: ItemViewModel, ListViewModel, NavigationViewModel {
+class ScheduleViewModel: ViewModel, ListViewModel, NavigationViewModel {
     var onUpdate: () -> () = {}
     var sections: [Section] = [] {
         didSet {
@@ -35,14 +35,14 @@ class ScheduleViewModel: ItemViewModel, ListViewModel, NavigationViewModel {
         downloadTask = URLSession.shared.getEntity([Episode].self, from: .schedule) {[weak self] result in
             switch result {
             case .success(let episodes):
-                self?.sections = [Section(id: "Schedule", items: episodes.map { ShowItemViewModel(episode: $0)})]
+                self?.sections = [Section(id: "Schedule", items: episodes.map { ShowViewModel(episode: $0)})]
             case .failure(let error):
                 print(error)
             }
         }
     }
     func selectItem(at indexPath: IndexPath) {
-        if let viewModel = self[indexPath] as? ShowItemViewModel {
+        if let viewModel = self[indexPath] as? ShowViewModel {
             onNavigation(NavigationRoute(viewModel: ShowDetailViewModel(show: viewModel.show)))
         }
     }

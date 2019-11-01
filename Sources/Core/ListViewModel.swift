@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol ListViewModel: AnyObject {
+public protocol ListViewModel: ViewModel {
     var sections: [Section] { get }
     var onUpdate: () -> () { get set }
     func reload()
@@ -16,7 +16,7 @@ public protocol ListViewModel: AnyObject {
 }
 
 public extension ListViewModel {
-    subscript(index: IndexPath) -> ItemViewModel? {
+    subscript(index: IndexPath) -> ViewModel? {
         get {
             guard index.count == 2,
                 sections.count > index.section,
