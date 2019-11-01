@@ -11,6 +11,7 @@ import Foundation
 public protocol ListViewModel: AnyObject {
     var sections: [Section] { get }
     var onUpdate: () -> () { get set }
+    func reload()
     func selectItem(at indexPath: IndexPath)
 }
 

@@ -16,7 +16,11 @@ struct NavigationRoute: ViewModelRoute {
 
 class ScheduleViewModel: ItemViewModel, ListViewModel, NavigationViewModel {
     var onUpdate: () -> () = {}
-    var sections: [Section] = []
+    var sections: [Section] = [] {
+        didSet {
+                onUpdate()
+        }
+    }
     var onNavigation: (Route) -> () = { _ in }
     
     let layoutIdentifier: LayoutIdentifier
@@ -25,7 +29,9 @@ class ScheduleViewModel: ItemViewModel, ListViewModel, NavigationViewModel {
     
     init(identifier: SceneIdentifier = .schedule) {
         self.layoutIdentifier = identifier
-        
+    }
+    func reload() {
+        downloadTask?.cancel()
         downloadTask = URLSession.shared.getEntity([Episode].self, from: .schedule) {[weak self] result in
             switch result {
             case .success(let episodes):
@@ -34,9 +40,7 @@ class ScheduleViewModel: ItemViewModel, ListViewModel, NavigationViewModel {
                 print(error)
             }
         }
-        
     }
-        
     func selectItem(at indexPath: IndexPath) {
         if let viewModel = self[indexPath] as? ShowItemViewModel {
             onNavigation(NavigationRoute(viewModel: ShowDetailViewModel(show: viewModel.show)))

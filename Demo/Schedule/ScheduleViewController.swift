@@ -53,23 +53,40 @@ class ScheduleViewController: UIViewController, WithItemViewModel {
         let collectionViewDelegate = CollectionViewDelegate(viewModel: viewModel, dataSource: collectionViewDataSource)
             .withItemsPerLine(itemsPerLine: 3)
             .withSelect { viewModel.selectItem(at: $0) }
+        
         //If viewModel is compatible with RxSwift, use RxDataSources with animations
         //Else, use the "classic way" and reload data
+        
         if let viewModel = viewModel as? RxListViewModel {
             collectionView.rx
                 .animated(by: viewModel, dataSource: collectionViewDataSource)
                 .disposed(by: disposeBag)
         } else {
             self.collectionViewDataSource = collectionViewDataSource
-            viewModel.onUpdate = { [weak self] in self?.collectionView.reloadData() }
+            viewModel.onUpdate = { [weak self] in
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
+                }
+            }
+        }
+        
+        if let viewModel = viewModel as? RxNavigationViewModel {
+            viewModel.routes
+                .observeOn(MainScheduler.instance)
+                .bind { [weak self] in
+                    self?.router.execute($0, from: self)
+            }.disposed(by: disposeBag)
+        } else {
+            viewModel.onNavigation = { [weak self] in
+                self?.router.execute($0, from: self)
+            }
         }
         
         self.collectionViewDelegate = collectionViewDelegate
         
-        viewModel.onNavigation = { [weak self] in
-            self?.router.execute($0, from: self)
-        }
+        viewModel.reload()
         
     }
+    
     
 }

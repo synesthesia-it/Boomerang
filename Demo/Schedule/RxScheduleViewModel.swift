@@ -12,38 +12,47 @@ import RxBoomerang
 import RxSwift
 import RxRelay
 
-class RxScheduleViewModel: ItemViewModel, RxListViewModel, NavigationViewModel {
-
+class RxScheduleViewModel: ItemViewModel, RxListViewModel, RxNavigationViewModel {
+    let routes: PublishRelay<Route> = PublishRelay()
+    
     let sectionsRelay: BehaviorRelay<[Section]> = BehaviorRelay(value: [])
-    var onNavigation: (Route) -> () = { _ in }
     
     let layoutIdentifier: LayoutIdentifier
-
-    var downloadTask: Task?
+    
     let disposeBag = DisposeBag()
+    var reloadDisposeBag = DisposeBag()
     init(identifier: SceneIdentifier = .schedule) {
         self.layoutIdentifier = identifier
         
-        downloadTask = URLSession.shared.getEntity([Episode].self, from: .schedule) {[weak self] result in
-            switch result {
-            case .success(let episodes):
-                self?.sections = [Section(id: "Schedule", items: episodes.map { ShowItemViewModel(episode: $0)})]
-            case .failure(let error):
-                print(error)
-            }
-        }
         
-        Observable<Int>.interval(.seconds(2), scheduler: MainScheduler.instance)
-        
-            .bind{ _ in
-                let sections = self.sections
-                sections.forEach { $0.items.shuffle() }
-                self.sections = sections
-        }
-            .disposed(by: disposeBag)
-            
     }
-        
+    func reload() {
+        self.reloadDisposeBag = DisposeBag()
+        URLSession.shared.rx
+            .getEntity([Episode].self, from: .schedule)
+            .map(mapEpisodes(_:))
+            .flatMapLatest { sections in
+                Observable<Int>
+                    .interval(.seconds(2), scheduler: MainScheduler.instance)
+                    .startWith(0)
+                    .map {_ in
+                        sections.first?.items.shuffle() 
+                        return sections
+                }
+        }
+        .bind(to: sectionsRelay)
+        .disposed(by: reloadDisposeBag)
+    }
+    func mapEpisodes(_ episodes: [Episode]) -> [Section] {
+        return [episodes.prefix(3),
+                episodes.dropFirst(3)]
+            .enumerated()
+            .map {
+                Section(id: "Schedule_\($0.offset)", items:
+                    $0.element
+                        .map { ShowItemViewModel(episode: $0)})
+        }
+    }
     func selectItem(at indexPath: IndexPath) {
         if let viewModel = self[indexPath] as? ShowItemViewModel {
             onNavigation(NavigationRoute(viewModel: ShowDetailViewModel(show: viewModel.show)))

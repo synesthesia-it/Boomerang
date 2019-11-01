@@ -20,6 +20,13 @@ public protocol RxNavigationViewModel: NavigationViewModel {
     var routes: PublishRelay<Route> { get }
 }
 
+extension RxNavigationViewModel {
+    public var onNavigation: (Route) -> () {
+        get { return {[weak self] in self?.routes.accept($0)} }
+        set { }
+    }
+}
+
 public protocol RxListViewModel: ListViewModel, RxViewModel {
     var sectionsRelay: BehaviorRelay<[Section]> { get }
 }

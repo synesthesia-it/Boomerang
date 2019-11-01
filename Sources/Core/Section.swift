@@ -25,7 +25,7 @@ public class Section {
         items: [ItemViewModel],
         header: ItemViewModel? = nil,
         footer: ItemViewModel? = nil) {
-        self.id = ""
+        self.id = id
         self.items = items
         self.header = header
         self.footer = footer
