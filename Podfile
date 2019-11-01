@@ -13,6 +13,9 @@ target 'RxBoomerang' do
   pod 'RxDataSources'
 end
 
+target 'SwiftUIDemo' do
+  use_frameworks!
+end
 
 target 'Demo' do
   # Comment the next line if you don't want to use dynamic frameworks
