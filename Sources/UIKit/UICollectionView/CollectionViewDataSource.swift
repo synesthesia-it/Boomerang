@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-open class DefaultCollectionViewDataSource: NSObject, UICollectionViewDataSource {
+open class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     public var viewModel: ListViewModel
     public var factory: CollectionViewCellFactory
     public init(viewModel: ListViewModel, factory: CollectionViewCellFactory) {

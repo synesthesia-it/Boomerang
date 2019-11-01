@@ -6,8 +6,13 @@ target 'Boomerang' do
   use_frameworks!
 
   # Pods for Boomerang
-
 end
+target 'RxBoomerang' do
+  use_frameworks!
+  pod 'RxCocoa'
+  pod 'RxDataSources'
+end
+
 
 target 'Demo' do
   # Comment the next line if you don't want to use dynamic frameworks

@@ -9,8 +9,9 @@
 import Foundation
 
 public protocol ListViewModel: AnyObject {
-    var sections: [Section] { get set }
-    var onUpdate: () -> () { get }
+    var sections: [Section] { get }
+    var onUpdate: () -> () { get set }
+    func selectItem(at indexPath: IndexPath)
 }
 
 public extension ListViewModel {

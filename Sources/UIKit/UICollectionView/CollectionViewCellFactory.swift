@@ -8,7 +8,9 @@
 
 import Foundation
 import UIKit
-
+/**
+    Defines how collection view cells should be generated so they can be used inside  a collection view
+ */
 public protocol CollectionViewCellFactory: ViewFactory {
     var defaultCellIdentifier: String { get }
     func cellClass(from itemIdentifier: LayoutIdentifier?) -> UICollectionViewCell.Type

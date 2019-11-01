@@ -17,20 +17,20 @@ class MainRouter: Router {
     }
     public func execute(_ route: Route, from source: Scene?) {
         switch route {
-            case let route as NavigationRoute:
-                if let viewController = factory.viewController(from: route.viewModel.layoutIdentifier) as? UIViewController & WithItemViewModel,
-                    let source = source
-                    {
-                    viewController.configure(with: route.viewModel)
-                    if let navigation = source.navigationController {
-                        self.push(viewController: viewController, from: navigation)
-                    } else {
-                        self.present(viewController: viewController, from: source)
-                    }
+        case let route as NavigationRoute:
+            if let viewController = factory.viewController(from: route.viewModel.layoutIdentifier) as? UIViewController & WithItemViewModel,
+                let source = source
+            {
+                viewController.configure(with: route.viewModel)
+                if let navigation = source.navigationController {
+                    self.push(viewController: viewController, from: navigation)
+                } else {
+                    self.present(viewController: viewController, from: source)
+                }
             }
-                
-                
-            default: break
+            
+            
+        default: break
         }
     }
     
@@ -41,9 +41,18 @@ class MainRouter: Router {
         source.present(viewController, animated: animated, completion: nil)
     }
     func restart() {
-        let viewModel = ScheduleViewModel()
-        let root = factory.viewController(from: viewModel.layoutIdentifier)
-        (root as? WithItemViewModel)?.configure(with: viewModel)
+        
+        let viewControllers = [ScheduleViewModel(), RxScheduleViewModel()]
+            .compactMap { (viewModel: ItemViewModel) -> UIViewController? in
+                let root = factory.viewController(from: viewModel.layoutIdentifier)
+                (root as? WithItemViewModel)?.configure(with: viewModel)
+                return root
+        }
+        let root = UITabBarController()
+        zip(["Schedule", "RxSchedule"], viewControllers).forEach {
+            $1.tabBarItem.title = $0
+        }
+        root.viewControllers = viewControllers
         //TODO Dismiss all modals
         UIApplication.shared.delegate?.window??.rootViewController = root
         UIApplication.shared.delegate?.window??.makeKeyAndVisible()

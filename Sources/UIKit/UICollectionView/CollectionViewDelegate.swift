@@ -13,12 +13,12 @@ open class CollectionViewDelegate: NSObject, UICollectionViewDelegateFlowLayout 
     public typealias Select = (IndexPath) -> ()
     
     public let viewModel: ListViewModel
-    public let dataSource: DefaultCollectionViewDataSource
+    public let dataSource: CollectionViewDataSource
     public var cellFactory: CollectionViewCellFactory {
         return dataSource.factory
     }
     public init(viewModel: ListViewModel,
-                dataSource: DefaultCollectionViewDataSource) {
+                dataSource: CollectionViewDataSource) {
         self.viewModel = viewModel
         self.dataSource = dataSource
     }

@@ -8,21 +8,19 @@
 
 import Foundation
 import Boomerang
+import RxBoomerang
+import RxSwift
+import RxRelay
 
-struct NavigationRoute: ViewModelRoute {
-    var destination: Scene?
-    let viewModel: ItemViewModel
-}
+class RxScheduleViewModel: ItemViewModel, RxListViewModel, NavigationViewModel {
 
-class ScheduleViewModel: ItemViewModel, ListViewModel, NavigationViewModel {
-    var onUpdate: () -> () = {}
-    var sections: [Section] = []
+    let sectionsRelay: BehaviorRelay<[Section]> = BehaviorRelay(value: [])
     var onNavigation: (Route) -> () = { _ in }
     
     let layoutIdentifier: LayoutIdentifier
 
     var downloadTask: Task?
-    
+    let disposeBag = DisposeBag()
     init(identifier: SceneIdentifier = .schedule) {
         self.layoutIdentifier = identifier
         
@@ -35,6 +33,15 @@ class ScheduleViewModel: ItemViewModel, ListViewModel, NavigationViewModel {
             }
         }
         
+        Observable<Int>.interval(.seconds(2), scheduler: MainScheduler.instance)
+        
+            .bind{ _ in
+                let sections = self.sections
+                sections.forEach { $0.items.shuffle() }
+                self.sections = sections
+        }
+            .disposed(by: disposeBag)
+            
     }
         
     func selectItem(at indexPath: IndexPath) {
