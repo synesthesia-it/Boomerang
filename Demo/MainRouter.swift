@@ -18,7 +18,7 @@ class MainRouter: Router {
     public func execute(_ route: Route, from source: Scene?) {
         switch route {
             case let route as NavigationRoute:
-                if let viewController = factory.viewController(from: route.viewModel.itemIdentifier) as? UIViewController & WithItemViewModel,
+                if let viewController = factory.viewController(from: route.viewModel.layoutIdentifier) as? UIViewController & WithItemViewModel,
                     let source = source
                     {
                     viewController.configure(with: route.viewModel)
@@ -42,7 +42,7 @@ class MainRouter: Router {
     }
     func restart() {
         let viewModel = ScheduleViewModel()
-        let root = factory.viewController(from: viewModel.itemIdentifier)
+        let root = factory.viewController(from: viewModel.layoutIdentifier)
         (root as? WithItemViewModel)?.configure(with: viewModel)
         //TODO Dismiss all modals
         UIApplication.shared.delegate?.window??.rootViewController = root

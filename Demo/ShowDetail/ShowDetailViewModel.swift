@@ -10,10 +10,10 @@ import Foundation
 import Boomerang
 
 class ShowDetailViewModel: ItemViewModel {
-    let itemIdentifier: ItemIdentifier
+    let layoutIdentifier: LayoutIdentifier
     let title: String
     init(show: Show, identifier: SceneIdentifier = .showDetail) {
-           self.itemIdentifier = identifier
+           self.layoutIdentifier = identifier
         self.title = show.name
     }
 }

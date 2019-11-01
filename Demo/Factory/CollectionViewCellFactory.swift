@@ -18,11 +18,11 @@ class MainCollectionViewCellFactory: CollectionViewCellFactory {
         self.viewFactory = viewFactory
     }
     
-    func view(from itemIdentifier: ItemIdentifier) -> UIView? {
+    func view(from itemIdentifier: LayoutIdentifier) -> UIView? {
         return viewFactory.view(from: itemIdentifier)
     }
     
-    func name(from itemIdentifier: ItemIdentifier) -> String {
+    func name(from itemIdentifier: LayoutIdentifier) -> String {
         return viewFactory.name(from: itemIdentifier)
     }
     
@@ -30,14 +30,14 @@ class MainCollectionViewCellFactory: CollectionViewCellFactory {
         return "default"
     }
     
-    func cellClass(from itemIdentifier: ItemIdentifier?) -> UICollectionViewCell.Type {
+    func cellClass(from itemIdentifier: LayoutIdentifier?) -> UICollectionViewCell.Type {
         return ContentCollectionViewCell.self
     }
     
     func configureCell(_ cell: UICollectionViewCell, with viewModel: ItemViewModel) {
         guard let cell = cell as? ContentCollectionViewCell else { return }
         if cell.internalView == nil {
-            cell.internalView = viewFactory.view(from: viewModel.itemIdentifier)
+            cell.internalView = viewFactory.view(from: viewModel.layoutIdentifier)
         }
         cell.configure(with: viewModel)
     }

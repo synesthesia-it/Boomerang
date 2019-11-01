@@ -11,6 +11,6 @@ import UIKit
 
 public protocol CollectionViewCellFactory: ViewFactory {
     var defaultCellIdentifier: String { get }
-    func cellClass(from itemIdentifier: ItemIdentifier?) -> UICollectionViewCell.Type
+    func cellClass(from itemIdentifier: LayoutIdentifier?) -> UICollectionViewCell.Type
     func configureCell(_ cell: UICollectionViewCell, with viewModel: ItemViewModel)
 }

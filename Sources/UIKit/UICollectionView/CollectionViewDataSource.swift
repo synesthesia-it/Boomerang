@@ -31,8 +31,8 @@ open class DefaultCollectionViewDataSource: NSObject, UICollectionViewDataSource
             return collectionView.dequeueReusableCell(withReuseIdentifier: factory.defaultCellIdentifier, for: indexPath)
         }
         
-        let name = factory.name(from: viewModel.itemIdentifier)
-        collectionView.register(factory.cellClass(from: viewModel.itemIdentifier), forCellWithReuseIdentifier: name)
+        let name = factory.name(from: viewModel.layoutIdentifier)
+        collectionView.register(factory.cellClass(from: viewModel.layoutIdentifier), forCellWithReuseIdentifier: name)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: name, for: indexPath)
         factory.configureCell(cell, with: viewModel)
         return cell

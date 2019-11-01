@@ -8,16 +8,30 @@
 
 import Foundation
 
-public protocol ItemIdentifier {
+public protocol LayoutIdentifier {
     var identifierString: String { get }
+}
+extension String: UniqueIdentifier {
+    public var stringValue: String { return self }
+}
+
+extension UUID: UniqueIdentifier {
+    public var stringValue: String { return self.uuidString }
+}
+
+public protocol UniqueIdentifier {
+    var stringValue: String { get }
 }
 
 public protocol ItemViewModel: AnyObject {
-    var id: String? { get }
-    var itemIdentifier: ItemIdentifier { get }
+    var uniqueIdentifier: UniqueIdentifier { get }
+    var layoutIdentifier: LayoutIdentifier { get }
 }
+
 public extension ItemViewModel {
-    var id: String? { return nil }
+    var uniqueIdentifier: UniqueIdentifier {
+        return UUID()
+    }
 }
 
 public protocol WithItemViewModel: AnyObject {

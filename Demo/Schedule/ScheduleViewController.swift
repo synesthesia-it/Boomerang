@@ -116,6 +116,6 @@ struct IdentifiableViewModel: IdentifiableType, Equatable {
     
     var viewModel: ItemViewModel
     var identity: String {
-        return viewModel.id ?? ""
+        return viewModel.uniqueIdentifier.stringValue
     }
 }

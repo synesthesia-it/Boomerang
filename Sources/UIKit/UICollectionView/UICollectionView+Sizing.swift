@@ -110,7 +110,7 @@ public class UICollectionViewSizeCalculator {
        else {
                 return nil
         }
-        let identifier = viewModel.itemIdentifier
+        let identifier = viewModel.layoutIdentifier
         guard let cell: UIView = cellCache[identifier.identifierString] ?? factory.view(from: identifier) else { return nil }
                
        let content = cell//.boomerang.contentView

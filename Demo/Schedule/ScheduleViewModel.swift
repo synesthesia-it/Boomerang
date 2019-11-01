@@ -21,7 +21,7 @@ class ScheduleViewModel: ItemViewModel, RxListViewModel {
     let observableSections: BehaviorRelay<[Section]> = BehaviorRelay(value: [])
     var onNavigation: (Route) -> () = { _ in }
     
-    let itemIdentifier: ItemIdentifier
+    let layoutIdentifier: LayoutIdentifier
     
     var sections: [Section] = [] {
         didSet {
@@ -29,17 +29,28 @@ class ScheduleViewModel: ItemViewModel, RxListViewModel {
         }
     }
     var downloadTask: Task?
+    let disposeBag = DisposeBag()
     init(identifier: SceneIdentifier = .schedule) {
-        self.itemIdentifier = identifier
+        self.layoutIdentifier = identifier
         
         downloadTask = URLSession.shared.getEntity([Episode].self, from: .schedule) {[weak self] result in
             switch result {
             case .success(let episodes):
-                self?.sections = [Section(items: episodes.map { ShowItemViewModel(episode: $0)})]
+                self?.sections = [Section(id: "Schedule", items: episodes.map { ShowItemViewModel(episode: $0)})]
             case .failure(let error):
                 print(error)
             }
         }
+        
+        Observable<Int>.interval(.seconds(2), scheduler: MainScheduler.instance)
+        
+            .bind{ _ in
+                let sections = self.sections
+                sections.forEach { $0.items.shuffle() }
+                self.sections = sections
+        }
+            .disposed(by: disposeBag)
+            
     }
         
     func selectItem(at indexPath: IndexPath) {

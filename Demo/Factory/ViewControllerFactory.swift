@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Boomerang
 
-enum SceneIdentifier: String, ItemIdentifier {
+enum SceneIdentifier: String, LayoutIdentifier {
     case schedule
     case showDetail
     
@@ -23,18 +23,18 @@ enum SceneIdentifier: String, ItemIdentifier {
 
 class MainViewControllerFactory: ViewControllerFactory {
     
-    func name(from itemIdentifier: ItemIdentifier) -> String {
+    func name(from itemIdentifier: LayoutIdentifier) -> String {
         let id = itemIdentifier.identifierString
         return id.prefix(1).uppercased() + id.dropFirst() + "ViewController"
         
     }
-    func `class`(from itemIdentifier: ItemIdentifier) -> UIViewController.Type? {
+    func `class`(from itemIdentifier: LayoutIdentifier) -> UIViewController.Type? {
         guard let info = Bundle.main.infoDictionary,
             let bundleName = info["CFBundleExecutable"] as? String else { return nil }
         let className = name(from: itemIdentifier)
         return Bundle.main.classNamed([bundleName, className].joined(separator: ".")) as? UIViewController.Type
     }
-    func viewController(from itemIdentifier: ItemIdentifier) -> UIViewController? {
+    func viewController(from itemIdentifier: LayoutIdentifier) -> UIViewController? {
         
         guard let viewControllerClass = `class`(from: itemIdentifier) else { return nil }
         
@@ -42,7 +42,7 @@ class MainViewControllerFactory: ViewControllerFactory {
     }
     
     func viewController(with viewModel: ItemViewModel) -> UIViewController? {
-        let viewController = self.viewController(from: viewModel.itemIdentifier)
+        let viewController = self.viewController(from: viewModel.layoutIdentifier)
         (viewController as? WithItemViewModel)?.configure(with: viewModel)
         return viewController
     }

@@ -9,6 +9,6 @@
 import UIKit
 
 public protocol ViewFactory {
-    func view(from itemIdentifier: ItemIdentifier) -> UIView?
-    func name(from itemIdentifier: ItemIdentifier) -> String
+    func view(from itemIdentifier: LayoutIdentifier) -> UIView?
+    func name(from itemIdentifier: LayoutIdentifier) -> String
 }

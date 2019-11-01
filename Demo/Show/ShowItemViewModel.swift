@@ -11,13 +11,15 @@ import Boomerang
 
 class ShowItemViewModel: ItemViewModel {
     
-    let itemIdentifier: ItemIdentifier
-    
+    let layoutIdentifier: LayoutIdentifier
+    var uniqueIdentifier: UniqueIdentifier
     var title: String
     let show: Show
+    var uuid: String = UUID().uuidString
     init(episode: Episode, identifier: ViewIdentifier = .show) {
-        self.itemIdentifier = identifier
+        self.layoutIdentifier = identifier
         self.title = episode.name
         self.show = episode.show
+        self.uniqueIdentifier = self.title + "_\(show.id)"
     }
 }

@@ -21,6 +21,7 @@ struct Poster: Codable {
 
 struct Show: Codable {
     let name: String
+    let id: Int
     let image: Poster?
     let genres: [String]
 }
