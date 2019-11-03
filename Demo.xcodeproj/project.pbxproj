@@ -39,6 +39,10 @@
 		7059ABA0236D771E0005A189 /* Boomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA6D8E2235F9D2F00EF4A60 /* Boomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7059ABA5236D77700005A189 /* CombineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7059ABA4236D77700005A189 /* CombineViewModel.swift */; };
 		70CBE1D4236EC78200F4221A /* SwiftUIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CBE1D3236EC78200F4221A /* SwiftUIViewModel.swift */; };
+		70CBE1D6236EC84F00F4221A /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CBE1D5236EC84F00F4221A /* ScheduleView.swift */; };
+		70CBE1D8236EC85600F4221A /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CBE1D7236EC85600F4221A /* ScheduleViewModel.swift */; };
+		70CBE1DB236EC8DC00F4221A /* ShowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CBE1DA236EC8DC00F4221A /* ShowViewModel.swift */; };
+		70CBE1DD236EC90900F4221A /* ShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CBE1DC236EC90900F4221A /* ShowView.swift */; };
 		70DFCA0723603819004B49D6 /* CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFCA0523603792004B49D6 /* CollectionViewDelegate.swift */; };
 		70DFCA0C23618EEF004B49D6 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFCA0B23618EEF004B49D6 /* Show.swift */; };
 		70DFCA0E23618F09004B49D6 /* TVMaze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFCA0D23618F09004B49D6 /* TVMaze.swift */; };
@@ -208,6 +212,10 @@
 		7059AB94236D76CF0005A189 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7059ABA4236D77700005A189 /* CombineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineViewModel.swift; sourceTree = "<group>"; };
 		70CBE1D3236EC78200F4221A /* SwiftUIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewModel.swift; sourceTree = "<group>"; };
+		70CBE1D5236EC84F00F4221A /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		70CBE1D7236EC85600F4221A /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
+		70CBE1DA236EC8DC00F4221A /* ShowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowViewModel.swift; sourceTree = "<group>"; };
+		70CBE1DC236EC90900F4221A /* ShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowView.swift; sourceTree = "<group>"; };
 		70DFCA0523603792004B49D6 /* CollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDelegate.swift; sourceTree = "<group>"; };
 		70DFCA0B23618EEF004B49D6 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		70DFCA0D23618F09004B49D6 /* TVMaze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMaze.swift; sourceTree = "<group>"; };
@@ -364,6 +372,8 @@
 				7059AB88236CD7060005A189 /* SceneFactory.swift */,
 				7059AB6F236CB4760005A189 /* SceneDelegate.swift */,
 				7059AB71236CB4760005A189 /* ContentView.swift */,
+				70CBE1DE236EC92B00F4221A /* Show */,
+				70CBE1D9236EC8C400F4221A /* Schedule */,
 				7059AB73236CB4790005A189 /* Assets.xcassets */,
 				7059AB78236CB4790005A189 /* LaunchScreen.storyboard */,
 				7059AB7B236CB4790005A189 /* Info.plist */,
@@ -389,6 +399,24 @@
 				7059AB94236D76CF0005A189 /* Info.plist */,
 			);
 			path = Combine;
+			sourceTree = "<group>";
+		};
+		70CBE1D9236EC8C400F4221A /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				70CBE1D5236EC84F00F4221A /* ScheduleView.swift */,
+				70CBE1D7236EC85600F4221A /* ScheduleViewModel.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		70CBE1DE236EC92B00F4221A /* Show */ = {
+			isa = PBXGroup;
+			children = (
+				70CBE1DC236EC90900F4221A /* ShowView.swift */,
+				70CBE1DA236EC8DC00F4221A /* ShowViewModel.swift */,
+			);
+			path = Show;
 			sourceTree = "<group>";
 		};
 		70DFCA112361D05F004B49D6 /* Model */ = {
@@ -1029,12 +1057,16 @@
 				7059AB84236CD6240005A189 /* ShowDetailViewModel.swift in Sources */,
 				7059AB8B236CD7060005A189 /* SceneFactory.swift in Sources */,
 				7059AB82236CD61A0005A189 /* ImageDataSource.swift in Sources */,
+				70CBE1DD236EC90900F4221A /* ShowView.swift in Sources */,
+				70CBE1DB236EC8DC00F4221A /* ShowViewModel.swift in Sources */,
 				7059AB6E236CB4760005A189 /* AppDelegate.swift in Sources */,
 				7059AB70236CB4760005A189 /* SceneDelegate.swift in Sources */,
 				7059AB8A236CD7060005A189 /* MainViewFactory.swift in Sources */,
 				7059AB72236CB4760005A189 /* ContentView.swift in Sources */,
+				70CBE1D8236EC85600F4221A /* ScheduleViewModel.swift in Sources */,
 				7059AB80236CD61A0005A189 /* TVMaze.swift in Sources */,
 				7059AB81236CD61A0005A189 /* RESTDataSource.swift in Sources */,
+				70CBE1D6236EC84F00F4221A /* ScheduleView.swift in Sources */,
 				7059AB83236CD61D0005A189 /* Show.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
