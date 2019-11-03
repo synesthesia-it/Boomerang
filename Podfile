@@ -13,6 +13,10 @@ target 'RxBoomerang' do
   pod 'RxDataSources'
 end
 
+target 'CombineBoomerang' do
+  use_frameworks!
+end
+
 target 'SwiftUIDemo' do
   use_frameworks!
 end

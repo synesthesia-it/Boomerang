@@ -9,14 +9,61 @@
 import SwiftUI
 import Boomerang
 import Combine
+import CombineBoomerang
+
+struct ShowListView: View {
+    @ObservedObject var viewModel: ShowViewModel
+    var body: some View {
+        Text(viewModel.title)
+//            .onAppear { self.viewModel.reload() }
+    }
+}
+//
+extension List {
+    
+//    static func sectioned(_ data: [Boomerang.Section], factory: SwiftUIViewFactory) -> some View {
+//        let elements: [IdentifiableViewModel] = data
+//            .flatMap { $0.items }
+//            .compactMap { IdentifiableViewModel(viewModel: $0) }
+//
+//        return List(elements, id: \.self, rowContent: { _ in
+////            factory.view(from: $0)
+//            Circle()
+//        })
+//
+//     }
+//    init(_ data: [Boomerang.Section], factory: SwiftUIViewFactory, selection: Binding<Set<IdentifiableViewModel>>? = nil) {
+//        let elements = data
+//            .flatMap { $0.items
+//                .compactMap { IdentifiableViewModel(viewModel: $0) }
+//        }
+//        let builder: ((IdentifiableViewModel) -> AnyView) = {
+//             factory.view(from: $0)
+//        }
+//
+//        let content = ForEach(elements, id: \.id) {
+//            factory.view(from: $0)
+//        }
+//
+//        List(elements, selection: selection) { (vm) -> AnyView in
+//            return factory.view(from: vm)
+//        }
+//        self.init(selection: selection, content: { content })
+//    }
+}
+
+
 struct ContentView: View {
+    let factory: SwiftUIViewFactory = SwiftUIViewFactory()
     @ObservedObject var viewModel: ScheduleViewModel
     var body: some View {
-        List(viewModel.sections
-            .flatMap { $0.items }
-            .compactMap { $0 as? ShowViewModel }) {
-                Text($0.title)
-        }.onAppear { self.viewModel.reload() }
+        
+        List.init(viewModel.sections.flatMap { $0.items.map { IdentifiableViewModel(viewModel: $0)} }) {
+            self.factory.view(from: $0)
+        }
+         .onAppear { self.viewModel.reload() }
+//        List<IdentifiableViewModel, AnyView>(viewModel.sections, factory: self.factory)
+//            .onAppear { self.viewModel.reload() }
     }
 }
 
@@ -27,16 +74,14 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 
-class ScheduleViewModel: ViewModel, ListViewModel, NavigationViewModel, ObservableObject {
-    var onUpdate: () -> () = {}
+class ScheduleViewModel: CombineListViewModel, NavigationViewModel, ObservableObject {
     
-    var objectWillChange: ObservableObjectPublisher = ObjectWillChangePublisher()
+    var sectionsSubject: CurrentValueSubject<[Boomerang.Section], Never> = CurrentValueSubject([])
     
-    var sections: [Boomerang.Section] = [] {
-        didSet {
-                onUpdate()
-        }
-    }
+    var cancellables: [AnyCancellable] = []
+    
+    var objectWillChange: ObservableObjectPublisher = ObservableObjectPublisher()
+    
     var onNavigation: (Route) -> () = { _ in }
     
     let layoutIdentifier: LayoutIdentifier
@@ -45,7 +90,6 @@ class ScheduleViewModel: ViewModel, ListViewModel, NavigationViewModel, Observab
     
     init(identifier: SceneIdentifier = .schedule) {
         self.layoutIdentifier = identifier
-        self.onUpdate = {[weak self] in DispatchQueue.main.async { self?.objectWillChange.send() } }
     }
     func reload() {
         downloadTask?.cancel()
@@ -64,8 +108,9 @@ class ScheduleViewModel: ViewModel, ListViewModel, NavigationViewModel, Observab
         }
     }
 }
-class ShowViewModel: ViewModel, Identifiable {
     
+class ShowViewModel: CombineViewModel, ObservableObject {
+    var cancellables: [AnyCancellable] = []
     let layoutIdentifier: LayoutIdentifier
     var uniqueIdentifier: UniqueIdentifier
     var title: String

@@ -6,9 +6,10 @@
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 import Boomerang
-
+import Combine
+import CombineBoomerang
 enum ViewIdentifier: String, LayoutIdentifier {
     case show
     
@@ -17,6 +18,15 @@ enum ViewIdentifier: String, LayoutIdentifier {
     }
 }
 
+class SwiftUIViewFactory {
+    func view(from wrapper: IdentifiableViewModel) -> AnyView {
+        
+        switch wrapper.viewModel {
+        case let viewModel as ShowViewModel: return AnyView(ShowListView(viewModel: viewModel))
+        default: return AnyView(Text(""))
+        }
+    }
+}
 //class MainViewFactory: ViewFactory {
 //    func view(from itemIdentifier: LayoutIdentifier) -> UIView? {
 //        return nib(from: itemIdentifier)?
