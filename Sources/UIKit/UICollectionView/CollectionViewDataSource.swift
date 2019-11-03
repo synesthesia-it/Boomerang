@@ -37,4 +37,18 @@ open class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
         factory.configureCell(cell, with: viewModel)
         return cell
     }
+    
+    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let supplementary = viewModel
+            .sections[indexPath.section]
+            .supplementary.item(atIndex: indexPath.item, forKind: kind) else {
+                collectionView.register(factory.cellClass(from: nil), forSupplementaryViewOfKind: kind, withReuseIdentifier: factory.defaultCellIdentifier)
+                return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: factory.defaultCellIdentifier, for: indexPath)
+        }
+        let name = factory.name(from: viewModel.layoutIdentifier)
+        collectionView.register(factory.cellClass(from: viewModel.layoutIdentifier), forSupplementaryViewOfKind: kind, withReuseIdentifier: name)
+        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: name, for: indexPath)
+        factory.configureCell(cell, with: viewModel)
+        return cell
+    }
 }

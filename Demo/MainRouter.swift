@@ -18,7 +18,7 @@ class MainRouter: Router {
     public func execute(_ route: Route, from source: Scene?) {
         switch route {
         case let route as NavigationRoute:
-            if let viewController = factory.viewController(from: route.viewModel.layoutIdentifier) as? UIViewController & WithViewModel,
+            if let viewController = factory.viewController(from: route.viewModel.layoutIdentifier),
                 let source = source
             {
                 viewController.configure(with: route.viewModel)
@@ -45,7 +45,7 @@ class MainRouter: Router {
         let viewControllers = [ScheduleViewModel(), RxScheduleViewModel()]
             .compactMap { (viewModel: ViewModel) -> UIViewController? in
                 let root = factory.viewController(from: viewModel.layoutIdentifier)
-                (root as? WithViewModel)?.configure(with: viewModel)
+                root?.configure(with: viewModel)
                 return root
         }
         let root = UITabBarController()

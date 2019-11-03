@@ -9,25 +9,33 @@
 import Foundation
 
 public class Section {
-    ///TODO implement supplementary items
-    public class Supplementary {
-        private var items: [Int: [String: [ViewModel]]] = [:]
-        init() {
-            
+    public struct Supplementary {
+        
+        typealias KindMap = [String: ViewModel]
+        
+        internal var items: [Int: KindMap] = [:]
+        
+        mutating public func set(_ viewModel: ViewModel, withKind kind: String, atIndex index: Int) {
+            var kindMap = self.items[index] ?? [:]
+            kindMap[kind] =  viewModel
+            self.items[index] = kindMap
+        }
+        
+        public func item(atIndex index: Int, forKind kind: String) -> ViewModel? {
+            return items[index]?[kind]
         }
     }
     public var id: String
-    public var header: ViewModel?
-    public var footer: ViewModel?
     public var items: [ViewModel]
+    public var supplementary: Supplementary
+
     public init(
         id: String = "",
         items: [ViewModel],
-        header: ViewModel? = nil,
-        footer: ViewModel? = nil) {
+        supplementary: Supplementary? = nil) {
         self.id = id
         self.items = items
-        self.header = header
-        self.footer = footer
+        let supplementary = supplementary ?? Supplementary()
+        self.supplementary = supplementary
     }
 }

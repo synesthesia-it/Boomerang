@@ -34,7 +34,7 @@ class MainCollectionViewCellFactory: CollectionViewCellFactory {
         return ContentCollectionViewCell.self
     }
     
-    func configureCell(_ cell: UICollectionViewCell, with viewModel: ViewModel) {
+    func configureCell(_ cell: UICollectionReusableView, with viewModel: ViewModel) {
         guard let cell = cell as? ContentCollectionViewCell else { return }
         if cell.internalView == nil {
             cell.internalView = viewFactory.view(from: viewModel.layoutIdentifier)
