@@ -7,10 +7,12 @@
 //
 
 import Foundation
-import Boomerang
 import RxCocoa
 import RxSwift
 import RxDataSources
+#if !COCOAPODS
+import Boomerang
+#endif
 
 public protocol RxViewModel: ViewModel {
     var disposeBag: DisposeBag { get }

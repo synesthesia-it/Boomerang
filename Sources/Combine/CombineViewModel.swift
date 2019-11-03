@@ -7,8 +7,10 @@
 //
 
 import Foundation
-import Boomerang
 import Combine
+#if !COCOAPODS
+import Boomerang
+#endif
 
 public protocol CombineViewModel: ViewModel {
     var cancellables: [AnyCancellable] { get set }

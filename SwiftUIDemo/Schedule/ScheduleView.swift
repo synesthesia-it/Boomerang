@@ -16,7 +16,9 @@ struct ScheduleView: View {
     @ObservedObject var viewModel: ScheduleViewModel
     var body: some View {
         
-        List.init(viewModel.sections.flatMap { $0.items.map { IdentifiableViewModel(viewModel: $0)} }) {
+        List(viewModel
+            .sections
+            .flatMap { $0.items.map { IdentifiableViewModel(viewModel: $0)} }) {
             self.factory.view(from: $0)
         }
          .onAppear { self.viewModel.reload() }

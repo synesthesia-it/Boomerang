@@ -8,7 +8,9 @@
 
 import Foundation
 import Combine
+#if !COCOAPODS
 import Boomerang
+#endif
 
 public extension ViewModel where Self: ObservableObject, Self.ObjectWillChangePublisher == ObservableObjectPublisher {
     func update() {

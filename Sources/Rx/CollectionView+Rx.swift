@@ -11,9 +11,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
-//#if !COCOAPODS
+#if !COCOAPODS
 import Boomerang
-//#endif
+#endif
 
 public extension Reactive where Base: UICollectionView {
     func reloaded(by viewModel: RxListViewModel, dataSource collectionViewDataSource: CollectionViewDataSource) -> Disposable {
