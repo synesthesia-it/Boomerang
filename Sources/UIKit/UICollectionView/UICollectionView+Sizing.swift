@@ -84,7 +84,15 @@ public class UICollectionViewSizeCalculator {
                       height: base.bounds.height - base.contentInset.top - base.contentInset.top)
     }
     
-    public func calculateFixedDimension(for direction:Direction, at indexPath: IndexPath, itemsPerLine: Int) -> CGFloat {
+    public func calculateFixedDimension(for direction:Direction, at indexPath: IndexPath, itemsPerLine: Int, type: String? = nil) -> CGFloat {
+        if type == UICollectionView.elementKindSectionHeader || type == UICollectionView.elementKindSectionFooter {
+            switch direction {
+            case .vertical:
+                return collectionViewSize.width
+            case .horizontal:
+                return collectionViewSize.height
+            }
+        }
         let itemsPerLine = CGFloat(itemsPerLine)
         let insets = self.insets(in: indexPath.section)
         let itemSpacing = self.itemSpacing(in: indexPath.section)
@@ -97,12 +105,14 @@ public class UICollectionViewSizeCalculator {
         }
         return floor(value * UIScreen.main.scale)/UIScreen.main.scale
     }
+    
     private func properViewModel(at indexPath: IndexPath, for type: String?) -> ViewModel?{
         let list = self.viewModel
+        
         guard let type = type else { return list[indexPath] }
-        //TODO calculate size for supplementary view
-        return nil
-//        return list.supplementaryViewModel(at: indexPath, for: type)
+        
+        return list.sections[indexPath.section].supplementary.item(atIndex: indexPath.item, forKind: type.toSectionKind())
+
     }
     func placeholderCell (at indexPath: IndexPath, for type: String?, lockingTo size: LockingSize) -> UIView? {
        

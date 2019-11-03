@@ -93,7 +93,10 @@ open class CollectionViewDelegate: NSObject, UICollectionViewDelegateFlowLayout 
                 return (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize ?? .zero
             }
      
-            return UICollectionViewSizeCalculator(collectionView: collectionView, viewModel: self.viewModel, factory: self.cellFactory).automaticSizeForItem(at: indexPath, type: type, itemsPerLine: itemsPerLine)
+            return UICollectionViewSizeCalculator(collectionView: collectionView,
+                                                  viewModel: self.viewModel,
+                                                  factory: self.cellFactory)
+                .automaticSizeForItem(at: indexPath, type: type, itemsPerLine: itemsPerLine)
         }
         return self
     }

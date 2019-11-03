@@ -39,9 +39,9 @@ open class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     }
     
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let supplementary = viewModel
+        guard let viewModel = viewModel
             .sections[indexPath.section]
-            .supplementary.item(atIndex: indexPath.item, forKind: kind) else {
+            .supplementary.item(atIndex: indexPath.item, forKind: kind.toSectionKind()) else {
                 collectionView.register(factory.cellClass(from: nil), forSupplementaryViewOfKind: kind, withReuseIdentifier: factory.defaultCellIdentifier)
                 return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: factory.defaultCellIdentifier, for: indexPath)
         }
@@ -50,5 +50,22 @@ open class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: name, for: indexPath)
         factory.configureCell(cell, with: viewModel)
         return cell
+    }
+}
+
+extension String {
+    func toSectionKind() -> String {
+        switch self {
+        case  UICollectionView.elementKindSectionHeader: return Section.Supplementary.header
+        case UICollectionView.elementKindSectionFooter:  return Section.Supplementary.footer
+        default: return self
+        }
+    }
+    func toCollectionViewKind() -> String {
+        switch self {
+        case Section.Supplementary.header: return UICollectionView.elementKindSectionHeader
+        case Section.Supplementary.footer: return UICollectionView.elementKindSectionFooter
+        default: return self
+        }
     }
 }

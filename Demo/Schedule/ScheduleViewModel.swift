@@ -18,13 +18,13 @@ class ScheduleViewModel: ViewModel, ListViewModel, NavigationViewModel {
     var onUpdate: () -> () = {}
     var sections: [Section] = [] {
         didSet {
-                onUpdate()
+            onUpdate()
         }
     }
     var onNavigation: (Route) -> () = { _ in }
     
     let layoutIdentifier: LayoutIdentifier
-
+    
     var downloadTask: Task?
     
     init(identifier: SceneIdentifier = .schedule) {
@@ -35,7 +35,11 @@ class ScheduleViewModel: ViewModel, ListViewModel, NavigationViewModel {
         downloadTask = URLSession.shared.getEntity([Episode].self, from: .schedule) {[weak self] result in
             switch result {
             case .success(let episodes):
-                self?.sections = [Section(id: "Schedule", items: episodes.map { ShowViewModel(episode: $0)})]
+                self?.sections = [Section(id: "Schedule", 
+                                          items: episodes.map { ShowViewModel(episode: $0)},
+                                          header: HeaderViewModel(title: "Tonight's schedule"),
+                                          footer: HeaderViewModel(title: "Thank you for watching")
+                    )]
             case .failure(let error):
                 print(error)
             }

@@ -6,6 +6,20 @@
 	objectVersion = 52;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		70C921A4236F543A00302A29 /* SwiftLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 70C921A5236F543A00302A29 /* Build configuration list for PBXAggregateTarget "SwiftLint" */;
+			buildPhases = (
+				70C921A8236F544100302A29 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = SwiftLint;
+			productName = SwiftLint;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		7059AB50236C8DC00005A189 /* RxBoomerang.h in Headers */ = {isa = PBXBuildFile; fileRef = 7059AB4E236C8DC00005A189 /* RxBoomerang.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7059AB53236C8DC00005A189 /* RxBoomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7059AB4C236C8DC00005A189 /* RxBoomerang.framework */; };
@@ -46,6 +60,9 @@
 		70C92194236EF93200302A29 /* Boomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA6D8E2235F9D2F00EF4A60 /* Boomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		70C92197236EF93200302A29 /* CombineBoomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7059AB91236D76CF0005A189 /* CombineBoomerang.framework */; };
 		70C92198236EF93200302A29 /* CombineBoomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7059AB91236D76CF0005A189 /* CombineBoomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		70C9219F236F4C9200302A29 /* HeaderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C9219E236F4C9200302A29 /* HeaderItemView.swift */; };
+		70C921A1236F4C9B00302A29 /* HeaderItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70C921A0236F4C9B00302A29 /* HeaderItemView.xib */; };
+		70C921A3236F4D3400302A29 /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C921A2236F4D3400302A29 /* HeaderViewModel.swift */; };
 		70CBE1D6236EC84F00F4221A /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CBE1D5236EC84F00F4221A /* ScheduleView.swift */; };
 		70CBE1D8236EC85600F4221A /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CBE1D7236EC85600F4221A /* ScheduleViewModel.swift */; };
 		70CBE1DB236EC8DC00F4221A /* ShowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CBE1DA236EC8DC00F4221A /* ShowViewModel.swift */; };
@@ -248,6 +265,9 @@
 		70C92178236EF83E00302A29 /* SwiftUIViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewFactory.swift; sourceTree = "<group>"; };
 		70C92183236EF8D400302A29 /* SwiftUIBoomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIBoomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70C92185236EF8D400302A29 /* SwiftUIBoomerang.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftUIBoomerang.h; sourceTree = "<group>"; };
+		70C9219E236F4C9200302A29 /* HeaderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderItemView.swift; sourceTree = "<group>"; };
+		70C921A0236F4C9B00302A29 /* HeaderItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderItemView.xib; sourceTree = "<group>"; };
+		70C921A2236F4D3400302A29 /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
 		70CBE1D3236EC78200F4221A /* SwiftUIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewModel.swift; sourceTree = "<group>"; };
 		70CBE1D5236EC84F00F4221A /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		70CBE1D7236EC85600F4221A /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
@@ -418,6 +438,16 @@
 			path = SwiftUI;
 			sourceTree = "<group>";
 		};
+		70C9219D236F4C7E00302A29 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				70C9219E236F4C9200302A29 /* HeaderItemView.swift */,
+				70C921A2236F4D3400302A29 /* HeaderViewModel.swift */,
+				70C921A0236F4C9B00302A29 /* HeaderItemView.xib */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 		70CBE1D9236EC8C400F4221A /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
@@ -530,6 +560,7 @@
 		7BA6D8AE235F89AD00EF4A60 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				70C9219D236F4C7E00302A29 /* Header */,
 				7BA6D8AF235F89AD00EF4A60 /* AppDelegate.swift */,
 				70DFCA1A2361DB89004B49D6 /* MainRouter.swift */,
 				7BA8F4B0235FA0B200027DE5 /* Factory */,
@@ -842,6 +873,9 @@
 					70C92182236EF8D400302A29 = {
 						CreatedOnToolsVersion = 11.2;
 					};
+					70C921A4236F543A00302A29 = {
+						CreatedOnToolsVersion = 11.2;
+					};
 					7BA6D8AB235F89AD00EF4A60 = {
 						CreatedOnToolsVersion = 11.1;
 					};
@@ -878,6 +912,7 @@
 				7059AB4B236C8DC00005A189 /* RxBoomerang */,
 				7059AB90236D76CF0005A189 /* CombineBoomerang */,
 				70C92182236EF8D400302A29 /* SwiftUIBoomerang */,
+				70C921A4236F543A00302A29 /* SwiftLint */,
 			);
 		};
 /* End PBXProject section */
@@ -920,6 +955,7 @@
 			files = (
 				7BA6D8BC235F89AF00EF4A60 /* LaunchScreen.storyboard in Resources */,
 				70DFCA262361F2CC004B49D6 /* ShowDetailViewController.xib in Resources */,
+				70C921A1236F4C9B00302A29 /* HeaderItemView.xib in Resources */,
 				7BA6D8B9235F89AF00EF4A60 /* Assets.xcassets in Resources */,
 				7BA6D8D8235F917E00EF4A60 /* ShowItemView.xib in Resources */,
 				70DFCA152361D350004B49D6 /* ScheduleViewController.xib in Resources */,
@@ -941,6 +977,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		70C921A8236F544100302A29 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7059AB48236C8DC00005A189 /* Sources */ = {
@@ -1003,9 +1059,11 @@
 				70DFCA1B2361DB89004B49D6 /* MainRouter.swift in Sources */,
 				7BA6D8D4235F8AFE00EF4A60 /* ScheduleViewModel.swift in Sources */,
 				70DFCA132361D073004B49D6 /* RESTDataSource.swift in Sources */,
+				70C9219F236F4C9200302A29 /* HeaderItemView.swift in Sources */,
 				7BA8F4C0235FAB8A00027DE5 /* ViewControllerFactory.swift in Sources */,
 				7059AB87236CD6C10005A189 /* RESTDataSource+Rx.swift in Sources */,
 				70DFCA1D2361E783004B49D6 /* ImageDataSource.swift in Sources */,
+				70C921A3236F4D3400302A29 /* HeaderViewModel.swift in Sources */,
 				70DFCA212361F2A3004B49D6 /* ShowDetailViewController.swift in Sources */,
 				7059AB64236C979D0005A189 /* RxScheduleViewModel.swift in Sources */,
 				70DFCA0C23618EEF004B49D6 /* Show.swift in Sources */,
@@ -1324,6 +1382,22 @@
 			};
 			name = Release;
 		};
+		70C921A6236F543A00302A29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		70C921A7236F543A00302A29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		7BA6D8C9235F89AF00EF4A60 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1605,6 +1679,15 @@
 			buildConfigurations = (
 				70C9218D236EF8D400302A29 /* Debug */,
 				70C9218E236EF8D400302A29 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		70C921A5236F543A00302A29 /* Build configuration list for PBXAggregateTarget "SwiftLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				70C921A6236F543A00302A29 /* Debug */,
+				70C921A7236F543A00302A29 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -9,8 +9,10 @@
 import Foundation
 
 public class Section {
+    
     public struct Supplementary {
-        
+        static let header = "internal_header_type"
+        static let footer = "internal_footer_type"
         typealias KindMap = [String: ViewModel]
         
         internal var items: [Int: KindMap] = [:]
@@ -20,7 +22,12 @@ public class Section {
             kindMap[kind] =  viewModel
             self.items[index] = kindMap
         }
-        
+        mutating public func set(header viewModel: ViewModel) {
+            self.set(viewModel, withKind: Section.Supplementary.header, atIndex: 0)
+        }
+        mutating public func set(footer viewModel: ViewModel) {
+            self.set(viewModel, withKind: Section.Supplementary.footer, atIndex: 0)
+        }
         public func item(atIndex index: Int, forKind kind: String) -> ViewModel? {
             return items[index]?[kind]
         }
@@ -31,11 +38,19 @@ public class Section {
 
     public init(
         id: String = "",
-        items: [ViewModel],
+        items: [ViewModel] = [],
+        header: ViewModel? = nil,
+        footer: ViewModel? = nil,
         supplementary: Supplementary? = nil) {
         self.id = id
         self.items = items
-        let supplementary = supplementary ?? Supplementary()
+        var supplementary = supplementary ?? Supplementary()
+        if let header = header {
+            supplementary.set(header: header)
+        }
+        if let footer = footer {
+            supplementary.set(footer: footer)
+        }
         self.supplementary = supplementary
     }
 }

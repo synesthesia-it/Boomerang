@@ -11,19 +11,19 @@ import RxSwift
 import RxCocoa
 import Boomerang
 import UIKit
+
 class ShowViewModel: ViewModel {
     
     let layoutIdentifier: LayoutIdentifier
     var uniqueIdentifier: UniqueIdentifier
     var title: String
     let show: Show
-    var uuid: String = UUID().uuidString
     let img: Observable<UIImage?>
     init(episode: Episode, identifier: ViewIdentifier = .show) {
         self.layoutIdentifier = identifier
         self.title = episode.name
         self.show = episode.show
-        self.uniqueIdentifier = self.title + "_\(show.id)"
+        self.uniqueIdentifier = self.title + "_\(episode.show.id)"
         if let img = episode.show.image?.medium {
             self.img = URLSession.shared.rx.data(request: URLRequest(url: img))
                 .map { UIImage(data: $0) }
@@ -31,6 +31,5 @@ class ShowViewModel: ViewModel {
         } else {
             self.img = .just(UIImage())
         }
-        
     }
 }

@@ -11,7 +11,7 @@ import Boomerang
 
 enum ViewIdentifier: String, LayoutIdentifier {
     case show
-    
+    case header
     var identifierString: String {
         return self.rawValue
     }

@@ -44,13 +44,17 @@ class RxScheduleViewModel: ViewModel, RxListViewModel, RxNavigationViewModel {
         .disposed(by: reloadDisposeBag)
     }
     func mapEpisodes(_ episodes: [Episode]) -> [Section] {
-        return [episodes.prefix(3),
-                episodes.dropFirst(3)]
+        let count = 10
+        return [episodes.prefix(count),
+                episodes.dropFirst(count)]
             .enumerated()
             .map {
-                Section(id: "Schedule_\($0.offset)", items:
-                    $0.element
-                        .map { ShowViewModel(episode: $0)})
+                Section(id: "Schedule_\($0.offset)",
+                    items: $0.element.map { ShowViewModel(episode: $0)},
+                    header: HeaderViewModel(title: "Tonight's schedule \($0.offset)"),
+                    footer: HeaderViewModel(title: "Thanks! \($0.offset)")
+                    
+                )
         }
     }
     func selectItem(at indexPath: IndexPath) {

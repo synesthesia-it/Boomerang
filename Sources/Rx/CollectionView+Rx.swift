@@ -18,9 +18,14 @@ import Boomerang
 public extension Reactive where Base: UICollectionView {
     func reloaded(by viewModel: RxListViewModel, dataSource collectionViewDataSource: CollectionViewDataSource) -> Disposable {
 
-        let reloadDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<Section, ViewModel>>(configureCell:  { (dataSource, cv, indexPath, viewModel) -> UICollectionViewCell in
+        let reloadDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<Section, ViewModel>>(
+            configureCell:  { (dataSource, cv, indexPath, viewModel) -> UICollectionViewCell in
             return collectionViewDataSource.collectionView(cv, cellForItemAt: indexPath)
+        }, configureSupplementaryView: { dataSource, cv, kind, indexPath in
+            collectionViewDataSource.collectionView(cv, viewForSupplementaryElementOfKind: kind, at: indexPath)
         })
+        
+        
             return viewModel.sectionsRelay
                        .asDriver()
                        .map { $0.map { SectionModel(model: $0, items: $0.items) }}
@@ -28,9 +33,13 @@ public extension Reactive where Base: UICollectionView {
     }
     func animated(by viewModel: RxListViewModel, dataSource collectionViewDataSource: CollectionViewDataSource) -> Disposable {
 
-        let reloadDataSource = RxCollectionViewSectionedAnimatedDataSource<AnimatableSectionModel<Section, IdentifiableViewModel>>(configureCell:  { (dataSource, cv, indexPath, viewModel) -> UICollectionViewCell in
+        let reloadDataSource = RxCollectionViewSectionedAnimatedDataSource<AnimatableSectionModel<Section, IdentifiableViewModel>>(configureCell:
+        { (dataSource, cv, indexPath, viewModel) -> UICollectionViewCell in
             return collectionViewDataSource.collectionView(cv, cellForItemAt: indexPath)
-        })
+        },
+                                                                                                                                   configureSupplementaryView: { dataSource, cv, kind, indexPath in
+                   collectionViewDataSource.collectionView(cv, viewForSupplementaryElementOfKind: kind, at: indexPath)
+               })
             return viewModel.sectionsRelay
                        .asDriver()
                 .map { $0.map { AnimatableSectionModel(model: $0, items: $0.items.map { IdentifiableViewModel(viewModel: $0)}) }}
