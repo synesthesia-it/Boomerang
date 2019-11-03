@@ -20,7 +20,7 @@ public extension ViewModel where Self: ObservableObject, Self.ObjectWillChangePu
     }
 }
 public extension ListViewModel where Self: ObservableObject, Self.ObjectWillChangePublisher == ObservableObjectPublisher {
-    var onUpdate: () -> ()  {
+    var onUpdate: () -> Void {
         get { return {[weak self] in self?.update() }}
         set {}
     }

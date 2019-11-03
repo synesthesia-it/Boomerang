@@ -23,7 +23,7 @@ public protocol RxNavigationViewModel: NavigationViewModel {
 }
 
 extension RxNavigationViewModel {
-    public var onNavigation: (Route) -> () {
+    public var onNavigation: (Route) -> Void {
         get { return {[weak self] in self?.routes.accept($0)} }
         set { }
     }
@@ -42,8 +42,8 @@ public extension RxListViewModel {
             sectionsRelay.accept(newValue)
         }
     }
-    var onUpdate: () -> () {
-        get  { return {} }
+    var onUpdate: () -> Void {
+        get { return {} }
         set { }
 //        return {[weak self] in self?.sectionsRelay.accept(self?.sections ?? []) }
     }
@@ -65,7 +65,7 @@ struct IdentifiableViewModel: IdentifiableType, Equatable {
     static func == (lhs: IdentifiableViewModel, rhs: IdentifiableViewModel) -> Bool {
         lhs.identity == rhs.identity
     }
-    
+
     var viewModel: ViewModel
     var identity: String {
         return viewModel.uniqueIdentifier.stringValue

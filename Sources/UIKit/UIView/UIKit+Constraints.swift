@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 public typealias LayoutAttribute = NSLayoutConstraint.Attribute
 public typealias LayoutFormatOptions = NSLayoutConstraint.FormatOptions
 
@@ -24,7 +23,7 @@ extension UIView {
             assertionFailure("fitInSuperview was called but view was not in a view hierarchy.")
             return []
         }
-        
+
         let applyInset: (LayoutAttribute, UIEdgeInsets) -> CGFloat = {
             switch $0 {
             case .top: return $1.top
@@ -35,9 +34,9 @@ extension UIView {
                 return 0
             }
         }
-        
+
         translatesAutoresizingMaskIntoConstraints = false
-        
+
         let attributes = [LayoutAttribute.top, .left, .right, .bottom]
         let constraints = attributes.map {
             return NSLayoutConstraint(item: self,
@@ -51,7 +50,7 @@ extension UIView {
         superview.addConstraints(constraints)
         return constraints
     }
-    
+
     func addConstraintsToPinHorizontalEdgesToSuperView(with padding: CGFloat = 0) {
         prepareForConstraints()
         self.superview!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(padding)-[view]-(padding)-|",
@@ -59,7 +58,7 @@ extension UIView {
                                                                       metrics: ["padding": padding],
                                                                       views: ["view": self]))
     }
-    
+
     func addConstraintsToPinVerticalEdgesToSuperView(with padding: CGFloat = 0) {
         prepareForConstraints()
         self.superview!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(padding)-[view]-(padding)-|",
@@ -67,7 +66,7 @@ extension UIView {
                                                                       metrics: ["padding": padding],
                                                                       views: ["view": self]))
     }
-    
+
     func addConstraintsToCenterVertically() {
         prepareForConstraints()
         self.superview!.addConstraint(NSLayoutConstraint(item: self,
@@ -77,7 +76,7 @@ extension UIView {
                                                          attribute: .centerY,
                                                          multiplier: 1.0, constant: 0))
     }
-    
+
     func addConstraintsToCenterHorizontally() {
         prepareForConstraints()
         self.superview!.addConstraint(NSLayoutConstraint(item: self,
@@ -87,7 +86,7 @@ extension UIView {
                                                          attribute: .centerX,
                                                          multiplier: 1.0, constant: 0))
     }
-    
+
     func addConstraintsToPinWidthToSuperview() {
         prepareForConstraints()
         self.superview!.addConstraint(NSLayoutConstraint(item: self,
@@ -97,7 +96,7 @@ extension UIView {
                                                          attribute: .width,
                                                          multiplier: 1.0, constant: 0))
     }
-    
+
     func addConstraintsToPinHeightToSuperview() {
         prepareForConstraints()
         self.superview!.addConstraint(NSLayoutConstraint(item: self,
@@ -116,7 +115,7 @@ extension UIView {
                                             toItem: self.superview!,
                                             attribute: .leading,
                                             multiplier: 1, constant: constant)
-        
+
         self.superview!.addConstraint(constraint)
         return constraint
     }
@@ -204,18 +203,18 @@ extension UIView {
         self.superview!.addConstraint(constraint)
         return constraint
     }
-    
+
     func addConstraintsToFillSuperview(withPadding padding: CGFloat = 0) {
         prepareForConstraints()
         addConstraintsToPinHorizontalEdgesToSuperView(with: padding)
         addConstraintsToPinVerticalEdgesToSuperView(with: padding)
     }
-    
+
     private func prepareForConstraints() {
         self.translatesAutoresizingMaskIntoConstraints = false
         if superview == nil {
             assert(false, "You need to have a superview before you can add contraints")
         }
     }
-    
+
 }

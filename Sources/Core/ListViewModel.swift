@@ -10,7 +10,7 @@ import Foundation
 
 public protocol ListViewModel: ViewModel {
     var sections: [Section] { get }
-    var onUpdate: () -> () { get set }
+    var onUpdate: () -> Void { get set }
     func reload()
     func selectItem(at indexPath: IndexPath)
 }
@@ -26,4 +26,3 @@ public extension ListViewModel {
         }
     }
 }
-

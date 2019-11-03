@@ -13,20 +13,20 @@ import Boomerang
 enum SceneIdentifier: String, LayoutIdentifier {
     case schedule
     case showDetail
-    
+
     var identifierString: String {
         switch self {
-            default: return rawValue
+        default: return rawValue
         }
     }
 }
 
 class MainViewControllerFactory: ViewControllerFactory {
-    
+
     func name(from itemIdentifier: LayoutIdentifier) -> String {
-        let id = itemIdentifier.identifierString
-        return id.prefix(1).uppercased() + id.dropFirst() + "ViewController"
-        
+        let identifier = itemIdentifier.identifierString
+        return identifier.prefix(1).uppercased() + identifier.dropFirst() + "ViewController"
+
     }
     func `class`(from itemIdentifier: LayoutIdentifier) -> UIViewController.Type? {
         guard let info = Bundle.main.infoDictionary,
@@ -35,12 +35,12 @@ class MainViewControllerFactory: ViewControllerFactory {
         return Bundle.main.classNamed([bundleName, className].joined(separator: ".")) as? UIViewController.Type
     }
     func viewController(from itemIdentifier: LayoutIdentifier) -> (UIViewController & WithViewModel)? {
-        
-        guard let viewControllerClass = `class`(from: itemIdentifier) else { return nil }
-        
-        return viewControllerClass.init(nibName: name(from: itemIdentifier), bundle: nil) as? (UIViewController & WithViewModel)
+
+        guard let type = `class`(from: itemIdentifier) else { return nil }
+
+        return type.init(nibName: name(from: itemIdentifier), bundle: nil) as? (UIViewController & WithViewModel)
     }
-    
+
     func viewController(with viewModel: ViewModel) -> (UIViewController & WithViewModel)? {
         guard let viewController = self.viewController(from: viewModel.layoutIdentifier)  else {
             return nil

@@ -13,18 +13,21 @@ protocol Task {
 }
 
 protocol RESTDataSource {
-    func getEntity<CodableResult: Codable>(_ entityType: CodableResult.Type, from api: TVMaze, completionHandler: @escaping (Result<CodableResult,Error>) -> ()  ) -> Task
+    func getEntity<CodableResult: Codable>(_ entityType: CodableResult.Type,
+                                           from api: TVMaze,
+                                           completionHandler: @escaping (Result<CodableResult, Error>) -> Void  )
+        -> Task
 }
 
 extension URLSessionDataTask: Task {}
 extension URLSession {
-    
+
     func getEntity<CodableResult: Codable>(
         _ entityType: CodableResult.Type,
         from api: TVMaze,
-        completionHandler: @escaping (Result<CodableResult,Error>) -> ()  ) -> Task {
+        completionHandler: @escaping (Result<CodableResult, Error>) -> Void  ) -> Task {
         let decoder: JSONDecoder = JSONDecoder()
-        let task = dataTask(with: api.url) { data, response, apiError in
+        let task = dataTask(with: api.url) { data, _, apiError in
             if let error = apiError {
                 completionHandler(.failure(error))
                 return

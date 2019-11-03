@@ -19,8 +19,7 @@ class MainRouter: Router {
         switch route {
         case let route as NavigationRoute:
             if let viewController = factory.viewController(from: route.viewModel.layoutIdentifier),
-                let source = source
-            {
+                let source = source {
                 viewController.configure(with: route.viewModel)
                 if let navigation = source.navigationController {
                     self.push(viewController: viewController, from: navigation)
@@ -28,12 +27,11 @@ class MainRouter: Router {
                     self.present(viewController: viewController, from: source)
                 }
             }
-            
-            
+
         default: break
         }
     }
-    
+
     private func push(viewController: UIViewController, from navigationController: UINavigationController) {
         navigationController.pushViewController(viewController, animated: true)
     }
@@ -41,7 +39,7 @@ class MainRouter: Router {
         source.present(viewController, animated: animated, completion: nil)
     }
     func restart() {
-        
+
         let viewControllers = [ScheduleViewModel(), RxScheduleViewModel()]
             .compactMap { (viewModel: ViewModel) -> UIViewController? in
                 let root = factory.viewController(from: viewModel.layoutIdentifier)

@@ -11,11 +11,11 @@ import UIKit
 import Boomerang
 
 class ShowDetailViewController: UIViewController, WithViewModel {
-    
+
         @IBOutlet weak var titleLabel: UILabel!
-    
+
     var viewModel: ShowDetailViewModel?
-    
+
     func configure(with viewModel: ViewModel) {
         guard let viewModel = viewModel as? ShowDetailViewModel else {
             return
@@ -28,5 +28,4 @@ class ShowDetailViewController: UIViewController, WithViewModel {
         self.titleLabel.text = viewModel?.title ?? ""
     }
 
-    
 }

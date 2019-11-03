@@ -20,7 +20,7 @@ struct ShowListView: View {
 //                .background(Color(.blue))
 //                .mask(Circle())
         }
-            
+
 //            Text(viewModel.title)
 //            .onAppear { self.viewModel.reload() }
     }
@@ -30,4 +30,3 @@ struct ShowListView_Previews: PreviewProvider {
         ShowListView(viewModel: ShowViewModel.demo())
     }
 }
-

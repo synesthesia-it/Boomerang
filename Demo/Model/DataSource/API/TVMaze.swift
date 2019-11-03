@@ -10,20 +10,18 @@ import Foundation
 
 enum TVMaze {
     case schedule
-    
+
     var baseURL: URL {
         return URL(string: "http://api.tvmaze.com")!
     }
-    
+
     var path: String {
         switch self {
         case .schedule: return "schedule"
         }
     }
-    
+
     var url: URL {
         return baseURL.appendingPathComponent(path)
     }
 }
-
-

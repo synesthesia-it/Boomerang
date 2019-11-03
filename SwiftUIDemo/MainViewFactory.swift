@@ -13,7 +13,7 @@ import SwiftUIBoomerang
 import CombineBoomerang
 enum ViewIdentifier: String, LayoutIdentifier {
     case show
-    
+
     var identifierString: String {
         return self.rawValue
     }
@@ -21,13 +21,13 @@ enum ViewIdentifier: String, LayoutIdentifier {
 
 class MainViewFactory: SwiftUIViewFactory {
     func view(from wrapper: IdentifiableViewModel) -> AnyView {
-        
+
         switch wrapper.viewModel {
         case let viewModel as ShowViewModel: return AnyView(ShowListView(viewModel: viewModel))
         default: return AnyView(Text(""))
         }
     }
-    
+
 }
 //class MainViewFactory: ViewFactory {
 //    func view(from itemIdentifier: LayoutIdentifier) -> UIView? {
@@ -46,4 +46,3 @@ class MainViewFactory: SwiftUIViewFactory {
 //        return id.prefix(1).uppercased() + id.dropFirst() + "ItemView"
 //    }
 //}
-

@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol NavigationViewModel: ViewModel {
-    var onNavigation: (Route) -> () { get set }
+    var onNavigation: (Route) -> Void { get set }
 }

@@ -18,11 +18,11 @@ public protocol ContentCollectionViewCellType: NSObjectProtocol, WithViewModel {
 }
 
 public class ContentCollectionViewCell: UICollectionViewCell, ContentCollectionViewCellType {
-    
+
     public func configure(with viewModel: ViewModel) {
         (self.internalView as? WithViewModel)?.configure(with: viewModel)
     }
-    
+
     public weak var internalView: UIView? {
         didSet {
             guard let view = internalView else { return }
@@ -37,7 +37,7 @@ public class ContentCollectionViewCell: UICollectionViewCell, ContentCollectionV
         super.apply(layoutAttributes)
         (internalView as? CollectionViewCellContained)?.apply(layoutAttributes)
     }
-    
+
     open override var canBecomeFocused: Bool {
         return internalView?.canBecomeFocused ?? super.canBecomeFocused
     }
@@ -45,8 +45,7 @@ public class ContentCollectionViewCell: UICollectionViewCell, ContentCollectionV
         return internalView?.preferredFocusEnvironments ?? super.preferredFocusEnvironments
     }
     open override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-        return internalView?.didUpdateFocus(in:context, with: coordinator) ?? super.didUpdateFocus(in: context, with: coordinator)
+        return internalView?.didUpdateFocus(in: context, with: coordinator) ?? super.didUpdateFocus(in: context, with: coordinator)
     }
-    
-    
+
 }

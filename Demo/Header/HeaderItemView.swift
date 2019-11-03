@@ -10,11 +10,9 @@ import Foundation
 import UIKit
 import Boomerang
 
-
-
 class HeaderItemView: UIView, WithViewModel {
     @IBOutlet weak var titleLabel: UILabel?
-    
+
     func configure(with viewModel: ViewModel) {
         guard let viewModel = viewModel as? HeaderViewModel else { return }
         self.titleLabel?.text = viewModel.title

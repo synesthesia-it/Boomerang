@@ -16,28 +16,28 @@ open class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
         self.viewModel = viewModel
         self.factory = factory
     }
-    
+
     open func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.sections.count
     }
-    
+
     open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.sections[section].items.count
     }
-    
+
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let viewModel = self.viewModel[indexPath] else {
             collectionView.register(factory.cellClass(from: nil), forCellWithReuseIdentifier: factory.defaultCellIdentifier)
             return collectionView.dequeueReusableCell(withReuseIdentifier: factory.defaultCellIdentifier, for: indexPath)
         }
-        
+
         let name = factory.name(from: viewModel.layoutIdentifier)
         collectionView.register(factory.cellClass(from: viewModel.layoutIdentifier), forCellWithReuseIdentifier: name)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: name, for: indexPath)
         factory.configureCell(cell, with: viewModel)
         return cell
     }
-    
+
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let viewModel = viewModel
             .sections[indexPath.section]

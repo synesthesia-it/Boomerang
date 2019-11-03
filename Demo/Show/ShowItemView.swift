@@ -12,19 +12,19 @@ import RxSwift
 import RxCocoa
 
 class TestItemView: UIView, WithViewModel {
-    
+
     @IBOutlet weak var testLabel: UILabel!
-    
+
     @IBOutlet weak var posterImage: UIImageView!
-    
+
     var disposeBag = DisposeBag()
-    
+
     func configure(with viewModel: ViewModel) {
         self.disposeBag = DisposeBag()
         guard let viewModel = viewModel as? ShowViewModel else { return }
-        
+
         self.testLabel.text = viewModel.title
-        
+
         viewModel.img.asDriver(onErrorJustReturn: nil)
             .drive(posterImage.rx.image)
         .disposed(by: disposeBag)

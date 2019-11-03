@@ -13,7 +13,7 @@ import Boomerang
 enum SceneIdentifier: String, LayoutIdentifier {
     case schedule
     case showDetail
-    
+
     var identifierString: String {
         switch self {
             default: return rawValue

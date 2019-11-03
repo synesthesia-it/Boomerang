@@ -13,32 +13,32 @@ import Combine
 import Boomerang
 
 class ScheduleViewModel: CombineListViewModel, NavigationViewModel, ObservableObject {
-    
+
     var sectionsSubject: CurrentValueSubject<[Boomerang.Section], Never> = CurrentValueSubject([])
-    
+
     var cancellables: [AnyCancellable] = []
-    
+
     var objectWillChange: ObservableObjectPublisher = ObservableObjectPublisher()
-    
-    var onNavigation: (Route) -> () = { _ in }
-    
+
+    var onNavigation: (Route) -> Void = { _ in }
+
     let layoutIdentifier: LayoutIdentifier
 
     var downloadTask: Task?
-    
+
     @Published var currentSelection: IdentifiableViewModel?
-    
+
     init(identifier: SceneIdentifier = .schedule) {
         self.layoutIdentifier = identifier
     }
-    
+
     static func demo() -> ScheduleViewModel {
         let vm = ScheduleViewModel()
-       
+
         vm.sections = [Section(id: "Schedule", items: (0..<20).map { ShowViewModel.demo($0)})]
         return vm
     }
-    
+
     func reload() {
         downloadTask?.cancel()
         downloadTask = URLSession.shared.getEntity([Episode].self, from: .schedule) {[weak self] result in
@@ -51,8 +51,8 @@ class ScheduleViewModel: CombineListViewModel, NavigationViewModel, ObservableOb
         }
     }
     func selectItem(at indexPath: IndexPath) {
-        if let viewModel = self[indexPath] as? ShowViewModel {
+//        if let viewModel = self[indexPath] as? ShowViewModel {
 //            onNavigation(NavigationRoute(viewModel: ShowDetailViewModel(show: viewModel.show)))
-        }
+//        }
     }
 }

@@ -17,9 +17,9 @@ class ShowViewModel: CombineViewModel, ObservableObject {
     var uniqueIdentifier: UniqueIdentifier
     var title: String
     let show: Show
-    
+
     static func demo(_ count: Int = 1) -> ShowViewModel {
-        
+
         return ShowViewModel(title: "This is test number \(count)")
     }
     private init(title: String) {
@@ -28,11 +28,11 @@ class ShowViewModel: CombineViewModel, ObservableObject {
         self.show = Show(name: "", id: 0, image: nil, genres: [])
         self.title = title
     }
-    
+
     var id: String {
         return uniqueIdentifier.stringValue
     }
-    
+
     init(episode: Episode, identifier: ViewIdentifier = .show) {
         self.layoutIdentifier = identifier
         self.title = episode.name
@@ -45,6 +45,6 @@ class ShowViewModel: CombineViewModel, ObservableObject {
 //        } else {
 //            self.img = .just(UIImage())
 //        }
-        
+
     }
 }

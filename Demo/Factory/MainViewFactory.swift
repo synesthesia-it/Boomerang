@@ -23,15 +23,14 @@ class MainViewFactory: ViewFactory {
         .instantiate(withOwner: nil, options: nil)
         .first as? UIView
     }
-    
+
     func nib(from itemIdentifier: LayoutIdentifier) -> UINib? {
         return UINib(nibName: name(from: itemIdentifier), bundle: nil)
     }
-    
+
     func name(from itemIdentifier: LayoutIdentifier) -> String {
-        let id = itemIdentifier.identifierString
-        
-        return id.prefix(1).uppercased() + id.dropFirst() + "ItemView"
+        let identifier = itemIdentifier.identifierString
+
+        return identifier.prefix(1).uppercased() + identifier.dropFirst() + "ItemView"
     }
 }
-

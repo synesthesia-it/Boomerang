@@ -24,7 +24,7 @@ extension Reactive where Base: URLSession {
                     observer.onError(error)
                 }
             }
-            
+
             return Disposables.create {
                 task.cancel()
             }

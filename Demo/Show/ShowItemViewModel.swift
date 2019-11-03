@@ -13,7 +13,7 @@ import Boomerang
 import UIKit
 
 class ShowViewModel: ViewModel {
-    
+
     let layoutIdentifier: LayoutIdentifier
     var uniqueIdentifier: UniqueIdentifier
     var title: String

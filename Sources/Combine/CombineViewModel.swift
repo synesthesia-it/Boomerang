@@ -21,7 +21,7 @@ public protocol CombineNavigationViewModel: NavigationViewModel {
 }
 
 extension CombineNavigationViewModel {
-    public var onNavigation: (Route) -> () {
+    public var onNavigation: (Route) -> Void {
         get { return {[weak self] in self?.routes.send($0)} }
         set { }
     }

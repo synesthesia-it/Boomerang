@@ -15,12 +15,12 @@ import Boomerang
 struct ScheduleView: View {
     let factory: SwiftUIViewFactory
     @ObservedObject var viewModel: ScheduleViewModel
-    
+
     init(viewModel: ScheduleViewModel, factory: SwiftUIViewFactory = MainViewFactory()) {
         self.viewModel = viewModel
         self.factory = factory
     }
-    
+
     var body: some View {
             List(viewModel.sections,
                  factory: factory,
@@ -33,4 +33,3 @@ struct ScheduleView_Previews: PreviewProvider {
         ScheduleView(viewModel: ScheduleViewModel.demo())
     }
 }
-
