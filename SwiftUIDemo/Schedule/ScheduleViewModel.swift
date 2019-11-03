@@ -31,6 +31,14 @@ class ScheduleViewModel: CombineListViewModel, NavigationViewModel, ObservableOb
     init(identifier: SceneIdentifier = .schedule) {
         self.layoutIdentifier = identifier
     }
+    
+    static func demo() -> ScheduleViewModel {
+        let vm = ScheduleViewModel()
+       
+        vm.sections = [Section(id: "Schedule", items: (0..<20).map { ShowViewModel.demo($0)})]
+        return vm
+    }
+    
     func reload() {
         downloadTask?.cancel()
         downloadTask = URLSession.shared.getEntity([Episode].self, from: .schedule) {[weak self] result in

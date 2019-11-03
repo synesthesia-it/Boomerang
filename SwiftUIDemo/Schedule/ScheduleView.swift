@@ -30,7 +30,7 @@ struct ScheduleView: View {
 }
 struct ScheduleView_Previews: PreviewProvider {
     static var previews: some View {
-        ScheduleView(viewModel: ScheduleViewModel())
+        ScheduleView(viewModel: ScheduleViewModel.demo())
     }
 }
 
