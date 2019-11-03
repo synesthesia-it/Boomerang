@@ -8,22 +8,24 @@
 
 import Foundation
 import SwiftUI
+import SwiftUIBoomerang
 import CombineBoomerang
 import Boomerang
 
 struct ScheduleView: View {
-    let factory: SwiftUIViewFactory = SwiftUIViewFactory()
+    let factory: SwiftUIViewFactory
     @ObservedObject var viewModel: ScheduleViewModel
+    
+    init(viewModel: ScheduleViewModel, factory: SwiftUIViewFactory = MainViewFactory()) {
+        self.viewModel = viewModel
+        self.factory = factory
+    }
+    
     var body: some View {
-        
-        List(viewModel
-            .sections
-            .flatMap { $0.items.map { IdentifiableViewModel(viewModel: $0)} }) {
-            self.factory.view(from: $0)
-        }
-         .onAppear { self.viewModel.reload() }
-//        List<IdentifiableViewModel, AnyView>(viewModel.sections, factory: self.factory)
-//            .onAppear { self.viewModel.reload() }
+            List(viewModel.sections,
+                 factory: factory,
+                 selection: $viewModel.currentSelection)
+            .onAppear { self.viewModel.reload() }
     }
 }
 struct ScheduleView_Previews: PreviewProvider {

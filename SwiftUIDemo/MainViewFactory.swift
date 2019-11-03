@@ -9,6 +9,7 @@
 import SwiftUI
 import Boomerang
 import Combine
+import SwiftUIBoomerang
 import CombineBoomerang
 enum ViewIdentifier: String, LayoutIdentifier {
     case show
@@ -18,7 +19,7 @@ enum ViewIdentifier: String, LayoutIdentifier {
     }
 }
 
-class SwiftUIViewFactory {
+class MainViewFactory: SwiftUIViewFactory {
     func view(from wrapper: IdentifiableViewModel) -> AnyView {
         
         switch wrapper.viewModel {
@@ -26,6 +27,7 @@ class SwiftUIViewFactory {
         default: return AnyView(Text(""))
         }
     }
+    
 }
 //class MainViewFactory: ViewFactory {
 //    func view(from itemIdentifier: LayoutIdentifier) -> UIView? {

@@ -44,22 +44,6 @@ public extension CombineListViewModel {
 
 }
 
-extension Section: Identifiable { }
-
-public class IdentifiableViewModel: Identifiable, Equatable, Hashable {
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-    public static func == (lhs: IdentifiableViewModel, rhs: IdentifiableViewModel) -> Bool {
-        lhs.id == rhs.id
-    }
-    public init(viewModel: ViewModel) {
-        self.viewModel = viewModel
-    }
-    public let viewModel: ViewModel
-
-}
-
 //public class AnyCombineViewModel: ObservableObject {
 //    public var objectWillChange = ObservableObjectPublisher()
 //    public var viewModel: CombineViewModel

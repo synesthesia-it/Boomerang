@@ -122,7 +122,14 @@ Pod::Spec.new do |spec|
     s.framework = "Combine"
     s.framework = "SwiftUI"
   end
-
+  
+  spec.subspec 'SwiftUI' do |s|
+    s.source_files = "Sources/Combine/**/*{.swift}"
+    s.dependency "Boomerang/Combine"
+    s.ios.deployment_target = "13.0"
+    s.framework = "Combine"
+    s.framework = "SwiftUI"
+  end
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #

@@ -14,5 +14,5 @@ public typealias Scene = UIViewController
 #endif
 
 public protocol ViewControllerFactory {
-    func viewController(from itemIdentifier: LayoutIdentifier) -> UIViewController?
+    func viewController(from itemIdentifier: LayoutIdentifier) -> (UIViewController & WithViewModel)?
 }

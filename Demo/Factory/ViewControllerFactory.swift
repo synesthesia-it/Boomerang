@@ -34,16 +34,18 @@ class MainViewControllerFactory: ViewControllerFactory {
         let className = name(from: itemIdentifier)
         return Bundle.main.classNamed([bundleName, className].joined(separator: ".")) as? UIViewController.Type
     }
-    func viewController(from itemIdentifier: LayoutIdentifier) -> UIViewController? {
+    func viewController(from itemIdentifier: LayoutIdentifier) -> (UIViewController & WithViewModel)? {
         
         guard let viewControllerClass = `class`(from: itemIdentifier) else { return nil }
         
-        return viewControllerClass.init(nibName: name(from: itemIdentifier), bundle: nil)
+        return viewControllerClass.init(nibName: name(from: itemIdentifier), bundle: nil) as? (UIViewController & WithViewModel)
     }
     
-    func viewController(with viewModel: ViewModel) -> UIViewController? {
-        let viewController = self.viewController(from: viewModel.layoutIdentifier)
-        (viewController as? WithViewModel)?.configure(with: viewModel)
+    func viewController(with viewModel: ViewModel) -> (UIViewController & WithViewModel)? {
+        guard let viewController = self.viewController(from: viewModel.layoutIdentifier)  else {
+            return nil
+        }
+        viewController.configure(with: viewModel)
         return viewController
     }
 }

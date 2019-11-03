@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUIBoomerang
 import CombineBoomerang
 import Combine
 import Boomerang
@@ -24,6 +25,8 @@ class ScheduleViewModel: CombineListViewModel, NavigationViewModel, ObservableOb
     let layoutIdentifier: LayoutIdentifier
 
     var downloadTask: Task?
+    
+    @Published var currentSelection: IdentifiableViewModel?
     
     init(identifier: SceneIdentifier = .schedule) {
         self.layoutIdentifier = identifier
