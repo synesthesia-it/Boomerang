@@ -102,7 +102,7 @@ open class TableViewDataSource: NSObject, UITableViewDataSource{
 extension Boomerang where Base: UITableView{
     var internalDataSource: TableViewDataSource? {
         get {
-            return objc_getAssociatedObject(base, &AssociatedKeys.tableViewDataSource) as? TableViewDataSource
+            return (objc_getAssociatedObject(base, &AssociatedKeys.tableViewDataSource) as? TableViewDataSource) ?? (base.dataSource as? TableViewDataSource)
         }
         set {
             objc_setAssociatedObject(base, &AssociatedKeys.tableViewDataSource, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
@@ -111,7 +111,7 @@ extension Boomerang where Base: UITableView{
     
     var internalDelegate: TableViewDelegate? {
         get {
-            return objc_getAssociatedObject(base, &AssociatedKeys.tableViewDelegate) as? TableViewDelegate
+            return (objc_getAssociatedObject(base, &AssociatedKeys.tableViewDelegate) as? TableViewDelegate) ?? (base.delegate as? TableViewDelegate)
         }
         set {
             objc_setAssociatedObject(base, &AssociatedKeys.tableViewDelegate, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)

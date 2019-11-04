@@ -101,7 +101,7 @@ open class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
 extension Boomerang where Base: UICollectionView {
     var internalDataSource: CollectionViewDataSource? {
         get {
-            return objc_getAssociatedObject(base, &AssociatedKeys.collectionViewDataSource) as? CollectionViewDataSource
+            return (objc_getAssociatedObject(base, &AssociatedKeys.collectionViewDataSource) as? CollectionViewDataSource) ?? (base.dataSource as? CollectionViewDataSource )
         }
         set {
             objc_setAssociatedObject(base, &AssociatedKeys.collectionViewDataSource, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
@@ -109,7 +109,7 @@ extension Boomerang where Base: UICollectionView {
     }
     var internalDelegate: CollectionViewDelegate? {
         get {
-            return objc_getAssociatedObject(base, &AssociatedKeys.collectionViewDelegate) as? CollectionViewDelegate
+            return objc_getAssociatedObject(base, &AssociatedKeys.collectionViewDelegate) as? CollectionViewDelegate ?? (base.delegate as? CollectionViewDelegate )
         }
         set {
             objc_setAssociatedObject(base, &AssociatedKeys.collectionViewDelegate, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
