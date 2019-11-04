@@ -35,7 +35,12 @@ public class Section {
     public var id: String
     public var items: [ViewModel]
     public var supplementary: Supplementary
-
+    public var header: ViewModel? {
+        return supplementary.item(atIndex: 0, forKind: Supplementary.header)
+    }
+    public var footer: ViewModel? {
+        return supplementary.item(atIndex: 0, forKind: Supplementary.footer)
+    }
     public init(
         id: String = "",
         items: [ViewModel] = [],

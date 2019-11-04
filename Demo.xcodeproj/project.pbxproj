@@ -55,7 +55,6 @@
 		70C9218F236EF8FD00302A29 /* SwiftUIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CBE1D3236EC78200F4221A /* SwiftUIViewModel.swift */; };
 		70C92190236EF8FD00302A29 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C92175236EF7EE00302A29 /* List.swift */; };
 		70C92191236EF8FD00302A29 /* SwiftUIViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C92178236EF83E00302A29 /* SwiftUIViewFactory.swift */; };
-		70C92192236EF8FD00302A29 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7059AB71236CB4760005A189 /* ContentView.swift */; };
 		70C92193236EF93200302A29 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA6D8E2235F9D2F00EF4A60 /* Boomerang.framework */; };
 		70C92194236EF93200302A29 /* Boomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA6D8E2235F9D2F00EF4A60 /* Boomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		70C92197236EF93200302A29 /* CombineBoomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7059AB91236D76CF0005A189 /* CombineBoomerang.framework */; };
@@ -248,7 +247,6 @@
 		7059AB6B236CB4760005A189 /* SwiftUIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7059AB6D236CB4760005A189 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7059AB6F236CB4760005A189 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7059AB71236CB4760005A189 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7059AB73236CB4790005A189 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7059AB76236CB4790005A189 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7059AB79236CB4790005A189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -432,7 +430,6 @@
 				70CBE1D3236EC78200F4221A /* SwiftUIViewModel.swift */,
 				70C92175236EF7EE00302A29 /* List.swift */,
 				70C92178236EF83E00302A29 /* SwiftUIViewFactory.swift */,
-				7059AB71236CB4760005A189 /* ContentView.swift */,
 				70C92185236EF8D400302A29 /* SwiftUIBoomerang.h */,
 			);
 			path = SwiftUI;
@@ -1042,7 +1039,6 @@
 			files = (
 				70C92191236EF8FD00302A29 /* SwiftUIViewFactory.swift in Sources */,
 				70C9218F236EF8FD00302A29 /* SwiftUIViewModel.swift in Sources */,
-				70C92192236EF8FD00302A29 /* ContentView.swift in Sources */,
 				70C92190236EF8FD00302A29 /* List.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

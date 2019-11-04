@@ -35,7 +35,8 @@ class ScheduleViewModel: CombineListViewModel, NavigationViewModel, ObservableOb
     static func demo() -> ScheduleViewModel {
         let vm = ScheduleViewModel()
 
-        vm.sections = [Section(id: "Schedule", items: (0..<20).map { ShowViewModel.demo($0)})]
+        vm.sections = [Section(id: "Schedule",
+                               items: (0..<20).map { ShowViewModel.demo($0)})]
         return vm
     }
 
@@ -44,7 +45,11 @@ class ScheduleViewModel: CombineListViewModel, NavigationViewModel, ObservableOb
         downloadTask = URLSession.shared.getEntity([Episode].self, from: .schedule) {[weak self] result in
             switch result {
             case .success(let episodes):
-                self?.sections = [Section(id: "Schedule", items: episodes.map { ShowViewModel(episode: $0)})]
+                self?.sections = [Section(id: "Schedule",
+                                          items: episodes.map { ShowViewModel(episode: $0)},
+                                          header: ShowViewModel.demo(),
+                                          footer: ShowViewModel.demo(10)
+                                          )]
             case .failure(let error):
                 print(error)
             }
