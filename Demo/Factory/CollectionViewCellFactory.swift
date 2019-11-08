@@ -13,8 +13,8 @@ import Boomerang
 class MainCollectionViewCellFactory: CollectionViewCellFactory {
 
     private var viewFactory: ViewFactory
-
-    init(viewFactory: ViewFactory = MainViewFactory()) {
+    
+    init(viewFactory: ViewFactory) {
         self.viewFactory = viewFactory
     }
 

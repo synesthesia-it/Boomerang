@@ -9,10 +9,10 @@
 import Foundation
 import Boomerang
 
-struct NavigationRoute: ViewModelRoute {
-    var destination: Scene?
-    let viewModel: ViewModel
-}
+//struct NavigationRoute: ViewModelRoute {
+//    var destination: Scene?
+//    let viewModel: ViewModel
+//}
 
 class ScheduleViewModel: ViewModel, ListViewModel, NavigationViewModel {
     var onUpdate: () -> Void = {}
@@ -26,9 +26,11 @@ class ScheduleViewModel: ViewModel, ListViewModel, NavigationViewModel {
     let layoutIdentifier: LayoutIdentifier
 
     var downloadTask: Task?
-
-    init(identifier: SceneIdentifier = .schedule) {
+    let routeFactory: RouteFactory
+    init(identifier: SceneIdentifier = .schedule,
+         routeFactory: RouteFactory) {
         self.layoutIdentifier = identifier
+        self.routeFactory = routeFactory
     }
     func reload() {
         downloadTask?.cancel()
@@ -47,7 +49,7 @@ class ScheduleViewModel: ViewModel, ListViewModel, NavigationViewModel {
     }
     func selectItem(at indexPath: IndexPath) {
         if let viewModel = self[indexPath] as? ShowViewModel {
-            onNavigation(NavigationRoute(viewModel: ShowDetailViewModel(show: viewModel.show)))
+            onNavigation(routeFactory.detailRoute(show: viewModel.show))
         }
     }
 }

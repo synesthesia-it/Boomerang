@@ -21,10 +21,12 @@ class RxScheduleViewModel: ViewModel, RxListViewModel, RxNavigationViewModel {
 
     let disposeBag = DisposeBag()
     var reloadDisposeBag = DisposeBag()
-    init(identifier: SceneIdentifier = .schedule) {
+    let routeFactory: RouteFactory
+    init(identifier: SceneIdentifier = .schedule, routeFactory: RouteFactory) {
         self.layoutIdentifier = identifier
-
+        self.routeFactory = routeFactory
     }
+    
     func reload() {
         self.reloadDisposeBag = DisposeBag()
         URLSession.shared.rx
@@ -56,9 +58,10 @@ class RxScheduleViewModel: ViewModel, RxListViewModel, RxNavigationViewModel {
                 )
         }
     }
+
     func selectItem(at indexPath: IndexPath) {
         if let viewModel = self[indexPath] as? ShowViewModel {
-            onNavigation(NavigationRoute(viewModel: ShowDetailViewModel(show: viewModel.show)))
+            onNavigation(routeFactory.detailRoute(show: viewModel.show))
         }
     }
 }

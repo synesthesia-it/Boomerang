@@ -9,14 +9,14 @@
 import Foundation
 
 public class Section {
-
+    
     public struct Supplementary {
         static let header = "internal_header_type"
         static let footer = "internal_footer_type"
         typealias KindMap = [String: ViewModel]
-
+        
         internal var items: [Int: KindMap] = [:]
-
+        
         mutating public func set(_ viewModel: ViewModel, withKind kind: String, atIndex index: Int) {
             var kindMap = self.items[index] ?? [:]
             kindMap[kind] =  viewModel
@@ -41,12 +41,11 @@ public class Section {
     public var footer: ViewModel? {
         return supplementary.item(atIndex: 0, forKind: Supplementary.footer)
     }
-    public init(
-        id: String = "",
-        items: [ViewModel] = [],
-        header: ViewModel? = nil,
-        footer: ViewModel? = nil,
-        supplementary: Supplementary? = nil) {
+    public init( id: String = "",
+                 items: [ViewModel] = [],
+                 header: ViewModel? = nil,
+                 footer: ViewModel? = nil,
+                 supplementary: Supplementary? = nil) {
         self.id = id
         self.items = items
         var supplementary = supplementary ?? Supplementary()

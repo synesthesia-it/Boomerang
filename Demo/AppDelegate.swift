@@ -11,15 +11,19 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    let router = MainRouter()
-
+    let container = DependencyContainer()
+    
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
-        router.restart()
+        
+        container
+            .routeFactory
+            .restartRoute()
+            .execute(from: nil)
+        
         return true
     }
-
 }
