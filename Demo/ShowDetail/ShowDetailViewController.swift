@@ -20,13 +20,13 @@ class ShowDetailViewController: UIViewController, WithViewModel {
     }
     private let collectionViewCellFactory: CollectionViewCellFactory
     
-    init?(nibName nibNameOrNil: String?,
-          bundle nibBundleOrNil: Bundle? = nil,
+    init(nibName: String?,
+          bundle: Bundle? = nil,
           viewModel: ShowDetailViewModel,
-          collectionViewCellFactory: CollectionViewCellFactory = MainCollectionViewCellFactory()) {
+          collectionViewCellFactory: CollectionViewCellFactory) {
         self.viewModel = viewModel
         self.collectionViewCellFactory = collectionViewCellFactory
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        super.init(nibName: nibName, bundle: bundle)
         
     }
     

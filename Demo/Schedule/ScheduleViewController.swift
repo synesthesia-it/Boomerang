@@ -38,11 +38,10 @@ class ScheduleViewController: UIViewController, WithViewModel {
     var disposeBag = DisposeBag()
     private let collectionViewCellFactory: CollectionViewCellFactory
     
-    init?(nibName nibNameOrNil: String?,
+    init(nibName nibNameOrNil: String?,
           bundle nibBundleOrNil: Bundle? = nil,
-          viewModel: ViewModel,
-          collectionViewCellFactory: CollectionViewCellFactory = MainCollectionViewCellFactory()) {
-        guard let viewModel = viewModel as? ListViewModel & NavigationViewModel else { return nil }
+          viewModel: ListViewModel & NavigationViewModel,
+          collectionViewCellFactory: CollectionViewCellFactory) {
         self.viewModel = viewModel
         self.collectionViewCellFactory = collectionViewCellFactory
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)

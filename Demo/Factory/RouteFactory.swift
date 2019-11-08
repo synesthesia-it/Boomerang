@@ -12,14 +12,16 @@ import UIKit
 
 struct ModalRoute: Route {
     let createScene: () -> Scene?
-    init(viewModel: ShowDetailViewModel) {
+    init(viewModel: ShowDetailViewModel,
+         factory: ViewControllerFactory) {
         self.createScene = {
-            ShowDetailViewController(nibName: "ShowDetailViewController", viewModel: viewModel)
+            factory.showDetail(viewModel: viewModel)
         }
     }
-    init(viewModel: ScheduleViewModel) {
+    init(viewModel: ScheduleViewModel,
+         factory: ViewControllerFactory) {
         self.createScene = {
-            ScheduleViewController(nibName: "ScheduleViewController", viewModel: viewModel)
+            factory.schedule(viewModel: viewModel)
         }
     }
 }
@@ -44,45 +46,81 @@ extension ModalRoute {
 }
 
 struct RestartRoute: Route {
-    private let routeFactory: RouteFactory
+//    private let routeFactory: RouteFactory
+    let createScene: () -> Scene?
     func execute(from scene: Scene?) {
-        let classic = ScheduleViewController(nibName: "ScheduleViewController", viewModel: ScheduleViewModel(routeFactory: routeFactory))
-        let rx = ScheduleViewController(nibName: "ScheduleViewController", viewModel: RxScheduleViewModel(routeFactory: routeFactory))
-        classic?.tabBarItem.title = "Schedule"
-        rx?.tabBarItem.title = "RxSchedule"
-        let viewControllers = [classic, rx].compactMap { $0 }
        
-        let root = UITabBarController()
-        root.viewControllers = viewControllers
                //TODO Dismiss all modals
-        UIApplication.shared.delegate?.window??.rootViewController = root
+        UIApplication.shared.delegate?.window??.rootViewController = createScene()
         UIApplication.shared.delegate?.window??.makeKeyAndVisible()
     }
     
-    init(routeFactory: RouteFactory) {
-        self.routeFactory = routeFactory
+     init(viewModel: ScheduleViewModel,
+            factory: ViewControllerFactory) {
+        
+        self.createScene = {
+            
+            return factory.schedule(viewModel: viewModel)
+            
+//            let classic = ScheduleViewController(nibName: "ScheduleViewController",
+//                                                        viewModel: ScheduleViewModel(routeFactory: routeFactory),
+//                                                        collectionViewCellFactory: routeFactory.container.collectionViewCellFactory)
+//                   let rx = ScheduleViewController(nibName: "ScheduleViewController",
+//                                                   viewModel: RxScheduleViewModel(routeFactory: routeFactory),
+//                                                   collectionViewCellFactory: routeFactory.container.collectionViewCellFactory)
+//                   classic.tabBarItem.title = "Schedule"
+//                   rx.tabBarItem.title = "RxSchedule"
+//                   let viewControllers = [classic, rx].compactMap { $0 }
+                  
+//                   let root = UITabBarController()
+//                   root.viewControllers = viewControllers
+        }
     }
 }
 
 protocol RouteFactory {
-    var container: DependencyContainer { get }
+    var container: AppDependencyContainer { get }
     func restartRoute() -> Route
     func detailRoute(show: Show) -> Route
 }
 class MainRouteFactory: RouteFactory {
-    let container: DependencyContainer
+    let container: AppDependencyContainer
     
-    init(container: DependencyContainer) {
+    init(container: AppDependencyContainer) {
         self.container = container
     }
     
     func restartRoute() -> Route {
-        RestartRoute(routeFactory: container.routeFactory)
+        return RestartRoute(viewModel: ScheduleViewModel(routeFactory: self), factory: container.viewControllerFactory)
     }
     
     func detailRoute(show: Show) -> Route {
         //return AlertRoute(viewModel: ShowDetailViewModel(show: show))
-        return ModalRoute(viewModel: ShowDetailViewModel(show: show))
+        return ModalRoute(viewModel: ShowDetailViewModel(show: show), factory: container.viewControllerFactory)
         //return ModalRoute(viewModel: ScheduleViewModel())
+    }
+}
+
+
+protocol ViewControllerFactory {
+    func schedule(viewModel: ScheduleViewModel) -> UIViewController
+    func showDetail(viewModel: ShowDetailViewModel) -> UIViewController
+}
+
+class DefaultViewControllerFactory: ViewControllerFactory {
+    let container: AppDependencyContainer
+    init(container: AppDependencyContainer) {
+        self.container = container
+    }
+    func schedule(viewModel: ScheduleViewModel) -> UIViewController {
+        return ScheduleViewController(nibName: "ScheduleViewController",
+        viewModel: viewModel,
+        collectionViewCellFactory: container.collectionViewCellFactory)
+    }
+    
+    func showDetail(viewModel: ShowDetailViewModel) -> UIViewController {
+        return ShowDetailViewController(nibName: "ShowDetailViewController",
+        viewModel: viewModel,
+        collectionViewCellFactory: container.collectionViewCellFactory)
     }
 }

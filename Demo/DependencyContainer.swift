@@ -1,28 +1,41 @@
     import Foundation
     import Boomerang
     
-    class AppDependencyContainer: DependencyContainer {
-        typealias Key = Keys
+    protocol AppDependencyContainer  {
+        var routeFactory: RouteFactory { get }
+        var viewFactory: ViewFactory { get }
+        var collectionViewCellFactory: CollectionViewCellFactory { get }
+        var viewControllerFactory: ViewControllerFactory { get }
+    }
+    
+    enum DependencyContainerKeys: CaseIterable, Hashable {
+        case routeFactory
+        case collectionViewCellFactory
+        case viewFactory
+        case viewControllerFactory
+    }
+    
+    
+    class DefaultAppDependencyContainer: AppDependencyContainer, DependencyContainer {
+        typealias Key = DependencyContainerKeys
         
-        enum Keys: CaseIterable, Hashable {
-            case routeFactory
-            case collectionViewCellFactory
-            case viewFactory
-        }
+        
         
         var container: [Key: () -> Any ] = [:]
         
         var routeFactory: RouteFactory { self[.routeFactory] }
-             var viewFactory: ViewFactory { self[.viewFactory] }
-             var collectionViewCellFactory: CollectionViewCellFactory { self[.collectionViewCellFactory] }
+        var viewFactory: ViewFactory { self[.viewFactory] }
+        var viewControllerFactory: ViewControllerFactory { self[.viewControllerFactory] }
+        var collectionViewCellFactory: CollectionViewCellFactory { self[.collectionViewCellFactory] }
         
         init() {
             self.register(for: .routeFactory) { MainRouteFactory(container: self) }
             self.register(for: .viewFactory) { MainViewFactory()}
             self.register(for: .collectionViewCellFactory) { MainCollectionViewCellFactory(viewFactory: self.viewFactory) }
+            self.register(for: .viewControllerFactory) { DefaultViewControllerFactory(container: self) }
         }
         
-        subscript<T>(index: Keys) -> T {
+        subscript<T>(index: Key) -> T {
             guard let element: T = resolve(index) else {
                 fatalError("No dependency found for \(index)")
             }
@@ -31,12 +44,14 @@
     }
     
     ///Convert in Test
-    extension AppDependencyContainer {
+    extension DefaultAppDependencyContainer {
         func testAll() {
             
-            Keys.allCases.forEach {
-                //expect not nil
-                let v: Any = self[$0]!
+            DependencyContainerKeys.allCases.forEach {
+                //expect no throw
+                let v: Any = self[$0]
+                print(v)
+                
             }
         }
     }
