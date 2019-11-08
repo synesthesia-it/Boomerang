@@ -18,9 +18,7 @@
     
     class DefaultAppDependencyContainer: AppDependencyContainer, DependencyContainer {
         typealias Key = DependencyContainerKeys
-        
-        
-        
+
         var container: [Key: () -> Any ] = [:]
         
         var routeFactory: RouteFactory { self[.routeFactory] }

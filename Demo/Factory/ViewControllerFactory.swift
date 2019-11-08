@@ -13,7 +13,7 @@ import Boomerang
 enum SceneIdentifier: String, LayoutIdentifier {
     case schedule
     case showDetail
-
+    
     var identifierString: String {
         switch self {
         default: return rawValue
@@ -21,14 +21,47 @@ enum SceneIdentifier: String, LayoutIdentifier {
     }
 }
 
-class MainViewControllerFactory {
+protocol ViewControllerFactory {
+    func root() -> UIViewController
+    func schedule(viewModel: ListViewModel & NavigationViewModel) -> UIViewController
+    func showDetail(viewModel: ShowDetailViewModel) -> UIViewController
+}
 
-    func name(from layoutIdentifier: LayoutIdentifier) -> String {
+class DefaultViewControllerFactory: ViewControllerFactory {
+    let container: AppDependencyContainer
+    
+    init(container: AppDependencyContainer) {
+        self.container = container
+    }
+    
+    private func name(from layoutIdentifier: LayoutIdentifier) -> String {
         let identifier = layoutIdentifier.identifierString
         return identifier.prefix(1).uppercased() + identifier.dropFirst() + "ViewController"
     }
     
-    func viewController<ViewController: UIViewController>(with layoutIdentifier: LayoutIdentifier) -> ViewController? {
-        return ViewController(nibName: name(from: layoutIdentifier), bundle: nil)
+    func schedule(viewModel: ListViewModel & NavigationViewModel) -> UIViewController {
+        return ScheduleViewController(nibName: name(from: viewModel.layoutIdentifier),
+                                      viewModel: viewModel,
+                                      collectionViewCellFactory: container.collectionViewCellFactory)
     }
+    
+    func showDetail(viewModel: ShowDetailViewModel) -> UIViewController {
+        return ShowDetailViewController(nibName: name(from: viewModel.layoutIdentifier),
+                                        viewModel: viewModel,
+                                        collectionViewCellFactory: container.collectionViewCellFactory)
+    }
+    
+    func root() -> UIViewController {
+        let classic = self.schedule(viewModel: ScheduleViewModel(routeFactory: container.routeFactory))
+        let rx = self.schedule(viewModel: RxScheduleViewModel(routeFactory: container.routeFactory))
+        
+        classic.tabBarItem.title = "Schedule"
+        rx.tabBarItem.title = "RxSchedule"
+        let viewControllers = [classic, rx].compactMap { $0 }
+        
+        let root = UITabBarController()
+        root.viewControllers = viewControllers
+        return root
+    }
+    
 }
