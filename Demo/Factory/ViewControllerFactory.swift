@@ -52,8 +52,8 @@ class DefaultViewControllerFactory: ViewControllerFactory {
     }
     
     func root() -> UIViewController {
-        let classic = self.schedule(viewModel: ScheduleViewModel(itemViewModelFactory: container.itemViewModelFactory, routeFactory: container.routeFactory))
-        let rx = self.schedule(viewModel: RxScheduleViewModel(routeFactory: container.routeFactory))
+        let classic = self.schedule(viewModel: container.sceneViewModelFactory.schedule())
+        let rx = self.schedule(viewModel: RxScheduleViewModel(itemViewModelFactory: container.itemViewModelFactory, routeFactory: container.routeFactory))
         
         classic.tabBarItem.title = "Schedule"
         rx.tabBarItem.title = "RxSchedule"

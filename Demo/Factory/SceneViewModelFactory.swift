@@ -10,18 +10,18 @@ import Foundation
 import Boomerang
 
 protocol SceneViewModelFactory {
-    func scheduleViewModel() -> ViewModel
-    func showDetail(show: Show) -> ViewModel
+    func schedule() -> ListViewModel & NavigationViewModel
+    func showDetail(show: Show) -> ShowDetailViewModel
 }
 
 struct DefaultSceneViewModelFactory: SceneViewModelFactory {
     
     let container: AppDependencyContainer
     
-    func scheduleViewModel() -> ViewModel {
+    func schedule() -> ListViewModel & NavigationViewModel {
         return ScheduleViewModel(itemViewModelFactory: container.itemViewModelFactory, routeFactory: container.routeFactory)
     }
-    func showDetail(show: Show) -> ViewModel {
+    func showDetail(show: Show) -> ShowDetailViewModel {
         return ShowDetailViewModel(show: show)
     }
 }

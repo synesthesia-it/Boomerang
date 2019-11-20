@@ -22,8 +22,13 @@ class RxScheduleViewModel: ViewModel, RxListViewModel, RxNavigationViewModel {
     let disposeBag = DisposeBag()
     var reloadDisposeBag = DisposeBag()
     let routeFactory: RouteFactory
-    init(identifier: SceneIdentifier = .schedule, routeFactory: RouteFactory) {
+    let itemViewModelFactory: ItemViewModelFactory
+    
+    init(identifier: SceneIdentifier = .schedule,
+         itemViewModelFactory: ItemViewModelFactory,
+         routeFactory: RouteFactory) {
         self.layoutIdentifier = identifier
+        self.itemViewModelFactory = itemViewModelFactory
         self.routeFactory = routeFactory
     }
     
@@ -51,14 +56,15 @@ class RxScheduleViewModel: ViewModel, RxListViewModel, RxNavigationViewModel {
     }
     func mapEpisodes(_ episodes: [Episode]) -> [Section] {
         let count = 10
+        let factory = self.itemViewModelFactory
         return [episodes.prefix(count),
                 episodes.dropFirst(count)]
             .enumerated()
             .map {
                 Section(id: "Schedule_\($0.offset)",
-                    items: $0.element.map { ShowViewModel(episode: $0)},
-                    header: HeaderViewModel(title: "Tonight's schedule \($0.offset)"),
-                    footer: HeaderViewModel(title: "Thanks! \($0.offset)")
+                    items: $0.element.compactMap { factory.episode($0) },
+                    header: factory.header(title: "Tonight's schedule \($0.offset)"),
+                    footer: factory.header(title: "Thanks! \($0.offset)")
                     
                 )
         }
