@@ -14,11 +14,11 @@ import RxRelay
 
 class RxScheduleViewModel: ViewModel, RxListViewModel, RxNavigationViewModel {
     let routes: PublishRelay<Route> = PublishRelay()
-
+    
     let sectionsRelay: BehaviorRelay<[Section]> = BehaviorRelay(value: [])
-
+    
     let layoutIdentifier: LayoutIdentifier
-
+    
     let disposeBag = DisposeBag()
     var reloadDisposeBag = DisposeBag()
     let routeFactory: RouteFactory
@@ -37,7 +37,12 @@ class RxScheduleViewModel: ViewModel, RxListViewModel, RxNavigationViewModel {
                     .interval(.seconds(2), scheduler: MainScheduler.instance)
                     .startWith(0)
                     .map {_ in
-                        sections.first?.items.shuffle()
+                        var sections = sections
+                        if var first = sections.first {
+                            first.items.shuffle()
+                            sections[0] = first
+                            return sections
+                        }
                         return sections
                 }
         }
@@ -54,11 +59,11 @@ class RxScheduleViewModel: ViewModel, RxListViewModel, RxNavigationViewModel {
                     items: $0.element.map { ShowViewModel(episode: $0)},
                     header: HeaderViewModel(title: "Tonight's schedule \($0.offset)"),
                     footer: HeaderViewModel(title: "Thanks! \($0.offset)")
-
+                    
                 )
         }
     }
-
+    
     func selectItem(at indexPath: IndexPath) {
         if let viewModel = self[indexPath] as? ShowViewModel {
             onNavigation(routeFactory.detailRoute(show: viewModel.show))

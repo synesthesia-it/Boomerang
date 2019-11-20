@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Section {
+public struct Section {
     
     public struct Supplementary {
         static let header = "internal_header_type"

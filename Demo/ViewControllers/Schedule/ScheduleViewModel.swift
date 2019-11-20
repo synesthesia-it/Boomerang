@@ -14,7 +14,7 @@ import Boomerang
 //    let viewModel: ViewModel
 //}
 
-class ScheduleViewModel: ViewModel, ListViewModel, NavigationViewModel {
+class ScheduleViewModel: ListViewModel, NavigationViewModel {
     var onUpdate: () -> Void = {}
     var sections: [Section] = [] {
         didSet {
@@ -27,20 +27,25 @@ class ScheduleViewModel: ViewModel, ListViewModel, NavigationViewModel {
 
     var downloadTask: Task?
     let routeFactory: RouteFactory
+    let itemViewModelFactory: ItemViewModelFactory
     init(identifier: SceneIdentifier = .schedule,
+         itemViewModelFactory: ItemViewModelFactory,
          routeFactory: RouteFactory) {
         self.layoutIdentifier = identifier
         self.routeFactory = routeFactory
+        self.itemViewModelFactory = itemViewModelFactory
+        
     }
     func reload() {
         downloadTask?.cancel()
+        let factory = itemViewModelFactory
         downloadTask = URLSession.shared.getEntity([Episode].self, from: .schedule) {[weak self] result in
             switch result {
             case .success(let episodes):
                 self?.sections = [Section(id: "Schedule",
-                                          items: episodes.map { ShowViewModel(episode: $0)},
-                                          header: HeaderViewModel(title: "Tonight's schedule"),
-                                          footer: HeaderViewModel(title: "Thank you for watching")
+                                          items: episodes.compactMap { factory.episode($0) },
+                                          header: factory.header(title: "Tonight's schedule"),
+                                          footer: factory.header(title: "Thank you for watching")
                     )]
             case .failure(let error):
                 print(error)

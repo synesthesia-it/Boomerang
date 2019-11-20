@@ -14,7 +14,7 @@ import RxSwift
 
 class ScheduleViewController: UIViewController, WithViewModel {
     
-    typealias ScheduleViewModel = ListViewModel & NavigationViewModel & ViewModel
+    typealias ScheduleViewModel = ListViewModel & NavigationViewModel
     
     @IBOutlet weak var collectionView: UICollectionView!
     
