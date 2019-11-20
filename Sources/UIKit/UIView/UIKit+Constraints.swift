@@ -10,8 +10,15 @@ import UIKit
 
 public typealias LayoutAttribute = NSLayoutConstraint.Attribute
 public typealias LayoutFormatOptions = NSLayoutConstraint.FormatOptions
-
+private struct AssociatedKeys {
+    static var isPlaceholderForAutosize = "isPlaceholderForAutosize"
+}
 extension UIView {
+    
+    var isPlaceholderForAutosize: Bool {
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.isPlaceholderForAutosize) as? Bool ?? false }
+        set { objc_setAssociatedObject(self, &AssociatedKeys.isPlaceholderForAutosize, newValue, .OBJC_ASSOCIATION_RETAIN)}
+    }
     @discardableResult
     func addAndFitSubview(_ subview: UIView, insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
         addSubview(subview)

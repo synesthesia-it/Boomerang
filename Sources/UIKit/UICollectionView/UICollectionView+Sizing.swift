@@ -142,8 +142,8 @@ public class UICollectionViewSizeCalculator {
         } else {
             constraint?.constant = size.value
         }
-        ///TODO Placeholder
-//        (cell as? (UIView & WithViewModel))?.isPlaceholderForAutosize = true
+        
+        cell.isPlaceholderForAutosize = true
 
         self.cellCache[identifier.identifierString] = cell
         (cell as? WithViewModel)?.configure(with: viewModel)
