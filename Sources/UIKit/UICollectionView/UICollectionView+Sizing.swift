@@ -142,7 +142,7 @@ public class UICollectionViewSizeCalculator {
         } else {
             constraint?.constant = size.value
         }
-        
+
         cell.isPlaceholderForAutosize = true
 
         self.cellCache[identifier.identifierString] = cell

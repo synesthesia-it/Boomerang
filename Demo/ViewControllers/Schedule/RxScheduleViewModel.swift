@@ -14,16 +14,16 @@ import RxRelay
 
 class RxScheduleViewModel: ViewModel, RxListViewModel, RxNavigationViewModel {
     let routes: PublishRelay<Route> = PublishRelay()
-    
+
     let sectionsRelay: BehaviorRelay<[Section]> = BehaviorRelay(value: [])
-    
+
     let layoutIdentifier: LayoutIdentifier
-    
+
     let disposeBag = DisposeBag()
     var reloadDisposeBag = DisposeBag()
     let routeFactory: RouteFactory
     let itemViewModelFactory: ItemViewModelFactory
-    
+
     init(identifier: SceneIdentifier = .schedule,
          itemViewModelFactory: ItemViewModelFactory,
          routeFactory: RouteFactory) {
@@ -31,7 +31,7 @@ class RxScheduleViewModel: ViewModel, RxListViewModel, RxNavigationViewModel {
         self.itemViewModelFactory = itemViewModelFactory
         self.routeFactory = routeFactory
     }
-    
+
     func reload() {
         self.reloadDisposeBag = DisposeBag()
         URLSession.shared.rx
@@ -65,11 +65,11 @@ class RxScheduleViewModel: ViewModel, RxListViewModel, RxNavigationViewModel {
                     items: $0.element.compactMap { factory.episode($0) },
                     header: factory.header(title: "Tonight's schedule \($0.offset)"),
                     footer: factory.header(title: "Thanks! \($0.offset)")
-                    
+
                 )
         }
     }
-    
+
     func selectItem(at indexPath: IndexPath) {
         if let viewModel = self[indexPath] as? ShowViewModel {
             onNavigation(routeFactory.detailRoute(show: viewModel.show))

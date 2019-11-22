@@ -13,28 +13,28 @@ public protocol DependencyContainer: AnyObject {
     var container: Container<DependencyKey> { get }
 }
 public class Container<DependencyKey: Hashable> {
-    
+
     struct Dependency {
         let scope: Scope
         let closure: () -> Any
     }
-    
+
     public enum Scope {
         case unique
         case singleton
     }
-    
+
     fileprivate var dependencies: [DependencyKey: Dependency] = [:]
     fileprivate var singletons: [DependencyKey: Any] = [:]
-    
+
     public init() {}
 }
 public extension DependencyContainer {
-    
+
     func register<Value: Any>(for key: DependencyKey, scope: Container<DependencyKey>.Scope = .unique, handler: @escaping () -> Value) {
         container.dependencies[key] = Container<DependencyKey>.Dependency(scope: scope, closure: handler)
     }
-    
+
     func resolve<Value: Any>(_ key: DependencyKey) -> Value? {
         guard let dependency = container.dependencies[key] else { return nil }
         switch dependency.scope {

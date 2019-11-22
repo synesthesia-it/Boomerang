@@ -16,11 +16,11 @@ protocol ItemViewModelFactory {
 
 struct DefaultItemViewModelFactory: ItemViewModelFactory {
     let container: AppDependencyContainer
-    
+
     func header(title: String) -> ViewModel {
         return HeaderViewModel(title: title)
     }
-    
+
     func episode(_ episode: Episode) -> ViewModel {
         return ShowViewModel(episode: episode)
     }

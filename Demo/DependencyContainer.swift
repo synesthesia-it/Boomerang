@@ -9,7 +9,7 @@
 import Foundation
 import Boomerang
 
-protocol AppDependencyContainer  {
+protocol AppDependencyContainer {
     var routeFactory: RouteFactory { get }
     var viewFactory: ViewFactory { get }
     var collectionViewCellFactory: CollectionViewCellFactory { get }
@@ -27,11 +27,10 @@ enum DependencyContainerKeys: CaseIterable, Hashable {
     case itemViewModelFactory
 }
 
-
 class DefaultAppDependencyContainer: AppDependencyContainer, DependencyContainer {
-    
+
     var container = Container<DependencyContainerKeys>()
-    
+
     var routeFactory: RouteFactory { self[.routeFactory] }
     var viewFactory: ViewFactory { self[.viewFactory] }
     var viewControllerFactory: ViewControllerFactory { self[.viewControllerFactory] }
@@ -51,13 +50,12 @@ class DefaultAppDependencyContainer: AppDependencyContainer, DependencyContainer
 ///Convert in Test, this is temporary
 extension DefaultAppDependencyContainer {
     func testAll() {
-        
+
         DependencyContainerKeys.allCases.forEach {
             //expect no throw
             let value: Any = self[$0]
             print(value)
-            
+
         }
     }
 }
-

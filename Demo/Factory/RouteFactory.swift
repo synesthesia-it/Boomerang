@@ -17,17 +17,17 @@ protocol RouteFactory {
 }
 class MainRouteFactory: RouteFactory {
     let container: AppDependencyContainer
-    
+
     init(container: AppDependencyContainer) {
         self.container = container
     }
-    
+
     func restartRoute() -> Route {
         return RestartRoute {
             self.container.viewControllerFactory.root()
         }
     }
-    
+
     func detailRoute(show: Show) -> Route {
         //return AlertRoute(viewModel: ShowDetailViewModel(show: show))
         //        return ModalRoute(viewModel: ShowDetailViewModel(show: show), factory: container.viewControllerFactory)

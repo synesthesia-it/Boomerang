@@ -11,15 +11,15 @@ import UIKit
 import Boomerang
 
 class ShowDetailViewController: UIViewController, WithViewModel {
-    
+
     @IBOutlet weak var titleLabel: UILabel!
-    
+
     let viewModel: ShowDetailViewModel
     func configure(with viewModel: ViewModel) {
-        
+
     }
     private let collectionViewCellFactory: CollectionViewCellFactory
-    
+
     init(nibName: String?,
           bundle: Bundle? = nil,
           viewModel: ShowDetailViewModel,
@@ -27,9 +27,9 @@ class ShowDetailViewController: UIViewController, WithViewModel {
         self.viewModel = viewModel
         self.collectionViewCellFactory = collectionViewCellFactory
         super.init(nibName: nibName, bundle: bundle)
-        
+
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -37,5 +37,5 @@ class ShowDetailViewController: UIViewController, WithViewModel {
         super.viewDidLoad()
         self.titleLabel.text = viewModel.title
     }
-    
+
 }

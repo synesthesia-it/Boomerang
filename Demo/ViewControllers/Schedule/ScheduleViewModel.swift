@@ -34,7 +34,7 @@ class ScheduleViewModel: ListViewModel, NavigationViewModel {
         self.layoutIdentifier = identifier
         self.routeFactory = routeFactory
         self.itemViewModelFactory = itemViewModelFactory
-        
+
     }
     func reload() {
         downloadTask?.cancel()

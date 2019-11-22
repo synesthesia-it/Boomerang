@@ -21,4 +21,3 @@ struct ModalRoute: Route {
         }
     }
 }
-

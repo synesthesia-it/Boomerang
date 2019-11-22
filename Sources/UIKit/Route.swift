@@ -17,4 +17,3 @@ public protocol Route {
     var createScene: () -> Scene? { get }
     func execute(from scene: Scene?)
 }
-

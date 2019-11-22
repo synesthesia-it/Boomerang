@@ -20,8 +20,7 @@ public extension UIView {
        }
 }
 extension UIView {
-    
-   
+
     @discardableResult
     func addAndFitSubview(_ subview: UIView, insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
         addSubview(subview)

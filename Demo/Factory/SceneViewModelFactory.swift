@@ -15,9 +15,9 @@ protocol SceneViewModelFactory {
 }
 
 struct DefaultSceneViewModelFactory: SceneViewModelFactory {
-    
+
     let container: AppDependencyContainer
-    
+
     func schedule() -> ListViewModel & NavigationViewModel {
         return ScheduleViewModel(itemViewModelFactory: container.itemViewModelFactory, routeFactory: container.routeFactory)
     }
