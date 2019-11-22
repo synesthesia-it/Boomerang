@@ -99,13 +99,13 @@ public class UICollectionViewSizeCalculator {
         let itemsPerLine = CGFloat(itemsPerLine)
         let insets = self.insets(in: indexPath.section)
         let itemSpacing = self.itemSpacing(in: indexPath.section)
-        let spacingDiff =  (itemsPerLine - 1) * itemSpacing)
+        let spacingDiff = (itemsPerLine - 1) * itemSpacing
         let value: CGFloat
         switch direction {
         case .vertical:
-            value = (collectionViewSize.width - insets.left - insets.right - spacingDiff / itemsPerLine
+            value = (collectionViewSize.width - insets.left - insets.right - spacingDiff) / itemsPerLine
         case .horizontal:
-            value = (collectionViewSize.height - insets.top - insets.bottom - spacingDiff / itemsPerLine
+            value = (collectionViewSize.height - insets.top - insets.bottom - spacingDiff) / itemsPerLine
         }
         return floor(value * UIScreen.main.scale)/UIScreen.main.scale
     }
