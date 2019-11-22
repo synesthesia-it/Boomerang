@@ -69,7 +69,7 @@ extension List where Content == ForEach<[IdentifiableViewModel], String, AnyView
     }
 }
 
-extension Array where Element: Boomerang.Section {
+extension Array where Element == Boomerang.Section {
     func toList() -> [IdentifiableViewModel] {
         return self
         .flatMap { $0.items

@@ -29,9 +29,8 @@ enum DependencyContainerKeys: CaseIterable, Hashable {
 
 
 class DefaultAppDependencyContainer: AppDependencyContainer, DependencyContainer {
-    typealias Key = DependencyContainerKeys
     
-    var container: [Key: () -> Any ] = [:]
+    var container = Container<DependencyContainerKeys>()
     
     var routeFactory: RouteFactory { self[.routeFactory] }
     var viewFactory: ViewFactory { self[.viewFactory] }
@@ -47,14 +46,6 @@ class DefaultAppDependencyContainer: AppDependencyContainer, DependencyContainer
         self.register(for: .sceneViewModelFactory) { DefaultSceneViewModelFactory(container: self) }
         self.register(for: .itemViewModelFactory) { DefaultItemViewModelFactory(container: self) }
     }
-    
-    subscript<T>(index: Key) -> T {
-        guard let element: T = resolve(index) else {
-            fatalError("No dependency found for \(index)")
-        }
-        
-        return element
-    }
 }
 
 ///Convert in Test, this is temporary
@@ -63,8 +54,8 @@ extension DefaultAppDependencyContainer {
         
         DependencyContainerKeys.allCases.forEach {
             //expect no throw
-            let v: Any = self[$0]
-            print(v)
+            let value: Any = self[$0]
+            print(value)
             
         }
     }
