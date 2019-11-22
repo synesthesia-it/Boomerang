@@ -53,11 +53,13 @@ class DefaultViewControllerFactory: ViewControllerFactory {
 
     func root() -> UIViewController {
         let classic = self.schedule(viewModel: container.sceneViewModelFactory.schedule())
-        let rx = self.schedule(viewModel: RxScheduleViewModel(itemViewModelFactory: container.itemViewModelFactory, routeFactory: container.routeFactory))
+        let viewModelFactory = container.itemViewModelFactory
+        let reactive = self.schedule(viewModel: RxScheduleViewModel(itemViewModelFactory: viewModelFactory,
+                                                                    routeFactory: container.routeFactory))
 
         classic.tabBarItem.title = "Schedule"
-        rx.tabBarItem.title = "RxSchedule"
-        let viewControllers = [classic, rx].compactMap { $0 }
+        reactive.tabBarItem.title = "RxSchedule"
+        let viewControllers = [classic, reactive].compactMap { $0 }
 
         let root = UITabBarController()
         root.viewControllers = viewControllers

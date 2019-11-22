@@ -33,9 +33,9 @@ class ScheduleViewModel: CombineListViewModel, NavigationViewModel, ObservableOb
     }
 
     static func demo() -> ScheduleViewModel {
-        let vm = ScheduleViewModel()
+        let viewModel = ScheduleViewModel()
 
-        vm.sections = [Section(id: "Schedule",
+        viewModel.sections = [Section(id: "Schedule",
                                items: (0..<20).map { ShowViewModel.demo($0)})]
         return vm
     }

@@ -19,7 +19,8 @@ struct DefaultSceneViewModelFactory: SceneViewModelFactory {
     let container: AppDependencyContainer
 
     func schedule() -> ListViewModel & NavigationViewModel {
-        return ScheduleViewModel(itemViewModelFactory: container.itemViewModelFactory, routeFactory: container.routeFactory)
+        return ScheduleViewModel(itemViewModelFactory: container.itemViewModelFactory,
+                                 routeFactory: container.routeFactory)
     }
     func showDetail(show: Show) -> ShowDetailViewModel {
         return ShowDetailViewModel(show: show)

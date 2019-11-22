@@ -29,8 +29,6 @@ class MainRouteFactory: RouteFactory {
     }
 
     func detailRoute(show: Show) -> Route {
-        //return AlertRoute(viewModel: ShowDetailViewModel(show: show))
-        //        return ModalRoute(viewModel: ShowDetailViewModel(show: show), factory: container.viewControllerFactory)
         return ModalRoute { self.container
             .viewControllerFactory
             .showDetail(viewModel: ShowDetailViewModel(show: show))

@@ -16,7 +16,7 @@ enum SceneIdentifier: String, LayoutIdentifier {
 
     var identifierString: String {
         switch self {
-            default: return rawValue
+        default: return rawValue
         }
     }
 }

@@ -21,9 +21,9 @@ class ShowDetailViewController: UIViewController, WithViewModel {
     private let collectionViewCellFactory: CollectionViewCellFactory
 
     init(nibName: String?,
-          bundle: Bundle? = nil,
-          viewModel: ShowDetailViewModel,
-          collectionViewCellFactory: CollectionViewCellFactory) {
+         bundle: Bundle? = nil,
+         viewModel: ShowDetailViewModel,
+         collectionViewCellFactory: CollectionViewCellFactory) {
         self.viewModel = viewModel
         self.collectionViewCellFactory = collectionViewCellFactory
         super.init(nibName: nibName, bundle: bundle)

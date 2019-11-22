@@ -54,13 +54,13 @@ public class UICollectionViewSizeCalculator {
     }
 
     var delegate: UICollectionViewDelegateFlowLayout? {
-         return base.delegate as? UICollectionViewDelegateFlowLayout
+        return base.delegate as? UICollectionViewDelegateFlowLayout
     }
 
     func insets(in section: Int) -> UIEdgeInsets {
         if let flow = flow {
             return delegate?.collectionView?(base, layout: flow, insetForSectionAt: section) ??
-                 flow.sectionInset
+                flow.sectionInset
         }
         return .zero
     }
@@ -84,7 +84,10 @@ public class UICollectionViewSizeCalculator {
                       height: base.bounds.height - base.contentInset.top - base.contentInset.top)
     }
 
-    public func calculateFixedDimension(for direction: Direction, at indexPath: IndexPath, itemsPerLine: Int, type: String? = nil) -> CGFloat {
+    public func calculateFixedDimension(for direction: Direction,
+                                        at indexPath: IndexPath,
+                                        itemsPerLine: Int,
+                                        type: String? = nil) -> CGFloat {
         if type == UICollectionView.elementKindSectionHeader || type == UICollectionView.elementKindSectionFooter {
             switch direction {
             case .vertical:
@@ -96,19 +99,19 @@ public class UICollectionViewSizeCalculator {
         let itemsPerLine = CGFloat(itemsPerLine)
         let insets = self.insets(in: indexPath.section)
         let itemSpacing = self.itemSpacing(in: indexPath.section)
+        let spacingDiff =  (itemsPerLine - 1) * itemSpacing)
         let value: CGFloat
         switch direction {
         case .vertical:
-            value = (collectionViewSize.width - insets.left - insets.right - (itemsPerLine - 1) * itemSpacing) / itemsPerLine
+            value = (collectionViewSize.width - insets.left - insets.right - spacingDiff / itemsPerLine
         case .horizontal:
-            value = (collectionViewSize.height - insets.top - insets.bottom - (itemsPerLine - 1) * itemSpacing) / itemsPerLine
+            value = (collectionViewSize.height - insets.top - insets.bottom - spacingDiff / itemsPerLine
         }
         return floor(value * UIScreen.main.scale)/UIScreen.main.scale
     }
 
     private func properViewModel(at indexPath: IndexPath, for type: String?) -> ViewModel? {
         let list = self.viewModel
-
         guard let type = type else { return list[indexPath] }
 
         return list.sections[indexPath.section].supplementary.item(atIndex: indexPath.item, forKind: type.toSectionKind())
@@ -116,27 +119,27 @@ public class UICollectionViewSizeCalculator {
     }
     func placeholderCell (at indexPath: IndexPath, for type: String?, lockingTo size: LockingSize) -> UIView? {
 
-       guard let viewModel = self.properViewModel(at: indexPath, for: type)
-       else {
+        guard let viewModel = self.properViewModel(at: indexPath, for: type)
+            else {
                 return nil
         }
         let identifier = viewModel.layoutIdentifier
         guard let cell: UIView = cellCache[identifier.identifierString] ?? factory.view(from: identifier) else { return nil }
 
-       let content = cell//.boomerang.contentView
+        let content = cell//.boomerang.contentView
         content.translatesAutoresizingMaskIntoConstraints = false
 
-       var constraint = content.constraints.filter {
+        var constraint = content.constraints.filter {
             ($0.firstItem as? UIView) == content && $0.firstAttribute == .width && $0.secondItem == nil && $0.secondAttribute == .notAnAttribute
         }.first
         if constraint == nil {
-        let newConstraint = NSLayoutConstraint(item: content,
-                                            attribute: size.type,
-                                            relatedBy: .equal,
-                                            toItem: nil,
-                                            attribute: .notAnAttribute,
-                                            multiplier: 1.0,
-                                            constant: size.value)
+            let newConstraint = NSLayoutConstraint(item: content,
+                                                   attribute: size.type,
+                                                   relatedBy: .equal,
+                                                   toItem: nil,
+                                                   attribute: .notAnAttribute,
+                                                   multiplier: 1.0,
+                                                   constant: size.value)
             content.addConstraint(newConstraint)
             constraint = newConstraint
         } else {

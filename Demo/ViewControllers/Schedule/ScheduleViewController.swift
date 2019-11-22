@@ -38,9 +38,9 @@ class ScheduleViewController: UIViewController, WithViewModel {
     private let collectionViewCellFactory: CollectionViewCellFactory
 
     init(nibName nibNameOrNil: String?,
-          bundle nibBundleOrNil: Bundle? = nil,
-          viewModel: ListViewModel & NavigationViewModel,
-          collectionViewCellFactory: CollectionViewCellFactory) {
+         bundle nibBundleOrNil: Bundle? = nil,
+         viewModel: ListViewModel & NavigationViewModel,
+         collectionViewCellFactory: CollectionViewCellFactory) {
         self.viewModel = viewModel
         self.collectionViewCellFactory = collectionViewCellFactory
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
