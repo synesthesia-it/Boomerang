@@ -32,6 +32,7 @@ public class Container<DependencyKey: Hashable> {
 public extension DependencyContainer {
 
     func register<Value: Any>(for key: DependencyKey, scope: Container<DependencyKey>.Scope = .unique, handler: @escaping () -> Value) {
+        container.singletons[key] = nil
         container.dependencies[key] = Container<DependencyKey>.Dependency(scope: scope, closure: handler)
     }
 
