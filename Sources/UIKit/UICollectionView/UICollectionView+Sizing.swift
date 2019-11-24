@@ -62,21 +62,21 @@ public class UICollectionViewSizeCalculator {
             return delegate?.collectionView?(base, layout: flow, insetForSectionAt: section) ??
                 flow.sectionInset
         }
-        return .zero
+        return delegate?.collectionView?(base, layout: base.collectionViewLayout, insetForSectionAt: section) ?? .zero
     }
 
     func itemSpacing(in section: Int) -> CGFloat {
         if let flow = flow {
             return delegate?.collectionView?(base, layout: flow, minimumInteritemSpacingForSectionAt: section) ?? flow.minimumInteritemSpacing
         }
-        return 0
+        return delegate?.collectionView?(base, layout: base.collectionViewLayout, minimumInteritemSpacingForSectionAt: section) ?? 0
     }
 
     func lineSpacing(in section: Int) -> CGFloat {
         if let flow = flow {
             return delegate?.collectionView?(base, layout: flow, minimumLineSpacingForSectionAt: section) ?? flow.minimumLineSpacing
         }
-        return 0
+        return delegate?.collectionView?(base, layout: base.collectionViewLayout, minimumLineSpacingForSectionAt: section) ?? 0
     }
 
     var collectionViewSize: CGSize {
