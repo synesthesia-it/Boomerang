@@ -22,6 +22,7 @@ public class Container<DependencyKey: Hashable> {
     public enum Scope {
         case unique
         case singleton
+        case eagerSingleton
     }
 
     fileprivate var dependencies: [DependencyKey: Dependency] = [:]
@@ -34,13 +35,17 @@ public extension DependencyContainer {
     func register<Value: Any>(for key: DependencyKey, scope: Container<DependencyKey>.Scope = .unique, handler: @escaping () -> Value) {
         container.singletons[key] = nil
         container.dependencies[key] = Container<DependencyKey>.Dependency(scope: scope, closure: handler)
+        switch scope {
+        case .eagerSingleton: _ = self.resolve(key) as Value?
+        default: break
+        }
     }
 
     func resolve<Value: Any>(_ key: DependencyKey) -> Value? {
         guard let dependency = container.dependencies[key] else { return nil }
         switch dependency.scope {
         case .unique: return dependency.closure() as? Value
-        case .singleton: guard let value = container.singletons[key] else {
+        case .singleton, .eagerSingleton: guard let value = container.singletons[key] else {
             let newValue = dependency.closure()
             container.singletons[key] = newValue
             return newValue as? Value
