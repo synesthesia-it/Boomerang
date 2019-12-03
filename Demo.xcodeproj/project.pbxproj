@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		702B24D0239694A2007F210E /* StackView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702B24CE23969401007F210E /* StackView+Rx.swift */; };
+		702B24D323969571007F210E /* UIStackView+Boomerang.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702B24D123969536007F210E /* UIStackView+Boomerang.swift */; };
 		7059AB50236C8DC00005A189 /* RxBoomerang.h in Headers */ = {isa = PBXBuildFile; fileRef = 7059AB4E236C8DC00005A189 /* RxBoomerang.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7059AB53236C8DC00005A189 /* RxBoomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7059AB4C236C8DC00005A189 /* RxBoomerang.framework */; };
 		7059AB54236C8DC00005A189 /* RxBoomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7059AB4C236C8DC00005A189 /* RxBoomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -242,6 +244,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		702B24CE23969401007F210E /* StackView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackView+Rx.swift"; sourceTree = "<group>"; };
+		702B24D123969536007F210E /* UIStackView+Boomerang.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Boomerang.swift"; sourceTree = "<group>"; };
 		7059AB4C236C8DC00005A189 /* RxBoomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxBoomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7059AB4E236C8DC00005A189 /* RxBoomerang.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RxBoomerang.h; sourceTree = "<group>"; };
 		7059AB4F236C8DC00005A189 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -389,6 +393,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		702B24CD239693CD007F210E /* UIStackView */ = {
+			isa = PBXGroup;
+			children = (
+				702B24D123969536007F210E /* UIStackView+Boomerang.swift */,
+			);
+			path = UIStackView;
+			sourceTree = "<group>";
+		};
 		7059AB46236C8D930005A189 /* Rx */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,6 +408,7 @@
 				7059AB4F236C8DC00005A189 /* Info.plist */,
 				7059AB5D236C8EAC0005A189 /* RxViewModel.swift */,
 				7059AB5F236C8EF40005A189 /* CollectionView+Rx.swift */,
+				702B24CE23969401007F210E /* StackView+Rx.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -635,6 +648,7 @@
 		7BA6D8F1235F9D4500EF4A60 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				7BA8F4B6235FA6E800027DE5 /* Route.swift */,
 				7BA8F4AA235F9F2100027DE5 /* Section.swift */,
 				70C921AD237566E900302A29 /* DependencyContainer.swift */,
 				7BA6D8F2235F9D4500EF4A60 /* ListViewModel.swift */,
@@ -647,8 +661,8 @@
 		7BA6D8F3235F9D4500EF4A60 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				7BA8F4B6235FA6E800027DE5 /* Route.swift */,
 				7BA8F4B3235FA10300027DE5 /* UIView */,
+				702B24CD239693CD007F210E /* UIStackView */,
 				7BA6D8F4235F9D4500EF4A60 /* UICollectionView */,
 			);
 			path = UIKit;
@@ -1035,6 +1049,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7059AB60236C8EF40005A189 /* CollectionView+Rx.swift in Sources */,
+				702B24D0239694A2007F210E /* StackView+Rx.swift in Sources */,
 				7059AB5E236C8EAC0005A189 /* RxViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1123,6 +1138,7 @@
 			files = (
 				70C921AE237566E900302A29 /* DependencyContainer.swift in Sources */,
 				7BA6D8F7235F9D4500EF4A60 /* ListViewModel.swift in Sources */,
+				702B24D323969571007F210E /* UIStackView+Boomerang.swift in Sources */,
 				7BA6D8F6235F9D4500EF4A60 /* UIKit+Constraints.swift in Sources */,
 				7BA8F4A9235F9EE200027DE5 /* CollectionViewCellFactory.swift in Sources */,
 				7BA8F4AD235F9F3B00027DE5 /* ItemViewModel.swift in Sources */,
