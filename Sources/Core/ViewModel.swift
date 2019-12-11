@@ -23,7 +23,7 @@ public protocol UniqueIdentifier {
     var stringValue: String { get }
 }
 
-public protocol ViewModel: AnyObject {
+public protocol ViewModel: AnyObject, WithPropertyAssignment {
     var uniqueIdentifier: UniqueIdentifier { get }
     var layoutIdentifier: LayoutIdentifier { get }
 }

@@ -53,6 +53,7 @@
 		7059ABA5236D77700005A189 /* CombineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7059ABA4236D77700005A189 /* CombineViewModel.swift */; };
 		706CE12A23852D230070FC4E /* SceneViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CE12923852D230070FC4E /* SceneViewModelFactory.swift */; };
 		706CE12C238531AA0070FC4E /* ItemViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CE12B238531AA0070FC4E /* ItemViewModelFactory.swift */; };
+		708ACF4F23A1482E004A6FF4 /* PropertyAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708ACF4D23A1482B004A6FF4 /* PropertyAssignment.swift */; };
 		70C92187236EF8D400302A29 /* SwiftUIBoomerang.h in Headers */ = {isa = PBXBuildFile; fileRef = 70C92185236EF8D400302A29 /* SwiftUIBoomerang.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		70C9218A236EF8D400302A29 /* SwiftUIBoomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C92183236EF8D400302A29 /* SwiftUIBoomerang.framework */; };
 		70C9218B236EF8D400302A29 /* SwiftUIBoomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70C92183236EF8D400302A29 /* SwiftUIBoomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -108,7 +109,7 @@
 		7BA6D8FA235F9E0400EF4A60 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6D8F9235F9E0400EF4A60 /* CollectionViewDataSource.swift */; };
 		7BA8F4A9235F9EE200027DE5 /* CollectionViewCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA8F4A8235F9EE200027DE5 /* CollectionViewCellFactory.swift */; };
 		7BA8F4AB235F9F2100027DE5 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA8F4AA235F9F2100027DE5 /* Section.swift */; };
-		7BA8F4AD235F9F3B00027DE5 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA8F4AC235F9F3B00027DE5 /* ItemViewModel.swift */; };
+		7BA8F4AD235F9F3B00027DE5 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA8F4AC235F9F3B00027DE5 /* ViewModel.swift */; };
 		7BA8F4B2235FA0C100027DE5 /* CollectionViewCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA8F4B1235FA0C100027DE5 /* CollectionViewCellFactory.swift */; };
 		7BA8F4B5235FA11A00027DE5 /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA8F4B4235FA11A00027DE5 /* ViewFactory.swift */; };
 		7BA8F4B7235FA6E800027DE5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA8F4B6235FA6E800027DE5 /* Route.swift */; };
@@ -270,6 +271,7 @@
 		7059ABA4236D77700005A189 /* CombineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineViewModel.swift; sourceTree = "<group>"; };
 		706CE12923852D230070FC4E /* SceneViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewModelFactory.swift; sourceTree = "<group>"; };
 		706CE12B238531AA0070FC4E /* ItemViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModelFactory.swift; sourceTree = "<group>"; };
+		708ACF4D23A1482B004A6FF4 /* PropertyAssignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyAssignment.swift; sourceTree = "<group>"; };
 		70C92174236EF78F00302A29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70C92175236EF7EE00302A29 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		70C92178236EF83E00302A29 /* SwiftUIViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewFactory.swift; sourceTree = "<group>"; };
@@ -319,7 +321,7 @@
 		7BA6D8F9235F9E0400EF4A60 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		7BA8F4A8235F9EE200027DE5 /* CollectionViewCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellFactory.swift; sourceTree = "<group>"; };
 		7BA8F4AA235F9F2100027DE5 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
-		7BA8F4AC235F9F3B00027DE5 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
+		7BA8F4AC235F9F3B00027DE5 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		7BA8F4B1235FA0C100027DE5 /* CollectionViewCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellFactory.swift; sourceTree = "<group>"; };
 		7BA8F4B4235FA11A00027DE5 /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
 		7BA8F4B6235FA6E800027DE5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
@@ -649,11 +651,12 @@
 			isa = PBXGroup;
 			children = (
 				7BA8F4B6235FA6E800027DE5 /* Route.swift */,
+				708ACF4D23A1482B004A6FF4 /* PropertyAssignment.swift */,
 				7BA8F4AA235F9F2100027DE5 /* Section.swift */,
 				70C921AD237566E900302A29 /* DependencyContainer.swift */,
 				7BA6D8F2235F9D4500EF4A60 /* ListViewModel.swift */,
 				7059AB61236C93D10005A189 /* NavigationViewModel.swift */,
-				7BA8F4AC235F9F3B00027DE5 /* ItemViewModel.swift */,
+				7BA8F4AC235F9F3B00027DE5 /* ViewModel.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1136,12 +1139,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				708ACF4F23A1482E004A6FF4 /* PropertyAssignment.swift in Sources */,
 				70C921AE237566E900302A29 /* DependencyContainer.swift in Sources */,
 				7BA6D8F7235F9D4500EF4A60 /* ListViewModel.swift in Sources */,
 				702B24D323969571007F210E /* UIStackView+Boomerang.swift in Sources */,
 				7BA6D8F6235F9D4500EF4A60 /* UIKit+Constraints.swift in Sources */,
 				7BA8F4A9235F9EE200027DE5 /* CollectionViewCellFactory.swift in Sources */,
-				7BA8F4AD235F9F3B00027DE5 /* ItemViewModel.swift in Sources */,
+				7BA8F4AD235F9F3B00027DE5 /* ViewModel.swift in Sources */,
 				7BA8F4B7235FA6E800027DE5 /* Route.swift in Sources */,
 				70DFCA0723603819004B49D6 /* CollectionViewDelegate.swift in Sources */,
 				70DFCA1F2361E9B0004B49D6 /* UICollectionView+Sizing.swift in Sources */,
