@@ -10,8 +10,8 @@ import Foundation
 import Boomerang
 import UIKit
 
-struct AlertRoute: Route {
-    let createScene: () -> Scene?
+struct AlertRoute: UIKitRoute {
+    let createScene: () -> UIViewController?
     init(title: String) {
         self.createScene = {
             let controller = UIAlertController(title: title, message: "This is a message", preferredStyle: .actionSheet)
@@ -19,9 +19,9 @@ struct AlertRoute: Route {
             return controller
         }
     }
-    func execute(from scene: Scene?) {
+    func execute<T>(from scene: T?) where T : UIViewController {
         if let destination = createScene() {
-            scene?.present(destination, animated: true, completion: nil)
+            (scene as? UIViewController)?.present(destination, animated: true, completion: nil)
         }
     }
 }

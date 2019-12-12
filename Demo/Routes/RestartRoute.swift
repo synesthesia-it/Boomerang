@@ -11,12 +11,13 @@ import Boomerang
 import UIKit
 
 struct RestartRoute: Route {
-    let createScene: () -> Scene?
-    init(createScene: @escaping () -> Scene) {
+    
+    let createScene: () -> UIViewController?
+    init(createScene: @escaping () -> UIViewController) {
         self.createScene = createScene
     }
 
-    func execute(from scene: Scene?) {
+    func execute<T: Scene>(from scene: T?) {
 
         //TODO Dismiss all modals
         UIApplication.shared.delegate?.window??.rootViewController = createScene()

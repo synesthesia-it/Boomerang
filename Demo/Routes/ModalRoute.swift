@@ -10,12 +10,13 @@ import Foundation
 import Boomerang
 import UIKit
 
-struct ModalRoute: Route {
-    let createScene: () -> Scene?
-    init(createScene: @escaping () -> Scene) {
+struct ModalRoute: UIKitRoute {
+    
+    let createScene: () -> UIViewController?
+    init(createScene: @escaping () -> UIViewController) {
         self.createScene = createScene
     }
-    func execute(from scene: Scene?) {
+    func execute<T>(from scene: T?) where T : UIViewController {
         if let destination = createScene() {
             scene?.present(destination, animated: true, completion: nil)
         }

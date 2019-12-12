@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         container
             .routeFactory
             .restartRoute()
-            .execute(from: nil)
+            .execute(from: UIViewController())
 
         return true
     }

@@ -8,12 +8,9 @@
 
 import Foundation
 
-#if os(iOS) || os(tvOS)
-import UIKit
-public typealias Scene = UIViewController
-#endif
+public protocol Scene {}
 
 public protocol Route {
-    var createScene: () -> Scene? { get }
-    func execute(from scene: Scene?)
+    func execute<T: Scene>(from scene: T?)
 }
+
