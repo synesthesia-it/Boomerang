@@ -55,6 +55,7 @@
 		706CE12C238531AA0070FC4E /* ItemViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CE12B238531AA0070FC4E /* ItemViewModelFactory.swift */; };
 		708ACF4F23A1482E004A6FF4 /* PropertyAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708ACF4D23A1482B004A6FF4 /* PropertyAssignment.swift */; };
 		70C067EC23A2310100683F97 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708ACF5923A22AAB004A6FF4 /* Scene.swift */; };
+		70C1FBA023A25326004D8B4C /* ViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C1FB9F23A25326004D8B4C /* ViewController+Rx.swift */; };
 		70C92187236EF8D400302A29 /* SwiftUIBoomerang.h in Headers */ = {isa = PBXBuildFile; fileRef = 70C92185236EF8D400302A29 /* SwiftUIBoomerang.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		70C9218A236EF8D400302A29 /* SwiftUIBoomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C92183236EF8D400302A29 /* SwiftUIBoomerang.framework */; };
 		70C9218B236EF8D400302A29 /* SwiftUIBoomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70C92183236EF8D400302A29 /* SwiftUIBoomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -274,6 +275,7 @@
 		706CE12B238531AA0070FC4E /* ItemViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModelFactory.swift; sourceTree = "<group>"; };
 		708ACF4D23A1482B004A6FF4 /* PropertyAssignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyAssignment.swift; sourceTree = "<group>"; };
 		708ACF5923A22AAB004A6FF4 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		70C1FB9F23A25326004D8B4C /* ViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Rx.swift"; sourceTree = "<group>"; };
 		70C92174236EF78F00302A29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70C92175236EF7EE00302A29 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		70C92178236EF83E00302A29 /* SwiftUIViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewFactory.swift; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 				7059AB4F236C8DC00005A189 /* Info.plist */,
 				7059AB5D236C8EAC0005A189 /* RxViewModel.swift */,
 				7059AB5F236C8EF40005A189 /* CollectionView+Rx.swift */,
+				70C1FB9F23A25326004D8B4C /* ViewController+Rx.swift */,
 				702B24CE23969401007F210E /* StackView+Rx.swift */,
 			);
 			path = Rx;
@@ -1064,6 +1067,7 @@
 			files = (
 				7059AB60236C8EF40005A189 /* CollectionView+Rx.swift in Sources */,
 				702B24D0239694A2007F210E /* StackView+Rx.swift in Sources */,
+				70C1FBA023A25326004D8B4C /* ViewController+Rx.swift in Sources */,
 				7059AB5E236C8EAC0005A189 /* RxViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

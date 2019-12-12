@@ -15,8 +15,11 @@ import RxDataSources
 import Boomerang
 #endif
 
+#if os(iOS) || os(tvOS)
 public extension Reactive where Base: UICollectionView {
-    func reloaded(by viewModel: RxListViewModel, dataSource collectionViewDataSource: CollectionViewDataSource) -> Disposable {
+    
+    func reloaded(by viewModel: RxListViewModel,
+                  dataSource collectionViewDataSource: CollectionViewDataSource) -> Disposable {
 
         let reloadDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<Section, ViewModel>>(
             configureCell: { (_, cv, indexPath, _) -> UICollectionViewCell in
@@ -30,7 +33,9 @@ public extension Reactive where Base: UICollectionView {
             .map { $0.map { SectionModel(model: $0, items: $0.items) }}
             .drive(items(dataSource: reloadDataSource))
     }
-    func animated(by viewModel: RxListViewModel, dataSource collectionViewDataSource: CollectionViewDataSource) -> Disposable {
+    
+    func animated(by viewModel: RxListViewModel,
+                  dataSource collectionViewDataSource: CollectionViewDataSource) -> Disposable {
 
         let reloadDataSource = RxCollectionViewSectionedAnimatedDataSource<AnimatableSectionModel<Section, IdentifiableViewModel>>(
             configureCell: { (_, cv, indexPath, _) -> UICollectionViewCell in
@@ -45,3 +50,4 @@ public extension Reactive where Base: UICollectionView {
             .drive(items(dataSource: reloadDataSource))
     }
 }
+#endif
