@@ -17,7 +17,7 @@
                BlueprintIdentifier = "7BA6D8AB235F89AD00EF4A60"
                BuildableName = "Demo.app"
                BlueprintName = "Demo"
-               ReferencedContainer = "container:Demo.xcodeproj">
+               ReferencedContainer = "container:Boomerang.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "7BA6D8C1235F89AF00EF4A60"
                BuildableName = "DemoUITests.xctest"
                BlueprintName = "DemoUITests"
-               ReferencedContainer = "container:Demo.xcodeproj">
+               ReferencedContainer = "container:Boomerang.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,7 +57,7 @@
             BlueprintIdentifier = "7BA6D8AB235F89AD00EF4A60"
             BuildableName = "Demo.app"
             BlueprintName = "Demo"
-            ReferencedContainer = "container:Demo.xcodeproj">
+            ReferencedContainer = "container:Boomerang.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -74,7 +74,7 @@
             BlueprintIdentifier = "7BA6D8AB235F89AD00EF4A60"
             BuildableName = "Demo.app"
             BlueprintName = "Demo"
-            ReferencedContainer = "container:Demo.xcodeproj">
+            ReferencedContainer = "container:Boomerang.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
