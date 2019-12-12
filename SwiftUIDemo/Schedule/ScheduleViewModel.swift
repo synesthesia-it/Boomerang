@@ -37,7 +37,7 @@ class ScheduleViewModel: CombineListViewModel, NavigationViewModel, ObservableOb
 
         viewModel.sections = [Section(id: "Schedule",
                                items: (0..<20).map { ShowViewModel.demo($0)})]
-        return vm
+        return viewModel
     }
 
     func reload() {
