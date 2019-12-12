@@ -12,12 +12,12 @@ import UIKit
 
 struct ModalRoute: UIKitRoute {
     
-    let createScene: () -> UIViewController?
+    let createViewController: () -> UIViewController?
     init(createScene: @escaping () -> UIViewController) {
-        self.createScene = createScene
+        self.createViewController = createScene
     }
     func execute<T>(from scene: T?) where T : UIViewController {
-        if let destination = createScene() {
+        if let destination = createViewController() {
             scene?.present(destination, animated: true, completion: nil)
         }
     }

@@ -12,9 +12,13 @@ import UIKit
 extension UIViewController: Scene {}
 
 public protocol UIKitRoute: Route {
+    var createViewController: () -> UIViewController? { get }
     func execute<T>(from scene: T?) where T: UIViewController
 }
 public extension UIKitRoute {
+    var createScene: () -> Scene? {
+        get { createViewController }
+    }
     func execute<T: Scene>(from scene: T?) {
         self.execute(from: scene as? UIViewController)
     }

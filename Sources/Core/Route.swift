@@ -11,6 +11,7 @@ import Foundation
 public protocol Scene {}
 
 public protocol Route {
+    var createScene: () -> Scene? { get }
     func execute<T: Scene>(from scene: T?)
 }
 
