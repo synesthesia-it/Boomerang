@@ -75,6 +75,7 @@
 		70C921B323761D4700302A29 /* ModalRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C921B223761D4700302A29 /* ModalRoute.swift */; };
 		70C921B523761D8A00302A29 /* AlertRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C921B423761D8A00302A29 /* AlertRoute.swift */; };
 		70C921B723761DBD00302A29 /* RestartRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C921B623761DBD00302A29 /* RestartRoute.swift */; };
+		70CACF0923A397E700E9F657 /* AutomaticSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CACF0823A397E700E9F657 /* AutomaticSizeCalculator.swift */; };
 		70CBE1D6236EC84F00F4221A /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CBE1D5236EC84F00F4221A /* ScheduleView.swift */; };
 		70CBE1D8236EC85600F4221A /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CBE1D7236EC85600F4221A /* ScheduleViewModel.swift */; };
 		70CBE1DB236EC8DC00F4221A /* ShowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CBE1DA236EC8DC00F4221A /* ShowViewModel.swift */; };
@@ -289,6 +290,7 @@
 		70C921B223761D4700302A29 /* ModalRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalRoute.swift; sourceTree = "<group>"; };
 		70C921B423761D8A00302A29 /* AlertRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRoute.swift; sourceTree = "<group>"; };
 		70C921B623761DBD00302A29 /* RestartRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartRoute.swift; sourceTree = "<group>"; };
+		70CACF0823A397E700E9F657 /* AutomaticSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticSizeCalculator.swift; sourceTree = "<group>"; };
 		70CBE1D3236EC78200F4221A /* SwiftUIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewModel.swift; sourceTree = "<group>"; };
 		70CBE1D5236EC84F00F4221A /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		70CBE1D7236EC85600F4221A /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
@@ -692,6 +694,7 @@
 				7BA6D8F9235F9E0400EF4A60 /* CollectionViewDataSource.swift */,
 				70DFCA0523603792004B49D6 /* CollectionViewDelegate.swift */,
 				70DFCA1E2361E9B0004B49D6 /* UICollectionView+Sizing.swift */,
+				70CACF0823A397E700E9F657 /* AutomaticSizeCalculator.swift */,
 				7BA8F4A8235F9EE200027DE5 /* CollectionViewCellFactory.swift */,
 			);
 			path = UICollectionView;
@@ -1159,6 +1162,7 @@
 				7BA6D8F7235F9D4500EF4A60 /* ListViewModel.swift in Sources */,
 				702B24D323969571007F210E /* UIStackView+Boomerang.swift in Sources */,
 				70C067EC23A2310100683F97 /* Scene.swift in Sources */,
+				70CACF0923A397E700E9F657 /* AutomaticSizeCalculator.swift in Sources */,
 				7BA6D8F6235F9D4500EF4A60 /* UIKit+Constraints.swift in Sources */,
 				7BA8F4A9235F9EE200027DE5 /* CollectionViewCellFactory.swift in Sources */,
 				7BA8F4AD235F9F3B00027DE5 /* ViewModel.swift in Sources */,
@@ -1503,7 +1507,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1564,7 +1567,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

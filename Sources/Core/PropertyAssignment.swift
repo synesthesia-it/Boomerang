@@ -13,8 +13,12 @@ public protocol WithPropertyAssignment: AnyObject {}
 extension NSObject: WithPropertyAssignment {}
 
 public extension WithPropertyAssignment {
-    func with<T>(_ value: T, to keyPath: ReferenceWritableKeyPath<Self, T>) -> Self {
+
+    func with<T>(_ keyPath: ReferenceWritableKeyPath<Self, T>, to value: T) -> Self {
         self[keyPath: keyPath] = value
         return self
+    }
+    func updating<T>(_ keyPath: ReferenceWritableKeyPath<Self, T>, with value: T) -> Self {
+        self.with(keyPath, to: value)
     }
 }
