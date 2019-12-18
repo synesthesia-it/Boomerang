@@ -80,7 +80,7 @@ open class AutomaticCollectionViewSizeCalculator: CollectionViewSizeCalculator {
         return cell.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
     }
     
-    func viewModel(at indexPath: IndexPath, for type: String?) -> ViewModel? {
+    open func viewModel(at indexPath: IndexPath, for type: String?) -> ViewModel? {
         let list = self.viewModel
         guard let type = type else { return list[indexPath] }
         
@@ -88,7 +88,7 @@ open class AutomaticCollectionViewSizeCalculator: CollectionViewSizeCalculator {
         
     }
     
-    func placeholderCell (at indexPath: IndexPath, for type: String?, lockingTo size: LockingSize) -> UIView? {
+    open func placeholderCell (at indexPath: IndexPath, for type: String?, lockingTo size: LockingSize) -> UIView? {
         
         guard let viewModel = self.viewModel(at: indexPath, for: type)
             else {
@@ -130,15 +130,15 @@ open class AutomaticCollectionViewSizeCalculator: CollectionViewSizeCalculator {
         return autosizeForItem(at: indexPath, type: type, lockedTo: lock)
     }
     
-    public func insets(for collectionView: UICollectionView, in section: Int) -> UIEdgeInsets {
+    open func insets(for collectionView: UICollectionView, in section: Int) -> UIEdgeInsets {
         self._insets(collectionView, section)
     }
     
-    public func itemSpacing(for collectionView: UICollectionView, in section: Int) -> CGFloat {
+    open func itemSpacing(for collectionView: UICollectionView, in section: Int) -> CGFloat {
         self._itemSpacing(collectionView, section)
     }
     
-    public func lineSpacing(for collectionView: UICollectionView, in section: Int) -> CGFloat {
+    open func lineSpacing(for collectionView: UICollectionView, in section: Int) -> CGFloat {
         self._lineSpacing(collectionView, section)
     }
     
