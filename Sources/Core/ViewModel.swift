@@ -18,6 +18,9 @@ extension String: UniqueIdentifier {
 extension UUID: UniqueIdentifier {
     public var stringValue: String { return self.uuidString }
 }
+extension Int: UniqueIdentifier {
+    public var stringValue: String { return "\(self)" }
+}
 
 public protocol UniqueIdentifier {
     var stringValue: String { get }
@@ -28,11 +31,11 @@ public protocol ViewModel: AnyObject, WithPropertyAssignment {
     var layoutIdentifier: LayoutIdentifier { get }
 }
 
-public extension ViewModel {
-    var uniqueIdentifier: UniqueIdentifier {
-        return UUID()
-    }
-}
+//public extension ViewModel {
+//    var uniqueIdentifier: UniqueIdentifier {
+//        return UUID()
+//    }
+//}
 
 public protocol WithViewModel: AnyObject {
     func configure(with viewModel: ViewModel)

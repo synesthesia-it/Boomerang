@@ -290,6 +290,7 @@
 		70C921B223761D4700302A29 /* ModalRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalRoute.swift; sourceTree = "<group>"; };
 		70C921B423761D8A00302A29 /* AlertRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRoute.swift; sourceTree = "<group>"; };
 		70C921B623761DBD00302A29 /* RestartRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartRoute.swift; sourceTree = "<group>"; };
+		70C9FC8123C5CEE800907AF3 /* Documentation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Documentation; sourceTree = "<group>"; };
 		70CACF0823A397E700E9F657 /* AutomaticSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticSizeCalculator.swift; sourceTree = "<group>"; };
 		70CBE1D3236EC78200F4221A /* SwiftUIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewModel.swift; sourceTree = "<group>"; };
 		70CBE1D5236EC84F00F4221A /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
@@ -601,6 +602,7 @@
 			isa = PBXGroup;
 			children = (
 				7059AB65236CAD000005A189 /* README.md */,
+				70C9FC8123C5CEE800907AF3 /* Documentation */,
 				7BA6D8EF235F9D4500EF4A60 /* Sources */,
 				7BA6D8AE235F89AD00EF4A60 /* Demo */,
 				7BA6D8C5235F89AF00EF4A60 /* NewArchUITests */,

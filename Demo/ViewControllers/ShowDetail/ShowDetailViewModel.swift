@@ -11,9 +11,11 @@ import Boomerang
 
 class ShowDetailViewModel: ViewModel {
     let layoutIdentifier: LayoutIdentifier
+    let uniqueIdentifier: UniqueIdentifier
     let title: String
     init(show: Show, identifier: SceneIdentifier = .showDetail) {
            self.layoutIdentifier = identifier
         self.title = show.name
+        self.uniqueIdentifier = show.id
     }
 }

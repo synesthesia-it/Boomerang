@@ -23,7 +23,7 @@ class RxScheduleViewModel: ViewModel, RxListViewModel, RxNavigationViewModel {
     var reloadDisposeBag = DisposeBag()
     let routeFactory: RouteFactory
     let itemViewModelFactory: ItemViewModelFactory
-
+    let uniqueIdentifier: UniqueIdentifier = UUID()
     init(identifier: SceneIdentifier = .schedule,
          itemViewModelFactory: ItemViewModelFactory,
          routeFactory: RouteFactory) {

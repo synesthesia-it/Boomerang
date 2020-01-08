@@ -24,10 +24,11 @@ class ScheduleViewModel: ListViewModel, NavigationViewModel {
     var onNavigation: (Route) -> Void = { _ in }
 
     let layoutIdentifier: LayoutIdentifier
-
+    let uniqueIdentifier: UniqueIdentifier = UUID()
     var downloadTask: Task?
     let routeFactory: RouteFactory
     let itemViewModelFactory: ItemViewModelFactory
+    
     init(identifier: SceneIdentifier = .schedule,
          itemViewModelFactory: ItemViewModelFactory,
          routeFactory: RouteFactory) {
