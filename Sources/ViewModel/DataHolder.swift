@@ -87,7 +87,7 @@ public class DataHolder {
             guard let self = self else { return .empty() }
             return data
                 .takeUntil(interrupt.skip(1))
-                .flatMapLatest { group -> Observable<DataHolderUpdate>in
+                .flatMapLatest {[weak self] group -> Observable<DataHolderUpdate>in
                     switch strategy {
                     case .reload:
                         return .just(DataHolderUpdate.reload( {[weak self] in
