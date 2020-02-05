@@ -8,7 +8,7 @@
 
 import UIKit
 import Boomerang
-
+import UIKitBoomerang
 enum ViewIdentifier: String, LayoutIdentifier {
     case show
     case header

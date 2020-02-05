@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 #if !COCOAPODS
-import Boomerang
+@_exported import Boomerang
 #endif
 
 public protocol RxViewModel: ViewModel {

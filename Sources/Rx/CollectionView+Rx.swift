@@ -13,6 +13,7 @@ import RxCocoa
 import RxDataSources
 #if !COCOAPODS
 import Boomerang
+import UIKitBoomerang
 #endif
 
 #if os(iOS) || os(tvOS)

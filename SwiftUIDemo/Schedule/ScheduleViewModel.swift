@@ -13,7 +13,9 @@ import Combine
 import Boomerang
 
 class ScheduleViewModel: CombineListViewModel, NavigationViewModel, ObservableObject {
-
+    
+    var uniqueIdentifier: UniqueIdentifier = UUID()
+    
     var sectionsSubject: CurrentValueSubject<[Boomerang.Section], Never> = CurrentValueSubject([])
 
     var cancellables: [AnyCancellable] = []

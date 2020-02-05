@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+#if !COCOAPODS
+@_exported import Boomerang
+#endif
 public typealias Component = UIView & WithViewModel
 
 public protocol ViewFactory {

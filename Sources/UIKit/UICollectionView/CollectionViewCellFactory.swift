@@ -8,6 +8,9 @@
 
 import Foundation
 import UIKit
+#if !COCOAPODS
+import Boomerang
+#endif
 /**
     Defines how collection view cells should be generated so they can be used inside  a collection view
  */

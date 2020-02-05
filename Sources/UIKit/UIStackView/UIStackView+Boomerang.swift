@@ -8,7 +8,9 @@
 
 import Foundation
 import UIKit
-
+#if !COCOAPODS
+@_exported import Boomerang
+#endif
 public extension UIStackView {
     func arrangeSections(_ sections:[Section], factory: ViewFactory) {
         self.arrangedSubviews.forEach { self.removeArrangedSubview($0) }

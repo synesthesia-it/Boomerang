@@ -8,7 +8,9 @@
 
 import Foundation
 import UIKit
-
+#if !COCOAPODS
+import Boomerang
+#endif
 open class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     public var viewModel: ListViewModel
     public var factory: CollectionViewCellFactory

@@ -24,8 +24,8 @@ public struct Section {
         Section' s headers and footers are usually supplementary informations of the first element
      */
     public struct Supplementary {
-        static let header = "internal_header_type"
-        static let footer = "internal_footer_type"
+        public static let header = "internal_header_type"
+        public static let footer = "internal_footer_type"
         typealias KindMap = [String: ViewModel]
 
         internal var items: [Int: KindMap] = [:]

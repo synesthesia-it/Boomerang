@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+#if !COCOAPODS
+import Boomerang
+#endif
 open class AutomaticCollectionViewSizeCalculator: CollectionViewSizeCalculator {
 
     public typealias Size = (UICollectionView, IndexPath, String?) -> CGSize

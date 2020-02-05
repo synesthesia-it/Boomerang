@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import Boomerang
-
+import UIKitBoomerang
 class ShowDetailViewController: UIViewController, WithViewModel {
 
     @IBOutlet weak var titleLabel: UILabel!

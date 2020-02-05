@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Boomerang
+import UIKitBoomerang
 import UIKit
 
 struct AlertRoute: UIKitRoute {

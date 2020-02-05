@@ -12,6 +12,7 @@ import RxSwift
 import RxCocoa
 #if !COCOAPODS
 import Boomerang
+import UIKitBoomerang
 #endif
 
 public extension Reactive where Base: UIStackView {

@@ -8,6 +8,11 @@
 
 import Foundation
 import UIKit
+#if !COCOAPODS
+@_exported import Boomerang
+#endif
+
+
 
 extension UIViewController: Scene {}
 
@@ -21,5 +26,19 @@ public extension UIKitRoute {
     }
     func execute<T: Scene>(from scene: T?) {
         self.execute(from: scene as? UIViewController)
+    }
+}
+
+public extension ListViewModel {
+    
+    ///Easily retrieves an item through its index path. If index path is out of bounds, `nil` is returned.
+    subscript(index: IndexPath) -> ViewModel? {
+        get {
+            guard index.count == 2,
+                sections.count > index.section,
+                sections[index.section].items.count > index.item
+                else { return nil }
+            return sections[index.section].items[index.item]
+        }
     }
 }

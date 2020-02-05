@@ -6,7 +6,9 @@
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
 import UIKit
-
+#if !COCOAPODS
+@_exported import Boomerang
+#endif
 public protocol CollectionViewCellContained {
     func apply(_ layoutAttributes: UICollectionViewLayoutAttributes)
 }
