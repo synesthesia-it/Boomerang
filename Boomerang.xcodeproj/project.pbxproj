@@ -323,6 +323,7 @@
 		70E39A2C23EACCC400317250 /* UIKitBoomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIKitBoomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70E39A2E23EACCC400317250 /* UIKitBoomerang.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIKitBoomerang.h; sourceTree = "<group>"; };
 		70E39A2F23EACCC400317250 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70E39A4223EAD33F00317250 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		7BA6D8AC235F89AD00EF4A60 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BA6D8AF235F89AD00EF4A60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BA6D8B3235F89AD00EF4A60 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
@@ -623,6 +624,7 @@
 		7BA6D8A3235F89AD00EF4A60 = {
 			isa = PBXGroup;
 			children = (
+				70E39A4223EAD33F00317250 /* Package.swift */,
 				7059AB65236CAD000005A189 /* README.md */,
 				70C9FC8123C5CEE800907AF3 /* documentation */,
 				7BA6D8EF235F9D4500EF4A60 /* Sources */,
