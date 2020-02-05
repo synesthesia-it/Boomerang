@@ -15,6 +15,7 @@ import Boomerang
 import UIKitBoomerang
 #endif
 
+#if os(iOS) || os(tvOS)
 public extension Reactive where Base: UIStackView {
     func bind(viewModel: RxListViewModel, factory: ViewFactory) -> Disposable {
         viewModel.sectionsRelay
@@ -24,3 +25,4 @@ public extension Reactive where Base: UIStackView {
         })
     }
 }
+#endif
