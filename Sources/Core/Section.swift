@@ -99,4 +99,16 @@ public struct Section {
         }
         self.supplementary = supplementary
     }
+
+    public mutating func insert(_ item: ViewModel, at index: Int) {
+        self.items.insert(item, at: index)
+    }
+
+    public mutating func insert(_ items: [ViewModel], at index: Int) {
+        self.items.insert(contentsOf: items, at: index)
+    }
+    
+    public mutating func remove(at index: Int) -> ViewModel {
+        self.items.remove(at: index)
+    }
 }

@@ -47,7 +47,7 @@ import Foundation
  */
 public protocol ListViewModel: ViewModel {
     ///The array of available sections
-    var sections: [Section] { get }
+    var sections: [Section] { get set }
     
     ///A closure that should be set from a View component and called each time a Section update is available
     var onUpdate: () -> Void { get set }
