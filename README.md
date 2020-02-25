@@ -22,6 +22,9 @@ To use RxSwift integration, use
 pod 'Boomerang/RxSwift`
 ```
 
+## Example
+
+
 
 ## Table of contents
 
