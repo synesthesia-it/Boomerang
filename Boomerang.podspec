@@ -15,10 +15,10 @@ Pod::Spec.new do |spec|
 
   spec.author             = { "Stefano Mondino" => "stefano.mondino.dev@gmail.com" }
 
-#  spec.ios.deployment_target = "11.0"
+  spec.ios.deployment_target = "11.0"
 #  spec.osx.deployment_target = "10.13"
 #  spec.watchos.deployment_target = "4.0"
-#  spec.tvos.deployment_target = "11.0"
+  spec.tvos.deployment_target = "11.0"
 
   spec.source       = { :git => "https://github.com/synesthesia-it/Boomerang.git", :tag => "#{spec.version}" }
 
@@ -43,25 +43,26 @@ Pod::Spec.new do |spec|
     s.dependency "RxSwift"
     s.dependency "RxDataSources"
   end
+# Currently, cocoapods doesn't support mixed deployment targets between subspecs.
 
-  spec.subspec 'Combine' do |s|
-    s.source_files = "Sources/Combine/**/*{.swift}"
-    s.dependency "Boomerang/Core"
-    s.framework = "Combine"
-    s.framework = "SwiftUI"
-    s.ios.deployment_target = "13.0"
-    s.tvos.deployment_target = "13.0"
-    s.watchos.deployment_target = "6.0"
-  end
-  
-  spec.subspec 'SwiftUI' do |s|
-    s.source_files = "Sources/Combine/**/*{.swift}"
-    s.dependency "Boomerang/Combine"
-    s.ios.deployment_target = "13.0"
-    s.tvos.deployment_target = "13.0"
-    s.watchos.deployment_target = "6.0"
-    s.framework = "Combine"
-    s.framework = "SwiftUI"
-  end
+#  spec.subspec 'Combine' do |s|
+#    s.source_files = "Sources/Combine/**/*{.swift}"
+#    s.dependency "Boomerang/Core"
+#    s.framework = "Combine"
+#    s.framework = "SwiftUI"
+#    s.ios.deployment_target = "13.0"
+#    s.tvos.deployment_target = "13.0"
+#    s.watchos.deployment_target = "6.0"
+#  end
+#
+#  spec.subspec 'SwiftUI' do |s|
+#    s.source_files = "Sources/Combine/**/*{.swift}"
+#    s.dependency "Boomerang/Combine"
+#    s.ios.deployment_target = "13.0"
+#    s.tvos.deployment_target = "13.0"
+#    s.watchos.deployment_target = "6.0"
+#    s.framework = "Combine"
+#    s.framework = "SwiftUI"
+#  end
 
 end
