@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = "Boomerang"
   spec.version      = "6.0"
-  spec.summary      = "Quick MVVM on steroids"
+  spec.summary      = "Swift microframework for MVVM"
 
   spec.description  = <<-DESC
     A Swift microframework helping developers to write better MVVM applications.
@@ -15,10 +15,10 @@ Pod::Spec.new do |spec|
 
   spec.author             = { "Stefano Mondino" => "stefano.mondino.dev@gmail.com" }
 
-  spec.ios.deployment_target = "11.0"
-  spec.osx.deployment_target = "10.13"
-  spec.watchos.deployment_target = "4.0"
-  spec.tvos.deployment_target = "11.0"
+#  spec.ios.deployment_target = "11.0"
+#  spec.osx.deployment_target = "10.13"
+#  spec.watchos.deployment_target = "4.0"
+#  spec.tvos.deployment_target = "11.0"
 
   spec.source       = { :git => "https://github.com/synesthesia-it/Boomerang.git", :tag => "#{spec.version}" }
 
@@ -32,6 +32,8 @@ Pod::Spec.new do |spec|
     s.source_files = "Sources/UIKit/**/*{.swift}"
     s.dependency "Boomerang/Core"
     s.framework = "UIKit"
+    s.ios.deployment_target = "11.0"
+    s.tvos.deployment_target = "11.0"
   end
 
   spec.subspec 'RxSwift' do |s|
@@ -45,15 +47,19 @@ Pod::Spec.new do |spec|
   spec.subspec 'Combine' do |s|
     s.source_files = "Sources/Combine/**/*{.swift}"
     s.dependency "Boomerang/Core"
-    s.ios.deployment_target = "13.0"
     s.framework = "Combine"
     s.framework = "SwiftUI"
+    s.ios.deployment_target = "13.0"
+    s.tvos.deployment_target = "13.0"
+    s.watchos.deployment_target = "6.0"
   end
   
   spec.subspec 'SwiftUI' do |s|
     s.source_files = "Sources/Combine/**/*{.swift}"
     s.dependency "Boomerang/Combine"
     s.ios.deployment_target = "13.0"
+    s.tvos.deployment_target = "13.0"
+    s.watchos.deployment_target = "6.0"
     s.framework = "Combine"
     s.framework = "SwiftUI"
   end
