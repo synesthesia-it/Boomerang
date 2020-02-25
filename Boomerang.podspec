@@ -10,6 +10,7 @@ Pod::Spec.new do |spec|
 
   spec.homepage     = "http://github.com/synesthesia-it/Boomerang"
 
+  spec.swift_version = '5.1'
 
   spec.license      = "MIT"
 
