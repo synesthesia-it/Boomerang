@@ -100,15 +100,25 @@ public struct Section {
         self.supplementary = supplementary
     }
 
-    public mutating func insert(_ item: ViewModel, at index: Int) {
+    public mutating func insert(_ item:ViewModel, at index: Int) {
         self.items.insert(item, at: index)
     }
-
-    public mutating func insert(_ items: [ViewModel], at index: Int) {
+    public mutating func insert(_ items:[ViewModel], at index: Int) {
         self.items.insert(contentsOf: items, at: index)
     }
-    
-    public mutating func remove(at index: Int) -> ViewModel {
-        self.items.remove(at: index)
+
+    public mutating func move(from: Int, to: Int) {
+        self.items.rearrange(from: from, to: to)
+    }
+
+    public mutating func remove(at index: Int) -> ViewModel? {
+        guard items.count > index, index >= 0 else { return nil }
+        return self.items.remove(at: index)
+    }
+}
+
+internal extension Array {
+    mutating func rearrange(from: Int, to: Int) {
+        insert(remove(at: from), at: to)
     }
 }

@@ -53,6 +53,13 @@ open class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
         factory.configureCell(cell, with: viewModel)
         return cell
     }
+    public func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        viewModel.canMoveItem(at: indexPath)
+    }
+    public func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        viewModel.moveItem(at: sourceIndexPath, to: destinationIndexPath)
+    }
+    
 }
 
 extension String {

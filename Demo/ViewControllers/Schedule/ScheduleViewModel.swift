@@ -28,7 +28,7 @@ class ScheduleViewModel: ListViewModel, NavigationViewModel {
     var downloadTask: Task?
     let routeFactory: RouteFactory
     let itemViewModelFactory: ItemViewModelFactory
-    
+
     init(identifier: SceneIdentifier = .schedule,
          itemViewModelFactory: ItemViewModelFactory,
          routeFactory: RouteFactory) {

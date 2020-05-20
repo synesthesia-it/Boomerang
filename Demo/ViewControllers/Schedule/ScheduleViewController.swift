@@ -92,10 +92,13 @@ class ScheduleViewController: UIViewController, WithViewModel {
         
         if let viewModel = viewModel as? RxNavigationViewModel {
             viewModel.routes
-                .observeOn(MainScheduler.instance)
-                .bind { [weak self] route in
-                    route.execute(from: self)
-            }.disposed(by: disposeBag)
+                .bind(to: self.rx.routes())
+                .disposed(by: disposeBag)
+//            viewModel.routes
+//                .observeOn(MainScheduler.instance)
+//                .bind { [weak self] route in
+//                    route.execute(from: self)
+//            }.disposed(by: disposeBag)
         } else {
             viewModel.onNavigation = { [weak self] route in
                 route.execute(from: self)

@@ -29,7 +29,7 @@ enum DependencyContainerKeys: CaseIterable, Hashable {
 
 class DefaultAppDependencyContainer: AppDependencyContainer, DependencyContainer {
 
-    var container = Container<DependencyContainerKeys>()
+    let container = Container<DependencyContainerKeys>()
 
     var routeFactory: RouteFactory { self[.routeFactory] }
     var viewFactory: ViewFactory { self[.viewFactory] }
