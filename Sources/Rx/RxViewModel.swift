@@ -9,50 +9,22 @@
 import Foundation
 import RxCocoa
 import RxSwift
-import RxDataSources
+
 #if !COCOAPODS
 @_exported import Boomerang
 #endif
 
+#if !canImport(Differentiator)
+public protocol IdentifiableType {
+    associatedtype Identity: Hashable
+    var identity : Identity { get }
+}
+#else
+import Differentiator
+#endif
+
 public protocol RxViewModel: ViewModel {
     var disposeBag: DisposeBag { get }
-}
-
-public protocol RxNavigationViewModel: NavigationViewModel {
-    var routes: PublishRelay<Route> { get }
-}
-
-extension RxNavigationViewModel {
-    public var onNavigation: (Route) -> Void {
-        get { return {[weak self] in self?.routes.accept($0)} }
-        set { }
-    }
-}
-
-public protocol RxListViewModel: ListViewModel, RxViewModel {
-    var sectionsRelay: BehaviorRelay<[Section]> { get }
-}
-
-public extension RxListViewModel {
-    var sections: [Section] {
-        get {
-            sectionsRelay.value
-        }
-        set {
-            sectionsRelay.accept(newValue)
-        }
-    }
-    var onUpdate: () -> Void {
-        get { return {} }
-        set { }
-//        return {[weak self] in self?.sectionsRelay.accept(self?.sections ?? []) }
-    }
-}
-
-public extension Reactive where Base: RxListViewModel {
-    var sections: Observable<[Section]> {
-        return base.sectionsRelay.asObservable()
-    }
 }
 
 extension Section: IdentifiableType {
