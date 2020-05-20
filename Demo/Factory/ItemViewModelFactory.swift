@@ -12,6 +12,7 @@ import Boomerang
 protocol ItemViewModelFactory {
     func header(title: String) -> ViewModel
     func episode(_ episode: Episode) -> ViewModel
+    func todo(_ todo: Todo) -> ViewModel
 }
 
 struct DefaultItemViewModelFactory: ItemViewModelFactory {
@@ -23,5 +24,9 @@ struct DefaultItemViewModelFactory: ItemViewModelFactory {
 
     func episode(_ episode: Episode) -> ViewModel {
         return ShowViewModel(episode: episode)
+    }
+    
+    func todo(_ todo: Todo) -> ViewModel {
+        return TodoViewModel(todo: todo)
     }
 }

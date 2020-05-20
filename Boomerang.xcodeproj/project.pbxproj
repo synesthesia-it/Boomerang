@@ -21,6 +21,17 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		6ACF65A92471D79500046717 /* ContentTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACF65A42471D6C200046717 /* ContentTableView.swift */; };
+		6ACF65AB2471D7BD00046717 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACF65AA2471D7BD00046717 /* TableViewDataSource.swift */; };
+		6ACF65AD2471D7E600046717 /* TableViewCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACF65AC2471D7E600046717 /* TableViewCellFactory.swift */; };
+		6ACF65AF2471D9A000046717 /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACF65AE2471D9A000046717 /* TableViewDelegate.swift */; };
+		6ACF65B42472764E00046717 /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACF65B22472764E00046717 /* TodoViewController.swift */; };
+		6ACF65B52472764E00046717 /* TodoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6ACF65B32472764E00046717 /* TodoViewController.xib */; };
+		6ACF65B7247279EC00046717 /* TableViewCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACF65B6247279EC00046717 /* TableViewCellFactory.swift */; };
+		6ACF65BB24727DA300046717 /* TodosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACF65BA24727DA300046717 /* TodosViewModel.swift */; };
+		6ACF65BE2472813000046717 /* TodoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACF65BD2472813000046717 /* TodoItemView.swift */; };
+		6ACF65C02472813C00046717 /* TodoItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6ACF65BF2472813C00046717 /* TodoItemView.xib */; };
+		6ACF65C4247284CA00046717 /* TodoItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACF65C3247284CA00046717 /* TodoItemViewModel.swift */; };
 		702B24D0239694A2007F210E /* StackView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702B24CE23969401007F210E /* StackView+Rx.swift */; };
 		7059AB50236C8DC00005A189 /* RxBoomerang.h in Headers */ = {isa = PBXBuildFile; fileRef = 7059AB4E236C8DC00005A189 /* RxBoomerang.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7059AB53236C8DC00005A189 /* RxBoomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7059AB4C236C8DC00005A189 /* RxBoomerang.framework */; };
@@ -259,6 +270,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6ACF65A42471D6C200046717 /* ContentTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableView.swift; sourceTree = "<group>"; };
+		6ACF65AA2471D7BD00046717 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
+		6ACF65AC2471D7E600046717 /* TableViewCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellFactory.swift; sourceTree = "<group>"; };
+		6ACF65AE2471D9A000046717 /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
+		6ACF65B22472764E00046717 /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
+		6ACF65B32472764E00046717 /* TodoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoViewController.xib; sourceTree = "<group>"; };
+		6ACF65B6247279EC00046717 /* TableViewCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellFactory.swift; sourceTree = "<group>"; };
+		6ACF65BA24727DA300046717 /* TodosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosViewModel.swift; sourceTree = "<group>"; };
+		6ACF65BD2472813000046717 /* TodoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemView.swift; sourceTree = "<group>"; };
+		6ACF65BF2472813C00046717 /* TodoItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoItemView.xib; sourceTree = "<group>"; };
+		6ACF65C3247284CA00046717 /* TodoItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemViewModel.swift; sourceTree = "<group>"; };
 		702B24CE23969401007F210E /* StackView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackView+Rx.swift"; sourceTree = "<group>"; };
 		702B24D123969536007F210E /* UIStackView+Boomerang.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Boomerang.swift"; sourceTree = "<group>"; };
 		7059AB4C236C8DC00005A189 /* RxBoomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxBoomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -426,6 +448,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6AA65FB42471D3E100979520 /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				6ACF65AE2471D9A000046717 /* TableViewDelegate.swift */,
+				6ACF65A42471D6C200046717 /* ContentTableView.swift */,
+				6ACF65AC2471D7E600046717 /* TableViewCellFactory.swift */,
+				6ACF65AA2471D7BD00046717 /* TableViewDataSource.swift */,
+			);
+			path = UITableView;
+			sourceTree = "<group>";
+		};
+		6ACF65BC2472810B00046717 /* Todo */ = {
+			isa = PBXGroup;
+			children = (
+				6ACF65BD2472813000046717 /* TodoItemView.swift */,
+				6ACF65BF2472813C00046717 /* TodoItemView.xib */,
+				6ACF65C3247284CA00046717 /* TodoItemViewModel.swift */,
+			);
+			path = Todo;
+			sourceTree = "<group>";
+		};
 		702B24CD239693CD007F210E /* UIStackView */ = {
 			isa = PBXGroup;
 			children = (
@@ -515,6 +558,7 @@
 		70C921AF23761D1E00302A29 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6ACF65BC2472810B00046717 /* Todo */,
 				7BA8F4AE235FA05D00027DE5 /* Show */,
 				70C9219D236F4C7E00302A29 /* Header */,
 			);
@@ -581,6 +625,9 @@
 				7059AB63236C979D0005A189 /* RxScheduleViewModel.swift */,
 				7BA6D8B3235F89AD00EF4A60 /* ScheduleViewController.swift */,
 				70DFCA142361D350004B49D6 /* ScheduleViewController.xib */,
+				6ACF65B22472764E00046717 /* TodoViewController.swift */,
+				6ACF65B32472764E00046717 /* TodoViewController.xib */,
+				6ACF65BA24727DA300046717 /* TodosViewModel.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -708,6 +755,7 @@
 		7BA6D8F3235F9D4500EF4A60 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				6AA65FB42471D3E100979520 /* UITableView */,
 				70E39A2E23EACCC400317250 /* UIKitBoomerang.h */,
 				70E39A2F23EACCC400317250 /* Info.plist */,
 				70C067ED23A232D200683F97 /* Scene */,
@@ -750,6 +798,7 @@
 				7BA8F4BD235FAB0800027DE5 /* MainViewFactory.swift */,
 				7BA8F4BF235FAB8A00027DE5 /* ViewControllerFactory.swift */,
 				70C921A9237404D500302A29 /* RouteFactory.swift */,
+				6ACF65B6247279EC00046717 /* TableViewCellFactory.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -1088,9 +1137,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BA6D8BC235F89AF00EF4A60 /* LaunchScreen.storyboard in Resources */,
+				6ACF65C02472813C00046717 /* TodoItemView.xib in Resources */,
 				70DFCA262361F2CC004B49D6 /* ShowDetailViewController.xib in Resources */,
 				70C921A1236F4C9B00302A29 /* HeaderItemView.xib in Resources */,
 				7BA6D8B9235F89AF00EF4A60 /* Assets.xcassets in Resources */,
+				6ACF65B52472764E00046717 /* TodoViewController.xib in Resources */,
 				7BA6D8D8235F917E00EF4A60 /* ShowItemView.xib in Resources */,
 				70DFCA152361D350004B49D6 /* ScheduleViewController.xib in Resources */,
 			);
@@ -1193,7 +1244,11 @@
 				70E39A3C23EACD2C00317250 /* ContentCollectionView.swift in Sources */,
 				70E39A3F23EACD2D00317250 /* UICollectionView+Sizing.swift in Sources */,
 				70E39A3E23EACD2C00317250 /* CollectionViewDelegate.swift in Sources */,
+				6ACF65AB2471D7BD00046717 /* TableViewDataSource.swift in Sources */,
 				70E39A4123EACD2D00317250 /* CollectionViewCellFactory.swift in Sources */,
+				6ACF65AD2471D7E600046717 /* TableViewCellFactory.swift in Sources */,
+				6ACF65A92471D79500046717 /* ContentTableView.swift in Sources */,
+				6ACF65AF2471D9A000046717 /* TableViewDelegate.swift in Sources */,
 				70E39A3B23EACD2C00317250 /* UIStackView+Boomerang.swift in Sources */,
 				70E39A3923EACD2C00317250 /* UIKit+Constraints.swift in Sources */,
 			);
@@ -1206,6 +1261,7 @@
 				70C921B523761D8A00302A29 /* AlertRoute.swift in Sources */,
 				70DFCA102361B921004B49D6 /* ShowItemViewModel.swift in Sources */,
 				7BA6D8B4235F89AD00EF4A60 /* ScheduleViewController.swift in Sources */,
+				6ACF65C4247284CA00046717 /* TodoItemViewModel.swift in Sources */,
 				7BA6D8D6235F8FFC00EF4A60 /* ShowItemView.swift in Sources */,
 				7BA6D8B0235F89AD00EF4A60 /* AppDelegate.swift in Sources */,
 				706CE12C238531AA0070FC4E /* ItemViewModelFactory.swift in Sources */,
@@ -1215,6 +1271,8 @@
 				70DFCA132361D073004B49D6 /* RESTDataSource.swift in Sources */,
 				70C921AA237404D500302A29 /* RouteFactory.swift in Sources */,
 				70C9219F236F4C9200302A29 /* HeaderItemView.swift in Sources */,
+				6ACF65BB24727DA300046717 /* TodosViewModel.swift in Sources */,
+				6ACF65B7247279EC00046717 /* TableViewCellFactory.swift in Sources */,
 				7BA8F4C0235FAB8A00027DE5 /* ViewControllerFactory.swift in Sources */,
 				7059AB87236CD6C10005A189 /* RESTDataSource+Rx.swift in Sources */,
 				70DFCA1D2361E783004B49D6 /* ImageDataSource.swift in Sources */,
@@ -1222,7 +1280,9 @@
 				70C921A3236F4D3400302A29 /* HeaderViewModel.swift in Sources */,
 				70DFCA212361F2A3004B49D6 /* ShowDetailViewController.swift in Sources */,
 				7059AB64236C979D0005A189 /* RxScheduleViewModel.swift in Sources */,
+				6ACF65BE2472813000046717 /* TodoItemView.swift in Sources */,
 				70C921B323761D4700302A29 /* ModalRoute.swift in Sources */,
+				6ACF65B42472764E00046717 /* TodoViewController.swift in Sources */,
 				70DFCA0C23618EEF004B49D6 /* Show.swift in Sources */,
 				70DFCA242361F2C1004B49D6 /* ShowDetailViewModel.swift in Sources */,
 				706CE12A23852D230070FC4E /* SceneViewModelFactory.swift in Sources */,
