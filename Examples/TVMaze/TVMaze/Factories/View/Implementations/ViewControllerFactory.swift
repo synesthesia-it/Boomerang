@@ -41,6 +41,7 @@ struct ViewControllerFactory: SceneFactory {
                                   collectionViewCellFactory: cellFactory)
     }
 
-    //MURRAY IMPLEMENTATION PLACEHOLDER
+    
+//MURRAY IMPLEMENTATION PLACEHOLDER
 
 }

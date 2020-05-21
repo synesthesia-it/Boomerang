@@ -2,13 +2,13 @@
     "replacements" : [
         {
             "source" : "ViewModelFactoryImplementation.replacement.swift",
-            "destination" : "Sources\/{{ target || \"App\" }}\/Factory\/ItemViewModelFactory.swift",
+            "destination" : "{{ target || \"App\" }}\/Factories\/ViewModel/Implementations/ItemViewModelFactory.swift",
             "placeholder": "//MURRAY IMPLEMENTATION PLACEHOLDER"
         },
         {
             "source" : "ViewModelFactoryDeclaration.replacement.swift",
-            "destination" : "Sources\/{{ target || \"App\" }}\/Factory\/ItemViewModelFactory.swift",
-            "placeholder": "\/\/MURRAY DECLARATION PLACEHOLDER"
+            "destination" : "{{ target || \"App\" }}\/Factories/ViewModel/ViewModelFactory.swift",
+            "placeholder": "//MURRAY ITEM"
         }
     ],
     "paths" : [

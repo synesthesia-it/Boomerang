@@ -22,7 +22,7 @@ class {{ name|firstUppercase }}ItemViewModel: ViewModel {
     }
     
     init({{ name|firstLowercase }}: {{ name|firstUppercase }},
-         layoutIdentifier: LayoutIdentifier = ViewIdentifier.{{ name|firstLowercase }},
+         layoutIdentifier: LayoutIdentifier = ItemIdentifier.{{ name|firstLowercase }},
          styleFactory: StyleFactory) {
          
         self.layoutIdentifier = layoutIdentifier

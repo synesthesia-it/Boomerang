@@ -1,7 +1,7 @@
 {
     "replacements" : [
         {
-        "destination": "{{ target || \"App\" }}\/Factory\/MainViewFactory.swift",
+        "destination": "{{ target || \"App\" }}\/Factories\/View/ItemFactory.swift",
         "text": "case {{ name|firstLowercase }}\n\t",
         "placeholder": "\/\/MURRAY PLACEHOLDER"
         }

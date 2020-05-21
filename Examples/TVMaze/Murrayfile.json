@@ -3,6 +3,6 @@
     "Murray\/Boomerang\/Bonespec.json",
   ],
   "environment" : {
-    "target" : "TvMaze"
+    "target" : "TVMaze"
   }
 }
