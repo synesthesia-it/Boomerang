@@ -10,14 +10,19 @@ import Foundation
 /**
  A `ViewModel` object with the ability of managing list of smaller ViewModels
  
- The main use case scenario of a ListViewModel is for complex sections representing lists of components, either homogenous lists like a product list, or heterogeneous sections like a product detail.
+ The main use case scenario of a ListViewModel is for complex sections representing lists of components,
+ either homogenous lists like a product list, or heterogeneous sections like a product detail.
 
- Each viewModel in the list is usually converted into a view by some other list-type view component (like table and collection views in UIKit).
+ Each viewModel in the list is usually converted into a view by some other list-type view component
+ (like table and collection views in UIKit).
  
  To populate a list viewModel, usually
  
- 1. some user action triggers the `reload()` method, starting data retrieval from the Model layer (network calls, database fetch, etc...)
- 2. data is eventually ready and structured into a single or multiple entities. According to app's business logic, these entities must be converted into an array of `Section` objects, each one containing one or many `ViewModel` by setting the `sections` variable
+ 1. some user action triggers the `reload()` method, starting data retrieval from the Model layer
+ (network calls, database fetch, etc...)
+ 2. data is eventually ready and structured into a single or multiple entities.
+ According to app's business logic, these entities must be converted into an array of `Section` objects,
+ each one containing one or many `ViewModel` by setting the `sections` variable
  3. the view waiting for updates is notified of available data through the `onUpdate()` callback
  
  Example:
@@ -48,13 +53,13 @@ import Foundation
 public protocol ListViewModel: ViewModel {
     ///The array of available sections
     var sections: [Section] { get set }
-    
+
     ///A closure that should be set from a View component and called each time a Section update is available
     var onUpdate: () -> Void { get set }
-    
+
     ///Triggers data reload
     func reload()
-    
+
     ///Should be called by external views/scenes to trigger some action related to a single element in a list.
     func selectItem(at indexPath: IndexPath)
 
@@ -62,7 +67,7 @@ public protocol ListViewModel: ViewModel {
     func canDeleteItem(at indexPath: IndexPath) -> Bool
 
     func moveItem(at source: IndexPath, to destination: IndexPath)
-    func moveSection(at source:Int, to destination: Int)
+    func moveSection(at source: Int, to destination: Int)
 
     func insertItem(_ item: ViewModel, at indexPath: IndexPath)
     func insertItems(_ items: [ViewModel], at indexPath: IndexPath)
@@ -82,7 +87,6 @@ public extension ListViewModel {
     func canMoveItem(at indexPath: IndexPath) -> Bool { false }
 
     func canDeleteItem(at indexPath: IndexPath) -> Bool { false }
-
 
     func insertItem(_ item: ViewModel, at indexPath: IndexPath) {
         guard let sectionIndex = indexPath.section,
@@ -148,7 +152,7 @@ public extension ListViewModel {
         self.sections = sections
     }
 
-    func moveSection(at source:Int, to destination: Int) {
+    func moveSection(at source: Int, to destination: Int) {
         guard source >= 0,
             destination >= 0,
             source < sections.count,

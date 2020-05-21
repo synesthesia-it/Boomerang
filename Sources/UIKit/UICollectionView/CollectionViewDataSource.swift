@@ -27,10 +27,14 @@ open class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
         return viewModel.sections[section].items.count
     }
 
-    open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    open func collectionView(_ collectionView: UICollectionView,
+                             cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let viewModel = self.viewModel[indexPath] else {
-            collectionView.register(factory.cellClass(from: nil), forCellWithReuseIdentifier: factory.defaultCellIdentifier)
-            return collectionView.dequeueReusableCell(withReuseIdentifier: factory.defaultCellIdentifier, for: indexPath)
+            collectionView.register(factory.cellClass(from: nil),
+                                    forCellWithReuseIdentifier: factory.defaultCellIdentifier)
+
+            return collectionView.dequeueReusableCell(withReuseIdentifier: factory.defaultCellIdentifier,
+                                                      for: indexPath)
         }
 
         let name = factory.name(from: viewModel.layoutIdentifier)
@@ -40,26 +44,41 @@ open class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
         return cell
     }
 
-    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    public func collectionView(_ collectionView: UICollectionView,
+                               viewForSupplementaryElementOfKind kind: String,
+                               at indexPath: IndexPath) -> UICollectionReusableView {
         guard let viewModel = viewModel
             .sections[indexPath.section]
             .supplementary.item(atIndex: indexPath.item, forKind: kind.toSectionKind()) else {
-                collectionView.register(factory.cellClass(from: nil), forSupplementaryViewOfKind: kind, withReuseIdentifier: factory.defaultCellIdentifier)
-                return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: factory.defaultCellIdentifier, for: indexPath)
+                collectionView.register(factory.cellClass(from: nil),
+                                        forSupplementaryViewOfKind: kind,
+                                        withReuseIdentifier: factory.defaultCellIdentifier)
+
+                return collectionView
+                    .dequeueReusableSupplementaryView(ofKind: kind,
+                                                      withReuseIdentifier: factory.defaultCellIdentifier,
+                                                      for: indexPath)
         }
         let name = factory.name(from: viewModel.layoutIdentifier)
-        collectionView.register(factory.cellClass(from: viewModel.layoutIdentifier), forSupplementaryViewOfKind: kind, withReuseIdentifier: name)
-        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: name, for: indexPath)
+        collectionView.register(factory.cellClass(from: viewModel.layoutIdentifier),
+                                forSupplementaryViewOfKind: kind,
+                                withReuseIdentifier: name)
+
+        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                   withReuseIdentifier: name,
+                                                                   for: indexPath)
         factory.configureCell(cell, with: viewModel)
         return cell
     }
     public func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
         viewModel.canMoveItem(at: indexPath)
     }
-    public func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView,
+                               moveItemAt sourceIndexPath: IndexPath,
+                               to destinationIndexPath: IndexPath) {
         viewModel.moveItem(at: sourceIndexPath, to: destinationIndexPath)
     }
-    
+
 }
 
 extension String {

@@ -41,8 +41,8 @@ class TestListViewModel: ListViewModel {
 class BoomerangTests: XCTestCase {
     var viewModel: TestListViewModel!
     override func setUpWithError() throws {
-        let models = [["A","B","C"], ["D","E","F"], ["G"]]
-        let sections = models.map { Section(items:$0.map(TestItemViewModel.init))}
+        let models = [["A", "B", "C"], ["D", "E", "F"], ["G"]]
+        let sections = models.map { Section(items: $0.map(TestItemViewModel.init))}
         viewModel = TestListViewModel(sections: sections)
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -52,7 +52,6 @@ class BoomerangTests: XCTestCase {
     }
 
     func testIndexOutOfBounds() throws {
-
 
         viewModel.deleteSection(at: 100)
         XCTAssert(viewModel.sections.count == 3)
@@ -94,19 +93,19 @@ class BoomerangTests: XCTestCase {
         XCTAssert((viewModel.sections.first?.items[3] as? TestItemViewModel)?.string == "G")
 
         let newSectionItems1 = (6..<8).map { TestItemViewModel("\($0)")}
-        let newSection1 = Section(items:newSectionItems1)
+        let newSection1 = Section(items: newSectionItems1)
         viewModel.insertSection(newSection1, at: -1)
         XCTAssert((viewModel.sections.first?.items.first as? TestItemViewModel)?.string == "6")
         XCTAssert((viewModel.sections.first?.items.last as? TestItemViewModel)?.string == "7")
 
         let newSectionItems2 = (8..<10).map { TestItemViewModel("\($0)")}
-        let newSection2 = Section(items:newSectionItems2)
+        let newSection2 = Section(items: newSectionItems2)
         viewModel.insertSection(newSection2, at: 100)
         XCTAssert((viewModel.sections.last?.items.first as? TestItemViewModel)?.string == "8")
         XCTAssert((viewModel.sections.last?.items.last as? TestItemViewModel)?.string == "9")
 
         let newSectionItems3 = (10..<12).map { TestItemViewModel("\($0)")}
-        let newSection3 = Section(items:newSectionItems3)
+        let newSection3 = Section(items: newSectionItems3)
         viewModel.insertSection(newSection3, at: 2)
         XCTAssert((viewModel.sections[2].items.first as? TestItemViewModel)?.string == "10")
         XCTAssert((viewModel.sections[2].items.last as? TestItemViewModel)?.string == "11")

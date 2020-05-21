@@ -14,15 +14,17 @@ public protocol ViewModel: WithPropertyAssignment {
    /**
     A unique identifier used to identify this view model in lists.
     
-    A view model should always be uniquely identifiable inside a list of ViewModels, so that differences can be calculated automatically by some kind of frameworks like RxDataSources or SwiftUI.
+    A view model should always be uniquely identifiable inside a list of ViewModels,
+     so that differences can be calculated automatically by some kind of frameworks like RxDataSources or SwiftUI.
     If this kind of information is not available, safely return `UUID()`
     */
     var uniqueIdentifier: UniqueIdentifier { get }
-    
+
     /**
      An identifier used by the view layer to create proper layout object (view, view controller, etc)
      
-     Since a view model is always coupled to a view object, this identifier is used to express information about layout without explicitly referencing the view object.
+     Since a view model is always coupled to a view object, this identifier is used
+     to express information about layout without explicitly referencing the view object.
      */
     var layoutIdentifier: LayoutIdentifier { get }
 }

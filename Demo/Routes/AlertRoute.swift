@@ -19,7 +19,7 @@ struct AlertRoute: UIKitRoute {
             return controller
         }
     }
-    func execute<T>(from scene: T?) where T : UIViewController {
+    func execute<T>(from scene: T?) where T: UIViewController {
         if let destination = createViewController() {
             (scene as? UIViewController)?.present(destination, animated: true, completion: nil)
         }

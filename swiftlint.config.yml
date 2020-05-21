@@ -1,0 +1,6 @@
+identifier_name:
+  excluded:
+  - id
+  - to
+line_length:
+  ignores_comments: true

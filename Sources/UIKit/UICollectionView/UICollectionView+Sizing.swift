@@ -12,7 +12,7 @@ import UIKit
 public enum Direction {
     case horizontal
     case vertical
-    
+
     public static func from(layout: UICollectionViewLayout) -> Direction {
         guard let flow = layout as? UICollectionViewFlowLayout else { return .vertical }
         switch flow.scrollDirection {
@@ -27,7 +27,10 @@ public protocol CollectionViewSizeCalculator {
     func insets(for collectionView: UICollectionView, in section: Int) -> UIEdgeInsets
     func itemSpacing(for collectionView: UICollectionView, in section: Int) -> CGFloat
     func lineSpacing(for collectionView: UICollectionView, in section: Int) -> CGFloat
-    func sizeForItem(at indexPath: IndexPath,in collectionView: UICollectionView, direction: Direction?, type: String?) -> CGSize
+    func sizeForItem(at indexPath: IndexPath,
+                     in collectionView: UICollectionView,
+                     direction: Direction?,
+                     type: String?) -> CGSize
 }
 
 public extension CollectionViewSizeCalculator {
@@ -37,18 +40,19 @@ public extension CollectionViewSizeCalculator {
     private func delegate(for collectionView: UICollectionView) -> UICollectionViewDelegateFlowLayout? {
         return collectionView.delegate as? UICollectionViewDelegateFlowLayout
     }
-    
+
     func boundingBox(for collectionView: UICollectionView) -> CGSize {
-        return CGSize(width: collectionView.bounds.width - collectionView.contentInset.left - collectionView.contentInset.right,
-                      height: collectionView.bounds.height - collectionView.contentInset.top - collectionView.contentInset.top)
+        let width = collectionView.bounds.width - collectionView.contentInset.left - collectionView.contentInset.right
+        let height = collectionView.bounds.height - collectionView.contentInset.top - collectionView.contentInset.top
+        return CGSize(width: width,
+                      height: height)
     }
-    
+
     func calculateFixedDimension(for direction: Direction,
-                                        collectionView: UICollectionView,
-                                        at indexPath: IndexPath,
-                                        itemsPerLine: Int,
-                                        type: String? = nil) -> CGFloat {
-        
+                                 collectionView: UICollectionView,
+                                 at indexPath: IndexPath,
+                                 itemsPerLine: Int,
+                                 type: String? = nil) -> CGFloat {
         let collectionViewSize = boundingBox(for: collectionView)
         if type == UICollectionView.elementKindSectionHeader || type == UICollectionView.elementKindSectionFooter {
             switch direction {
@@ -71,5 +75,5 @@ public extension CollectionViewSizeCalculator {
         }
         return floor(floor(value * UIScreen.main.scale)/UIScreen.main.scale)
     }
-    
+
 }

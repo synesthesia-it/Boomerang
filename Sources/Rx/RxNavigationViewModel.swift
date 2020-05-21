@@ -20,6 +20,7 @@ public protocol RxNavigationViewModel: NavigationViewModel {
 extension RxNavigationViewModel {
     public var onNavigation: (Route) -> Void {
         get { return {[weak self] in self?.routes.accept($0)} }
+        // swiftlint:disable unused_setter_value
         set { }
     }
 }

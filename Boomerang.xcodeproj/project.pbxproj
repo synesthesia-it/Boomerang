@@ -262,6 +262,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		701ED04A247668CA00A8AE85 /* swiftlint.config.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftlint.config.yml; sourceTree = "<group>"; };
 		702B24CE23969401007F210E /* StackView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackView+Rx.swift"; sourceTree = "<group>"; };
 		702B24D123969536007F210E /* UIStackView+Boomerang.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Boomerang.swift"; sourceTree = "<group>"; };
 		7059AB4C236C8DC00005A189 /* RxBoomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxBoomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -644,6 +645,7 @@
 			children = (
 				70E39A4223EAD33F00317250 /* Package.swift */,
 				7B7E658724053C650039954B /* Boomerang.podspec */,
+				701ED04A247668CA00A8AE85 /* swiftlint.config.yml */,
 				7059AB65236CAD000005A189 /* README.md */,
 				70C9FC8123C5CEE800907AF3 /* documentation */,
 				7BA6D8EF235F9D4500EF4A60 /* Sources */,
@@ -825,6 +827,7 @@
 				7059AB49236C8DC00005A189 /* Frameworks */,
 				7059AB4A236C8DC00005A189 /* Resources */,
 				7059AB5C236C8E230005A189 /* Embed Frameworks */,
+				701ED04C24766EA700A8AE85 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -926,6 +929,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 70E39A3723EACCC400317250 /* Build configuration list for PBXNativeTarget "UIKitBoomerang" */;
 			buildPhases = (
+				701ED04B247669A100A8AE85 /* ShellScript */,
 				70E39A2723EACCC400317250 /* Headers */,
 				70E39A2823EACCC400317250 /* Sources */,
 				70E39A2923EACCC400317250 /* Frameworks */,
@@ -967,6 +971,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7BA6D8EB235F9D2F00EF4A60 /* Build configuration list for PBXNativeTarget "Boomerang" */;
 			buildPhases = (
+				701ED0492476675B00A8AE85 /* ShellScript */,
 				7BA6D8DD235F9D2F00EF4A60 /* Headers */,
 				7BA6D8DE235F9D2F00EF4A60 /* Sources */,
 				7BA6D8DF235F9D2F00EF4A60 /* Frameworks */,
@@ -1120,6 +1125,57 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		701ED0492476675B00A8AE85 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint --config \"../../swiftlint.config.yml\" --path \"Sources/Core\" \nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		701ED04B247669A100A8AE85 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint --config \"../../swiftlint.config.yml\" --path \"Sources/UIKit\" \nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		701ED04C24766EA700A8AE85 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint --config \"../../swiftlint.config.yml\" --path \"Sources/Rx\" \nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		70C921A8236F544100302A29 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

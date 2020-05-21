@@ -15,8 +15,10 @@ private struct AssociatedKeys {
 }
 public extension UIView {
     var isPlaceholderForAutosize: Bool {
-           get { return objc_getAssociatedObject(self, &AssociatedKeys.isPlaceholderForAutosize) as? Bool ?? false }
-           set { objc_setAssociatedObject(self, &AssociatedKeys.isPlaceholderForAutosize, newValue, .OBJC_ASSOCIATION_RETAIN)}
+           get { objc_getAssociatedObject(self, &AssociatedKeys.isPlaceholderForAutosize) as? Bool ?? false }
+           set {
+            objc_setAssociatedObject(self, &AssociatedKeys.isPlaceholderForAutosize, newValue, .OBJC_ASSOCIATION_RETAIN)
+        }
        }
 }
 extension UIView {
@@ -62,7 +64,7 @@ extension UIView {
 
     func addConstraintsToPinHorizontalEdgesToSuperView(with padding: CGFloat = 0) {
         prepareForConstraints()
-        self.superview!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(padding)-[view]-(padding)-|",
+        superview?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(padding)-[view]-(padding)-|",
                                                                       options: LayoutFormatOptions(rawValue: 0),
                                                                       metrics: ["padding": padding],
                                                                       views: ["view": self]))
@@ -70,7 +72,7 @@ extension UIView {
 
     func addConstraintsToPinVerticalEdgesToSuperView(with padding: CGFloat = 0) {
         prepareForConstraints()
-        self.superview!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(padding)-[view]-(padding)-|",
+        superview?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(padding)-[view]-(padding)-|",
                                                                       options: LayoutFormatOptions(rawValue: 0),
                                                                       metrics: ["padding": padding],
                                                                       views: ["view": self]))
@@ -78,7 +80,7 @@ extension UIView {
 
     func addConstraintsToCenterVertically() {
         prepareForConstraints()
-        self.superview!.addConstraint(NSLayoutConstraint(item: self,
+        superview?.addConstraint(NSLayoutConstraint(item: self,
                                                          attribute: .centerY,
                                                          relatedBy: .equal,
                                                          toItem: self.superview!,
@@ -88,7 +90,7 @@ extension UIView {
 
     func addConstraintsToCenterHorizontally() {
         prepareForConstraints()
-        self.superview!.addConstraint(NSLayoutConstraint(item: self,
+        superview?.addConstraint(NSLayoutConstraint(item: self,
                                                          attribute: .centerX,
                                                          relatedBy: .equal,
                                                          toItem: self.superview!,
@@ -108,7 +110,7 @@ extension UIView {
 
     func addConstraintsToPinHeightToSuperview() {
         prepareForConstraints()
-        self.superview!.addConstraint(NSLayoutConstraint(item: self,
+        superview?.addConstraint(NSLayoutConstraint(item: self,
                                                          attribute: .height,
                                                          relatedBy: .equal,
                                                          toItem: self.superview!,
@@ -125,7 +127,7 @@ extension UIView {
                                             attribute: .leading,
                                             multiplier: 1, constant: constant)
 
-        self.superview!.addConstraint(constraint)
+        superview?.addConstraint(constraint)
         return constraint
     }
     @discardableResult
@@ -137,7 +139,7 @@ extension UIView {
                                             toItem: self.superview!,
                                             attribute: .trailing,
                                             multiplier: 1, constant: -constant)
-        self.superview!.addConstraint(constraint)
+        superview?.addConstraint(constraint)
         return constraint
     }
     @discardableResult
@@ -149,7 +151,7 @@ extension UIView {
                                             toItem: self.superview!,
                                             attribute: .top,
                                             multiplier: 1, constant: constant)
-        self.superview!.addConstraint(constraint)
+        superview?.addConstraint(constraint)
         return constraint
     }
     @discardableResult
@@ -161,7 +163,7 @@ extension UIView {
                                             toItem: self.superview!,
                                             attribute: .bottom,
                                             multiplier: 1, constant: -constant)
-        self.superview!.addConstraint(constraint)
+        superview?.addConstraint(constraint)
         return constraint
     }
     @discardableResult
@@ -173,7 +175,7 @@ extension UIView {
                                             toItem: view,
                                             attribute: .bottom,
                                             multiplier: 1, constant: constant)
-        self.superview!.addConstraint(constraint)
+        superview?.addConstraint(constraint)
         return constraint
     }
     @discardableResult
@@ -185,7 +187,7 @@ extension UIView {
                                             toItem: view,
                                             attribute: .right,
                                             multiplier: 1, constant: constant)
-        self.superview!.addConstraint(constraint)
+        superview?.addConstraint(constraint)
         return constraint
     }
     @discardableResult
@@ -197,7 +199,7 @@ extension UIView {
                                             toItem: view,
                                             attribute: .left,
                                             multiplier: 1, constant: -constant)
-        self.superview!.addConstraint(constraint)
+        superview?.addConstraint(constraint)
         return constraint
     }
     @discardableResult
@@ -209,7 +211,7 @@ extension UIView {
                                             toItem: view,
                                             attribute: .top,
                                             multiplier: 1, constant: -constant)
-        self.superview!.addConstraint(constraint)
+        superview?.addConstraint(constraint)
         return constraint
     }
 

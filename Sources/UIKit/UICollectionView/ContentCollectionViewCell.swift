@@ -47,7 +47,8 @@ public class ContentCollectionViewCell: UICollectionViewCell, ContentCollectionV
         return internalView?.preferredFocusEnvironments ?? super.preferredFocusEnvironments
     }
     open override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-        return internalView?.didUpdateFocus(in: context, with: coordinator) ?? super.didUpdateFocus(in: context, with: coordinator)
+        return internalView?.didUpdateFocus(in: context, with: coordinator) ??
+            super.didUpdateFocus(in: context, with: coordinator)
     }
 
 }

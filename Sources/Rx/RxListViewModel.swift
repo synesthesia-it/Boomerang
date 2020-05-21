@@ -28,6 +28,7 @@ public extension RxListViewModel {
     }
     var onUpdate: () -> Void {
         get { return {} }
+        // swiftlint:disable unused_setter_value
         set { }
     }
 }

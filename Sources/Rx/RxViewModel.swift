@@ -17,7 +17,7 @@ import RxSwift
 #if !canImport(Differentiator)
 public protocol IdentifiableType {
     associatedtype Identity: Hashable
-    var identity : Identity { get }
+    var identity: Identity { get }
 }
 #else
 import Differentiator

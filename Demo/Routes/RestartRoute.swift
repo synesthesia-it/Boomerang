@@ -11,7 +11,7 @@ import UIKitBoomerang
 import UIKit
 
 struct RestartRoute: UIKitRoute {
-    
+
     let createViewController: () -> UIViewController?
     init(createScene: @escaping () -> UIViewController) {
         self.createViewController = createScene

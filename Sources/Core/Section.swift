@@ -23,10 +23,10 @@ public struct Section {
             
         Section' s headers and footers are usually supplementary informations of the first element
      */
+    typealias KindMap = [String: ViewModel]
     public struct Supplementary {
         public static let header = "internal_header_type"
         public static let footer = "internal_footer_type"
-        typealias KindMap = [String: ViewModel]
 
         internal var items: [Int: KindMap] = [:]
 
@@ -49,26 +49,27 @@ public struct Section {
             return items[index]?[kind]
         }
     }
-    
-    ///Unique id representing the section. Uniqueness is required by differentiators algorithms to detect differences between sections
+
+    ///Unique id representing the section.
+    ///Uniqueness is required by differentiators algorithms to detect differences between sections
     public var id: String
-    
+
     ///The `ViewModel` items contained inside the Section
     public var items: [ViewModel]
-    
+
     ///The `Supplementary` object representing additional viewModels for each item
     public var supplementary: Supplementary
-    
+
     ///Convenience helper to get the header view model from `Supplementary` object
     public var header: ViewModel? {
         return supplementary.item(atIndex: 0, forKind: Supplementary.header)
     }
-    
+
     ///Convenience helper to get the footer view model from `Supplementary` object
     public var footer: ViewModel? {
         return supplementary.item(atIndex: 0, forKind: Supplementary.footer)
     }
-    
+
     /**
     Create a new `Section` object from given items.
     
@@ -100,10 +101,10 @@ public struct Section {
         self.supplementary = supplementary
     }
 
-    public mutating func insert(_ item:ViewModel, at index: Int) {
+    public mutating func insert(_ item: ViewModel, at index: Int) {
         self.items.insert(item, at: index)
     }
-    public mutating func insert(_ items:[ViewModel], at index: Int) {
+    public mutating func insert(_ items: [ViewModel], at index: Int) {
         self.items.insert(contentsOf: items, at: index)
     }
 

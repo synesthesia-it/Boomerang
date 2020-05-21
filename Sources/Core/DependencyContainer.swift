@@ -19,7 +19,8 @@ public protocol DependencyContainer: AnyObject {
 /**
  An object capable of storing dependencies and lately retrieve them according to unique keys
  
- Usually it simply needs to be instantiated in a `DependencyContainer` context, providing the key type (`DependencyKey` generic type)
+ Usually it simply needs to be instantiated in a `DependencyContainer` context,
+ providing the key type (`DependencyKey` generic type)
  */
 public class Container<DependencyKey: Hashable> {
 
@@ -72,7 +73,9 @@ public extension DependencyContainer {
         - Parameter handler: the dependency that will be *resolved* lately, eventually producing a `Value` result.
      
      */
-    func register<Value: Any>(for key: DependencyKey, scope: Container<DependencyKey>.Scope = .unique, handler: @escaping () -> Value) {
+    func register<Value: Any>(for key: DependencyKey,
+                              scope: Container<DependencyKey>.Scope = .unique,
+                              handler: @escaping () -> Value) {
         container.singletons[key] = nil
         container.dependencies[key] = Container<DependencyKey>.Dependency(scope: scope, closure: handler)
         switch scope {
@@ -80,7 +83,7 @@ public extension DependencyContainer {
         default: break
         }
     }
-    
+
     /**
         Resolves a dependency against provided key
      

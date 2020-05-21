@@ -12,7 +12,7 @@ import UIKit
 @_exported import Boomerang
 #endif
 public extension UIStackView {
-    func arrangeSections(_ sections:[Section], factory: ViewFactory) {
+    func arrangeSections(_ sections: [Section], factory: ViewFactory) {
         self.arrangedSubviews.forEach { self.removeArrangedSubview($0) }
         self.subviews.forEach { $0.removeFromSuperview() }
         sections.flatMap { $0.items }

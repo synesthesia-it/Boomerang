@@ -20,39 +20,46 @@ import UIKitBoomerang
 
 #if os(iOS) || os(tvOS)
 public extension Reactive where Base: UICollectionView {
-    
+
     func reloaded(by viewModel: RxListViewModel,
                   dataSource collectionViewDataSource: CollectionViewDataSource) -> Disposable {
 
-        let reloadDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<Section, ViewModel>>(
-            configureCell: { (_, cv, indexPath, _) -> UICollectionViewCell in
-                return collectionViewDataSource.collectionView(cv, cellForItemAt: indexPath)
-        }, configureSupplementaryView: { _, cv, kind, indexPath in
-            collectionViewDataSource.collectionView(cv, viewForSupplementaryElementOfKind: kind, at: indexPath)
+        let data = RxCollectionViewSectionedReloadDataSource<SectionModel<Section, ViewModel>>(
+            configureCell: { (_, collectionView, indexPath, _) -> UICollectionViewCell in
+                return collectionViewDataSource.collectionView(collectionView,
+                                                               cellForItemAt: indexPath)
+        }, configureSupplementaryView: { _, collectionView, kind, indexPath in
+            collectionViewDataSource.collectionView(collectionView,
+                                                    viewForSupplementaryElementOfKind: kind,
+                                                    at: indexPath)
         })
 
         return viewModel.sectionsRelay
             .asDriver()
             .map { $0.map { SectionModel(model: $0, items: $0.items) }}
-            .drive(items(dataSource: reloadDataSource))
+            .drive(items(dataSource: data))
     }
-    
+
     func animated(by viewModel: RxListViewModel,
                   dataSource collectionViewDataSource: CollectionViewDataSource) -> Disposable {
 
-        let reloadDataSource = RxCollectionViewSectionedAnimatedDataSource<AnimatableSectionModel<Section, IdentifiableViewModel>>(
-            configureCell: { (_, cv, indexPath, _) -> UICollectionViewCell in
-                return collectionViewDataSource.collectionView(cv, cellForItemAt: indexPath)
+        let data = RxCollectionViewSectionedAnimatedDataSource<AnimatableSectionModel<Section, IdentifiableViewModel>>(
+            configureCell: { (_, collectionView, indexPath, _) -> UICollectionViewCell in
+                return collectionViewDataSource.collectionView(collectionView, cellForItemAt: indexPath)
         },
-            configureSupplementaryView: { _, cv, kind, indexPath in
-                collectionViewDataSource.collectionView(cv, viewForSupplementaryElementOfKind: kind, at: indexPath)
+            configureSupplementaryView: { _, collectionView, kind, indexPath in
+                collectionViewDataSource.collectionView(collectionView,
+                                                        viewForSupplementaryElementOfKind: kind,
+                                                        at: indexPath)
         })
         return viewModel.sectionsRelay
             .asDriver()
-            .map { $0.map { AnimatableSectionModel(model: $0, items: $0.items.map { IdentifiableViewModel(viewModel: $0)}) }}
-            .drive(items(dataSource: reloadDataSource))
+            .map { $0
+                .map { AnimatableSectionModel(model: $0, items: $0.items.map { IdentifiableViewModel(viewModel: $0)}) }
+        }
+            .drive(items(dataSource: data))
     }
-    
+
     func dragAndDrop() -> Disposable {
         let gesture = UILongPressGestureRecognizer()
         base.addGestureRecognizer(gesture)
