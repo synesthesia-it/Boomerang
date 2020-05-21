@@ -44,10 +44,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		231EAEEFFBDA32B876EA4F0F /* ShowItemView.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = ShowItemView.swift; path = ../../../../TvMaze/Views/Show/ShowItemView.swift; sourceTree = "<group>"; };
-		291307C860FE9CEEE138C68A /* ShowItemViewModel.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = ShowItemViewModel.swift; path = ../../../../TvMaze/Views/Show/ShowItemViewModel.swift; sourceTree = "<group>"; };
-		4719293BBA1341795A948C70 /* ShowViewController.xib */ = {isa = PBXFileReference; explicitFileType = file.xib; lastKnownFileType = file.xib; name = ShowViewController.xib; path = ../../../../TvMaze/Scenes/Show/ShowViewController.xib; sourceTree = "<group>"; };
-		6B817346853AA063B8D4B459 /* ShowItemView.xib */ = {isa = PBXFileReference; explicitFileType = file.xib; lastKnownFileType = file.xib; name = ShowItemView.xib; path = ../../../../TvMaze/Views/Show/ShowItemView.xib; sourceTree = "<group>"; };
 		701ED05624767CEA00A8AE85 /* TVMaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVMaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		701ED05924767CEA00A8AE85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		701ED05B24767CEA00A8AE85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,8 +96,6 @@
 		702369CF2476D3B800651B43 /* BoneItem.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BoneItem.json; sourceTree = "<group>"; };
 		702369D02476D3B800651B43 /* ViewModelFactoryImplementation.replacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactoryImplementation.replacement.swift; sourceTree = "<group>"; };
 		704498852476D38D0080EE1B /* Murrayfile.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Murrayfile.json; sourceTree = SOURCE_ROOT; };
-		827FE3EC140C539BBF66C4FD /* ShowViewModel.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = ShowViewModel.swift; path = ../../../../TvMaze/Scenes/Show/ShowViewModel.swift; sourceTree = "<group>"; };
-		9F2230A9593DD0FAE43F8EE8 /* ShowViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = ShowViewController.swift; path = ../../../../TvMaze/Scenes/Show/ShowViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,35 +114,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		30FA707BE674006A2EA940A7 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				59B9BB41A2F043CA5E0BA85E /* Show */,
-			);
-			name = Views;
-			path = Views;
-			sourceTree = "<group>";
-		};
-		59B9BB41A2F043CA5E0BA85E /* Show */ = {
-			isa = PBXGroup;
-			children = (
-				231EAEEFFBDA32B876EA4F0F /* ShowItemView.swift */,
-				6B817346853AA063B8D4B459 /* ShowItemView.xib */,
-				291307C860FE9CEEE138C68A /* ShowItemViewModel.swift */,
-			);
-			name = Show;
-			path = Show;
-			sourceTree = "<group>";
-		};
-		59E37D3FA9E6DEFF1C4CFC42 /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				C330E98E62B50E1E0E6D03C9 /* Show */,
-			);
-			name = Scenes;
-			path = Scenes;
-			sourceTree = "<group>";
-		};
 		701ED04D24767CE900A8AE85 = {
 			isa = PBXGroup;
 			children = (
@@ -157,7 +122,6 @@
 				701ED05824767CEA00A8AE85 /* TVMaze */,
 				701ED05724767CEA00A8AE85 /* Products */,
 				701ED08024767E4E00A8AE85 /* Frameworks */,
-				D9486667B49763E8DAA703EF /* TvMaze */,
 			);
 			sourceTree = "<group>";
 		};
@@ -414,27 +378,6 @@
 				702369D02476D3B800651B43 /* ViewModelFactoryImplementation.replacement.swift */,
 			);
 			path = itemViewModel;
-			sourceTree = "<group>";
-		};
-		C330E98E62B50E1E0E6D03C9 /* Show */ = {
-			isa = PBXGroup;
-			children = (
-				9F2230A9593DD0FAE43F8EE8 /* ShowViewController.swift */,
-				4719293BBA1341795A948C70 /* ShowViewController.xib */,
-				827FE3EC140C539BBF66C4FD /* ShowViewModel.swift */,
-			);
-			name = Show;
-			path = Show;
-			sourceTree = "<group>";
-		};
-		D9486667B49763E8DAA703EF /* TvMaze */ = {
-			isa = PBXGroup;
-			children = (
-				59E37D3FA9E6DEFF1C4CFC42 /* Scenes */,
-				30FA707BE674006A2EA940A7 /* Views */,
-			);
-			name = TvMaze;
-			path = TvMaze;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
