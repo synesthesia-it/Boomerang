@@ -19,5 +19,12 @@ struct SceneViewModelFactoryImplementation: SceneViewModelFactory {
 
 
     
+func show() -> ShowViewModel {
+        ShowViewModel(itemViewModelFactory: container.viewModels.items,
+                          useCase: "container.model.useCases.show",
+                          routeFactory: container.routeFactory)
+    }
+
+    
 //MURRAY IMPLEMENTATION PLACEHOLDER
 }

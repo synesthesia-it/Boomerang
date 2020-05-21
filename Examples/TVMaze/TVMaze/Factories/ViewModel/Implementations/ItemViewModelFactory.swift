@@ -17,5 +17,11 @@ struct ItemViewModelFactoryImplementation: ItemViewModelFactory {
         return MenuItemViewModel(item: item)
     }
 
-    //MURRAY IMPLEMENTATION PLACEHOLDER
+    func show(_ show: Show) -> ViewModel {
+        ShowItemViewModel(show: show,
+                        layoutIdentifier: ItemIdentifier.show)
+    }
+
+    
+//MURRAY IMPLEMENTATION PLACEHOLDER
 }

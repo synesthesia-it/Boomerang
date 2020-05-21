@@ -16,10 +16,12 @@ protocol ViewModelFactory {
 
 protocol SceneViewModelFactory {
     func menu() -> MenuViewModel
+    func show() -> ShowViewModel
     //MURRAY SCENE
 }
 
 protocol ItemViewModelFactory {
     func menu(item: MenuItem) -> ViewModel
+    func show(_ show: Show) -> ViewModel
     //MURRAY ITEM
 }

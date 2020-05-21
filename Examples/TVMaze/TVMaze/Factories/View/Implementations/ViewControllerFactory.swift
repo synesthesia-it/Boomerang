@@ -16,6 +16,13 @@ typealias Scene = UIViewController
 struct ViewControllerFactory: SceneFactory {
 
     let container: AppDependencyContainer
+    let viewFactory: UIViewFactory
+    let cellFactory: UICollectionViewCellFactory
+    init(container: AppDependencyContainer) {
+        self.container = container
+        self.viewFactory = UIViewFactory()
+        self.cellFactory = UICollectionViewCellFactory(viewFactory: viewFactory)
+    }
 
     private func name(from layoutIdentifier: LayoutIdentifier) -> String {
         let identifier = layoutIdentifier.identifierString
@@ -25,7 +32,7 @@ struct ViewControllerFactory: SceneFactory {
 
     func root() -> Scene {
         let pax = Pax()
-        pax.setMainViewController(UIViewController())
+        pax.setMainViewController(show(viewModel: container.viewModels.scenes.show()))
         let menu = self.menu()
         menu.pax.menuWidth = 250
         pax.setViewController(menu, at: .left)
@@ -35,12 +42,19 @@ struct ViewControllerFactory: SceneFactory {
 
     func menu() -> Scene {
         let viewModel = container.viewModels.scenes.menu()
-        let cellFactory = UICollectionViewCellFactory(viewFactory: UIViewFactory())
+
         return MenuViewController(nibName: name(from: viewModel.layoutIdentifier),
                                   viewModel: viewModel,
                                   collectionViewCellFactory: cellFactory)
     }
 
+    
+func show(viewModel: ShowViewModel) -> Scene {
+        return ShowViewController(nibName: name(from: viewModel.layoutIdentifier),
+                                   	viewModel: viewModel,
+                                   	collectionViewCellFactory: cellFactory)
+    }
+    
     
 //MURRAY IMPLEMENTATION PLACEHOLDER
 

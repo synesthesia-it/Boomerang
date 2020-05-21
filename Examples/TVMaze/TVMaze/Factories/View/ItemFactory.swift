@@ -13,6 +13,7 @@ import Pax
 enum ItemIdentifier: String, LayoutIdentifier {
     case menu
 
+	case show
 	//MURRAY PLACEHOLDER
     var identifierString: String { rawValue }
 }
