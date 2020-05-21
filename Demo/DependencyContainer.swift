@@ -9,6 +9,7 @@
 import Foundation
 import Boomerang
 import UIKitBoomerang
+
 protocol AppDependencyContainer {
     var routeFactory: RouteFactory { get }
     var viewFactory: ViewFactory { get }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MenuItemView" customModule="TVMaze" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="483" height="282"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3f2-Ss-PbU">
+                    <rect key="frame" x="0.0" y="0.0" width="483" height="282"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="3f2-Ss-PbU" secondAttribute="bottom" id="1Y7-Zx-fSE"/>
+                <constraint firstItem="3f2-Ss-PbU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="A0f-BD-Gjr"/>
+                <constraint firstAttribute="trailing" secondItem="3f2-Ss-PbU" secondAttribute="trailing" id="Slq-9V-kaj"/>
+                <constraint firstItem="3f2-Ss-PbU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="d4k-hA-Z3f"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="titleLabel" destination="3f2-Ss-PbU" id="lzT-Pc-jdz"/>
+            </connections>
+            <point key="canvasLocation" x="181.8840579710145" y="358.92857142857139"/>
+        </view>
+    </objects>
+</document>

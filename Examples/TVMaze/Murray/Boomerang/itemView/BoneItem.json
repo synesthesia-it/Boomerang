@@ -1,0 +1,37 @@
+{
+    "replacements" : [
+        {
+        "destination": "{{ target || \"App\" }}\/Factory\/MainViewFactory.swift",
+        "text": "case {{ name|firstLowercase }}\n\t",
+        "placeholder": "\/\/MURRAY PLACEHOLDER"
+        }
+    ],
+    "paths" : [
+        
+        {
+            "from" : "ItemView.template.swift",
+            "to" : "{{ target || \"App\" }}\/Views/{{ name | firstUppercase }}/{{ name | firstUppercase }}ItemView.swift"
+        },
+        {
+            "from" : "ItemView.template.xib",
+            "to" : "{{ target || \"App\" }}\/Views/{{ name | firstUppercase }}/{{ name | firstUppercase }}ItemView.xib"
+        }
+        
+    ],
+    "parameters" : [
+        {
+            "name": "name",
+            "isRequired": true
+        },
+        {
+            "name": "target",
+            "isRequired": true
+        }
+    ],
+    "name" : "itemView",
+    "plugins" : {
+        "xcode": {
+            "targets": ["{{ target || \"App\" }}"]
+        }
+    }
+}

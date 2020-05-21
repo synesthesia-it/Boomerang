@@ -1,0 +1,8 @@
+{
+  "packages" : [
+    "Murray\/Boomerang\/Bonespec.json",
+  ],
+  "environment" : {
+    "target" : "TvMaze"
+  }
+}

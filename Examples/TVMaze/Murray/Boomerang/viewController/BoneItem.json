@@ -1,0 +1,46 @@
+{
+    "replacements" : [
+        {
+            "source" : "ViewControllerFactoryImplementation.replacement.swift",
+            "destination" : "{{ target || \"App\" }}\/Factories\/View/Implementations/ViewControllerFactory.swift",
+            "placeholder": "//MURRAY IMPLEMENTATION PLACEHOLDER"
+        },
+        {
+            "source" : "ViewControllerFactoryDeclaration.replacement.swift",
+            "destination" : "{{ target || \"App\" }}\/Factories\/View/SceneFactory.swift",
+            "placeholder": "\/\/MURRAY DECLARATION PLACEHOLDER"
+        },
+        {
+        "destination": "{{ target || \"App\" }}\/Factories\/View/SceneFactory.swift",
+        "text": "case {{ name|firstLowercase }}\n\t",
+        "placeholder": "\/\/MURRAY ENUM PLACEHOLDER"
+        }
+    ],
+    "paths" : [
+        
+        {
+            "from" : "ViewController.template.swift",
+            "to" : "{{ target || \"App\" }}\/Scenes/{{ name | firstUppercase }}/{{ name | firstUppercase }}ViewController.swift"
+        },
+        {
+            "from" : "ViewController.template.xib",
+            "to" : "{{ target || \"App\" }}\/Scenes/{{ name | firstUppercase }}/{{ name | firstUppercase }}ViewController.xib"
+        }
+        
+    ],
+    "parameters" : [
+        {
+            "name": "name",
+            "isRequired": true
+        },
+        {
+            "name": "target"
+        }
+    ],
+    "name" : "collectionViewController",
+    "plugins" : {
+        "xcode": {
+            "targets": ["{{ target || \"App\" }}"]
+        }
+    }
+}

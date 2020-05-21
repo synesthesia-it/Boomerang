@@ -1,0 +1,37 @@
+{
+    "paths" : [
+        {
+            "from" : "UseCase.template.swift",
+            "to" : "Sources/Model/UseCases/{{ name|firstUppercase }}UseCase.swift"
+        }
+    ],
+    "parameters" : [
+        { "name": "name", "isRequired": true }
+    ],
+    "plugins" : {
+        "xcode": { "targets": ["Model"] }
+    },
+    "replacements" : [
+        {
+            "destination": "Sources/Model/UseCases/UseCaseFactory.swift",
+            "text": "case {{ name|firstLowercase }}\n\t",
+            "placeholder": "\/\/MURRAY KEY"
+        },
+        {
+            "destination": "Sources/Model/UseCases/UseCaseFactory.swift",
+            "text": "var {{name|firstLowercase}}: {{ name|firstUppercase }}UseCase { get }\n\t",
+            "placeholder": "\/\/MURRAY PROTOCOL"
+        },
+        {
+            "destination": "Sources/Model/UseCases/UseCaseFactory.swift",
+            "text": "var {{ name|firstLowercase }}: {{ name|firstUppercase }}UseCase { self[.{{ name|firstLowercase }}] }\n\t",
+            "placeholder": "\/\/MURRAY VAR"
+        },
+        {
+            "destination": "Sources/Model/UseCases/UseCaseFactory.swift",
+            "text": "self.register(for: .{{name|firstLowercase}}, scope: .singleton) { Default{{name|firstUppercase}}UseCase() }\n\t\t",
+            "placeholder": "\/\/MURRAY REGISTER"
+        }
+    ],
+    "name" : "useCase"
+}

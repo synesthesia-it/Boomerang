@@ -1,0 +1,67 @@
+{
+  "description" : "Default description",
+  "name" : "Boomerang",
+  "procedures" : [
+    {
+      "description" : "A RxSwift-based listViewModel for a UIViewController",
+      "items" : [
+        "rxListViewModel\/BoneItem.json"
+      ],
+      "name" : "listViewModel"
+    },
+    {
+      "items" : [
+        "viewController\/BoneItem.json"
+      ],
+      "description" : "A RxSwift-based collection view controller",
+      "name" : "collectionViewController"
+    },
+    {
+      "description" : "A RxSwift-based listViewModel and its collection view controller",
+      "items" : [
+        "viewController\/BoneItem.json",
+        "rxListViewModel\/BoneItem.json"
+      ],
+      "name" : "collectionSceneGroup"
+    },
+    {
+      "name" : "itemView",
+      "description" : "A simple item view",
+      "items" : [
+        "itemView\/BoneItem.json"
+      ]
+    },
+    {
+      "description" : "A simple item viewModel",
+      "name" : "itemViewModel",
+      "items" : [
+        "itemViewModel\/BoneItem.json"
+      ]
+    },
+    {
+      "description" : "An item view with its view model",
+      "name" : "itemGroup",
+      "items" : [
+        "itemView\/BoneItem.json",
+        "itemViewModel\/BoneItem.json"
+      ]
+    },
+    {
+      "description" : "A RxSwift-based listViewModel and its collection view controller, with a custom item view\/view model pair",
+      "items" : [
+        "viewController\/BoneItem.json",
+        "rxListViewModel\/BoneItem.json",
+        "itemView\/BoneItem.json",
+        "itemViewModel\/BoneItem.json"
+      ],
+      "name" : "collectionCompleteGroup"
+    },
+    {
+      "name" : "useCase",
+      "description" : "Created from scaffold",
+      "items" : [
+        "useCase\/BoneItem.json"
+      ]
+    }
+  ]
+}
