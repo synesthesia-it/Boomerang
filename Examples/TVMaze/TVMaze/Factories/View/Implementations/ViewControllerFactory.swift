@@ -32,7 +32,10 @@ struct ViewControllerFactory: SceneFactory {
 
     func root() -> Scene {
         let pax = Pax()
-        pax.setMainViewController(show(viewModel: container.viewModels.scenes.show()))
+        container.routeFactory
+            .sideMenu(from: .schedule)
+            .execute(from: pax)
+//        pax.setMainViewController(show().embedded())
         let menu = self.menu()
         menu.pax.menuWidth = 250
         pax.setViewController(menu, at: .left)
@@ -49,8 +52,17 @@ struct ViewControllerFactory: SceneFactory {
     }
 
     
-func show(viewModel: ShowViewModel) -> Scene {
+    func show() -> Scene {
+        let viewModel = container.viewModels.scenes.show()
         return ShowViewController(nibName: name(from: viewModel.layoutIdentifier),
+                                   	viewModel: viewModel,
+                                   	collectionViewCellFactory: cellFactory)
+    }
+    
+    
+    func search() -> Scene {
+        let viewModel = container.viewModels.scenes.search()
+        return SearchViewController(nibName: name(from: viewModel.layoutIdentifier),
                                    	viewModel: viewModel,
                                    	collectionViewCellFactory: cellFactory)
     }

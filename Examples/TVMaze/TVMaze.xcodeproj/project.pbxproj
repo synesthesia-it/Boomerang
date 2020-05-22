@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0466EDC14A48DDC6BFB97428 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26BDEC69B4CAA5E519E83761 /* SearchViewController.xib */; };
+		066C843D5113758A17E7BEB7 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9909C8AFB2F7493CE8C07F4 /* SearchViewModel.swift */; };
 		1FE5328B70E521EDE0ECC472 /* ShowItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A6F5361209D83F2E35026 /* ShowItemViewModel.swift */; };
 		318C3721E0CC7A7830C024B2 /* ShowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED613FBE40F52E4868F8B83F /* ShowViewModel.swift */; };
 		701ED05A24767CEA00A8AE85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701ED05924767CEA00A8AE85 /* AppDelegate.swift */; };
@@ -45,12 +47,15 @@
 		701ED0C42476D24D00A8AE85 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701ED0BF2476D24D00A8AE85 /* Show.swift */; };
 		70C379E12477C3CF0011610C /* ShowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD376DF204F129BDA496DF6E /* ShowViewController.xib */; };
 		70C379E22477C3D90011610C /* ShowItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 117B8D6C10E9DF8444137EE4 /* ShowItemView.xib */; };
+		70C379E42477FC680011610C /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C379E32477FC680011610C /* SearchUseCase.swift */; };
 		7F3921E86782FA2043456728 /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B755E76D4B837C3E20EB011C /* ShowViewController.swift */; };
+		9D570DEDB6DE413C2E018C44 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F38AFBC020B6716CF1E06 /* SearchViewController.swift */; };
 		B62E28A1E297D3FDF2070814 /* ShowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C60190DEC60A1A132DC96B0 /* ShowItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		117B8D6C10E9DF8444137EE4 /* ShowItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowItemView.xib; sourceTree = "<group>"; };
+		26BDEC69B4CAA5E519E83761 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		2C60190DEC60A1A132DC96B0 /* ShowItemView.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = ShowItemView.swift; sourceTree = "<group>"; };
 		701ED05624767CEA00A8AE85 /* TVMaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVMaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		701ED05924767CEA00A8AE85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,8 +90,11 @@
 		701ED0BD2476D24C00A8AE85 /* ImageDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDataSource.swift; sourceTree = "<group>"; };
 		701ED0BF2476D24D00A8AE85 /* Show.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		704498852476D38D0080EE1B /* Murrayfile.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Murrayfile.json; sourceTree = SOURCE_ROOT; };
+		70C379E32477FC680011610C /* SearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCase.swift; sourceTree = "<group>"; };
 		794A6F5361209D83F2E35026 /* ShowItemViewModel.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = ShowItemViewModel.swift; sourceTree = "<group>"; };
+		B02F38AFBC020B6716CF1E06 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		B755E76D4B837C3E20EB011C /* ShowViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
+		C9909C8AFB2F7493CE8C07F4 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		DD376DF204F129BDA496DF6E /* ShowViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowViewController.xib; sourceTree = "<group>"; };
 		ED613FBE40F52E4868F8B83F /* ShowViewModel.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = ShowViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +115,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		221348F56A6A211C6E37BCCD /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				B02F38AFBC020B6716CF1E06 /* SearchViewController.swift */,
+				26BDEC69B4CAA5E519E83761 /* SearchViewController.xib */,
+				C9909C8AFB2F7493CE8C07F4 /* SearchViewModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		4ED14630FAC3EE841872CA58 /* Show */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +177,7 @@
 			children = (
 				701ED0932476874500A8AE85 /* Menu */,
 				B3B6BFA03A2BD163BD6B636A /* Show */,
+				221348F56A6A211C6E37BCCD /* Search */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -322,6 +341,7 @@
 		70236A382477BD2A00651B43 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				70C379E32477FC680011610C /* SearchUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -411,6 +431,7 @@
 				701ED0972476876F00A8AE85 /* MenuViewController.xib in Resources */,
 				70C379E22477C3D90011610C /* ShowItemView.xib in Resources */,
 				701ED06324767CEB00A8AE85 /* Assets.xcassets in Resources */,
+				0466EDC14A48DDC6BFB97428 /* SearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +455,7 @@
 				701ED0B32476BB8200A8AE85 /* ViewFactory.swift in Sources */,
 				701ED0AB2476B65900A8AE85 /* MenuItemView.swift in Sources */,
 				701ED0C22476D24D00A8AE85 /* RESTDataSource+Rx.swift in Sources */,
+				70C379E42477FC680011610C /* SearchUseCase.swift in Sources */,
 				701ED0962476876F00A8AE85 /* MenuViewController.swift in Sources */,
 				701ED07D24767E3D00A8AE85 /* ModalRoute.swift in Sources */,
 				701ED0A82476A8CE00A8AE85 /* ViewModelFactoryImplementation.swift in Sources */,
@@ -450,6 +472,8 @@
 				318C3721E0CC7A7830C024B2 /* ShowViewModel.swift in Sources */,
 				B62E28A1E297D3FDF2070814 /* ShowItemView.swift in Sources */,
 				1FE5328B70E521EDE0ECC472 /* ShowItemViewModel.swift in Sources */,
+				9D570DEDB6DE413C2E018C44 /* SearchViewController.swift in Sources */,
+				066C843D5113758A17E7BEB7 /* SearchViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

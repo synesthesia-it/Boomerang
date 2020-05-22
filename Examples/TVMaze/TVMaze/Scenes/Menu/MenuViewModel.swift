@@ -11,6 +11,7 @@ import Boomerang
 
 enum MenuItem: String, CaseIterable {
     case schedule
+    case search
 }
 class MenuViewModel: ListViewModel, NavigationViewModel {
 
@@ -45,7 +46,7 @@ class MenuViewModel: ListViewModel, NavigationViewModel {
     func selectItem(at indexPath: IndexPath) {
 
         if let item = self[indexPath]?.get(on: MenuItemViewModel.self, from: \.item) {
-            print(item)
+            onNavigation(routeFactory.sideMenu(from: item))
         }
     }
 }

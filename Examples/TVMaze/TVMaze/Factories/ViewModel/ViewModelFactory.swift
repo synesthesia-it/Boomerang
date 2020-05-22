@@ -17,6 +17,7 @@ protocol ViewModelFactory {
 protocol SceneViewModelFactory {
     func menu() -> MenuViewModel
     func show() -> ShowViewModel
+    func search() -> SearchViewModel
     //MURRAY SCENE
 }
 

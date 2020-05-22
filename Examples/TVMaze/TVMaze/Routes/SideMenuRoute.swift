@@ -15,15 +15,13 @@ struct SideMenuRoute: UIKitRoute {
 
     let createViewController: () -> UIViewController?
 
-    init() {
-        self.createViewController = {
-            let pax = Pax()
-            return pax
-        }
+    init(createScene: @escaping () -> UIViewController?) {
+        self.createViewController = createScene
     }
 
     func execute<T: UIViewController>(from scene: T?) {
-        RestartRoute(createScene: self.createViewController)
-            .execute(from: scene)
+        guard let pax = scene?.pax.controller,
+        let destination = createViewController() else { return }
+        pax.setMainViewController(destination, animated: true)
     }
 }

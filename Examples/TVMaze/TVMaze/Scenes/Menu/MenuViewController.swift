@@ -65,6 +65,12 @@ class MenuViewController: UIViewController {
                 self?.collectionView?.reloadData()
             }
         }
+        viewModel.onNavigation =  {[weak self] route in
+            DispatchQueue.main.async { [weak self] in 
+                route.execute(from: self)
+            }
+        }
+
         self.collectionViewDelegate = collectionViewDelegate
         viewModel.reload()
 

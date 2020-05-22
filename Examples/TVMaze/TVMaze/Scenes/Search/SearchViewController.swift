@@ -1,5 +1,5 @@
 //
-//  ShowViewController.swift
+//  SearchViewController.swift
 //  App
 //
 
@@ -10,11 +10,11 @@ import RxBoomerang
 import RxSwift
 import RxCocoa
 
-class ShowViewController: UIViewController {
+class SearchViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    var viewModel: ShowViewModel
+
+    var viewModel: SearchViewModel
     
     var collectionViewDataSource: CollectionViewDataSource? {
         didSet {
@@ -31,12 +31,12 @@ class ShowViewController: UIViewController {
     }
     
     var disposeBag = DisposeBag()
-    private let collectionViewCellFactory: CollectionViewCellFactory
+    private let collectionViewCellFactory: UICollectionViewCellFactory
     
     init(nibName: String?,
          bundle: Bundle? = nil,
-         viewModel: ShowViewModel,
-         collectionViewCellFactory: CollectionViewCellFactory) {
+         viewModel: SearchViewModel,
+         collectionViewCellFactory: UICollectionViewCellFactory) {
         self.viewModel = viewModel
         self.collectionViewCellFactory = collectionViewCellFactory
         super.init(nibName: nibName, bundle: bundle)
@@ -47,14 +47,37 @@ class ShowViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        return searchController
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Tonight's Schedule"
+        self.title = "Search"
+
+        self.navigationItem.searchController = searchController
+
+        searchController.searchBar.rx
+            .text
+            .distinctUntilChanged()
+            .bind(to: viewModel.searchString)
+            .disposed(by: disposeBag)
+
+        viewModel.searchString
+            .asDriver()
+            .distinctUntilChanged()
+            .drive(searchController.searchBar.rx.text)
+            .disposed(by: disposeBag)
+
         let viewModel = self.viewModel
         let collectionViewDataSource = CollectionViewDataSource(viewModel: viewModel,
                                                                 factory: collectionViewCellFactory)
-                                                            
-        let spacing: CGFloat = 4
+
+        let spacing: CGFloat = 10
         let sizeCalculator = AutomaticCollectionViewSizeCalculator(viewModel: viewModel,
                                                                    factory: collectionViewCellFactory, itemsPerLine: 3)
             .withItemSpacing { _, _ in return spacing }
@@ -79,5 +102,13 @@ class ShowViewController: UIViewController {
         
         viewModel.reload()
         
+    }
+}
+
+extension SearchViewController: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+
+//        viewModel.searchString.accept(searchController.searchBar.text ?? "")
     }
 }

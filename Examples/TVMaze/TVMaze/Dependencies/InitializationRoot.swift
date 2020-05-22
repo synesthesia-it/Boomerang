@@ -16,6 +16,7 @@ protocol AppDependencyContainer {
 //    var viewControllerFactory: ViewControllerFactory { get }
     var sceneFactory: SceneFactory { get }
     var viewModels: ViewModelFactory { get }
+    var useCases: UseCaseFactory { get }
 //    var itemViewModelFactory: ItemViewModelFactory { get }
 }
 
@@ -24,16 +25,19 @@ class InitializationRoot: AppDependencyContainer, DependencyContainer {
         case routeFactory
         case sceneFactory
         case viewModels
+        case useCases
     }
     let container = Container<Keys>()
 
     var routeFactory: RouteFactory { self[.routeFactory] }
     var sceneFactory: SceneFactory { self[.sceneFactory] }
     var viewModels: ViewModelFactory { self [.viewModels] }
+    var useCases: UseCaseFactory { self[.useCases] }
 
     init() {
         self.register(for: .routeFactory) { DeviceRouteFactory(container: self) }
         self.register(for: .sceneFactory) { ViewControllerFactory(container: self) }
         self.register(for: .viewModels) { AppViewModelFactory(container: self) }
+        self.register(for: .useCases) { UseCaseFactory() } 
     }
 }

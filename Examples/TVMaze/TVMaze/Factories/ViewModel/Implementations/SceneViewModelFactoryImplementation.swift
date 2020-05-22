@@ -16,15 +16,22 @@ struct SceneViewModelFactoryImplementation: SceneViewModelFactory {
         return MenuViewModel(itemFactory: container.viewModels.items,
                              routeFactory: container.routeFactory)
     }    
-
-
     
-func show() -> ShowViewModel {
+    
+    
+    func show() -> ShowViewModel {
         ShowViewModel(itemViewModelFactory: container.viewModels.items,
-                          useCase: "container.model.useCases.show",
-                          routeFactory: container.routeFactory)
+                      useCase: "container.model.useCases.show",
+                      routeFactory: container.routeFactory)
     }
-
     
-//MURRAY IMPLEMENTATION PLACEHOLDER
+    
+    func search() -> SearchViewModel {
+        SearchViewModel(itemViewModelFactory: container.viewModels.items,
+                        useCase: container.useCases.search,
+                        routeFactory: container.routeFactory)
+    }
+    
+    
+    //MURRAY IMPLEMENTATION PLACEHOLDER
 }

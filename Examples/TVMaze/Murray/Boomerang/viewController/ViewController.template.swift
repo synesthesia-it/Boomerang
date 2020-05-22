@@ -5,10 +5,10 @@
 
 import UIKit
 import Boomerang
-import SnapKit
+import RxBoomerang
+import UIKitBoomerang
 import RxSwift
 import RxCocoa
-import PluginLayout
 
 class {{ name|firstUppercase }}ViewController: UIViewController {
     

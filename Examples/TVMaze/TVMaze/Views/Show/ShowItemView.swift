@@ -17,6 +17,8 @@ class ShowItemView: UIView, WithViewModel {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        layer.masksToBounds = true
+        clipsToBounds = true
     }
 
     func configure(with viewModel: ViewModel) {
@@ -26,11 +28,15 @@ class ShowItemView: UIView, WithViewModel {
         if let title = self.title {
             title.text = viewModel.title
         }
+
         if self.isPlaceholderForAutosize { return }
+        layer.cornerRadius = 4
+
         if let image = self.image {
             viewModel.image
                 .asDriver(onErrorJustReturn: Image())
                 .startWith(Image())
+                .distinctUntilChanged()
                 .drive(image.rx.image)
                 .disposed(by: disposeBag)
         }

@@ -13,6 +13,9 @@ struct Episode: Codable {
     let show: Show
     let image: Poster?
 }
+struct ShowSearchResult: Codable {
+    let show: Show
+}
 
 struct Poster: Codable {
     let medium: URL

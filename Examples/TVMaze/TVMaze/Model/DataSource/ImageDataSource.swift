@@ -34,6 +34,7 @@ private struct ImageDownloader {
         return Observable<Image>.create { observer in
             let start = Date()
             let task = ImageDownloader.downloader.retrieveImage(with: url) { result in
+
                 switch result {
                 case .success(let value):
                     let image = value.image
@@ -41,7 +42,7 @@ private struct ImageDownloader {
                     observer.onNext(image)
                     observer.onCompleted()
                 case .failure(let error):
-
+                    if error.isTaskCancelled { return }
                     observer.onError(error)
                 }
             }
