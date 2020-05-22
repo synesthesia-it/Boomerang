@@ -27,12 +27,12 @@ class ShowItemView: UIView, WithViewModel {
             title.text = viewModel.title
         }
         if self.isPlaceholderForAutosize { return }
-//        if let image = self.image {
-//            viewModel.image
-//                .asDriver(onErrorJustReturn: UIImage())
-//                .startWith(UIImage())
-//                .drive(image.rx.image)
-//                .disposed(by: disposeBag)
-//        }
+        if let image = self.image {
+            viewModel.image
+                .asDriver(onErrorJustReturn: Image())
+                .startWith(Image())
+                .drive(image.rx.image)
+                .disposed(by: disposeBag)
+        }
     }
 }

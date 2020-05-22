@@ -15,18 +15,15 @@ class {{ name|firstUppercase }}ItemViewModel: ViewModel {
     var uniqueIdentifier: UniqueIdentifier = UUID() 
     let {{ name|firstLowercase }}: {{ name|firstUppercase }}
     let image: ObservableImage
-    let styleFactory: StyleFactory
     
     var title: String {
         return {{ name|firstLowercase }}.title
     }
     
     init({{ name|firstLowercase }}: {{ name|firstUppercase }},
-         layoutIdentifier: LayoutIdentifier = ItemIdentifier.{{ name|firstLowercase }},
-         styleFactory: StyleFactory) {
+         layoutIdentifier: LayoutIdentifier = ItemIdentifier.{{ name|firstLowercase }}) {
          
         self.layoutIdentifier = layoutIdentifier
-        self.styleFactory = styleFactory
         
         self.{{ name|firstLowercase }} = {{ name|firstLowercase }}
         

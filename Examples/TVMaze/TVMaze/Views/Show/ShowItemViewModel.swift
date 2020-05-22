@@ -14,7 +14,8 @@ class ShowItemViewModel: ViewModel {
     var uniqueIdentifier: UniqueIdentifier = UUID() 
     let show: Show
 
-    
+    let image: ObservableImage
+
     var title: String {
         return show.name
     }
@@ -25,6 +26,7 @@ class ShowItemViewModel: ViewModel {
         self.layoutIdentifier = layoutIdentifier
         
         self.show = show
-        
+
+        self.image = show.image?.medium.getImage() ?? .just(Image())
     }
 }

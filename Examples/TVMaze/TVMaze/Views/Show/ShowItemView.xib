@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,7 +29,7 @@
             <connections>
                 <outlet property="title" destination="OFB-ta-c3G" id="xWn-M1-sHp"/>
             </connections>
-            <point key="canvasLocation" x="-45.600000000000001" y="-60.719640179910051"/>
+            <point key="canvasLocation" x="-45" y="-60"/>
         </view>
     </objects>
 </document>

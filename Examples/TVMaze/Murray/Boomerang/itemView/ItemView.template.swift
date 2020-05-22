@@ -24,7 +24,6 @@ class {{ name|firstUppercase }}ItemView: UIView, WithViewModel {
         guard let viewModel = viewModel as? {{ name|firstUppercase }}ItemViewModel 
         else { return }
         if let title = self.title {
-            viewModel.styleFactory.apply(.title, to: title)
             title.text = viewModel.title
         }
         if self.isPlaceholderForAutosize { return }

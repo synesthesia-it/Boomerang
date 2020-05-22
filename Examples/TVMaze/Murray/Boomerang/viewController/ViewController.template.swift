@@ -54,7 +54,6 @@ class {{ name|firstUppercase }}ViewController: UIViewController {
         let collectionViewDataSource = CollectionViewDataSource(viewModel: viewModel,
                                                                 factory: collectionViewCellFactory)
                                                                 
-        viewModel.styleFactory.apply(.container, to: self.view)
         
         let spacing: CGFloat = 10
         let sizeCalculator = AutomaticCollectionViewSizeCalculator(viewModel: viewModel,

@@ -23,17 +23,13 @@ class {{ name|firstUppercase }}ViewModel: RxListViewModel, RxNavigationViewModel
 
     private let useCase: {{ name|firstUppercase }}UseCase
     
-    let styleFactory: StyleFactory
-    
     let routeFactory: RouteFactory
     
     init(itemViewModelFactory: ItemViewModelFactory,
          useCase: {{ name|firstUppercase }}UseCase,
-         styleFactory: StyleFactory,
          routeFactory: RouteFactory) {
         self.useCase = useCase
         self.routeFactory = routeFactory
-        self.styleFactory = styleFactory
         self.itemViewModelFactory = itemViewModelFactory
     }
     
