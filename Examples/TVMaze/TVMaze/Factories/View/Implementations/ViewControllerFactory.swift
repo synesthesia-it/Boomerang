@@ -73,6 +73,14 @@ struct ViewControllerFactory: SceneFactory {
     }
     
     
+    func showDetail(for item: WithShow) -> Scene {
+        let viewModel = container.viewModels.scenes.showDetail(for: item)
+        return ShowViewController(nibName: name(from: viewModel.layoutIdentifier),
+                                   	viewModel: viewModel,
+                                   	collectionViewCellFactory: cellFactory)
+    }
+    
+    
 //MURRAY IMPLEMENTATION PLACEHOLDER
 
 }

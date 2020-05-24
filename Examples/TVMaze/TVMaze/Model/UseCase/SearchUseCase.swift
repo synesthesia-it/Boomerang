@@ -13,6 +13,7 @@ class UseCaseFactory {
     init() {}
     let search = SearchUseCase()
     let schedule: ShowsUseCase = ScheduleUseCase()
+    let showDetail: ShowDetailUseCase = ShowDetailUseCase()
 }
 
 class SearchUseCase {

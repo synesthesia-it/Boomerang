@@ -14,7 +14,8 @@ enum SceneIdentifier: String, LayoutIdentifier {
     case menu
     case shows
     case search
-    //MURRAY ENUM PLACEHOLDER
+    case show
+	//MURRAY ENUM PLACEHOLDER
     var identifierString: String { rawValue }
 }
 
@@ -25,6 +26,7 @@ protocol SceneFactory {
     func schedule() -> Scene
     func credits(for person: Person) -> Scene
     func search() -> Scene
+    func showDetail(for item: WithShow) -> Scene
     
-    //MURRAY DECLARATION PLACEHOLDER
+//MURRAY DECLARATION PLACEHOLDER
 }

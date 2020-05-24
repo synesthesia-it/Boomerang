@@ -19,6 +19,7 @@ protocol SceneViewModelFactory {
     func schedule() -> ShowsViewModel
     func credits(for person: Person) -> ShowsViewModel
     func search() -> SearchViewModel
+    func showDetail(for item: WithShow) -> ShowViewModel
     //MURRAY SCENE
 }
 

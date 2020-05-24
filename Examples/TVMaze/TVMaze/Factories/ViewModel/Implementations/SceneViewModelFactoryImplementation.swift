@@ -22,15 +22,15 @@ struct SceneViewModelFactoryImplementation: SceneViewModelFactory {
     func schedule() -> ShowsViewModel {
         ShowsViewModel(itemViewModelFactory: container.viewModels.items,
                        title: "Tonight's Schedule",
-                      useCase: container.useCases.schedule,
-                      routeFactory: container.routeFactory)
+                       useCase: container.useCases.schedule,
+                       routeFactory: container.routeFactory)
     }
     
     func credits(for person: Person) -> ShowsViewModel {
         ShowsViewModel(itemViewModelFactory: container.viewModels.items,
                        title: person.name + " - Credits",
-                      useCase: PersonsShows(person: person),
-                      routeFactory: container.routeFactory)
+                       useCase: PersonsShows(person: person),
+                       routeFactory: container.routeFactory)
     }
 
     
@@ -40,6 +40,14 @@ struct SceneViewModelFactoryImplementation: SceneViewModelFactory {
                         routeFactory: container.routeFactory)
     }
     
+    
+    func showDetail(for item: WithShow) -> ShowViewModel {
+        ShowViewModel(show: item,
+                      itemViewModelFactory: container.viewModels.items,
+                      useCase: container.useCases.showDetail,
+                      routeFactory: container.routeFactory)
+    }
+
     
     //MURRAY IMPLEMENTATION PLACEHOLDER
 }

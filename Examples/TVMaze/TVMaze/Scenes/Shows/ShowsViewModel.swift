@@ -52,6 +52,7 @@ class ShowsViewModel: RxListViewModel, RxNavigationViewModel {
 
     func selectItem(at indexPath: IndexPath) {
         if let model = self[indexPath]?.get(on: ShowItemViewModel.self, from: \.show) {
+            self.routes.accept(routeFactory.detail(for: model))
 //            self.routes.accept(routeFactory.schedule())
         }
     }        

@@ -14,6 +14,7 @@ protocol RouteFactory {
     func restart() -> Route
     func credits(for person: Person) -> Route
     func sideMenu(from menu: MenuItem) -> Route
+    func detail(for item: WithShow) -> Route
 }
 
 struct DeviceRouteFactory: RouteFactory {
@@ -29,6 +30,13 @@ struct DeviceRouteFactory: RouteFactory {
             self.container.sceneFactory.credits(for: person)
         }
     }
+
+    func detail(for item: WithShow) -> Route {
+        return NavigationRoute {
+            self.container.sceneFactory.showDetail(for: item)
+        }
+    }
+
     func sideMenu(from menu: MenuItem) -> Route {
         SideMenuRoute {
             var scene: Scene?
