@@ -14,6 +14,9 @@ enum ItemIdentifier: String, LayoutIdentifier {
     case menu
 
 	case show
+    case showWithTitle
+	case person
+	case header
 	//MURRAY PLACEHOLDER
     var identifierString: String { rawValue }
 }

@@ -11,19 +11,27 @@ import Foundation
 enum TVMaze {
     case schedule
     case searchShows(query: String)
+    case searchPeople(query: String)
+    case personCredit(Person)
+
     var baseURL: URL {
         return URL(string: "http://api.tvmaze.com")!
     }
-
+    
     var path: String {
         switch self {
         case .searchShows: return "search/shows"
+        case .searchPeople: return "search/people"
+        case .personCredit(let person): return "people/\(person.id)/castcredits"
         case .schedule: return "schedule"
         }
     }
     var queryParameters: [URLQueryItem] {
         switch self {
-        case .searchShows(let query): return [URLQueryItem(name: "q", value: query)]
+        case .searchShows(let query),
+             .searchPeople(let query):
+            return [URLQueryItem(name: "q", value: query)]
+        case .personCredit: return [URLQueryItem(name: "embed", value: "show")]
         default: return []
         }
     }

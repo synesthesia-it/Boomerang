@@ -9,9 +9,7 @@ import RxBoomerang
 import RxSwift
 import RxRelay
 
-typealias ShowUseCase = String
-
-class ShowViewModel: RxListViewModel, RxNavigationViewModel {
+class ShowsViewModel: RxListViewModel, RxNavigationViewModel {
 
     var sectionsRelay: BehaviorRelay<[Section]> = BehaviorRelay(value: [])
     
@@ -19,19 +17,23 @@ class ShowViewModel: RxListViewModel, RxNavigationViewModel {
     
     var disposeBag: DisposeBag = DisposeBag()
     
-    var layoutIdentifier: LayoutIdentifier = SceneIdentifier.show
+    let layoutIdentifier: LayoutIdentifier = SceneIdentifier.shows
 
     let uniqueIdentifier: UniqueIdentifier = UUID()
 
     let itemViewModelFactory: ItemViewModelFactory
 
-    private let useCase: ShowUseCase
+    private let useCase: ShowsUseCase
 
     let routeFactory: RouteFactory
+
+    let title: String
     
     init(itemViewModelFactory: ItemViewModelFactory,
-         useCase: ShowUseCase,
+         title: String,
+         useCase: ShowsUseCase,
          routeFactory: RouteFactory) {
+        self.title = title
         self.useCase = useCase
         self.routeFactory = routeFactory
         self.itemViewModelFactory = itemViewModelFactory
@@ -42,16 +44,15 @@ class ShowViewModel: RxListViewModel, RxNavigationViewModel {
     func reload() {
         reloadDisposeBag = DisposeBag()
         let factory = self.itemViewModelFactory
-        URLSession.shared.rx
-            .getEntity([Episode].self, from: .schedule)
-            .map { [Section(items: $0.map { factory.show($0.show) })]}
+        useCase.shows()
+            .map { [Section(items: $0.map { factory.show($0.show, hideTitle: true) })]}
             .bind(to: sectionsRelay)
             .disposed(by: reloadDisposeBag)
     }
 
     func selectItem(at indexPath: IndexPath) {
         if let model = self[indexPath]?.get(on: ShowItemViewModel.self, from: \.show) {
-            self.routes.accept(routeFactory.showsRoute())
+//            self.routes.accept(routeFactory.schedule())
         }
     }        
 }

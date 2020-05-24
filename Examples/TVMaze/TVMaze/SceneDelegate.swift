@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         initializationRoot
             .routeFactory
-            .restartRoute()
+            .restart()
             .execute(from: UIViewController())
     }
 

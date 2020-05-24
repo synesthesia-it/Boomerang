@@ -12,7 +12,7 @@ import Pax
 
 enum SceneIdentifier: String, LayoutIdentifier {
     case menu
-    case show
+    case shows
     case search
     //MURRAY ENUM PLACEHOLDER
     var identifierString: String { rawValue }
@@ -22,8 +22,8 @@ protocol SceneFactory {
     func root() -> Scene
     func menu() -> Scene
 
-    func show() -> Scene
-    
+    func schedule() -> Scene
+    func credits(for person: Person) -> Scene
     func search() -> Scene
     
     //MURRAY DECLARATION PLACEHOLDER

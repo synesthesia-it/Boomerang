@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ShowItemView" customModule="TVMaze" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="193" height="430"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u6r-qu-h2y">
+                    <rect key="frame" x="0.0" y="0.0" width="193" height="271"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="u6r-qu-h2y" secondAttribute="height" multiplier="210:295" priority="999" id="RIi-2f-SS6"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMy-Qg-6uC">
+                    <rect key="frame" x="4" y="275" width="185" height="151"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="TMy-Qg-6uC" firstAttribute="top" secondItem="u6r-qu-h2y" secondAttribute="bottom" constant="4" id="0v7-tK-YSp"/>
+                <constraint firstAttribute="trailing" secondItem="TMy-Qg-6uC" secondAttribute="trailing" constant="4" id="Cpc-eB-W7d"/>
+                <constraint firstAttribute="bottom" secondItem="TMy-Qg-6uC" secondAttribute="bottom" constant="4" id="Ow5-Aa-0Wp"/>
+                <constraint firstItem="u6r-qu-h2y" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Xpy-Yl-FXA"/>
+                <constraint firstItem="u6r-qu-h2y" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bYy-lE-HO4"/>
+                <constraint firstItem="TMy-Qg-6uC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="eYd-YT-je6"/>
+                <constraint firstAttribute="trailing" secondItem="u6r-qu-h2y" secondAttribute="trailing" id="gtr-hW-SaL"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="image" destination="u6r-qu-h2y" id="rb6-jW-pta"/>
+                <outlet property="title" destination="TMy-Qg-6uC" id="A5I-Q1-hvK"/>
+            </connections>
+            <point key="canvasLocation" x="-10.869565217391305" y="-6.0267857142857144"/>
+        </view>
+    </objects>
+</document>

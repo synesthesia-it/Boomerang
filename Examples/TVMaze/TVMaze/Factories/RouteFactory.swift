@@ -11,29 +11,29 @@ import UIKit
 import Boomerang
 
 protocol RouteFactory {
-    func restartRoute() -> Route
-    func showsRoute() -> Route
+    func restart() -> Route
+    func credits(for person: Person) -> Route
     func sideMenu(from menu: MenuItem) -> Route
 }
 
 struct DeviceRouteFactory: RouteFactory {
     let container: AppDependencyContainer
     
-    func restartRoute() -> Route {
+    func restart() -> Route {
         return RestartRoute {
             self.container.sceneFactory.root()
         }
     }
-    func showsRoute() -> Route {
-        return ModalRoute {
-            self.container.sceneFactory.show()
+    func credits(for person: Person) -> Route {
+        return NavigationRoute {
+            self.container.sceneFactory.credits(for: person)
         }
     }
     func sideMenu(from menu: MenuItem) -> Route {
         SideMenuRoute {
             var scene: Scene?
             switch menu {
-            case .schedule: scene = self.container.sceneFactory.show()
+            case .schedule: scene = self.container.sceneFactory.schedule()
             case .search: scene = self.container.sceneFactory.search()
             }
             let item = UIBarButtonItem(title: "Menu", style: .done, target: scene, action: #selector(Scene.showMenu))

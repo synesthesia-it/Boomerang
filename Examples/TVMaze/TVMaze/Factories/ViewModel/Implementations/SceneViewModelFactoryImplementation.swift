@@ -19,12 +19,20 @@ struct SceneViewModelFactoryImplementation: SceneViewModelFactory {
     
     
     
-    func show() -> ShowViewModel {
-        ShowViewModel(itemViewModelFactory: container.viewModels.items,
-                      useCase: "container.model.useCases.show",
+    func schedule() -> ShowsViewModel {
+        ShowsViewModel(itemViewModelFactory: container.viewModels.items,
+                       title: "Tonight's Schedule",
+                      useCase: container.useCases.schedule,
                       routeFactory: container.routeFactory)
     }
     
+    func credits(for person: Person) -> ShowsViewModel {
+        ShowsViewModel(itemViewModelFactory: container.viewModels.items,
+                       title: person.name + " - Credits",
+                      useCase: PersonsShows(person: person),
+                      routeFactory: container.routeFactory)
+    }
+
     
     func search() -> SearchViewModel {
         SearchViewModel(itemViewModelFactory: container.viewModels.items,

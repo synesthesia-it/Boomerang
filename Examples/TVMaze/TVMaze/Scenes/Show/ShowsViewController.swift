@@ -10,11 +10,11 @@ import RxBoomerang
 import RxSwift
 import RxCocoa
 
-class ShowViewController: UIViewController {
+class ShowsViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var viewModel: ShowViewModel
+    var viewModel: ShowsViewModel
     
     var collectionViewDataSource: CollectionViewDataSource? {
         didSet {
@@ -35,7 +35,7 @@ class ShowViewController: UIViewController {
     
     init(nibName: String?,
          bundle: Bundle? = nil,
-         viewModel: ShowViewModel,
+         viewModel: ShowsViewModel,
          collectionViewCellFactory: CollectionViewCellFactory) {
         self.viewModel = viewModel
         self.collectionViewCellFactory = collectionViewCellFactory
@@ -49,7 +49,7 @@ class ShowViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Tonight's Schedule"
+        self.title = viewModel.title
         let viewModel = self.viewModel
         let collectionViewDataSource = CollectionViewDataSource(viewModel: viewModel,
                                                                 factory: collectionViewCellFactory)

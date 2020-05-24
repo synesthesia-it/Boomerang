@@ -8,12 +8,17 @@
 
 import Foundation
 
-struct Episode: Codable {
+protocol WithShow {
+    var show: Show { get }
+}
+
+struct Episode: WithShow, Codable {
     let name: String
     let show: Show
     let image: Poster?
 }
-struct ShowSearchResult: Codable {
+struct ShowSearchResult: WithShow, Codable {
+    let score: Double
     let show: Show
 }
 
@@ -22,11 +27,13 @@ struct Poster: Codable {
     let original: URL
 }
 
-struct Show: Codable {
+struct Show: WithShow, Codable {
     let name: String
     // swiftlint:disable identifier_name
     let id: Int
     // swiftlint:enable identifier_name
     let image: Poster?
     let genres: [String]
+
+    var show: Show { self }
 }

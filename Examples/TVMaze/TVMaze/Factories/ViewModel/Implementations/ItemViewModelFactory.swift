@@ -17,11 +17,23 @@ struct ItemViewModelFactoryImplementation: ItemViewModelFactory {
         return MenuItemViewModel(item: item)
     }
 
-    func show(_ show: Show) -> ViewModel {
+    func show(_ show: Show, hideTitle: Bool) -> ViewModel {
         ShowItemViewModel(show: show,
-                        layoutIdentifier: ItemIdentifier.show)
+                          layoutIdentifier: hideTitle ? ItemIdentifier.show : ItemIdentifier.showWithTitle)
     }
 
     
-//MURRAY IMPLEMENTATION PLACEHOLDER
+    func person(_ person: Person) -> ViewModel {
+        PersonItemViewModel(person: person,
+                            layoutIdentifier: ItemIdentifier.person)
+    }
+
+    
+    func header(_ header: String) -> ViewModel {
+        HeaderItemViewModel(header: header,
+                            layoutIdentifier: ItemIdentifier.header)
+    }
+
+    
+    //MURRAY IMPLEMENTATION PLACEHOLDER
 }

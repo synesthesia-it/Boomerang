@@ -51,10 +51,15 @@ struct ViewControllerFactory: SceneFactory {
                                   collectionViewCellFactory: cellFactory)
     }
 
-    
-    func show() -> Scene {
-        let viewModel = container.viewModels.scenes.show()
-        return ShowViewController(nibName: name(from: viewModel.layoutIdentifier),
+    func schedule() -> Scene {
+        shows(viewModel: container.viewModels.scenes.schedule())
+    }
+    func credits(for person: Person) -> Scene {
+        shows(viewModel: container.viewModels.scenes.credits(for: person))
+    }
+    private func shows(viewModel: ShowsViewModel) -> Scene {
+
+        return ShowsViewController(nibName: name(from: viewModel.layoutIdentifier),
                                    	viewModel: viewModel,
                                    	collectionViewCellFactory: cellFactory)
     }

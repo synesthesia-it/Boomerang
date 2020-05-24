@@ -16,13 +16,16 @@ protocol ViewModelFactory {
 
 protocol SceneViewModelFactory {
     func menu() -> MenuViewModel
-    func show() -> ShowViewModel
+    func schedule() -> ShowsViewModel
+    func credits(for person: Person) -> ShowsViewModel
     func search() -> SearchViewModel
     //MURRAY SCENE
 }
 
 protocol ItemViewModelFactory {
     func menu(item: MenuItem) -> ViewModel
-    func show(_ show: Show) -> ViewModel
+    func show(_ show: Show, hideTitle: Bool) -> ViewModel
+    func person(_ person: Person) -> ViewModel
+    func header(_ header: String) -> ViewModel
     //MURRAY ITEM
 }

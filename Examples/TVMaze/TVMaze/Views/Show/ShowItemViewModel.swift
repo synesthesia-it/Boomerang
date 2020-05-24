@@ -8,14 +8,14 @@ import Boomerang
 import RxSwift
 import RxRelay
 
-class ShowItemViewModel: ViewModel {
+class ShowItemViewModel: ViewModel, WithEntity {
 
     let layoutIdentifier: LayoutIdentifier
     var uniqueIdentifier: UniqueIdentifier = UUID() 
     let show: Show
 
     let image: ObservableImage
-
+    var entity: Entity { show }
     var title: String {
         return show.name
     }
