@@ -33,7 +33,7 @@ class PersonsShows: ShowsUseCase {
 
     func shows() -> Observable<[WithShow]> {
         URLSession.shared.rx
-            .getEntity([PersonCastCreditResult].self, from: .personCredit(person))
+            .getEntity([PersonCastCreditResult].self, from: .personCredit("\(person.id)"))
             .map { $0 }
     }
 }

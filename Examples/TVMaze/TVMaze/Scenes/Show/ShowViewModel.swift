@@ -33,6 +33,7 @@ class ShowViewModel: RxListViewModel, RxNavigationViewModel, WithEntity {
     var title: String {
         show.show.name
     }
+
     init(show: WithShow,
          itemViewModelFactory: ItemViewModelFactory,
          useCase: ShowDetailUseCase,
@@ -45,6 +46,12 @@ class ShowViewModel: RxListViewModel, RxNavigationViewModel, WithEntity {
     
     func reload() {
         disposeBag = DisposeBag()
+        useCase.detail(for: show)
+        .debug()
+        .subscribe()
+
+            .disposed(by: disposeBag)
+
         //Bind here to use case and set sectionsRelay
     }
     

@@ -10,6 +10,8 @@ import Foundation
 import RxSwift
 class ShowDetailUseCase {
     func detail(for show: WithShow) -> Observable<Show> {
-        return .just(show.show)
+        URLSession.shared
+            .rx
+            .getEntity(Show.self, from: .showDetail("\(show.show.id)"))
     }
 }

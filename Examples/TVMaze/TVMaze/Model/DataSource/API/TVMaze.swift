@@ -12,8 +12,8 @@ enum TVMaze {
     case schedule
     case searchShows(query: String)
     case searchPeople(query: String)
-    case personCredit(Person)
-
+    case personCredit(String)
+    case showDetail(String)
     var baseURL: URL {
         return URL(string: "http://api.tvmaze.com")!
     }
@@ -22,8 +22,9 @@ enum TVMaze {
         switch self {
         case .searchShows: return "search/shows"
         case .searchPeople: return "search/people"
-        case .personCredit(let person): return "people/\(person.id)/castcredits"
+        case .personCredit(let id): return "people/\(id)/castcredits"
         case .schedule: return "schedule"
+        case .showDetail(let id): return "shows/\(id)"
         }
     }
     var queryParameters: [URLQueryItem] {
@@ -32,6 +33,10 @@ enum TVMaze {
              .searchPeople(let query):
             return [URLQueryItem(name: "q", value: query)]
         case .personCredit: return [URLQueryItem(name: "embed", value: "show")]
+        case .showDetail: return [
+            URLQueryItem(name: "embed[]", value: "seasons"),
+            URLQueryItem(name: "embed[]", value: "cast"),
+            ]
         default: return []
         }
     }

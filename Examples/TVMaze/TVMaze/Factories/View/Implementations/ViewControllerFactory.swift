@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Boomerang
 import Pax
+import UIKitBoomerang
 
 typealias Scene = UIViewController
 
@@ -35,7 +36,6 @@ struct ViewControllerFactory: SceneFactory {
         container.routeFactory
             .sideMenu(from: .schedule)
             .execute(from: pax)
-//        pax.setMainViewController(show().embedded())
         let menu = self.menu()
         menu.pax.menuWidth = 250
         pax.setViewController(menu, at: .left)

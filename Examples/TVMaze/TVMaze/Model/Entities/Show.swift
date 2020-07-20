@@ -27,7 +27,18 @@ struct Poster: Codable {
     let original: URL
 }
 
+struct Season: Codable {
+    let id: Int
+    let number: Int
+    let image: Poster?
+}
+
 struct Show: WithShow, Codable {
+    private struct Embedded: Codable {
+        let seasons: [Season]?
+        let cast: [Cast]?
+    }
+
     let name: String
     // swiftlint:disable identifier_name
     let id: Int
@@ -36,4 +47,9 @@ struct Show: WithShow, Codable {
     let genres: [String]
 
     var show: Show { self }
+
+    private let _embedded: Embedded?
+
+    var cast: [Cast] { _embedded?.cast ?? [] }
+    var seasons: [Season] { _embedded?.seasons ?? [] }
 }
