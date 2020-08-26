@@ -29,7 +29,7 @@ public protocol RxViewModel: ViewModel {
 
 extension Section: IdentifiableType {
     public var identity: String {
-        return self.id
+        return self.id.stringValue
     }
 }
 

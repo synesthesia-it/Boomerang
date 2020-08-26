@@ -52,7 +52,7 @@ public struct Section {
 
     ///Unique id representing the section.
     ///Uniqueness is required by differentiators algorithms to detect differences between sections
-    public var id: String
+    public var id: UniqueIdentifier
 
     ///The `ViewModel` items contained inside the Section
     public var items: [ViewModel]
@@ -73,7 +73,7 @@ public struct Section {
     /**
     Create a new `Section` object from given items.
     
-     - Parameter id: Id used to guarantee uniqueness of current section. Defaults to `""`
+     - Parameter id: Id used to guarantee uniqueness of current section. Defaults to `UUID()`
      
      - Parameter items: The section's `ViewModel` array
      
@@ -84,7 +84,7 @@ public struct Section {
      - Parameter supplementary: Optional supplementary object. Defaults to `nil`
                 
      */
-    public init( id: String = "",
+    public init( id: UniqueIdentifier = UUID(),
                  items: [ViewModel] = [],
                  header: ViewModel? = nil,
                  footer: ViewModel? = nil,
