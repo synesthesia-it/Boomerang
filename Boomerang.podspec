@@ -21,4 +21,5 @@ Pod::Spec.new do |s|
 #s.module_map = "Sources/module.modulemap"
   s.dependency 'RxSwift'
   s.dependency 'Action'
+  s.swift_versions = ['4.2', '5.0']
 end
