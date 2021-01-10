@@ -76,7 +76,9 @@ public struct Section {
 
     /// Unique id representing the section.
     /// Uniqueness is required by differentiators algorithms to detect differences between sections
-    public var id: UniqueIdentifier
+    public var id: String { identifier.stringValue }
+    
+    public var identifier: UniqueIdentifier
 
     /// The `ViewModel` items contained inside the Section
     public var items: [ViewModel]
@@ -113,7 +115,7 @@ public struct Section {
                  header: ViewModel? = nil,
                  footer: ViewModel? = nil,
                  supplementary: Supplementary? = nil) {
-        self.id = id
+        self.identifier = id
         self.items = items
         var supplementary = supplementary ?? Supplementary()
         if let header = header {
@@ -162,7 +164,7 @@ public struct Section {
 
     public func removing(at index: Int) -> Section {
         var section = self
-        section.remove(at: index)
+        _ = section.remove(at: index)
         return section
     }
 }

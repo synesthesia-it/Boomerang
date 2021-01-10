@@ -5,11 +5,9 @@
 //  Created by Stefano Mondino on 13/12/2019.
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
-
+#if canImport(UIKit)
 import UIKit
-#if !COCOAPODS
-import Boomerang
-#endif
+
 open class AutomaticCollectionViewSizeCalculator: BaseCollectionViewSizeCalculator {
 
     public typealias Size = (UICollectionView, IndexPath, String?) -> CGSize
@@ -72,3 +70,4 @@ open class AutomaticCollectionViewSizeCalculator: BaseCollectionViewSizeCalculat
     }
 
 }
+#endif

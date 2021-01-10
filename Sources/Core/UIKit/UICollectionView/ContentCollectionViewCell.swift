@@ -5,10 +5,11 @@
 //  Created by Stefano Mondino on 22/10/2019.
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
+
+#if canImport(UIKit)
+
 import UIKit
-#if !COCOAPODS
-@_exported import Boomerang
-#endif
+
 public protocol CollectionViewCellContained {
     func apply(_ layoutAttributes: UICollectionViewLayoutAttributes)
 }
@@ -52,3 +53,4 @@ public class ContentCollectionViewCell: UICollectionViewCell, ContentCollectionV
     }
 
 }
+#endif

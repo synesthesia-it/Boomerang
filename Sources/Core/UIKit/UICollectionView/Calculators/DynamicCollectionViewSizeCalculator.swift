@@ -4,8 +4,7 @@
 //
 //  Created by Stefano Mondino on 10/01/21.
 //
-
-import Boomerang
+#if canImport(UIKit)
 import Foundation
 import UIKit
 
@@ -13,7 +12,11 @@ open class DynamicSizeCalculator: BaseCollectionViewSizeCalculator {
     func sectionProperties(in section: Int) -> Size.SectionProperties? {
         viewModel.sectionProperties(at: section)
     }
-
+    public init(
+        viewModel: ListViewModel,
+        factory: CollectionViewCellFactory) {
+        super.init(viewModel: viewModel, factory: factory, defaultSize: .zero)
+    }
     override open func insets(for collectionView: UICollectionView, in section: Int) -> UIEdgeInsets {
         sectionProperties(in: section)?.insets ?? super.insets(for: collectionView, in: section)
     }
@@ -49,3 +52,4 @@ open class DynamicSizeCalculator: BaseCollectionViewSizeCalculator {
         return size
     }
 }
+#endif

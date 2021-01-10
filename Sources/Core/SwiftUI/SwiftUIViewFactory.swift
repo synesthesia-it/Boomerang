@@ -5,20 +5,20 @@
 //  Created by Stefano Mondino on 03/11/2019.
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
-
+#if canImport(SwiftUI)
 import Foundation
 import Boomerang
 import SwiftUI
-#if !COCOAPODS
-import CombineBoomerang
-#endif
 
+@available(iOS 13, *)
 public protocol SwiftUIViewFactory {
     func view(from wrapper: IdentifiableViewModel) -> AnyView
 }
 
-extension Boomerang.Section: Identifiable { }
+@available(iOS 13, *)
+extension Boomerang.Section: Identifiable {}
 
+@available(iOS 13, *)
 public class IdentifiableViewModel: Identifiable, Equatable, Hashable {
     public let id: String
     public func hash(into hasher: inout Hasher) {
@@ -34,3 +34,4 @@ public class IdentifiableViewModel: Identifiable, Equatable, Hashable {
     public let viewModel: ViewModel
 
 }
+#endif

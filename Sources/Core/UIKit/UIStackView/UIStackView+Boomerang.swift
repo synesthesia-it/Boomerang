@@ -5,12 +5,10 @@
 //  Created by Stefano Mondino on 03/12/2019.
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
-
+#if canImport(UIKit)
 import Foundation
 import UIKit
-#if !COCOAPODS
-@_exported import Boomerang
-#endif
+
 public extension UIStackView {
     func arrangeSections(_ sections: [Section], factory: ViewFactory) {
         self.arrangedSubviews.forEach { self.removeArrangedSubview($0) }
@@ -22,3 +20,4 @@ public extension UIStackView {
         }
     }
 }
+#endif

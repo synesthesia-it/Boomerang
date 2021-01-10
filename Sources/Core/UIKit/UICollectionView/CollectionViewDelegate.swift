@@ -5,7 +5,7 @@
 //  Created by Stefano Mondino on 22/10/2019.
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
-
+#if canImport(UIKit)
 import Foundation
 import UIKit
 
@@ -80,3 +80,4 @@ extension CollectionViewDelegate: UICollectionViewDelegateFlowLayout {
         return sizeCalculator.itemSpacing(for: collectionView, in: section)
     }
 }
+#endif

@@ -5,7 +5,7 @@
 //  Created by Stefano Mondino on 26/01/2019.
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
-
+#if canImport(UIKit)
 import Foundation
 import UIKit
 
@@ -77,3 +77,4 @@ public extension CollectionViewSizeCalculator {
     }
 
 }
+#endif

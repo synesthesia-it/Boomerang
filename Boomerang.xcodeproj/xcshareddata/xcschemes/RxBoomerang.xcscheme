@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "70C92182236EF8D400302A29"
-               BuildableName = "SwiftUIBoomerang.framework"
-               BlueprintName = "SwiftUIBoomerang"
+               BlueprintIdentifier = "7059AB4B236C8DC00005A189"
+               BuildableName = "RxBoomerang.framework"
+               BlueprintName = "RxBoomerang"
                ReferencedContainer = "container:Boomerang.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "70C92182236EF8D400302A29"
-            BuildableName = "SwiftUIBoomerang.framework"
-            BlueprintName = "SwiftUIBoomerang"
+            BlueprintIdentifier = "7059AB4B236C8DC00005A189"
+            BuildableName = "RxBoomerang.framework"
+            BlueprintName = "RxBoomerang"
             ReferencedContainer = "container:Boomerang.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

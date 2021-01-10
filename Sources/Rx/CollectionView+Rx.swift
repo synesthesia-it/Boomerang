@@ -13,9 +13,6 @@ import RxCocoa
 import RxDataSources
 #if !COCOAPODS
 import Boomerang
-#if os(iOS) || os(tvOS)
-import UIKitBoomerang
-#endif
 #endif
 
 #if os(iOS) || os(tvOS)
@@ -43,7 +40,7 @@ public extension Reactive where Base: UICollectionView {
     func animated(by viewModel: RxListViewModel,
                   dataSource collectionViewDataSource: CollectionViewDataSource) -> Disposable {
 
-        let data = RxCollectionViewSectionedAnimatedDataSource<AnimatableSectionModel<Section, IdentifiableViewModel>>(
+        let data = RxCollectionViewSectionedAnimatedDataSource<AnimatableSectionModel<Section, UniqueViewModelWrapper>>(
             configureCell: { (_, collectionView, indexPath, _) -> UICollectionViewCell in
                 return collectionViewDataSource.collectionView(collectionView, cellForItemAt: indexPath)
         },
@@ -55,7 +52,7 @@ public extension Reactive where Base: UICollectionView {
         return viewModel.sectionsRelay
             .asDriver()
             .map { $0
-                .map { AnimatableSectionModel(model: $0, items: $0.items.map { IdentifiableViewModel(viewModel: $0)}) }
+                .map { AnimatableSectionModel(model: $0, items: $0.items.map { UniqueViewModelWrapper(viewModel: $0)}) }
         }
             .drive(items(dataSource: data))
     }

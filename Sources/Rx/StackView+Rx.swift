@@ -12,9 +12,6 @@ import RxSwift
 import RxCocoa
 #if !COCOAPODS
 import Boomerang
-#if os(iOS) || os(tvOS)
-import UIKitBoomerang
-#endif
 #endif
 
 #if os(iOS) || os(tvOS)

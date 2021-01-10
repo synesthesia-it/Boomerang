@@ -5,12 +5,10 @@
 //  Created by Stefano Mondino on 22/10/2019.
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
-
+#if canImport(UIKit)
 import Foundation
 import UIKit
-#if !COCOAPODS
-import Boomerang
-#endif
+
 /**
     Defines how collection view cells should be generated so they can be used inside  a collection view
  */
@@ -19,3 +17,4 @@ public protocol CollectionViewCellFactory: ViewFactory {
     func cellClass(from itemIdentifier: LayoutIdentifier?) -> UICollectionViewCell.Type
     func configureCell(_ cell: UICollectionReusableView, with viewModel: ViewModel)
 }
+#endif

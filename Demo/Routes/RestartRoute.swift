@@ -18,8 +18,20 @@ struct RestartRoute: UIKitRoute {
     }
 
     func execute<T: UIViewController>(from scene: T?) {
+        let scene = scene ?? UIApplication.shared.delegate?.window??.rootViewController
 
-        // TODO Dismiss all modals
+        if let presented = scene?.presentedViewController {
+            execute(from: presented)
+            return
+        }
+
+        if let presenting = scene?.presentingViewController {
+            scene?.dismiss(animated: false) {
+                self.execute(from: presenting)
+            }
+            return
+        }
+
         UIApplication.shared.delegate?.window??.rootViewController = createViewController()
         UIApplication.shared.delegate?.window??.makeKeyAndVisible()
     }

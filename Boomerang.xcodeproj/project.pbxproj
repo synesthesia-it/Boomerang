@@ -44,30 +44,24 @@
 		7059AB87236CD6C10005A189 /* RESTDataSource+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7059AB86236CD6C10005A189 /* RESTDataSource+Rx.swift */; };
 		7059AB8A236CD7060005A189 /* MainViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7059AB89236CD7060005A189 /* MainViewFactory.swift */; };
 		7059AB8B236CD7060005A189 /* SceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7059AB88236CD7060005A189 /* SceneFactory.swift */; };
-		7059AB95236D76CF0005A189 /* CombineBoomerang.h in Headers */ = {isa = PBXBuildFile; fileRef = 7059AB93236D76CF0005A189 /* CombineBoomerang.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7059AB98236D76CF0005A189 /* CombineBoomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7059AB91236D76CF0005A189 /* CombineBoomerang.framework */; };
-		7059AB99236D76CF0005A189 /* CombineBoomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7059AB91236D76CF0005A189 /* CombineBoomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7059AB9F236D771E0005A189 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA6D8E2235F9D2F00EF4A60 /* Boomerang.framework */; };
-		7059ABA0236D771E0005A189 /* Boomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA6D8E2235F9D2F00EF4A60 /* Boomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7059ABA5236D77700005A189 /* CombineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7059ABA4236D77700005A189 /* CombineViewModel.swift */; };
 		706CE12A23852D230070FC4E /* SceneViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CE12923852D230070FC4E /* SceneViewModelFactory.swift */; };
 		706CE12C238531AA0070FC4E /* ItemViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CE12B238531AA0070FC4E /* ItemViewModelFactory.swift */; };
-		707B77EE25AB708300D243EC /* BaseSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B77ED25AB708300D243EC /* BaseSizeCalculator.swift */; };
-		707B77F825AB736000D243EC /* DynamicCollectionViewSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B77F725AB735F00D243EC /* DynamicCollectionViewSizeCalculator.swift */; };
 		707B780125AB741A00D243EC /* ElementSize.Implementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B77FE25AB741A00D243EC /* ElementSize.Implementations.swift */; };
 		707B780225AB741A00D243EC /* ElementSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B77FD25AB741A00D243EC /* ElementSize.swift */; };
+		707B781825AB7B4400D243EC /* CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFCA0523603792004B49D6 /* CollectionViewDelegate.swift */; };
+		707B781925AB7B4400D243EC /* CollectionViewCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA8F4A8235F9EE200027DE5 /* CollectionViewCellFactory.swift */; };
+		707B781A25AB7B4400D243EC /* UICollectionView+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFCA1E2361E9B0004B49D6 /* UICollectionView+Sizing.swift */; };
+		707B781B25AB7B4400D243EC /* AutomaticSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CACF0823A397E700E9F657 /* AutomaticSizeCalculator.swift */; };
+		707B781C25AB7B4400D243EC /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708ACF5923A22AAB004A6FF4 /* Scene.swift */; };
+		707B781D25AB7B4400D243EC /* UIKit+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6D8F0235F9D4500EF4A60 /* UIKit+Constraints.swift */; };
+		707B781E25AB7B4400D243EC /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6D8F9235F9E0400EF4A60 /* CollectionViewDataSource.swift */; };
+		707B781F25AB7B4400D243EC /* BaseSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B77ED25AB708300D243EC /* BaseSizeCalculator.swift */; };
+		707B782025AB7B4400D243EC /* DynamicCollectionViewSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B77F725AB735F00D243EC /* DynamicCollectionViewSizeCalculator.swift */; };
+		707B782125AB7B4400D243EC /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA8F4B4235FA11A00027DE5 /* ViewFactory.swift */; };
+		707B782225AB7B4400D243EC /* UIStackView+Boomerang.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702B24D123969536007F210E /* UIStackView+Boomerang.swift */; };
+		707B782325AB7B4400D243EC /* ContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6D8F5235F9D4500EF4A60 /* ContentCollectionViewCell.swift */; };
 		708ACF4F23A1482E004A6FF4 /* PropertyAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708ACF4D23A1482B004A6FF4 /* PropertyAssignment.swift */; };
 		70C1FBA023A25326004D8B4C /* ViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C1FB9F23A25326004D8B4C /* ViewController+Rx.swift */; };
-		70C92187236EF8D400302A29 /* SwiftUIBoomerang.h in Headers */ = {isa = PBXBuildFile; fileRef = 70C92185236EF8D400302A29 /* SwiftUIBoomerang.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		70C9218A236EF8D400302A29 /* SwiftUIBoomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C92183236EF8D400302A29 /* SwiftUIBoomerang.framework */; };
-		70C9218B236EF8D400302A29 /* SwiftUIBoomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70C92183236EF8D400302A29 /* SwiftUIBoomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		70C9218F236EF8FD00302A29 /* SwiftUIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CBE1D3236EC78200F4221A /* SwiftUIViewModel.swift */; };
-		70C92190236EF8FD00302A29 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C92175236EF7EE00302A29 /* List.swift */; };
-		70C92191236EF8FD00302A29 /* SwiftUIViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C92178236EF83E00302A29 /* SwiftUIViewFactory.swift */; };
-		70C92193236EF93200302A29 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA6D8E2235F9D2F00EF4A60 /* Boomerang.framework */; };
-		70C92194236EF93200302A29 /* Boomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA6D8E2235F9D2F00EF4A60 /* Boomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		70C92197236EF93200302A29 /* CombineBoomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7059AB91236D76CF0005A189 /* CombineBoomerang.framework */; };
-		70C92198236EF93200302A29 /* CombineBoomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7059AB91236D76CF0005A189 /* CombineBoomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		70C9219F236F4C9200302A29 /* HeaderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C9219E236F4C9200302A29 /* HeaderItemView.swift */; };
 		70C921A1236F4C9B00302A29 /* HeaderItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70C921A0236F4C9B00302A29 /* HeaderItemView.xib */; };
 		70C921A3236F4D3400302A29 /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C921A2236F4D3400302A29 /* HeaderViewModel.swift */; };
@@ -99,19 +93,6 @@
 		70DFCA212361F2A3004B49D6 /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFCA202361F2A3004B49D6 /* ShowDetailViewController.swift */; };
 		70DFCA242361F2C1004B49D6 /* ShowDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFCA232361F2C1004B49D6 /* ShowDetailViewModel.swift */; };
 		70DFCA262361F2CC004B49D6 /* ShowDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70DFCA252361F2CC004B49D6 /* ShowDetailViewController.xib */; };
-		70E39A3023EACCC400317250 /* UIKitBoomerang.h in Headers */ = {isa = PBXBuildFile; fileRef = 70E39A2E23EACCC400317250 /* UIKitBoomerang.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		70E39A3323EACCC400317250 /* UIKitBoomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E39A2C23EACCC400317250 /* UIKitBoomerang.framework */; };
-		70E39A3423EACCC400317250 /* UIKitBoomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70E39A2C23EACCC400317250 /* UIKitBoomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		70E39A3823EACD2C00317250 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708ACF5923A22AAB004A6FF4 /* Scene.swift */; };
-		70E39A3923EACD2C00317250 /* UIKit+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6D8F0235F9D4500EF4A60 /* UIKit+Constraints.swift */; };
-		70E39A3A23EACD2C00317250 /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA8F4B4235FA11A00027DE5 /* ViewFactory.swift */; };
-		70E39A3B23EACD2C00317250 /* UIStackView+Boomerang.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702B24D123969536007F210E /* UIStackView+Boomerang.swift */; };
-		70E39A3C23EACD2C00317250 /* ContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6D8F5235F9D4500EF4A60 /* ContentCollectionViewCell.swift */; };
-		70E39A3D23EACD2C00317250 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6D8F9235F9E0400EF4A60 /* CollectionViewDataSource.swift */; };
-		70E39A3E23EACD2C00317250 /* CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFCA0523603792004B49D6 /* CollectionViewDelegate.swift */; };
-		70E39A3F23EACD2D00317250 /* UICollectionView+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DFCA1E2361E9B0004B49D6 /* UICollectionView+Sizing.swift */; };
-		70E39A4023EACD2D00317250 /* AutomaticSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CACF0823A397E700E9F657 /* AutomaticSizeCalculator.swift */; };
-		70E39A4123EACD2D00317250 /* CollectionViewCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA8F4A8235F9EE200027DE5 /* CollectionViewCellFactory.swift */; };
 		7BA6D8B0235F89AD00EF4A60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6D8AF235F89AD00EF4A60 /* AppDelegate.swift */; };
 		7BA6D8B4235F89AD00EF4A60 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6D8B3235F89AD00EF4A60 /* ScheduleViewController.swift */; };
 		7BA6D8B9235F89AF00EF4A60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BA6D8B8235F89AF00EF4A60 /* Assets.xcassets */; };
@@ -145,54 +126,12 @@
 			remoteGlobalIDString = 7BA6D8E1235F9D2F00EF4A60;
 			remoteInfo = Boomerang;
 		};
-		7059AB96236D76CF0005A189 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7BA6D8A4235F89AD00EF4A60 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7059AB90236D76CF0005A189;
-			remoteInfo = CombineBoomerang;
-		};
-		7059ABA1236D771E0005A189 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7BA6D8A4235F89AD00EF4A60 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7BA6D8E1235F9D2F00EF4A60;
-			remoteInfo = Boomerang;
-		};
-		70C92188236EF8D400302A29 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7BA6D8A4235F89AD00EF4A60 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 70C92182236EF8D400302A29;
-			remoteInfo = SwiftUIBoomerang;
-		};
-		70C92195236EF93200302A29 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7BA6D8A4235F89AD00EF4A60 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7BA6D8E1235F9D2F00EF4A60;
-			remoteInfo = Boomerang;
-		};
-		70C92199236EF93200302A29 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7BA6D8A4235F89AD00EF4A60 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7059AB90236D76CF0005A189;
-			remoteInfo = CombineBoomerang;
-		};
 		70D0DD6624756B420030346A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7BA6D8A4235F89AD00EF4A60 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 7BA6D8E1235F9D2F00EF4A60;
 			remoteInfo = Boomerang;
-		};
-		70E39A3123EACCC400317250 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7BA6D8A4235F89AD00EF4A60 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 70E39A2B23EACCC400317250;
-			remoteInfo = UIKitBoomerang;
 		};
 		7BA6D8E7235F9D2F00EF4A60 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -221,31 +160,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7059AB99236D76CF0005A189 /* CombineBoomerang.framework in Embed Frameworks */,
-				70C9218B236EF8D400302A29 /* SwiftUIBoomerang.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7059ABA3236D771E0005A189 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				7059ABA0236D771E0005A189 /* Boomerang.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		70C9219B236EF93200302A29 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				70C92194236EF93200302A29 /* Boomerang.framework in Embed Frameworks */,
-				70C92198236EF93200302A29 /* CombineBoomerang.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,7 +170,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				70E39A3423EACCC400317250 /* UIKitBoomerang.framework in Embed Frameworks */,
 				7BA6D8EA235F9D2F00EF4A60 /* Boomerang.framework in Embed Frameworks */,
 				7059AB54236C8DC00005A189 /* RxBoomerang.framework in Embed Frameworks */,
 			);
@@ -287,9 +200,6 @@
 		7059AB86236CD6C10005A189 /* RESTDataSource+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RESTDataSource+Rx.swift"; sourceTree = "<group>"; };
 		7059AB88236CD7060005A189 /* SceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneFactory.swift; sourceTree = "<group>"; };
 		7059AB89236CD7060005A189 /* MainViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewFactory.swift; sourceTree = "<group>"; };
-		7059AB91236D76CF0005A189 /* CombineBoomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CombineBoomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7059AB93236D76CF0005A189 /* CombineBoomerang.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CombineBoomerang.h; sourceTree = "<group>"; };
-		7059AB94236D76CF0005A189 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7059ABA4236D77700005A189 /* CombineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineViewModel.swift; sourceTree = "<group>"; };
 		706CE12923852D230070FC4E /* SceneViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewModelFactory.swift; sourceTree = "<group>"; };
 		706CE12B238531AA0070FC4E /* ItemViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModelFactory.swift; sourceTree = "<group>"; };
@@ -300,11 +210,8 @@
 		708ACF4D23A1482B004A6FF4 /* PropertyAssignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyAssignment.swift; sourceTree = "<group>"; };
 		708ACF5923A22AAB004A6FF4 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		70C1FB9F23A25326004D8B4C /* ViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Rx.swift"; sourceTree = "<group>"; };
-		70C92174236EF78F00302A29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70C92175236EF7EE00302A29 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		70C92178236EF83E00302A29 /* SwiftUIViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewFactory.swift; sourceTree = "<group>"; };
-		70C92183236EF8D400302A29 /* SwiftUIBoomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftUIBoomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		70C92185236EF8D400302A29 /* SwiftUIBoomerang.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftUIBoomerang.h; sourceTree = "<group>"; };
 		70C9219E236F4C9200302A29 /* HeaderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderItemView.swift; sourceTree = "<group>"; };
 		70C921A0236F4C9B00302A29 /* HeaderItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderItemView.xib; sourceTree = "<group>"; };
 		70C921A2236F4D3400302A29 /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
@@ -337,9 +244,6 @@
 		70DFCA202361F2A3004B49D6 /* ShowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewController.swift; sourceTree = "<group>"; };
 		70DFCA232361F2C1004B49D6 /* ShowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewModel.swift; sourceTree = "<group>"; };
 		70DFCA252361F2CC004B49D6 /* ShowDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowDetailViewController.xib; sourceTree = "<group>"; };
-		70E39A2C23EACCC400317250 /* UIKitBoomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIKitBoomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		70E39A2E23EACCC400317250 /* UIKitBoomerang.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIKitBoomerang.h; sourceTree = "<group>"; };
-		70E39A2F23EACCC400317250 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70E39A4223EAD33F00317250 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		7B7E658724053C650039954B /* Boomerang.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = Boomerang.podspec; sourceTree = "<group>"; };
 		7BA6D8AC235F89AD00EF4A60 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -384,25 +288,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7059AB98236D76CF0005A189 /* CombineBoomerang.framework in Frameworks */,
-				70C9218A236EF8D400302A29 /* SwiftUIBoomerang.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7059AB8E236D76CF0005A189 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7059AB9F236D771E0005A189 /* Boomerang.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		70C92180236EF8D400302A29 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				70C92193236EF93200302A29 /* Boomerang.framework in Frameworks */,
-				70C92197236EF93200302A29 /* CombineBoomerang.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,18 +299,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		70E39A2923EACCC400317250 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7BA6D8A9235F89AD00EF4A60 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70E39A3323EACCC400317250 /* UIKitBoomerang.framework in Frameworks */,
 				7BA6D8E9235F9D2F00EF4A60 /* Boomerang.framework in Frameworks */,
 				7059AB53236C8DC00005A189 /* RxBoomerang.framework in Frameworks */,
 			);
@@ -492,9 +369,7 @@
 		7059AB9E236D76E10005A189 /* Combine */ = {
 			isa = PBXGroup;
 			children = (
-				7059AB93236D76CF0005A189 /* CombineBoomerang.h */,
 				7059ABA4236D77700005A189 /* CombineViewModel.swift */,
-				7059AB94236D76CF0005A189 /* Info.plist */,
 			);
 			path = Combine;
 			sourceTree = "<group>";
@@ -509,13 +384,6 @@
 			path = Calculators;
 			sourceTree = "<group>";
 		};
-		707B780F25AB7A0A00D243EC /* Combine */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Combine;
-			sourceTree = "<group>";
-		};
 		70C067ED23A232D200683F97 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -527,11 +395,9 @@
 		70C92161236EF75200302A29 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				70C92174236EF78F00302A29 /* Info.plist */,
 				70CBE1D3236EC78200F4221A /* SwiftUIViewModel.swift */,
 				70C92175236EF7EE00302A29 /* List.swift */,
 				70C92178236EF83E00302A29 /* SwiftUIViewFactory.swift */,
-				70C92185236EF8D400302A29 /* SwiftUIBoomerang.h */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -689,9 +555,6 @@
 				7BA6D8E2235F9D2F00EF4A60 /* Boomerang.framework */,
 				7059AB4C236C8DC00005A189 /* RxBoomerang.framework */,
 				7059AB6B236CB4760005A189 /* SwiftUIDemo.app */,
-				7059AB91236D76CF0005A189 /* CombineBoomerang.framework */,
-				70C92183236EF8D400302A29 /* SwiftUIBoomerang.framework */,
-				70E39A2C23EACCC400317250 /* UIKitBoomerang.framework */,
 				70D0DD6024756B420030346A /* BoomerangTests.xctest */,
 			);
 			name = Products;
@@ -718,10 +581,7 @@
 			isa = PBXGroup;
 			children = (
 				7BA6D8F1235F9D4500EF4A60 /* Core */,
-				7BA6D8F3235F9D4500EF4A60 /* UIKit */,
 				7059AB46236C8D930005A189 /* Rx */,
-				70C92161236EF75200302A29 /* SwiftUI */,
-				7059AB9E236D76E10005A189 /* Combine */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -729,7 +589,9 @@
 		7BA6D8F1235F9D4500EF4A60 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				707B780F25AB7A0A00D243EC /* Combine */,
+				70C92161236EF75200302A29 /* SwiftUI */,
+				7059AB9E236D76E10005A189 /* Combine */,
+				7BA6D8F3235F9D4500EF4A60 /* UIKit */,
 				7BA8F4B6235FA6E800027DE5 /* Route.swift */,
 				708ACF4D23A1482B004A6FF4 /* PropertyAssignment.swift */,
 				7BA8F4AA235F9F2100027DE5 /* Section.swift */,
@@ -746,8 +608,6 @@
 		7BA6D8F3235F9D4500EF4A60 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				70E39A2E23EACCC400317250 /* UIKitBoomerang.h */,
-				70E39A2F23EACCC400317250 /* Info.plist */,
 				702B24CD239693CD007F210E /* UIStackView */,
 				70C067ED23A232D200683F97 /* Scene */,
 				7BA8F4B3235FA10300027DE5 /* UIView */,
@@ -812,30 +672,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7059AB8C236D76CF0005A189 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7059AB95236D76CF0005A189 /* CombineBoomerang.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		70C9217E236EF8D400302A29 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				70C92187236EF8D400302A29 /* SwiftUIBoomerang.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		70E39A2723EACCC400317250 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				70E39A3023EACCC400317250 /* UIKitBoomerang.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7BA6D8DD235F9D2F00EF4A60 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -886,54 +722,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				7059AB97236D76CF0005A189 /* PBXTargetDependency */,
-				70C92189236EF8D400302A29 /* PBXTargetDependency */,
 			);
 			name = SwiftUIDemo;
 			productName = SwiftUIDemo;
 			productReference = 7059AB6B236CB4760005A189 /* SwiftUIDemo.app */;
 			productType = "com.apple.product-type.application";
-		};
-		7059AB90236D76CF0005A189 /* CombineBoomerang */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7059AB9A236D76CF0005A189 /* Build configuration list for PBXNativeTarget "CombineBoomerang" */;
-			buildPhases = (
-				7059AB8C236D76CF0005A189 /* Headers */,
-				7059AB8D236D76CF0005A189 /* Sources */,
-				7059AB8E236D76CF0005A189 /* Frameworks */,
-				7059AB8F236D76CF0005A189 /* Resources */,
-				7059ABA3236D771E0005A189 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7059ABA2236D771E0005A189 /* PBXTargetDependency */,
-			);
-			name = CombineBoomerang;
-			productName = CombineBoomerang;
-			productReference = 7059AB91236D76CF0005A189 /* CombineBoomerang.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		70C92182236EF8D400302A29 /* SwiftUIBoomerang */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 70C9218C236EF8D400302A29 /* Build configuration list for PBXNativeTarget "SwiftUIBoomerang" */;
-			buildPhases = (
-				70C9217E236EF8D400302A29 /* Headers */,
-				70C9217F236EF8D400302A29 /* Sources */,
-				70C92180236EF8D400302A29 /* Frameworks */,
-				70C92181236EF8D400302A29 /* Resources */,
-				70C9219B236EF93200302A29 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				70C92196236EF93200302A29 /* PBXTargetDependency */,
-				70C9219A236EF93200302A29 /* PBXTargetDependency */,
-			);
-			name = SwiftUIBoomerang;
-			productName = SwiftUIBoomerang;
-			productReference = 70C92183236EF8D400302A29 /* SwiftUIBoomerang.framework */;
-			productType = "com.apple.product-type.framework";
 		};
 		70D0DD5F24756B420030346A /* BoomerangTests */ = {
 			isa = PBXNativeTarget;
@@ -953,25 +746,6 @@
 			productReference = 70D0DD6024756B420030346A /* BoomerangTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		70E39A2B23EACCC400317250 /* UIKitBoomerang */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 70E39A3723EACCC400317250 /* Build configuration list for PBXNativeTarget "UIKitBoomerang" */;
-			buildPhases = (
-				701ED04B247669A100A8AE85 /* ShellScript */,
-				70E39A2723EACCC400317250 /* Headers */,
-				70E39A2823EACCC400317250 /* Sources */,
-				70E39A2923EACCC400317250 /* Frameworks */,
-				70E39A2A23EACCC400317250 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = UIKitBoomerang;
-			productName = UIKitBoomerang;
-			productReference = 70E39A2C23EACCC400317250 /* UIKitBoomerang.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		7BA6D8AB235F89AD00EF4A60 /* Demo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7BA6D8CB235F89AF00EF4A60 /* Build configuration list for PBXNativeTarget "Demo" */;
@@ -986,7 +760,6 @@
 			dependencies = (
 				7BA6D8E8235F9D2F00EF4A60 /* PBXTargetDependency */,
 				7059AB52236C8DC00005A189 /* PBXTargetDependency */,
-				70E39A3223EACCC400317250 /* PBXTargetDependency */,
 			);
 			name = Demo;
 			packageProductDependencies = (
@@ -1031,20 +804,11 @@
 					7059AB6A236CB4760005A189 = {
 						CreatedOnToolsVersion = 11.2;
 					};
-					7059AB90236D76CF0005A189 = {
-						CreatedOnToolsVersion = 11.2;
-					};
-					70C92182236EF8D400302A29 = {
-						CreatedOnToolsVersion = 11.2;
-					};
 					70C921A4236F543A00302A29 = {
 						CreatedOnToolsVersion = 11.2;
 					};
 					70D0DD5F24756B420030346A = {
 						CreatedOnToolsVersion = 11.4.1;
-					};
-					70E39A2B23EACCC400317250 = {
-						CreatedOnToolsVersion = 11.3.1;
 					};
 					7BA6D8AB235F89AD00EF4A60 = {
 						CreatedOnToolsVersion = 11.1;
@@ -1074,10 +838,7 @@
 				7BA6D8AB235F89AD00EF4A60 /* Demo */,
 				7059AB6A236CB4760005A189 /* SwiftUIDemo */,
 				7BA6D8E1235F9D2F00EF4A60 /* Boomerang */,
-				70E39A2B23EACCC400317250 /* UIKitBoomerang */,
 				7059AB4B236C8DC00005A189 /* RxBoomerang */,
-				7059AB90236D76CF0005A189 /* CombineBoomerang */,
-				70C92182236EF8D400302A29 /* SwiftUIBoomerang */,
 				70C921A4236F543A00302A29 /* SwiftLint */,
 				70D0DD5F24756B420030346A /* BoomerangTests */,
 			);
@@ -1102,28 +863,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7059AB8F236D76CF0005A189 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		70C92181236EF8D400302A29 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		70D0DD5E24756B420030346A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		70E39A2A23EACCC400317250 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1169,23 +909,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint --config \"swiftlint.config.yml\" --path \"Sources/Core\" \nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		701ED04B247669A100A8AE85 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint --config \"swiftlint.config.yml\" --path \"Sources/UIKit\" \nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		701ED04C24766EA700A8AE85 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1257,48 +980,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7059AB8D236D76CF0005A189 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7059ABA5236D77700005A189 /* CombineViewModel.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		70C9217F236EF8D400302A29 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				70C92191236EF8FD00302A29 /* SwiftUIViewFactory.swift in Sources */,
-				70C9218F236EF8FD00302A29 /* SwiftUIViewModel.swift in Sources */,
-				70C92190236EF8FD00302A29 /* List.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		70D0DD5C24756B420030346A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				70D0DD6324756B420030346A /* ListViewModelTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		70E39A2823EACCC400317250 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				707B77EE25AB708300D243EC /* BaseSizeCalculator.swift in Sources */,
-				70E39A3823EACD2C00317250 /* Scene.swift in Sources */,
-				70E39A3D23EACD2C00317250 /* CollectionViewDataSource.swift in Sources */,
-				70E39A3A23EACD2C00317250 /* ViewFactory.swift in Sources */,
-				70E39A4023EACD2D00317250 /* AutomaticSizeCalculator.swift in Sources */,
-				707B77F825AB736000D243EC /* DynamicCollectionViewSizeCalculator.swift in Sources */,
-				70E39A3C23EACD2C00317250 /* ContentCollectionViewCell.swift in Sources */,
-				70E39A3F23EACD2D00317250 /* UICollectionView+Sizing.swift in Sources */,
-				70E39A3E23EACD2C00317250 /* CollectionViewDelegate.swift in Sources */,
-				70E39A4123EACD2D00317250 /* CollectionViewCellFactory.swift in Sources */,
-				70E39A3B23EACD2C00317250 /* UIStackView+Boomerang.swift in Sources */,
-				70E39A3923EACD2C00317250 /* UIKit+Constraints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1339,14 +1025,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				708ACF4F23A1482E004A6FF4 /* PropertyAssignment.swift in Sources */,
+				707B781F25AB7B4400D243EC /* BaseSizeCalculator.swift in Sources */,
+				707B782325AB7B4400D243EC /* ContentCollectionViewCell.swift in Sources */,
 				707B780125AB741A00D243EC /* ElementSize.Implementations.swift in Sources */,
+				707B781925AB7B4400D243EC /* CollectionViewCellFactory.swift in Sources */,
 				70C921AE237566E900302A29 /* DependencyContainer.swift in Sources */,
+				707B781C25AB7B4400D243EC /* Scene.swift in Sources */,
+				707B782225AB7B4400D243EC /* UIStackView+Boomerang.swift in Sources */,
+				707B781A25AB7B4400D243EC /* UICollectionView+Sizing.swift in Sources */,
 				7BA6D8F7235F9D4500EF4A60 /* ListViewModel.swift in Sources */,
 				7BA8F4AD235F9F3B00027DE5 /* ViewModel.swift in Sources */,
 				7BA8F4B7235FA6E800027DE5 /* Route.swift in Sources */,
 				707B780225AB741A00D243EC /* ElementSize.swift in Sources */,
+				707B781825AB7B4400D243EC /* CollectionViewDelegate.swift in Sources */,
+				707B781E25AB7B4400D243EC /* CollectionViewDataSource.swift in Sources */,
+				707B781B25AB7B4400D243EC /* AutomaticSizeCalculator.swift in Sources */,
 				7BA8F4AB235F9F2100027DE5 /* Section.swift in Sources */,
+				707B782125AB7B4400D243EC /* ViewFactory.swift in Sources */,
+				707B781D25AB7B4400D243EC /* UIKit+Constraints.swift in Sources */,
 				7059AB62236C93D10005A189 /* NavigationViewModel.swift in Sources */,
+				707B782025AB7B4400D243EC /* DynamicCollectionViewSizeCalculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1363,41 +1061,11 @@
 			target = 7BA6D8E1235F9D2F00EF4A60 /* Boomerang */;
 			targetProxy = 7059AB5A236C8E230005A189 /* PBXContainerItemProxy */;
 		};
-		7059AB97236D76CF0005A189 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7059AB90236D76CF0005A189 /* CombineBoomerang */;
-			targetProxy = 7059AB96236D76CF0005A189 /* PBXContainerItemProxy */;
-		};
-		7059ABA2236D771E0005A189 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7BA6D8E1235F9D2F00EF4A60 /* Boomerang */;
-			targetProxy = 7059ABA1236D771E0005A189 /* PBXContainerItemProxy */;
-		};
-		70C92189236EF8D400302A29 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 70C92182236EF8D400302A29 /* SwiftUIBoomerang */;
-			targetProxy = 70C92188236EF8D400302A29 /* PBXContainerItemProxy */;
-		};
-		70C92196236EF93200302A29 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7BA6D8E1235F9D2F00EF4A60 /* Boomerang */;
-			targetProxy = 70C92195236EF93200302A29 /* PBXContainerItemProxy */;
-		};
-		70C9219A236EF93200302A29 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7059AB90236D76CF0005A189 /* CombineBoomerang */;
-			targetProxy = 70C92199236EF93200302A29 /* PBXContainerItemProxy */;
-		};
 		70D0DD6724756B420030346A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = ios;
 			target = 7BA6D8E1235F9D2F00EF4A60 /* Boomerang */;
 			targetProxy = 70D0DD6624756B420030346A /* PBXContainerItemProxy */;
-		};
-		70E39A3223EACCC400317250 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 70E39A2B23EACCC400317250 /* UIKitBoomerang */;
-			targetProxy = 70E39A3123EACCC400317250 /* PBXContainerItemProxy */;
 		};
 		7BA6D8E8235F9D2F00EF4A60 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1525,118 +1193,6 @@
 			};
 			name = Release;
 		};
-		7059AB9B236D76CF0005A189 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/Combine/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.stefanomondino.CombineBoomerang;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		7059AB9C236D76CF0005A189 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/Combine/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.stefanomondino.CombineBoomerang;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		70C9218D236EF8D400302A29 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/SwiftUI/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.stefanomondino.SwiftUIBoomerang;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		70C9218E236EF8D400302A29 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/SwiftUI/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.stefanomondino.SwiftUIBoomerang;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		70C921A6236F543A00302A29 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1686,60 +1242,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		70E39A3523EACCC400317250 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/UIKit/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = it.synesthesia.UIKitBoomerang;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		70E39A3623EACCC400317250 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/UIKit/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = it.synesthesia.UIKitBoomerang;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -1905,7 +1407,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/Core/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1933,7 +1435,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/Core/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1972,24 +1474,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7059AB9A236D76CF0005A189 /* Build configuration list for PBXNativeTarget "CombineBoomerang" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7059AB9B236D76CF0005A189 /* Debug */,
-				7059AB9C236D76CF0005A189 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		70C9218C236EF8D400302A29 /* Build configuration list for PBXNativeTarget "SwiftUIBoomerang" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				70C9218D236EF8D400302A29 /* Debug */,
-				70C9218E236EF8D400302A29 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		70C921A5236F543A00302A29 /* Build configuration list for PBXAggregateTarget "SwiftLint" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2004,15 +1488,6 @@
 			buildConfigurations = (
 				70D0DD6924756B420030346A /* Debug */,
 				70D0DD6A24756B420030346A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		70E39A3723EACCC400317250 /* Build configuration list for PBXNativeTarget "UIKitBoomerang" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				70E39A3523EACCC400317250 /* Debug */,
-				70E39A3623EACCC400317250 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

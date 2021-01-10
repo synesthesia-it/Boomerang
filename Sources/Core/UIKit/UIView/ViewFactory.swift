@@ -5,11 +5,9 @@
 //  Created by Stefano Mondino on 22/10/2019.
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
-
+#if canImport(UIKit)
 import UIKit
-#if !COCOAPODS
-@_exported import Boomerang
-#endif
+
 public typealias Component = UIView & WithViewModel
 
 public protocol ViewFactory {
@@ -27,3 +25,4 @@ public extension ViewFactory {
         return view
     }
 }
+#endif

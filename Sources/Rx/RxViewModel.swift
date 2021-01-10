@@ -33,8 +33,8 @@ extension Section: IdentifiableType {
     }
 }
 
-struct IdentifiableViewModel: IdentifiableType, Equatable {
-    static func == (lhs: IdentifiableViewModel, rhs: IdentifiableViewModel) -> Bool {
+struct UniqueViewModelWrapper: IdentifiableType, Equatable {
+    static func == (lhs: UniqueViewModelWrapper, rhs: UniqueViewModelWrapper) -> Bool {
         lhs.identity == rhs.identity
     }
 

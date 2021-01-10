@@ -6,11 +6,10 @@
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
 
+#if canImport(UIKit)
 import Foundation
 import UIKit
-#if !COCOAPODS
-import Boomerang
-#endif
+
 open class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     public var viewModel: ListViewModel
     public var factory: CollectionViewCellFactory
@@ -97,3 +96,4 @@ extension String {
         }
     }
 }
+#endif

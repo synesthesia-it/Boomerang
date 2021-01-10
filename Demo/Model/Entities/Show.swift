@@ -21,7 +21,6 @@ struct Poster: Codable {
 
 struct Show: Codable {
     let name: String
-    // swiftlint:disable identifier_name
     let id: Int
     // swiftlint:enable identifier_name
     let image: Poster?

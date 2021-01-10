@@ -23,23 +23,26 @@ Pod::Spec.new do |spec|
 
   spec.source       = { :git => "https://github.com/synesthesia-it/Boomerang.git", :tag => "#{spec.version}" }
 
-  spec.default_subspec = 'UIKit'
+  spec.default_subspec = 'Core'
 
   spec.subspec 'Core' do |s|
     s.source_files = "Sources/Core/**/*.{swift}"
+    s.weak_framework = "Combine"
+    s.weak_framework = "UIKit"
+    s.weak_framework = "SwiftUI"
   end
 
-  spec.subspec 'UIKit' do |s|
-    s.source_files = "Sources/UIKit/**/*{.swift}"
-    s.dependency "Boomerang/Core"
-    s.framework = "UIKit"
-    s.ios.deployment_target = "11.0"
-    s.tvos.deployment_target = "11.0"
-  end
+#  spec.subspec 'UIKit' do |s|
+#    s.source_files = "Sources/UIKit/**/*{.swift}"
+#    s.dependency "Boomerang/Core"
+#    s.framework = "UIKit"
+#    s.ios.deployment_target = "11.0"
+#    s.tvos.deployment_target = "11.0"
+#  end
 
   spec.subspec 'RxSwift' do |s|
     s.source_files = "Sources/Rx/**/*{.swift}"
-    s.dependency "Boomerang/UIKit"
+    s.dependency "Boomerang/Core"
     s.dependency "RxCocoa"
     s.dependency "RxSwift"
     s.dependency "RxDataSources"

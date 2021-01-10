@@ -5,12 +5,9 @@
 //  Created by Stefano Mondino on 12/12/2019.
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
-
+#if canImport(UIKit)
 import Foundation
 import UIKit
-#if !COCOAPODS
-@_exported import Boomerang
-#endif
 
 extension UIViewController: Scene {}
 
@@ -25,3 +22,4 @@ public extension UIKitRoute {
         self.execute(from: scene as? UIViewController)
     }
 }
+#endif
