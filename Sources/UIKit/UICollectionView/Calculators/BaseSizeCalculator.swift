@@ -10,11 +10,8 @@ import UIKit
 #if !COCOAPODS
 import Boomerang
 #endif
-open class AutomaticCollectionViewSizeCalculator: CollectionViewSizeCalculator {
 
-    public typealias Size = (UICollectionView, IndexPath, String?) -> CGSize
-    public typealias Spacing = (UICollectionView, Int) -> CGFloat
-    public typealias Insets = (UICollectionView, Int) -> UIEdgeInsets
+open class BaseCollectionViewSizeCalculator: CollectionViewSizeCalculator {
 
     public struct LockingSize {
         public var direction: Direction
@@ -36,42 +33,33 @@ open class AutomaticCollectionViewSizeCalculator: CollectionViewSizeCalculator {
     public let viewModel: ListViewModel
     public let itemsPerLine: Int
     public let factory: CollectionViewCellFactory
+    public let defaultSize: CGSize
 
-    private lazy var _insets: Insets = { _, _ in
-        return .zero
-    }
-
-    private lazy var _lineSpacing: Spacing = { _, _ in
-        return 0
-    }
-    private lazy var _itemSpacing: Spacing = { _, _ in
-        return 0
-    }
-
-    open func withLineSpacing(lineSpacing: @escaping Spacing) -> Self {
-        self._lineSpacing = lineSpacing
-        return self
-    }
-    open func withItemSpacing(itemSpacing: @escaping Spacing) -> Self {
-        self._itemSpacing = itemSpacing
-        return self
-    }
-
-    open func withInsets(insets: @escaping Insets) -> Self {
-        self._insets = insets
-        return self
-    }
+    var cellCache: [String: UIView] = [:]
 
     public init(
         viewModel: ListViewModel,
         factory: CollectionViewCellFactory,
-        itemsPerLine: Int = 1) {
+        itemsPerLine: Int = 1,
+        defaultSize: CGSize) {
         self.viewModel = viewModel
         self.factory = factory
+        self.defaultSize = defaultSize
         self.itemsPerLine = max(1, itemsPerLine)
     }
 
-    var cellCache: [String: UIView] = [:]
+    open func automaticSizeForItem(at indexPath: IndexPath,
+                                   in collectionView: UICollectionView,
+                                   direction: Direction? = nil,
+                                   type: String? = nil) -> CGSize {
+        let direction = direction ?? Direction.from(layout: collectionView.collectionViewLayout)
+        let fixedDimension = self.calculateFixedDimension(for: direction,
+                                                          collectionView: collectionView,
+                                                          at: indexPath,
+                                                          itemsPerLine: itemsPerLine)
+        let lock = LockingSize(direction: direction, value: fixedDimension)
+        return autosizeForItem(at: indexPath, type: type, lockedTo: lock)
+    }
 
     open func autosizeForItem(at indexPath: IndexPath, type: String? = nil, lockedTo lock: LockingSize) -> CGSize {
         guard let cell = placeholderCell(at: indexPath, for: type, lockingTo: lock) else {
@@ -103,7 +91,7 @@ open class AutomaticCollectionViewSizeCalculator: CollectionViewSizeCalculator {
         guard let cell: UIView = cellCache[identifier.identifierString] ?? factory.view(from: identifier)
             else { return nil }
 
-        let content = cell//.boomerang.contentView
+        let content = cell// .boomerang.contentView
         content.translatesAutoresizingMaskIntoConstraints = false
 
         var constraint = content.constraints.filter {
@@ -132,29 +120,24 @@ open class AutomaticCollectionViewSizeCalculator: CollectionViewSizeCalculator {
         (cell as? WithViewModel)?.configure(with: viewModel)
         return cell
     }
+
     open func sizeForItem(at indexPath: IndexPath,
                           in collectionView: UICollectionView,
                           direction: Direction? = nil,
                           type: String? = nil) -> CGSize {
-        let direction = direction ?? Direction.from(layout: collectionView.collectionViewLayout)
-        let fixedDimension = self.calculateFixedDimension(for: direction,
-                                                          collectionView: collectionView,
-                                                          at: indexPath,
-                                                          itemsPerLine: itemsPerLine)
-        let lock = LockingSize(direction: direction, value: fixedDimension)
-        return autosizeForItem(at: indexPath, type: type, lockedTo: lock)
+        return defaultSize
     }
 
     open func insets(for collectionView: UICollectionView, in section: Int) -> UIEdgeInsets {
-        self._insets(collectionView, section)
+        .zero
     }
 
     open func itemSpacing(for collectionView: UICollectionView, in section: Int) -> CGFloat {
-        self._itemSpacing(collectionView, section)
+        0
     }
 
     open func lineSpacing(for collectionView: UICollectionView, in section: Int) -> CGFloat {
-        self._lineSpacing(collectionView, section)
+        0
     }
 
 }

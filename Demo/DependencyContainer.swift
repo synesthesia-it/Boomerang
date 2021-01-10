@@ -47,12 +47,12 @@ class DefaultAppDependencyContainer: AppDependencyContainer, DependencyContainer
     }
 }
 
-///Convert in Test, this is temporary
+/// Convert in Test, this is temporary
 extension DefaultAppDependencyContainer {
     func testAll() {
 
         DependencyContainerKeys.allCases.forEach {
-            //expect no throw
+            // expect no throw
             let value: Any = self[$0]
             print(value)
 

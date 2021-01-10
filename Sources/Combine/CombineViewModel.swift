@@ -44,19 +44,19 @@ public extension CombineListViewModel {
 
 }
 
-//public class AnyCombineViewModel: ObservableObject {
+// public class AnyCombineViewModel: ObservableObject {
 //    public var objectWillChange = ObservableObjectPublisher()
 //    public var viewModel: CombineViewModel
 //    public init(viewModel: CombineViewModel) {
 //        self.viewModel = viewModel
 //    }
-//}
-//public extension CombineListViewModel {
+// }
+// public extension CombineListViewModel {
 //    func eraseToCombine() -> AnyCombineViewModel {
 //        return AnyCombineViewModel(viewModel: self)
 //    }
-//}
-//public class AnyCombineListViewModel: ObservableObject {
+// }
+// public class AnyCombineListViewModel: ObservableObject {
 //    public var objectWillChange = ObservableObjectPublisher()
 //     var viewModel: CombineListViewModel
 //    public var sections: [Boomerang.Section] {
@@ -70,4 +70,4 @@ public extension CombineListViewModel {
 //            }
 //        }
 //     }
-//}
+// }

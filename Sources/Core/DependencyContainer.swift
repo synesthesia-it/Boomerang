@@ -11,9 +11,9 @@ import Foundation
  Defines the ability of storing and lately resolving dependencies identified by a single key
  */
 public protocol DependencyContainer: AnyObject {
-    ///The container's key type. Must be `Hashable`.
+    /// The container's key type. Must be `Hashable`.
     associatedtype DependencyKey: Hashable
-    ///A container object
+    /// A container object
     var container: Container<DependencyKey> { get }
 }
 /**
@@ -38,11 +38,11 @@ public class Container<DependencyKey: Hashable> {
         `Scope` helps deciding which behavior must be adopted.
      */
     public enum Scope {
-        ///Dependency closure is executed for each resolution. Resulting object is always a new instance
+        /// Dependency closure is executed for each resolution. Resulting object is always a new instance
         case unique
-        ///Dependency closure is executed only at first resolution. Resulting object is cached and returned for each subsequent call, instead of re-executing the closure.
+        /// Dependency closure is executed only at first resolution. Resulting object is cached and returned for each subsequent call, instead of re-executing the closure.
         case singleton
-        ///Dependency closure is executed immediately upon registration. Resulting object is cached and returned for each subsequent call, instead of re-executing the closure.
+        /// Dependency closure is executed immediately upon registration. Resulting object is cached and returned for each subsequent call, instead of re-executing the closure.
         case eagerSingleton
     }
 

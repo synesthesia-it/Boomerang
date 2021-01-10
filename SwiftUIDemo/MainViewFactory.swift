@@ -29,7 +29,7 @@ class MainViewFactory: SwiftUIViewFactory {
     }
 
 }
-//class MainViewFactory: ViewFactory {
+// class MainViewFactory: ViewFactory {
 //    func view(from itemIdentifier: LayoutIdentifier) -> UIView? {
 //        return nib(from: itemIdentifier)?
 //        .instantiate(withOwner: nil, options: nil)
@@ -45,4 +45,4 @@ class MainViewFactory: SwiftUIViewFactory {
 //        
 //        return id.prefix(1).uppercased() + id.dropFirst() + "ItemView"
 //    }
-//}
+// }

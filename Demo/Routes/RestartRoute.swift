@@ -19,7 +19,7 @@ struct RestartRoute: UIKitRoute {
 
     func execute<T: UIViewController>(from scene: T?) {
 
-        //TODO Dismiss all modals
+        // TODO Dismiss all modals
         UIApplication.shared.delegate?.window??.rootViewController = createViewController()
         UIApplication.shared.delegate?.window??.makeKeyAndVisible()
     }

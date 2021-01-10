@@ -29,12 +29,12 @@ public protocol ViewModel: WithPropertyAssignment {
     var layoutIdentifier: LayoutIdentifier { get }
 }
 
-///An object identifying a layout type.
+/// An object identifying a layout type.
 public protocol LayoutIdentifier {
     var identifierString: String { get }
 }
 
-///A unique identier object.
+/// A unique identier object.
 public protocol UniqueIdentifier {
     var stringValue: String { get }
 }
@@ -50,7 +50,7 @@ extension Int: UniqueIdentifier {
     public var stringValue: String { return "\(self)" }
 }
 
-///An object that can be bound to a viewModel
+/// An object that can be bound to a viewModel
 public protocol WithViewModel: AnyObject {
     func configure(with viewModel: ViewModel)
 }

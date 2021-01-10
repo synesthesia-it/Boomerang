@@ -73,8 +73,8 @@ class ScheduleViewController: UIViewController, WithViewModel {
         let collectionViewDelegate = CollectionViewDelegate(sizeCalculator: sizeCalculator)
             .withSelect { viewModel.selectItem(at: $0) }
 
-        //If viewModel is compatible with RxSwift, use RxDataSources with animations
-        //Else, use the "classic way" and reload data
+        // If viewModel is compatible with RxSwift, use RxDataSources with animations
+        // Else, use the "classic way" and reload data
 
         if let viewModel = viewModel as? RxListViewModel {
             collectionView.rx

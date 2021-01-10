@@ -15,7 +15,7 @@ public protocol CollectionViewCellContained {
 
 public protocol ContentCollectionViewCellType: NSObjectProtocol, WithViewModel {
     var internalView: UIView? { get set }
-    ///Constraints between cell and inner view.
+    /// Constraints between cell and inner view.
     var insetConstraints: [NSLayoutConstraint] { get set }
 }
 
@@ -33,7 +33,7 @@ public class ContentCollectionViewCell: UICollectionViewCell, ContentCollectionV
             self.insetConstraints = view.fitInSuperview(with: .zero)
         }
     }
-    ///Constraints between cell and inner view.
+    /// Constraints between cell and inner view.
     public var insetConstraints: [NSLayoutConstraint] = []
     open override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         super.apply(layoutAttributes)

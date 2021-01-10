@@ -33,6 +33,6 @@ class MainRouteFactory: RouteFactory {
             .viewControllerFactory
             .showDetail(viewModel: ShowDetailViewModel(show: show))
         }
-        //return ModalRoute(viewModel: ScheduleViewModel())
+        // return ModalRoute(viewModel: ScheduleViewModel())
     }
 }

@@ -12,7 +12,7 @@ import Foundation
  
  The main use case scenario of a ListViewModel is for complex sections representing lists of components,
  either homogenous lists like a product list, or heterogeneous sections like a product detail.
-
+ 
  Each viewModel in the list is usually converted into a view by some other list-type view component
  (like table and collection views in UIKit).
  
@@ -51,16 +51,16 @@ import Foundation
  ```
  */
 public protocol ListViewModel: ViewModel {
-    ///The array of available sections
+    /// The array of available sections
     var sections: [Section] { get set }
 
-    ///A closure that should be set from a View component and called each time a Section update is available
+    /// A closure that should be set from a View component and called each time a Section update is available
     var onUpdate: () -> Void { get set }
 
-    ///Triggers data reload
+    /// Triggers data reload
     func reload()
 
-    ///Should be called by external views/scenes to trigger some action related to a single element in a list.
+    /// Should be called by external views/scenes to trigger some action related to a single element in a list.
     func selectItem(at indexPath: IndexPath)
 
     func canMoveItem(at indexPath: IndexPath) -> Bool
@@ -80,6 +80,9 @@ public protocol ListViewModel: ViewModel {
 
     @discardableResult
     func deleteItem(at indexPath: IndexPath) -> ViewModel?
+
+    func elementSize(at indexPath: IndexPath) -> ElementSize?
+    func sectionProperties(at index: Int) -> Size.SectionProperties
 }
 
 public extension ListViewModel {
@@ -90,9 +93,9 @@ public extension ListViewModel {
 
     func insertItem(_ item: ViewModel, at indexPath: IndexPath) {
         guard let sectionIndex = indexPath.section,
-            let itemIndex = indexPath.item,
-            sectionIndex >= 0,
-            sectionIndex < sections.count else { return }
+              let itemIndex = indexPath.item,
+              sectionIndex >= 0,
+              sectionIndex < sections.count else { return }
 
         var section = self.sections[sectionIndex]
         section.insert(item, at: itemIndex)
@@ -100,9 +103,9 @@ public extension ListViewModel {
     }
     func insertItems(_ items: [ViewModel], at indexPath: IndexPath) {
         guard let sectionIndex = indexPath.section,
-            let itemIndex = indexPath.item,
-            sectionIndex >= 0,
-            sectionIndex < sections.count else { return }
+              let itemIndex = indexPath.item,
+              sectionIndex >= 0,
+              sectionIndex < sections.count else { return }
 
         var section = self.sections[sectionIndex]
         section.insert(items, at: itemIndex)
@@ -130,12 +133,12 @@ public extension ListViewModel {
 
     func moveItem(at source: IndexPath, to destination: IndexPath) {
         guard let sourceSectionIndex = source.section,
-            let destinationSectionIndex = destination.section,
-            let sourceItem = source.item,
-            let destinationItem = destination.item else {
-                return
+              let destinationSectionIndex = destination.section,
+              let sourceItem = source.item,
+              let destinationItem = destination.item else {
+            return
         }
-        //Use a temporary sections variable void triggering two updates by settings two different sections directly on self
+        // Use a temporary sections variable void triggering two updates by settings two different sections directly on self
         var sections = self.sections
         if sourceSectionIndex == destinationSectionIndex {
             sections[sourceSectionIndex].move(from: sourceItem, to: destinationItem)
@@ -154,10 +157,10 @@ public extension ListViewModel {
 
     func moveSection(at source: Int, to destination: Int) {
         guard source >= 0,
-            destination >= 0,
-            source < sections.count,
-            destination < sections.count
-            else { return }
+              destination >= 0,
+              source < sections.count,
+              destination < sections.count
+        else { return }
 
         var sections = self.sections
         sections.rearrange(from: source, to: destination)
@@ -176,13 +179,33 @@ public extension ListViewModel {
     func deleteItem(at indexPath: IndexPath) -> ViewModel? {
 
         guard let sectionIndex = indexPath.section,
-            let item = indexPath.item else { return nil }
+              let item = indexPath.item else { return nil }
 
         var section = self.sections[sectionIndex]
         let viewModel = section.remove(at: item)
         self.sections[sectionIndex] = section
         return viewModel
     }
+
+    func elementSize(at indexPath: IndexPath) -> ElementSize? {
+        (self[indexPath] as? WithElementSize)?.elementSize
+    }
+
+    func sectionProperties(at _: Int) -> Size.SectionProperties {
+        .zero
+    }
+
+    /// Easily retrieves an item through its index path. If index path is out of bounds, `nil` is returned.
+    subscript(index: IndexPath) -> ViewModel? {
+        guard let section = index.section,
+              let item = index.item,
+            index.count == 2,
+                sections.count > section,
+                sections[section].items.count > item
+                else { return nil }
+            return sections[section].items[item]
+    }
+
 }
 
 private extension IndexPath {

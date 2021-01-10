@@ -27,73 +27,73 @@ public struct Section {
     public struct Supplementary {
         public static let header = "internal_header_type"
         public static let footer = "internal_footer_type"
-        
+
         internal var items: [Int: KindMap] = [:]
-        
+
         public init(items: [Int: [String: ViewModel]] = [:]) {
             self.items = items
         }
-        
-        ///Set a view model to matching item and kind
+
+        /// Set a view model to matching item and kind
         mutating public func set(_ viewModel: ViewModel, withKind kind: String, atIndex index: Int) {
             var kindMap = self.items[index] ?? [:]
             kindMap[kind] =  viewModel
             self.items[index] = kindMap
         }
-        ///Set a view model to matching item and kind
-        public func setting(_ viewModel: ViewModel, withKind kind: String, atIndex index: Int) -> Supplementary{
+        /// Set a view model to matching item and kind
+        public func setting(_ viewModel: ViewModel, withKind kind: String, atIndex index: Int) -> Supplementary {
             var supplementary = self
             supplementary.set(viewModel, withKind: kind, atIndex: index)
             return supplementary
         }
-        
-        ///Set a view model as header.
+
+        /// Set a view model as header.
         mutating public func set(header viewModel: ViewModel) {
             self.set(viewModel, withKind: Section.Supplementary.header, atIndex: 0)
         }
-        ///Set a view model as header.
+        /// Set a view model as header.
         public func setting(header viewModel: ViewModel) -> Supplementary {
             var supplementary = self
             supplementary.set(header: viewModel)
             return supplementary
         }
-        
-        ///Set a view model as footer.
+
+        /// Set a view model as footer.
         mutating public func set(footer viewModel: ViewModel) {
             self.set(viewModel, withKind: Section.Supplementary.footer, atIndex: 0)
         }
-        ///Set a view model as footer.
+        /// Set a view model as footer.
         public func setting(footer viewModel: ViewModel) -> Supplementary {
             var supplementary = self
             supplementary.set(footer: viewModel)
             return supplementary
         }
-        ///Retrieve proper view model for given kind and index.
+        /// Retrieve proper view model for given kind and index.
         public func item(atIndex index: Int, forKind kind: String) -> ViewModel? {
             return items[index]?[kind]
         }
     }
-    
-    ///Unique id representing the section.
-    ///Uniqueness is required by differentiators algorithms to detect differences between sections
+
+    /// Unique id representing the section.
+    /// Uniqueness is required by differentiators algorithms to detect differences between sections
     public var id: UniqueIdentifier
-    
-    ///The `ViewModel` items contained inside the Section
+
+    /// The `ViewModel` items contained inside the Section
     public var items: [ViewModel]
-    
-    ///The `Supplementary` object representing additional viewModels for each item
+
+    /// The `Supplementary` object representing additional viewModels for each item
     public var supplementary: Supplementary
-    
-    ///Convenience helper to get the header view model from `Supplementary` object
+
+    /// Convenience helper to get the header view model from `Supplementary` object
     public var header: ViewModel? {
         return supplementary.item(atIndex: 0, forKind: Supplementary.header)
     }
-    
-    ///Convenience helper to get the footer view model from `Supplementary` object
+
+    /// Convenience helper to get the footer view model from `Supplementary` object
     public var footer: ViewModel? {
         return supplementary.item(atIndex: 0, forKind: Supplementary.footer)
     }
-    
+
     /**
      Create a new `Section` object from given items.
      
@@ -124,42 +124,42 @@ public struct Section {
         }
         self.supplementary = supplementary
     }
-    
+
     public mutating func insert(_ item: ViewModel, at index: Int) {
         self.items.insert(item, at: index)
     }
-    
+
     public func inserting(_ item: ViewModel, at index: Int) -> Section {
         var section = self
         section.insert(item, at: index)
         return section
     }
-    
+
     public mutating func insert(_ items: [ViewModel], at index: Int) {
         self.items.insert(contentsOf: items, at: index)
     }
-    
+
     public func inserting(_ items: [ViewModel], at index: Int) -> Section {
         var section = self
         section.insert(items, at: index)
         return section
     }
-    
+
     public mutating func move(from: Int, to: Int) {
         self.items.rearrange(from: from, to: to)
     }
-    
+
     public func moving(from: Int, to: Int) -> Section {
         var section = self
         section.move(from: from, to: to)
         return section
     }
-    
+
     public mutating func remove(at index: Int) -> ViewModel? {
         guard items.count > index, index >= 0 else { return nil }
         return self.items.remove(at: index)
     }
-    
+
     public func removing(at index: Int) -> Section {
         var section = self
         section.remove(at: index)

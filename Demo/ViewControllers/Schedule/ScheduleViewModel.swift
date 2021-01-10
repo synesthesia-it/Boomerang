@@ -9,10 +9,10 @@
 import Foundation
 import Boomerang
 
-//struct NavigationRoute: ViewModelRoute {
+// struct NavigationRoute: ViewModelRoute {
 //    var destination: Scene?
 //    let viewModel: ViewModel
-//}
+// }
 
 class ScheduleViewModel: ListViewModel, NavigationViewModel {
     var onUpdate: () -> Void = {}

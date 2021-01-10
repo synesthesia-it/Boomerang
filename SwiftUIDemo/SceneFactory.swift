@@ -21,7 +21,7 @@ enum SceneIdentifier: String, LayoutIdentifier {
     }
 }
 //
-//class MainViewControllerFactory: ViewControllerFactory {
+// class MainViewControllerFactory: ViewControllerFactory {
 //    
 //    func name(from itemIdentifier: LayoutIdentifier) -> String {
 //        let id = itemIdentifier.identifierString
@@ -46,4 +46,4 @@ enum SceneIdentifier: String, LayoutIdentifier {
 //        (viewController as? WithViewModel)?.configure(with: viewModel)
 //        return viewController
 //    }
-//}
+// }

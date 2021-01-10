@@ -15,7 +15,9 @@ import CombineBoomerang
 
 extension List where Content == ForEach<[Boomerang.Section], String, AnyView>, SelectionValue == IdentifiableViewModel {
 
-    public init(_ sections: [Boomerang.Section], factory: SwiftUIViewFactory, selection: Binding<IdentifiableViewModel?>?) {
+    public init(_ sections: [Boomerang.Section],
+                factory: SwiftUIViewFactory,
+                selection: Binding<IdentifiableViewModel?>?) {
 
         let content = ForEach(sections) { section in
             section.listView(with: factory)
@@ -27,7 +29,7 @@ extension List where Content == ForEach<[Boomerang.Section], String, AnyView>, S
 
 private extension Boomerang.Section {
 
-    //Probably a bad idea to wrap everything into AnyView, check problems with recycling cells.
+    // Probably a bad idea to wrap everything into AnyView, check problems with recycling cells.
     func listView(with factory: SwiftUIViewFactory) -> AnyView {
         let items = self.items.map { IdentifiableViewModel(viewModel: $0) }
 

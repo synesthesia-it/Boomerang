@@ -52,6 +52,10 @@
 		7059ABA5236D77700005A189 /* CombineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7059ABA4236D77700005A189 /* CombineViewModel.swift */; };
 		706CE12A23852D230070FC4E /* SceneViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CE12923852D230070FC4E /* SceneViewModelFactory.swift */; };
 		706CE12C238531AA0070FC4E /* ItemViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706CE12B238531AA0070FC4E /* ItemViewModelFactory.swift */; };
+		707B77EE25AB708300D243EC /* BaseSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B77ED25AB708300D243EC /* BaseSizeCalculator.swift */; };
+		707B77F825AB736000D243EC /* DynamicCollectionViewSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B77F725AB735F00D243EC /* DynamicCollectionViewSizeCalculator.swift */; };
+		707B780125AB741A00D243EC /* ElementSize.Implementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B77FE25AB741A00D243EC /* ElementSize.Implementations.swift */; };
+		707B780225AB741A00D243EC /* ElementSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B77FD25AB741A00D243EC /* ElementSize.swift */; };
 		708ACF4F23A1482E004A6FF4 /* PropertyAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708ACF4D23A1482B004A6FF4 /* PropertyAssignment.swift */; };
 		70C1FBA023A25326004D8B4C /* ViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C1FB9F23A25326004D8B4C /* ViewController+Rx.swift */; };
 		70C92187236EF8D400302A29 /* SwiftUIBoomerang.h in Headers */ = {isa = PBXBuildFile; fileRef = 70C92185236EF8D400302A29 /* SwiftUIBoomerang.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -289,6 +293,10 @@
 		7059ABA4236D77700005A189 /* CombineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineViewModel.swift; sourceTree = "<group>"; };
 		706CE12923852D230070FC4E /* SceneViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewModelFactory.swift; sourceTree = "<group>"; };
 		706CE12B238531AA0070FC4E /* ItemViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModelFactory.swift; sourceTree = "<group>"; };
+		707B77ED25AB708300D243EC /* BaseSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSizeCalculator.swift; sourceTree = "<group>"; };
+		707B77F725AB735F00D243EC /* DynamicCollectionViewSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionViewSizeCalculator.swift; sourceTree = "<group>"; };
+		707B77FD25AB741A00D243EC /* ElementSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementSize.swift; sourceTree = "<group>"; };
+		707B77FE25AB741A00D243EC /* ElementSize.Implementations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementSize.Implementations.swift; sourceTree = "<group>"; };
 		708ACF4D23A1482B004A6FF4 /* PropertyAssignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyAssignment.swift; sourceTree = "<group>"; };
 		708ACF5923A22AAB004A6FF4 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		70C1FB9F23A25326004D8B4C /* ViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Rx.swift"; sourceTree = "<group>"; };
@@ -487,6 +495,23 @@
 				7059AB93236D76CF0005A189 /* CombineBoomerang.h */,
 				7059ABA4236D77700005A189 /* CombineViewModel.swift */,
 				7059AB94236D76CF0005A189 /* Info.plist */,
+			);
+			path = Combine;
+			sourceTree = "<group>";
+		};
+		707B77DC25AB5AA400D243EC /* Calculators */ = {
+			isa = PBXGroup;
+			children = (
+				707B77ED25AB708300D243EC /* BaseSizeCalculator.swift */,
+				707B77F725AB735F00D243EC /* DynamicCollectionViewSizeCalculator.swift */,
+				70CACF0823A397E700E9F657 /* AutomaticSizeCalculator.swift */,
+			);
+			path = Calculators;
+			sourceTree = "<group>";
+		};
+		707B780F25AB7A0A00D243EC /* Combine */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Combine;
 			sourceTree = "<group>";
@@ -704,11 +729,14 @@
 		7BA6D8F1235F9D4500EF4A60 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				707B780F25AB7A0A00D243EC /* Combine */,
 				7BA8F4B6235FA6E800027DE5 /* Route.swift */,
 				708ACF4D23A1482B004A6FF4 /* PropertyAssignment.swift */,
 				7BA8F4AA235F9F2100027DE5 /* Section.swift */,
 				70C921AD237566E900302A29 /* DependencyContainer.swift */,
 				7BA6D8F2235F9D4500EF4A60 /* ListViewModel.swift */,
+				707B77FE25AB741A00D243EC /* ElementSize.Implementations.swift */,
+				707B77FD25AB741A00D243EC /* ElementSize.swift */,
 				7059AB61236C93D10005A189 /* NavigationViewModel.swift */,
 				7BA8F4AC235F9F3B00027DE5 /* ViewModel.swift */,
 			);
@@ -720,9 +748,9 @@
 			children = (
 				70E39A2E23EACCC400317250 /* UIKitBoomerang.h */,
 				70E39A2F23EACCC400317250 /* Info.plist */,
+				702B24CD239693CD007F210E /* UIStackView */,
 				70C067ED23A232D200683F97 /* Scene */,
 				7BA8F4B3235FA10300027DE5 /* UIView */,
-				702B24CD239693CD007F210E /* UIStackView */,
 				7BA6D8F4235F9D4500EF4A60 /* UICollectionView */,
 			);
 			path = UIKit;
@@ -736,7 +764,7 @@
 				7BA6D8F9235F9E0400EF4A60 /* CollectionViewDataSource.swift */,
 				70DFCA0523603792004B49D6 /* CollectionViewDelegate.swift */,
 				70DFCA1E2361E9B0004B49D6 /* UICollectionView+Sizing.swift */,
-				70CACF0823A397E700E9F657 /* AutomaticSizeCalculator.swift */,
+				707B77DC25AB5AA400D243EC /* Calculators */,
 			);
 			path = UICollectionView;
 			sourceTree = "<group>";
@@ -993,7 +1021,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1110;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = Synesthesia;
 				TargetAttributes = {
 					7059AB4B236C8DC00005A189 = {
@@ -1140,7 +1168,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint --config \"../../swiftlint.config.yml\" --path \"Sources/Core\" \nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint --config \"swiftlint.config.yml\" --path \"Sources/Core\" \nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		701ED04B247669A100A8AE85 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1157,7 +1185,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint --config \"../../swiftlint.config.yml\" --path \"Sources/UIKit\" \nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint --config \"swiftlint.config.yml\" --path \"Sources/UIKit\" \nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		701ED04C24766EA700A8AE85 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1174,7 +1202,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint --config \"../../swiftlint.config.yml\" --path \"Sources/Rx\" \nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint --config \"swiftlint.config.yml\" --path \"Sources/Rx\" \nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		70C921A8236F544100302A29 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1191,7 +1219,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint autocorrect\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint autocorrect --config \"swiftlint.config.yml\"\n  swiftlint --config \"swiftlint.config.yml\"\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1259,10 +1287,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				707B77EE25AB708300D243EC /* BaseSizeCalculator.swift in Sources */,
 				70E39A3823EACD2C00317250 /* Scene.swift in Sources */,
 				70E39A3D23EACD2C00317250 /* CollectionViewDataSource.swift in Sources */,
 				70E39A3A23EACD2C00317250 /* ViewFactory.swift in Sources */,
 				70E39A4023EACD2D00317250 /* AutomaticSizeCalculator.swift in Sources */,
+				707B77F825AB736000D243EC /* DynamicCollectionViewSizeCalculator.swift in Sources */,
 				70E39A3C23EACD2C00317250 /* ContentCollectionViewCell.swift in Sources */,
 				70E39A3F23EACD2D00317250 /* UICollectionView+Sizing.swift in Sources */,
 				70E39A3E23EACD2C00317250 /* CollectionViewDelegate.swift in Sources */,
@@ -1309,10 +1339,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				708ACF4F23A1482E004A6FF4 /* PropertyAssignment.swift in Sources */,
+				707B780125AB741A00D243EC /* ElementSize.Implementations.swift in Sources */,
 				70C921AE237566E900302A29 /* DependencyContainer.swift in Sources */,
 				7BA6D8F7235F9D4500EF4A60 /* ListViewModel.swift in Sources */,
 				7BA8F4AD235F9F3B00027DE5 /* ViewModel.swift in Sources */,
 				7BA8F4B7235FA6E800027DE5 /* Route.swift in Sources */,
+				707B780225AB741A00D243EC /* ElementSize.swift in Sources */,
 				7BA8F4AB235F9F2100027DE5 /* Section.swift in Sources */,
 				7059AB62236C93D10005A189 /* NavigationViewModel.swift in Sources */,
 			);
@@ -1406,7 +1438,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Sources/Rx/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1435,7 +1467,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Sources/Rx/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1668,7 +1700,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Sources/UIKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1695,7 +1727,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Sources/UIKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1737,6 +1769,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1761,7 +1794,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1797,6 +1830,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1815,7 +1849,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
