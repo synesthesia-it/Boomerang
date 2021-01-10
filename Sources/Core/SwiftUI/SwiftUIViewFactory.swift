@@ -10,15 +10,15 @@ import Foundation
 import Boomerang
 import SwiftUI
 
-@available(iOS 13, *)
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public protocol SwiftUIViewFactory {
     func view(from wrapper: IdentifiableViewModel) -> AnyView
 }
 
-@available(iOS 13, *)
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension Boomerang.Section: Identifiable {}
 
-@available(iOS 13, *)
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public class IdentifiableViewModel: Identifiable, Equatable, Hashable {
     public let id: String
     public func hash(into hasher: inout Hasher) {

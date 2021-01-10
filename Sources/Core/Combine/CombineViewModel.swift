@@ -9,15 +9,15 @@
 import Foundation
 import Combine
 
-@available(iOS 13, *)
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public protocol CombineViewModel: ViewModel {
     var cancellables: [AnyCancellable] { get set }
 }
-@available(iOS 13, *)
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public protocol CombineNavigationViewModel: NavigationViewModel {
     var routes: PassthroughSubject<Route, Never> { get }
 }
-@available(iOS 13, *)
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension CombineNavigationViewModel {
     public var onNavigation: (Route) -> Void {
         get { return {[weak self] in self?.routes.send($0)} }
@@ -25,12 +25,12 @@ extension CombineNavigationViewModel {
         set { }
     }
 }
-@available(iOS 13, *)
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public protocol CombineListViewModel: ListViewModel, CombineViewModel {
     var sectionsSubject: CurrentValueSubject<[Section], Never> { get }
 }
 
-@available(iOS 13, *)
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public extension CombineListViewModel {
     var sections: [Section] {
         get {

@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-@available(iOS 13, *)
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension List where Content == ForEach<[Boomerang.Section], String, AnyView>, SelectionValue == IdentifiableViewModel {
 
     public init(_ sections: [Boomerang.Section],
@@ -23,7 +23,7 @@ extension List where Content == ForEach<[Boomerang.Section], String, AnyView>, S
         self.init(selection: selection, content: { content })
     }
 }
-@available(iOS 13, *)
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 private extension Boomerang.Section {
 
     // Probably a bad idea to wrap everything into AnyView, check problems with recycling cells.
@@ -50,14 +50,14 @@ private extension Boomerang.Section {
     }
 }
 
-@available(iOS 13, *)
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension ViewModel {
     func view(from factory: SwiftUIViewFactory) -> AnyView? {
         return factory.view(from: IdentifiableViewModel(viewModel: self))
     }
 }
 
-@available(iOS 13, *)
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension List where Content == ForEach<[IdentifiableViewModel], String, AnyView>, SelectionValue == Never {
 
     public init(_ data: [Boomerang.Section], factory: SwiftUIViewFactory) {
@@ -68,7 +68,7 @@ extension List where Content == ForEach<[IdentifiableViewModel], String, AnyView
     }
 }
 
-@available(iOS 13, *)
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 extension Array where Element == Boomerang.Section {
     func toList() -> [IdentifiableViewModel] {
         return self

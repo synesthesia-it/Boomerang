@@ -8,7 +8,7 @@
 #if canImport(SwiftUI)
 import Foundation
 import Combine
-@available(iOS 13, *)
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public extension ViewModel where Self: ObservableObject, Self.ObjectWillChangePublisher == ObservableObjectPublisher {
     func update() {
         DispatchQueue.main.async {
@@ -16,7 +16,7 @@ public extension ViewModel where Self: ObservableObject, Self.ObjectWillChangePu
         }
     }
 }
-@available(iOS 13, *)
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public extension ListViewModel where Self: ObservableObject,
                                      Self.ObjectWillChangePublisher == ObservableObjectPublisher {
     var onUpdate: () -> Void {
