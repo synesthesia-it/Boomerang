@@ -82,6 +82,7 @@ public protocol ListViewModel: ViewModel {
     func deleteItem(at indexPath: IndexPath) -> ViewModel?
 
     func elementSize(at indexPath: IndexPath) -> ElementSize?
+    func elementSize(at indexPath: IndexPath, type: String?) -> ElementSize?
     func sectionProperties(at index: Int) -> Size.SectionProperties
 }
 
@@ -186,11 +187,29 @@ public extension ListViewModel {
         self.sections[sectionIndex] = section
         return viewModel
     }
-
-    func elementSize(at indexPath: IndexPath) -> ElementSize? {
-        (self[indexPath] as? WithElementSize)?.elementSize
+    
+    public func elementSize(at indexPath: IndexPath) -> ElementSize? {
+        elementSize(at: indexPath, type: nil)
     }
-
+    
+    public func elementSize(at indexPath: IndexPath, type: String?) -> ElementSize? {
+        guard let type = type else {
+            return (self[indexPath] as? WithElementSize)?.elementSize
+        }
+        guard let sectionIndex = indexPath.section,
+              let item = indexPath.item else {
+            return nil
+        }
+        let section = self.sections[sectionIndex]
+        if type == Section.Supplementary.header {
+            return (section.header as? WithElementSize)?.elementSize
+        }
+        if type == Section.Supplementary.footer {
+            return (section.footer as? WithElementSize)?.elementSize
+        }
+        return (section.supplementary.item(atIndex: item, forKind: type) as? WithElementSize)?.elementSize
+    }
+    
     func sectionProperties(at _: Int) -> Size.SectionProperties {
         .zero
     }

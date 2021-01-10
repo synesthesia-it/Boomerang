@@ -33,7 +33,7 @@ open class DynamicSizeCalculator: BaseCollectionViewSizeCalculator {
                                    in collectionView: UICollectionView,
                                    direction: Direction? = nil,
                                    type: String? = nil) -> CGSize {
-        guard let elementSize = viewModel.elementSize(at: indexPath) else {
+        guard let elementSize = viewModel.elementSize(at: indexPath, type: type) else {
            return automaticSizeForItem(at: indexPath, in: collectionView, direction: direction, type: type)
         }
         let direction = direction ?? Direction.from(layout: collectionView.collectionViewLayout)
