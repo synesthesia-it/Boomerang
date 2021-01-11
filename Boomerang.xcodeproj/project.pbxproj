@@ -56,7 +56,7 @@
 		707B781D25AB7B4400D243EC /* UIKit+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6D8F0235F9D4500EF4A60 /* UIKit+Constraints.swift */; };
 		707B781E25AB7B4400D243EC /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6D8F9235F9E0400EF4A60 /* CollectionViewDataSource.swift */; };
 		707B781F25AB7B4400D243EC /* BaseSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B77ED25AB708300D243EC /* BaseSizeCalculator.swift */; };
-		707B782025AB7B4400D243EC /* DynamicCollectionViewSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B77F725AB735F00D243EC /* DynamicCollectionViewSizeCalculator.swift */; };
+		707B782025AB7B4400D243EC /* DynamicSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B77F725AB735F00D243EC /* DynamicSizeCalculator.swift */; };
 		707B782125AB7B4400D243EC /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA8F4B4235FA11A00027DE5 /* ViewFactory.swift */; };
 		707B782225AB7B4400D243EC /* UIStackView+Boomerang.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702B24D123969536007F210E /* UIStackView+Boomerang.swift */; };
 		707B782325AB7B4400D243EC /* ContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6D8F5235F9D4500EF4A60 /* ContentCollectionViewCell.swift */; };
@@ -204,7 +204,7 @@
 		706CE12923852D230070FC4E /* SceneViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewModelFactory.swift; sourceTree = "<group>"; };
 		706CE12B238531AA0070FC4E /* ItemViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModelFactory.swift; sourceTree = "<group>"; };
 		707B77ED25AB708300D243EC /* BaseSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSizeCalculator.swift; sourceTree = "<group>"; };
-		707B77F725AB735F00D243EC /* DynamicCollectionViewSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionViewSizeCalculator.swift; sourceTree = "<group>"; };
+		707B77F725AB735F00D243EC /* DynamicSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSizeCalculator.swift; sourceTree = "<group>"; };
 		707B77FD25AB741A00D243EC /* ElementSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementSize.swift; sourceTree = "<group>"; };
 		707B77FE25AB741A00D243EC /* ElementSize.Implementations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementSize.Implementations.swift; sourceTree = "<group>"; };
 		708ACF4D23A1482B004A6FF4 /* PropertyAssignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyAssignment.swift; sourceTree = "<group>"; };
@@ -378,7 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				707B77ED25AB708300D243EC /* BaseSizeCalculator.swift */,
-				707B77F725AB735F00D243EC /* DynamicCollectionViewSizeCalculator.swift */,
+				707B77F725AB735F00D243EC /* DynamicSizeCalculator.swift */,
 				70CACF0823A397E700E9F657 /* AutomaticSizeCalculator.swift */,
 			);
 			path = Calculators;
@@ -1044,7 +1044,7 @@
 				707B782125AB7B4400D243EC /* ViewFactory.swift in Sources */,
 				707B781D25AB7B4400D243EC /* UIKit+Constraints.swift in Sources */,
 				7059AB62236C93D10005A189 /* NavigationViewModel.swift in Sources */,
-				707B782025AB7B4400D243EC /* DynamicCollectionViewSizeCalculator.swift in Sources */,
+				707B782025AB7B4400D243EC /* DynamicSizeCalculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

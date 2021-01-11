@@ -48,7 +48,7 @@ public enum Size {
         public let insets: EdgeInsets
         public let lineSpacing: CGFloat
         public let itemSpacing: CGFloat
-        init(insets: UIEdgeInsets = .zero,
+        public init(insets: EdgeInsets = .zero,
              lineSpacing: CGFloat = 0,
              itemSpacing: CGFloat = 0) {
             self.insets = insets
