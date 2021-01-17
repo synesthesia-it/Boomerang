@@ -245,7 +245,7 @@
 		70DFCA232361F2C1004B49D6 /* ShowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewModel.swift; sourceTree = "<group>"; };
 		70DFCA252361F2CC004B49D6 /* ShowDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowDetailViewController.xib; sourceTree = "<group>"; };
 		70E39A4223EAD33F00317250 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		7B7E658724053C650039954B /* Boomerang.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = Boomerang.podspec; sourceTree = "<group>"; };
+		7B7E658724053C650039954B /* Boomerang.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = Boomerang.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		7BA6D8AC235F89AD00EF4A60 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BA6D8AF235F89AD00EF4A60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BA6D8B3235F89AD00EF4A60 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };

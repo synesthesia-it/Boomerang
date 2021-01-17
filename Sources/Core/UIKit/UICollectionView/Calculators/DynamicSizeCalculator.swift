@@ -15,11 +15,11 @@ open class DynamicSizeCalculator: BaseCollectionViewSizeCalculator {
         factory: CollectionViewCellFactory) {
         super.init(viewModel: viewModel, factory: factory, defaultSize: .zero)
     }
-    
+
     open func sectionProperties(in section: Int) -> Size.SectionProperties? {
         viewModel.sectionProperties(at: section)
     }
-    
+
     override open func insets(for collectionView: UICollectionView, in section: Int) -> UIEdgeInsets {
         sectionProperties(in: section)?.insets ?? super.insets(for: collectionView, in: section)
     }
@@ -36,6 +36,7 @@ open class DynamicSizeCalculator: BaseCollectionViewSizeCalculator {
                                    in collectionView: UICollectionView,
                                    direction: Direction? = nil,
                                    type: String? = nil) -> CGSize {
+        let type = type?.toSectionKind()
         guard let elementSize = viewModel.elementSize(at: indexPath, type: type) else {
            return automaticSizeForItem(at: indexPath, in: collectionView, direction: direction, type: type)
         }

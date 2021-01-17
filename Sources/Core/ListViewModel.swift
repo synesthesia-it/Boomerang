@@ -187,12 +187,12 @@ public extension ListViewModel {
         self.sections[sectionIndex] = section
         return viewModel
     }
-    
-    public func elementSize(at indexPath: IndexPath) -> ElementSize? {
+
+    func elementSize(at indexPath: IndexPath) -> ElementSize? {
         elementSize(at: indexPath, type: nil)
     }
-    
-    public func elementSize(at indexPath: IndexPath, type: String?) -> ElementSize? {
+
+    func elementSize(at indexPath: IndexPath, type: String?) -> ElementSize? {
         guard let type = type else {
             return (self[indexPath] as? WithElementSize)?.elementSize
         }
@@ -209,7 +209,7 @@ public extension ListViewModel {
         }
         return (section.supplementary.item(atIndex: item, forKind: type) as? WithElementSize)?.elementSize
     }
-    
+
     func sectionProperties(at _: Int) -> Size.SectionProperties {
         .zero
     }

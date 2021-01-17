@@ -72,8 +72,7 @@ open class BaseCollectionViewSizeCalculator: CollectionViewSizeCalculator {
         guard let type = type else { return list[indexPath] }
 
         return list.sections[indexPath.section]
-            .supplementary
-            .item(atIndex: indexPath.item,
+            .supplementaryItem(atIndex: indexPath.item,
                   forKind: type.toSectionKind())
 
     }

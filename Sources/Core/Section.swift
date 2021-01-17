@@ -77,7 +77,7 @@ public struct Section {
     /// Unique id representing the section.
     /// Uniqueness is required by differentiators algorithms to detect differences between sections
     public var id: String { identifier.stringValue }
-    
+
     public var identifier: UniqueIdentifier
 
     /// The `ViewModel` items contained inside the Section
@@ -96,6 +96,7 @@ public struct Section {
         return supplementary.item(atIndex: 0, forKind: Supplementary.footer)
     }
 
+    internal var info: Any?
     /**
      Create a new `Section` object from given items.
      
@@ -109,14 +110,18 @@ public struct Section {
      
      - Parameter supplementary: Optional supplementary object. Defaults to `nil`
      
+     - Parameter info: An optional value to identify current section in lists.
+     
      */
     public init( id: UniqueIdentifier = UUID(),
                  items: [ViewModel] = [],
                  header: ViewModel? = nil,
                  footer: ViewModel? = nil,
-                 supplementary: Supplementary? = nil) {
+                 supplementary: Supplementary? = nil,
+                 info: Any? = nil) {
         self.identifier = id
         self.items = items
+        self.info = info
         var supplementary = supplementary ?? Supplementary()
         if let header = header {
             supplementary.set(header: header)
@@ -166,6 +171,18 @@ public struct Section {
         var section = self
         _ = section.remove(at: index)
         return section
+    }
+
+    public func supplementaryItem(atIndex index: Int, forKind kind: String) -> ViewModel? {
+        let supplementary = self.supplementary.item(atIndex: index, forKind: kind)
+        switch kind {
+        case Section.Supplementary.header: return supplementary ?? header
+        case Section.Supplementary.footer: return supplementary ?? footer
+        default: return supplementary
+        }
+    }
+    public func info<InfoType>(_ type: InfoType.Type = InfoType.self) -> InfoType? {
+        info as? InfoType
     }
 }
 

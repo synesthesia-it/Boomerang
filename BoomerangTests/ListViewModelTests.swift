@@ -42,7 +42,7 @@ class BoomerangTests: XCTestCase {
     var viewModel: TestListViewModel!
     override func setUpWithError() throws {
         let models = [["A", "B", "C"], ["D", "E", "F"], ["G"]]
-        let sections = models.map { Section(items: $0.map(TestItemViewModel.init))}
+        let sections = models.map { Section(items: $0.map(TestItemViewModel.init), info: ["test": "value"])}
         viewModel = TestListViewModel(sections: sections)
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -62,6 +62,13 @@ class BoomerangTests: XCTestCase {
         viewModel.deleteItem(at: IndexPath(item: -100, section: 0))
         XCTAssert(viewModel.sections.first?.items.count == 3)
     }
+    
+    func testInfoInSection() throws {
+        let info = viewModel.sections.first?.info([String: String].self)
+        XCTAssert(info != nil)
+        XCTAssert(info?["test"] == "value")
+    }
+    
     func testInsertion() throws {
         viewModel.deleteItem(at: IndexPath(item: 0, section: 0))
         XCTAssert(viewModel.sections.first?.items.count == 2)
