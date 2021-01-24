@@ -12,13 +12,14 @@ import RxCocoa
 import Boomerang
 import UIKit
 
-class ShowViewModel: ViewModel {
+class ShowViewModel: ViewModel, WithElementSize {
 
     let layoutIdentifier: LayoutIdentifier
     var uniqueIdentifier: UniqueIdentifier
     var title: String
     let show: Show
     let img: Observable<UIImage?>
+    var elementSize: ElementSize = Size.aspectRatio(200/60.0)
     init(episode: Episode, identifier: ViewIdentifier = .show) {
         self.layoutIdentifier = identifier
         self.title = episode.name

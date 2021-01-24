@@ -28,14 +28,15 @@ class ScheduleViewModel: ListViewModel, NavigationViewModel {
     var downloadTask: Task?
     let routeFactory: RouteFactory
     let itemViewModelFactory: ItemViewModelFactory
-
+    let cellIdentifier: ViewIdentifier
     init(identifier: SceneIdentifier = .schedule,
          itemViewModelFactory: ItemViewModelFactory,
+         cellIdentifier: ViewIdentifier = .show,
          routeFactory: RouteFactory) {
         self.layoutIdentifier = identifier
         self.routeFactory = routeFactory
         self.itemViewModelFactory = itemViewModelFactory
-
+        self.cellIdentifier = cellIdentifier
     }
     func reload() {
         downloadTask?.cancel()
@@ -44,7 +45,7 @@ class ScheduleViewModel: ListViewModel, NavigationViewModel {
             switch result {
             case .success(let episodes):
                 self?.sections = [Section(id: "Schedule",
-                                          items: episodes.compactMap { factory.episode($0) },
+                                          items: episodes.compactMap { factory.episode($0, identifier: self?.cellIdentifier ?? .show) },
                                           header: factory.header(title: "Tonight's schedule"),
                                           footer: factory.header(title: "Thank you for watching")
                     )]

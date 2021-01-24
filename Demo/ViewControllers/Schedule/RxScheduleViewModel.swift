@@ -62,7 +62,7 @@ class RxScheduleViewModel: ViewModel, RxListViewModel, RxNavigationViewModel {
             .enumerated()
             .map {
                 Section(id: "Schedule_\($0.offset)",
-                    items: $0.element.compactMap { factory.episode($0) },
+                        items: $0.element.compactMap { factory.episode($0, identifier: .show) },
                     header: factory.header(title: "Tonight's schedule \($0.offset)"),
                     footer: factory.header(title: "Thanks! \($0.offset)")
 

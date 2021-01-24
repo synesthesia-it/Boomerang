@@ -12,6 +12,7 @@ import Boomerang
 
 enum SceneIdentifier: String, LayoutIdentifier {
     case schedule
+    case tableSchedule
     case showDetail
 
     var identifierString: String {
@@ -44,6 +45,12 @@ class DefaultViewControllerFactory: ViewControllerFactory {
                                       viewModel: viewModel,
                                       collectionViewCellFactory: container.collectionViewCellFactory)
     }
+    func tableSchedule(viewModel: ListViewModel & NavigationViewModel) -> UIViewController {
+        return TableScheduleViewController(nibName: name(from: viewModel.layoutIdentifier),
+                                      viewModel: viewModel,
+                                      tableViewCellFactory: container.tableViewCellFactory)
+    }
+
 
     func showDetail(viewModel: ShowDetailViewModel) -> UIViewController {
         return ShowDetailViewController(nibName: name(from: viewModel.layoutIdentifier),
@@ -53,13 +60,15 @@ class DefaultViewControllerFactory: ViewControllerFactory {
 
     func root() -> UIViewController {
         let classic = self.schedule(viewModel: container.sceneViewModelFactory.schedule())
+        let table = self.tableSchedule(viewModel: container.sceneViewModelFactory.tableSchedule())
         let viewModelFactory = container.itemViewModelFactory
         let reactive = self.schedule(viewModel: RxScheduleViewModel(itemViewModelFactory: viewModelFactory,
                                                                     routeFactory: container.routeFactory))
 
         classic.tabBarItem.title = "Schedule"
+        table.tabBarItem.title = "Table"
         reactive.tabBarItem.title = "RxSchedule"
-        let viewControllers = [classic, reactive].compactMap { $0 }
+        let viewControllers = [classic, table, reactive].compactMap { $0 }
 
         let root = UITabBarController()
         root.viewControllers = viewControllers

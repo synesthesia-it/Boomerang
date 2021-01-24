@@ -10,6 +10,7 @@ import Foundation
 import Boomerang
 
 protocol SceneViewModelFactory {
+    func tableSchedule() -> ListViewModel & NavigationViewModel
     func schedule() -> ListViewModel & NavigationViewModel
     func showDetail(show: Show) -> ShowDetailViewModel
 }
@@ -20,6 +21,12 @@ struct DefaultSceneViewModelFactory: SceneViewModelFactory {
 
     func schedule() -> ListViewModel & NavigationViewModel {
         return ScheduleViewModel(itemViewModelFactory: container.itemViewModelFactory,
+                                 routeFactory: container.routeFactory)
+    }
+    func tableSchedule() -> ListViewModel & NavigationViewModel {
+        return ScheduleViewModel(identifier: SceneIdentifier.tableSchedule,
+                                 itemViewModelFactory: container.itemViewModelFactory,
+                                 cellIdentifier: .tableShow,
                                  routeFactory: container.routeFactory)
     }
     func showDetail(show: Show) -> ShowDetailViewModel {
