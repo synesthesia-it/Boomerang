@@ -20,6 +20,7 @@ class ShowViewModel: ViewModel, WithElementSize {
     let show: Show
     let img: Observable<UIImage?>
     var elementSize: ElementSize = Size.aspectRatio(200/60.0)
+    
     init(episode: Episode, identifier: ViewIdentifier = .show) {
         self.layoutIdentifier = identifier
         self.title = episode.name

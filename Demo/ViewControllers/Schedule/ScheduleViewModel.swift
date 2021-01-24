@@ -38,6 +38,14 @@ class ScheduleViewModel: ListViewModel, NavigationViewModel {
         self.itemViewModelFactory = itemViewModelFactory
         self.cellIdentifier = cellIdentifier
     }
+    func canDeleteItem(at indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func deleteItem(at indexPath: IndexPath) -> ViewModel? {
+        var section = self.sections[indexPath.section].removing(at: indexPath.item)
+        sections[indexPath.section] = section
+        return nil
+    }
     func reload() {
         downloadTask?.cancel()
         let factory = itemViewModelFactory

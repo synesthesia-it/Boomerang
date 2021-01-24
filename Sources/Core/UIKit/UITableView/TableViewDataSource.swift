@@ -66,6 +66,25 @@ open class TableViewDataSource: NSObject, UITableViewDataSource {
         factory.configureCell(cell, with: viewModel)
         return cell
     }
+    public func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        viewModel.canMoveItem(at: indexPath)
+    }
+    public func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        viewModel.moveItem(at: sourceIndexPath, to: destinationIndexPath)
+    }
+    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if viewModel.canDeleteItem(at: indexPath) {
+            return true
+        }
+        return false
+    }
+    
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete: viewModel.deleteItem(at: indexPath)
+        default: break
+        }
+    }
     
    
 //    public func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
