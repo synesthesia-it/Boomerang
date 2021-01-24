@@ -22,8 +22,12 @@ To use RxSwift integration, use
 pod 'Boomerang/RxSwift`
 ```
 
-## Example
+## Contributing
 
+This project is managed through [XcodeGen](https://github.com/yonaskolb/XcodeGen)
+To quickly setup your environment, checkout the repo and run `make setup`. It will install XcodeGen and create the xcodeproj file
+
+After that, edit the `project.yml` file when needed and run `make` every time you add a new dependency or file to the project.
 
 
 ## Table of contents

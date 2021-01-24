@@ -9,7 +9,7 @@
 import Foundation
 import Boomerang
 import UIKit
-import UIKitBoomerang
+
 struct ModalRoute: UIKitRoute {
 
     let createViewController: () -> UIViewController?

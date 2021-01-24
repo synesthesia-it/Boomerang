@@ -8,7 +8,6 @@
 
 import UIKit
 import RxBoomerang
-import UIKitBoomerang
 import RxDataSources
 import RxSwift
 

@@ -1,0 +1,68 @@
+{
+  "entries": {
+    "brew": {
+      "xcodegen": {
+        "version": "2.18.0",
+        "bottle": {
+          "cellar": ":any_skip_relocation",
+          "prefix": "/usr/local",
+          "files": {
+            "big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/xcodegen-2.18.0.big_sur.bottle.tar.gz",
+              "sha256": "954d8df6e5e76c59471482dce21df05bed22382e30d1b5cc9bfa6e024508106c"
+            },
+            "arm64_big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/xcodegen-2.18.0.arm64_big_sur.bottle.tar.gz",
+              "sha256": "3943c560dbe8bae0c4e75b43920711219e4f1e1c80b8455ea488e8029d9864cb"
+            },
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/xcodegen-2.18.0.catalina.bottle.tar.gz",
+              "sha256": "72a74170b8b457db6bce90da3daaa6520a24bef3d46d4dfbfd3599bfe45a8b5b"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/xcodegen-2.18.0.mojave.bottle.tar.gz",
+              "sha256": "1d64fc7e6f3ade59a08eb9b9105c3b1d20d8d9cb4b4de2539590733fd203e014"
+            }
+          }
+        }
+      },
+      "wget": {
+        "version": "1.21",
+        "bottle": {
+          "cellar": "/usr/local/Cellar",
+          "prefix": "/usr/local",
+          "files": {
+            "big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/wget-1.21.big_sur.bottle.tar.gz",
+              "sha256": "eb830909eed1e6d861968f324fd0701883df44f9d6e191c4e5ebbe2635cc70e7"
+            },
+            "arm64_big_sur": {
+              "url": "https://homebrew.bintray.com/bottles/wget-1.21.arm64_big_sur.bottle.tar.gz",
+              "sha256": "2824baa832bb6abe003371d42bab24df5afab5e4076922b2300a90a98526990b"
+            },
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/wget-1.21.catalina.bottle.tar.gz",
+              "sha256": "d163d32bba98f0a535d179c5d8efd076d12f41bd9232f5c0a41523a4eeaeb500"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/wget-1.21.mojave.bottle.tar.gz",
+              "sha256": "6343b9c76468bf9ba05e587403b378b1bb93e5108c6505abef4eaaee92257e22"
+            }
+          }
+        }
+      }
+    }
+  },
+  "system": {
+    "macos": {
+      "big_sur": {
+        "HOMEBREW_VERSION": "2.7.5-18-g5ce24f6",
+        "HOMEBREW_PREFIX": "/usr/local",
+        "Homebrew/homebrew-core": "0e331c4da49d88f5171e92a099f00e6b7c9c9d1c",
+        "CLT": "12.0.31.1",
+        "Xcode": "12.3",
+        "macOS": "11.1"
+      }
+    }
+  }
+}

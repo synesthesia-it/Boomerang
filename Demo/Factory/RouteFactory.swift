@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import UIKitBoomerang
+import Boomerang
 
 protocol RouteFactory {
     var container: AppDependencyContainer { get }
