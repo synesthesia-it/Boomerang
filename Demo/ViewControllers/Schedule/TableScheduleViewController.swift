@@ -70,18 +70,18 @@ class TableScheduleViewController: UIViewController, WithViewModel {
         let tableViewDelegate = TableViewDelegate(heightCalculator: sizeCalculator, dataSource: tableViewDataSource)
             .withSelect { viewModel.selectItem(at: $0) }
 
-//        if let viewModel = viewModel as? RxListViewModel {
-//            collectionView.rx
-//                .animated(by: viewModel, dataSource: collectionViewDataSource)
-//                .disposed(by: disposeBag)
-//        } else {
+        if let viewModel = viewModel as? RxListViewModel {
+            tableView.rx
+                .animated(by: viewModel, dataSource: tableViewDataSource)
+                .disposed(by: disposeBag)
+        } else {
             self.tableViewDataSource = tableViewDataSource
             viewModel.onUpdate = { [weak self] in
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
             }
-//        }
+        }
 
         if let viewModel = viewModel as? RxNavigationViewModel {
             viewModel.routes

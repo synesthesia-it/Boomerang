@@ -24,11 +24,14 @@ class RxScheduleViewModel: ViewModel, RxListViewModel, RxNavigationViewModel {
     let routeFactory: RouteFactory
     let itemViewModelFactory: ItemViewModelFactory
     let uniqueIdentifier: UniqueIdentifier = UUID()
+    let cellIdentifier: ViewIdentifier
     init(identifier: SceneIdentifier = .schedule,
          itemViewModelFactory: ItemViewModelFactory,
+         cellIdentifier: ViewIdentifier = .show,
          routeFactory: RouteFactory) {
         self.layoutIdentifier = identifier
         self.itemViewModelFactory = itemViewModelFactory
+        self.cellIdentifier = cellIdentifier
         self.routeFactory = routeFactory
     }
 
@@ -62,7 +65,7 @@ class RxScheduleViewModel: ViewModel, RxListViewModel, RxNavigationViewModel {
             .enumerated()
             .map {
                 Section(id: "Schedule_\($0.offset)",
-                        items: $0.element.compactMap { factory.episode($0, identifier: .show) },
+                        items: $0.element.compactMap { factory.episode($0, identifier: self.cellIdentifier) },
                     header: factory.header(title: "Tonight's schedule \($0.offset)"),
                     footer: factory.header(title: "Thanks! \($0.offset)")
 

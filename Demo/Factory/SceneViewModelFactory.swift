@@ -24,7 +24,7 @@ struct DefaultSceneViewModelFactory: SceneViewModelFactory {
                                  routeFactory: container.routeFactory)
     }
     func tableSchedule() -> ListViewModel & NavigationViewModel {
-        return ScheduleViewModel(identifier: SceneIdentifier.tableSchedule,
+        return RxScheduleViewModel(identifier: SceneIdentifier.tableSchedule,
                                  itemViewModelFactory: container.itemViewModelFactory,
                                  cellIdentifier: .tableShow,
                                  routeFactory: container.routeFactory)
