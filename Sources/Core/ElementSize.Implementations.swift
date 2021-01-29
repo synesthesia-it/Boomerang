@@ -60,9 +60,11 @@ extension Size {
 
         func size(for parameters: ContainerProperties) -> CGSize? {
             if let width = self.width {
-                return CGSize(width: width, height: parameters.containerBounds.height)
+                return CGSize(width: width,
+                              height: parameters.maximumHeight ?? parameters.containerBounds.height)
             } else if let height = self.height {
-                return CGSize(width: parameters.containerBounds.width, height: height)
+                return CGSize(width: parameters.maximumWidth ?? parameters.containerBounds.width,
+                              height: height)
             } else {
                 return parameters.containerBounds
             }
