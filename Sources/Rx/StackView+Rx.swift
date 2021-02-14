@@ -6,6 +6,7 @@
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
 
+#if os(iOS) || os(tvOS)
 import Foundation
 import UIKit
 import RxSwift
@@ -14,7 +15,6 @@ import RxCocoa
 import Boomerang
 #endif
 
-#if os(iOS) || os(tvOS)
 public extension Reactive where Base: UIStackView {
     func bind(viewModel: RxListViewModel, factory: ViewFactory) -> Disposable {
         viewModel.sectionsRelay

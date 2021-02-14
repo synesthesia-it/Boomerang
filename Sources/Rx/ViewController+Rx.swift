@@ -5,6 +5,7 @@
 //  Created by Stefano Mondino on 12/12/2019.
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
+#if os(iOS) || os(tvOS)
 
 import UIKit
 import RxSwift
@@ -13,8 +14,6 @@ import RxCocoa
 #if !COCOAPODS
 import Boomerang
 #endif
-
-#if os(iOS) || os(tvOS)
 
 public extension Reactive where Base: UIViewController {
     func routes() -> Binder<Route> {

@@ -4,7 +4,7 @@
 //
 //  Created by Stefano Mondino on 10/01/21.
 //
-#if canImport(UIKit)
+#if os(iOS) || os(tvOS)
 import Foundation
 import UIKit
 

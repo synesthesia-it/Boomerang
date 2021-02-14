@@ -5,7 +5,7 @@
 //  Created by Stefano Mondino on 03/12/2019.
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
-#if canImport(UIKit)
+#if os(iOS) || os(tvOS)
 import Foundation
 import UIKit
 

@@ -11,6 +11,11 @@ import CoreGraphics
 #if os(macOS)
 import AppTrackingTransparency
 public typealias EdgeInsets = NSEdgeInsets
+public extension EdgeInsets {
+    static var zero: EdgeInsets {
+        NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+}
 #else
 import UIKit
 public typealias EdgeInsets = UIEdgeInsets

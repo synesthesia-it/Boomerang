@@ -6,6 +6,7 @@
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
 
+#if os(iOS) || os(tvOS)
 import Foundation
 import UIKit
 import RxSwift
@@ -15,7 +16,6 @@ import RxDataSources
 import Boomerang
 #endif
 
-#if os(iOS) || os(tvOS)
 public extension Reactive where Base: UITableView {
 
     func reloaded(by viewModel: RxListViewModel,

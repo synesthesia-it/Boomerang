@@ -5,7 +5,7 @@
 //  Created by Stefano Mondino on 13/12/2019.
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
-#if canImport(UIKit)
+#if os(iOS) || os(tvOS)
 import UIKit
 
 open class AutomaticTableViewHeightCalculator: BaseTableViewHeightCalculator {
