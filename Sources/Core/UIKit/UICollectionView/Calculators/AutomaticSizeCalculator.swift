@@ -8,6 +8,11 @@
 #if canImport(UIKit)
 import UIKit
 
+/**
+    A size calculator using that automatically sizes cells according to their contents.
+    
+    Use this calculator when you are dealing with simple collection views with few elements, each one with a variable size depending on it's content. This calculator will actually "inflate" each cell to calculate their content size without adding them to the main view; you should avoid usage in scenarios with too many cells (example: a list with 1000 elements), since this could impact UI performance. In those cases, use a custom size calculator or a `DynamicSizeCalculator`
+ */
 open class AutomaticCollectionViewSizeCalculator: BaseCollectionViewSizeCalculator {
 
     public typealias Size = (UICollectionView, IndexPath, String?) -> CGSize
