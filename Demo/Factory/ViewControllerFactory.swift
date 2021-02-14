@@ -14,6 +14,7 @@ enum SceneIdentifier: String, LayoutIdentifier {
     case schedule
     case tableSchedule
     case showDetail
+    case loremIpsum
 
     var identifierString: String {
         switch self {
@@ -45,6 +46,11 @@ class DefaultViewControllerFactory: ViewControllerFactory {
                                       viewModel: viewModel,
                                       collectionViewCellFactory: container.collectionViewCellFactory)
     }
+    func loremIpsum(viewModel: LoremIpsumViewModel) -> UIViewController {
+        return LoremIpsumViewController(nibName: name(from: viewModel.layoutIdentifier),
+                                      viewModel: viewModel,
+                                      collectionViewCellFactory: container.collectionViewCellFactory)
+    }
     func tableSchedule(viewModel: ListViewModel & NavigationViewModel) -> UIViewController {
         return TableScheduleViewController(nibName: name(from: viewModel.layoutIdentifier),
                                       viewModel: viewModel,
@@ -61,6 +67,7 @@ class DefaultViewControllerFactory: ViewControllerFactory {
     func root() -> UIViewController {
         let classic = self.schedule(viewModel: container.sceneViewModelFactory.schedule())
         let table = self.tableSchedule(viewModel: container.sceneViewModelFactory.tableSchedule())
+        let lorem = self.loremIpsum(viewModel: container.sceneViewModelFactory.loremIpsum())
         let viewModelFactory = container.itemViewModelFactory
         let reactive = self.schedule(viewModel: RxScheduleViewModel(itemViewModelFactory: viewModelFactory,
                                                                     routeFactory: container.routeFactory))
@@ -68,7 +75,8 @@ class DefaultViewControllerFactory: ViewControllerFactory {
         classic.tabBarItem.title = "Schedule"
         table.tabBarItem.title = "Table"
         reactive.tabBarItem.title = "RxSchedule"
-        let viewControllers = [classic, table, reactive].compactMap { $0 }
+        lorem.tabBarItem.title = "Lorem"
+        let viewControllers = [classic, table, reactive, lorem].compactMap { $0 }
 
         let root = UITabBarController()
         root.viewControllers = viewControllers

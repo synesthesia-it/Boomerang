@@ -59,6 +59,11 @@ public enum Size {
 }
 
 public extension Size {
+    
+    static func zero() -> ElementSize {
+        fixed(size: CGSize.zero)
+    }
+    
     static func fixed(size: CGSize) -> ElementSize {
         Configurable(itemsPerLine: 1) { _ in size }
     }

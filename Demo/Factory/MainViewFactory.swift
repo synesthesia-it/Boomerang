@@ -13,6 +13,7 @@ enum ViewIdentifier: String, LayoutIdentifier {
     case show
     case tableShow
     case header
+    case clearHeader
     var identifierString: String {
         return self.rawValue
     }

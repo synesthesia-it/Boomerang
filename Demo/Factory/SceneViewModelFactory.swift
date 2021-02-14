@@ -11,6 +11,7 @@ import Boomerang
 
 protocol SceneViewModelFactory {
     func tableSchedule() -> ListViewModel & NavigationViewModel
+    func loremIpsum() -> LoremIpsumViewModel
     func schedule() -> ListViewModel & NavigationViewModel
     func showDetail(show: Show) -> ShowDetailViewModel
 }
@@ -21,6 +22,10 @@ struct DefaultSceneViewModelFactory: SceneViewModelFactory {
 
     func schedule() -> ListViewModel & NavigationViewModel {
         return ScheduleViewModel(itemViewModelFactory: container.itemViewModelFactory,
+                                 routeFactory: container.routeFactory)
+    }
+    func loremIpsum() -> LoremIpsumViewModel {
+        return LoremIpsumViewModel(itemViewModelFactory: container.itemViewModelFactory,
                                  routeFactory: container.routeFactory)
     }
     func tableSchedule() -> ListViewModel & NavigationViewModel {
