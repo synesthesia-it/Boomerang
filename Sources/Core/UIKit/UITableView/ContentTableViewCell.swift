@@ -12,7 +12,7 @@ import UIKit
 
 public protocol TableViewCellContained {
         
-    var cellAttributes: ContentTableViewCell.Attributes { get }
+    var tableCellAttributes: ContentTableViewCell.Attributes { get }
 }
 
 public class ContentTableHeaderFooterViewCell: UITableViewHeaderFooterView, ContentCollectionViewCellType {
@@ -77,7 +77,7 @@ public class ContentTableViewCell: UITableViewCell, ContentCollectionViewCellTyp
             super.didUpdateFocus(in: context, with: coordinator)
     }
     open override var separatorInset: UIEdgeInsets {
-        get { (internalView as? TableViewCellContained)?.cellAttributes.separatorInset ?? super.separatorInset }
+        get { (internalView as? TableViewCellContained)?.tableCellAttributes.separatorInset ?? super.separatorInset }
         set { super.separatorInset = newValue }
     }
 }
