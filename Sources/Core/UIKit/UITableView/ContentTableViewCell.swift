@@ -10,6 +10,11 @@
 
 import UIKit
 
+public protocol TableViewCellContained {
+        
+    var cellAttributes: ContentTableViewCell.Attributes { get }
+}
+
 public class ContentTableHeaderFooterViewCell: UITableViewHeaderFooterView, ContentCollectionViewCellType {
 
     public func configure(with viewModel: ViewModel) {
@@ -42,6 +47,10 @@ public class ContentTableHeaderFooterViewCell: UITableViewHeaderFooterView, Cont
 
 public class ContentTableViewCell: UITableViewCell, ContentCollectionViewCellType {
 
+    public struct Attributes {
+        var separatorInset: UIEdgeInsets
+    }
+    
     public func configure(with viewModel: ViewModel) {
         (self.internalView as? WithViewModel)?.configure(with: viewModel)
     }
@@ -52,10 +61,6 @@ public class ContentTableViewCell: UITableViewCell, ContentCollectionViewCellTyp
             self.backgroundColor = .clear
             self.contentView.addSubview(view)
             self.insetConstraints = view.fitInSuperview(with: .zero)
-            
-            if let styler = view as? TableViewCellSeparatorStyler {
-                self.separatorInset = styler.separatorInset
-            }
         }
     }
     /// Constraints between cell and inner view.
@@ -71,12 +76,10 @@ public class ContentTableViewCell: UITableViewCell, ContentCollectionViewCellTyp
         return internalView?.didUpdateFocus(in: context, with: coordinator) ??
             super.didUpdateFocus(in: context, with: coordinator)
     }
-
-}
-
-public protocol TableViewCellSeparatorStyler {
-        
-    var separatorInset: UIEdgeInsets { get }
+    open override var separatorInset: UIEdgeInsets {
+        get { (internalView as? TableViewCellContained)?.cellAttributes.separatorInset ?? super.separatorInset }
+        set { super.separatorInset = newValue }
+    }
 }
 
 #endif
