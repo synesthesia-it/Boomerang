@@ -10,6 +10,11 @@
 
 import UIKit
 
+public protocol TableViewCellContained {
+        
+    var tableCellAttributes: ContentTableViewCell.Attributes { get }
+}
+
 public class ContentTableHeaderFooterViewCell: UITableViewHeaderFooterView, ContentCollectionViewCellType {
 
     public func configure(with viewModel: ViewModel) {
@@ -42,6 +47,10 @@ public class ContentTableHeaderFooterViewCell: UITableViewHeaderFooterView, Cont
 
 public class ContentTableViewCell: UITableViewCell, ContentCollectionViewCellType {
 
+    public struct Attributes {
+        var separatorInset: UIEdgeInsets
+    }
+    
     public func configure(with viewModel: ViewModel) {
         (self.internalView as? WithViewModel)?.configure(with: viewModel)
     }
@@ -67,7 +76,10 @@ public class ContentTableViewCell: UITableViewCell, ContentCollectionViewCellTyp
         return internalView?.didUpdateFocus(in: context, with: coordinator) ??
             super.didUpdateFocus(in: context, with: coordinator)
     }
-
+    open override var separatorInset: UIEdgeInsets {
+        get { (internalView as? TableViewCellContained)?.tableCellAttributes.separatorInset ?? super.separatorInset }
+        set { super.separatorInset = newValue }
+    }
 }
 
 #endif
