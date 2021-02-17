@@ -52,6 +52,10 @@ public class ContentTableViewCell: UITableViewCell, ContentCollectionViewCellTyp
             self.backgroundColor = .clear
             self.contentView.addSubview(view)
             self.insetConstraints = view.fitInSuperview(with: .zero)
+            
+            if let styler = view as? TableViewCellSeparatorStyler {
+                self.separatorInset = styler.separatorInset
+            }
         }
     }
     /// Constraints between cell and inner view.
@@ -68,6 +72,11 @@ public class ContentTableViewCell: UITableViewCell, ContentCollectionViewCellTyp
             super.didUpdateFocus(in: context, with: coordinator)
     }
 
+}
+
+public protocol TableViewCellSeparatorStyler {
+        
+    var separatorInset: UIEdgeInsets { get }
 }
 
 #endif
