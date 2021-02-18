@@ -48,7 +48,7 @@ public class ContentTableHeaderFooterViewCell: UITableViewHeaderFooterView, Cont
 public class ContentTableViewCell: UITableViewCell, ContentCollectionViewCellType {
 
     public struct Attributes {
-        var separatorInset: UIEdgeInsets
+        public let separatorInset: UIEdgeInsets
         
         public init(separatorInset: UIEdgeInsets) {
             self.separatorInset = separatorInset
