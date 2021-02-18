@@ -49,6 +49,10 @@ public class ContentTableViewCell: UITableViewCell, ContentCollectionViewCellTyp
 
     public struct Attributes {
         var separatorInset: UIEdgeInsets
+        
+        public init(separatorInset: UIEdgeInsets) {
+            self.separatorInset = separatorInset
+        }
     }
     
     public func configure(with viewModel: ViewModel) {
