@@ -57,6 +57,9 @@ public class ContentTableViewCell: UITableViewCell, ContentCollectionViewCellTyp
     
     public func configure(with viewModel: ViewModel) {
         (self.internalView as? WithViewModel)?.configure(with: viewModel)
+        if let attributes = (internalView as? TableViewCellContained)?.tableCellAttributes {
+            self.separatorInset = attributes.separatorInset
+        }
     }
 
     public weak var internalView: UIView? {
@@ -79,10 +82,6 @@ public class ContentTableViewCell: UITableViewCell, ContentCollectionViewCellTyp
     open override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         return internalView?.didUpdateFocus(in: context, with: coordinator) ??
             super.didUpdateFocus(in: context, with: coordinator)
-    }
-    open override var separatorInset: UIEdgeInsets {
-        get { (internalView as? TableViewCellContained)?.tableCellAttributes.separatorInset ?? super.separatorInset }
-        set { super.separatorInset = newValue }
     }
 }
 
