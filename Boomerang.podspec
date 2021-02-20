@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "Boomerang"
-  spec.version = "6.3.1"
+  spec.version = "6.3.2"
   spec.summary = "Swift microframework for MVVM"
 
   spec.description = <<-DESC
@@ -16,8 +16,8 @@ Pod::Spec.new do |spec|
   spec.author = { "Stefano Mondino" => "stefano.mondino.dev@gmail.com" }
 
   spec.ios.deployment_target = "11.0"
-  #  spec.osx.deployment_target = "10.13"
-  #  spec.watchos.deployment_target = "4.0"
+  #spec.osx.deployment_target = "10.13"
+  #spec.watchos.deployment_target = "6.0"
   spec.tvos.deployment_target = "11.0"
 
   spec.source = { :git => "https://github.com/synesthesia-it/Boomerang.git", :tag => "#{spec.version}" }

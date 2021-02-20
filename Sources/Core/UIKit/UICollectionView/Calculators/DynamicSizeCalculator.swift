@@ -4,10 +4,16 @@
 //
 //  Created by Stefano Mondino on 10/01/21.
 //
-#if canImport(UIKit)
+#if os(iOS) || os(tvOS)
 import Foundation
 import UIKit
 
+/**
+    A size calculator using size informations from associated list view model `ElementSize` properties.
+    
+    Use this calculator when you can't determine upfront what sizes are needed for each collection view cell, by delegating the task to view model's business logic.
+    This is useful when complex lists of data are downloaded from some remote API, defining both data and layout informations. By using delegation to list view model elements, you can accomplish complex layouts with grids, automatic sizing only where needed (improving perfomances) and so on.
+ */
 open class DynamicSizeCalculator: BaseCollectionViewSizeCalculator {
 
     public init(
@@ -51,7 +57,8 @@ open class DynamicSizeCalculator: BaseCollectionViewSizeCalculator {
                                                          maximumWidth: direction == .horizontal ? nil : fixedDimension,
                                                          maximumHeight: direction == .vertical ? nil : fixedDimension)
         guard let size = elementSize.size(for: parameters) else {
-            return automaticSizeForItem(at: indexPath, in: collectionView, direction: direction, type: type)
+            let lock = LockingSize(direction: direction, value: fixedDimension)
+            return autosizeForItem(at: indexPath, type: type, lockedTo: lock)
         }
         return size
     }

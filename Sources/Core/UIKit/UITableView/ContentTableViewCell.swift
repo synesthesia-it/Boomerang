@@ -6,9 +6,14 @@
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
 
-#if canImport(UIKit)
+#if os(iOS) || os(tvOS)
 
 import UIKit
+
+public protocol TableViewCellContained {
+        
+    var tableCellAttributes: ContentTableViewCell.Attributes { get }
+}
 
 public class ContentTableHeaderFooterViewCell: UITableViewHeaderFooterView, ContentCollectionViewCellType {
 
@@ -42,8 +47,19 @@ public class ContentTableHeaderFooterViewCell: UITableViewHeaderFooterView, Cont
 
 public class ContentTableViewCell: UITableViewCell, ContentCollectionViewCellType {
 
+    public struct Attributes {
+        public let separatorInset: UIEdgeInsets
+        
+        public init(separatorInset: UIEdgeInsets) {
+            self.separatorInset = separatorInset
+        }
+    }
+    
     public func configure(with viewModel: ViewModel) {
         (self.internalView as? WithViewModel)?.configure(with: viewModel)
+        if let attributes = (internalView as? TableViewCellContained)?.tableCellAttributes {
+            self.separatorInset = attributes.separatorInset
+        }
     }
 
     public weak var internalView: UIView? {
@@ -67,7 +83,6 @@ public class ContentTableViewCell: UITableViewCell, ContentCollectionViewCellTyp
         return internalView?.didUpdateFocus(in: context, with: coordinator) ??
             super.didUpdateFocus(in: context, with: coordinator)
     }
-
 }
 
 #endif

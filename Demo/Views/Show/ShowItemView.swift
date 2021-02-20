@@ -30,3 +30,10 @@ class TestItemView: UIView, WithViewModel {
         .disposed(by: disposeBag)
     }
 }
+
+extension TestItemView: TableViewCellContained {
+    var tableCellAttributes: ContentTableViewCell.Attributes {
+        .init(separatorInset: UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 10))
+    }
+ 
+}

@@ -10,6 +10,7 @@ import Foundation
 import Boomerang
 
 protocol ItemViewModelFactory {
+    func description(text: String) -> ViewModel
     func header(title: String) -> ViewModel
     func episode(_ episode: Episode, identifier: ViewIdentifier) -> ViewModel
 }
@@ -19,6 +20,9 @@ struct DefaultItemViewModelFactory: ItemViewModelFactory {
 
     func header(title: String) -> ViewModel {
         return HeaderViewModel(title: title)
+    }
+    func description(text: String) -> ViewModel {
+        return HeaderViewModel(title: text, identifier: .clearHeader)
     }
 
     func episode(_ episode: Episode, identifier: ViewIdentifier) -> ViewModel {

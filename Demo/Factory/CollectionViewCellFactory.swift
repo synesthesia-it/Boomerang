@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import Boomerang
-import Boomerang
+
 class MainCollectionViewCellFactory: CollectionViewCellFactory {
 
     private var viewFactory: ViewFactory
