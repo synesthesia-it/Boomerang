@@ -57,9 +57,11 @@ public class ContentTableViewCell: UITableViewCell, ContentCollectionViewCellTyp
     
     public func configure(with viewModel: ViewModel) {
         (self.internalView as? WithViewModel)?.configure(with: viewModel)
+        #if os(iOS)
         if let attributes = (internalView as? TableViewCellContained)?.tableCellAttributes {
             self.separatorInset = attributes.separatorInset
         }
+        #endif
     }
 
     public weak var internalView: UIView? {
