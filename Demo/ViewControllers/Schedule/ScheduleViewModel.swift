@@ -42,7 +42,7 @@ class ScheduleViewModel: ListViewModel, NavigationViewModel {
         return true
     }
     func deleteItem(at indexPath: IndexPath) -> ViewModel? {
-        var section = self.sections[indexPath.section].removing(at: indexPath.item)
+        let section = self.sections[indexPath.section].removing(at: indexPath.item)
         sections[indexPath.section] = section
         return nil
     }
@@ -56,7 +56,9 @@ class ScheduleViewModel: ListViewModel, NavigationViewModel {
                                           items: episodes.compactMap { factory.episode($0, identifier: self?.cellIdentifier ?? .show) },
                                           header: factory.header(title: "Tonight's schedule"),
                                           footer: factory.header(title: "Thank you for watching")
-                    )]
+                ),
+                Section(id: "Boxed",
+                                         items: [BoxedViewModel()])]
             case .failure(let error):
                 print(error)
             }
