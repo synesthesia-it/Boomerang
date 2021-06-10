@@ -23,12 +23,12 @@ public struct Section {
      
      Section' s headers and footers are usually supplementary informations of the first element
      */
-    typealias KindMap = [String: ViewModel]
+    public typealias KindMap = [String: ViewModel]
     public struct Supplementary {
         public static let header = "internal_header_type"
         public static let footer = "internal_footer_type"
 
-        internal var items: [Int: KindMap] = [:]
+        public private(set) var items: [Int: KindMap] = [:]
 
         public init(items: [Int: [String: ViewModel]] = [:]) {
             self.items = items
@@ -181,6 +181,11 @@ public struct Section {
         default: return supplementary
         }
     }
+    
+    public var allSupplementaryItems: [Int: [String: ViewModel]]? {
+        supplementary.items
+    }
+    
     public func info<InfoType>(_ type: InfoType.Type = InfoType.self) -> InfoType? {
         info as? InfoType
     }
