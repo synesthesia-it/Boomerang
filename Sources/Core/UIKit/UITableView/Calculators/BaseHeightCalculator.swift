@@ -94,7 +94,7 @@ open class BaseTableViewHeightCalculator: TableViewHeightCalculator {
     public func heightForItem(at indexPath: IndexPath,
                               in tableView: UITableView,
                               type: String?) -> CGFloat {
-        guard let viewModel = self.viewModel(at: indexPath, for: type) else { return 0 }
+        guard let _ = self.viewModel(at: indexPath, for: type) else { return 0 }
         return defaultHeight
     }
 }
