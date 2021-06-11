@@ -20,9 +20,9 @@ public protocol ContentCollectionViewCellType: NSObjectProtocol, WithViewModel {
     var insetConstraints: [NSLayoutConstraint] { get set }
 }
 
-public class ContentCollectionViewCell: UICollectionViewCell, ContentCollectionViewCellType {
+open class ContentCollectionViewCell: UICollectionViewCell, ContentCollectionViewCellType {
 
-    public func configure(with viewModel: ViewModel) {
+    open func configure(with viewModel: ViewModel) {
         (self.internalView as? WithViewModel)?.configure(with: viewModel)
     }
 

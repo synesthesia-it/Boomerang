@@ -15,9 +15,9 @@ public protocol TableViewCellContained {
     var tableCellAttributes: ContentTableViewCell.Attributes { get }
 }
 
-public class ContentTableHeaderFooterViewCell: UITableViewHeaderFooterView, ContentCollectionViewCellType {
+open class ContentTableHeaderFooterViewCell: UITableViewHeaderFooterView, ContentCollectionViewCellType {
 
-    public func configure(with viewModel: ViewModel) {
+    open func configure(with viewModel: ViewModel) {
         (self.internalView as? WithViewModel)?.configure(with: viewModel)
     }
 
@@ -45,7 +45,7 @@ public class ContentTableHeaderFooterViewCell: UITableViewHeaderFooterView, Cont
 
 }
 
-public class ContentTableViewCell: UITableViewCell, ContentCollectionViewCellType {
+open class ContentTableViewCell: UITableViewCell, ContentCollectionViewCellType {
 
     public struct Attributes {
         public let separatorInset: UIEdgeInsets
@@ -55,7 +55,7 @@ public class ContentTableViewCell: UITableViewCell, ContentCollectionViewCellTyp
         }
     }
     
-    public func configure(with viewModel: ViewModel) {
+    open func configure(with viewModel: ViewModel) {
         (self.internalView as? WithViewModel)?.configure(with: viewModel)
         #if os(iOS)
         if let attributes = (internalView as? TableViewCellContained)?.tableCellAttributes {
