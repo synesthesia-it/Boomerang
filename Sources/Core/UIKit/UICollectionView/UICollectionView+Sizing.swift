@@ -42,8 +42,8 @@ public extension CollectionViewSizeCalculator {
     }
 
     func boundingBox(for collectionView: UICollectionView) -> CGSize {
-        let width = collectionView.bounds.width - collectionView.contentInset.left - collectionView.contentInset.right
-        let height = collectionView.bounds.height - collectionView.contentInset.top - collectionView.contentInset.top
+        let width = collectionView.bounds.width - collectionView.adjustedContentInset.left - collectionView.adjustedContentInset.right
+        let height = collectionView.bounds.height - collectionView.adjustedContentInset.top - collectionView.adjustedContentInset.bottom
         return CGSize(width: width,
                       height: height)
     }

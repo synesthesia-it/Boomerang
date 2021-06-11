@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -154,6 +154,9 @@
 		94D4DB2EC110BFC6722F6ED3 /* BaseSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223F58218CA5CF542A3CF94 /* BaseSizeCalculator.swift */; };
 		95D9A40313E8FFF54BAD24C7 /* UIKit+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351CD793627BC564EF7B213 /* UIKit+Constraints.swift */; };
 		974315E3D0EF39A640D54667 /* CollectionViewCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0F5A3AE74670C2D4D6DA5 /* CollectionViewCellFactory.swift */; };
+		97D19D452672A63A00A654C0 /* BoxedItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D19D442672A63A00A654C0 /* BoxedItemViewModel.swift */; };
+		97D19D472672A67100A654C0 /* BoxedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D19D462672A67100A654C0 /* BoxedItemView.swift */; };
+		97D19D492672A68100A654C0 /* BoxedItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97D19D482672A68100A654C0 /* BoxedItemView.xib */; };
 		98275C56720137C4C02E268E /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = AC79A8A7A994921908349FA3 /* Quick */; };
 		9870B1C7A8CAE39502CB313C /* SwiftUIViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149797ADF6F1BE10CF884E4B /* SwiftUIViewFactory.swift */; };
 		988FF9AFE9DAAFEEE74990FD /* RxNavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DF1A54C296BFE05204AD6C /* RxNavigationViewModel.swift */; };
@@ -452,6 +455,9 @@
 		8B68154436D388A8418FC4D8 /* RestartRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartRoute.swift; sourceTree = "<group>"; };
 		92643BE33A038279EF1D5AB6 /* Boomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9656C9B00AE3432485B375B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		97D19D442672A63A00A654C0 /* BoxedItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxedItemViewModel.swift; sourceTree = "<group>"; };
+		97D19D462672A67100A654C0 /* BoxedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxedItemView.swift; sourceTree = "<group>"; };
+		97D19D482672A68100A654C0 /* BoxedItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoxedItemView.xib; sourceTree = "<group>"; };
 		996A1CCB0B402F4359527827 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BE4433F2A0CC6DB3A1454C4 /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
 		9DD0920A29481A7D744C144F /* RxBoomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxBoomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -828,6 +834,16 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		97D19D4A2672A76500A654C0 /* Boxed */ = {
+			isa = PBXGroup;
+			children = (
+				97D19D462672A67100A654C0 /* BoxedItemView.swift */,
+				97D19D482672A68100A654C0 /* BoxedItemView.xib */,
+				97D19D442672A63A00A654C0 /* BoxedItemViewModel.swift */,
+			);
+			path = Boxed;
+			sourceTree = "<group>";
+		};
 		A9308BC9B9C1A058906DC14D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -867,6 +883,7 @@
 		C34EF7D1E2A497B76B64500D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				97D19D4A2672A76500A654C0 /* Boxed */,
 				BE875AE212679EB04DDCC2A2 /* Header */,
 				C503BA32F48C5C93FA8D83A1 /* Show */,
 			);
@@ -1250,8 +1267,6 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1230;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = F5CEC4BA31CE96650611A7E3 /* Build configuration list for PBXProject "Boomerang" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -1296,6 +1311,7 @@
 				F334F0C7D077F0BA5B7F3E59 /* Assets.xcassets in Resources */,
 				52D554F5D148B0D09C94F8DA /* ClearHeaderItemView.xib in Resources */,
 				6DA11613F8D5A14A94E56374 /* HeaderItemView.xib in Resources */,
+				97D19D492672A68100A654C0 /* BoxedItemView.xib in Resources */,
 				0798F9F69AAACBC1AD848C0D /* LaunchScreen.storyboard in Resources */,
 				F856150DD11CEA25F8D61A34 /* LoremIpsumViewController.xib in Resources */,
 				E9EA0710B8C99595F22FFB06 /* ScheduleViewController.xib in Resources */,
@@ -1381,9 +1397,11 @@
 				F73A620CFC3B3FD0A76F7E11 /* DependencyContainer.swift in Sources */,
 				5E2F2AC7D9E36B33C344B906 /* HeaderItemView.swift in Sources */,
 				B1DC557836FDB8F5190633E0 /* HeaderViewModel.swift in Sources */,
+				97D19D452672A63A00A654C0 /* BoxedItemViewModel.swift in Sources */,
 				023C3EA7180B696801F2856A /* ImageDataSource.swift in Sources */,
 				000123C10FFF178271229212 /* ItemViewModelFactory.swift in Sources */,
 				3C58FD82C072B8F3FBA91EE1 /* LoremIpsum.swift in Sources */,
+				97D19D472672A67100A654C0 /* BoxedItemView.swift in Sources */,
 				3646F203E01DCCE4191CDC0F /* LoremIpsumViewController.swift in Sources */,
 				7396553C6C243F4852C2C7FC /* LoremIpsumViewModel.swift in Sources */,
 				E2F9833D099F77D33FDD59BA /* MainViewFactory.swift in Sources */,

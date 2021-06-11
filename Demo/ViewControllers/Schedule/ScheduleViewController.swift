@@ -62,13 +62,17 @@ class ScheduleViewController: UIViewController, WithViewModel {
         let viewModel = self.viewModel
         let collectionViewDataSource = CollectionViewDataSource(viewModel: viewModel,
                                                                 factory: collectionViewCellFactory)
+        
+        collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        let sizeCalculator = DynamicSizeCalculator(viewModel: viewModel,
+                                                   factory: collectionViewCellFactory)
 
-        let sizeCalculator = AutomaticCollectionViewSizeCalculator(viewModel: viewModel,
-                                                                   factory: collectionViewCellFactory,
-                                                                   itemsPerLine: 3)
-            .withItemSpacing { _, _ in 10 }
-            .withInsets { _, _ in return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)}
-
+//        let sizeCalculator = AutomaticCollectionViewSizeCalculator(viewModel: viewModel,
+//                                                                   factory: collectionViewCellFactory,
+//                                                                   itemsPerLine: 3)
+//            .withItemSpacing { _, _ in 10 }
+//            .withInsets { _, _ in return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)}
+        
         let collectionViewDelegate = CollectionViewDelegate(sizeCalculator: sizeCalculator)
             .withSelect { viewModel.selectItem(at: $0) }
 
