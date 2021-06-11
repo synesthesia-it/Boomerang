@@ -62,7 +62,8 @@ class ScheduleViewController: UIViewController, WithViewModel {
         let viewModel = self.viewModel
         let collectionViewDataSource = CollectionViewDataSource(viewModel: viewModel,
                                                                 factory: collectionViewCellFactory)
-
+        
+        collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         let sizeCalculator = DynamicSizeCalculator(viewModel: viewModel,
                                                    factory: collectionViewCellFactory)
 

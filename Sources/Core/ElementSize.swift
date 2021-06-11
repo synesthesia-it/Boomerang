@@ -36,14 +36,17 @@ public protocol WithElementSize {
 public enum Size {
     public struct ContainerProperties {
         public init(containerBounds: CGSize,
+                    containerInsets: UIEdgeInsets = .zero, 
                     maximumWidth: CGFloat?,
                     maximumHeight: CGFloat?) {
             self.containerBounds = containerBounds
             self.maximumWidth = maximumWidth
             self.maximumHeight = maximumHeight
+            self.containerInsets = containerInsets
         }
 
         public let containerBounds: CGSize
+        public let containerInsets: UIEdgeInsets
         public let maximumWidth: CGFloat?
         public let maximumHeight: CGFloat?
     }
@@ -85,8 +88,12 @@ public extension Size {
         AspectRatio(aspectRatio: aspectRatio, itemsPerLine: itemsPerLine)
     }
 
-    static func container() -> ElementSize {
-        Configurable { $0.containerBounds }
+    static func container(useContentInsets: Bool = false) -> ElementSize {
+        Configurable { params in
+            CGRect(origin: .zero, size: params.containerBounds)
+                .inset(by: useContentInsets ? params.containerInsets : .zero)
+                .size
+        }
     }
 
     static func automatic(itemsPerLine: Int = 1) -> ElementSize {

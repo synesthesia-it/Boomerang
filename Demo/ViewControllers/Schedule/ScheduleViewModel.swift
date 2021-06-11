@@ -69,4 +69,7 @@ class ScheduleViewModel: ListViewModel, NavigationViewModel {
             onNavigation(routeFactory.detailRoute(show: viewModel.show))
         }
     }
+    func sectionProperties(at index: Int) -> Size.SectionProperties {
+        .zero
+    }
 }
