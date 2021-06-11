@@ -51,7 +51,6 @@ open class DynamicSizeCalculator: BaseCollectionViewSizeCalculator {
                                                      collectionView: collectionView,
                                                      at: indexPath,
                                                      itemsPerLine: (elementSize as? GridElementSize)?.itemsPerLine ?? 1)
-//        let bounds = boundingBox(for: collectionView)
 
         let parameters = Size.ContainerProperties(containerBounds: collectionView.bounds.size,
                                                   containerInsets: collectionView.adjustedContentInset,
