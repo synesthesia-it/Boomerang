@@ -11,7 +11,7 @@ import Boomerang
 class BoxedViewModel: ViewModel, WithElementSize {
 
     var elementSize: ElementSize {
-        Size.container(useContentInsets: false)
+        Size.container(useContentInsets: true)
     }
     
     var uniqueIdentifier: UniqueIdentifier
