@@ -32,16 +32,6 @@ extension Size {
         }
     }
 
-    struct Container: ElementSize {
-        var itemsPerLine: Int { 1 }
-
-        init() {}
-
-        func size(for parameters: ContainerProperties) -> CGSize? {
-            parameters.containerBounds
-        }
-    }
-
     struct FixedDimension: GridElementSize {
         var itemsPerLine: Int
         let width: CGFloat?

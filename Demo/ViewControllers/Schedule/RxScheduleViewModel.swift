@@ -60,7 +60,7 @@ class RxScheduleViewModel: ViewModel, RxListViewModel, RxNavigationViewModel {
     func mapEpisodes(_ episodes: [Episode]) -> [Section] {
         let count = 10
         let factory = self.itemViewModelFactory
-        return [episodes.prefix(count),
+        var sections = [episodes.prefix(count),
                 episodes.dropFirst(count)]
             .enumerated()
             .map {
@@ -70,7 +70,10 @@ class RxScheduleViewModel: ViewModel, RxListViewModel, RxNavigationViewModel {
                     footer: factory.header(title: "Thanks! \($0.offset)")
 
                 )
-        }
+            }
+        sections.append(Section(id: "Boxed",
+                                 items: [BoxedViewModel()]))
+        return sections
     }
 
     func selectItem(at indexPath: IndexPath) {

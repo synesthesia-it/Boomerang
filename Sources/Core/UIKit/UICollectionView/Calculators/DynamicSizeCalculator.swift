@@ -51,11 +51,11 @@ open class DynamicSizeCalculator: BaseCollectionViewSizeCalculator {
                                                      collectionView: collectionView,
                                                      at: indexPath,
                                                      itemsPerLine: (elementSize as? GridElementSize)?.itemsPerLine ?? 1)
-        let bounds = boundingBox(for: collectionView)
 
-        let parameters = Size.ContainerProperties(containerBounds: bounds,
-                                                         maximumWidth: direction == .horizontal ? nil : fixedDimension,
-                                                         maximumHeight: direction == .vertical ? nil : fixedDimension)
+        let parameters = Size.ContainerProperties(containerBounds: collectionView.bounds.size,
+                                                  containerInsets: collectionView.adjustedContentInset,
+                                                  maximumWidth: direction == .horizontal ? nil : fixedDimension,
+                                                  maximumHeight: direction == .vertical ? nil : fixedDimension)
         guard let size = elementSize.size(for: parameters) else {
             let lock = LockingSize(direction: direction, value: fixedDimension)
             return autosizeForItem(at: indexPath, type: type, lockedTo: lock)

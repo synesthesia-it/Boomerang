@@ -14,6 +14,7 @@ enum ViewIdentifier: String, LayoutIdentifier {
     case tableShow
     case header
     case clearHeader
+    case boxed
     var identifierString: String {
         return self.rawValue
     }
