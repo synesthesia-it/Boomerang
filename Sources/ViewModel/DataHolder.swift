@@ -126,7 +126,7 @@ extension DataHolder: MutableCollection, RandomAccessCollection {
         get {
             return modelGroup[position]
         }
-        set(newValue) {
+        set {
             var group = modelGroup
             group[position] = newValue
             _modelGroup.onNext(group)
@@ -135,7 +135,7 @@ extension DataHolder: MutableCollection, RandomAccessCollection {
     
     public typealias Element = DataGroup.Element
     public typealias Index = DataGroup.Index
-    public typealias SubSequence = DataGroup.SubSequence
+//    public typealias SubSequence = DataGroup.SubSequence
     
     public var startIndex: DataGroup.Index {
         return self.modelGroup.startIndex
