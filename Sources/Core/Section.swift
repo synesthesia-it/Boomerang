@@ -133,7 +133,7 @@ public struct Section {
     }
 
     public mutating func insert(_ item: ViewModel, at index: Int) {
-        self.items.insert(item, at: index)
+        self.items.insert(item, at: max(0, min(items.count, index)))
     }
 
     public func inserting(_ item: ViewModel, at index: Int) -> Section {

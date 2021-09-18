@@ -18,7 +18,7 @@
 		0676038545BB09B1C98FC9A5 /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37872AE91AF06A5F7158916 /* TableViewDelegate.swift */; };
 		0798F9F69AAACBC1AD848C0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A6A2A25D57741DA9C3B0854 /* LaunchScreen.storyboard */; };
 		079BD95097887603CF84E893 /* TableScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4129887A77151E797C6EB7 /* TableScheduleViewController.swift */; };
-		0804A619A7C0F8790169767C /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 1B95C5208A85EA2D9F6BEC2B /* Nimble */; };
+		07F58BC0CD7159363F643DED /* SectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B799DA78CEDA73D78BADEBAF /* SectionTests.swift */; };
 		085F4F464FD7234679D61F22 /* BaseHeightCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28BB7E1249A5823D04BF54E /* BaseHeightCalculator.swift */; };
 		096AD37E78FD93406E198EA5 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BCE8C4D70950E6329666A2 /* DependencyContainer.swift */; };
 		0A1635E8FB7BCC4024BFB599 /* SwiftUIViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149797ADF6F1BE10CF884E4B /* SwiftUIViewFactory.swift */; };
@@ -31,7 +31,9 @@
 		121398DE5C83052BDCF4DBF8 /* ContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E50BB2CE1C49519E8E04 /* ContentCollectionViewCell.swift */; };
 		1359DC6FBE2A06ABE4F919F9 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EA69255C56701C448B87A6 /* Scene.swift */; };
 		139794ECA95A9DC01D690D5D /* RxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4150D11940F35496F3324F5 /* RxViewModel.swift */; };
+		13E723E28F3C9DC35F969DF7 /* RxBoomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3618BA7B7AB2E542E2702140 /* RxBoomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		16269E940EE38558686BC0F3 /* RestartRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B68154436D388A8418FC4D8 /* RestartRoute.swift */; };
+		166A1F94FD9122ABEC778B63 /* RxStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609E76581C53B017767ABF1B /* RxStateMachine.swift */; };
 		177C4264E0FBB8F0CFBEF0E3 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = 104558DF340F4665C8285C6F /* Differentiator */; };
 		18116CCE58EB82FFAAA14C32 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 72F617F8DDA04B380EC18601 /* RxCocoa */; };
 		1BAC7A94373DD484CF80FFAC /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = 72EC548FA5B82E4592071118 /* Differentiator */; };
@@ -55,9 +57,9 @@
 		2D2B64D879036414EE45CA4C /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A48271F22B7A1574D1D6B2 /* Boomerang.framework */; };
 		2D34189B2B37C4C1BCE4306B /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A4A8A13D3567635FC85525 /* ContentTableViewCell.swift */; };
 		30112B635E05420A770E5610 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40190E8950211B3268CFB7FF /* List.swift */; };
-		31D6795217FA3479375F2EBE /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = CD27C29D6503CDC138721B5D /* Nimble */; };
-		31FBEFD8FF54FC039878E23B /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 1B9F12BEA0FF4FA40378EF90 /* Nimble */; };
+		30A63679D7968116ED40F0D9 /* RxStateMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586630BC4D65C3CA0A0B4080 /* RxStateMachineTests.swift */; };
 		3354B065DEA1860F5EB39612 /* RxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4150D11940F35496F3324F5 /* RxViewModel.swift */; };
+		33D18FAC94BC3D9D7622B073 /* RxBoomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD0920A29481A7D744C144F /* RxBoomerang.framework */; };
 		3540F51D8A5CD9B5893F1F0B /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40190E8950211B3268CFB7FF /* List.swift */; };
 		35821BD878A69E9D87BE1A4E /* ElementSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F2F39DAD6499158CDD2E95 /* ElementSize.swift */; };
 		3646F203E01DCCE4191CDC0F /* LoremIpsumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4372B74A570A152755E60A /* LoremIpsumViewController.swift */; };
@@ -73,6 +75,7 @@
 		3C58FD82C072B8F3FBA91EE1 /* LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2005107C0C1B1A4DE9C4BA /* LoremIpsum.swift */; };
 		3CDB995756403E9D0B3771B0 /* UITableView+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE492603639407F2C3B1A77 /* UITableView+Sizing.swift */; };
 		3FF5D411550234086EB18EDA /* RxBoomerang.h in Headers */ = {isa = PBXBuildFile; fileRef = FC15806E35813FD3158796F8 /* RxBoomerang.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		420A20647574D4B01D91A429 /* RxBoomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 268F8FC242FA5CAC20C04A66 /* RxBoomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		42E58731EC1CC35EC4ACF13D /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 2E5D3A20978D777D2C5532AF /* RxRelay */; };
 		470792427583388656D1B179 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1FB6F98EBCB4315E8E85E /* ListViewModel.swift */; };
 		47987AE3E9BBA2B7557E17D0 /* TableScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2BA9F245830BE696CFC8796 /* TableScheduleViewController.xib */; };
@@ -87,6 +90,7 @@
 		52D554F5D148B0D09C94F8DA /* ClearHeaderItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8919CAEE7BD771076251D94F /* ClearHeaderItemView.xib */; };
 		5311AF03D99D9C1B0FDE3379 /* TableViewCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F4D99C8C66F98703467D03 /* TableViewCellFactory.swift */; };
 		53DEBA077613DD2B78B61CF9 /* RxListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E7967AA2EBD70AA0BDCEA /* RxListViewModel.swift */; };
+		54F7292F736B7CA5186EA0E3 /* RxStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609E76581C53B017767ABF1B /* RxStateMachine.swift */; };
 		581DA76A2C490BEF4B1EA51D /* SwiftUIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAA7AB205705F0B3215573D /* SwiftUIViewModel.swift */; };
 		591065CE08FFE892651D6E65 /* ElementSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F2F39DAD6499158CDD2E95 /* ElementSize.swift */; };
 		5A0E3222BF478DDBA60B9C8B /* BaseSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223F58218CA5CF542A3CF94 /* BaseSizeCalculator.swift */; };
@@ -94,6 +98,7 @@
 		5E2F2AC7D9E36B33C344B906 /* HeaderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EDF64BF5E53B2896DAFE9 /* HeaderItemView.swift */; };
 		61255513CAEC0D442E9111BD /* ContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E50BB2CE1C49519E8E04 /* ContentCollectionViewCell.swift */; };
 		6153C13161545E89641DE436 /* DynamicHeightCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511BB78D90FADAA63E803BEE /* DynamicHeightCalculator.swift */; };
+		6169A6E067FD42A76B504B25 /* RxBoomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3618BA7B7AB2E542E2702140 /* RxBoomerang.framework */; };
 		63332A24C74A7B14D24AA793 /* BoxedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6E8DD4381554753D9FE695 /* BoxedItemView.swift */; };
 		6472456DDED8D06F55E6C4C8 /* DynamicHeightCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511BB78D90FADAA63E803BEE /* DynamicHeightCalculator.swift */; };
 		649FF5A80AC15B532B4F4C15 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11380C0899C06C4697FE1146 /* TableViewDataSource.swift */; };
@@ -118,10 +123,12 @@
 		6D8C40C44655035A8E027780 /* AutomaticSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8D93F07667CBD0F038A268 /* AutomaticSizeCalculator.swift */; };
 		6DA11613F8D5A14A94E56374 /* HeaderItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C757EE9F0106A74FE2739466 /* HeaderItemView.xib */; };
 		6DD23EBACCE2A4A0EB9074C3 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 818E1A7498825DF79D530DA4 /* RxSwift */; };
+		6F2148F548918E820F516CCC /* RxStateMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586630BC4D65C3CA0A0B4080 /* RxStateMachineTests.swift */; };
 		6F9C8BA19EC064D90B521A9F /* UICollectionView+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65949C31C79205FA424731 /* UICollectionView+Sizing.swift */; };
 		6FB57649642E7453610A0643 /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1741F919FCDE64DA89A05D2 /* NavigationViewModel.swift */; };
 		6FCC44E40FD43D47B012DAE9 /* CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6D56B1D349246C19962395 /* CollectionViewDelegate.swift */; };
-		7127EE288DE27F7479639361 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = CEDF400416B325D211B6A425 /* Quick */; };
+		70F27AB61A08199965D34985 /* RxBoomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD0920A29481A7D744C144F /* RxBoomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71487C9F3739CCF43E7DDFF6 /* RxStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609E76581C53B017767ABF1B /* RxStateMachine.swift */; };
 		715546D8DEED4A857E20203C /* StackView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DF9303442B8EAC8697C441 /* StackView+Rx.swift */; };
 		7161BF8F1373952F215EBA92 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A3C34FD84F08EB61ACC7F726 /* RxSwift */; };
 		718A37D7B06002A67965FE56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727B53E7E541037002B4ADB8 /* AppDelegate.swift */; };
@@ -130,20 +137,23 @@
 		72D443F52A9C382F09195463 /* RxBoomerang.h in Headers */ = {isa = PBXBuildFile; fileRef = FC15806E35813FD3158796F8 /* RxBoomerang.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7396553C6C243F4852C2C7FC /* LoremIpsumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CA6D93A3DA89F3F67E0747 /* LoremIpsumViewModel.swift */; };
 		7430150D4F666CEE48F5E435 /* CollectionViewCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D33A63780EAF63B7556614A /* CollectionViewCellFactory.swift */; };
+		75ADACBE03D4AEA87A09470E /* RxStateMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586630BC4D65C3CA0A0B4080 /* RxStateMachineTests.swift */; };
 		75B03D145DFE54BC072F030A /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E11A58A91B8FE638A87B95 /* CollectionViewDataSource.swift */; };
 		76AEBA5A87A7B90F424C7EBF /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11380C0899C06C4697FE1146 /* TableViewDataSource.swift */; };
-		786AF9AE5122EB94A22BD288 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 3AC554C4BA4826954FCE6589 /* Quick */; };
 		7A379CD5F1E998E6AA8A93F5 /* UITableView+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE492603639407F2C3B1A77 /* UITableView+Sizing.swift */; };
 		7A46859ACF87C147DEC30A2F /* RxNavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DF1A54C296BFE05204AD6C /* RxNavigationViewModel.swift */; };
 		7C4E0528737B34B615A9FA4D /* CollectionView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE26E568D64C67638BFC6B9 /* CollectionView+Rx.swift */; };
+		7D140AD0C270EA9D1101BA55 /* SectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B799DA78CEDA73D78BADEBAF /* SectionTests.swift */; };
 		7DFFBD1FDD781D5E5654D35A /* Boomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC0ED5B40F61B232B3161D5A /* Boomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7FAFCAB55D7CDCFA00DACCAB /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ABE05DB0CEF79077161BF7 /* Route.swift */; };
 		7FC432EB567DEFBC88490D96 /* RouteFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7703A44648009D751F10EA0A /* RouteFactory.swift */; };
 		819E22F89050D02ED772D690 /* UICollectionView+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65949C31C79205FA424731 /* UICollectionView+Sizing.swift */; };
+		820816B6EB495259D50D116A /* RxBoomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 268F8FC242FA5CAC20C04A66 /* RxBoomerang.framework */; };
 		82FE988FA2E571CA8A7AA903 /* UIKit+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351CD793627BC564EF7B213 /* UIKit+Constraints.swift */; };
 		84208616B24F5DBD652B0FE3 /* Boomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E7A48271F22B7A1574D1D6B2 /* Boomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		867A6C4E68EF592840E61DE6 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4AE6526B03BA0FF2F36E73EF /* RxRelay */; };
 		875FE3132262A2D09D1D97EE /* AutomaticHeightCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E129B944E81478FB30C5A4A3 /* AutomaticHeightCalculator.swift */; };
+		89197FED1A8C3E8409A89079 /* SectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B799DA78CEDA73D78BADEBAF /* SectionTests.swift */; };
 		8AB6CD573F1120AD88C20B1F /* UIStackView+Boomerang.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A9EB662DC01D236422E6A1 /* UIStackView+Boomerang.swift */; };
 		8DC9F7AB2CDE9076C52C753F /* RESTDataSource+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FEA51B2321338C8BE4BB47 /* RESTDataSource+Rx.swift */; };
 		8DE263789A6928FCB717EA5D /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0562301AAA4C657C300C5F /* Boomerang.framework */; };
@@ -154,8 +164,8 @@
 		93C69477F1D8C7528A22E45A /* Boomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 92643BE33A038279EF1D5AB6 /* Boomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		94D4DB2EC110BFC6722F6ED3 /* BaseSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223F58218CA5CF542A3CF94 /* BaseSizeCalculator.swift */; };
 		95D9A40313E8FFF54BAD24C7 /* UIKit+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351CD793627BC564EF7B213 /* UIKit+Constraints.swift */; };
+		964E04B98D791673AAA293E4 /* SectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B799DA78CEDA73D78BADEBAF /* SectionTests.swift */; };
 		974315E3D0EF39A640D54667 /* CollectionViewCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0F5A3AE74670C2D4D6DA5 /* CollectionViewCellFactory.swift */; };
-		98275C56720137C4C02E268E /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = AC79A8A7A994921908349FA3 /* Quick */; };
 		9870B1C7A8CAE39502CB313C /* SwiftUIViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149797ADF6F1BE10CF884E4B /* SwiftUIViewFactory.swift */; };
 		988FF9AFE9DAAFEEE74990FD /* RxNavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DF1A54C296BFE05204AD6C /* RxNavigationViewModel.swift */; };
 		9A0156309FC7FF405EAC022C /* AutomaticHeightCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E129B944E81478FB30C5A4A3 /* AutomaticHeightCalculator.swift */; };
@@ -195,9 +205,11 @@
 		B38FE50B00C47D7B0A4442C4 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4867CFE6B06AD45E8A3E3F /* Section.swift */; };
 		B3E3C58684BE24381DA7C1FF /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E11A58A91B8FE638A87B95 /* CollectionViewDataSource.swift */; };
 		B3E9F473237D756881A56EA7 /* PropertyAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC06FB287A094036DD20E7 /* PropertyAssignment.swift */; };
+		B40F84402680256EA0DABE31 /* RxBoomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50228032FD96DC0C0D3DDA6D /* RxBoomerang.framework */; };
 		B46F87CE67BE2870EC167608 /* CollectionView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE26E568D64C67638BFC6B9 /* CollectionView+Rx.swift */; };
 		B7574E08139B7D11A36F9190 /* RxBoomerang.h in Headers */ = {isa = PBXBuildFile; fileRef = FC15806E35813FD3158796F8 /* RxBoomerang.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B87DE3ED978CC0D42303DDDB /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 61D350F2C2B6B01868BFC69F /* Quick */; };
+		B7AECE74809C8D8461BB8EE0 /* RxStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609E76581C53B017767ABF1B /* RxStateMachine.swift */; };
+		BA2DBAD0002ABF5AFD630143 /* RxBoomerang.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 50228032FD96DC0C0D3DDA6D /* RxBoomerang.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BA8CA26CE1BC939CABB4EEE4 /* AutomaticSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8D93F07667CBD0F038A268 /* AutomaticSizeCalculator.swift */; };
 		BAA83AA01BC2EA18E6F3AAD8 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4867CFE6B06AD45E8A3E3F /* Section.swift */; };
 		BBB42D625AB3E7AEABF26254 /* CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6D56B1D349246C19962395 /* CollectionViewDelegate.swift */; };
@@ -246,6 +258,7 @@
 		EBAB3026BC823DC510BBC0CD /* ListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E88E1F1B4E958D776F6983F /* ListViewModelTests.swift */; };
 		ED6B07054C992528DC4CA639 /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27487468DBE283AC4D244750 /* ShowDetailViewController.swift */; };
 		EDD0BF26A6F0CB2E5C70FB43 /* BoxedItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4B09A974679002C299E725 /* BoxedItemViewModel.swift */; };
+		F014AECCB25800867A75ACD7 /* RxStateMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586630BC4D65C3CA0A0B4080 /* RxStateMachineTests.swift */; };
 		F01A9DF54FD93DA3B8256F35 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1FB6F98EBCB4315E8E85E /* ListViewModel.swift */; };
 		F1B1C720D6B46C6F82C5561D /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BCE8C4D70950E6329666A2 /* DependencyContainer.swift */; };
 		F2C72386BB12BD3CBF1F25AB /* RESTDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC66BD6CBD0341B07587B9E /* RESTDataSource.swift */; };
@@ -260,11 +273,17 @@
 		FC50702D43D0E7D8378D5311 /* Boomerang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92643BE33A038279EF1D5AB6 /* Boomerang.framework */; };
 		FD8A954F90451FEF16A7E694 /* UIKit+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351CD793627BC564EF7B213 /* UIKit+Constraints.swift */; };
 		FD909032444F8C001E655A93 /* ElementSize.Implementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D619776BFC8900AAF169ACF /* ElementSize.Implementations.swift */; };
-		FDCE8E04DA0F472CA11BF0B9 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 08C9CAB430CCB1F8E8671F21 /* Nimble */; };
 		FF56B33386D7B3A5CCEE3F07 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C386F43CFE12B102C2C4A6 /* ViewControllerFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0C8730B022F2740A9C42C83F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F82BF397D808EA7108D5355 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 332533DFBC9C1651715A19BF;
+			remoteInfo = RxBoomerang_tvOS;
+		};
 		26058028EB2A24EE50B3ED63 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3F82BF397D808EA7108D5355 /* Project object */;
@@ -286,6 +305,13 @@
 			remoteGlobalIDString = 90AD01C5E2A637EE593F6D07;
 			remoteInfo = Boomerang_iOS;
 		};
+		4350B9D8111A68A1440BD746 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F82BF397D808EA7108D5355 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD0E8B7AB82728375CC67550;
+			remoteInfo = RxBoomerang_macOS;
+		};
 		4C6514F5B4E60E7B4CCD471C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3F82BF397D808EA7108D5355 /* Project object */;
@@ -306,6 +332,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 90AD01C5E2A637EE593F6D07;
 			remoteInfo = Boomerang_iOS;
+		};
+		6BAAA6132B170CD3C104B41E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F82BF397D808EA7108D5355 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3FE2E5968ACD5E604313C106;
+			remoteInfo = RxBoomerang_watchOS;
+		};
+		82B3079B321B1B137B1AD3AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F82BF397D808EA7108D5355 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD8502F85169B2CEA8AEDC0C;
+			remoteInfo = RxBoomerang_iOS;
 		};
 		9E8F166BA7681BB5C810BDE0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -372,6 +412,39 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		65B5A6D243774092E28195AF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				70F27AB61A08199965D34985 /* RxBoomerang.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		797760EF5F66FE9400F51ABB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				420A20647574D4B01D91A429 /* RxBoomerang.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C73FEBDD02D97220E27567A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				13E723E28F3C9DC35F969DF7 /* RxBoomerang.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		939C48B15FD9C696E4ED8240 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -394,9 +467,21 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F54A2D09D981BBFEFFF47B2A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BA2DBAD0002ABF5AFD630143 /* RxBoomerang.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		01407FE3922EB813BFC0180E /* RxBoomerangTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxBoomerangTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		022969E75C348D016C78F1DF /* Demo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0544D7FF98BF854629184BB2 /* ScheduleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleViewController.xib; sourceTree = "<group>"; };
 		0E88E1F1B4E958D776F6983F /* ListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelTests.swift; sourceTree = "<group>"; };
@@ -411,11 +496,13 @@
 		1DC2D33D362FFBC9E12A6ADA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1EAA7AB205705F0B3215573D /* SwiftUIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewModel.swift; sourceTree = "<group>"; };
 		20AC06FB287A094036DD20E7 /* PropertyAssignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyAssignment.swift; sourceTree = "<group>"; };
+		224F59F2A1413963FBB1E776 /* RxBoomerangTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = RxBoomerangTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		268F8FC242FA5CAC20C04A66 /* RxBoomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxBoomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27487468DBE283AC4D244750 /* ShowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewController.swift; sourceTree = "<group>"; };
 		2EC66BD6CBD0341B07587B9E /* RESTDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTDataSource.swift; sourceTree = "<group>"; };
 		31DF1A54C296BFE05204AD6C /* RxNavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxNavigationViewModel.swift; sourceTree = "<group>"; };
 		337D103EF177D2788FC5CCF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		33B91FCFF5438A6A0D4A19B7 /* RxBoomerangTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = RxBoomerangTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3618BA7B7AB2E542E2702140 /* RxBoomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxBoomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		37D3E50BB2CE1C49519E8E04 /* ContentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewCell.swift; sourceTree = "<group>"; };
 		3BCB852CEA7EAFB10D71FB03 /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
@@ -428,9 +515,11 @@
 		50F4D99C8C66F98703467D03 /* TableViewCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellFactory.swift; sourceTree = "<group>"; };
 		511BB78D90FADAA63E803BEE /* DynamicHeightCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCalculator.swift; sourceTree = "<group>"; };
 		57F2F39DAD6499158CDD2E95 /* ElementSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementSize.swift; sourceTree = "<group>"; };
+		586630BC4D65C3CA0A0B4080 /* RxStateMachineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxStateMachineTests.swift; sourceTree = "<group>"; };
 		5AF82ED52EBA77AD16E43E73 /* TableView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Rx.swift"; sourceTree = "<group>"; };
 		5D33A63780EAF63B7556614A /* CollectionViewCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellFactory.swift; sourceTree = "<group>"; };
 		5D619776BFC8900AAF169ACF /* ElementSize.Implementations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementSize.Implementations.swift; sourceTree = "<group>"; };
+		609E76581C53B017767ABF1B /* RxStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxStateMachine.swift; sourceTree = "<group>"; };
 		61785E19194D9DAF54961944 /* RxScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxScheduleViewModel.swift; sourceTree = "<group>"; };
 		620A006884D99274440FF30F /* DynamicSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSizeCalculator.swift; sourceTree = "<group>"; };
 		632CC273E9EB351FAC0C232E /* BoomerangTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BoomerangTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -470,6 +559,7 @@
 		AF92EF16BF133E1C17C79DDC /* ShowDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowDetailViewController.xib; sourceTree = "<group>"; };
 		B2BA9F245830BE696CFC8796 /* TableScheduleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableScheduleViewController.xib; sourceTree = "<group>"; };
 		B3C8FCD03AE1CB57FFD999CC /* ShowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowItemView.swift; sourceTree = "<group>"; };
+		B799DA78CEDA73D78BADEBAF /* SectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTests.swift; sourceTree = "<group>"; };
 		B8A4A8A13D3567635FC85525 /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
 		BB4B09A974679002C299E725 /* BoxedItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxedItemViewModel.swift; sourceTree = "<group>"; };
 		BC0ED5B40F61B232B3161D5A /* Boomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -486,9 +576,11 @@
 		E2F3DBE441089909D5109FFD /* AlertRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRoute.swift; sourceTree = "<group>"; };
 		E3370DF8FE5FD6110CF2FAF3 /* ImageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataSource.swift; sourceTree = "<group>"; };
 		E351CD793627BC564EF7B213 /* UIKit+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Constraints.swift"; sourceTree = "<group>"; };
+		E5F7FB7A9E3F8D57CCEEB0E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E7A48271F22B7A1574D1D6B2 /* Boomerang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boomerang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAE78809F64AFF01E94BC224 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EB65949C31C79205FA424731 /* UICollectionView+Sizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Sizing.swift"; sourceTree = "<group>"; };
+		EBBF75715AD17C35B072E8A0 /* RxBoomerangTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxBoomerangTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFFA2AE7B3DC08A8C9238F81 /* TableShowItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableShowItemView.xib; sourceTree = "<group>"; };
 		F0FEA51B2321338C8BE4BB47 /* RESTDataSource+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RESTDataSource+Rx.swift"; sourceTree = "<group>"; };
 		F1741F919FCDE64DA89A05D2 /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
@@ -507,8 +599,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E64ED39CD2DC2AF0BE6810FA /* Boomerang.framework in Frameworks */,
-				7127EE288DE27F7479639361 /* Quick in Frameworks */,
-				FDCE8E04DA0F472CA11BF0B9 /* Nimble in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,8 +620,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A43E84446B29CDFDA674A521 /* Boomerang.framework in Frameworks */,
-				B87DE3ED978CC0D42303DDDB /* Quick in Frameworks */,
-				31D6795217FA3479375F2EBE /* Nimble in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		21E1CC3AEB58A99D2287C32E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6169A6E067FD42A76B504B25 /* RxBoomerang.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,13 +644,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		34B086A85D7B8CD56E70FAFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				820816B6EB495259D50D116A /* RxBoomerang.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		37BBF7FE2C7E9173CD02DAEE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8DE263789A6928FCB717EA5D /* Boomerang.framework in Frameworks */,
-				786AF9AE5122EB94A22BD288 /* Quick in Frameworks */,
-				0804A619A7C0F8790169767C /* Nimble in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,8 +678,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D56933B17557EDED279D2C8B /* Boomerang.framework in Frameworks */,
-				98275C56720137C4C02E268E /* Quick in Frameworks */,
-				31FBEFD8FF54FC039878E23B /* Nimble in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,6 +703,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F234864F3EBE4587656F0FF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33D18FAC94BC3D9D7622B073 /* RxBoomerang.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9D36BBB593CC6DBB236188D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B40F84402680256EA0DABE31 /* RxBoomerang.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -621,8 +737,18 @@
 			children = (
 				337D103EF177D2788FC5CCF7 /* Info.plist */,
 				0E88E1F1B4E958D776F6983F /* ListViewModelTests.swift */,
+				B799DA78CEDA73D78BADEBAF /* SectionTests.swift */,
 			);
 			path = BoomerangTests;
+			sourceTree = "<group>";
+		};
+		2B0279CB95AB403027818179 /* RxBoomerangTests */ = {
+			isa = PBXGroup;
+			children = (
+				E5F7FB7A9E3F8D57CCEEB0E7 /* Info.plist */,
+				586630BC4D65C3CA0A0B4080 /* RxStateMachineTests.swift */,
+			);
+			path = RxBoomerangTests;
 			sourceTree = "<group>";
 		};
 		2ECCF54B5DF50D5CC0C5BC41 /* DataSource */ = {
@@ -739,6 +865,7 @@
 			children = (
 				285DF36B0C69B01588EC5D0B /* BoomerangTests */,
 				F70C329946EBC6F49B1CEC0D /* Demo */,
+				2B0279CB95AB403027818179 /* RxBoomerangTests */,
 				A9308BC9B9C1A058906DC14D /* Sources */,
 				556EFCA37CA36D1E6F8708DF /* Products */,
 			);
@@ -760,6 +887,10 @@
 				50228032FD96DC0C0D3DDA6D /* RxBoomerang.framework */,
 				9DD0920A29481A7D744C144F /* RxBoomerang.framework */,
 				3618BA7B7AB2E542E2702140 /* RxBoomerang.framework */,
+				224F59F2A1413963FBB1E776 /* RxBoomerangTests.xctest */,
+				EBBF75715AD17C35B072E8A0 /* RxBoomerangTests.xctest */,
+				33B91FCFF5438A6A0D4A19B7 /* RxBoomerangTests.xctest */,
+				01407FE3922EB813BFC0180E /* RxBoomerangTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -861,6 +992,7 @@
 				FC15806E35813FD3158796F8 /* RxBoomerang.h */,
 				8A4E7967AA2EBD70AA0BDCEA /* RxListViewModel.swift */,
 				31DF1A54C296BFE05204AD6C /* RxNavigationViewModel.swift */,
+				609E76581C53B017767ABF1B /* RxStateMachine.swift */,
 				A4150D11940F35496F3324F5 /* RxViewModel.swift */,
 				F7DF9303442B8EAC8697C441 /* StackView+Rx.swift */,
 				5AF82ED52EBA77AD16E43E73 /* TableView+Rx.swift */,
@@ -992,6 +1124,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		01B134C87BC60117B7E0F3D7 /* RxBoomerangTests_tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43DEC679119A9674E6854325 /* Build configuration list for PBXNativeTarget "RxBoomerangTests_tvOS" */;
+			buildPhases = (
+				AEA9AE9224F103F238F27570 /* Sources */,
+				F234864F3EBE4587656F0FF9 /* Frameworks */,
+				65B5A6D243774092E28195AF /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DBDBD2381854E00779601B28 /* PBXTargetDependency */,
+			);
+			name = RxBoomerangTests_tvOS;
+			productName = RxBoomerangTests_tvOS;
+			productReference = 33B91FCFF5438A6A0D4A19B7 /* RxBoomerangTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		0626E2732B9493EA7FF79811 /* BoomerangTests_macOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0B33768FD8B05DFE21D2204 /* Build configuration list for PBXNativeTarget "BoomerangTests_macOS" */;
@@ -1006,12 +1156,26 @@
 				0EF43D2138C469FB7006F241 /* PBXTargetDependency */,
 			);
 			name = BoomerangTests_macOS;
-			packageProductDependencies = (
-				AC79A8A7A994921908349FA3 /* Quick */,
-				1B9F12BEA0FF4FA40378EF90 /* Nimble */,
-			);
 			productName = BoomerangTests_macOS;
 			productReference = F4C7968F753AB18464B479D0 /* BoomerangTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2B3E3841C0A0EE5F4937EE14 /* RxBoomerangTests_watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 568ECB48E394059DD48532A0 /* Build configuration list for PBXNativeTarget "RxBoomerangTests_watchOS" */;
+			buildPhases = (
+				ECF1A3D72E2FD30A25BAFBDF /* Sources */,
+				21E1CC3AEB58A99D2287C32E /* Frameworks */,
+				8C73FEBDD02D97220E27567A /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CDD8A226C61CFE83E1DC3FC8 /* PBXTargetDependency */,
+			);
+			name = RxBoomerangTests_watchOS;
+			productName = RxBoomerangTests_watchOS;
+			productReference = 01407FE3922EB813BFC0180E /* RxBoomerangTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		332533DFBC9C1651715A19BF /* RxBoomerang_tvOS */ = {
@@ -1079,6 +1243,24 @@
 			productReference = BC0ED5B40F61B232B3161D5A /* Boomerang.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		81277DEE3DF61A612490320F /* RxBoomerangTests_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4BF2738BF84FCCC0327C0599 /* Build configuration list for PBXNativeTarget "RxBoomerangTests_iOS" */;
+			buildPhases = (
+				F58673C61C07149051169639 /* Sources */,
+				34B086A85D7B8CD56E70FAFF /* Frameworks */,
+				797760EF5F66FE9400F51ABB /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7ABE38A1DFFD95373292A7D7 /* PBXTargetDependency */,
+			);
+			name = RxBoomerangTests_iOS;
+			productName = RxBoomerangTests_iOS;
+			productReference = 224F59F2A1413963FBB1E776 /* RxBoomerangTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		839FFBBF4006F47C06C7A92A /* Demo_iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D26ECE6702795E76AC60F8A /* Build configuration list for PBXNativeTarget "Demo_iOS" */;
@@ -1113,10 +1295,6 @@
 				74C07206177063FB41C2E217 /* PBXTargetDependency */,
 			);
 			name = BoomerangTests_iOS;
-			packageProductDependencies = (
-				61D350F2C2B6B01868BFC69F /* Quick */,
-				CD27C29D6503CDC138721B5D /* Nimble */,
-			);
 			productName = BoomerangTests_iOS;
 			productReference = 632CC273E9EB351FAC0C232E /* BoomerangTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -1135,6 +1313,24 @@
 			productName = Boomerang_iOS;
 			productReference = E7A48271F22B7A1574D1D6B2 /* Boomerang.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		A4EA2994833B4F6198B1875B /* RxBoomerangTests_macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AF708956C56834FA4A4D8CE /* Build configuration list for PBXNativeTarget "RxBoomerangTests_macOS" */;
+			buildPhases = (
+				44301ED5ABB3CC5FE19EE031 /* Sources */,
+				F9D36BBB593CC6DBB236188D /* Frameworks */,
+				F54A2D09D981BBFEFFF47B2A /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				89BC4348303A793AFA748161 /* PBXTargetDependency */,
+			);
+			name = RxBoomerangTests_macOS;
+			productName = RxBoomerangTests_macOS;
+			productReference = EBBF75715AD17C35B072E8A0 /* RxBoomerangTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		BFFEA8F9CF56FA9FFD33A023 /* Boomerang_tvOS */ = {
 			isa = PBXNativeTarget;
@@ -1230,10 +1426,6 @@
 				29E5962A297C56494A902280 /* PBXTargetDependency */,
 			);
 			name = BoomerangTests_tvOS;
-			packageProductDependencies = (
-				CEDF400416B325D211B6A425 /* Quick */,
-				08C9CAB430CCB1F8E8671F21 /* Nimble */,
-			);
 			productName = BoomerangTests_tvOS;
 			productReference = 750FEFF8EC0E35E211E3B319 /* BoomerangTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -1252,10 +1444,6 @@
 				51272C1C4AD54129B54EA74D /* PBXTargetDependency */,
 			);
 			name = BoomerangTests_watchOS;
-			packageProductDependencies = (
-				3AC554C4BA4826954FCE6589 /* Quick */,
-				1B95C5208A85EA2D9F6BEC2B /* Nimble */,
-			);
 			productName = BoomerangTests_watchOS;
 			productReference = DFB04BCC1CF95E3BA67E26D2 /* BoomerangTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -1280,8 +1468,6 @@
 			);
 			mainGroup = 541A14D8F3C3831477DA749A;
 			packageReferences = (
-				AA395BE710837E3969ED25EA /* XCRemoteSwiftPackageReference "Nimble" */,
-				793A66AD3D895ADC7CC0EFDA /* XCRemoteSwiftPackageReference "Quick" */,
 				1B68B55FDFFA150C9D02849E /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				F8B56319A3A0673B75E0338B /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
@@ -1297,6 +1483,10 @@
 				BFFEA8F9CF56FA9FFD33A023 /* Boomerang_tvOS */,
 				D827DF9F5738F02543F68A7D /* Boomerang_watchOS */,
 				839FFBBF4006F47C06C7A92A /* Demo_iOS */,
+				81277DEE3DF61A612490320F /* RxBoomerangTests_iOS */,
+				A4EA2994833B4F6198B1875B /* RxBoomerangTests_macOS */,
+				01B134C87BC60117B7E0F3D7 /* RxBoomerangTests_tvOS */,
+				2B3E3841C0A0EE5F4937EE14 /* RxBoomerangTests_watchOS */,
 				CD8502F85169B2CEA8AEDC0C /* RxBoomerang_iOS */,
 				CD0E8B7AB82728375CC67550 /* RxBoomerang_macOS */,
 				332533DFBC9C1651715A19BF /* RxBoomerang_tvOS */,
@@ -1332,6 +1522,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26770F55D2EA71194CD67D85 /* ListViewModelTests.swift in Sources */,
+				964E04B98D791673AAA293E4 /* SectionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1382,6 +1573,7 @@
 				B46F87CE67BE2870EC167608 /* CollectionView+Rx.swift in Sources */,
 				4E6109A3AFCBF80E4F211862 /* RxListViewModel.swift in Sources */,
 				7A46859ACF87C147DEC30A2F /* RxNavigationViewModel.swift in Sources */,
+				166A1F94FD9122ABEC778B63 /* RxStateMachine.swift in Sources */,
 				A7082BF04EABCD3CD5EAB746 /* RxViewModel.swift in Sources */,
 				715546D8DEED4A857E20203C /* StackView+Rx.swift in Sources */,
 				D974721BD7B276431EAEDDBC /* TableView+Rx.swift in Sources */,
@@ -1433,6 +1625,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				025500123618478E28C109EA /* ListViewModelTests.swift in Sources */,
+				07F58BC0CD7159363F643DED /* SectionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44301ED5ABB3CC5FE19EE031 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75ADACBE03D4AEA87A09470E /* RxStateMachineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1523,6 +1724,7 @@
 				9D4E895885E218DD1D4C5CCD /* CollectionView+Rx.swift in Sources */,
 				A9A2246E17582A698C101E91 /* RxListViewModel.swift in Sources */,
 				988FF9AFE9DAAFEEE74990FD /* RxNavigationViewModel.swift in Sources */,
+				B7AECE74809C8D8461BB8EE0 /* RxStateMachine.swift in Sources */,
 				3354B065DEA1860F5EB39612 /* RxViewModel.swift in Sources */,
 				A4B3FDFE0C2DB131825980E3 /* StackView+Rx.swift in Sources */,
 				AD3F41075BEF4A6D42D4EE2C /* TableView+Rx.swift in Sources */,
@@ -1570,6 +1772,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AEA9AE9224F103F238F27570 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F2148F548918E820F516CCC /* RxStateMachineTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B57C8C3EE810225C0897ABAD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1577,10 +1787,19 @@
 				EB994E791B2D9BA4E9B5CAEE /* CollectionView+Rx.swift in Sources */,
 				53DEBA077613DD2B78B61CF9 /* RxListViewModel.swift in Sources */,
 				CE013288EC406F8C15267F4E /* RxNavigationViewModel.swift in Sources */,
+				54F7292F736B7CA5186EA0E3 /* RxStateMachine.swift in Sources */,
 				2A9E5E77592BBF6A07377EF1 /* RxViewModel.swift in Sources */,
 				A3087053E2ED5687E7377E06 /* StackView+Rx.swift in Sources */,
 				CB1781B00BE136495B65441F /* TableView+Rx.swift in Sources */,
 				1E7EFCC433912D3A2B1E1867 /* ViewController+Rx.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECF1A3D72E2FD30A25BAFBDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F014AECCB25800867A75ACD7 /* RxStateMachineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1589,6 +1808,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF6053F6F07DA6CEE06ED0A1 /* ListViewModelTests.swift in Sources */,
+				7D140AD0C270EA9D1101BA55 /* SectionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1597,6 +1817,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBAB3026BC823DC510BBC0CD /* ListViewModelTests.swift in Sources */,
+				89197FED1A8C3E8409A89079 /* SectionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F58673C61C07149051169639 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30A63679D7968116ED40F0D9 /* RxStateMachineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1607,6 +1836,7 @@
 				7C4E0528737B34B615A9FA4D /* CollectionView+Rx.swift in Sources */,
 				E4CEB97C1A4D3B3767375E43 /* RxListViewModel.swift in Sources */,
 				248EE266EDD06D072F5FE880 /* RxNavigationViewModel.swift in Sources */,
+				71487C9F3739CCF43E7DDFF6 /* RxStateMachine.swift in Sources */,
 				139794ECA95A9DC01D690D5D /* RxViewModel.swift in Sources */,
 				DAF4F2C577166397DA467E4F /* StackView+Rx.swift in Sources */,
 				B0F89980936646D2412B51CB /* TableView+Rx.swift in Sources */,
@@ -1647,6 +1877,16 @@
 			target = 90AD01C5E2A637EE593F6D07 /* Boomerang_iOS */;
 			targetProxy = 39626255930F0C3C1226E47E /* PBXContainerItemProxy */;
 		};
+		7ABE38A1DFFD95373292A7D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD8502F85169B2CEA8AEDC0C /* RxBoomerang_iOS */;
+			targetProxy = 82B3079B321B1B137B1AD3AB /* PBXContainerItemProxy */;
+		};
+		89BC4348303A793AFA748161 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD0E8B7AB82728375CC67550 /* RxBoomerang_macOS */;
+			targetProxy = 4350B9D8111A68A1440BD746 /* PBXContainerItemProxy */;
+		};
 		A08FC47958E3475C3AD1BE21 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BFFEA8F9CF56FA9FFD33A023 /* Boomerang_tvOS */;
@@ -1661,6 +1901,16 @@
 			isa = PBXTargetDependency;
 			target = CD8502F85169B2CEA8AEDC0C /* RxBoomerang_iOS */;
 			targetProxy = 4C6514F5B4E60E7B4CCD471C /* PBXContainerItemProxy */;
+		};
+		CDD8A226C61CFE83E1DC3FC8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3FE2E5968ACD5E604313C106 /* RxBoomerang_watchOS */;
+			targetProxy = 6BAAA6132B170CD3C104B41E /* PBXContainerItemProxy */;
+		};
+		DBDBD2381854E00779601B28 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 332533DFBC9C1651715A19BF /* RxBoomerang_tvOS */;
+			targetProxy = 0C8730B022F2740A9C42C83F /* PBXContainerItemProxy */;
 		};
 		F54430E881C2A0D53670C18E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1681,6 +1931,23 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0093A19D2DDC7B1935D6A0CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RxBoomerangTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "it.synesthesia.RxBoomerangTests-tvOS";
+				PRODUCT_NAME = RxBoomerangTests;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+			};
+			name = Release;
+		};
 		0805CBF75CD5C4464EA5E6F7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1786,6 +2053,23 @@
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
+		};
+		205C7203ACA99150B2B52D68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RxBoomerangTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "it.synesthesia.RxBoomerangTests-iOS";
+				PRODUCT_NAME = RxBoomerangTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
 		};
 		21F4432636A3769BE1B474E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2039,6 +2323,24 @@
 			};
 			name = Debug;
 		};
+		81109E001A4B9C1539B2C1D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RxBoomerangTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "it.synesthesia.RxBoomerangTests-watchOS";
+				PRODUCT_NAME = RxBoomerangTests;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
 		81D7C05C55D3AACD8873F315 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2062,6 +2364,23 @@
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
+		};
+		88B74C537F8C456A58BEDB77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RxBoomerangTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "it.synesthesia.RxBoomerangTests-tvOS";
+				PRODUCT_NAME = RxBoomerangTests;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+			};
+			name = Debug;
 		};
 		8A40D9CA4D0E6067A6F10EF9 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2087,6 +2406,23 @@
 			};
 			name = Debug;
 		};
+		8C25F01DAA1D9D4FB48855E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RxBoomerangTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "it.synesthesia.RxBoomerangTests-macOS";
+				PRODUCT_NAME = RxBoomerangTests;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		9872A61750C3CED8558D0C9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2108,6 +2444,23 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		9BFB4FD16009176F68124BB3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RxBoomerangTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "it.synesthesia.RxBoomerangTests-macOS";
+				PRODUCT_NAME = RxBoomerangTests;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -2171,6 +2524,23 @@
 				TARGETED_DEVICE_FAMILY = 3;
 			};
 			name = Debug;
+		};
+		C2BC2FECFE386CA26B8F1D8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RxBoomerangTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "it.synesthesia.RxBoomerangTests-iOS";
+				PRODUCT_NAME = RxBoomerangTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
 		};
 		D116E48FA7E2D6353E10258D /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2285,6 +2655,24 @@
 			};
 			name = Release;
 		};
+		DE245CC106F681205EFD3691 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RxBoomerangTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "it.synesthesia.RxBoomerangTests-watchOS";
+				PRODUCT_NAME = RxBoomerangTests;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Release;
+		};
 		EBB064CCA2C1E8FA67C03324 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2374,6 +2762,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
+		43DEC679119A9674E6854325 /* Build configuration list for PBXNativeTarget "RxBoomerangTests_tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88B74C537F8C456A58BEDB77 /* Debug */,
+				0093A19D2DDC7B1935D6A0CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		48609C7D6C00D273A41AE1C7 /* Build configuration list for PBXNativeTarget "Boomerang_macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2388,6 +2785,33 @@
 			buildConfigurations = (
 				5027D1D7D83462BA56344990 /* Debug */,
 				FE5F5F065FDCFE80257B80F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4BF2738BF84FCCC0327C0599 /* Build configuration list for PBXNativeTarget "RxBoomerangTests_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				205C7203ACA99150B2B52D68 /* Debug */,
+				C2BC2FECFE386CA26B8F1D8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		568ECB48E394059DD48532A0 /* Build configuration list for PBXNativeTarget "RxBoomerangTests_watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81109E001A4B9C1539B2C1D7 /* Debug */,
+				DE245CC106F681205EFD3691 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		6AF708956C56834FA4A4D8CE /* Build configuration list for PBXNativeTarget "RxBoomerangTests_macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9BFB4FD16009176F68124BB3 /* Debug */,
+				8C25F01DAA1D9D4FB48855E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -2484,22 +2908,6 @@
 				minimumVersion = 5.0;
 			};
 		};
-		793A66AD3D895ADC7CC0EFDA /* XCRemoteSwiftPackageReference "Quick" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Quick/Quick";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0;
-			};
-		};
-		AA395BE710837E3969ED25EA /* XCRemoteSwiftPackageReference "Nimble" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Quick/Nimble";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0;
-			};
-		};
 		F8B56319A3A0673B75E0338B /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
@@ -2511,35 +2919,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		08C9CAB430CCB1F8E8671F21 /* Nimble */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA395BE710837E3969ED25EA /* XCRemoteSwiftPackageReference "Nimble" */;
-			productName = Nimble;
-		};
 		104558DF340F4665C8285C6F /* Differentiator */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1B68B55FDFFA150C9D02849E /* XCRemoteSwiftPackageReference "RxDataSources" */;
 			productName = Differentiator;
 		};
-		1B95C5208A85EA2D9F6BEC2B /* Nimble */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA395BE710837E3969ED25EA /* XCRemoteSwiftPackageReference "Nimble" */;
-			productName = Nimble;
-		};
-		1B9F12BEA0FF4FA40378EF90 /* Nimble */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA395BE710837E3969ED25EA /* XCRemoteSwiftPackageReference "Nimble" */;
-			productName = Nimble;
-		};
 		2E5D3A20978D777D2C5532AF /* RxRelay */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F8B56319A3A0673B75E0338B /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxRelay;
-		};
-		3AC554C4BA4826954FCE6589 /* Quick */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 793A66AD3D895ADC7CC0EFDA /* XCRemoteSwiftPackageReference "Quick" */;
-			productName = Quick;
 		};
 		4AE6526B03BA0FF2F36E73EF /* RxRelay */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -2550,11 +2938,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F8B56319A3A0673B75E0338B /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxRelay;
-		};
-		61D350F2C2B6B01868BFC69F /* Quick */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 793A66AD3D895ADC7CC0EFDA /* XCRemoteSwiftPackageReference "Quick" */;
-			productName = Quick;
 		};
 		6C350C0413266A28E23FC810 /* Differentiator */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -2601,11 +2984,6 @@
 			package = F8B56319A3A0673B75E0338B /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
-		AC79A8A7A994921908349FA3 /* Quick */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 793A66AD3D895ADC7CC0EFDA /* XCRemoteSwiftPackageReference "Quick" */;
-			productName = Quick;
-		};
 		B201253A2F87013B3535F7BA /* RxDataSources */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1B68B55FDFFA150C9D02849E /* XCRemoteSwiftPackageReference "RxDataSources" */;
@@ -2615,16 +2993,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F8B56319A3A0673B75E0338B /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
-		};
-		CD27C29D6503CDC138721B5D /* Nimble */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA395BE710837E3969ED25EA /* XCRemoteSwiftPackageReference "Nimble" */;
-			productName = Nimble;
-		};
-		CEDF400416B325D211B6A425 /* Quick */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 793A66AD3D895ADC7CC0EFDA /* XCRemoteSwiftPackageReference "Quick" */;
-			productName = Quick;
 		};
 		D50088291125CE092D6D2F95 /* RxDataSources */ = {
 			isa = XCSwiftPackageProductDependency;

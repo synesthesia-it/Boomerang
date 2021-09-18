@@ -6,12 +6,6 @@ packages:
   RxSwift: 
     url: https://github.com/ReactiveX/RxSwift
     from: "6.0"
-  Quick:
-    url: https://github.com/Quick/Quick
-    from: "3.0"
-  Nimble:
-    url: https://github.com/Quick/Nimble
-    from: "9.0"
 options:
   bundleIdPrefix: it.synesthesia
   createIntermediateGroups: true
@@ -38,12 +32,14 @@ targets:
     - "BoomerangTests"
     dependencies:
     - target: "Boomerang_${platform}"
-    - package: "Quick"
-    - package: "Nimble"
   RxBoomerang:
     type: framework
     platform: [iOS, tvOS, macOS, watchOS]
     sources: "Sources/Rx"
+    scheme:
+      gatherCoverageData: true
+      testTargets:
+      - RxBoomerangTests_${platform}
     dependencies:
       - target: Boomerang_${platform}
       - package: RxSwift
@@ -56,6 +52,13 @@ targets:
         product: RxDataSources
       - package: RxDataSources
         product: Differentiator
+  RxBoomerangTests:
+    type: bundle.unit-test
+    platform: [iOS, tvOS, macOS, watchOS]
+    sources:
+    - "RxBoomerangTests"
+    dependencies:
+    - target: "RxBoomerang_${platform}"
   Demo:
     type: application
     platform: [iOS]
