@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "Boomerang",
     platforms: [
-        .iOS(.v11), .tvOS(.v11), .macOS(.v10_15), .watchOS(.v5)
+        .iOS(.v11), .tvOS(.v11), .watchOS(.v6), .macOS(.v10_15)
     ],
 
     products: [
@@ -26,8 +26,12 @@ let package = Package(
             name: "Boomerang",
             dependencies: [], path: "Sources/Core"),
         .target(
-        name: "RxBoomerang",
-        dependencies: ["Boomerang", "RxSwift", "RxCocoa", "RxDataSources"], path: "Sources/Rx")
+            name: "RxBoomerang",
+            dependencies: [ "Boomerang",
+                            .product(name: "RxSwift", package: "RxSwift"),
+                            .product(name: "RxCocoa", package: "RxSwift"),
+                            "RxDataSources"],
+            path: "Sources/Rx")
     ],
     swiftLanguageVersions: [.v5]
 )
