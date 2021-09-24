@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "RxDataSources",
-        "repositoryURL": "https://github.com/RxSwiftCommunity/RxDataSources",
+        "repositoryURL": "https://github.com/RxSwiftCommunity/RxDataSources.git",
         "state": {
           "branch": null,
           "revision": "90c29b48b628479097fe775ed1966d75ac374518",
@@ -12,7 +12,7 @@
       },
       {
         "package": "RxSwift",
-        "repositoryURL": "https://github.com/ReactiveX/RxSwift",
+        "repositoryURL": "https://github.com/ReactiveX/RxSwift.git",
         "state": {
           "branch": null,
           "revision": "7c17a6ccca06b5c107cfa4284e634562ddaf5951",
