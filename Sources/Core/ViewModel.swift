@@ -54,3 +54,8 @@ extension Int: UniqueIdentifier {
 public protocol WithViewModel: AnyObject {
     func configure(with viewModel: ViewModel)
 }
+
+public extension LayoutIdentifier where Self: RawRepresentable, Self.RawValue == String {
+    var identifierString: String { rawValue }
+}
+

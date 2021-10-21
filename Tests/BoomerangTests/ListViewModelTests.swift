@@ -38,7 +38,7 @@ class TestListViewModel: ListViewModel {
     }
 }
 
-class BoomerangTests: XCTestCase {
+class ListViewModelTests: XCTestCase {
     var viewModel: TestListViewModel!
     override func setUpWithError() throws {
         let models = [["A", "B", "C"], ["D", "E", "F"], ["G"]]
@@ -51,7 +51,7 @@ class BoomerangTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testIndexOutOfBounds() throws {
+    func testIndexOutOfBoundsDoesNotCrash() throws {
 
         viewModel.deleteSection(at: 100)
         XCTAssert(viewModel.sections.count == 3)
@@ -63,13 +63,13 @@ class BoomerangTests: XCTestCase {
         XCTAssert(viewModel.sections.first?.items.count == 3)
     }
     
-    func testInfoInSection() throws {
+    func testInfoInSectionIsProperlyRetained() throws {
         let info = viewModel.sections.first?.info([String: String].self)
         XCTAssert(info != nil)
         XCTAssert(info?["test"] == "value")
     }
     
-    func testInsertion() throws {
+    func testItemInsertionsAreProperlyHandled() throws {
         viewModel.deleteItem(at: IndexPath(item: 0, section: 0))
         XCTAssert(viewModel.sections.first?.items.count == 2)
         XCTAssert((viewModel.sections.first?.items.first as? TestItemViewModel)?.string == "B")
@@ -117,13 +117,6 @@ class BoomerangTests: XCTestCase {
         XCTAssert((viewModel.sections[2].items.first as? TestItemViewModel)?.string == "10")
         XCTAssert((viewModel.sections[2].items.last as? TestItemViewModel)?.string == "11")
 
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
     }
 
 }

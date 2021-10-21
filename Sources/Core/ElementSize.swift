@@ -36,7 +36,7 @@ public protocol WithElementSize {
 public enum Size {
     public struct ContainerProperties {
         public init(containerBounds: CGSize,
-                    containerInsets: UIEdgeInsets = .zero, 
+                    containerInsets: EdgeInsets = .zero,
                     maximumWidth: CGFloat?,
                     maximumHeight: CGFloat?) {
             self.containerBounds = containerBounds
@@ -46,7 +46,7 @@ public enum Size {
         }
 
         public let containerBounds: CGSize
-        public let containerInsets: UIEdgeInsets
+        public let containerInsets: EdgeInsets
         public let maximumWidth: CGFloat?
         public let maximumHeight: CGFloat?
     }
@@ -90,8 +90,11 @@ public extension Size {
 
     static func container(useContentInsets: Bool = false) -> ElementSize {
         Configurable { params in
-            CGRect(origin: .zero, size: params.containerBounds)
-                .inset(by: useContentInsets ? params.containerInsets : .zero)
+            let insets: EdgeInsets = useContentInsets ? params.containerInsets : .zero
+            return CGRect(x: insets.left,
+                   y: insets.top,
+                   width: params.containerBounds.width - insets.left - insets.right,
+                   height: params.containerBounds.height - insets.top - insets.bottom)
                 .size
         }
     }
