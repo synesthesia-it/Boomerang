@@ -1,10 +1,6 @@
 MIT License
 
-Copyright (c) 2018 Synesthesia srl
-
-https://www.synesthesia.it
-
-https://github.com/synesthesia-it/
+Copyright (c) 2021 Synesthesia srl
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
