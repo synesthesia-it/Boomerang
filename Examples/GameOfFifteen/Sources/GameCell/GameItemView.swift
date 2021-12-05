@@ -17,7 +17,7 @@ class GameItemView: UIView, WithViewModel {
         super.awakeFromNib()
         layer.cornerRadius = 4
         layer.borderColor = UIColor.blue.cgColor
-        
+
         title?.textColor = .blue
     }
     func configure(with viewModel: ViewModel) {

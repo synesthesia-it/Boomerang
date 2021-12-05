@@ -15,42 +15,42 @@ class NaiveGameScreenViewModel: GameScreenViewModel {
     enum Layout: String, LayoutIdentifier {
         case gameScreen
     }
-    
+
     var sectionsRelay: BehaviorRelay<[Section]> = .init(value: [])
 
     var disposeBag: DisposeBag = DisposeBag()
-    
+
     let uniqueIdentifier: UniqueIdentifier = UUID()
-    
+
     var layoutIdentifier: LayoutIdentifier = Layout.gameScreen
-    
+
     private var countRelay = BehaviorRelay<Int>(value: 2)
-    
+
     var count: Observable<Int> { countRelay.asObservable() }
-    
+
+    let routes: PublishRelay<Route> = .init()
+
     func update(count: Int) {
         countRelay.accept(count)
     }
-    
+
     var title: Observable<String> {
         count.map { "Game of \($0 * $0 + 1)" }
     }
-    
+
     init() {
         count.bind { [weak self] _ in self?.reload() }
         .disposed(by: disposeBag)
     }
-    
+
     func reload() {
         let gameItems = (1..<(countRelay.value * countRelay.value)).map { GameItemViewModel(number: $0) }
         let empty = GameItemViewModel(number: nil)
         let items = (gameItems + [empty]).shuffled()
         self.sections = [Section(id: "game", items: items)]
-        
+
     }
-    
-    
-    
+
     func selectItem(at indexPath: IndexPath) {
         let count = self.countRelay.value
         guard var section = sections.first,
@@ -64,20 +64,25 @@ class NaiveGameScreenViewModel: GameScreenViewModel {
         }
         items.swapAt(newIndex, indexPath.item)
         if items.isWinning(lineCount: count) {
-            print ("WON!")
+            onNavigation(AlertRoute(title: "WOW",
+                                    message: "You Won! Congrats!",
+                                    actions: [.init(title: "Restart",
+                                                    callback: { [weak self] in self?.reload() })
+                                             ]))
         }
         section.items = items
         self.sections = [section]
     }
-    
+
     func elementSize(at indexPath: IndexPath, type: String?) -> ElementSize? {
         guard type == nil else { return nil }
         return Size.aspectRatio(1, itemsPerLine: countRelay.value)
     }
-    
+
     func sectionProperties(at index: Int) -> Size.SectionProperties {
-        .init(insets: .init(top: 1, left: 1, bottom: 1, right: 1),
-              lineSpacing: 1, itemSpacing: 1)
+        .init(insets: .init(top: 20, left: 4, bottom: 4, right: 4),
+              lineSpacing: 4,
+              itemSpacing: 4)
     }
 }
 

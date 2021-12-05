@@ -14,9 +14,9 @@ class GameItemViewModel: ViewModel {
         case emptyItem
     }
     let uniqueIdentifier: UniqueIdentifier
-    
+
     let layoutIdentifier: LayoutIdentifier
-    
+
     var number: Int? {
         switch tile {
         case let .value(value): return value
@@ -26,11 +26,11 @@ class GameItemViewModel: ViewModel {
     let tile: Game.Tile
     let description: String
     var isEmpty: Bool { number == nil }
-    
+
     convenience init(number: Int?) {
         self.init(tile: .init(number: number))
     }
-    
+
     init(tile: Game.Tile) {
         self.tile = tile
         switch tile {
