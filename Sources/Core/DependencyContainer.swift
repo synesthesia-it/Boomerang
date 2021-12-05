@@ -125,3 +125,23 @@ public extension DependencyContainer {
         return element
     }
 }
+
+public typealias ObjectContainer = Container<ObjectIdentifier>
+
+public extension DependencyContainer where DependencyKey == ObjectIdentifier {
+    func register<Value: Any>(for key: Value.Type = Value.self,
+                              scope: Container<DependencyKey>.Scope = .unique,
+                              handler: @escaping () -> Value) {
+        self.register(for: ObjectIdentifier(key), scope: scope, handler: handler)
+    }
+    func resolve<Value: Any>(_ key: Value.Type = Value.self)  -> Value? {
+        resolve(ObjectIdentifier(key))
+    }
+    
+    subscript<T>(index: T.Type) -> T? {
+        guard let element: T = resolve(ObjectIdentifier(index)) else {
+            return nil
+        }
+        return element
+    }
+}

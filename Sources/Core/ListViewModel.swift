@@ -80,9 +80,10 @@ public protocol ListViewModel: ViewModel {
 
     @discardableResult
     func deleteItem(at indexPath: IndexPath) -> ViewModel?
-
-    func elementSize(at indexPath: IndexPath) -> ElementSize?
+    /// Custom size for element at indexPath. `type` represents supplementary kind in collection views and is `nil` for normal cells.
+    /// Returning nil means "unknown size" and is handled via size calculators as "automatic".
     func elementSize(at indexPath: IndexPath, type: String?) -> ElementSize?
+    /// Section properties like insets and spacing for every Section in current view model.
     func sectionProperties(at index: Int) -> Size.SectionProperties
 }
 
@@ -186,10 +187,6 @@ public extension ListViewModel {
         let viewModel = section.remove(at: item)
         self.sections[sectionIndex] = section
         return viewModel
-    }
-
-    func elementSize(at indexPath: IndexPath) -> ElementSize? {
-        elementSize(at: indexPath, type: nil)
     }
 
     func elementSize(at indexPath: IndexPath, type: String?) -> ElementSize? {

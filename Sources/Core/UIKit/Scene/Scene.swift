@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIViewController: Scene {}
-
+/// A route triggered by a UIViewController
 public protocol UIKitRoute: Route {
     var createViewController: () -> UIViewController? { get }
     func execute<T>(from scene: T?) where T: UIViewController

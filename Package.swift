@@ -10,28 +10,22 @@ let package = Package(
     ],
 
     products: [
-        // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(name: "Boomerang", targets: ["Boomerang"]),
         .library(name: "RxBoomerang", targets: ["RxBoomerang"]),
+        .library(name: "RxBoomerangTest", targets: ["RxBoomerangTest"])
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.0.0")),
         .package(url: "https://github.com/RxSwiftCommunity/RxDataSources.git", .upToNextMajor(from: "5.0.0"))
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "Boomerang",
             dependencies: [],
             path: "Sources/Core",
             linkerSettings: [.linkedFramework("UIKit",
-                                                                                      .when(platforms: [.iOS,
-                                                                                                        .tvOS,
-                                                            ]))]),
-        
-        .testTarget(name: "BoomerangTests",
+                                              .when(platforms: [.iOS, .tvOS]))]),
+            .testTarget(name: "BoomerangTests",
                     dependencies: ["Boomerang"]),
         .target(
             name: "RxBoomerang",
@@ -39,7 +33,15 @@ let package = Package(
                             .product(name: "RxSwift", package: "RxSwift"),
                             .product(name: "RxCocoa", package: "RxSwift"),
                             "RxDataSources"],
-            path: "Sources/Rx")
+            path: "Sources/Rx",
+            linkerSettings: [.linkedFramework("RxDataSources", .when(platforms: [.iOS, .tvOS]))]),
+    
+        .target(
+            name: "RxBoomerangTest",
+            dependencies: [ "RxBoomerang",
+                            .product(name: "RxBlocking", package: "RxSwift")
+                            ],
+            path: "Sources/RxTest")
     ],
     swiftLanguageVersions: [.v5]
 )

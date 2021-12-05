@@ -1,5 +1,5 @@
 Pod::Spec.new do |spec|
-  spec.name = "Boomerang"
+  spec.name = "RxBoomerangTest"
   spec.version = "6.6.0"
   spec.summary = "Swift microframework for MVVM"
 
@@ -22,22 +22,11 @@ Pod::Spec.new do |spec|
 
   spec.source = { :git => "https://github.com/synesthesia-it/Boomerang.git", :tag => "#{spec.version}" }
 
-  spec.default_subspec = "Core"
-
-  spec.subspec "Core" do |s|
-    s.source_files = "Sources/Core/**/*.{swift}"
-    s.weak_framework = "Combine"
-    s.weak_framework = "UIKit"
-    s.weak_framework = "SwiftUI"
-  end
-
-  spec.subspec "RxSwift" do |s|
-    s.source_files = "Sources/Rx/**/*{.swift}"
-    s.dependency "Boomerang/Core"
-    s.dependency "RxCocoa"
-    s.dependency "RxSwift"
-    s.ios.dependency "RxDataSources"
-    s.tvos.dependency "RxDataSources"
-  end
+  spec.source_files = "Sources/RxTest/**/*{.swift}"
+  spec.dependency "Boomerang/RxSwift"
+  spec.dependency "RxRelay"
+  spec.dependency "RxBlocking"
+  spec.dependency "RxSwift"
+  spec.framework = "XCTest"
 
 end

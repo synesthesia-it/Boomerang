@@ -9,19 +9,6 @@
 import XCTest
 @testable import Boomerang
 
-extension String: LayoutIdentifier {
-    public var identifierString: String { self }
-}
-
-class TestItemViewModel: ViewModel {
-    var uniqueIdentifier: UniqueIdentifier = UUID()
-    var layoutIdentifier: LayoutIdentifier = UUID().stringValue
-    let string: String
-    init(_ string: String) {
-        self.string = string
-    }
-}
-
 class TestListViewModel: ListViewModel {
     var sections: [Section]
     var onUpdate: () -> Void = {}
@@ -42,13 +29,12 @@ class ListViewModelTests: XCTestCase {
     var viewModel: TestListViewModel!
     override func setUpWithError() throws {
         let models = [["A", "B", "C"], ["D", "E", "F"], ["G"]]
-        let sections = models.map { Section(items: $0.map(TestItemViewModel.init), info: ["test": "value"])}
+        let sections = models.map {
+            Section(items: $0.map(TestItemViewModel.init),
+                    info: ["test": "value"])
+        }
         viewModel = TestListViewModel(sections: sections)
         // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
     func testIndexOutOfBoundsDoesNotCrash() throws {

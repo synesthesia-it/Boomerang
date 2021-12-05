@@ -16,14 +16,14 @@ import Boomerang
 #endif
 
 public extension Reactive where Base: UICollectionView {
-
+    /// Bind a UICollectionView with a RxListViewModel using a custom UICollectionViewDataSource.
     func reloaded(by viewModel: RxListViewModel,
                   dataSource collectionViewDataSource: CollectionViewDataSource) -> Disposable {
-
-        let data = RxCollectionViewSectionedReloadDataSource<SectionModel<Section, ViewModel>>(
-            configureCell: { (_, collectionView, indexPath, _) -> UICollectionViewCell in
-                return collectionViewDataSource.collectionView(collectionView,
-                                                               cellForItemAt: indexPath)
+        
+        let data: RxCollectionViewSectionedReloadDataSource<SectionModel<Section, ViewModel>>
+        data = .init(configureCell: { (_, collectionView, indexPath, _) -> UICollectionViewCell in
+            collectionViewDataSource.collectionView(collectionView,
+                                                    cellForItemAt: indexPath)
         }, configureSupplementaryView: { _, collectionView, kind, indexPath in
             collectionViewDataSource.collectionView(collectionView,
                                                     viewForSupplementaryElementOfKind: kind,
@@ -35,23 +35,25 @@ public extension Reactive where Base: UICollectionView {
             .map { $0.map { SectionModel(model: $0, items: $0.items) }}
             .drive(items(dataSource: data))
     }
-
+    /// Bind a UICollectionView with a RxListViewModel using a custom UICollectionViewDataSource. Updates are automatically animated.
     func animated(by viewModel: RxListViewModel,
                   dataSource collectionViewDataSource: CollectionViewDataSource) -> Disposable {
-
-        let data = RxCollectionViewSectionedAnimatedDataSource<AnimatableSectionModel<Section, UniqueViewModelWrapper>>(
-            configureCell: { (_, collectionView, indexPath, _) -> UICollectionViewCell in
-                return collectionViewDataSource.collectionView(collectionView, cellForItemAt: indexPath)
-        },
-            configureSupplementaryView: { _, collectionView, kind, indexPath in
-                collectionViewDataSource.collectionView(collectionView,
-                                                        viewForSupplementaryElementOfKind: kind,
-                                                        at: indexPath)
+        
+        let data: RxCollectionViewSectionedAnimatedDataSource<AnimatableSectionModel<Section, UniqueViewModelWrapper>>
+        data = .init(configureCell: { (_, collectionView, indexPath, _) -> UICollectionViewCell in
+            collectionViewDataSource.collectionView(collectionView,
+                                                    cellForItemAt: indexPath)
+        }, configureSupplementaryView: { _, collectionView, kind, indexPath in
+            collectionViewDataSource.collectionView(collectionView,
+                                                    viewForSupplementaryElementOfKind: kind,
+                                                    at: indexPath)
         })
-        return viewModel.sectionsRelay
+        return viewModel
+            .sectionsRelay
             .asDriver()
             .map { $0
-                .map { AnimatableSectionModel(model: $0, items: $0.items.map { UniqueViewModelWrapper(viewModel: $0)}) }
+                .map { AnimatableSectionModel(model: $0,
+                                              items: $0.items.map { UniqueViewModelWrapper(viewModel: $0)}) }
         }
             .drive(items(dataSource: data))
     }
