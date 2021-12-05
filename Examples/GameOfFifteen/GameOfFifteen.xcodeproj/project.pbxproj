@@ -1,0 +1,449 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0CF076D8CB1F667A5A92725C /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = 750ADBC499312CE3A0A05F3A /* Differentiator */; };
+		1D6067085A171AC7D2E50E2E /* Boomerang in Frameworks */ = {isa = PBXBuildFile; productRef = C77FCC459CDCEE821B71BEE6 /* Boomerang */; };
+		366A1B7E149A014FAD392971 /* GameItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66464A6B86AC9DFB33CFDC7C /* GameItemViewModel.swift */; };
+		458F7388B4B1CA610E422FA0 /* RxBoomerang in Frameworks */ = {isa = PBXBuildFile; productRef = 08270498571D917200ED87F5 /* RxBoomerang */; };
+		56A85785BBF0A658440A335E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 9067394691230F0E80926A34 /* RxCocoa */; };
+		691EB2F4C5503EAF9797BF63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35863045988507B9A70E0154 /* AppDelegate.swift */; };
+		70FBCD80275D39E900145116 /* StateGameScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FBCD7F275D39E900145116 /* StateGameScreenViewModel.swift */; };
+		8286A0937CB608816D71E7AD /* GameItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5147A0AF44DCB6E2B69C37E6 /* GameItemView.swift */; };
+		A1438581F88B682598053B9A /* GameScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2D1D5E37F3FAA2C1CA14C /* GameScreenViewController.swift */; };
+		A5376E0E4254D20A969D8ED8 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 9B042BCCC4EDBA7B38537A47 /* RxDataSources */; };
+		BE35623E867FBB2678CC5CC5 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = B55E732EB60E0C455AA4992F /* RxRelay */; };
+		C94A8BC185B5A8AC24CED8D0 /* CellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86279F8BA388FE603785AC2 /* CellFactory.swift */; };
+		C96AE62EBD73580598B04480 /* GameItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9466FF4EB9713C654D212025 /* GameItemView.xib */; };
+		DA8615410C99B1B6E1A12A42 /* EmptyItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D30E5A54DDC15DF89ABBEE1 /* EmptyItemView.xib */; };
+		DC953B349AA59E077653ACF5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E741077DA4354D12A5CB0198 /* RxSwift */; };
+		DE0B3C9B74BC0FB01D3BE7EF /* NaiveGameScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EAECF2DEA02BF98B4224EF /* NaiveGameScreenViewModel.swift */; };
+		EEFE6C015FCFC75CFF1D516C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44FEE4D12C5931040728E76A /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		03F24FE7D6AD6F501B062946 /* Boomerang */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Boomerang; path = ../..; sourceTree = SOURCE_ROOT; };
+		35863045988507B9A70E0154 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		44FEE4D12C5931040728E76A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4DF2D1D5E37F3FAA2C1CA14C /* GameScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenViewController.swift; sourceTree = "<group>"; };
+		5147A0AF44DCB6E2B69C37E6 /* GameItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItemView.swift; sourceTree = "<group>"; };
+		66464A6B86AC9DFB33CFDC7C /* GameItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItemViewModel.swift; sourceTree = "<group>"; };
+		70FBCD7F275D39E900145116 /* StateGameScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateGameScreenViewModel.swift; sourceTree = "<group>"; };
+		8D30E5A54DDC15DF89ABBEE1 /* EmptyItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyItemView.xib; sourceTree = "<group>"; };
+		9466FF4EB9713C654D212025 /* GameItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameItemView.xib; sourceTree = "<group>"; };
+		A9AE11601C485775D7B8CA28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		AB0691CA2130EAE364B49720 /* GameOfFifteen.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = GameOfFifteen.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1EAECF2DEA02BF98B4224EF /* NaiveGameScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaiveGameScreenViewModel.swift; sourceTree = "<group>"; };
+		E86279F8BA388FE603785AC2 /* CellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellFactory.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6897D1D0B71CE46A73026A76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D6067085A171AC7D2E50E2E /* Boomerang in Frameworks */,
+				458F7388B4B1CA610E422FA0 /* RxBoomerang in Frameworks */,
+				DC953B349AA59E077653ACF5 /* RxSwift in Frameworks */,
+				BE35623E867FBB2678CC5CC5 /* RxRelay in Frameworks */,
+				56A85785BBF0A658440A335E /* RxCocoa in Frameworks */,
+				A5376E0E4254D20A969D8ED8 /* RxDataSources in Frameworks */,
+				0CF076D8CB1F667A5A92725C /* Differentiator in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2F8067F695506BF1357624CB /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				35863045988507B9A70E0154 /* AppDelegate.swift */,
+				44FEE4D12C5931040728E76A /* Assets.xcassets */,
+				E86279F8BA388FE603785AC2 /* CellFactory.swift */,
+				A9AE11601C485775D7B8CA28 /* Info.plist */,
+				98D215B3E3B2DF26BF0F90EC /* GameCell */,
+				88520E4F800633E85DDDFF34 /* GameScreen */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		3AB5985EF5E84C1C4909842B = {
+			isa = PBXGroup;
+			children = (
+				5D12F3A5D5134A6B6AB14224 /* Packages */,
+				2F8067F695506BF1357624CB /* Sources */,
+				AB8E1FF6CC1A6696449430A1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5D12F3A5D5134A6B6AB14224 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				03F24FE7D6AD6F501B062946 /* Boomerang */,
+			);
+			name = Packages;
+			sourceTree = SOURCE_ROOT;
+		};
+		88520E4F800633E85DDDFF34 /* GameScreen */ = {
+			isa = PBXGroup;
+			children = (
+				4DF2D1D5E37F3FAA2C1CA14C /* GameScreenViewController.swift */,
+				70FBCD7F275D39E900145116 /* StateGameScreenViewModel.swift */,
+				B1EAECF2DEA02BF98B4224EF /* NaiveGameScreenViewModel.swift */,
+			);
+			path = GameScreen;
+			sourceTree = "<group>";
+		};
+		98D215B3E3B2DF26BF0F90EC /* GameCell */ = {
+			isa = PBXGroup;
+			children = (
+				8D30E5A54DDC15DF89ABBEE1 /* EmptyItemView.xib */,
+				5147A0AF44DCB6E2B69C37E6 /* GameItemView.swift */,
+				9466FF4EB9713C654D212025 /* GameItemView.xib */,
+				66464A6B86AC9DFB33CFDC7C /* GameItemViewModel.swift */,
+			);
+			path = GameCell;
+			sourceTree = "<group>";
+		};
+		AB8E1FF6CC1A6696449430A1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB0691CA2130EAE364B49720 /* GameOfFifteen.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE543772EC5D4081DFEEFE3F /* GameOfFifteen_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1AA49845F560707DE410CB5A /* Build configuration list for PBXNativeTarget "GameOfFifteen_iOS" */;
+			buildPhases = (
+				98DA963783E3807AEA6CFE58 /* Sources */,
+				E4D5D133B66D8CE05AAB1333 /* Resources */,
+				6897D1D0B71CE46A73026A76 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GameOfFifteen_iOS;
+			packageProductDependencies = (
+				C77FCC459CDCEE821B71BEE6 /* Boomerang */,
+				08270498571D917200ED87F5 /* RxBoomerang */,
+				E741077DA4354D12A5CB0198 /* RxSwift */,
+				B55E732EB60E0C455AA4992F /* RxRelay */,
+				9067394691230F0E80926A34 /* RxCocoa */,
+				9B042BCCC4EDBA7B38537A47 /* RxDataSources */,
+				750ADBC499312CE3A0A05F3A /* Differentiator */,
+			);
+			productName = GameOfFifteen_iOS;
+			productReference = AB0691CA2130EAE364B49720 /* GameOfFifteen.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B71B6E3328A90EB40253F263 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1200;
+			};
+			buildConfigurationList = 21DF086F2C5D49874EA47D26 /* Build configuration list for PBXProject "GameOfFifteen" */;
+			compatibilityVersion = "Xcode 10.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 3AB5985EF5E84C1C4909842B;
+			packageReferences = (
+				7BAC4148195ABE5DF3B76D1F /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				10FCA9E867FEC34D64BB4137 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE543772EC5D4081DFEEFE3F /* GameOfFifteen_iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E4D5D133B66D8CE05AAB1333 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEFE6C015FCFC75CFF1D516C /* Assets.xcassets in Resources */,
+				DA8615410C99B1B6E1A12A42 /* EmptyItemView.xib in Resources */,
+				C96AE62EBD73580598B04480 /* GameItemView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		98DA963783E3807AEA6CFE58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				691EB2F4C5503EAF9797BF63 /* AppDelegate.swift in Sources */,
+				C94A8BC185B5A8AC24CED8D0 /* CellFactory.swift in Sources */,
+				8286A0937CB608816D71E7AD /* GameItemView.swift in Sources */,
+				70FBCD80275D39E900145116 /* StateGameScreenViewModel.swift in Sources */,
+				366A1B7E149A014FAD392971 /* GameItemViewModel.swift in Sources */,
+				A1438581F88B682598053B9A /* GameScreenViewController.swift in Sources */,
+				DE0B3C9B74BC0FB01D3BE7EF /* NaiveGameScreenViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		08CA75172110C75007157570 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Sources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = it.synesthesia.gameof15;
+				PRODUCT_NAME = GameOfFifteen;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0F80A087F0637646E9BCE11E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Release;
+		};
+		1CC7C4B10B24BF11690D6574 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Sources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = it.synesthesia.gameof15;
+				PRODUCT_NAME = GameOfFifteen;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DA95A0D88109C6F66129325B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1AA49845F560707DE410CB5A /* Build configuration list for PBXNativeTarget "GameOfFifteen_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08CA75172110C75007157570 /* Debug */,
+				1CC7C4B10B24BF11690D6574 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		21DF086F2C5D49874EA47D26 /* Build configuration list for PBXProject "GameOfFifteen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA95A0D88109C6F66129325B /* Debug */,
+				0F80A087F0637646E9BCE11E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		10FCA9E867FEC34D64BB4137 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		7BAC4148195ABE5DF3B76D1F /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		08270498571D917200ED87F5 /* RxBoomerang */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RxBoomerang;
+		};
+		750ADBC499312CE3A0A05F3A /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7BAC4148195ABE5DF3B76D1F /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		9067394691230F0E80926A34 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10FCA9E867FEC34D64BB4137 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		9B042BCCC4EDBA7B38537A47 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7BAC4148195ABE5DF3B76D1F /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
+		};
+		B55E732EB60E0C455AA4992F /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10FCA9E867FEC34D64BB4137 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		C77FCC459CDCEE821B71BEE6 /* Boomerang */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Boomerang;
+		};
+		E741077DA4354D12A5CB0198 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10FCA9E867FEC34D64BB4137 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = B71B6E3328A90EB40253F263 /* Project object */;
+}

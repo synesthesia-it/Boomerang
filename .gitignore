@@ -4,6 +4,6 @@ Demo.xcworkspace/xcuserdata
 Boomerang.xcodeproj/project.xcworkspace/xcuserdata
 .build
 Examples/TVMaze/TVMaze.xcodeproj/xcuserdata
-Boomerang.xcodeproj/xcuserdata
+**/*.xcodeproj/**/xcuserdata/**
 Boomerang.xcworkspace
 .swiftpm

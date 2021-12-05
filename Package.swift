@@ -33,8 +33,9 @@ let package = Package(
                             .product(name: "RxSwift", package: "RxSwift"),
                             .product(name: "RxCocoa", package: "RxSwift"),
                             "RxDataSources"],
-            path: "Sources/Rx",
-            linkerSettings: [.linkedFramework("RxDataSources", .when(platforms: [.iOS, .tvOS]))]),
+            path: "Sources/Rx"
+//            linkerSettings: [.linkedFramework("RxDataSources", .when(platforms: [.iOS, .tvOS]))]
+        ),
     
         .target(
             name: "RxBoomerangTest",
