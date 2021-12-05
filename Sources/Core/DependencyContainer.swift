@@ -134,7 +134,7 @@ public extension DependencyContainer where DependencyKey == ObjectIdentifier {
                               handler: @escaping () -> Value) {
         self.register(for: ObjectIdentifier(key), scope: scope, handler: handler)
     }
-    func resolve<Value: Any>(_ key: Value.Type = Value.self)  -> Value? {
+    func resolve<Value: Any>(_ key: Value.Type = Value.self) -> Value? {
         resolve(ObjectIdentifier(key))
     }
     

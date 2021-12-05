@@ -20,11 +20,11 @@ public extension Reactive where Base: UITableView {
 
     func reloaded(by viewModel: RxListViewModel,
                   dataSource tableViewDataSource: TableViewDataSource) -> Disposable {
-        let data = RxTableViewSectionedReloadDataSource<SectionModel<Section, ViewModel>> { (dataSource, tableView, indexPath, item) -> UITableViewCell in
+        let data = RxTableViewSectionedReloadDataSource<SectionModel<Section, ViewModel>> { (_, tableView, indexPath, _) -> UITableViewCell in
             tableViewDataSource.tableView(tableView, cellForRowAt: indexPath)
-        } canEditRowAtIndexPath: { (dataSource, indexPath) -> Bool in
+        } canEditRowAtIndexPath: { (_, indexPath) -> Bool in
             tableViewDataSource.tableView(base, canEditRowAt: indexPath)
-        } canMoveRowAtIndexPath:  { (dataSource, indexPath) -> Bool in
+        } canMoveRowAtIndexPath: { (_, indexPath) -> Bool in
             tableViewDataSource.tableView(base, canMoveRowAt: indexPath)
         }
 
@@ -37,11 +37,11 @@ public extension Reactive where Base: UITableView {
     func animated(by viewModel: RxListViewModel,
                   dataSource tableViewDataSource: TableViewDataSource) -> Disposable {
 
-        let data = RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<Section, UniqueViewModelWrapper>>{ (dataSource, tableView, indexPath, item) -> UITableViewCell in
+        let data = RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<Section, UniqueViewModelWrapper>> { (_, tableView, indexPath, _) -> UITableViewCell in
             tableViewDataSource.tableView(tableView, cellForRowAt: indexPath)
-        } canEditRowAtIndexPath: { (dataSource, indexPath) -> Bool in
+        } canEditRowAtIndexPath: { (_, indexPath) -> Bool in
             tableViewDataSource.tableView(base, canEditRowAt: indexPath)
-        } canMoveRowAtIndexPath:  { (dataSource, indexPath) -> Bool in
+        } canMoveRowAtIndexPath: { (_, indexPath) -> Bool in
             tableViewDataSource.tableView(base, canMoveRowAt: indexPath)
         }
        

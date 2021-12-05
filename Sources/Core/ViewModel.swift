@@ -58,4 +58,3 @@ public protocol WithViewModel: AnyObject {
 public extension LayoutIdentifier where Self: RawRepresentable, Self.RawValue == String {
     var identifierString: String { rawValue }
 }
-

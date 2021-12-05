@@ -23,5 +23,5 @@ class TestItemViewModel: ViewModel {
 
 struct FakeRoute: Route {
     var createScene: () -> Scene? = { nil }
-    func execute<T>(from scene: T?) where T : Scene { }
+    func execute<T>(from scene: T?) where T: Scene { }
 }

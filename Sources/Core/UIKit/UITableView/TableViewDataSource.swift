@@ -85,7 +85,6 @@ open class TableViewDataSource: NSObject, UITableViewDataSource {
         default: break
         }
     }
-    
    
 //    public func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
 //        viewModel.canMoveItem(at: indexPath)

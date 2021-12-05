@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 public protocol TableViewHeightCalculator {
     func heightForItem(at indexPath: IndexPath,
                      in collectionView: UITableView,
