@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="fdw-fF-kNj" userLabel="ImageView" customClass="CastView" customModule="TVMaze" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="387" height="521"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qi2-Sq-aDH">
+                    <rect key="frame" x="0.0" y="0.0" width="387" height="387"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="qi2-Sq-aDH" secondAttribute="height" multiplier="210:295" id="5mt-CM-xWf"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Tf-rK-dJF" userLabel="name">
+                    <rect key="frame" x="0.0" y="391" width="387" height="18"/>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="HAm-IR-e8k"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="HAm-IR-e8k" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7Tf-rK-dJF" secondAttribute="bottom" id="CrT-07-B7M"/>
+                <constraint firstItem="qi2-Sq-aDH" firstAttribute="leading" secondItem="HAm-IR-e8k" secondAttribute="leading" id="IWo-IO-OuR"/>
+                <constraint firstItem="7Tf-rK-dJF" firstAttribute="leading" secondItem="HAm-IR-e8k" secondAttribute="leading" id="QQ4-6O-82L"/>
+                <constraint firstItem="7Tf-rK-dJF" firstAttribute="top" secondItem="qi2-Sq-aDH" secondAttribute="bottom" constant="4" id="ajt-hk-oUd"/>
+                <constraint firstItem="qi2-Sq-aDH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fdw-fF-kNj" secondAttribute="top" id="sN4-00-B67"/>
+                <constraint firstItem="qi2-Sq-aDH" firstAttribute="trailing" secondItem="HAm-IR-e8k" secondAttribute="trailing" id="yZr-uu-K3c"/>
+                <constraint firstItem="HAm-IR-e8k" firstAttribute="trailing" secondItem="7Tf-rK-dJF" secondAttribute="trailing" id="yyG-Xp-ykw"/>
+                <constraint firstItem="qi2-Sq-aDH" firstAttribute="leading" secondItem="HAm-IR-e8k" secondAttribute="leading" id="zhJ-go-dbZ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="image" destination="qi2-Sq-aDH" id="n1p-9l-3oE"/>
+                <outlet property="name" destination="7Tf-rK-dJF" id="45b-cf-adn"/>
+            </connections>
+            <point key="canvasLocation" x="126.81159420289856" y="124.88839285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

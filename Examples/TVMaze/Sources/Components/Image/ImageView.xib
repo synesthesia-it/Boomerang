@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="fM9-zi-wAi" userLabel="ImageView" customClass="ImageView" customModule="TVMaze" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="535" height="221"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1ZX-IM-2al">
+                    <rect key="frame" x="0.0" y="0.0" width="535" height="221"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="1ZX-IM-2al" secondAttribute="height" multiplier="129:32" priority="999" id="F44-aA-bUz"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vSw-Be-76L"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="1ZX-IM-2al" firstAttribute="leading" secondItem="vSw-Be-76L" secondAttribute="leading" id="9cm-iK-eiO"/>
+                <constraint firstItem="1ZX-IM-2al" firstAttribute="top" secondItem="fM9-zi-wAi" secondAttribute="top" id="EJb-Sl-7Oh"/>
+                <constraint firstItem="vSw-Be-76L" firstAttribute="trailing" secondItem="1ZX-IM-2al" secondAttribute="trailing" id="fJ4-z5-te7"/>
+                <constraint firstAttribute="bottom" secondItem="1ZX-IM-2al" secondAttribute="bottom" id="j3h-aZ-O5q"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="image" destination="1ZX-IM-2al" id="Mon-IN-kh5"/>
+            </connections>
+            <point key="canvasLocation" x="234.05797101449278" y="278.90625"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

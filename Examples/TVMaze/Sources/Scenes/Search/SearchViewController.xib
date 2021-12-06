@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="TVMaze" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="zFb-1H-jCi" id="ZeL-49-I00"/>
+                <outlet property="searchButton" destination="zfJ-j3-z7i" id="4UE-RN-7aY"/>
+                <outlet property="textField" destination="aRG-QG-pOJ" id="6fN-ld-VhX"/>
+                <outlet property="view" destination="iN0-l3-epB" id="vQI-Nk-gIp"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aRG-QG-pOJ">
+                    <rect key="frame" x="31" y="129" width="363" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="textField:" destination="-1" eventType="editingDidEnd" id="6yh-lU-uq1"/>
+                    </connections>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zfJ-j3-z7i">
+                    <rect key="frame" x="291" y="208" width="123" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                </button>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="zFb-1H-jCi">
+                    <rect key="frame" x="0.0" y="239" width="414" height="623"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nOj-Jb-0pN">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search film:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZZ-3U-nEm">
+                    <rect key="frame" x="0.0" y="44" width="414" height="80"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="aRG-QG-pOJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="85" id="03H-sH-PuC"/>
+                <constraint firstItem="aRG-QG-pOJ" firstAttribute="top" secondItem="4ZZ-3U-nEm" secondAttribute="bottom" constant="5" id="2gV-n2-eBk"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zfJ-j3-z7i" secondAttribute="trailing" id="Jsg-qr-SLG"/>
+                <constraint firstItem="zfJ-j3-z7i" firstAttribute="top" secondItem="aRG-QG-pOJ" secondAttribute="bottom" constant="45" id="KO8-As-WZp"/>
+                <constraint firstItem="zFb-1H-jCi" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Oua-Eq-0w0"/>
+                <constraint firstItem="4ZZ-3U-nEm" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="TjN-rL-Z7W"/>
+                <constraint firstItem="zFb-1H-jCi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="e4D-RW-lBj"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="aRG-QG-pOJ" secondAttribute="trailing" constant="20" id="e5H-Ry-BTk"/>
+                <constraint firstItem="zFb-1H-jCi" firstAttribute="top" secondItem="zfJ-j3-z7i" secondAttribute="bottom" id="hrF-76-LgC"/>
+                <constraint firstItem="aRG-QG-pOJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="31" id="mN7-o9-zgJ"/>
+                <constraint firstItem="zfJ-j3-z7i" firstAttribute="top" secondItem="aRG-QG-pOJ" secondAttribute="bottom" constant="45" id="mO4-RU-tCG"/>
+                <constraint firstItem="zfJ-j3-z7i" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="291" id="mlA-en-SDg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="zFb-1H-jCi" secondAttribute="bottom" id="oef-y7-8Tw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4ZZ-3U-nEm" secondAttribute="trailing" id="s54-8C-cOa"/>
+                <constraint firstItem="4ZZ-3U-nEm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="w2F-2Y-P9n"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="103.79464285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
