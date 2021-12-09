@@ -23,7 +23,7 @@ Pod::Spec.new do |spec|
   spec.source = { :git => "https://github.com/synesthesia-it/Boomerang.git", :tag => "#{spec.version}" }
 
   spec.source_files = "Sources/RxTest/**/*{.swift}"
-  spec.dependency "Boomerang/RxSwift"
+  spec.dependency "RxBoomerang"
   spec.dependency "RxRelay"
   spec.dependency "RxBlocking"
   spec.dependency "RxSwift"

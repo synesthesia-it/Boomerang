@@ -21,12 +21,11 @@ Pod::Spec.new do |spec|
   spec.tvos.deployment_target = "11.0"
 
   spec.source = { :git => "https://github.com/synesthesia-it/Boomerang.git", :tag => "#{spec.version}" }
+
   spec.source_files = "Sources/Rx/**/*{.swift}"
-  spec.dependency "Boomerang"
+  spec.dependency "Boomerang/Core"
   spec.dependency "RxCocoa"
   spec.dependency "RxSwift"
   spec.ios.dependency "RxDataSources"
   spec.tvos.dependency "RxDataSources"
-  end
-
 end
