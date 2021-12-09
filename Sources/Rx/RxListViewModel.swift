@@ -10,8 +10,8 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-#if COCOAPODS_RXBOOMERANG
-@_exported import Boomerang
+#if !COCOAPODS_RXBOOMERANG
+import Boomerang
 #endif
 public protocol RxListViewModel: ListViewModel, RxViewModel {
     var sectionsRelay: BehaviorRelay<[Section]> { get }

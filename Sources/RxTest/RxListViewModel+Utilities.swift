@@ -10,7 +10,7 @@ import RxBlocking
 import RxSwift
 import XCTest
 import Boomerang
-#if COCOAPODS_RXBOOMERANG
+#if !COCOAPODS_RXBOOMERANG
 import RxBoomerang
 #endif
 
