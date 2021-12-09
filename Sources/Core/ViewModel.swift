@@ -10,7 +10,7 @@ import Foundation
 /**
     The most simple kind of viewModel.
  */
-public protocol ViewModel: WithPropertyAssignment {
+public protocol ViewModel: AnyObject, WithPropertyAssignment {
    /**
     A unique identifier used to identify this view model in lists.
     

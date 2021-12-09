@@ -10,7 +10,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-#if !COCOAPODS
+#if COCOAPODS_RXBOOMERANG
 @_exported import Boomerang
 #endif
 
