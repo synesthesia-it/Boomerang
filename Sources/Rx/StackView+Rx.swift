@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
-#if COCOAPODS_RXBOOMERANG
+#if !COCOAPODS_RXBOOMERANG
 import Boomerang
 #endif
 
