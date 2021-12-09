@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file
 
 ## Unreleased
 
+## 6.6.0
+
 **Breaking**
 
 - Removed `func elementSize(at indexPath: IndexPath) -> ElementSize?` in ListViewModel.
