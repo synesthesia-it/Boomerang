@@ -11,7 +11,7 @@ import Boomerang
 class GameItemViewModel: ViewModel {
     enum Layout: String, LayoutIdentifier {
         case gameItem
-        case emptyItem
+        case imageItem
     }
     let uniqueIdentifier: UniqueIdentifier
 
@@ -23,6 +23,7 @@ class GameItemViewModel: ViewModel {
         default: return nil
         }
     }
+    
     let tile: Game.Tile
     let description: String
     var isEmpty: Bool { number == nil }
@@ -34,11 +35,11 @@ class GameItemViewModel: ViewModel {
     init(tile: Game.Tile) {
         self.tile = tile
         switch tile {
-        case .empty: description = ""
+//        case .empty: description = ""
         case let .value(value): description = "\(value)"
         }
 
         self.uniqueIdentifier = description
-        self.layoutIdentifier = tile == .empty ? Layout.emptyItem : Layout.gameItem
+        self.layoutIdentifier = Deck == .alphabet ? Layout.gameItem : Layout.imageItem
     }
 }
