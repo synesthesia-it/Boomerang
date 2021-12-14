@@ -32,18 +32,20 @@ pod 'Boomerang'
 To use RxSwift integration, use
 
 ```ruby
-pod 'Boomerang/RxSwift`
+pod 'RxBoomerang`
 ```
+> We used to integrate Rx extensions with `pod Boomerang/RxSwift` 
+> This is still available at the moment but differs in how Rx extensions needs to be integrated in your project files: in this old scenario, `import RxBoomerang` is not needed in every file with Boomerang extensions because import is handled by cocoapods; however, we believe that package managers should be interchangeable as much as possible; therefore, we suggest to use the new separated pod as it's more "futureproof".
 
 ## Contributing
 
-This project is managed through [XcodeGen](https://github.com/yonaskolb/XcodeGen)
-To quickly setup your environment, checkout the repo and run `make setup`. It will install XcodeGen and create the xcodeproj file
+To integrate new features in the library, you can open the `Package.swift` file and edit the source folder.
 
-After that, edit the `project.yml` file when needed and run `make` every time you add a new dependency or file to the project.
+## Examples
 
+You can find some integration examples in the `Examples` folder.
 
-## Table of contents
+## Table of contents (WIP)
 
 - [Introduction to MVVM](documentation/mvvm.md)
 - [Core concepts](documentation/concepts.md)

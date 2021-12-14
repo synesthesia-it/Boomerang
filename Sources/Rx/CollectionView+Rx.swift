@@ -11,7 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
-#if !COCOAPODS
+#if !COCOAPODS_RXBOOMERANG
 import Boomerang
 #endif
 

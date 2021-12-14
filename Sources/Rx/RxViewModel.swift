@@ -10,8 +10,8 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-#if !COCOAPODS
-@_exported import Boomerang
+#if !COCOAPODS_RXBOOMERANG
+import Boomerang
 #endif
 
 #if !canImport(Differentiator)
