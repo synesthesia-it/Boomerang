@@ -1,10 +1,10 @@
 Pod::Spec.new do |spec|
-  spec.name = "RxBoomerangTest"
+  spec.name = "RxBoomerang"
   spec.version = "6.6.0"
-  spec.summary = "Swift microframework for MVVM"
+  spec.summary = "RxSwift extensions for Boomerang"
 
   spec.description = <<-DESC
-    A Swift microframework helping developers to write better MVVM applications.
+    RxSwift extensions for Boomerang - a Swift microframework helping developers to write better MVVM applications.
                    DESC
 
   spec.homepage = "http://github.com/synesthesia-it/Boomerang"
@@ -22,11 +22,10 @@ Pod::Spec.new do |spec|
 
   spec.source = { :git => "https://github.com/synesthesia-it/Boomerang.git", :tag => "#{spec.version}" }
 
-  spec.source_files = "Sources/RxTest/**/*{.swift}"
-  spec.dependency "RxBoomerang"
-  spec.dependency "RxRelay"
-  spec.dependency "RxBlocking"
+  spec.source_files = "Sources/Rx/**/*{.swift}"
+  spec.dependency "Boomerang/Core"
+  spec.dependency "RxCocoa"
   spec.dependency "RxSwift"
-  spec.framework = "XCTest"
-
+  spec.ios.dependency "RxDataSources"
+  spec.tvos.dependency "RxDataSources"
 end

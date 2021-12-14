@@ -38,6 +38,7 @@ Pod::Spec.new do |spec|
     s.dependency "RxSwift"
     s.ios.dependency "RxDataSources"
     s.tvos.dependency "RxDataSources"
-  end
+    s.pod_target_xcconfig = { 'SWIFT_ACTIVE_COMPILATION_CONDITIONS' => '$(inherited) COCOAPODS_RXBOOMERANG' }
+  end 
 
 end

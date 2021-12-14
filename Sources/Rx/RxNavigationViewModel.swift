@@ -9,8 +9,8 @@
 import Foundation
 import RxSwift
 import RxRelay
-#if !COCOAPODS
-@_exported import Boomerang
+#if !COCOAPODS_RXBOOMERANG
+import Boomerang
 #endif
 
 public protocol RxNavigationViewModel: NavigationViewModel {

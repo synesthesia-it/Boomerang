@@ -10,7 +10,7 @@ import RxBlocking
 import RxSwift
 import XCTest
 import Boomerang
-#if !COCOAPODS
+#if !COCOAPODS_RXBOOMERANG
 import RxBoomerang
 #endif
 
@@ -73,15 +73,18 @@ public struct TestSection<Identifier: Equatable> {
     let footer: Identifier?
 }
 
+public enum BoomerangTestError: Error {
+    case componentNotMatching
+}
+
 @discardableResult
 public func assertComponent<ViewModel: Boomerang.ViewModel>(_ component: Boomerang.ViewModel,
                                                             _: ViewModel.Type = ViewModel.self,
                                                             file: StaticString = #filePath,
-                                                            line: UInt = #line) throws -> ViewModel? {
+                                                            line: UInt = #line) throws -> ViewModel {
     guard let viewModel = component as? ViewModel else {
         XCTFail("Component of type \(Swift.type(of: component)) is not matching expected \(ViewModel.self)", file: file, line: line)
-
-        return nil
+        throw BoomerangTestError.componentNotMatching
     }
     return viewModel
 }
