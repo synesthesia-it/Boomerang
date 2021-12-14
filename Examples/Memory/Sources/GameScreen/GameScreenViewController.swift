@@ -12,15 +12,9 @@ import RxBoomerang
 import RxSwift
 import RxCocoa
 
-protocol GameScreenViewModel: RxListViewModel, RxNavigationViewModel {
-    var count: Observable<Int> { get }
-    func update(count: Int)
-    var title: Observable<String> { get }
-}
-
 class GameScreenViewController: UIViewController {
 
-    private let viewModel: GameScreenViewModel
+    private let viewModel: StateGameScreenViewModel
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         return UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -45,7 +39,7 @@ class GameScreenViewController: UIViewController {
             }
         }
 
-    init(viewModel: GameScreenViewModel,
+    init(viewModel: StateGameScreenViewModel,
          viewFactory: CollectionViewCellFactory) {
         self.viewFactory = viewFactory
         self.viewModel = viewModel
@@ -80,25 +74,6 @@ class GameScreenViewController: UIViewController {
                        .animated(by: viewModel, dataSource: collectionViewDataSource)
                        .disposed(by: disposeBag)
 
-        let button 1 = UIButton()
-        let button 2 = UIButton()
-        let slider = UISlider()
-            .with(\.translatesAutoresizingMaskIntoConstraints, to: false)
-        view.addSubview(slider)
-        let margins = view.layoutMarginsGuide
-        slider.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
-        slider.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
-        slider.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-
-        slider.value = 3
-        slider.minimumValue = 2
-        slider.maximumValue = 5
-        slider.rx.value
-            .map { Int(round($0))}
-            .distinctUntilChanged()
-            .bind { viewModel.update(count: $0) }
-            .disposed(by: disposeBag)
-
         viewModel.title
             .asDriver(onErrorJustReturn: "")
             .drive(navigationItem.rx.title)
@@ -109,5 +84,13 @@ class GameScreenViewController: UIViewController {
             .drive(rx.routes())
             .disposed(by: disposeBag)
 
+        let barButton = UIBarButtonItem(title: "Deck", style: .plain, target: nil, action: nil)
+        
+        self.navigationItem.rightBarButtonItem = barButton
+        
+        barButton.rx
+            .tap
+            .bind{viewModel.changeDeck()}
+            .disposed(by: disposeBag)
     }
 }

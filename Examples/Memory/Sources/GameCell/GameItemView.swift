@@ -14,7 +14,7 @@ class GameItemView: UIView, WithViewModel {
 
     @IBOutlet weak var title: UILabel?
     @IBOutlet weak var image: UIImageView?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         layer.cornerRadius = 4
@@ -22,10 +22,14 @@ class GameItemView: UIView, WithViewModel {
 
         title?.textColor = .blue
     }
+    
+
+    
     func configure(with viewModel: ViewModel) {
         guard let viewModel = viewModel as? GameItemViewModel else { return }
         title?.text = viewModel.description
-        backgroundColor = viewModel.description.isEmpty ? .clear : .init(white: 0.95, alpha: 1)
-        layer.borderWidth  = viewModel.description.isEmpty ? 0 : 2
+        image?.image = viewModel.image
+        backgroundColor =  .init(white: 0.95, alpha: 1)
+        layer.borderWidth  = viewModel.description.isEmpty ? 2 : 2
     }
 }

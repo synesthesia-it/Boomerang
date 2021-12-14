@@ -1,0 +1,46 @@
+name: Memory
+packages: 
+  RxSwift: 
+    url: https://github.com/ReactiveX/RxSwift
+    from: 6.0.0
+  RxDataSources:
+    url: https://github.com/RxSwiftCommunity/RxDataSources
+    from: 5.0.0
+  Boomerang:
+    path: ../../
+options:
+  bundleIdPrefix: it.synesthesia
+  createIntermediateGroups: true
+  transitivelyLinkDependencies: false
+  deploymentTarget:
+    iOS: "11.0"
+    tvOS: "11.0"
+    macOS: "10.15"
+    watchOS: "6.0"
+targets: 
+  Memory:
+    type: application
+    platform: [iOS]
+    sources: "Sources"
+    scheme:
+      gatherCoverageData: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: "it.synesthesia.memory"
+        INFOPLIST_FILE: Sources/Info.plist
+    dependencies:
+      - package: Boomerang
+        product: Boomerang
+      - package: Boomerang
+        product: RxBoomerang
+      - package: RxSwift
+        product: RxSwift
+      - package: RxSwift
+        product: RxRelay
+      - package: RxSwift
+        product: RxCocoa
+      - package: RxDataSources
+        product: RxDataSources
+      - package: RxDataSources
+        product: Differentiator
+        
