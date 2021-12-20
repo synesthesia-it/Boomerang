@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "RxBoomerang"
-  spec.version = "6.6.0"
+  spec.version = "6.6.1"
   spec.summary = "RxSwift extensions for Boomerang"
 
   spec.description = <<-DESC

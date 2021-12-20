@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "RxBoomerangTest"
-  spec.version = "6.6.0"
+  spec.version = "6.6.1"
   spec.summary = "Swift microframework for MVVM"
 
   spec.description = <<-DESC

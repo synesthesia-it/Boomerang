@@ -49,6 +49,50 @@ public func assert<State: Equatable, Action: Equatable, Environment>(
     file: StaticString = #file,
     line: UInt = #line
 ) {
+    assert(initialValue: initialValue,
+           reducer: reducer,
+           environment: environment,
+           steps: steps,
+           file: file,
+           line: line)
+}
+
+public func assert<StateMachine: RxStateMachine>(
+    stateMachine: StateMachine,
+    steps: [Step<StateMachine.State, StateMachine.Action>],
+    file: StaticString = #file,
+    line: UInt = #line
+) {
+    assert(initialValue: stateMachine.state.value,
+           reducer: stateMachine.reducer,
+           environment: stateMachine.environment,
+           steps: steps,
+           file: file,
+           line: line)
+}
+
+public func assert<StateMachine: RxStateMachine>(
+    stateMachine: StateMachine,
+    steps: Step<StateMachine.State, StateMachine.Action>...,
+    file: StaticString = #file,
+    line: UInt = #line
+) {
+    assert(initialValue: stateMachine.state.value,
+           reducer: stateMachine.reducer,
+           environment: stateMachine.environment,
+           steps: steps,
+           file: file,
+           line: line)
+}
+
+public func assert<State: Equatable, Action: Equatable, Environment>(
+    initialValue: State,
+    reducer: @escaping (inout State, Action, Environment) -> [Observable<Action>],
+    environment: Environment,
+    steps: [Step<State, Action>],
+    file: StaticString = #file,
+    line: UInt = #line
+) {
     var state = initialValue
     var effects: [Observable<Action>] = []
     let disposeBag = DisposeBag()
