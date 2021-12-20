@@ -9,8 +9,6 @@
 import SwiftUI
 import Boomerang
 import Combine
-import SwiftUIBoomerang
-import CombineBoomerang
 enum ViewIdentifier: String, LayoutIdentifier {
     case show
 

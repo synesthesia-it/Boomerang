@@ -1,0 +1,47 @@
+name: SwiftUIDemo
+packages:
+  RxSwift:
+    url: https://github.com/ReactiveX/RxSwift
+    from: 6.0.0
+  Kingfisher:
+    url: https://github.com/onevcat/Kingfisher
+    from: 7.0.0
+  RxDataSources:
+    url: https://github.com/RxSwiftCommunity/RxDataSources
+    from: 5.0.0
+  Boomerang:
+    path: ../../
+options:
+  bundleIdPrefix: it.synesthesia
+  createIntermediateGroups: true
+  transitivelyLinkDependencies: false
+  deploymentTarget:
+    iOS: "15.0"
+targets:
+  SwiftUIDemo:
+    type: application
+    platform: iOS
+    sources: "Sources"
+    scheme:
+      gatherCoverageData: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: "it.synesthesia.TVMaze"
+        INFOPLIST_FILE: Sources/Info.plist
+    dependencies:
+      - package: Boomerang
+        product: Boomerang
+      - package: Boomerang
+        product: RxBoomerang
+      - package: RxSwift
+        product: RxSwift
+      - package: RxSwift
+        product: RxRelay
+      - package: RxSwift
+        product: RxCocoa
+      - package: RxDataSources
+        product: RxDataSources
+      - package: RxDataSources
+        product: Differentiator
+      - package: Kingfisher
+        

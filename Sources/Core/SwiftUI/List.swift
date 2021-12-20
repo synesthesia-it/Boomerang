@@ -9,8 +9,7 @@
 import SwiftUI
 import Combine
 
-@available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
-@available(watchOS, unavailable)
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *)
 extension List where Content == ForEach<[Boomerang.Section], String, AnyView>, SelectionValue == IdentifiableViewModel {
 
     public init(_ sections: [Boomerang.Section],
@@ -24,8 +23,8 @@ extension List where Content == ForEach<[Boomerang.Section], String, AnyView>, S
         self.init(selection: selection, content: { content })
     }
 }
-@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-private extension Boomerang.Section {
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *)
+extension Boomerang.Section {
 
     // Probably a bad idea to wrap everything into AnyView, check problems with recycling cells.
     func listView(with factory: SwiftUIViewFactory) -> AnyView {
@@ -51,7 +50,7 @@ private extension Boomerang.Section {
     }
 }
 
-@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *)
 extension ViewModel {
     func view(from factory: SwiftUIViewFactory) -> AnyView? {
         return factory.view(from: IdentifiableViewModel(viewModel: self))

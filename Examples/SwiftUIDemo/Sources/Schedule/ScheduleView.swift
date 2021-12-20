@@ -8,8 +8,6 @@
 
 import Foundation
 import SwiftUI
-import SwiftUIBoomerang
-import CombineBoomerang
 import Boomerang
 
 struct ScheduleView: View {
@@ -20,16 +18,22 @@ struct ScheduleView: View {
         self.viewModel = viewModel
         self.factory = factory
     }
-
+    let columns: [GridItem] = [
+        .init(.flexible(), spacing: 4),
+        .init(.flexible())
+    ]
     var body: some View {
-            List(viewModel.sections,
-                 factory: factory,
-                 selection: $viewModel.currentSelection)
+        ScrollView {
+            LazyVGrid(viewModel.sections,
+                      columns: columns,
+                      spacing: 4,
+                 factory: factory)
+        }
             .onAppear { self.viewModel.reload() }
     }
 }
 struct ScheduleView_Previews: PreviewProvider {
     static var previews: some View {
-        ScheduleView(viewModel: ScheduleViewModel.demo())
+        ScheduleView(viewModel: ScheduleViewModel())
     }
 }

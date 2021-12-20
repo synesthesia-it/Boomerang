@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CombineBoomerang
 import Combine
 import Boomerang
 
@@ -16,6 +15,7 @@ class ShowViewModel: CombineViewModel, ObservableObject {
     let layoutIdentifier: LayoutIdentifier
     var uniqueIdentifier: UniqueIdentifier
     var title: String
+    let image: URL
     let show: Show
 
     static func demo(_ count: Int = 1) -> ShowViewModel {
@@ -25,8 +25,9 @@ class ShowViewModel: CombineViewModel, ObservableObject {
     private init(title: String) {
         self.layoutIdentifier = ViewIdentifier.show
         self.uniqueIdentifier = title
-        self.show = Show(name: "", id: 0, image: nil, genres: [])
+        self.show = Show.mock
         self.title = title
+        self.image = URL(fileURLWithPath: ".")
     }
 
     var id: String {
@@ -38,6 +39,7 @@ class ShowViewModel: CombineViewModel, ObservableObject {
         self.title = episode.name
         self.show = episode.show
         self.uniqueIdentifier = self.title + "_\(show.id)"
+        self.image = episode.show.image?.medium ?? .init(fileURLWithPath: "")
 //        if let img = episode.show.image?.medium {
 //            self.img = URLSession.shared.rx.data(request: URLRequest(url: img))
 //                .map { UIImage(data: $0) }

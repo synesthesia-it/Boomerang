@@ -9,7 +9,7 @@ import Foundation
 
 struct Episode: Codable, CustomStringConvertible {
     var description: String {
-        show?.name ?? name
+        show.name
     }
     
     let id: Int
@@ -20,11 +20,26 @@ struct Episode: Codable, CustomStringConvertible {
     let season: Int
     let number: Int?
     let summary : String?
-    let show: Show?
+    let show: Show
     let image : Image?
 }
 
 struct Show: Codable {
+    static var mock: Show {
+        .init(id: 0, url: URL(fileURLWithPath: "."),
+              name: "Mock",
+              type: "MockType",
+              language: "en", genres: ["adventure"],
+              status: "ended",
+              runtime: nil,
+              averageRuntime: nil,
+              premiered: nil,
+              ended: nil,
+              officialSite: nil,
+              image: nil,
+              summary: nil,
+              weight: nil)
+    }
     let id: Int
     let url: URL
     let name: String

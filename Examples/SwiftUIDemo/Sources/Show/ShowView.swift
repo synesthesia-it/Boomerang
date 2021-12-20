@@ -14,6 +14,16 @@ struct ShowListView: View {
     @ObservedObject var viewModel: ShowViewModel
     var body: some View {
         ZStack {
+            AsyncImage(url: viewModel.image,
+                       content: { image in
+                image.resizable()
+                    .aspectRatio(210.0 / 270.0, contentMode: .fit)
+
+            },
+                       placeholder: {
+                ProgressView()
+            })
+                
             Text(viewModel.title)
 //                .foregroundColor(.white)
 //            .padding(30)
