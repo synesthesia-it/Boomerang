@@ -45,6 +45,12 @@ To integrate new features in the library, you can open the `Package.swift` file 
 
 You can find some integration examples in the `Examples` folder.
 
+We use [XcodeGen](https://github.com/yonaskolb/XcodeGen) to easily maintain xcodeproj files. 
+
+To install XcodeGen it, run `brew install xcodegen`
+
+To setup each example project, run `xcodegen` in each folder.
+
 ## Table of contents (WIP)
 
 - [Introduction to MVVM](documentation/mvvm.md)
@@ -52,4 +58,3 @@ You can find some integration examples in the `Examples` folder.
 - [UIKit integration](documentation/uikit.md)
 - [RxSwift integration](documentation/rxswift.md)
 - [Combine integration](documentation/combine.md)
-- [Real life example: Binge](https://github.com/stefanomondino/Binge)
