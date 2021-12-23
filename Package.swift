@@ -25,24 +25,27 @@ let package = Package(
             path: "Sources/Core",
             linkerSettings: [.linkedFramework("UIKit",
                                               .when(platforms: [.iOS, .tvOS]))]),
-            .testTarget(name: "BoomerangTests",
-                    dependencies: ["Boomerang"]),
         .target(
             name: "RxBoomerang",
             dependencies: [ "Boomerang",
                             .product(name: "RxSwift", package: "RxSwift"),
                             .product(name: "RxCocoa", package: "RxSwift"),
                             "RxDataSources"],
-            path: "Sources/Rx"
-//            linkerSettings: [.linkedFramework("RxDataSources", .when(platforms: [.iOS, .tvOS]))]
-        ),
-    
+            path: "Sources/Rx"),
         .target(
             name: "RxBoomerangTest",
             dependencies: [ "RxBoomerang",
                             .product(name: "RxBlocking", package: "RxSwift")
                             ],
-            path: "Sources/RxTest")
+            path: "Sources/RxTest"),
+        
+        .testTarget(name: "BoomerangTests",
+                    dependencies: ["Boomerang"]),
+        .testTarget(name: "RxBoomerangTests",
+                dependencies: ["RxBoomerang"]),
+        .testTarget(name: "RxBoomerangTestTests",
+                dependencies: ["RxBoomerangTest"])
+
     ],
     swiftLanguageVersions: [.v5]
 )
