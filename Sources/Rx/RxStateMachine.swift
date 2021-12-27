@@ -2,7 +2,7 @@
 //  RxStateMachine.swift
 //  Boomerang
 //
-//  Created by Stefano Mondino on 18/09/21.
+//  Credits to pointfree.co for the original idea (composable architecture) and implementation
 //
 
 import Foundation

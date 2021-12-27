@@ -2,7 +2,8 @@
 //  RxStateMachine+Utilities.swift
 //  TestUtilities
 //
-//  Created by Stefano Mondino on 21/09/21.
+//  Credits to pointfree.co for the original idea (composable architecture) and implementation
+//
 //
 
 import Foundation

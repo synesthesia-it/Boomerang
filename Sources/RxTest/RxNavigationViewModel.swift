@@ -13,36 +13,11 @@ import Boomerang
 #if !COCOAPODS_RXBOOMERANG
 import RxBoomerang
 #endif
-extension MaterializedSequenceResult {
-    var values: [T] {
-        switch self {
-        case let .completed(elements): return elements
-        case let .failed(elements, error): return elements
-        }
-    }
-}
-
-public var routesTimeout: TimeInterval = 5.0
-
-open class MockRoute<Identifier: Equatable>: Route, Equatable {
-    public static func == (lhs: MockRoute<Identifier>, rhs: MockRoute<Identifier>) -> Bool {
-        lhs.identifier == rhs.identifier
-    }
-    
-    public let createScene: () -> Scene? = { nil }
-    let identifier: Identifier
-    public func execute<T>(from _: T?) where T: Scene {}
-    
-    public init(_ identifier: Identifier) {
-        self.identifier = identifier
-    }
-}
 
 public func assertRoute<Stream: ObservableType,
                         Identifier: Equatable>(_ stream: Stream,
                                                targeting targets: [Identifier],
                                                timeout: TimeInterval? = routesTimeout,
-                                               _ message: @autoclosure () -> String = "",
                                                file: StaticString = #filePath,
                                                line: UInt = #line) where Stream.Element == Route {
     guard let routes = stream
@@ -58,19 +33,17 @@ public func assertRoute<Stream: ObservableType,
         XCTFail("Expected \(targets.count) routes (\(targets)), but found \(routes.count) routes ((\(routes))")
         return
     }
-    XCTAssertEqual(routes.map { $0.identifier }, targets, message(), file: file, line: line)
+    XCTAssertEqual(routes.map { $0.identifier }, targets, file: file, line: line)
 }
 
 public func assertRoute<Stream: ObservableType, Identifier: Equatable>(_ route: Stream,
                                                                        targeting target: Identifier,
                                                                        timeout: TimeInterval? = routesTimeout,
-                                                                       _ message: @autoclosure () -> String = "",
                                                                        file: StaticString = #filePath,
                                                                        line: UInt = #line) where Stream.Element == Route {
     assertRoute(route,
                     targeting: [target],
                     timeout: timeout,
-                    message(),
                     file: file,
                     line: line)
 }
@@ -78,14 +51,12 @@ public func assertRoute<Stream: ObservableType, Identifier: Equatable>(_ route: 
 public func assertRoute<ViewModel: RxNavigationViewModel, Identifier: Equatable>(_ viewModel: ViewModel,
                                                                                  targeting target: Identifier,
                                                                                  timeout: TimeInterval? = routesTimeout,
-                                                                                 _ message: @autoclosure () -> String = "",
                                                                                  file: StaticString = #filePath,
                                                                                  line: UInt = #line,
                                                                                  starting callback: @escaping (ViewModel) -> Void) {
     assertRoute(viewModel,
                     targeting: [target],
                     timeout: timeout,
-                    message(),
                     file: file,
                     line: line,
                     starting: callback)
@@ -94,7 +65,6 @@ public func assertRoute<ViewModel: RxNavigationViewModel, Identifier: Equatable>
 public func assertRoute<Identifier: Equatable, ViewModel: RxNavigationViewModel>(_ viewModel: ViewModel,
                                                                                  targeting targets: [Identifier],
                                                                                  timeout: TimeInterval? = routesTimeout,
-                                                                                 _ message: @autoclosure () -> String = "",
                                                                                  file: StaticString = #filePath,
                                                                                  line: UInt = #line,
                                                                                  starting callback: @escaping (ViewModel) -> Void) {
@@ -107,14 +77,12 @@ public func assertRoute<Identifier: Equatable, ViewModel: RxNavigationViewModel>
     assertRoute(routes,
                     targeting: targets,
                     timeout: timeout,
-                    message(),
                     file: file,
                     line: line)
 }
 
 public func assert(_ route: Route,
                    hierarchy types: [Scene.Type],
-                   _: @autoclosure () -> String = "",
                    file: StaticString = #filePath,
                    line: UInt = #line,
                    exploring exploreClosure: @escaping (Scene) -> Scene?) {
@@ -141,7 +109,6 @@ public func assert(_ route: Route,
 
 public func assert<RouteType: Route>(_ route: Route,
                                      of routeType: RouteType.Type,
-                                     _: @autoclosure () -> String = "",
                                      file: StaticString = #filePath,
                                      line: UInt = #line) {
     guard route is RouteType else {
