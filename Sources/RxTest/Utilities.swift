@@ -80,16 +80,18 @@ public struct TestSection<Identifier: Equatable> {
     let footer: Identifier?
 }
 
-open class MockRoute<Identifier: Equatable>: Route, Equatable {
-    public static func == (lhs: MockRoute<Identifier>, rhs: MockRoute<Identifier>) -> Bool {
-        lhs.identifier == rhs.identifier
-    }
-    
+open class MockRoute<Identifier>: Route {
     public let createScene: () -> Scene? = { nil }
     let identifier: Identifier
     public func execute<T>(from _: T?) where T: Scene {}
     
     public init(_ identifier: Identifier) {
         self.identifier = identifier
+    }
+}
+
+extension MockRoute: Equatable where Identifier: Equatable {
+    public static func == (lhs: MockRoute<Identifier>, rhs: MockRoute<Identifier>) -> Bool {
+        lhs.identifier == rhs.identifier
     }
 }

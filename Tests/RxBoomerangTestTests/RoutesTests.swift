@@ -47,7 +47,7 @@ class RoutesTests: XCTestCase {
             $0.routes.accept(MockRoute(RouteIdentifier.second))
             $0.routes.accept(MockRoute(RouteIdentifier.first))
         }
-
+        
         XCTExpectFailure {
             assertRoute(viewModel, targeting: [RouteIdentifier.second, .first]) {
                 $0.routes.accept(MockRoute(RouteIdentifier.second))
