@@ -223,9 +223,9 @@ public extension DependencyContainer where DependencyKey == ObjectIdentifier {
         - Warning: Internal implementation uses some possible private details from Swift implementation of propertyWrapper. This *may* result in breaking changes in the future.
     
  */
-@propertyWrapper struct Dependency<Value> {
+@propertyWrapper public struct Dependency<Value> {
 
-    init() {}
+    public init() {}
     
     @available(*, unavailable,
        message: "This property wrapper can only be applied to classes")
