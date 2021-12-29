@@ -111,18 +111,26 @@ public extension DependencyContainer {
         return value as? Value
         }
     }
+    /**
+    Returns unwrapped dependency for provided key
+     
+     - Warning: if key is not registered, a `fatalError` is thrown.
+    */
+    func unsafeResolve<Value: Any>(_ key: DependencyKey) -> Value {
+        guard let element: Value = resolve(key) else {
+            fatalError("No dependency found for \(key)")
+        }
+        return element
+    }
 }
 public extension DependencyContainer {
     /**
-    Shorthand for `resolve` method.
+    Shorthand for `unsafeResolve` method.
      
      - Warning: if key is not registered, a `fatalError` is thrown.
     */
     subscript<T>(index: DependencyKey) -> T {
-        guard let element: T = resolve(index) else {
-            fatalError("No dependency found for \(index)")
-        }
-        return element
+       unsafeResolve(index)
     }
 }
 
@@ -134,14 +142,28 @@ public extension DependencyContainer where DependencyKey == ObjectIdentifier {
                               handler: @escaping () -> Value) {
         self.register(for: ObjectIdentifier(key), scope: scope, handler: handler)
     }
+    /// Returns resolved dependency or nil if not found
     func resolve<Value: Any>(_ key: Value.Type = Value.self) -> Value? {
         resolve(ObjectIdentifier(key))
     }
+    /**
+    Shorthand for `unsafeResolve` method.
+     
+     - Warning: if key is not registered, a `fatalError` is thrown.
+    */
+    subscript<T>(index: T.Type) -> T {
+        unsafeResolve(index)
+    }
     
-    subscript<T>(index: T.Type) -> T? {
-        guard let element: T = resolve(ObjectIdentifier(index)) else {
-            return nil
+    /**
+    Returns unwrapped dependency for provided key
+     
+     - Warning: if key is not registered, a `fatalError` is thrown.
+    */
+    func unsafeResolve<Value: Any>(_ key: Value.Type = Value.self) -> Value {
+        guard let value = resolve(key) else {
+            fatalError("No dependency found for \(key)")
         }
-        return element
+        return value
     }
 }
