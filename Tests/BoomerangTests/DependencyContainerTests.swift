@@ -14,7 +14,8 @@ class DependencyContainerTests: XCTestCase {
         case dependencyB
     }
     
-    class TestObject {
+    class TestObject: CustomStringConvertible {
+        var description: String { content.stringValue }
         let content: UUID = .init()
         init() {}
     }
@@ -24,6 +25,18 @@ class DependencyContainerTests: XCTestCase {
         init(_ container: Container<Key>) {
             self.container = container
         }
+    }
+    
+    class CustomContainer: DependencyContainer {
+        let container = ObjectContainer()
+        
+        @Dependency
+        var test: Int
+        
+        @Dependency
+        var testCustomString: CustomStringConvertible
+        
+        var testObject: CustomStringConvertible { self.unsafeResolve(CustomStringConvertible.self) }
     }
     
     func testObjectIdentifierContainer() throws {
@@ -36,6 +49,21 @@ class DependencyContainerTests: XCTestCase {
         }
         XCTAssertEqual(container.resolve(String.self), "test")
         XCTAssertEqual(container[Int.self], 1)
+    }
+    
+    func testAdvancedContainerWithPropertyWrappers() {
+        let container = CustomContainer()
+        container.register(for: \.testCustomString) { "Test" }
+        XCTAssertEqual(container.testCustomString.description, "Test")
+        container.register { 1 }
+        XCTAssertEqual(container.test, 1)
+        let testObject = TestObject()
+        container.register(for: CustomStringConvertible.self) { testObject }
+        XCTAssertEqual(container.testObject.description, testObject.description)
+        let anotherTestObject = TestObject()
+        container.register(for: \.testCustomString) { anotherTestObject }
+        XCTAssertEqual(container.testCustomString.description, anotherTestObject.description)
+        
     }
     func testEnumeratedContainer() throws {
         let container = TestContainer(Container<Key>())

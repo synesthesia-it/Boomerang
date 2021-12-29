@@ -146,12 +146,32 @@ public extension DependencyContainer where DependencyKey == ObjectIdentifier {
     func resolve<Value: Any>(_ key: Value.Type = Value.self) -> Value? {
         resolve(ObjectIdentifier(key))
     }
+    
+    func register<Value: Any>(for keyPath: KeyPath<Self, Value>,
+                              scope: Container<DependencyKey>.Scope = .unique,
+                              handler: @escaping () -> Value) {
+        self.register(for: ObjectIdentifier(keyPath), scope: scope, handler: handler)
+    }
+    
+    func resolve<Value>(_ keyPath: KeyPath<Self, Value>) -> Value? {
+        resolve(ObjectIdentifier(keyPath))
+    }
+    
     /**
     Shorthand for `unsafeResolve` method.
      
      - Warning: if key is not registered, a `fatalError` is thrown.
     */
     subscript<T>(index: T.Type) -> T {
+        unsafeResolve(index)
+    }
+    
+    /**
+    Shorthand for `unsafeResolve` method.
+     
+     - Warning: if key is not registered, a `fatalError` is thrown.
+    */
+    subscript<T>(index: KeyPath<Self, T>) -> T {
         unsafeResolve(index)
     }
     
@@ -166,4 +186,50 @@ public extension DependencyContainer where DependencyKey == ObjectIdentifier {
         }
         return value
     }
+    
+    func unsafeResolve<Value: Any>(_ keyPath: KeyPath<Self, Value>) -> Value {
+        guard let value = resolve(keyPath) else {
+            fatalError("No dependency found for \(keyPath)")
+        }
+        return value
+    }
+}
+
+/**
+        Declares a variable as dependency, automatically resolving its contents.
+        - Warning: If no value is found, a `fatalError` is thrown
+        - Warning: Internal implementation uses some possible private details from Swift implementation of propertyWrapper. This *may* result in breaking changes in the future.
+    
+ */
+@propertyWrapper struct Dependency<Value> {
+
+    init() {}
+    
+    @available(*, unavailable,
+       message: "This property wrapper can only be applied to classes")
+    public var wrappedValue: Value {
+            get { fatalError() }
+            // swiftlint:disable unused_setter_value
+            set { fatalError() }
+        }
+        
+    public static subscript<Container: Boomerang.DependencyContainer>(
+            _enclosingInstance instance: Container,
+            wrapped wrappedKeyPath: ReferenceWritableKeyPath<Container, Value>,
+            storage storageKeyPath: ReferenceWritableKeyPath<Container, Self>
+        ) -> Value where Container.DependencyKey == ObjectIdentifier {
+            get {
+                // was the dependency registered via keypath?
+                if let value = instance.resolve(wrappedKeyPath) {
+                    return value
+                }
+                // was the dependency registered via type?
+                if let value = instance.resolve(Value.self) {
+                    return value
+                }
+                
+                fatalError("No dependency found")
+            }
+            set {}
+        }
 }
