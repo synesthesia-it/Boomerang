@@ -14,7 +14,21 @@ class DependencyContainerTests: XCTestCase {
         case dependencyB
     }
     
-    class TestObject: CustomStringConvertible {
+    class TestObject: CustomStringConvertible, Equatable {
+        static func == (lhs: DependencyContainerTests.TestObject, rhs: DependencyContainerTests.TestObject) -> Bool {
+            lhs.content == rhs.content
+        }
+        
+        var description: String { content.stringValue }
+        let content: UUID = .init()
+        init() {}
+    }
+    
+    struct TestStruct: CustomStringConvertible, Equatable {
+        static func == (lhs: DependencyContainerTests.TestStruct, rhs: DependencyContainerTests.TestStruct) -> Bool {
+            lhs.content == rhs.content
+        }
+        
         var description: String { content.stringValue }
         let content: UUID = .init()
         init() {}
@@ -122,5 +136,41 @@ class DependencyContainerTests: XCTestCase {
         }
         let valueB: TestObject = container[.dependencyA]
         XCTAssertNotEqual(valueA.content, valueB.content)
+    }
+
+    func testWeakDependencyOnAnyObject() throws {
+        let container = ObjectContainer()
+        container.register(for: TestObject.self, scope:.weakSingleton) { TestObject() }
+        var object = container.resolve(TestObject.self)
+        let previousObjectContent = object?.content
+        XCTAssertNotNil(object)
+        XCTAssertNotNil(container.resolve(TestObject.self))
+        XCTAssertEqual(object, container.resolve(TestObject.self))
+        object = nil
+        let resolvedAgain = try XCTUnwrap(container.resolve(TestObject.self))
+        XCTAssertNotEqual(resolvedAgain.content, previousObjectContent)
+        
+        container.register(for: String.self, scope: .weakSingleton) { "TEST" }
+        XCTAssertEqual(container.resolve(), "TEST")
+        container.register(for: Int.self, scope: .weakSingleton) { 1 }
+        XCTAssertEqual(container.resolve(), 1)
+    }
+    func testWeakDependencyOnStructs() throws {
+        let container = ObjectContainer()
+        container.register(scope:.weakSingleton) { TestStruct() }
+        var object = container.resolve(TestStruct.self)
+        let previousObjectContent = object?.content
+        XCTAssertNotNil(object)
+        XCTAssertNotNil(container.resolve(TestStruct.self))
+        /// Since there's no concept of "weak" on structs, every resolution will always return a different value as in `unique` scope
+        XCTAssertNotEqual(object, container.resolve(TestStruct.self))
+        object = nil
+        let resolvedAgain = try XCTUnwrap(container.resolve(TestStruct.self))
+        XCTAssertNotEqual(resolvedAgain.content, previousObjectContent)
+        
+        container.register(scope: .weakSingleton) { "TEST" }
+        XCTAssertEqual(container.resolve(), "TEST")
+        container.register(scope: .weakSingleton) { 1 }
+        XCTAssertEqual(container.resolve(), 1)
     }
 }

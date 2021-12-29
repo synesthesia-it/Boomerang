@@ -22,7 +22,7 @@ public protocol DependencyContainer: AnyObject {
  Usually it simply needs to be instantiated in a `DependencyContainer` context,
  providing the key type (`DependencyKey` generic type)
  */
-public class Container<DependencyKey: Hashable> {
+public class Container<DependencyKey: Hashable>: DependencyContainer {
 
     struct Dependency {
         let scope: Scope
@@ -44,10 +44,23 @@ public class Container<DependencyKey: Hashable> {
         case singleton
         /// Dependency closure is executed immediately upon registration. Resulting object is cached and returned for each subsequent call, instead of re-executing the closure.
         case eagerSingleton
+        /** Dependency closure is executed only at first resolution. Resulting object is cached weakly and returned for each subsequent call, as long as previous value has ben strongly referenced somewhere else. On structs types, this has no effect and has no differences with `unique` scope.
+        */
+        case weakSingleton
     }
-
+    
+    fileprivate class WeakWrapper {
+        weak var value: AnyObject?
+        init(value: AnyObject) {
+            self.value = value
+        }
+    }
+    
+    public var container: Container<DependencyKey> { self }
+    
     fileprivate var dependencies: [DependencyKey: Dependency] = [:]
     fileprivate var singletons: [DependencyKey: Any] = [:]
+    fileprivate var weakSingletons: [DependencyKey: WeakWrapper] = [:]
 
     public init() {}
 }
@@ -102,8 +115,17 @@ public extension DependencyContainer {
     func resolve<Value: Any>(_ key: DependencyKey) -> Value? {
         guard let dependency = container.dependencies[key] else { return nil }
         switch dependency.scope {
-        case .unique: return dependency.closure() as? Value
-        case .singleton, .eagerSingleton: guard let value = container.singletons[key] else {
+        case .unique:
+            return dependency.closure() as? Value
+        case .weakSingleton:
+            guard let value = container.weakSingletons[key]?.value else {
+                let newValue = dependency.closure() as AnyObject
+                container.weakSingletons[key] = .init(value: newValue)
+            return newValue as? Value
+            }
+            return value as? Value
+        case .singleton, .eagerSingleton:
+            guard let value = container.singletons[key] else {
             let newValue = dependency.closure()
             container.singletons[key] = newValue
             return newValue as? Value

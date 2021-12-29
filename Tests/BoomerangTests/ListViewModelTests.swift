@@ -104,5 +104,9 @@ class ListViewModelTests: XCTestCase {
         XCTAssert((viewModel.sections[2].items.last as? TestItemViewModel)?.string == "11")
 
     }
-
+    func testStandaloneContainer() throws {
+        let container = ObjectContainer()
+        container.register(for: String.self) { "TEST" }
+        XCTAssertEqual(container.resolve(), "TEST")
+    }
 }
