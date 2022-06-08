@@ -10,12 +10,14 @@ import SwiftUI
 import Combine
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
+@available(watchOS, unavailable)
 extension List where Content == ForEach<[Boomerang.Section], String, AnyView>, SelectionValue == IdentifiableViewModel {
-
+    
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *)
     public init(_ sections: [Boomerang.Section],
                 factory: SwiftUIViewFactory,
                 selection: Binding<IdentifiableViewModel?>?) {
-
+        
         let content = ForEach(sections) { section in
             section.listView(with: factory)
         }
@@ -23,10 +25,12 @@ extension List where Content == ForEach<[Boomerang.Section], String, AnyView>, S
         self.init(selection: selection, content: { content })
     }
 }
+
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *)
 extension Boomerang.Section {
 
     // Probably a bad idea to wrap everything into AnyView, check problems with recycling cells.
+    @available(watchOS, unavailable)
     func listView(with factory: SwiftUIViewFactory) -> AnyView {
         let items = self.items.map { IdentifiableViewModel(viewModel: $0) }
 

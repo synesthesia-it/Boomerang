@@ -1,7 +1,7 @@
 .PHONY: pod_push pod_lint
 
 pod_push:
-	pod trunk push Boomerang.podspec --allow-warnings
+	pod trunk push Boomerang.podspec --allow-warnings --verbose
 	pod trunk push RxBoomerang.podspec --allow-warnings
 	pod trunk push RxBoomerangTest.podspec --allow-warnings
 
