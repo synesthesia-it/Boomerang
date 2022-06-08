@@ -12,7 +12,6 @@ import RxCocoa
 import Boomerang
 import RxBoomerang
 
-
 class ScheduleViewController: UIViewController {
     var disposeBag = DisposeBag()
     @IBOutlet var collectionView : UICollectionView!

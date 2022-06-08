@@ -11,8 +11,12 @@
 import UIKit
 
 public protocol TableViewCellContained {
-        
+    var selectionStyle: UITableViewCell.SelectionStyle { get }
     var tableCellAttributes: ContentTableViewCell.Attributes { get }
+}
+
+public extension TableViewCellContained {
+    var selectionStyle: UITableViewCell.SelectionStyle { .none }
 }
 
 open class ContentTableHeaderFooterViewCell: UITableViewHeaderFooterView, ContentCollectionViewCellType {
@@ -60,6 +64,9 @@ open class ContentTableViewCell: UITableViewCell, ContentCollectionViewCellType 
         #if os(iOS)
         if let attributes = (internalView as? TableViewCellContained)?.tableCellAttributes {
             self.separatorInset = attributes.separatorInset
+        }
+        if let selectionStyle = (internalView as? TableViewCellContained)?.selectionStyle {
+            self.selectionStyle = selectionStyle
         }
         #endif
     }

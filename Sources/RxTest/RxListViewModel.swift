@@ -14,7 +14,7 @@ import Boomerang
 import RxBoomerang
 #endif
 
-private let disposeBag = DisposeBag()
+let disposeBag = DisposeBag()
 
 
 
