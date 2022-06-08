@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *)
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
 extension List where Content == ForEach<[Boomerang.Section], String, AnyView>, SelectionValue == IdentifiableViewModel {
 
     public init(_ sections: [Boomerang.Section],
