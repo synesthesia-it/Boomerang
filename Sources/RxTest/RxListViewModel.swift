@@ -24,10 +24,10 @@ public func assertSections<Identifier: Equatable>(_ viewModel: RxListViewModel,
                                                   file: StaticString = #filePath,
                                                   line: UInt = #line) {
     assertSections(viewModel,
-                       timeout: timeout,
-                       testSections: items.map { TestSection(items: $0) },
-                       file: file,
-                       line: line)
+                   timeout: timeout,
+                   testSections: items.map { TestSection(items: $0) },
+                   file: file,
+                   line: line)
 }
 
 public func assertSections(_ viewModel: RxListViewModel,
@@ -71,12 +71,12 @@ public func assertSections<Identifier: Equatable>(_ viewModel: RxListViewModel,
     observable.connect().disposed(by: disposeBag)
     
     viewModel.reload()
-
+    
     assertSections(viewModel,
-                       timeout: timeout,
-                       file: file,
-                       line: line) { sections in
-
+                   timeout: timeout,
+                   file: file,
+                   line: line) { sections in
+        
         guard testSections.count == sections.count else {
             XCTAssertEqual(testSections.count, sections.count, file: file, line: line)
             return
@@ -85,35 +85,35 @@ public func assertSections<Identifier: Equatable>(_ viewModel: RxListViewModel,
         sections
             .enumerated()
             .forEach { index, section in
-            guard let items = section.items as? [MockViewModel<Identifier>] else {
-                XCTFail("Wrong section configuration at index \(index). Contents are:\n\n\(section.items)",
-                        file: file,
-                        line: line)
-                return
-            }
-            XCTAssertEqual(items.map(\.identifier),
-                           testSections[index].items,
-                           file: file,
-                           line: line)
-                
-            if section.header != nil {
-                guard let header = section.header as? MockViewModel<Identifier> else {
-                    XCTFail("Wrong section configuration at index \(index) for header. Header is:\n\n\(section.header!)",
+                guard let items = section.items as? [MockViewModel<Identifier>] else {
+                    XCTFail("Wrong section configuration at index \(index). Contents are:\n\n\(section.items)",
                             file: file,
                             line: line)
                     return
                 }
-                XCTAssertEqual(header.identifier, testSections[index].header, file: file, line: line)
-            }
+                XCTAssertEqual(items.map(\.identifier),
+                               testSections[index].items,
+                               file: file,
+                               line: line)
                 
-            if section.footer != nil {
-                guard let footer = section.footer as? MockViewModel<Identifier> else {
-                    XCTFail("Wrong section configuration at index \(index) for footer. Footer is:\n\n\(section.footer!)", file: file, line: line)
-                    return
+                if section.header != nil {
+                    guard let header = section.header as? MockViewModel<Identifier> else {
+                        XCTFail("Wrong section configuration at index \(index) for header. Header is:\n\n\(section.header!)",
+                                file: file,
+                                line: line)
+                        return
+                    }
+                    XCTAssertEqual(header.identifier, testSections[index].header, file: file, line: line)
                 }
-                XCTAssertEqual(footer.identifier, testSections[index].footer, file: file, line: line)
+                
+                if section.footer != nil {
+                    guard let footer = section.footer as? MockViewModel<Identifier> else {
+                        XCTFail("Wrong section configuration at index \(index) for footer. Footer is:\n\n\(section.footer!)", file: file, line: line)
+                        return
+                    }
+                    XCTAssertEqual(footer.identifier, testSections[index].footer, file: file, line: line)
+                }
             }
-        }
     }
 }
 
@@ -132,7 +132,7 @@ public func assertSize(_ viewModel: ListViewModel,
         }
         return
     }
-
+    
     let propertiesClosure: (Int) -> Size.ContainerProperties = { count in
         let elementsInLine = CGFloat(count)
         let sectionProperties = viewModel.sectionProperties(at: indexPath.section)
@@ -143,7 +143,7 @@ public func assertSize(_ viewModel: ListViewModel,
                                         maximumWidth: maximumWidth,
                                         maximumHeight: nil)
     }
-
+    
     let result = itemSize.size(for: propertiesClosure((itemSize as? GridElementSize)?.itemsPerLine ?? 1))
     let expected = targetSize?.size(for: propertiesClosure((targetSize as? GridElementSize)?.itemsPerLine ?? 1))
     XCTAssertEqual(result, expected, file: file, line: line)

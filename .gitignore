@@ -7,3 +7,4 @@ Examples/TVMaze/TVMaze.xcodeproj/xcuserdata
 **/*.xcodeproj/**/xcuserdata/**
 Boomerang.xcworkspace
 .swiftpm
+.vscode

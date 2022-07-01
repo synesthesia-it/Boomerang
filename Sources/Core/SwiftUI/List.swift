@@ -11,38 +11,46 @@ import Combine
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
 @available(watchOS, unavailable)
-extension List where Content == ForEach<[Boomerang.Section], String, AnyView>, SelectionValue == IdentifiableViewModel {
-    
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *)
-    public init(_ sections: [Boomerang.Section],
-                factory: SwiftUIViewFactory,
-                selection: Binding<IdentifiableViewModel?>?) {
-        
+extension List where SelectionValue: ViewModel {
+    public init<Factory>(_ sections: [Boomerang.Section],
+                         factory: Factory,
+                         selection: Binding<SelectionValue?>?)
+    where Factory: SwiftUIViewFactory, Content == AnyView {
+        let content = ForEach(sections) { section in
+                section.listView(with: factory)
+        }
+        self.init(selection: selection, content: { AnyView(content) })
+    }
+}
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+extension List where SelectionValue == Never {
+
+    public init<Factory: SwiftUIViewFactory>(_ sections: [Boomerang.Section],
+                         factory: Factory) where Content == AnyView {
         let content = ForEach(sections) { section in
             section.listView(with: factory)
         }
-
-        self.init(selection: selection, content: { content })
+        self.init(content: { AnyView(content) })
     }
 }
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *)
 extension Boomerang.Section {
-
+    
     // Probably a bad idea to wrap everything into AnyView, check problems with recycling cells.
     @available(watchOS, unavailable)
-    func listView(with factory: SwiftUIViewFactory) -> AnyView {
-        let items = self.items.map { IdentifiableViewModel(viewModel: $0) }
+    func listView<Factory: SwiftUIViewFactory>(with factory: Factory) -> AnyView {
+        let items = self.items
 
-        let content = ForEach(items, id: \.id, content: factory.view(from:))
+        let content = ForEach(items, id: \.uniqueIdentifier.stringValue, content: factory.view(from:))
         let header = self.header?.view(from: factory)
         let footer = self.footer?.view(from: factory)
         if let footer = footer,
-            let header = header {
+           let header = header {
 
             return AnyView(SwiftUI.Section(header: header,
-                                           footer: footer,
-                                            content: { content }))
+                                   footer: footer,
+                                   content: { content }))
         }
         if let header = header {
             return AnyView(SwiftUI.Section(header: header, content: { content }))
@@ -52,33 +60,54 @@ extension Boomerang.Section {
         }
         return AnyView(SwiftUI.Section { content })
     }
+//
+    @available(watchOS, unavailable)
+    func listView<Factory: SwiftUIViewFactory>(with factory: Factory,
+                                               header: Factory.View,
+                                               items: [ViewModel]) -> SwiftUI.Section< Factory.View, ForEach<[ViewModel], String, Factory.View>, EmptyView> {
+        let content = ForEach(items,
+                              id: \.uniqueIdentifier.stringValue,
+                              content: factory.view(from:))
+        return SwiftUI.Section(header: header,
+                               content: { content })
+    }
+    @available(watchOS, unavailable)
+    func listView<Factory: SwiftUIViewFactory>(with factory: Factory,
+                                               footer: Factory.View,
+                                               items: [ViewModel]) -> SwiftUI.Section<EmptyView, ForEach<[ViewModel], String, Factory.View>, Factory.View> {
+        let content = ForEach(items,
+                              id: \.uniqueIdentifier.stringValue,
+                              content: factory.view(from:))
+        return SwiftUI.Section(footer: footer,
+                               content: { content })
+    }
+    @available(watchOS, unavailable)
+    func listView<Factory: SwiftUIViewFactory>(with factory: Factory,
+                                               header: Factory.View,
+                                               footer: Factory.View,
+                                               items: [ViewModel]) -> SwiftUI.Section<Factory.View, ForEach<[ViewModel], String, Factory.View>,  Factory.View> {
+        let content = ForEach(items,
+                              id: \.uniqueIdentifier.stringValue,
+                              content: factory.view(from:))
+        return SwiftUI.Section(header: header,
+                               footer: footer,
+                               content: { content })
+    }
+    @available(watchOS, unavailable)
+    func listView<Factory: SwiftUIViewFactory>(with factory: Factory,
+                                               items: [ViewModel]) -> SwiftUI.Section<EmptyView, ForEach<[ViewModel], String, Factory.View>, EmptyView> {
+        let content = ForEach(items,
+                              id: \.uniqueIdentifier.stringValue,
+                              content: factory.view(from:))
+        return SwiftUI.Section(content: { content })
+    }
 }
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *)
 extension ViewModel {
-    func view(from factory: SwiftUIViewFactory) -> AnyView? {
-        return factory.view(from: IdentifiableViewModel(viewModel: self))
+    func view<Factory: SwiftUIViewFactory>(from factory: Factory) -> Factory.View? {
+        return factory.view(from: self)
     }
 }
 
-@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-extension List where Content == ForEach<[IdentifiableViewModel], String, AnyView>, SelectionValue == Never {
-
-    public init(_ data: [Boomerang.Section], factory: SwiftUIViewFactory) {
-
-        let elements = data.toList()
-        let content = ForEach(elements, id: \.id, content: factory.view(from:))
-        self.init(content: { content })
-    }
-}
-
-@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-extension Array where Element == Boomerang.Section {
-    func toList() -> [IdentifiableViewModel] {
-        return self
-        .flatMap { $0.items
-            .compactMap { IdentifiableViewModel(viewModel: $0) }
-        }
-    }
-}
 #endif

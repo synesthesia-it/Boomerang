@@ -26,7 +26,7 @@ public struct Step<Value, Action> {
     let update: (inout Value) -> Void
     let file: StaticString
     let line: UInt
-
+    
     public init(
         _ type: StepType,
         _ action: Action,
@@ -97,56 +97,56 @@ public func assert<State: Equatable, Action: Equatable, Environment>(
     var state = initialValue
     var effects: [Observable<Action>] = []
     let disposeBag = DisposeBag()
-
+    
     steps.forEach { step in
         var expected = state
-
+        
         switch step.type {
         case .send:
             if effects.isEmpty == false {
                 XCTFail("Action sent before handling \(effects.count) pending effect(s)", file: step.file, line: step.line)
             }
-
+            
             effects.append(contentsOf: reducer(&state, step.action, environment))
-
+            
         case .receive:
             guard effects.isEmpty == false else {
                 XCTFail("No pending effects to receive from", file: step.file, line: step.line)
                 break
             }
-
+            
             let effect = effects.removeFirst()
             var action: Action!
             let receivedCompletion = XCTestExpectation(description: "receivedCompletion")
-
+            
             effect
                 .subscribe(
                     onNext: { action = $0 },
                     onCompleted: { receivedCompletion.fulfill() }
                 )
                 .disposed(by: disposeBag)
-
+            
             if XCTWaiter.wait(for: [receivedCompletion], timeout: 5) != .completed {
                 XCTFail("Timed out waiting for the effect to complete", file: step.file, line: step.line)
             }
-
+            
             XCTAssertEqual(action, step.action, file: step.file, line: step.line)
-
+            
             effects.append(contentsOf: reducer(&state, action, environment))
-
+            
         case .sendSync:
             if effects.isEmpty == false {
                 XCTFail("Action sent before handling \(effects.count) pending effect(s)", file: step.file, line: step.line)
             }
-
+            
             effects = []
         }
-
+        
         step.update(&expected)
-
+        
         XCTAssertEqual(expected, state, file: step.file, line: step.line)
     }
-
+    
     if effects.isEmpty == false {
         XCTFail("Assertion failed to handle \(effects.count) pending effect(s)", file: file, line: line)
     }

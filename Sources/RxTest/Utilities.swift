@@ -14,7 +14,7 @@ import Boomerang
 import RxBoomerang
 #endif
 
-extension MaterializedSequenceResult {
+public extension MaterializedSequenceResult {
     var values: [T] {
         switch self {
         case let .completed(elements): return elements

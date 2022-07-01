@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file
 ---
 
 ## Unreleased
+**Breaking**
+- Improved methods for SwiftUI List, LazyHGrid and LazyVGrid (still experimental)
+> Methods signatures have changed for some of SwiftUI-related objects. Since Boomerang+SwiftUI is still a "work in progress" and probably not used at all, we've decided to introduce a breaking change in a minor release.
+
+## 6.7.0
 - Improved test utilities for RxStateMachine
 
 ## 6.6.0
