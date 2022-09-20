@@ -9,8 +9,8 @@
 import SwiftUI
 import Combine
 
+#if !os(watchOS)
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
-@available(watchOS, unavailable)
 extension List where SelectionValue: ViewModel {
     public init<Factory>(_ sections: [Boomerang.Section],
                          factory: Factory,
@@ -22,7 +22,8 @@ extension List where SelectionValue: ViewModel {
         self.init(selection: selection, content: { AnyView(content) })
     }
 }
-@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+#endif
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *)
 extension List where SelectionValue == Never {
 
     public init<Factory: SwiftUIViewFactory>(_ sections: [Boomerang.Section],
@@ -38,7 +39,6 @@ extension List where SelectionValue == Never {
 extension Boomerang.Section {
     
     // Probably a bad idea to wrap everything into AnyView, check problems with recycling cells.
-    @available(watchOS, unavailable)
     func listView<Factory: SwiftUIViewFactory>(with factory: Factory) -> AnyView {
         let items = self.items
 

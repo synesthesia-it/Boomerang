@@ -22,4 +22,20 @@ public extension UIKitRoute {
         self.execute(from: scene as? UIViewController)
     }
 }
+#elseif os(watchOS)
+import WatchKit
+extension WKInterfaceController: Scene {}
+/// A route triggered by a UIViewController
+public protocol WatchKitRoute: Route {
+    var createController: () -> WKInterfaceController? { get }
+    func execute<T>(from scene: T?) where T: WKInterfaceController
+}
+public extension WatchKitRoute {
+    var createScene: () -> Scene? { createController }
+
+    func execute<T: Scene>(from scene: T?) {
+        self.execute(from: scene as? WKInterfaceController)
+    }
+}
 #endif
+

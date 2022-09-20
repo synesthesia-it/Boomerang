@@ -30,6 +30,7 @@ let package = Package(
             dependencies: [ "Boomerang",
                             .product(name: "RxSwift", package: "RxSwift"),
                             .product(name: "RxCocoa", package: "RxSwift"),
+                            .product(name: "RxRelay", package: "RxSwift"),
                             "RxDataSources"],
             path: "Sources/Rx"),
         .target(
