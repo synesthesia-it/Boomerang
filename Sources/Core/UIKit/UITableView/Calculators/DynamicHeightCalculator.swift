@@ -29,8 +29,9 @@ open class DynamicHeightCalculator: BaseTableViewHeightCalculator {
     
         let bounds = tableView.bounds.size
         let parameters = Size.ContainerProperties(containerBounds: bounds,
-                                                        maximumWidth: bounds.width,
-                                                         maximumHeight: nil)
+                                                  containerInsets: tableView.adjustedContentInset,
+                                                  maximumWidth: bounds.width,
+                                                  maximumHeight: nil)
         guard let height = elementSize.size(for: parameters)?.height else {
             return autoHeightForItem(at: indexPath, in: tableView, type: type)
         }
