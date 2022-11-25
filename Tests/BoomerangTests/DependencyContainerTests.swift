@@ -8,13 +8,16 @@
 import XCTest
 @testable import Boomerang
 
+protocol BaseProtocol {}
+protocol ExtendedProtocol: BaseProtocol {}
+
 class DependencyContainerTests: XCTestCase {
     enum Key: String, Hashable {
         case dependencyA
         case dependencyB
     }
     
-    class TestObject: CustomStringConvertible, Equatable {
+    class TestObject: CustomStringConvertible, Equatable, ExtendedProtocol {
         static func == (lhs: DependencyContainerTests.TestObject, rhs: DependencyContainerTests.TestObject) -> Bool {
             lhs.content == rhs.content
         }
@@ -178,4 +181,43 @@ class DependencyContainerTests: XCTestCase {
         container.register(scope: .weakSingleton) { 1 }
         XCTAssertEqual(container.resolve(), 1)
     }
+    
+    func testExtensionRegistration() throws {
+        let baseObject = TestObject()
+        let container = ObjectContainer()
+        container.register(for: ExtendedProtocol.self) { baseObject }
+        container.register(for: BaseProtocol.self) { container.unsafeResolve(ExtendedProtocol.self) }
+        let resolved = try XCTUnwrap(container.resolve(ExtendedProtocol.self))
+        XCTAssertEqual(baseObject, resolved as? TestObject)
+    }
+}
+
+protocol MyContainer {
+    func register<Value> (_ block: @escaping () -> Value)
+    func resolve<Value>(_ type: Value.Type) throws -> Value
+}
+extension MyContainer {
+    
+    func register<Value, Value2: Value>(_ value: Value.Type = Value.self,
+                                        extendedBy _: Value2.Type,
+                                        block: @escaping () -> Value) {
+        
+        self.register(block)
+        self.register { block() as Value2 }
+    }
+
+//    func register<Value, Value2: Value, Value3: Value>(block @escaping () -> Value) {
+//
+//        self.register(block)
+//        self.register { block() as Value2 }
+//        self.register { block() as Value3 }
+//    }
+//
+//    func register<Value, Value2: Value, Value3: Value, Value4: Value>(block @escaping () -> Value) {
+//
+//        self.register(block)
+//        self.register { block() as Value2 }
+//        self.register { block() as Value3 }
+//        self.register { block() as Value4 }
+//    }
 }

@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import RxCocoa
 import RxSwift
-
+import RxRelay
 #if !COCOAPODS_RXBOOMERANG
 import Boomerang
 #endif

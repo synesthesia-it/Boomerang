@@ -5,7 +5,8 @@
 //  Created by Stefano Mondino on 12/12/2019.
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
-#if os(iOS) || os(tvOS)
+
+#if canImport(RxCocoa) && (os(iOS) || os(tvOS))
 
 import UIKit
 import RxSwift

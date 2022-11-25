@@ -28,7 +28,7 @@ public extension RxStateMachine {
         state.accept(valueCopy)
         Observable
             .merge(effects)
-            .bind { [weak self] in self?.send($0, disposeBag: disposeBag) }
+            .subscribe(onNext: { [weak self] in self?.send($0, disposeBag: disposeBag) })
             .disposed(by: disposeBag)
     }
 }

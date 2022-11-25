@@ -25,7 +25,7 @@ public func assertRoute<Identifier, Stream: ObservableType>(_ stream: Stream,
         .materialize()
         .values
     guard let routes = values
-            as? [RxBoomerangTest.MockRoute<Identifier>]
+            as? [MockRoute<Identifier>]
     else {
         XCTFail("Route is not testable: found \(values), expected identifier: \(Identifier.self)", file: file, line: line)
         return

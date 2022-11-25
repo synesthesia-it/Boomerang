@@ -11,8 +11,11 @@ let package = Package(
 
     products: [
         .library(name: "Boomerang", targets: ["Boomerang"]),
+        .library(name: "Boomerang-Dynamic", type: .dynamic, targets: ["Boomerang"]),
         .library(name: "RxBoomerang", targets: ["RxBoomerang"]),
-        .library(name: "RxBoomerangTest", targets: ["RxBoomerangTest"])
+        .library(name: "RxBoomerang-Dynamic", type: .dynamic, targets: ["RxBoomerang"]),
+        .library(name: "RxBoomerangTest", targets: ["RxBoomerangTest"]),
+        .library(name: "RxBoomerangTest-Dynamic", type: .dynamic, targets: ["RxBoomerangTest"])
     ],
     dependencies: [
         .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.0.0")),
@@ -24,28 +27,30 @@ let package = Package(
             dependencies: [],
             path: "Sources/Core",
             linkerSettings: [.linkedFramework("UIKit",
-                                              .when(platforms: [.iOS, .tvOS]))]),
+                                              .when(platforms: [.iOS, .tvOS]))]
+        ),
         .target(
             name: "RxBoomerang",
-            dependencies: [ "Boomerang",
+            dependencies: [ .byName(name: "Boomerang"),
                             .product(name: "RxSwift", package: "RxSwift"),
                             .product(name: "RxCocoa", package: "RxSwift"),
                             .product(name: "RxRelay", package: "RxSwift"),
-                            "RxDataSources"],
+                            .byName(name: "RxDataSources")],
             path: "Sources/Rx"),
         .target(
             name: "RxBoomerangTest",
-            dependencies: [ "RxBoomerang",
+            dependencies: [ .byName(name: "RxBoomerang"),
                             .product(name: "RxBlocking", package: "RxSwift")
                             ],
-            path: "Sources/RxTest"),
+            path: "Sources/RxTest",
+            linkerSettings: [.linkedFramework("XCTest")]),
         
         .testTarget(name: "BoomerangTests",
-                    dependencies: ["Boomerang"]),
+                    dependencies: [.byName(name: "Boomerang")]),
         .testTarget(name: "RxBoomerangTests",
-                dependencies: ["RxBoomerang"]),
+                dependencies: [.byName(name: "RxBoomerang")]),
         .testTarget(name: "RxBoomerangTestTests",
-                dependencies: ["RxBoomerangTest"])
+                dependencies: [.byName(name: "RxBoomerangTest")])
 
     ],
     swiftLanguageVersions: [.v5]

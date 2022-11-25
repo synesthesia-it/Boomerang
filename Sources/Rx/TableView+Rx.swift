@@ -6,7 +6,7 @@
 //  Copyright © 2019 Synesthesia. All rights reserved.
 //
 
-#if os(iOS) || os(tvOS)
+#if canImport(RxCocoa) && (os(iOS) || os(tvOS))
 import Foundation
 import UIKit
 import RxSwift
