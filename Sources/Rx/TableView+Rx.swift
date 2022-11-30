@@ -35,15 +35,19 @@ public extension Reactive where Base: UITableView {
     }
 
     func animated(by viewModel: RxListViewModel,
-                  dataSource tableViewDataSource: TableViewDataSource) -> Disposable {
+                  dataSource tableViewDataSource: TableViewDataSource,
+                  insertAnimation: UITableView.RowAnimation = .automatic,
+                  reloadAnimation: UITableView.RowAnimation = .automatic,
+                  deleteAnimation: UITableView.RowAnimation = .automatic) -> Disposable {
 
-        let data = RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<Section, UniqueViewModelWrapper>> { (_, tableView, indexPath, _) -> UITableViewCell in
+        let data = RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<Section, UniqueViewModelWrapper>>(animationConfiguration: .init(insertAnimation: insertAnimation, reloadAnimation: reloadAnimation, deleteAnimation: deleteAnimation),
+                                                                                                                   configureCell: { (_, tableView, indexPath, _) -> UITableViewCell in
             tableViewDataSource.tableView(tableView, cellForRowAt: indexPath)
-        } canEditRowAtIndexPath: { (_, indexPath) -> Bool in
+        }, canEditRowAtIndexPath: { (_, indexPath) -> Bool in
             tableViewDataSource.tableView(base, canEditRowAt: indexPath)
-        } canMoveRowAtIndexPath: { (_, indexPath) -> Bool in
+        }, canMoveRowAtIndexPath: { (_, indexPath) -> Bool in
             tableViewDataSource.tableView(base, canMoveRowAt: indexPath)
-        }
+        })
        
         return viewModel.sectionsRelay
             .asDriver()
