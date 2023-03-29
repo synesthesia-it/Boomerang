@@ -5,22 +5,21 @@
 //  Created by Andrea De vito on 15/10/21.
 //
 
-
 import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
 import Boomerang
 
-class ShowViewModel: ViewModel{
+class ShowViewModel: ViewModel {
     let uniqueIdentifier: UniqueIdentifier
     let layoutIdentifier: LayoutIdentifier
     let title: String
-    let image : URL!
-    
-    let show : Show
-    
-    init(show: Show){
+    let image: URL!
+
+    let show: Show
+
+    init(show: Show) {
         self.show = show
         uniqueIdentifier = show.id
         layoutIdentifier = ComponentIdentifier.show
@@ -28,5 +27,3 @@ class ShowViewModel: ViewModel{
         self.image = show.image?.medium
     }
 }
-
-

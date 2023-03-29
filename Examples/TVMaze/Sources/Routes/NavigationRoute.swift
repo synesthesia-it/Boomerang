@@ -12,10 +12,10 @@ import RxCocoa
 import Boomerang
 import RxBoomerang
 
-struct NavigationRoute : UIKitRoute{
+struct NavigationRoute: UIKitRoute {
     var createViewController: () -> UIViewController?
-    
-    func execute<T: UIViewController>(from scene: T?){
+
+    func execute<T: UIViewController>(from scene: T?) {
         if let nav = scene?.navigationController,
            let controller = createViewController() {
             nav.pushViewController(controller, animated: true)

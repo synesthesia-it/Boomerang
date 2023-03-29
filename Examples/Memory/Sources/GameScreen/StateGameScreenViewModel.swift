@@ -35,6 +35,7 @@ class StateGameScreenViewModel: RxListViewModel, RxNavigationViewModel {
     }
     let stateMachine: StateMachine
     let routes: PublishRelay<Route> = .init()
+    var onUpdate: () -> Void = {}
     init() {
 
         stateMachine = StateMachine()
@@ -59,6 +60,10 @@ class StateGameScreenViewModel: RxListViewModel, RxNavigationViewModel {
             .bind(to: sectionsRelay)
             .disposed(by: reloadDisposeBag)
 
+        sectionsRelay
+            .bind { [weak self] _ in self?.onUpdate() }
+            .disposed(by: reloadDisposeBag)
+            
         stateMachine.state
             .map(\.isWinning)
             .compactMap { $0 ? AlertRoute(title: "WOW!",

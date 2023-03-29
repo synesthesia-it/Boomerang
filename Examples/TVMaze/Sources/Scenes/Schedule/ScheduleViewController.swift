@@ -14,37 +14,35 @@ import RxBoomerang
 
 class ScheduleViewController: UIViewController {
     var disposeBag = DisposeBag()
-    @IBOutlet var collectionView : UICollectionView!
+    @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var Search: UIButton!
-    let viewModel : ScheduleViewModel
-    var dataSource : CollectionViewDataSource?{
-        didSet{
+    let viewModel: ScheduleViewModel
+    var dataSource: CollectionViewDataSource? {
+        didSet {
             collectionView.dataSource = dataSource
         }
     }
-    var delegate : CollectionViewDelegate?{
-        didSet{
+    var delegate: CollectionViewDelegate? {
+        didSet {
             collectionView.delegate = delegate
         }
     }
-    
-    let components : ComponentFactory
-    
+
+    let components: ComponentFactory
+
     init(nibName: String,
          bundle: Bundle? = nil,
          viewModel: ScheduleViewModel,
-         components : ComponentFactory){
+         components: ComponentFactory) {
         self.viewModel = viewModel
         self.components = components
-        super.init(nibName: nibName , bundle: bundle)
+        super.init(nibName: nibName, bundle: bundle)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let viewModel = self.viewModel
@@ -57,40 +55,17 @@ class ScheduleViewController: UIViewController {
         })
         collectionView.rx.animated(by: viewModel, dataSource: dataSource)
             .disposed(by: disposeBag)
-        
+
         let button = UIBarButtonItem(title: "Search", style: .done, target: nil, action: nil)
         self.navigationItem.rightBarButtonItem = button
         button.rx.tap
-            .bind{viewModel.search()}
+            .bind {viewModel.search()}
             .disposed(by: disposeBag)
         viewModel.routes
-            .bind(to:self.rx.routes())
+            .bind(to: self.rx.routes())
             .disposed(by: disposeBag)
         viewModel.reload()
-            
+
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
 

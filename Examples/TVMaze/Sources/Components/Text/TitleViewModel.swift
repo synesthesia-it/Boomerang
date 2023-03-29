@@ -5,28 +5,25 @@
 //  Created by Andrea De vito on 15/10/21.
 //
 
-
 import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
 import Boomerang
 
-class TitleViewModel: ViewModel{
+class TitleViewModel: ViewModel {
     let uniqueIdentifier: UniqueIdentifier
-    
+
     let layoutIdentifier: LayoutIdentifier
     let text: String
-    
-    init(text: String, layout: Layout){
+
+    init(text: String, layout: Layout) {
         uniqueIdentifier = UUID()
         layoutIdentifier = layout
         self.text = text.stripOutHtml() ?? " "
     }
-    
-       
-    
-    enum Layout : String, LayoutIdentifier {
+
+    enum Layout: String, LayoutIdentifier {
         var identifierString: String {self.rawValue}
 
         case title
@@ -34,10 +31,8 @@ class TitleViewModel: ViewModel{
         case summary
         case detail
     }
-  
+
 }
-
-
 
 extension String {
 

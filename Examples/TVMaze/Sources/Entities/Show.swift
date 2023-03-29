@@ -11,7 +11,7 @@ struct Episode: Codable, CustomStringConvertible {
     var description: String {
         show.name
     }
-    
+
     let id: Int
     let url: URL
     let name: String
@@ -19,9 +19,9 @@ struct Episode: Codable, CustomStringConvertible {
     let type: String?
     let season: Int
     let number: Int?
-    let summary : String?
+    let summary: String?
     let show: Show
-    let image : Image?
+    let image: Image?
 }
 
 struct Show: Codable {
@@ -43,30 +43,30 @@ struct Show: Codable {
     let id: Int
     let url: URL
     let name: String
-    let type : String
-    let language : String?
+    let type: String
+    let language: String?
     let genres: [String]
     let status: String?
     let runtime: Int?
     let averageRuntime: Int?
     let premiered: String?
-    let ended : String?
-    let officialSite : String?
-    let image : Image?
-    let summary : String?
-    let weight : Double?
+    let ended: String?
+    let officialSite: String?
+    let image: Image?
+    let summary: String?
+    let weight: Double?
 }
 
-struct Season: Codable{
+struct Season: Codable {
     let id: Int
     let url: URL
-    let number:Int
+    let number: Int
     let name: String?
     let episodeOrder: Int?
     let premiereDate: String?
     let endDate: String?
-    let image : Image?
-    
+    let image: Image?
+
 }
 
 struct Cast: Codable {
@@ -80,7 +80,7 @@ struct  Person: Codable {
     let id: Int
     let name: String
     let image: Image?
-    
+
 }
 
 struct Actor: Codable {
@@ -96,36 +96,35 @@ struct Actor: Codable {
 struct  Character: Codable {
     let id: Int
     let name: String
-    let Image : Image
+    let Image: Image
 }
 
-struct Country : Codable {
+struct Country: Codable {
     let name: String
     let code: String
     let timezone: String
 }
 
-
-struct Credits : Codable {
+struct Credits: Codable {
   //  let character : URL
 //    let _links : Link
-    let _embedded : Embedded
+    let _embedded: Embedded
 }
 
-struct Embedded : Codable {
-    let show : Show
+struct Embedded: Codable {
+    let show: Show
 //    let weight : Int
-    
+
 }
 
-struct Network : Codable{
+struct Network: Codable {
     let id: Int
     let name: String
 }
 
-struct Link : Codable {
-    let show : URL
-    let character : URL
+struct Link: Codable {
+    let show: URL
+    let character: URL
 }
 
 struct Image: Codable {
@@ -133,7 +132,7 @@ struct Image: Codable {
         self.medium = medium
         self.original = original
     }
-    
+
     let medium: URL?
     let original: URL?
 }
@@ -142,6 +141,3 @@ struct Search: Codable {
     let score: Double
     let show: Show
 }
-
-
-

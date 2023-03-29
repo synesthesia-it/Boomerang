@@ -14,23 +14,17 @@ import RxBoomerang
 import RxRelay
 
 internal protocol DetailUseCase {
-    func detail(show:Show) -> Observable<ShowDetail>
+    func detail(show: Show) -> Observable<ShowDetail>
 }
 
 public class DetailUseCaseImplementation: DetailUseCase {
-    let repository : TVMazeRepository
-    init(repository : TVMazeRepository){
+    let repository: TVMazeRepository
+    init(repository: TVMazeRepository) {
         self.repository = repository
-        
+
     }
- 
+
     func detail(show: Show) -> Observable<ShowDetail> {
         repository.episodeDetail(show: show)
     }
 }
-
-
-
-
-
-

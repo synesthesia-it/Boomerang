@@ -14,41 +14,39 @@ import Boomerang
 import RxBoomerang
 
 class SearchViewController: UIViewController {
-    
+
     @IBOutlet var textField: UITextField!
     @IBOutlet var searchButton: UIButton!
-    @IBOutlet var collectionView : UICollectionView!
+    @IBOutlet var collectionView: UICollectionView!
     @IBAction func textField(_ sender: Any) {
         let text =  textField.rx.textInput
-        print ("\(text)")
+        print("\(text)")
     }
-    let viewModel : SearchViewModel
-    let components : ComponentFactory
-    var search : [Search] = []
+    let viewModel: SearchViewModel
+    let components: ComponentFactory
+    var search: [Search] = []
     var disposeBag = DisposeBag()
-    var dataSource : CollectionViewDataSource?{
-        didSet{
+    var dataSource: CollectionViewDataSource? {
+        didSet {
             collectionView.dataSource = dataSource
         }
     }
-    var delegate : CollectionViewDelegate?{
-        didSet{
+    var delegate: CollectionViewDelegate? {
+        didSet {
             collectionView.delegate = delegate
         }
     }
 
-    init(viewModel: SearchViewModel,  components : ComponentFactory){
+    init(viewModel: SearchViewModel, components: ComponentFactory) {
         self.viewModel = viewModel
         self.components = components
         super.init(nibName: "SearchViewController", bundle: nil)
-        
+
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,16 +58,14 @@ class SearchViewController: UIViewController {
         })
         collectionView.rx.animated(by: viewModel, dataSource: dataSource)
             .disposed(by: disposeBag)
-        
+
         textField.rx.text.bind(to: viewModel.searchText)
             .disposed(by: disposeBag)
         viewModel.routes
-            .bind(to:self.rx.routes())
+            .bind(to: self.rx.routes())
             .disposed(by: disposeBag)
         viewModel.reload()
     }
-
-
 
 //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 //        return search.count
@@ -124,9 +120,4 @@ class SearchViewController: UIViewController {
 //        return cell
 //    }
     }
-
-    
-    
-    
-    
 

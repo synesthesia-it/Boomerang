@@ -14,16 +14,15 @@ import Boomerang
 import RxBoomerang
 
 class CarouselView: UIView, WithViewModel {
-    @IBOutlet var collectionView : UICollectionView!
+    @IBOutlet var collectionView: UICollectionView!
     var disposeBag = DisposeBag()
-    var dataSource : CollectionViewDataSource?
-    var delegate : CollectionViewDelegate?{
-        didSet{
+    var dataSource: CollectionViewDataSource?
+    var delegate: CollectionViewDelegate? {
+        didSet {
             collectionView.delegate = delegate
         }
     }
 
-    
     func configure(with viewModel: ViewModel) {
         guard let viewModel = viewModel as? CarouselViewModel else {return}
         let dataSource = CollectionViewDataSource(viewModel: viewModel, factory: viewModel.cells)
@@ -36,9 +35,6 @@ class CarouselView: UIView, WithViewModel {
             viewModel.selectItem(at: indexPath)
         })
         viewModel.reload()
-        
-                
+
     }
 }
-
-

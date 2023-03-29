@@ -18,53 +18,50 @@ protocol SceneFactory {
     func mainTabBar() -> UIViewController
 }
 
-class SceneFactoryImplementation : SceneFactory{
-    
-    let container : AppContainer
-    
-    
-    init(container : AppContainer){
+class SceneFactoryImplementation: SceneFactory {
+
+    let container: AppContainer
+
+    init(container: AppContainer) {
         self.container = container
     }
-    func schedule () -> UIViewController{
+    func schedule () -> UIViewController {
         let viewModel = container.sceneViewModels.scheduleViewModel()
         return ScheduleViewController(nibName: name(from: viewModel),
                                       viewModel: viewModel,
                                       components: container.components)
     }
-    
-    func showDetail (viewModel: ShowDetailViewModel) -> UIViewController{
+
+    func showDetail (viewModel: ShowDetailViewModel) -> UIViewController {
         return ShowDetailViewController(viewModel: viewModel,
                                         components: container.components)
     }
-    
-    func showCastDetail (view viewModel: ShowCastDetailViewModel) -> UIViewController{
+
+    func showCastDetail (view viewModel: ShowCastDetailViewModel) -> UIViewController {
         return ShowCastDetailViewController(viewModel: viewModel,
                                             components: container.components)
     }
-    
-    
+
     func showSeasonDetail(view viewModel: ShowSeasonDetailViewModel) -> UIViewController {
         return ShowSeasonDetailViewController(viewModel: viewModel,
                                               components: container.components)
     }
-    
-    
+
     func search(viewModel: SearchViewModel) -> UIViewController {
         return SearchViewController(viewModel: viewModel,
                                     components: container.components)
     }
-    
-    private func name (from viewModel: ViewModel) -> String{
+
+    private func name (from viewModel: ViewModel) -> String {
         viewModel
             .layoutIdentifier
             .identifierString.capitalized + "ViewController"
     }
-    
+
     func mainTabBar() -> UIViewController {
         let viewModel = container.sceneViewModels.homePager()
         return TabBarController(viewModel: viewModel, routeFactory: container.routes)
-        
+
     }
 
 }

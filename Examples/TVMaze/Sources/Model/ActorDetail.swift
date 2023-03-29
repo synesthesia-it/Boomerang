@@ -13,10 +13,8 @@ import Boomerang
 import RxBoomerang
 import RxRelay
 
-struct ActorDetail{
-    let person : Person
-    let actorInfo : Actor
-    let credits : [Credits]
+struct ActorDetail {
+    let person: Person
+    let actorInfo: Actor
+    let credits: [Credits]
 }
-
-

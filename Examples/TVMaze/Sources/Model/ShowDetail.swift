@@ -13,10 +13,8 @@ import Boomerang
 import RxBoomerang
 import RxRelay
 
-struct ShowDetail{
-    let show : Show
-    let cast : [Cast]
-    let seasons : [Season]
+struct ShowDetail {
+    let show: Show
+    let cast: [Cast]
+    let seasons: [Season]
 }
-
-

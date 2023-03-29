@@ -17,36 +17,34 @@ protocol NetworkDataSource {
     func codable<Value: Codable>(at url: URL, type: Value.Type) -> Observable<Value>
 }
 
-
-class NetworkDataSourceImplementation : NetworkDataSource {
-    func codable<Value>(at url: URL, type: Value.Type) -> Observable<Value> where Value : Decodable, Value : Encodable {
+class NetworkDataSourceImplementation: NetworkDataSource {
+    func codable<Value>(at url: URL, type: Value.Type) -> Observable<Value> where Value: Decodable, Value: Encodable {
         URLSession.shared.rx.codable(at: url, type: type)
-        
+
     }
-    init(){}
-    
+    init() {}
+
 }
 
-class MockedNetworkDownloader  : NetworkDataSource {
-    init<Value: Codable>(JSONString : String, type: Value.Type){
+class MockedNetworkDownloader: NetworkDataSource {
+    init<Value: Codable>(JSONString: String, type: Value.Type) {
        let data = JSONString.data(using: .utf8)!
         do {  let result = try JSONDecoder()
             .decode(type, from: data)
         self.observable = .just(result)
-        }
-        catch {
+        } catch {
             self.observable = .error(Errors.mapping)
         }
     }
-    
+
     internal init(observable: Observable<Any>) {
         self.observable = observable
     }
-    
-    let observable : Observable<Any>
-    func codable<Value>(at url: URL, type: Value.Type) -> Observable<Value> where Value : Decodable, Value : Encodable {
+
+    let observable: Observable<Any>
+    func codable<Value>(at url: URL, type: Value.Type) -> Observable<Value> where Value: Decodable, Value: Encodable {
         return observable
-            .compactMap{
+            .compactMap {
                 $0 as? Value
             }
     }
@@ -67,12 +65,8 @@ extension Reactive where Base == URLSession {
     }
 }
 
-
-
-
-
 //
-//class NetworkDownloader<Value: Codable>: ReactiveCompatible {
+// class NetworkDownloader<Value: Codable>: ReactiveCompatible {
 //
 //
 //
@@ -130,4 +124,4 @@ extension Reactive where Base == URLSession {
 //            }
 //        }
 //    }
-//}
+// }

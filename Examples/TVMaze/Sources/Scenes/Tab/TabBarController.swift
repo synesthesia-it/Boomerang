@@ -6,10 +6,10 @@
 //
 
 import Boomerang
-//import Core
+// import Core
 import RxSwift
-//import Style
-//import Tabman
+// import Style
+// import Tabman
 import UIKit
 import RxBoomerang
 
@@ -18,10 +18,8 @@ class TabBarController: UITabBarController {
     let routeFactory: RouteFactory
     var disposeBag = DisposeBag()
 
-
     init(viewModel: ListViewModel,
-         routeFactory: RouteFactory)
-    {
+         routeFactory: RouteFactory) {
         self.viewModel = viewModel
         self.routeFactory = routeFactory
         super.init(nibName: nil, bundle: nil)

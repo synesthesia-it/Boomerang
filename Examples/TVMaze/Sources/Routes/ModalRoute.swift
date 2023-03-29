@@ -12,10 +12,10 @@ import RxCocoa
 import Boomerang
 import RxBoomerang
 
-struct ModalRoute : UIKitRoute{
+struct ModalRoute: UIKitRoute {
     var createViewController: () -> UIViewController?
-    
-    func execute<T: UIViewController>(from scene: T?){
+
+    func execute<T: UIViewController>(from scene: T?) {
         if let scene = scene,
            let controller = createViewController() {
             scene.present(controller, animated: true, completion: nil)

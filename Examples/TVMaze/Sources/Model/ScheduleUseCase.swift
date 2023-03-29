@@ -18,15 +18,14 @@ internal protocol ScheduleUseCase {
 }
 
 public class ScheduleUseCaseImplementation: ScheduleUseCase {
-    
-    let repository : TVMazeRepository
-  
-    init(repository : TVMazeRepository){
+
+    let repository: TVMazeRepository
+
+    init(repository: TVMazeRepository) {
         self.repository = repository
     }
-    
+
     func schedule() -> Observable<[Episode]> {
         return repository.schedule()
     }
 }
-

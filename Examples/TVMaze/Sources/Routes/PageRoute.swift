@@ -12,11 +12,10 @@ import RxCocoa
 import Boomerang
 import RxBoomerang
 
-struct PageRoute : UIKitRoute{
+struct PageRoute: UIKitRoute {
     var createViewController: () -> UIViewController?
-    
-    func execute<T: UIViewController>(from scene: T?){
 
-        
+    func execute<T: UIViewController>(from scene: T?) {
+
         }
 }

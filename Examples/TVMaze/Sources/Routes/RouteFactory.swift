@@ -12,35 +12,34 @@ import RxCocoa
 import Boomerang
 import RxBoomerang
 
-
 protocol RouteFactory {
     func restart() -> Route
     func search() -> Route
-    func details(show : Show) -> Route
-    func castDetails(person : Person) -> Route
-    func seasonDetail(season : Season) -> Route
+    func details(show: Show) -> Route
+    func castDetails(person: Person) -> Route
+    func seasonDetail(season: Season) -> Route
     func page(from viewModel: ViewModel) -> Route?
 }
 
 struct RouteFactoryImplementation: RouteFactory {
-   
+
    let container: AppContainer
-    
-    init(container: AppContainer){
+
+    init(container: AppContainer) {
         self.container = container
     }
-    
+
     func page(from viewModel: ViewModel) -> Route? {
-        switch viewModel{
+        switch viewModel {
         case let viewModel as ScheduleViewModel:
             return PageRoute {container.scenes.schedule()}
-            
+
         case let viewModel as SearchViewModel:
             return PageRoute {container.scenes.search(viewModel: viewModel)}
         default: return nil
         }
     }
-    
+
     func restart() -> Route {
         RestartRoute {
             UINavigationController(
@@ -50,8 +49,7 @@ struct RouteFactoryImplementation: RouteFactory {
                     .mainTabBar())
         }
     }
-    
-    
+
     func search() -> Route {
         ModalRoute {
             UINavigationController(
@@ -66,8 +64,8 @@ struct RouteFactoryImplementation: RouteFactory {
             )
         }
     }
-    
-    func details(show : Show) -> Route {
+
+    func details(show: Show) -> Route {
         NavigationRoute {
             container.scenes.showDetail(
                 viewModel:
@@ -79,21 +77,20 @@ struct RouteFactoryImplementation: RouteFactory {
             //                components: self.container.components)
         }
     }
-    
-    
-    func castDetails(person : Person) -> Route {
-        NavigationRoute{
+
+    func castDetails(person: Person) -> Route {
+        NavigationRoute {
             container.scenes.showCastDetail(
                 view:
                     container
                     .sceneViewModels
                     .showCastDetailViewModel(person: person))
         }
-        
+
     }
-    
+
     func seasonDetail(season: Season) -> Route {
-        NavigationRoute{
+        NavigationRoute {
             container.scenes.showSeasonDetail(
                 view:
                     container
@@ -102,7 +99,6 @@ struct RouteFactoryImplementation: RouteFactory {
             )
         }
     }
-    
+
 }
-    
-   
+

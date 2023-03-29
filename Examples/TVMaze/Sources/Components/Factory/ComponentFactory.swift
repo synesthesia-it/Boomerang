@@ -11,9 +11,9 @@ import RxSwift
 import RxCocoa
 import Boomerang
 
-enum ComponentIdentifier : String, LayoutIdentifier {
+enum ComponentIdentifier: String, LayoutIdentifier {
     var identifierString: String {self.rawValue}
-    
+
     case show
     case scheduleShow
     case showInfo
@@ -30,17 +30,40 @@ enum ComponentIdentifier : String, LayoutIdentifier {
     case carousel
 }
 
-protocol ComponentFactory : CollectionViewCellFactory {
-    
-}
+protocol ComponentFactory: CollectionViewCellFactory {
 
-class ComponentFactoryImplementation: ComponentFactory{
+}
+class SomeFactoryImplementation: ComponentFactory {
     var defaultCellIdentifier: String = "default"
-    
+
+    func cellClass(from itemIdentifier: Boomerang.LayoutIdentifier?) -> UICollectionViewCell.Type {
+        ContentCollectionViewCell.self
+    }
+
+    func configureCell(_ cell: UICollectionReusableView, with viewModel: Boomerang.ViewModel) {
+        guard let cell = cell as? ContentCollectionViewCell else { return }
+        if cell.internalView == nil {
+            cell.internalView = view(from: viewModel.layoutIdentifier)
+        }
+        cell.configure(with: viewModel)
+    }
+
+    func view(from itemIdentifier: LayoutIdentifier) -> UIView? {
+        UINib(nibName: name(from: itemIdentifier), bundle: nil).instantiate(withOwner: nil, options: nil).first as? UIView
+    }
+
+    func name(from itemIdentifier: LayoutIdentifier) -> String {
+        itemIdentifier.identifierString.prefix(1).uppercased() + itemIdentifier.identifierString.dropFirst() + "View"
+    }
+
+}
+class ComponentFactoryImplementation: ComponentFactory {
+    var defaultCellIdentifier: String = "default"
+
     func cellClass(from itemIdentifier: LayoutIdentifier?) -> UICollectionViewCell.Type {
         ContentCollectionViewCell.self
     }
-    
+
     func configureCell(_ cell: UICollectionReusableView, with viewModel: ViewModel) {
         guard let cell = cell as? ContentCollectionViewCell else { return }
         if cell.internalView == nil {
@@ -48,23 +71,21 @@ class ComponentFactoryImplementation: ComponentFactory{
         }
         cell.configure(with: viewModel)
     }
-    
+
     func view(from itemIdentifier: LayoutIdentifier) -> UIView? {
         UINib(nibName: name(from: itemIdentifier), bundle: nil).instantiate(withOwner: nil, options: nil).first as? UIView
     }
-    
+
     func name(from itemIdentifier: LayoutIdentifier) -> String {
         itemIdentifier.identifierString.prefix(1).uppercased() + itemIdentifier.identifierString.dropFirst() + "View"
     }
-    
-    init(){}
-    
-    
+
+    init() {}
+
 }
 
-enum SceneIdentifier : String, LayoutIdentifier {
+enum SceneIdentifier: String, LayoutIdentifier {
     var identifierString: String {self.rawValue}
-    
+
     case schedule
 }
-

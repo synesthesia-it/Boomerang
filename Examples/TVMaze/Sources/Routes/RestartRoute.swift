@@ -12,10 +12,10 @@ import RxCocoa
 import Boomerang
 import RxBoomerang
 
-struct RestartRoute : UIKitRoute{
+struct RestartRoute: UIKitRoute {
     var createViewController: () -> UIViewController?
-    
-    func execute<T: UIViewController>(from scene: T?){
+
+    func execute<T: UIViewController>(from scene: T?) {
         let scene = scene ?? UIApplication.shared.delegate?.window??.rootViewController
 
                 if let presented = scene?.presentedViewController {

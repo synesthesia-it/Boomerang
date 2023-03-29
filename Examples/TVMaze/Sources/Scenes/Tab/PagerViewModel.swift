@@ -6,7 +6,7 @@
 //
 
 import Boomerang
-//import Core
+// import Core
 import Foundation
 import RxRelay
 import RxSwift
@@ -18,12 +18,10 @@ public protocol PageViewModel: ViewModel {
     var pageIcon: UIImage? { get }
 }
 
-
 open class PagerViewModel: RxListViewModel, PageViewModel {
-   
+
     public enum Layout: String, LayoutIdentifier {
-       
-        
+
         case tab
     }
 

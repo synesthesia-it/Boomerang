@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,12 +22,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let cellFactory = CellFactory()
 
         let stateViewController = UINavigationController(rootViewController:
-                                                            GameScreenViewController(viewModel: StateGameScreenViewModel(),
+                                                            DiffableGameScreenViewController(viewModel: StateGameScreenViewModel(),
                                                                                      viewFactory: cellFactory))
 
         window.rootViewController = stateViewController
         window.makeKeyAndVisible()
 
         return true
+    }
+    
+    @Published var sections: [String] = []
+    var cancellables: [AnyCancellable] = []
+    func test() {
+        print(sections)
+        $sections.sink { print($0) }.store(in: &cancellables)
+        sections = ["pluto"]
     }
 }

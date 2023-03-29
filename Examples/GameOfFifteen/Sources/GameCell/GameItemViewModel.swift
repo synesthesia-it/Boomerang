@@ -37,9 +37,11 @@ class GameItemViewModel: ViewModel {
         switch tile {
 //        case .empty: description = ""
         case let .value(value): description = "\(value)"
+        case .empty:
+            description = ""
         }
 
         self.uniqueIdentifier = description
-        self.layoutIdentifier = Deck == .alphabet ? Layout.gameItem : Layout.imageItem
+        self.layoutIdentifier = Layout.gameItem
     }
 }

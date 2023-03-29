@@ -15,4 +15,3 @@ class TitleView: UIView, WithViewModel {
     }
     @IBOutlet var text: UILabel!
 }
-
