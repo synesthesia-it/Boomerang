@@ -11,7 +11,7 @@ import Boomerang
 import RxBoomerang
 import RxSwift
 import RxCocoa
-
+import Combine
 
 class DiffableGameScreenViewController: UIViewController, UICollectionViewDelegateFlowLayout {
 
@@ -25,6 +25,7 @@ class DiffableGameScreenViewController: UIViewController, UICollectionViewDelega
 
     private let viewFactory: CollectionViewCellFactory
     private let disposeBag = DisposeBag()
+    private var cancellables: [AnyCancellable] = []
 
     private var collectionViewDataSource: CollectionViewDiffableDataSource? {
             didSet {
@@ -62,7 +63,8 @@ class DiffableGameScreenViewController: UIViewController, UICollectionViewDelega
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
 
-        let collectionViewDataSource = CollectionViewDiffableDataSource(viewModel: viewModel, collectionView: collectionView,
+        let collectionViewDataSource = CollectionViewDiffableDataSource(collectionView: collectionView,
+                                                                        viewModel: viewModel,
                                                                 factory: viewFactory)
 
         let sizeCalculator = DynamicSizeCalculator(viewModel: viewModel,
@@ -71,9 +73,8 @@ class DiffableGameScreenViewController: UIViewController, UICollectionViewDelega
         collectionViewDelegate = CollectionViewDelegate(sizeCalculator: sizeCalculator)
                   .withSelect { viewModel.selectItem(at: $0) }
         
-//        collectionView.rx
-//                       .animated(by: viewModel, dataSource: collectionViewDataSource)
-//                       .disposed(by: disposeBag)
+        collectionView.animated(by: viewModel, dataSource: collectionViewDataSource)
+            .store(in: &cancellables)
 
         viewModel.title
             .asDriver(onErrorJustReturn: "")

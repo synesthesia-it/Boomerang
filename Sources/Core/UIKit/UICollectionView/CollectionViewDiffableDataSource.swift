@@ -10,7 +10,7 @@
     import Foundation
     import UIKit
 
-    @available(iOS 13.0, *)
+    @available(iOS 13.0, tvOS 13.0, *)
     public class CollectionViewDiffableDataSource: UICollectionViewDiffableDataSource<Section.ID, String> {
         public var viewModel: ListViewModel
         public var factory: CollectionViewCellFactory
@@ -66,9 +66,16 @@
     }
 
     import Combine
+    @available(iOS 13.0, tvOS 13.0, *)
     public extension UICollectionView {
         func animated(by viewModel: any CombineListViewModel,
                       dataSource: CollectionViewDiffableDataSource) -> AnyCancellable {
+            reloaded(by: viewModel, dataSource: dataSource, animated: true)
+        }
+        
+        func reloaded(by viewModel: any CombineListViewModel,
+                      dataSource: CollectionViewDiffableDataSource,
+                      animated: Bool = false) -> AnyCancellable {
             viewModel.sectionsSubject
                 .sink { sections in
                     var snapshot = NSDiffableDataSourceSnapshot<Section.ID, String>()
@@ -81,7 +88,7 @@
 
                         dataSource.apply(
                             snapshot,
-                            animatingDifferences: true,
+                            animatingDifferences: animated,
                             completion: nil
                         )
                     }

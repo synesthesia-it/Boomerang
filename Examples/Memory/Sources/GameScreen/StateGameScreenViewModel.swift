@@ -11,13 +11,26 @@ import RxBoomerang
 import RxRelay
 import RxSwift
 import UIKit
+import Combine
 
-class StateGameScreenViewModel: RxListViewModel, RxNavigationViewModel {
+class StateGameScreenViewModel: RxListViewModel, RxNavigationViewModel, CombineListViewModel {
 
     enum Layout: String, LayoutIdentifier {
         case gameScreen
     }
-
+    var sections: [Section] {
+        get {
+            sectionsSubject.value
+        }
+        set {
+            sectionsSubject.send(newValue)
+            sectionsRelay.accept(newValue)
+        }
+    }
+    var sectionsSubject: CurrentValueSubject<[Boomerang.Section], Never> = .init([])
+    
+    var cancellables: [AnyCancellable] = []
+    
     var sectionsRelay: BehaviorRelay<[Section]> = .init(value: [])
 
     var disposeBag: DisposeBag = DisposeBag()
@@ -35,6 +48,7 @@ class StateGameScreenViewModel: RxListViewModel, RxNavigationViewModel {
     }
     let stateMachine: StateMachine
     let routes: PublishRelay<Route> = .init()
+    
     var onUpdate: () -> Void = {}
     init() {
 
@@ -57,7 +71,7 @@ class StateGameScreenViewModel: RxListViewModel, RxNavigationViewModel {
             .map { $0.map { GameItemViewModel(tile: $0) } }
             .map { [Section(id: "game", items: $0)] }
             .catchAndReturn([])
-            .bind(to: sectionsRelay)
+            .bind { [weak self] in self?.sections = $0 }
             .disposed(by: reloadDisposeBag)
 
         sectionsRelay
