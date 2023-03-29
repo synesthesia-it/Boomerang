@@ -192,7 +192,7 @@ class DependencyContainerTests: XCTestCase {
     }
     
     func testSharedContainerResolvesVariable() throws {
-        class Container: DependencyContainer {}
+        class Container: SharedDependencyContainer {}
         
         let containerA = Container()
         let containerB = Container()

@@ -160,9 +160,14 @@ public typealias ObjectContainer = Container<ObjectIdentifier>
 
 private let sharedContainer = ObjectContainer()
 
-public extension DependencyContainer where DependencyKey == ObjectIdentifier {
-    
+/// A dependency container with a globally shared object container
+public protocol SharedDependencyContainer: DependencyContainer where DependencyKey == ObjectIdentifier {}
+
+public extension SharedDependencyContainer {
     var container: ObjectContainer { sharedContainer }
+}
+
+public extension DependencyContainer where DependencyKey == ObjectIdentifier {
     
     func register<Value: Any>(for key: Value.Type = Value.self,
                               scope: Container<DependencyKey>.Scope = .unique,
