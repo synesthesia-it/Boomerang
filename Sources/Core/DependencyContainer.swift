@@ -158,7 +158,12 @@ public extension DependencyContainer {
 
 public typealias ObjectContainer = Container<ObjectIdentifier>
 
+private let sharedContainer = ObjectContainer()
+
 public extension DependencyContainer where DependencyKey == ObjectIdentifier {
+    
+    var container: ObjectContainer { sharedContainer }
+    
     func register<Value: Any>(for key: Value.Type = Value.self,
                               scope: Container<DependencyKey>.Scope = .unique,
                               handler: @escaping () -> Value) {
