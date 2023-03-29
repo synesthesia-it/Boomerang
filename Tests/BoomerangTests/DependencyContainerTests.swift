@@ -190,6 +190,30 @@ class DependencyContainerTests: XCTestCase {
         let resolved = try XCTUnwrap(container.resolve(ExtendedProtocol.self))
         XCTAssertEqual(baseObject, resolved as? TestObject)
     }
+    
+    func testSharedContainerResolvesVariable() throws {
+        class Container: DependencyContainer {}
+        
+        let containerA = Container()
+        let containerB = Container()
+        
+        containerA.register { "This is a test" }
+        XCTAssertEqual(containerB.resolve(), "This is a test")
+        
+    }
+    
+    func testNonSharedContainerResolvesDifferentVariables() throws {
+        class Container: DependencyContainer {
+            let container = ObjectContainer()
+        }
+        
+        let containerA = Container()
+        let containerB = Container()
+        
+        containerA.register { "This is a test" }
+        XCTAssertNotEqual(containerB.resolve(), "This is a test")
+        
+    }
 }
 
 protocol MyContainer {
@@ -198,13 +222,13 @@ protocol MyContainer {
 }
 extension MyContainer {
     
-    func register<Value, Value2: Value>(_ value: Value.Type = Value.self,
-                                        extendedBy _: Value2.Type,
-                                        block: @escaping () -> Value) {
-        
-        self.register(block)
-        self.register { block() as Value2 }
-    }
+//    func register<Value, Value2: Value>(_ value: Value.Type = Value.self,
+//                                        extendedBy _: Value2.Type,
+//                                        block: @escaping () -> Value) {
+//
+//        self.register(block)
+//        self.register { block() as Value2 }
+//    }
 
 //    func register<Value, Value2: Value, Value3: Value>(block @escaping () -> Value) {
 //
