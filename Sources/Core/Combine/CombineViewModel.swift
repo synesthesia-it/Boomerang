@@ -41,34 +41,12 @@ public extension CombineListViewModel {
             onUpdate()
         }
     }
-
+    
+    var onUpdate: () -> Void {
+        get { return {} }
+        // swiftlint:disable unused_setter_value
+        set { }
+    }
 }
 
-// public class AnyCombineViewModel: ObservableObject {
-//    public var objectWillChange = ObservableObjectPublisher()
-//    public var viewModel: CombineViewModel
-//    public init(viewModel: CombineViewModel) {
-//        self.viewModel = viewModel
-//    }
-// }
-// public extension CombineListViewModel {
-//    func eraseToCombine() -> AnyCombineViewModel {
-//        return AnyCombineViewModel(viewModel: self)
-//    }
-// }
-// public class AnyCombineListViewModel: ObservableObject {
-//    public var objectWillChange = ObservableObjectPublisher()
-//     var viewModel: CombineListViewModel
-//    public var sections: [Boomerang.Section] {
-//        return viewModel.sections
-//    }
-//     public init(viewModel: CombineListViewModel) {
-//        self.viewModel = viewModel
-//        viewModel.onUpdate = {[weak self] in
-//            DispatchQueue.main.async {
-//                self?.objectWillChange.send()
-//            }
-//        }
-//     }
-// }
 #endif
