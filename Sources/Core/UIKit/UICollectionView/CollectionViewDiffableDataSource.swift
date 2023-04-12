@@ -85,13 +85,12 @@
                         snapshot.appendItems(
                             section.items.map { $0.uniqueIdentifier.stringValue }, toSection: section.id
                         )
-
-                        dataSource.apply(
-                            snapshot,
-                            animatingDifferences: animated,
-                            completion: nil
-                        )
                     }
+                    dataSource.apply(
+                        snapshot,
+                        animatingDifferences: animated,
+                        completion: nil
+                    )
                 }
         }
     }
