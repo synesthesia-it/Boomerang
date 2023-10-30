@@ -50,6 +50,9 @@ class DependencyContainerTests: XCTestCase {
         @Dependency
         var test: Int
         
+        @Dependency(tag: "2")
+        var test2: Int
+        
         @Dependency
         var testCustomString: CustomStringConvertible
         
@@ -77,8 +80,11 @@ class DependencyContainerTests: XCTestCase {
         XCTAssertEqual(container.testCustomString.description, "Test")
         container.register(for: \.testCustomStringCopy) { "Test2" }
         XCTAssertEqual(container.testCustomStringCopy.description, "Test2")
-        container.register { 1 }
+        container.register(for: Int.self) { 1 }
         XCTAssertEqual(container.test, 1)
+        container.register(for: Int.self, tag: "2") { 2 }
+        XCTAssertEqual(container.test2, 2)
+        XCTAssertEqual(container.resolve(Int.self, tag: "2"), 2)
         let testObject = TestObject()
         container.register(for: CustomStringConvertible.self) { testObject }
         XCTAssertEqual(container.testObject.description, testObject.description)
